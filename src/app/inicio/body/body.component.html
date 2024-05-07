@@ -1,2 +1,24 @@
-<p>body works!</p>
-nose
+<!-- Toolbar -->
+<script>
+  var mySwiper = new Swiper('.swiper-container', {
+      autoplay: {
+          delay: 5000,
+      },
+  });
+</script>
+<mat-toolbar color="primary" class="app-header">
+  <span class="nav-tool-items">
+    <a mat-button routerLink="login" routerLinkActive="active">Iniciar Sesión</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+  </span>
+</mat-toolbar>
+<router-outlet></router-outlet>
+<swiper-container>
+    <swiper-slide *ngFor="let image of slideImagenes">
+      <img [src]="image">
+    </swiper-slide>
+  </swiper-container>
+  <mat-card>
+    <mat-card-content>Simple card</mat-card-content>
+  </mat-card>
+    
