@@ -57,17 +57,18 @@
                             class="mt-1 p-2 h-11 w-full border rounded-md bg-slate-100" />
                     </div>
                     <div class="md:w-1/2 relative">
-                        <label for="genero" class="block mb-2 text-blue-400">Género:</label>
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
-                            <i class="fas fa-venus-mars absolute bottom-4" style="color: #74c0fc"></i>
+                        <label for="genero" class="block mb-2 text-blue-400 left-6">Género:</label>
+                        <div class="absolute  inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
+                            <fa-icon [icon]="faGlobe" class="absolute mt-4"></fa-icon>
                         </div>
-                        <select id="genero" class="mt-1 p-2 pl-8 h-11 w-full border rounded-md bg-slate-100">
+                        <select id="genero" class="mt-1 p-2  h-30 w-full border rounded-md bg-slate-100">
                             <option value="" disabled selected>Seleccionar género...</option>
                             <option value="masculino">Masculino</option>
                             <option value="femenino">Femenino</option>
                             <option value="otro">Otro</option>
                         </select>
                     </div>
+                    
                 </div>
             </div>
             <div class="flex">
