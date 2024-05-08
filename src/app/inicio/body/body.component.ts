@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef  } from '@angular/core';
+import { Component, AfterViewInit  } from '@angular/core';
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
 // // register Swiper custom elements
@@ -35,14 +35,16 @@ export class BodyComponent implements AfterViewInit{
     "../../../assets/images/logo-seed.jpg"
   ]
 
-  constructor(private elementRef: ElementRef) {}
+  constructor() {}
   ngAfterViewInit() {
-    const swiperContainer = this.elementRef.nativeElement.querySelector('.swiper-container');
-    const mySwiper = new Swiper(swiperContainer, {
+    const mySwiper = new Swiper('.my-swiper-container', {
+      direction: 'horizontal',
+      loop: true,
       autoplay: {
-        delay: 5000,
+        delay: 2000,
       },
+      slidesPerView: 'auto',
+      spaceBetween: 5,
     });
   }
 }
-
