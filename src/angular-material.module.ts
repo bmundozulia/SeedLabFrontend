@@ -32,11 +32,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatSidenavContainer } from '@angular/material/sidenav';
 
 const materialModules = [
   CdkTreeModule,
   MatAutocompleteModule,
   MatButtonModule,
+  MatSidenavContainer,
   MatCardModule,
   MatCheckboxModule,
   MatChipsModule,
@@ -65,7 +68,8 @@ const materialModules = [
   MatGridListModule,
   MatRadioModule,
   MatDatepickerModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSidenav
 ];
 @NgModule({
   imports: [

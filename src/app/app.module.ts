@@ -4,9 +4,7 @@ import { MenuComponent } from './inicio/menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './inicio/body/body.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AngularMaterialModule } from '../angular-material.module';
-
 import { RegisterComponent } from './register/register.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HeaderComponent } from './header/header.component';
@@ -21,6 +19,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +30,7 @@ import { MatSidenav } from '@angular/material/sidenav';
     AddEmpresaComponent,
     LoginComponent,
     BodyComponent,
+    
   ],
   imports: [
     BrowserModule,
