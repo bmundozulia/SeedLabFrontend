@@ -31,7 +31,8 @@ import { AddEmpresaComponent } from './empresario/add-empresa/add-empresa.compon
     CommonModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
