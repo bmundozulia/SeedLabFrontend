@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
-import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../header/header.component';
 
 @Component({
   selector: 'app-add-empresa',
-  imports: [FontAwesomeModule, CommonModule],
   templateUrl: './add-empresa.component.html',
   styleUrl: './add-empresa.component.css',
   providers: [HeaderComponent] 
