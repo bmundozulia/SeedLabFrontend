@@ -7,7 +7,6 @@ import { HeaderComponent } from '../../header/header.component';
 
 @Component({
   selector: 'app-add-empresa',
-  standalone: true,
   imports: [FontAwesomeModule, CommonModule],
   templateUrl: './add-empresa.component.html',
   styleUrl: './add-empresa.component.css',
