@@ -5,9 +5,8 @@ import { HeaderComponent } from '../../header/header.component';
   selector: 'app-encuesta-empresa',
   templateUrl: './encuesta-empresa.component.html',
   styleUrl: './encuesta-empresa.component.css',
-  imports: []
 })
 export class EncuestaEmpresaComponent {
-  @Input() title: string = "Empresa";
-  @Input() subtitle: string = "Empresa";
+  @Input() title: string = "";
+  @Input() subtitle: string = "";
 }

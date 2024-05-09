@@ -7,8 +7,9 @@ import { Component, Input, ElementRef, ViewChild, AfterViewInit } from '@angular
 })
 export class HeaderComponent implements AfterViewInit {
   @ViewChild('headerTitle') headerTitle!: ElementRef;
+  @Input() title: string = 'SDSDDS';
   @Input() subtitle: string = 'SDSDDS';
-  title: string = ''; // Sin valor predeterminado
+
 
   constructor() {}
 
