@@ -4,7 +4,6 @@ import { MenuComponent } from './inicio/menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
-
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HeaderComponent } from './header/header.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
@@ -13,8 +12,10 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common';
 import { AddEmpresaComponent } from './empresario/add-empresa/add-empresa.component';
-
-
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { LoginComponent } from './login/login.component';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,17 @@ import { AddEmpresaComponent } from './empresario/add-empresa/add-empresa.compon
     HeaderComponent,
     EncuestaEmpresaComponent,
     AddEmpresaComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    CommonModule
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenav,
+    
   ],
   providers: [
     provideClientHydration(),

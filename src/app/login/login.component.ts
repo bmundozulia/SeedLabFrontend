@@ -5,8 +5,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [MatButtonModule, MatIconModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
