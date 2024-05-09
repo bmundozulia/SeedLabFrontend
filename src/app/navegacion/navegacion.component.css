@@ -6,9 +6,6 @@
   width: 200px;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
-}
 
 .mat-toolbar.mat-primary {
   position: sticky;
@@ -16,8 +13,10 @@
   z-index: 1;
 }
 
+
+
 .primary {
-  background: white;
+  background: #fcfcfc;
 }
 
 @media(max-width:30em) {

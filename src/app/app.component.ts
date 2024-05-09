@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import  {  FontAwesomeModule  }  from'@fortawesome/angular-fontawesome' ; 
-import  {  faCoffee  }from '@fortawesome/free-solid-svg-icons' ;
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import  {  faCoffee  }from '@fortawesome/free-solid-svg-icons' ;
 })
 export class AppComponent {
   title = 'SeedLabFrontend';
-  mostrarMenu: boolean = false;
+  mostrarMenu: boolean = true;
 }
