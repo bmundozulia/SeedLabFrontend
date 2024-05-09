@@ -4,7 +4,7 @@
 }
 
 .swiper-slide {
-  width: 50%; /* Ancho de cada slide */
+  width: 15%; /* Ancho de cada slide */
   float: left; /* Hacer que los slides floten a la izquierda */
 }
 

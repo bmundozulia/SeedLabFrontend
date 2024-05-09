@@ -3,10 +3,7 @@ import { Component, AfterViewInit  } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 // // register Swiper custom elements
 register();
-// import Swiper from 'swiper';
 import Swiper from 'swiper';
-// import Autoplay from 'swiper';
-// import 'swiper/swiper-bundle.min.css';
 
 
 

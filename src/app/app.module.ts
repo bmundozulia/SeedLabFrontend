@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BodyComponent } from './inicio/body/body.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AngularMaterialModule } from '../angular-material.module';
-import { SwiperModule } from 'swiper/types';
 
 
 @NgModule({
