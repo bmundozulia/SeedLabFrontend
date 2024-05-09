@@ -10,6 +10,10 @@
   background: inherit;
 }
 
+.primary {
+  background: #fff;
+}
+
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
@@ -17,7 +21,7 @@
 }
 
 @media(max-width:30em) {
-  .primary{
-    background: ;
+  .primary {
+    background: #0cace5;
   }
 }
