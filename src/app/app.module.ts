@@ -1,8 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { MenuComponent } from './inicio/menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BodyComponent } from './inicio/body/body.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AngularMaterialModule } from '../angular-material.module';
+
 import { RegisterComponent } from './register/register.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HeaderComponent } from './header/header.component';
@@ -25,6 +29,7 @@ import { MatSidenav } from '@angular/material/sidenav';
     EncuestaEmpresaComponent,
     AddEmpresaComponent,
     LoginComponent,
+    BodyComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,10 @@ import { MatSidenav } from '@angular/material/sidenav';
     MatButtonModule,
     MatSidenav,
     
+    AppRoutingModule,
+    AngularMaterialModule,
+    
+    
   ],
   providers: [
     provideClientHydration(),
@@ -42,5 +51,6 @@ import { MatSidenav } from '@angular/material/sidenav';
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  
 })
 export class AppModule { }

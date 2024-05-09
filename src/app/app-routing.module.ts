@@ -14,6 +14,11 @@ const routes: Routes = [
   { path: 'navegacion', component: NavegacionComponent },
   { path: 'verification', component: VerificationComponent }
 
+  /*
+];
+  { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
+  { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
+  { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz*/
 ];
 
 @NgModule({
