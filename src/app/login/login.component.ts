@@ -3,7 +3,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -16,3 +15,5 @@ export class LoginComponent {
   }
 
 //PARA SUBIR
+
+
