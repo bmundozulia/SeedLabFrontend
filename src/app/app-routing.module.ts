@@ -16,9 +16,6 @@ const routes: Routes = [
 
 ];
 
-import { AddEmpresaComponent } from './empresario/add-empresa/add-empresa.component';
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

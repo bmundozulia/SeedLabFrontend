@@ -10,4 +10,6 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 export class AppComponent {
   title = 'SeedLabFrontend';
   mostrarMenu: boolean = true;
+
+  
 }
