@@ -1,2 +1,33 @@
-<p>body works!</p>
-nose
+<div class="justify-end w-full"> 
+  <mat-toolbar class="app-header bg-sky-400 flex justify-end"> 
+    <span class="nav-tool-items">
+      <a mat-button routerLink="login" routerLinkActive="active">Iniciar Sesión</a>
+      <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+    </span>
+  </mat-toolbar>
+</div>
+
+
+<div class="my-swiper-container swiper-container">
+  <div class="swiper-wrapper mt-4">
+    <div class="swiper-slide" *ngFor="let image of slideImagenes">
+      <img [src]="image" class="swiper-slide-img">
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-start mt-10 ml-10"> 
+  <div class="max-w-screen-xl mx-auto mt-10"> <!-- Limita el ancho de la imagen al máximo de la pantalla y la centra horizontalmente -->
+    <mat-card class="w-full"> 
+      <div>
+        <img src="../../../assets/images/redtecnoparque.png" alt="" class="w-25 h-auto">
+      </div>
+      <mat-card-content class="p-4 flex">
+          <p class="text-justify w-1/2">Programa de innovación tecnológica del Servicio Nacional de Aprendizaje que actúa como acelerador para el desarrollo de proyectos. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.  Qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem.  Ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.</p>
+          <img src="../../../assets/images/sinovva.png" alt="">
+          </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
