@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'empresario', component: AddEmpresaComponent },
   { path: 'verification', component: VerificationComponent },
-  { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
-  { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
-  { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
+  { path: 'login', component: LoginComponent }, 
+  { path: '', component: BodyComponent }, 
+  { path: '**', redirectTo: '' } 
 ];
 
 @NgModule({
