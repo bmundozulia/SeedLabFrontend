@@ -7,7 +7,27 @@
             <h2 class="hidden md:block md:w-11 md:mr-7 whitespace-nowrap overflow-hidden text-center">Editar</h2>
         </div>
         <div class="contenido">
-            <div
+
+            <table class="table table-striped-columns">
+                <thead>
+                    <tr>
+                        <td><h2>Empresas</h2></td>
+                        <td><h2>Telefono</h2></td>
+                        <td><h2>Direccion</h2></td>
+                        <td><h2>Editar</h2></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let empresas of listaEmpresas">
+                        <td>{{ empresas.nombre}}</td>
+                        <td>{{ empresas.telefono}}</td>
+                        <td>{{ empresas.direccion}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+            <!-- <div
                 class="info-empresa md:w-auto md:flex justify-between text-center mb-4 md:py-4 bg-slate-400 rounded-md">
                 <div class="flex py-2 px-2">
                     <h2 class="block md:hidden mr-1">Empresa: </h2>
@@ -52,5 +72,5 @@
             </div>
         </div>
         <i class="fa-solid fa-pen-to-square"></i>
-    </div>
+    </div> -->
 </div>

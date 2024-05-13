@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'empresario', component: AddEmpresaComponent },
-  { path: 'list-empresa', component: ListEmpresasComponent },
+  { path: 'list-empresa/:id', component: ListEmpresasComponent },
   
   { path: 'verification', component: VerificationComponent },
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
