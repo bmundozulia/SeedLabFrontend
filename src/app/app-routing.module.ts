@@ -9,7 +9,6 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'empresario', component: AddEmpresaComponent },
   { path: 'list-empresa/:id', component: ListEmpresasComponent },

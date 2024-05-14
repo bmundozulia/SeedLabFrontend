@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  url='http://localhost:8000/api/auth'
+  url='http://10.90.51.73:8000/api/auth'
 
   constructor() { }
 }
