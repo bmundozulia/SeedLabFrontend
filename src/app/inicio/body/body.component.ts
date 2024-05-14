@@ -29,12 +29,12 @@ export class BodyComponent implements AfterViewInit{
   ]
 
   cards = [
-    { title: 'Card 1', description: 'Descripción de la Card 1', imageUrl: 'path/to/image1.jpg' },
-    { title: 'Card 2', description: 'Descripción de la Card 2', imageUrl: 'path/to/image2.jpg' },
-    { title: 'Card 3', description: 'Descripción de la Card 3', imageUrl: 'path/to/image3.jpg' },
-    { title: 'Card 4', description: 'Descripción de la Card 4', imageUrl: 'path/to/image4.jpg' },
-    { title: 'Card 5', description: 'Descripción de la Card 4', imageUrl: 'path/to/image4.jpg' },
-    { title: 'Card 6', description: 'Descripción de la Card 4', imageUrl: 'path/to/image4.jpg' },
+    {topImage:'../../../assets/images/redtecnoparque.png',  description: 'Programa de innovación tecnológica del Servicio Nacional de Aprendizaje que actúa como acelerador para el desarrollo de proyectos. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.  Qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem.  Ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.', imageUrl: '../../../assets/images/sinovva.png' },
+    {topImage:'../../../assets/images/redtecnoparque.png',  description: 'Descripción de la Card 2', imageUrl: '../../../assets/images/sinovva.png' },
+    {topImage:'../../../assets/images/redtecnoparque.png',  description: 'Descripción de la Card 3', imageUrl: '../../../assets/images/sinovva.png' },
+    {topImage:'../../../assets/images/redtecnoparque.png',  description: 'Descripción de la Card 4', imageUrl: '../../../assets/images/sinovva.png' },
+    {topImage:'../../../assets/images/redtecnoparque.png',  description: 'Descripción de la Card 5', imageUrl: '../../../assets/images/sinovva.png' },
+    {topImage:'../../../assets/images/redtecnoparque.png',  description: 'Descripción de la Card 6', imageUrl: '../../../assets/images/sinovva.png' },
 
 
 
@@ -42,9 +42,11 @@ export class BodyComponent implements AfterViewInit{
   cardSeleccionada: any;
   
 
-  constructor(@Inject(PLATFORM_ID)private platformId: Object) { }
-  ngAfterViewInit(): void {
+  constructor(@Inject(PLATFORM_ID)private platformId: Object) { 
     this.cardSeleccionada = this.cards[0];
+
+  }
+  ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
     const mySwiper = new Swiper('.my-swiper-container', {
       direction: 'horizontal',
