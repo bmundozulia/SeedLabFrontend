@@ -10,7 +10,7 @@
             </h2>
         </div>
         <div class="contenido">
-            <div *ngFor="let empresa of listaEmpresas"
+            <div *ngFor="let empresa of listaEmpresas  | slice: lowValue : highValue"
                 class="info-empresa md:w-auto md:flex justify-between text-center mb-4 md:py-4 max-md:pl-3 bg-neutral-200 rounded-md">
                 <div class="flex max-md:pt-3 px-2">
                     <h3 class="block md:hidden mr-1 font-bold">Empresa: </h3>
@@ -34,3 +34,9 @@
                     </h3>
                 </div>
             </div>
+        </div>
+        <!-- <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+            (page)="getPaginatorData($event)" aria-label="Selec page">
+        </mat-paginator> -->
+    </div>
+</div>
