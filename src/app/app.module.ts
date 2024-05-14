@@ -53,12 +53,14 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
     HttpClientModule,
     AppRoutingModule,
     AngularMaterialModule,
+    ReactiveFormsModule,
     
     
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -10,38 +10,47 @@
                             class="max-md:h-28 max-md:pl-5">
                     </div>
                 </div>
-                <div class="p-10 w-full text-center">
-                    <h1>Iniciar Sesión</h1>
-                    <div class="mx-auto flex justify-center items-center">
-                        <div class="col-md-8">
-                            <div class="items-center">
-                                <input placeholder="Usuario" id="email" type="email"
-                                    class="mt-9 mb-4 rounded-xl outline-none bg-gray-200 w-full border-0 py-3 px-4 text-base form-control focus:border-transparent focus:ring-0"
-                                    name="email" value="" required autocomplete="email" autofocus>
-                            </div>
-                            <div>
-                                <div class="relative mb-4">
-                                    <div class=" rounded-xl  border-0 ">
-                                    </div>
-                                    <div class="rounded-xl bg-gray-200 border-0 text-base form-control flex h-14">
-                                        <input matInput [type]="hide ? 'password' : 'text'"
-                                            class="rounded-xl bg-gray-200 w-5/6 border-0 h-12 text-base form-control  focus:border-transparent focus:ring-0"
-                                            placeholder="Contraseña">
-                                        <button mat-icon-button matSuffix (click)="hide = !hide"
-                                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-center h-full mb-4">
-                                    <button type="submit"
-                                        class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                                        Iniciar Sesión</button>
-                                </div>
-                                <a class="no-underline text-sky-400" href="">
-                                    ¿Olvidaste tu contraseña?
-                                </a>
-                            </div>
 
+                <div class="p-10 w-full text-center">
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                        <h1>Iniciar Sesión</h1>
+                        <div class="mx-auto flex justify-center items-center">
+                            <div class="col-md-8">
+                                <div class="items-center">
+                                    <input placeholder="Usuario" id="email" type="email" formControlName="email"
+                                        class="mt-9 mb-4 rounded-xl outline-none bg-gray-200 w-full border-0 py-3 px-4 text-base form-control focus:border-transparent focus:ring-0"
+                                        name="email" value="" autofocus>
+                                </div>
+                                <div>
+                                    <div class="relative mb-4">
+                                        <div class=" rounded-xl  border-0 ">
+                                        </div>
+                                        <div class="rounded-xl bg-gray-200 border-0 text-base form-control flex h-14">
+                                            <input matInput [type]="hide ? 'password' : 'text'"
+                                                formControlName="password"
+                                                class="rounded-xl bg-gray-200 w-5/6 border-0 h-12 text-base form-control  focus:border-transparent focus:ring-0"
+                                                placeholder="Contraseña">
+                                            <button mat-icon-button matSuffix (click)="hide = !hide"
+                                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-center h-full mb-4">
+                                        <button type="submit"
+                                            class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                                            Iniciar Sesión</button>
+                                    </div>
+                                    <a class="no-underline text-sky-400" href="">
+                                        ¿Olvidaste tu contraseña?
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
