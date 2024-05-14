@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class EmpresaService {
 
-  url = 'http://127.0.0.1:8000/empresa/'
+  url = 'http://127.0.0.1:8000/api/empresa/'
 
   constructor(private http: HttpClient) { }
 
