@@ -5,12 +5,15 @@ import { RegisterComponent } from './register/register.component';
 import { AddEmpresaComponent } from './empresario/add-empresa/add-empresa.component';
 import { VerificationComponent } from './verification/verification.component';
 import { BodyComponent } from './inicio/body/body.component';
+import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'empresario', component: AddEmpresaComponent },
+  { path: 'list-empresa/:id', component: ListEmpresasComponent },
+  
   { path: 'verification', component: VerificationComponent },
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
