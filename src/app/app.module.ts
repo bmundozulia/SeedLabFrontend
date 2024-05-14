@@ -20,9 +20,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
-import {MatMenuModule} from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
+
 
 
 
@@ -37,6 +38,7 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
     LoginComponent,
     BodyComponent,
     ListEmpresasComponent
+    
   ],
   imports: [
     BrowserModule,
