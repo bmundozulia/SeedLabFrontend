@@ -6,7 +6,7 @@ import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import {faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import {faEye } from '@fortawesome/free-solid-svg-icons';
 import {faIdCard } from '@fortawesome/free-solid-svg-icons';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-register',
@@ -15,22 +15,20 @@ import {faIdCard } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
+
 export class RegisterComponent {
   faVenusMars = faVenusMars;
   faMountainCity=faMountainCity;
   faLandmarkFlag=faLandmarkFlag;
   showPassword=faEye;
   faIdCard=faIdCard;
+  hide = true;
 
-  constructor() { }
+  constructor() {
+
+   }
 }
 
-export class TuComponente {
-  showPassword: boolean = false;
 
-  togglePasswordVisibility(): void {
-      this.showPassword = !this.showPassword;
-      const passwordInput = document.getElementById('contrasena') as HTMLInputElement;
-      passwordInput.type = this.showPassword ? 'text' : 'password';
-  }
-}
+ 
+
