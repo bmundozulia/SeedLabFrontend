@@ -21,6 +21,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { HttpClientModule } from '@angular/common/http';
+import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
 
 
 
@@ -34,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavegacionComponent,
     LoginComponent,
     BodyComponent,
-    
+    ListEmpresasComponent
   ],
   imports: [
     BrowserModule,
