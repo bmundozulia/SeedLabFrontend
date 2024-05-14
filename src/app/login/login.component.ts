@@ -17,7 +17,7 @@ import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 export class LoginComponent {
   hide = true;
-  //reply: Login | null = null;
+  reply: Login | null = null;
   token: string | null = null;
   user: User | null = null;
  
@@ -44,7 +44,9 @@ export class LoginComponent {
       this.loginForm.get('email')?.value,
       this.loginForm.get('password')?.value
     ).subscribe(
-      (rs) => {
+      (rs:any) => {
+        this.reply = rs;
+        console.log(this.reply);
         this.router.navigate(['/empresario']);
       },);
   }
