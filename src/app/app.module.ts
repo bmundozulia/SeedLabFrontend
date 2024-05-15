@@ -20,12 +20,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
-
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 
 
 
@@ -41,7 +41,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginComponent,
     BodyComponent,
     SuperAdminComponent,
-    ListEmpresasComponent
+    ListEmpresasComponent,
     
   ],
   imports: [
