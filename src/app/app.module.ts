@@ -21,13 +21,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 
-import { SuperAdminComponent } from './super-admin/super-admin.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
-import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
-import {NgxPaginationModule} from 'ngx-pagination';
-
-
 
 
 @NgModule({
@@ -40,8 +33,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NavegacionComponent,
     LoginComponent,
     BodyComponent,
-    SuperAdminComponent,
-    ListEmpresasComponent
     
   ],
   imports: [
@@ -56,17 +47,15 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatListModule,
     MatIconModule,
     MatSidenav,
-    HttpClientModule,
+    
     AppRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule,
-    NgxPaginationModule
+    
     
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync(),
-
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
