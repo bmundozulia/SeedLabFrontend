@@ -11,11 +11,13 @@
 }
 
 .swiper-slide {
-  width: calc((100% - 6px) / 3); /* Ancho de cada slide (incluyendo espacio entre ellos) */
+  width: calc((100% - 6px) / 2); /* Ancho de cada slide (incluyendo espacio entre ellos) */
   float: left; /* Hacer que los slides floten a la izquierda */
 }
 
 .swiper-slide-img {
-  width: auto; /* Ajustar el tamaño de la imagen al slide */
-  height: auto; /* Mantener la proporción de la imagen */
+  width: 320px; /* Ancho fijo para todas las imágenes */
+  height: 150px; /* Altura fija para todas las imágenes */
+  object-fit: contain; /* Escalar la imagen manteniendo su relación de aspecto y cubriendo todo el espacio disponible */
 }
+
