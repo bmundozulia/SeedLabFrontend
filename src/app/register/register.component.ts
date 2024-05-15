@@ -6,6 +6,8 @@ import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import {faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import {faEye } from '@fortawesome/free-solid-svg-icons';
 import {faIdCard } from '@fortawesome/free-solid-svg-icons';
+import {faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import {faPhone } from '@fortawesome/free-solid-svg-icons';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -22,7 +24,10 @@ export class RegisterComponent {
   faLandmarkFlag=faLandmarkFlag;
   showPassword=faEye;
   faIdCard=faIdCard;
+  faEnvelope=faEnvelope;
+  faPhone=faPhone;
   hide = true;
+
 
   constructor() {
 

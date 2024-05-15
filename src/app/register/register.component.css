@@ -1,0 +1,8 @@
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+/* Esto oculta el ícono de fecha predeterminado en Firefox */
+input[type="date"]::-moz-calendar-picker-indicator {
+    opacity: 0;
+}
