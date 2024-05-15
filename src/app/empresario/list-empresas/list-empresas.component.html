@@ -1,6 +1,6 @@
 <app-header [title]="'Bienvenido al panel de empresas'"
     [subtitle]="'Aqui podras ver y gestionar tus empresas'"></app-header>
-<div class="flex justify-center items-center h-full md:w-auto pt-6 max-sm:pt-0">
+<div class="flex justify-center items-center h-full md:w-auto">
     <div class="justify-center items-center w-4/6 ">
         <div class="headers md:flex md:justify-between md:mb-6 pl-5 pr-5">
             <h2 class="hidden md:block md:w-28 whitespace-nowrap overflow-hidden text-center font-bold">Empresas</h2>
@@ -10,33 +10,35 @@
             </h2>
         </div>
         <div class="contenido">
-            <div *ngFor="let empresa of listaEmpresas  | slice: lowValue : highValue"
-                class="info-empresa md:w-auto md:flex justify-between text-center mb-4 md:py-4 max-md:pl-3 bg-neutral-200 rounded-md">
-                <div class="flex max-md:pt-3 px-2">
-                    <h3 class="block md:hidden mr-1 font-bold">Empresa: </h3>
-                    <h3 class="md:w-40 whitespace-nowrap overflow-hidden" style="text-overflow: ellipsis;">
+            <div *ngFor="let empresa of listaEmpresas  | paginate: { itemsPerPage: 5, currentPage: page }"
+                class="info-empresa  max-md:h-auto md:w-auto md:flex justify-between text-center mb-4 md:py-4 max-md:pl-3 bg-neutral-200 rounded-md">
+                <div class="flex max-md:pt-3 px-2 max-md:h-10">
+                    <h3 class="block md:hidden mr-1 font-bold ">Empresa: </h3>
+                    <h3 class="md:w-40 whitespace-nowrap overflow-hidden max-md:h-6" style="text-overflow: ellipsis;">
                         {{empresa.nombre }}</h3>
                 </div>
-                <div class="flex  px-2">
-                    <h3 class="block md:hidden mr-1 font-bold">Telefono: </h3>
-                    <h3 class="md:w-26 whitespace-nowrap overflow-hidden" style="text-overflow: ellipsis;">
+                <div class="flex px-2 max-md:h-7">
+                    <h3 class="block md:hidden mr-1 font-bold ">Telefono: </h3>
+                    <h3 class="md:w-26 whitespace-nowrap overflow-hidden max-md:h-6" style="text-overflow: ellipsis;">
                         {{empresa.telefono }}</h3>
                 </div>
-                <div class="flex  px-2">
-                    <h3 class="block md:hidden mr-1 font-bold">Dirección: </h3>
-                    <h3 class="md:w-40 md:pr-2 whitespace-nowrap overflow-hidden" style="text-overflow: ellipsis;">
+                <div class="flex  px-2 max-md:h-8">
+                    <h3 class="block md:hidden mr-1 font-bold ">Dirección: </h3>
+                    <h3 class="md:w-40 md:pr-2 whitespace-nowrap overflow-hidden max-md:h-6" style="text-overflow: ellipsis;">
                         {{empresa.direccion }}</h3>
                 </div>
-                <div class="flex justify-center  px-2">
+                <div class="flex justify-center  px-2 ">
                     <h3 class="block md:hidden"></h3>
-                    <h3 class="md:w-11 md:mr-9 md:pr-14"><fa-icon [icon]="faPen"
-                            class=" text-xl right-5 top-1/2 transform -translate-y-1/2"></fa-icon>
+                    <h3 class="md:w-11 md:mr-9 md:pr-14 "><fa-icon [icon]="faPen"
+                            class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:h-5"></fa-icon>
                     </h3>
                 </div>
+
+            </div>
+            <div class="text-center max-md:pr-10">
+                <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
             </div>
         </div>
-        <!-- <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-            (page)="getPaginatorData($event)" aria-label="Selec page">
-        </mat-paginator> -->
     </div>
 </div>
+

@@ -25,7 +25,7 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -60,7 +60,7 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
     AppRoutingModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    
+    NgxPaginationModule
     
   ],
   providers: [
