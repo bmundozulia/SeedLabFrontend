@@ -25,7 +25,7 @@ import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
-
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -59,7 +59,8 @@ import { PersonalizacionesComponent } from './personalizaciones/personalizacione
     AppRoutingModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration(),

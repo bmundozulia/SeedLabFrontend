@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { EmprendedorService } from '../../servicios/emprendedor.service';
-import { Emprendedor } from '../../modelos/emprendedor.model';
+import { Emprendedor } from '../../Modelos/emprendedor.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Empresa } from '../../modelos/empresa.model';
+import { Empresa } from '../../Modelos/empresa.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
