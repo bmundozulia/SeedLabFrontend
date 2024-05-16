@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  isLeft = false;
+  isLeft = true;
 
   toggleSlide() {
     this.isLeft = !this.isLeft;
