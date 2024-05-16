@@ -12,7 +12,6 @@ import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { AddEmpresaComponent } from './empresario/add-empresa/add-empresa.component';
-import { NavegacionComponent } from './navegacion/navegacion.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -20,12 +19,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
-
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 
 
 
@@ -37,11 +36,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HeaderComponent,
     EncuestaEmpresaComponent,
     AddEmpresaComponent,
-    NavegacionComponent,
     LoginComponent,
     BodyComponent,
     SuperAdminComponent,
-    ListEmpresasComponent
+    ListEmpresasComponent,
+    PersonalizacionesComponent
     
   ],
   imports: [
@@ -61,7 +60,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AngularMaterialModule,
     ReactiveFormsModule,
     NgxPaginationModule
-    
   ],
   providers: [
     provideClientHydration(),

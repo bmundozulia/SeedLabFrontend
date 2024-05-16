@@ -7,13 +7,14 @@ import { VerificationComponent } from './verification/verification.component';
 import { BodyComponent } from './inicio/body/body.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component'
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
+import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'empresario', component: AddEmpresaComponent },
   { path: 'list-empresa/:id', component: ListEmpresasComponent },
-  
+  { path: 'personalizaciones', component: PersonalizacionesComponent },
   { path: 'verification', component: VerificationComponent },
   { path: 'superAdmin', component: SuperAdminComponent },
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent

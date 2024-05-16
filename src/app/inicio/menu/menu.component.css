@@ -1,0 +1,183 @@
+.slide-left {
+    transform: translateX(-100%);
+
+}
+
+
+
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: #fff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.5 eases;
+    z-index: 100;
+}
+
+.sidebar.close {
+    left: -250px;
+    width: 88px;
+}
+
+.sidebar .icon,
+.sidebar .text {
+    color: #000;
+    transition: all 0.2 eases;
+}
+
+.sidebar header .toggle {
+    position: absolute;
+    top: 20%;
+    left: 238px;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 40px;
+    background: #0fb5eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 22px;
+    transition: all 0.3 eases;
+}
+
+.sidebar.close header .toggle {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+
+
+.sidebar li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.4 eases;
+
+}
+
+.sidebar li a:hover {
+    background: #0fb5eb;
+}
+
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: #fff;
+}
+
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+    color: #707070;
+}
+
+
+
+.sidebar .menu-bar {
+    height: calc(85% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.menu-bar .mode {
+    position: relative;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+}
+
+
+.menu-bar .mode .moon-sun {
+    height: 50px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+
+}
+
+.menu-bar .mode i {
+    position: absolute;
+    transition: all 0.3 eases;
+}
+
+.menu-bar .mode i.sun {
+    opacity: 0;
+}
+
+body.dark .menu-bar .mode i.sun {
+    opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon {
+    opacity: 0;
+}
+
+.menu-bar .mode .toggle-switch {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 60px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: #F6F5FF;
+}
+
+.toggle-switch .switch {
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: #0fb5eb;
+}
+
+
+.switch::before {
+    content: '';
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background: #fff;
+    transition: all 0.3 eases;
+
+}
+
+
+body.dark .switch::before {
+    left: 24px;
+}
+
+
+/* .home {
+    position: relative;
+    width: 100%-255px;
+    transition: var(--tran-05);
+}*/
+
+/* .home .text {
+font-size: 16px;
+font-weight: 500;
+color: var(--text-color);
+padding: 8px 40px;
+} */
+
+/* .sidebar.close~.home {
+    width: calc(100%);
+} */
