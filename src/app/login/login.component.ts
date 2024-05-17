@@ -40,17 +40,22 @@ export class LoginComponent {
   }
 
   login(): void {
-    console.log(this.loginForm.get('email')?.value);
-    console.log(this.loginForm.get('password')?.value);
-    this.loginService.login(
-      this.loginForm.get('email')?.value,
-      this.loginForm.get('password')?.value
-    ).subscribe(
+    const email = this.loginForm.get('email')?.value;
+    const password = this.loginForm.get('password')?.value;
+
+    this.loginService.login(email, password).subscribe(
       (rs: any) => {
         this.reply = rs;
-        console.log(this.reply);
-        this.router.navigate(['/empresario']);
-      },);
+        if (this.reply) {
+          localStorage.setItem('token', this.reply.access_token);
+          localStorage.setItem('documento', this.reply.user.emprendedor.documento);
+          this.router.navigate(['/list-empresas', this.reply.user.emprendedor.documento]);
+        }
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 
 }

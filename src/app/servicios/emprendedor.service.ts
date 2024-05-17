@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
+import { environment } from '../../environment/env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmprendedorService {
 
-  url = 'http://127.0.0.1:8000/api/emprendedor/'
+  private CreacionHeaders(access_token: any): HttpHeaders { //para la creacion de los header y que sea autortizado
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + access_token
+    })
+  }
+
+  url = environment.apiUrl + '/emprendedor/'
 
   constructor(private http: HttpClient) { }
 
-    getEmpresas(documento: string): Observable<any>{
-      return this.http.get(this.url+documento);
-    }
+  getEmpresas(access_token:any, documento: string): Observable<any> {
+    const options= { headers: this.CreacionHeaders(access_token) };
+    return this.http.get(this.url + documento);
+  }
 }
