@@ -27,6 +27,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { FormsModule } from '@angular/forms';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
+import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 
 
 
@@ -42,7 +43,8 @@ import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
     SuperAdminComponent,
     ListEmpresasComponent,
     PersonalizacionesComponent,
-    AsesoriasComponent
+    AsesoriasComponent,
+    ListAliadosComponent
     
   ],
   imports: [
