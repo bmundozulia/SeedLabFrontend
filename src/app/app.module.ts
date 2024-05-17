@@ -26,6 +26,7 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
 import {NgxPaginationModule} from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { FormsModule } from '@angular/forms';
+import { ModalComponent } from './super-admin/modal/modal.component';
 
 
 
@@ -40,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     BodyComponent,
     SuperAdminComponent,
     ListEmpresasComponent,
-    PersonalizacionesComponent
+    PersonalizacionesComponent,
+    ModalComponent
     
   ],
   imports: [

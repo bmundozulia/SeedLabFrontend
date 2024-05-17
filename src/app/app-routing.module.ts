@@ -9,10 +9,12 @@ import { SuperAdminComponent } from './super-admin/super-admin.component'
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
+import { ModalComponent } from './super-admin/modal/modal.component'
 
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
+  { path: 'modal-superadmin', component: ModalComponent },
   { path: 'empresario', component: AddEmpresaComponent },
   { path: 'list-empresa/:id', component: ListEmpresasComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
