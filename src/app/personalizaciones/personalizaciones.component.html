@@ -15,7 +15,7 @@
               </div>
                   <div class="col-lg-4 col-md-12 col-sm-12 col-12 flex flex-col items-center">
                     <label class="text-center md:text-2xl md:pl-20 font-light mb-2 md:mb-4 text-black">Color principal</label>
-                    <input #colorPicker type="colorPicker" name="color_principal" class="md:w-32 md:h-32 md:ml-20" (change)="onColorChangePrincipal($event)" />
+                    <input #colorPicker type="color" name="color_principal" class="md:w-32 md:h-32 md:ml-20" (change)="onColorChangePrincipal($event)" />
                     <p class="text-center md:ml-20 md:mt-2">{{selectedColorPrincipal}}</p>
                     <button (click)="openColorPicker(0)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded md:-mt-2 relative md:ml-20">
                       Seleccionar color
