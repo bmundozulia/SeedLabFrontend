@@ -27,6 +27,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { FormsModule } from '@angular/forms';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+
 
 
 
@@ -42,7 +44,8 @@ import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
     SuperAdminComponent,
     ListEmpresasComponent,
     PersonalizacionesComponent,
-    AsesoriasComponent
+    AsesoriasComponent,
+
     
   ],
   imports: [
@@ -62,7 +65,10 @@ import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
     AngularMaterialModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    
+  
+   
   ],
   providers: [
     provideClientHydration(),
