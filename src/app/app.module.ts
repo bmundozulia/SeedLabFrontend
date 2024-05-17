@@ -15,18 +15,19 @@ import { AddEmpresaComponent } from './empresario/add-empresa/add-empresa.compon
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { FormsModule } from '@angular/forms';
 import { ModalComponent } from './super-admin/modal/modal.component';
+
 
 
 
@@ -42,8 +43,9 @@ import { ModalComponent } from './super-admin/modal/modal.component';
     SuperAdminComponent,
     ListEmpresasComponent,
     PersonalizacionesComponent,
-    ModalComponent
-    
+    ModalComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,6 @@ import { ModalComponent } from './super-admin/modal/modal.component';
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
-  
+
 })
 export class AppModule { }
