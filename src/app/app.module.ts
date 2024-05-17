@@ -28,7 +28,7 @@ import { PersonalizacionesComponent } from './personalizaciones/personalizacione
 import { FormsModule } from '@angular/forms';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-
+import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 
 
 
@@ -45,8 +45,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     ListEmpresasComponent,
     PersonalizacionesComponent,
     AsesoriasComponent,
-
-    
+    ListAliadosComponent
   ],
   imports: [
     BrowserModule,

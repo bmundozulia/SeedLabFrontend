@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { EmprendedorService } from '../../servicios/emprendedor.service';
-import { Emprendedor } from '../../Modelos/emprendedor.model';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Empresa } from '../../Modelos/empresa.model';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from '../../header/header.component';
-import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-empresas',
@@ -18,7 +14,6 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrl: './list-empresas.component.css'
 })
 export class ListEmpresasComponent implements OnInit {
-  @Input() data: any;
   faPen = faPenToSquare;
   listaEmpresas: Empresa[] = [];
   documento: string | null;

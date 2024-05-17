@@ -1,17 +1,18 @@
+
 export class Emprendedor {
 
-    documento?: number;
-    nombre: string | null | undefined;
-    apellido: string | null | undefined;
-    celular: number;
-    genero: string | null | undefined;
-    fecha_nac: Date;
-    direccion: string | null | undefined;
+    documento?: string | null;
+    nombre: string | null;
+    apellido: string | null;
+    celular: string | null;
+    genero: string | null;
+    fecha_nac: Date | null;
+    direccion: string | null;
     id_autentication: number;
     id_tipo_documento: number;
     id_municipio: number;
 
-    constructor(documento:number, nombre:string, apellido:string, celular:number, genero:string, fecha_nac:Date, id_autentication:number, id_tipo_documento:number, id_municipio:number){
+    constructor(documento:string, nombre:string, apellido:string, celular:string, genero:string, fecha_nac:Date, id_autentication:number, id_tipo_documento:number, id_municipio:number){
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
