@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { User } from '../Modelos/user.model';
+
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environment/env';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,11 @@ import { HttpClient } from '@angular/common/http';
 export class LoginService {
   //user::User|null = null;
 
-  url='http://10.90.51.73:8000/api/auth/';
+  url= environment.apiUrl+'auth/';
 
   constructor(private http: HttpClient) { }
 
   login(email: any, password: any) {
-    return this.http.post(this.url+"login", {email:email, password:password});
+    return this.http.post(this.url + "login", { email: email, password: password });
   }
 }
