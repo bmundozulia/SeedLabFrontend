@@ -9,14 +9,35 @@
   </mat-toolbar>
 </div>
 <!-- CARRUSEL -->
-<div class="my-swiper-container swiper-container mt-2">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide" *ngFor="let image of slideImagenes; let i = index" (click)="mostrarCard(i)">
-      <img [src]="image" class="swiper-slide-img">
-    </div>
-  </div>
-</div>
+   <!-- En tu archivo HTML del componente (por ejemplo, app.component.html) -->
 
+   <div class="carousel-container">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="true">
+      <div class="carousel-inner">
+        <div *ngFor="let chunk of slideImagenesChunks; let i = index" class="carousel-item" [ngClass]="{'active': i === 0}">
+          <div class="row">
+            <div class="col-3" *ngFor="let image of chunk">
+              <img [src]="image" class="d-block w-100 img-fluid" alt="Imagen">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+  
+  
+  
+
+ 
 <!-- CARDS -->
 <div *ngIf="cardSeleccionada" class="max-w-screen-2xl mx-auto mt-3 ">
   <mat-card class="w-full md:w-auto">
@@ -38,9 +59,6 @@
   </mat-card>
 </div>
    
-
-
-
 
 
 

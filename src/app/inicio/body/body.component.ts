@@ -1,12 +1,7 @@
-import { Component, AfterViewInit, PLATFORM_ID, Inject  } from '@angular/core';
+import { Component, PLATFORM_ID, Inject, OnInit, PLAT} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-// import function to register Swiper custom elements
-import { register } from 'swiper/element/bundle';
-// // register Swiper custom elements
-register();
-import Swiper from 'swiper';
-
+declare var bootstrap: any;
 
 
 @Component({
@@ -15,7 +10,7 @@ import Swiper from 'swiper';
   styleUrl: './body.component.css'
 })
 
-export class BodyComponent implements AfterViewInit{
+export class BodyComponent implements OnInit {
  
 
   slideImagenes = [
@@ -38,6 +33,32 @@ export class BodyComponent implements AfterViewInit{
     // -----------------------------------------------------------------
 
   ]
+   slideImagenesChunks: string[][] = [];
+
+   ngOnInit() {
+    // Duplica las imágenes para que el carrusel pueda volver a la primera después de mostrar la última
+    const duplicatedImages = [...this.slideImagenes, ...this.slideImagenes];
+    this.slideImagenesChunks = this.chunkArray(duplicatedImages, 4);
+    this.initializeCarousel();
+  }
+
+  chunkArray(arr: string[], chunkSize: number): string[][] {
+    const result = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+      result.push(arr.slice(i, i + chunkSize));
+    }
+    return result;
+  }
+
+  initializeCarousel() {
+    const myCarousel = document.querySelector('#carouselExampleAutoplaying');
+    if (myCarousel) {
+      new bootstrap.Carousel(myCarousel, {
+        interval: 2000, // Cambia esto para ajustar la velocidad de transición
+        wrap: true
+      });
+    }
+  }
 
   cards = [
     {topImage:'data:image/png;base64,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',  description: 'Ecopetrol S.A. es una Compañía organizada bajo la forma de sociedad anónima, del orden nacional, vinculada al Ministerio de Minas y Energía. Tiene operaciones ubicadas en el centro, sur, oriente y norte de Colombia, al igual que en el exterior. Cuenta con dos refinerías en Barrancabermeja y Cartagena. A través de su filial Cenit, especializada en transporte y logística de hidrocarburos, es dueña de tres puertos para exportación e importación de combustibles y crudos en Coveñas (Sucre) y Cartagena (Bolívar) con salida al Atlántico, y Tumaco (Nariño) en el Pacífico. Cenit también es propietaria de la mayor parte de los oleoductos y poliductos del país que intercomunican los sistemas de producción con los grandes centros de consumo y los terminales marítimos. Ecopetrol también tiene participación en el negocio de los biocombustibles y presencia en Brasil, México y Estados Unidos (Golfo de México y Permian Texas).Las acciones de Ecopetrol están listadas en la Bolsa de Valores de Colombia y en la Bolsa de Valores de Nueva York representadas en ADR (American Depositary Receipt). La República de Colombia es el accionista mayoritario con una participación de 88,49%.', imageUrl: '../../../assets/images/sinovva.png' },
@@ -69,26 +90,11 @@ export class BodyComponent implements AfterViewInit{
     this.cardSeleccionada = this.cards[0];
 
   }
-  ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-    const mySwiper = new Swiper('.my-swiper-container', {
-      direction: 'horizontal',
-      loop: true,
-      autoplay: {
-        delay: 2000,
-      },
-      slidesPerView: 4,
-      spaceBetween: 3,
-    });
-  }
-  }
+
   mostrarCard(index: number): void {
-    // Lógica para mostrar la card correspondiente al índice de la imagen clicada
-    // Por ejemplo, podrías utilizar un array de contenido para las cards y cambiar el contenido según el índice
     console.log('Mostrar card número', index + 1);
     this.cardSeleccionada = this.cards[index];
-
-    
+  
   }
 }
 
