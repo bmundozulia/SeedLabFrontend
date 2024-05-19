@@ -3,11 +3,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
-import { LoginService } from '../servicios/login.service';
+import { LoginService } from '../../servicios/login.service';
 import {Router} from '@angular/router';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
-import { Login } from '../Modelos/login.modelo';
-import { User } from '../Modelos/user.model';
+import { Login } from '../../Modelos/login.modelo';
+import { User } from '../../Modelos/user.model';
+
 
 @Component({
   selector: 'app-login',
