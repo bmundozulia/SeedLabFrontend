@@ -9,13 +9,13 @@ import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { MatIconModule } from '@angular/material/icon';
-import { FormBuilder, ReactiveFormsModule,FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DepartamentoService } from '../servicios/departamento.service';
-import { MunicipioService } from '../servicios/municipio.service';
-import { RegistroService } from '../servicios/registro.service';
+import { DepartamentoService } from '../../servicios/departamento.service';
+import { MunicipioService } from '../../servicios/municipio.service';
+import { RegistroService } from '../../servicios/registro.service';
 import { Router } from '@angular/router';
-import { Emprendedor } from '../Modelos/emprendedor.model';
+import { Emprendedor } from '../../Modelos/emprendedor.model';
 
 
 
@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   errorMessage: string | null = null;
+  email: string;
 
 
 
@@ -54,11 +55,11 @@ export class RegisterComponent implements OnInit {
     private municipioService: MunicipioService,
     private registroService: RegistroService,
     private router: Router,
-) { }
+  ) { }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
     this.cargarDepartamentos();
-    
+
     this.registerForm = this.fb.group({
       documento: ['', Validators.required],
       nombretipodoc: ['', Validators.required],
@@ -77,7 +78,7 @@ export class RegisterComponent implements OnInit {
 
   get f() { return this.registerForm.controls; }
 
-  
+
   //Funcion para cargar los departamentos
   cargarDepartamentos(): void {
     this.departamentoService.getDepartamento().subscribe(
@@ -116,33 +117,36 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-  
-  const emprendedor = new Emprendedor(
-    this.f.documento.value,
-    this.f.nombretipodoc.value,
-    this.f.nombre.value,
-    this.f.apellido.value,
-    this.f.celular.value,
-    this.f.email.value,
-    this.f.password.value,
-    this.f.genero.value,
-    this.f.fecha_nacimiento.value,
-    this.f.direccion.value,
-    this.f.estado.value,
-    this.f.municipio.value
-  );
 
-  this.registroService.registrar(emprendedor).subscribe(
-    (response: any) => {
-      console.log('Registro exitoso', response);
-      this.router.navigate(['/verification']);
-    },
-    (error) => {
-      console.log('Error en el registro', error);
-      this.errorMessage = error.error.message || 'An error occurred during registration.';
-    }
-  );
-}
+    const emprendedor = new Emprendedor(
+      this.f.documento.value,
+      this.f.nombretipodoc.value,
+      this.f.nombre.value,
+      this.f.apellido.value,
+      this.f.celular.value,
+      this.f.email.value,
+      this.f.password.value,
+      this.f.genero.value,
+      this.f.fecha_nacimiento.value,
+      this.f.direccion.value,
+      this.f.estado.value,
+      this.f.municipio.value
+    );
+
+    this.registroService.registrar(emprendedor).subscribe(
+      (response: any) => {
+        console.log(response);
+        console.log('Registro exitoso', response);
+        this.email = response.email; // Obtener el correo electrónico de la respuesta
+
+        this.router.navigate(['/verification'], { queryParams: { email: this.email } });
+      },
+      (error) => {
+        console.log('Error en el registro', error);
+        this.errorMessage = error.error.message || 'An error occurred during registration.';
+      }
+    );
+  }
 
 }
 
