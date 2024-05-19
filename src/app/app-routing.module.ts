@@ -16,7 +16,7 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'empresario', component: AddEmpresaComponent },
-  { path: 'list-empresa/:id', component: ListEmpresasComponent },
+  { path: 'list-empresa/:documento', component: ListEmpresasComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
   { path: 'verification', component: VerificationComponent },
   { path: 'superAdmin', component: SuperAdminComponent },

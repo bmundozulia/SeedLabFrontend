@@ -27,7 +27,10 @@ export class ListEmpresasComponent implements OnInit {
 
 
 
-  constructor(private emprendedorService: EmprendedorService, private _router: Router, private aRoute: ActivatedRoute, private fb: FormBuilder,) {
+  constructor(private emprendedorService: EmprendedorService, 
+    private router: Router, 
+    private aRoute: ActivatedRoute, 
+    private fb: FormBuilder,) {
     this.documento = this.aRoute.snapshot.paramMap.get('id');
   }
 
@@ -39,19 +42,21 @@ export class ListEmpresasComponent implements OnInit {
   validartoken(): void {
     this.token = localStorage.getItem('token');
     this.documento = localStorage.getItem('documento');
-    if (!this.token) {
-      this._router.navigate(['/inicio/body']);
+    if (!this.token || !this.documento) {
+      this.router.navigate(['/inicio/body']);
+      console.log('no lista empresa no esta tomando el token');
     }
+    console.log('si lo esta tomando');
   }
 
 
   cargarEmpresas(): void {
     if (this.token && this.documento) {
       this.emprendedorService.getEmpresas(this.token, this.documento).subscribe(
-        data => {
+        (data) => {
           this.listaEmpresas = data;
         },
-        err => {
+        (err) => {
           console.log(err);
         }
       );

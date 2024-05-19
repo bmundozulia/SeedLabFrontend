@@ -49,7 +49,8 @@ export class LoginComponent {
         if (this.reply) {
           localStorage.setItem('token', this.reply.access_token);
           localStorage.setItem('documento', this.reply.user.emprendedor.documento);
-          this.router.navigate(['/list-empresas', this.reply.user.emprendedor.documento]);
+          this.router.navigate(['list-empresa/', this.reply.user.emprendedor.documento]);
+          console.log(localStorage);
         }
       },
       err => {
