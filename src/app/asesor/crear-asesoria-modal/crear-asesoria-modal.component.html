@@ -1,0 +1,16 @@
+<h2>Crear Asesoría</h2>
+<form [formGroup]="asesoriaForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="titulo" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Descripción</mat-label>
+    <input matInput formControlName="descripcion" required>
+  </mat-form-field>
+  <!-- Agrega más campos según sea necesario -->
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button type="submit">Guardar</button>
+  </div>
+</form>

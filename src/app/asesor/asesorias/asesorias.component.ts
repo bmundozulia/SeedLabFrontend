@@ -4,6 +4,7 @@ import { AsesoriaService } from '../../servicios/asesoria.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Asesoria } from '../../Modelos/asesoria.model';
+import { CrearAsesoriaModalComponent } from '../crear-asesoria-modal/crear-asesoria-modal.component';
 
 @Component({
   selector: 'app-asesorias',
@@ -31,13 +32,42 @@ export class AsesoriasComponent implements OnInit {
     // console.log(localStorage.getItem('documento'));
   }
 
-
+/*
   constructor(private asesoriaService: AsesoriaService, 
     private router: Router, 
     private aRoute: ActivatedRoute, 
     private fb: FormBuilder,) {
     this.documento = this.aRoute.snapshot.paramMap.get('id');
   }
+
+  Con este codigo pienso que se puede conectar, el constructor de abajo funciona para el modal de crear
+*/
+
+constructor(
+  private asesoriaService: AsesoriaService,
+  private router: Router,
+  private aRoute: ActivatedRoute,
+  private fb: FormBuilder,
+  private dialog: MatDialog
+) {
+  this.documento = this.aRoute.snapshot.paramMap.get('id');
+}
+
+openCrearAsesoriaModal() {
+  const dialogRef = this.dialog.open(CrearAsesoriaModalComponent, {
+    width: '400px',
+    data: {}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      // Lógica para manejar el resultado del modal
+      console.log('Asesoría creada:', result);
+    }
+  });
+}
+
+
 
   cargarAsesorias(): void {
     if (this.token) {
