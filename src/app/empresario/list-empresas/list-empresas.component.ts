@@ -46,7 +46,6 @@ export class ListEmpresasComponent implements OnInit {
     // console.log(localStorage.getItem('documento'));
   }
 
-
   cargarEmpresas(): void {
     if (this.token) {
       this.emprendedorService.getEmpresas(this.token, this.documento).subscribe(
