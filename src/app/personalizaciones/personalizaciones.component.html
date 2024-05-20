@@ -7,11 +7,11 @@
                 </h5>
             </div>
             <div class="row mt-5">
-              
-              <div class="col-lg-4 col-md-12 col-sm-12 col-12 flex flex-col items-center">
+              <div class="imagen col-lg-4 col-md-12 col-sm-12 col-12 flex flex-col items-center ">
                 <label class="text-center md:text-2xl md:pl-20 font-light mb-2 md:mb-4 text-black">Logo</label>
                 <input id="color-picker-logo" type="file" name="logo" class="text-sky-600 border-2 border-blue-300 p-2 rounded" (change)="onFileChange($event)" />
-                <img [src]="previewUrl" alt="Logo preview" *ngIf="previewUrl" class="image-preview" />
+                <div class="img">
+                <img [src]="previewUrl" alt="Logo preview" ngIf="previewUrl" class="image-preview" /></div>
               </div>
                   <div class="col-lg-4 col-md-12 col-sm-12 col-12 flex flex-col items-center">
                     <label class="text-center md:text-2xl md:pl-20 font-light mb-2 md:mb-4 text-black">Color principal</label>
