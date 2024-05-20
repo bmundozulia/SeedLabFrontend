@@ -4,15 +4,19 @@
 
         <div class="col-span-4">
 
-            <div class=" flex justify-between my-8 ">
-                <p class=" text-lg font-bold mb-2 ">Ruta</p>
-                <button>
+            <div class=" flex justify-between my-8 relative">
+                <p class="text-lg font-bold mb-2 ">Ruta</p>
+                <button (click)="openModal()" class="bg-sky-400 rounded text-white px-6 inline-block ">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class=""
                         viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path
                             d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
                     </svg>
                 </button>
+                <div class="absolute top-0 right-0" *ngIf="modalSwitch == true">
+                    <app-modal></app-modal>
+
+                </div>
             </div>
             <ul class="p-0 m-06">
                 <hr class="divide ">
@@ -85,25 +89,26 @@
 
                 <form action="" method="" class="pb-6">
 
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Agregar otro
+                    <button type="submit" class="bg-sky-400 text-white px-4 py-2 rounded mt-4">Agregar otro
                         link</button>
                 </form>
 
                 <hr class="divide-y divide-light-blue-400 ">
                 <div class="flex justify-center">
 
-                    <button type="submit" class=" bg-blue-500 text-white px-4 py-2 rounded mt-4">
+                    <button type="submit" class=" bg-sky-400 text-white px-4 py-2 rounded mt-4">
                         Agregar otra actividad
                     </button>
                 </div>
             </div>
             <div class="flex justify-end">
 
-                <button type="submit" class=" bg-blue-500 text-white px-4 py-2 rounded mt-4">
+                <button type="submit" class=" bg-sky-400 text-white px-4 py-2 rounded mt-4">
                     Guardar
                 </button>
             </div>
         </div>
 
     </div>
+
 </div>

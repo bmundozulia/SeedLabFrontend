@@ -43,7 +43,7 @@ import { ModalComponent } from './super-admin/modal/modal.component';
     SuperAdminComponent,
     ListEmpresasComponent,
     PersonalizacionesComponent,
-    ModalComponent,
+    ModalComponent
 
 
   ],
