@@ -9,6 +9,8 @@ import { SuperAdminComponent } from './super-admin/super-admin.component'
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
+import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'verification', component: VerificationComponent },
   { path: 'superAdmin', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
+  { path: 'list-aliados', component: ListAliadosComponent },
+
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'asesorias', component: AsesoriasComponent},
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent

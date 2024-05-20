@@ -1,12 +1,13 @@
-import { Component, OnInit  } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import { CommonModule  } from '@angular/common';
-import { User } from '../Modelos/user.model';
-import { Login } from '../Modelos/login.modelo';
+import { Component, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+
 import { LoginService } from '../servicios/login.service';
 import {Router} from '@angular/router';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { Login } from '../Modelos/login.modelo';
+import { User } from '../Modelos/user.model';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
   reply: Login | null = null;
   token: string | null = null;
   user: User | null = null;
- 
+
 
   loginForm = this.fb.group({
     email: '',
@@ -33,8 +34,9 @@ export class LoginComponent {
     private fb: FormBuilder,
   ) { }
 
+  
   ngOnInit(): void {
-    
+
   }
 
   login(): void {
@@ -44,14 +46,14 @@ export class LoginComponent {
       this.loginForm.get('email')?.value,
       this.loginForm.get('password')?.value
     ).subscribe(
-      (rs:any) => {
+      (rs: any) => {
         this.reply = rs;
         console.log(this.reply);
         this.router.navigate(['/empresario']);
       },);
   }
 
-  }
+}
 
 
 
