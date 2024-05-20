@@ -12,6 +12,7 @@ export class PersonalizacionesComponent {
   selectedColorSecundario = '##C2FFFB';
   previewUrl: any = null;
 
+
   @ViewChildren('colorPicker') colorPickers: QueryList<ElementRef>;
 
   openColorPicker(index: number) {
@@ -39,6 +40,7 @@ export class PersonalizacionesComponent {
       }
     }
   }
+  
 }
 
 

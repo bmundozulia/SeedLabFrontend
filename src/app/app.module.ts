@@ -43,7 +43,6 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
     BodyComponent,
     SuperAdminComponent,
     ListEmpresasComponent,
-    PersonalizacionesComponent,
     AsesoriasComponent,
     ListAliadosComponent
   ],
