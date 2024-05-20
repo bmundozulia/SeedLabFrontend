@@ -11,6 +11,7 @@ import { PersonalizacionesComponent } from './personalizaciones/personalizacione
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 
+import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'list-aliados', component: ListAliadosComponent },
 
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
+  { path: 'asesorias', component: AsesoriasComponent},
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
   { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
 ];
