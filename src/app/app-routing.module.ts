@@ -12,6 +12,7 @@ import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
+import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'superAdmin', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
+  { path: 'add-aliados', component: AddAliadosComponent },
 
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'asesorias', component: AsesoriasComponent},
