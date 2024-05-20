@@ -10,7 +10,6 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
-
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
 
@@ -25,7 +24,6 @@ const routes: Routes = [
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
   { path: 'add-aliados', component: AddAliadosComponent },
-
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'asesorias', component: AsesoriasComponent},
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent

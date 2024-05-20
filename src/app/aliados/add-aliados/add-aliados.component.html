@@ -1,7 +1,33 @@
 <app-header [title]="'Bienvenido al panel de agregar aliados'"
     [subtitle]="'Aqui puedes crear tus aliados'"></app-header>
 
-    <div
-    class="mt-2 rounded-xl outline-none  border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
-    <input class="w-full outline-none" placeholder="Nombres" />
-</div>  
+<!-- ----------------------------------------------------- -->
+
+<div class="flex flex-col items-center justify-start min-h-screen mt-10 bg-gray-100">
+    <form (ngSubmit)="onSubmit()" class="flex flex-col items-center justify-center w-full max-w-4xl">
+      <div class="flex flex-col sm:flex-row items-center justify-center w-full">
+        <div class="mt-2 rounded-xl outline-none border py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
+          <input [(ngModel)]="nombre" name="nombre" class="w-full outline-none" placeholder="Nombre" required />
+        </div>
+        <div class="mt-2 rounded-xl outline-none border py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
+          <input [(ngModel)]="descripcion" name="descripcion" class="w-full outline-none" placeholder="Descripción" required />
+        </div>
+      </div>
+  
+      <div class="flex flex-col sm:flex-row items-center justify-center w-full mt-4">
+        <div class="flex flex-col items-center mx-4">
+          <input type="file" (change)="onFileSelected($event)" class="mb-4">
+          <div class="w-32 h-32 flex items-center justify-center border rounded-full overflow-hidden">
+            <img *ngIf="logoUrl" [src]="logoUrl" alt="Logo" class="object-cover w-full h-full">
+            <span *ngIf="!logoUrl" class="text-gray-500">logo</span>
+          </div>
+        </div>
+        <div class="mt-2 rounded-xl outline-none border py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
+          <input [(ngModel)]="ruta" name="ruta" class="w-full outline-none" placeholder="Ruta" required />
+        </div>
+      </div>
+  
+      <button type="submit" class="mt-6 bg-blue-500 text-white py-2 px-6 rounded-lg">Enviar</button>
+    </form>
+  </div>
+  
