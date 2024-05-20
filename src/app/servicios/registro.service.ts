@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Emprendedor } from '../Modelos/emprendedor.model'; 
@@ -15,6 +15,7 @@ export class RegistroService {
   constructor(private http: HttpClient) { }
 
   registrar(emprendedor: Emprendedor): Observable<any> {
-    return this.http.post<any>(this.url+"register_em", emprendedor);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.url+"register_em", emprendedor,{ headers });
   }
 }
