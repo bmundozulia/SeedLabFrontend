@@ -20,6 +20,11 @@ export class ListAliadosComponent {
   listaAliado: Aliado[] = [];
   token: string | null = null;
 
+  private ESTADO_MAP: { [key: number]: string } = {
+    1: 'Activo',
+    2: 'Inactivo'
+  };
+
   constructor(private aliadoService: AliadoService,
     private userService: UserService,
     private router: Router,
@@ -44,15 +49,30 @@ export class ListAliadosComponent {
   }
 
   cargarAliados(): void {
-    this.aliadoService.getinfoAliado(this.token).subscribe(
-      data => {
-        this.listaAliado = data;
-        this.listaAliado
-      },
-      err => {
-        console.log(err);
-      });
+    if (this.token) {
+      this.aliadoService.getinfoAliado(this.token).subscribe(
+        (data: Aliado[]) => {
+          this.listaAliado = data.map((item: any) => new Aliado(
+            item.id,
+            item.nombre,
+            item.descripcion,
+            item.logo,
+            item.ruta_multi,
+            item.id_autenticacion,
+            item.id_tipo_dato,
+            item.email,
+            this.ESTADO_MAP[item.estado_usuario] ?? 'Desconocido'
+          ));
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } else {
+      console.error('Token is not available');
+    }
   }
+}
 
   // cargarcorreo(): void{
   //   if (this.token) {
@@ -67,4 +87,4 @@ export class ListAliadosComponent {
   //   }
   // }
 
-}
+
