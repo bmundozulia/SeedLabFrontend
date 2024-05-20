@@ -23,7 +23,6 @@ const routes: Routes = [
   { path: 'superAdmin', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
-
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'asesorias', component: AsesoriasComponent},
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent

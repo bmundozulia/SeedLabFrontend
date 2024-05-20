@@ -44,7 +44,7 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
     SuperAdminComponent,
     ListEmpresasComponent,
     AsesoriasComponent,
-    ListAliadosComponent
+    ListAliadosComponent,
   ],
   imports: [
     BrowserModule,
