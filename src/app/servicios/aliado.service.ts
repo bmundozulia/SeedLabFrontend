@@ -20,8 +20,9 @@ export class AliadoService {
 
   constructor(private http: HttpClient) { }
 
-  getinfoAliado(access_token: any): Observable<any> {
+  getinfoAliado(access_token: any, estado: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.get(this.url, options);
+    const url = `${environment.apiUrl}aliado/${estado}`;
+    return this.http.get(url, options);
   }
 }
