@@ -33,6 +33,8 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
 import { CrearAsesoriaModalComponent } from './empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
 import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
 import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.component';
+import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emprendedor.component';
+import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
 
 
 
@@ -52,6 +54,8 @@ import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.
     CrearAsesoriaModalComponent,
     ListAsesoriaComponent,
     VerAsesoriasComponent,
+    RutaEmprendedorComponent,
+    AsesoriaAliadoComponent,
   ],
   imports: [
     BrowserModule,

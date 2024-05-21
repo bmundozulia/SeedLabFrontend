@@ -4,7 +4,6 @@ import { AsesoriaService } from '../../servicios/asesoria.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Asesoria } from '../../Modelos/asesoria.model';
-import { CrearAsesoriaModalComponent } from '../../empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -54,35 +53,22 @@ constructor(
   this.documento = this.aRoute.snapshot.paramMap.get('id');
 }
 
-openCrearAsesoriaModal() {
-  const dialogRef = this.dialog.open(CrearAsesoriaModalComponent, {
-    width: '400px',
-    data: {}
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    if (result) {
-      // Lógica para manejar el resultado del modal
-      console.log('Asesoría creada:', result);
-    }
-  });
-}
 
 
 
-  cargarAsesorias(): void {
-    if (this.token) {
-      this.asesoriaService.getAsesorias(this.token, this.documento).subscribe(
-        (data) => {
-          this.listaAsesorias = data;
-          this.initDatos();
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    }
-  }
+  // cargarAsesorias(): void {
+  //   if (this.token) {
+  //     this.asesoriaService.getAsesorias(this.token, this.documento).subscribe(
+  //       (data) => {
+  //         this.listaAsesorias = data;
+  //         this.initDatos();
+  //       },
+  //       (err) => {
+  //         console.log(err);
+  //       }
+  //     );
+  //   }
+  // }
   
   initDatos() {
     const contenedor = document.getElementById('contenedorp');
