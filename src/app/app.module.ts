@@ -30,6 +30,7 @@ import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 //import { ColorPickerModule } from 'ngx-color-picker';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
+import { SuperAdmRutasComponent } from './super-admin/list-rutas/super-adm-rutas/super-adm-rutas.component';
 
 
 
@@ -46,7 +47,8 @@ import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component
     ListEmpresasComponent,
     AsesoriasComponent,
     ListAliadosComponent,
-    AddAliadosComponent
+    AddAliadosComponent,
+    SuperAdmRutasComponent
   ],
   imports: [
     BrowserModule,

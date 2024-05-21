@@ -1,0 +1,53 @@
+<p>super-adm-rutas works!</p>
+<app-header [title]="'Bienvenido al panel de Rutas'"
+    [subtitle]="'Aqui podras ver y gestionar las rutas'"></app-header>
+<div class="flex justify-center items-center h-full md:w-auto">
+    <div class="justify-center items-center w-4/6 ">
+        <div class="headers md:flex md:justify-between md:mb-6 pl-5 pr-5">
+            <h2 class="hidden md:block md:w-28 whitespace-nowrap overflow-hidden text-center font-bold">Nombre</h2>
+            <h2 class="hidden md:block md:w-28 whitespace-nowrap overflow-hidden text-center font-bold">Fecha</h2>
+            <h2 class="hidden md:block md:w-40 whitespace-nowrap overflow-hidden text-center font-bold">Actividades</h2>
+            <h2 class="hidden md:block md:w-28 whitespace-nowrap overflow-hidden text-center font-bold">Estado</h2>
+            <h2 class="hidden md:block md:w-16 md:mr-7 whitespace-nowrap overflow-hidden text-center font-bold">
+            </h2>
+        </div>
+        <div class="contenido">
+            <div *ngFor="let aliados of listaAliado  | paginate: { itemsPerPage: 5, currentPage: page }"
+                class="info-empresa  max-md:h-auto md:w-auto md:flex justify-between text-center mb-4 md:py-4 max-md:pl-3 bg-neutral-200 rounded-md">
+                <div class="flex max-md:pt-3 px-2 max-md:h-10">
+                    <h3 class="block md:hidden mr-1 font-bold ">Nombre: </h3>
+                    <h3 class="md:w-40 whitespace-nowrap overflow-hidden max-md:h-6" style="text-overflow: ellipsis;">
+                        {{aliados.nombre }}</h3>
+                </div>
+                <div class="flex px-2 max-md:h-7">
+                    <h3 class="block md:hidden mr-1 font-bold ">Fecha </h3>
+                    <h3 class="md:w-26 whitespace-nowrap overflow-hidden max-md:h-6" style="text-overflow: ellipsis;">
+                        {{ Ruta.Fecha }}</h3>   <!--OJO, CAMBIAR  SI ESTA MAL EL LLAMADOP DE LA FECHA   ATT: CESAR-->
+                </div>''
+                <div class="flex  px-2 max-md:h-8">
+                    <h3 class="block md:hidden mr-1 font-bold ">Actividades </h3>
+                    <h3 class="md:w-40 md:pr-2 whitespace-nowrap overflow-hidden max-md:h-6"
+                        style="text-overflow: ellipsis;">
+                    </h3>
+                </div>
+                <div class="flex  px-2 max-md:h-8">
+                    <h3 class="block md:hidden mr-1 font-bold ">Estado: </h3>
+                    <h3 class="md:w-40 md:pr-2 whitespace-nowrap overflow-hidden max-md:h-6"
+                        style="text-overflow: ellipsis;">
+                        {{ aliados.estado_usuario }} </h3>
+                </div>
+                <div class="flex justify-center  px-2">
+                    <h3 class="block md:hidden"></h3>
+                    <h3 class="md:w-11 md:mr-9 md:pr-14 "><fa-icon [icon]="faeye"
+                            class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:h-5"></fa-icon>
+                    </h3>
+                </div>
+
+            </div>
+            <div class="text-center max-md:pr-10">
+                <pagination-controls (pageChange)="page = $event" previousLabel="Anterior"
+                    nextLabel="Siguiente"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
