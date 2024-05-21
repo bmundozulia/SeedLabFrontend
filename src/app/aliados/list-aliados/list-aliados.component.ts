@@ -28,7 +28,7 @@ export class ListAliadosComponent implements OnInit {
     private aliadoService: AliadoService,
     private router: Router,
     private aRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.validartoken();
@@ -74,5 +74,11 @@ export class ListAliadosComponent implements OnInit {
   onEstadoChange(event: any): void {
     const estado = event.target.value;
     this.cargarAliados(parseInt(estado, 10));
+  }
+
+  limpiarFiltro(): void {
+    this.userFilter = { nombre: '', estado_usuario: 'Activo' };
+    // Opcional: recargar los aliados con el estado por defecto
+    this.cargarAliados(1);
   }
 }
