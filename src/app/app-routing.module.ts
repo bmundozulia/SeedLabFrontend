@@ -10,7 +10,7 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
-
+import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 
@@ -23,9 +23,10 @@ const routes: Routes = [
   { path: 'superAdmin', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
-
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
-  { path: 'asesorias', component: AsesoriasComponent},
+  { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
+  { path: 'asesorias', component: AsesoriasComponent},  //de asesor
+  
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
   { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
 ];

@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './auth/login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
@@ -29,6 +30,9 @@ import { FormsModule } from '@angular/forms';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 //import { ColorPickerModule } from 'ngx-color-picker';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+import { CrearAsesoriaModalComponent } from './empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
+import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
+import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.component';
 
 
 
@@ -44,7 +48,10 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
     SuperAdminComponent,
     ListEmpresasComponent,
     AsesoriasComponent,
-    ListAliadosComponent
+    ListAliadosComponent,
+    CrearAsesoriaModalComponent,
+    ListAsesoriaComponent,
+    VerAsesoriasComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,9 +71,7 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
     ReactiveFormsModule,
     NgxPaginationModule,
     FormsModule,
-    
-  
-   
+    MatDialogModule,
   ],
   providers: [
     provideClientHydration(),
