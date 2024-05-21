@@ -27,7 +27,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { FormsModule } from '@angular/forms';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
-//import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorPickerModule } from 'ngx-color-picker';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 
 
@@ -64,6 +64,7 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
     ReactiveFormsModule,
     NgxPaginationModule,
     FormsModule,
+    ColorPickerModule,
     
   
    
