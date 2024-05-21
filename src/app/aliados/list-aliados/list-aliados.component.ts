@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { AliadoService } from '../../servicios/aliado.service';
 import { Aliado } from '../../Modelos/aliado.model';
 import { ActivatedRoute } from '@angular/router';
@@ -14,15 +15,17 @@ import { Router } from '@angular/router';
   templateUrl: './list-aliados.component.html',
   styleUrl: './list-aliados.component.css',
 })
-export class ListAliadosComponent {
+export class ListAliadosComponent implements OnInit {
+  userFilter: any = { nombre: '', estado_usuario: 'Activo' };
   faeye = faEye;
+  falupa = faMagnifyingGlass;
   public page!: number;
   listaAliado: Aliado[] = [];
   token: string | null = null;
 
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
-    2: 'Inactivo'
+    0: 'Inactivo'
   };
 
   constructor(private aliadoService: AliadoService,
@@ -74,17 +77,17 @@ export class ListAliadosComponent {
   }
 }
 
-  // cargarcorreo(): void{
-  //   if (this.token) {
-  //     this.userService.(this.token).subscribe(
-  //       (data) => {
-  //         this.listaEmpresas = data;
-  //       },
-  //       (err) => {
-  //         console.log(err);
-  //       }
-  //     );
-  //   }
-  // }
+// cargarcorreo(): void{
+//   if (this.token) {
+//     this.userService.(this.token).subscribe(
+//       (data) => {
+//         this.listaEmpresas = data;
+//       },
+//       (err) => {
+//         console.log(err);
+//       }
+//     );
+//   }
+// }
 
 

@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Asesoria } from '../../Modelos/asesoria.model';
 import { AsesoriaService } from '../../servicios/asesoria.service';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
-import { Asesoria } from '../../Modelos/asesoria.model';
-import { CrearAsesoriaModalComponent } from '../../empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CrearAsesoriaModalComponent } from './crear-asesoria-modal/crear-asesoria-modal.component';
 
 @Component({
-  selector: 'app-asesorias',
-  templateUrl: './asesorias.component.html',
-  styleUrls: ['./asesorias.component.css']
+  selector: 'app-list-asesoria',
+  templateUrl: './list-asesoria.component.html',
+  styleUrl: './list-asesoria.component.css'
 })
-export class AsesoriasComponent implements OnInit {
+export class ListAsesoriaComponent {
   barritaColor: string;
   token: string | null = null;
   documento: string | null;
