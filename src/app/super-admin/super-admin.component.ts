@@ -24,4 +24,15 @@ export class SuperAdminComponent implements OnInit {
   openModal() {
     this.modalSwitch = true;
   }
+
+
+  persona = {
+    descripcion: '',
+    titulo: ''
+  }
+
+
+  procesar() {
+    console.log(this.persona)
+  }
 }

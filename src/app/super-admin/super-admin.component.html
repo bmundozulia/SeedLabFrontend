@@ -48,68 +48,78 @@
         <!-- Contenido principal -->
         <div class=" col-span-8 ">
             <h1 class="text-center my-8">2 Kickoff (evento imprende)</h1>
-            <div class="xl:shadow-xl xl:p-4">
+            <form action="" (ngSubmit)="procesar">
+                <div class="xl:shadow-xl xl:p-4">
 
-                <div class="flex flex-wrap  items-center">
-                    <h2 class="mr-4">Responsive</h2>
-                    <div class=" ">
-                        <select id="tipoDocumento"
-                            class="p-2  w-full border rounded-xl  bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:border-transparent">
-                            <option value="" disabled selected>Seleccionar Aliado...</option>
-                            <option value="Cedula">Cédula ciudadanía</option>
-                            <option value="pasaporte">Pasaporte</option>
-                            <option value="carnetExtranjeria">Carnet de Extranjería</option>
-                        </select>
-                        <!-- <fa-icon [icon]="faIdCard" class="absolute right-3 top-4 text-cyan-500"></fa-icon> -->
+                    <div class="flex flex-wrap  items-center">
+                        <h2 class="mr-4">Responsive</h2>
+                        <div class=" ">
+                            <select id="tipoDocumento"
+                                class="p-2  w-full border rounded-xl  bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:border-transparent">
+                                <option value="" disabled selected>Seleccionar Aliado...</option>
+                                <option value="Cedula">Cédula ciudadanía</option>
+                                <option value="pasaporte">Pasaporte</option>
+                                <option value="carnetExtranjeria">Carnet de Extranjería</option>
+                            </select>
+                            <!-- <fa-icon [icon]="faIdCard" class="absolute right-3 top-4 text-cyan-500"></fa-icon> -->
+                        </div>
+                    </div>
+                    <div class="mb-2 mt-4">
+                        <p>Descripcion Corta</p>
+                        <!-- p-2 h-32 w-64 border rounded-md bg-neutral-100 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 -->
+                        <textarea required name="descripcion" id="" [(ngModel)]="persona.descripcion"
+                            class="border-0 rounded-xl w-full resize-none p-2 bg-gray-200 focus:border-transparent"></textarea>
+                    </div>
+                    <div class="py-2">
+                        <p>Actividades</p>
+
+                        <input type="text" name="actividades" required placeholder="Titulo" [(ngModel)]="persona.titulo"
+                            #titulo="ngModel"
+                            class="border-0 h-10 rounded-xl w-full p-4 bg-gray-200  appearance-none focus:border-transparent focus:ring-0">
+                        <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+                            role="alert">
+                            <span class="font-medium">El actividad es obligatorio</span>
+                        </div>
+
+                    </div>
+                    <div class="py-2">
+                        <p>Cuerpo</p>
+                        <textarea name="" id="" required
+                            class="border-0 rounded-xl w-full resize-none p-2 bg-gray-200 focus:border-transparent"></textarea>
+                    </div>
+                    <div class="py-2">
+                        <p>Links</p>
+                        <input required #links type="url" name="url" id="url" placeholder="https://example.com"
+                            pattern="https://.*" size="30" class="w-full border-0 h-10 rounded-xl  bg-gray-200"
+                            required />
+
+                    </div>
+
+
+                    <!-- <button type="submit" class="bg-sky-400 text-white px-4 py-2 rounded mt-4">Agregar otro
+                        link</button> -->
+
+
+                    <hr class="divide-y divide-light-blue-400 ">
+                    <div class="flex justify-center">
+
+                        <!-- <button type="submit" class=" bg-sky-400 text-white px-4 py-2 rounded mt-4">
+                            Agregar otra actividad
+                        </button> -->
                     </div>
                 </div>
-                <div class="mb-2 mt-4">
-                    <p>Descripcion Corta</p>
-                    <!-- p-2 h-32 w-64 border rounded-md bg-neutral-100 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 -->
-                    <textarea required name="" id=""
-                        class="border-0 rounded-xl w-full resize-none p-2 bg-gray-200 focus:border-transparent"></textarea>
-                </div>
-                <div class="py-2">
-                    <p>Actividades</p>
-
-                    <input type="text" placeholder="Titulo"
-                        class="border-0 h-10 rounded-xl w-full p-4 bg-gray-200  appearance-none focus:border-transparent focus:ring-0">
-
-                </div>
-                <div class="py-2">
-                    <p>Cuerpo</p>
-                    <textarea name="" id="" required
-                        class="border-0 rounded-xl w-full resize-none p-2 bg-gray-200 focus:border-transparent"></textarea>
-                </div>
-                <div class="py-2">
-                    <p>Links</p>
-                    <input required type="url" name="url" id="url" placeholder="https://example.com"
-                        pattern="https://.*" size="30" class="w-full border-0 h-10 rounded-xl  bg-gray-200" required />
-
-                </div>
-
-                <form action="" method="" class="pb-6">
-
-                    <button type="submit" class="bg-sky-400 text-white px-4 py-2 rounded mt-4">Agregar otro
-                        link</button>
-                </form>
-
-                <hr class="divide-y divide-light-blue-400 ">
-                <div class="flex justify-center">
+                <div class="flex justify-end">
 
                     <button type="submit" class=" bg-sky-400 text-white px-4 py-2 rounded mt-4">
-                        Agregar otra actividad
+                        Guardar
                     </button>
                 </div>
-            </div>
-            <div class="flex justify-end">
-
-                <button type="submit" class=" bg-sky-400 text-white px-4 py-2 rounded mt-4">
-                    Guardar
-                </button>
-            </div>
+            </form>
         </div>
 
     </div>
 
 </div>
+
+
+{{ titulo.error | json}}
