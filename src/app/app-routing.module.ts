@@ -12,10 +12,12 @@ import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
+import { ModalComponent } from './super-admin/modal/modal.component'
 
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
+  { path: 'modal-superadmin', component: ModalComponent },
   { path: 'empresario', component: AddEmpresaComponent },
   { path: 'list-empresa/:documento', component: ListEmpresasComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
