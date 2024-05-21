@@ -9,6 +9,7 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+import { FanPageComponent } from './aliados/fan-page/fan-page.component';
 
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
+  {path: 'fan-page', component: FanPageComponent },
 
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'asesorias', component: AsesoriasComponent},
