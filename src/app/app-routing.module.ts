@@ -16,7 +16,7 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  { path: 'empresario', component: AddEmpresaComponent },
+  { path: 'add-empresa', component: AddEmpresaComponent },
   { path: 'list-empresa/:documento', component: ListEmpresasComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
   { path: 'verification', component: VerificationComponent },
