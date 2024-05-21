@@ -52,7 +52,7 @@
                 <div class="xl:shadow-xl xl:p-4">
                     <div class="flex flex-wrap items-center">
                         <h2 class="mr-4">Responsive</h2>
-                        <div>
+                        <div class="relative">
                             <select id="tipoDocumento" name="tipoDocumento" required [(ngModel)]="persona.tipoDocumento"
                                 #tipoDocumento="ngModel"
                                 class="p-2 w-full border rounded-xl bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:border-transparent">
@@ -62,9 +62,9 @@
                                 <option value="carnetExtranjeria">Carnet de Extranjería</option>
                             </select>
                             <div *ngIf="submitted && tipoDocumento.invalid"
-                                class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+                                class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50 "
                                 role="alert">
-                                <span class="font-medium">Este campo es obligatorio</span>
+                                <span class="font-medium">Este campo es requerido *</span>
                             </div>
                         </div>
                     </div>
@@ -74,9 +74,8 @@
                         <textarea name="descripcion" required [(ngModel)]="persona.descripcion" #descripcion="ngModel"
                             class="border-0 rounded-xl w-full resize-none p-2 bg-gray-200 focus:border-transparent"></textarea>
                         <div *ngIf="submitted && descripcion.invalid"
-                            class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
-                            role="alert">
-                            <span class="font-medium">Este campo es obligatorio</span>
+                            class="inline-block  p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 " role="alert">
+                            <span class="font-medium">Este campo es requerido *</span>
                         </div>
                     </div>
 
@@ -86,9 +85,8 @@
                             #titulo="ngModel"
                             class="border-0 h-10 rounded-xl w-full p-4 bg-gray-200 appearance-none focus:border-transparent focus:ring-0">
                         <div *ngIf="submitted && titulo.invalid"
-                            class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
-                            role="alert">
-                            <span class="font-medium">Este campo es obligatorio</span>
+                            class="inline-block p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 " role="alert">
+                            <span class="font-medium">Este campo es requerido *</span>
                         </div>
                     </div>
 
@@ -97,9 +95,8 @@
                         <textarea name="cuerpo" required [(ngModel)]="persona.cuerpo" #cuerpo="ngModel"
                             class="border-0 rounded-xl w-full resize-none p-2 bg-gray-200 focus:border-transparent"></textarea>
                         <div *ngIf="submitted && cuerpo.invalid"
-                            class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
-                            role="alert">
-                            <span class="font-medium">Este campo es obligatorio</span>
+                            class="p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 inline-block" role="alert">
+                            <span class="font-medium">Este campo es requerido *</span>
                         </div>
                     </div>
 
@@ -109,13 +106,12 @@
                             placeholder="https://example.com" [(ngModel)]="persona.links" #links="ngModel"
                             class="w-full border-0 h-10 rounded-xl bg-gray-200">
                         <div *ngIf="submitted && links.invalid"
-                            class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
-                            role="alert">
-                            <span class="font-medium" *ngIf="links.errors?.required">Este campo es obligatorio</span>
+                            class="p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50 inline-block" role="alert">
+                            <span class="font-medium" *ngIf="links.errors?.required">Este campo es requerido *</span>
                             <span class="font-medium" *ngIf="links.errors?.pattern">El enlace debe comenzar con
                                 "https://"</span>
                         </div>
-                        <button type="submit" class="bg-sky-400 text-white px-4 py-2 rounded mt-4">Agregar otro
+                        <button type="submit" class="block bg-sky-400 text-white px-4 py-2 rounded mt-4">Agregar otro
                             link</button>
 
 
