@@ -69,9 +69,6 @@ import { CrearAsesoriaModalComponent } from './asesor/crear-asesoria-modal/crear
     FormsModule,
     MatDialogModule,
   ],
-  entryComponents: [
-    CrearAsesoriaModalComponent,
-  ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
