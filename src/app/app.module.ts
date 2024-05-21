@@ -30,6 +30,7 @@ import { FormsModule } from '@angular/forms';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 //import { ColorPickerModule } from 'ngx-color-picker';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+import { FanPageComponent } from './aliados/fan-page/fan-page.component';
 import { CrearAsesoriaModalComponent } from './empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
 import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
 import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.component';
@@ -51,6 +52,9 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ListEmpresasComponent,
     AsesoriasComponent,
     ListAliadosComponent,
+    SuperAdminComponent,
+    FanPageComponent
+,
     CrearAsesoriaModalComponent,
     ListAsesoriaComponent,
     VerAsesoriasComponent,

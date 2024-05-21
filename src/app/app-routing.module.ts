@@ -5,13 +5,14 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AddEmpresaComponent } from './empresario/add-empresa/add-empresa.component';
 import { VerificationComponent } from './auth/verification/verification.component';
 import { BodyComponent } from './inicio/body/body.component';
-import { SuperAdminComponent } from './super-admin/super-admin.component'
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+import { FanPageComponent } from './aliados/fan-page/fan-page.component';
 import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
+import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { ModalComponent } from './super-admin/modal/modal.component'
 
 
@@ -22,9 +23,11 @@ const routes: Routes = [
   { path: 'list-empresa/:documento', component: ListEmpresasComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
   { path: 'verification', component: VerificationComponent },
-  { path: 'superAdmin', component: SuperAdminComponent },
+  { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
+  {path: 'fan-page', component: FanPageComponent },
+
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent},  //de asesor
