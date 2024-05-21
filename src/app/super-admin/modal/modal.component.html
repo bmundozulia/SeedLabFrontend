@@ -1,0 +1,24 @@
+<div class="fixed z-50 inset-0 bg-black-50 bg-opacity-50 backdrop-blur-sm flex justify-center items-center m-10">
+    <div class="bg-white border border-gray-300
+     p-20 rounded w-6/12 h-2/6  ">
+        <h1 class="text-center">
+            Agregar Ruta
+        </h1>
+
+        <div class="relative mx-4 my-2">
+            <input type="text" placeholder=" " id="nombre" required
+                class="w-full px-4 py-2  border outline-none rounded-md to-blue-500 duration-200 peer bg-gray-200   ">
+            <label for="nombre"
+                class="absolute left-2 top-2 px-1 uppercase tracking-wide peer-focus:text-black-600 pointer-events-none duration-200 peer-focus:text-sm peer-focus:-translate-y-5  bg-gray-100">Nombre</label>
+        </div>
+
+        <div class="flex justify-center m-2">
+            <button (click)="closeModal()" class="m-2 inline-block bg-gray-200 px-3 py-3 rounded ">
+                Cancelar
+            </button>
+            <button class="inline-block bg-sky-400 px-3 py-3 rounded m-2 text-white font-bold">
+                Confirmar
+            </button>
+        </div>
+    </div>
+</div>
