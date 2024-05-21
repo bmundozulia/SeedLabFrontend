@@ -41,17 +41,30 @@ export class LoginComponent {
   }
 
   login(): void {
-    console.log(this.loginForm.get('email')?.value);
-    console.log(this.loginForm.get('password')?.value);
-    this.loginService.login(
-      this.loginForm.get('email')?.value,
-      this.loginForm.get('password')?.value
-    ).subscribe(
+    const email = this.loginForm.get('email')?.value;
+    const password = this.loginForm.get('password')?.value;
+    this.loginService.login(email, password).subscribe(
       (rs: any) => {
         this.reply = rs;
-        console.log(this.reply);
-        this.router.navigate(['/empresario']);
-      },);
+        if (this.reply) {
+          //retorna la vista de emprendedor
+          if (this.reply.user.id_rol == 5){
+            localStorage.setItem('token', this.reply.access_token);
+            localStorage.setItem('documento', this.reply.user.emprendedor.documento);
+            this.router.navigate(['list-empresa/', this.reply.user.emprendedor.documento]);
+          }
+          //retorna la vista de superadmin
+          if (this.reply.user.id_rol == 1){
+            localStorage.setItem('token', this.reply.access_token);
+            this.router.navigate(['list-aliados']);
+          }
+         // console.log(localStorage);
+        }
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 
 }

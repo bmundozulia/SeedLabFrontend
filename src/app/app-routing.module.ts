@@ -11,12 +11,13 @@ import { PersonalizacionesComponent } from './personalizaciones/personalizacione
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 
+import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'empresario', component: AddEmpresaComponent },
-  { path: 'list-empresa/:id', component: ListEmpresasComponent },
+  { path: 'list-empresa/:documento', component: ListEmpresasComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
   { path: 'verification', component: VerificationComponent },
   { path: 'superAdmin', component: SuperAdminComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'list-aliados', component: ListAliadosComponent },
 
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
+  { path: 'asesorias', component: AsesoriasComponent},
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
   { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
 ];
