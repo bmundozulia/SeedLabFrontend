@@ -137,7 +137,7 @@ export class RegisterComponent implements OnInit {
       (response: any) => {
         console.log(response);
         console.log('Registro exitoso', response);
-        this.email = response.email; // Obtener el correo electrónico de la respuesta
+        this.email = response.email; // Obt el correo electrónico de la respuesta
 
         this.router.navigate(['/verification'], { queryParams: { email: this.email } });
       },
