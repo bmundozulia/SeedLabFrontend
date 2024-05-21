@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../header/header.component';
-import { Router } from '@angular/router'; 
+import { ActivatedRoute, Router } from '@angular/router'; 
 import { ListAliadosComponent } from '../list-aliados/list-aliados.component';
- 
+import { AliadoService } from '../../servicios/aliado.service';
+import { Aliado } from '../../Modelos/aliado.model';
+import { UserService } from '../../servicios/user.service';
 
 @Component({
   selector: 'app-add-aliados',
   templateUrl: './add-aliados.component.html',
   styleUrl: './add-aliados.component.css',
-  providers: [HeaderComponent, ListAliadosComponent,]
+  providers: [HeaderComponent, ListAliadosComponent, AliadoService, UserService]
 
 })
 
@@ -17,8 +19,29 @@ export class AddAliadosComponent {
   nombre: string = '';
   descripcion: string = '';
   ruta: string = '';
+  token: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private aliadoService: AliadoService,
+    private userService: UserService,
+    private router: Router,
+    private aRoute: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.validartoken();
+    //this.cargarcorreo();
+  }
+
+  validartoken(): void {
+    if (typeof localStorage !== 'undefined') {
+      this.token = localStorage.getItem('token');
+      if (!this.token) {
+        this.router.navigate(['/inicio/body']);
+        // console.log('no lista empresa no esta tomando el token');
+      }
+    }
+
+    // console.log(localStorage.getItem('documento'));
+  }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
