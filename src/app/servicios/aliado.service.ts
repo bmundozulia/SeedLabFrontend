@@ -16,12 +16,12 @@ export class AliadoService {
     })
   }
 
-  url = environment.apiUrl + 'aliado'
+  url = environment.apiUrl + 'aliado/0'
 
   constructor(private http: HttpClient) { }
 
-  getinfoAliado(access_token:any): Observable<any> {
-    const options= { headers: this.CreacionHeaders(access_token) };
+  getinfoAliado(access_token: any): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.get(this.url, options);
   }
 }
