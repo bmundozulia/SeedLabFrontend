@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './inicio/body/body.component';
 import { AngularMaterialModule } from '../angular-material.module';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HeaderComponent } from './header/header.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
@@ -17,7 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +26,10 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
 import {NgxPaginationModule} from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { FormsModule } from '@angular/forms';
-import { PerfilEmprendedorComponent } from './empresario/perfil-emprendedor/perfil-emprendedor.component';
+import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
+//import { ColorPickerModule } from 'ngx-color-picker';
+import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
 
 
 
@@ -41,9 +44,9 @@ import { PerfilEmprendedorComponent } from './empresario/perfil-emprendedor/perf
     BodyComponent,
     SuperAdminComponent,
     ListEmpresasComponent,
-    PersonalizacionesComponent,
-    PerfilEmprendedorComponent
-    
+    AsesoriasComponent,
+    ListAliadosComponent,
+    AddAliadosComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,10 @@ import { PerfilEmprendedorComponent } from './empresario/perfil-emprendedor/perf
     AngularMaterialModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    
+  
+   
   ],
   providers: [
     provideClientHydration(),

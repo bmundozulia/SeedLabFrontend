@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Input } from '@angular/core';
 import { EmprendedorService } from '../../servicios/emprendedor.service';
-import { Emprendedor } from '../../Modelos/emprendedor.model';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Empresa } from '../../Modelos/empresa.model';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 import { HeaderComponent } from '../../header/header.component';
-import { PageEvent } from '@angular/material/paginator';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-list-empresas',
@@ -18,33 +15,49 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrl: './list-empresas.component.css'
 })
 export class ListEmpresasComponent implements OnInit {
-  @Input() data: any;
   faPen = faPenToSquare;
   listaEmpresas: Empresa[] = [];
+  listaUser: User[] = [];
   documento: string | null;
   public page!: number;
-
- 
-
+  token: string | null = null;
 
 
-  constructor(private emprendedorService: EmprendedorService, private _router: Router, private aRoute: ActivatedRoute) {
+
+  constructor(private emprendedorService: EmprendedorService, 
+    private router: Router, 
+    private aRoute: ActivatedRoute, 
+    private fb: FormBuilder,) {
     this.documento = this.aRoute.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
+    this.validartoken();
     this.cargarEmpresas();
   }
 
+  validartoken(): void {
+    this.token = localStorage.getItem('token');
+    this.documento = localStorage.getItem('documento');
+    if (!this.token || !this.documento) {
+      this.router.navigate(['/inicio/body']);
+     // console.log('no lista empresa no esta tomando el token');
+    }
+    // console.log(localStorage.getItem('documento'));
+  }
 
   cargarEmpresas(): void {
-    this.emprendedorService.getEmpresas(this.documento).subscribe(
-      data => {
-        this.listaEmpresas = data;
-      },
-      err => {
-        console.log(err);
-      });
+    if (this.token) {
+      this.emprendedorService.getEmpresas(this.token, this.documento).subscribe(
+        (data) => {
+          this.listaEmpresas = data;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
+
 
 }

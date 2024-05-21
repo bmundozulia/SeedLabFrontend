@@ -7,21 +7,29 @@
                 </h5>
             </div>
             <div class="row mt-5">
-    
-                <div class="col-lg-4 col-md-12 col-sm-12 col-12 flex flex-col items-center">
-                    <label class="text-center md:text-2xl md:pl-20 font-light mb-2 md:mb-4 text-black">Logo</label>
-                    <input id="color-picker-logo" type="file" name="logo" class="text-sky-600 border-2 border-gray-300 p-2 rounded" />
-                  </div>
-    
+              
+              <div class="col-lg-4 col-md-12 col-sm-12 col-12 flex flex-col items-center">
+                <label class="text-center md:text-2xl md:pl-20 font-light mb-2 md:mb-4 text-black">Logo</label>
+                <input id="color-picker-logo" type="file" name="logo" class="text-sky-600 border-2 border-blue-300 p-2 rounded" (change)="onFileChange($event)" />
+                <img [src]="previewUrl" alt="Logo preview" *ngIf="previewUrl" class="image-preview" />
+              </div>
                   <div class="col-lg-4 col-md-12 col-sm-12 col-12 flex flex-col items-center">
                     <label class="text-center md:text-2xl md:pl-20 font-light mb-2 md:mb-4 text-black">Color principal</label>
-                    <input id="color-picker-logo" type="color" name="color_principal" class="text-sky-600 border-2 border-gray-300 p-2 rounded" />
+                    <input #colorPicker type="color" name="color_principal" class="md:w-32 md:h-32 md:ml-20" (change)="onColorChangePrincipal($event)" />
+                    <p class="text-center md:ml-20 md:mt-2">{{selectedColorPrincipal}}</p>
+                    <button (click)="openColorPicker(0)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded md:-mt-2 relative md:ml-20">
+                      Seleccionar color
+                    </button>
                   </div>
-                  <div class="col-lg-4 col-md-12 col-sm-12 col-12 flex flex-col items-center">
+                  <div class="col-lg-4 col-md-12 col-sm-12 col-12 flex flex-col items-center ">
                     <label class="text-center md:text-2xl md:pl-20 font-light mb-2 md:mb-4 text-black">Color Secundario</label>
-                    <input id="color-picker-logo" type="color" name="color_secundario" class="text-sky-600 border-2 border-gray-300 p-2 rounded" />
+                    <input #colorPicker type="color" name="color_secundario" class="w-32 h-32 md:ml-20" (change)="onColorChangeSecundario($event)" />
+                    <p class="text-center md:ml-20 md:mt-2">{{selectedColorSecundario}}</p>
+                    <button (click)="openColorPicker(1)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded  md:ml-20 md:-mt-2 relative">
+                      Seleccionar color
+                    </button>
                   </div>
-                  <div class="flex justify-end">
+                 <div class="flex justify-end">
                     <button type="submit" class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 mt-8 rounded">
                        GUARDAR
                     </button>
