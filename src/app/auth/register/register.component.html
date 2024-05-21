@@ -130,7 +130,7 @@
                         <label for="celular" class="block mb-2 text-blue-400">Celular:</label>
                         <input type="number" id="celular" formControlName="celular"
                             class="p-2 h-14 w-full border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200" />
-                        <div *ngIf="submitted && f.celular.errors" class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
+                        <div *ngIf="submitted && f.celular.errors" class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block mt-2">
                             <div *ngIf="f.celular.errors.required">Este campo es requerido *</div>
                             <div *ngIf="f.celular.errors.maxlength">El número de celular no debe tener más de 10 dígitos
                             </div>
