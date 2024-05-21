@@ -85,7 +85,7 @@ export class RegisterComponent implements OnInit {
     if (hasUpperCase && hasSpecialChar) {
         return null;
     } else {
-        return { passwordStrength: 'La contraseña debe contener al menos una letra mayúscula y un carácter especial'};
+        return { passwordStrength: 'La contraseña debe contener al menos una letra mayúscula y un carácter especial *'};
     }
 }
 
