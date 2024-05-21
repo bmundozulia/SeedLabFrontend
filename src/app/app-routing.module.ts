@@ -11,7 +11,7 @@ import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
-import { AddRutaComponent } from './super-admin/rutas/add-ruta/add-ruta.component';
+import { SuperAdminComponent } from './super-admin/super-admin.component';
 
 
 const routes: Routes = [
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'list-empresa/:documento', component: ListEmpresasComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
   { path: 'verification', component: VerificationComponent },
-  { path: 'add-ruta', component: AddRutaComponent },
+  { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
 
