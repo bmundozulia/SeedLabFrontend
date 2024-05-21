@@ -7,7 +7,7 @@ import { environment } from '../../environment/env';
 @Injectable({
   providedIn: 'root'
 })
-export class EmpresaService {
+export class AsesoriaService {
 
   private CreacionHeaders(access_token: any): HttpHeaders { //para la creacion de los header y que sea autortizado
     return new HttpHeaders({
@@ -16,12 +16,12 @@ export class EmpresaService {
     })
   }
 
-  url = environment.apiUrl + 'empresa/'
+  url = environment.apiUrl + 'mis_asesorias/'
 
   constructor(private http: HttpClient) { }
 
-  getEmpresas(access_token:any, documento: string): Observable<any>{
+  getAsesorias(access_token:any, doc_emprendedor: string): Observable<any>{
     const options= { headers: this.CreacionHeaders(access_token) };
-    return this.http.get(this.url+"/"+documento, options);
+    return this.http.get(this.url+"/"+doc_emprendedor, options);
   }
 }

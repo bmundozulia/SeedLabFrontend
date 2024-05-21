@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './inicio/body/body.component';
 import { AngularMaterialModule } from '../angular-material.module';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HeaderComponent } from './header/header.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
@@ -17,7 +17,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { LoginComponent } from './login/login.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './auth/login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +27,12 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { FormsModule } from '@angular/forms';
+import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
+//import { ColorPickerModule } from 'ngx-color-picker';
+import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+import { CrearAsesoriaModalComponent } from './empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
+import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
+import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 
 
@@ -42,6 +49,11 @@ import { ModalComponent } from './super-admin/modal/modal.component';
     BodyComponent,
     SuperAdminComponent,
     ListEmpresasComponent,
+    AsesoriasComponent,
+    ListAliadosComponent,
+    CrearAsesoriaModalComponent,
+    ListAsesoriaComponent,
+    VerAsesoriasComponent,
     PersonalizacionesComponent,
     ModalComponent
 
@@ -64,7 +76,8 @@ import { ModalComponent } from './super-admin/modal/modal.component';
     AngularMaterialModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
   ],
   providers: [
     provideClientHydration(),
