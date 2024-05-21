@@ -1,4 +1,4 @@
-<nav class="sidebar shadow-xl" [ngClass]="{ 'slide-left': isLeft }">
+<nav class="sidebar shadow-xl" [ngClass]="{ 'slide-left': isLeft }" *ngIf = "logueado">
     <header class="relative">
         <div class="flex justify-center">
             <span class="p-11">
@@ -71,7 +71,7 @@
 
         <div>
 
-            <li class="h-14 flex items-center">
+            <li class="h-14 flex items-center" *ngIf = "logueado">
                 <button mat-button *ngIf="token !=null" (click)="logout()">Cerrar Sesion</button>|
             </li>
 

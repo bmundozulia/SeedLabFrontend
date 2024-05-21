@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent {
   isLeft = true;
-  logueado = true;
+  logueado = false;
   flag = false;
   token: string|null=null;
 
@@ -21,12 +21,15 @@ export class MenuComponent {
   ngOnInit() {
     if(this.token==null){
       this.token=localStorage.getItem('token');
+      this.logueado=this.token !== null;
     }
   }
 
   logout(){
+
     localStorage.clear();
     this.router.navigate(['home/body']);
+    this.logueado = false;
     window.location.reload();
   }
 }
