@@ -33,7 +33,7 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
 import { CrearAsesoriaModalComponent } from './empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
 import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
 import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.component';
-
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 
 @NgModule({
@@ -71,6 +71,7 @@ import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.
     ReactiveFormsModule,
     NgxPaginationModule,
     FormsModule,
+    FilterPipeModule,
     MatDialogModule,
   ],
   providers: [
