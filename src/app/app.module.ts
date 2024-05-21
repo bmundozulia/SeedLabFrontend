@@ -35,6 +35,7 @@ import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.
 import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ListAsesoriaComponent,
     VerAsesoriasComponent,
     PersonalizacionesComponent,
-    ModalComponent
+    ModalComponent,
+    AddAliadosComponent,
 
 
   ],
