@@ -9,7 +9,7 @@ import { Component, QueryList, ViewChildren, ElementRef } from '@angular/core';
 })
 export class PersonalizacionesComponent {
   selectedColorPrincipal = '#C2FFFB';
-  selectedColorSecundario = '##C2FFFB';
+  selectedColorSecundario = '#C2FFFB';
   previewUrl: any = null;
 
 
