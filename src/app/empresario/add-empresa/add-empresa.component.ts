@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Empresa } from '../../Modelos/empresa.model';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { MunicipioService } from '../../servicios/municipio.service';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-add-empresa',
@@ -23,6 +24,10 @@ export class AddEmpresaComponent{
   listDepartamentos: any[] = [];
   listMunicipios: any[] = [];
   departamentoPredeterminado = '';
+  submitted = false;
+  token = '';
+  user: User | null = null;
+  currentRolId: string | null = null;
 
   constructor(
     private fb:FormBuilder,
@@ -33,6 +38,7 @@ export class AddEmpresaComponent{
   ){}
 
   ngOnInit(): void {
+    this.validateToken();
       this.addEmpresaForm = this.fb.group({
         nombre:['',Validators.required],
         apellido:['',Validators.required],
@@ -51,32 +57,55 @@ export class AddEmpresaComponent{
         municipio:['',Validators.required],
       });
       this.cargarDepartamentos();
+      
+  }
+
+  validateToken(): void {
+    if (!this.token) {
+        this.token = localStorage.getItem("token");
+        let identityJSON = localStorage.getItem('identity');
+
+        if (identityJSON) {
+            let identity = JSON.parse(identityJSON);
+            console.log(identity);
+            this.user = identity;
+            this.currentRolId = this.user.id_rol?.toString();
+            console.log(this.currentRolId);
+        }
+    }
   }
 
   get f() { return this.addEmpresaForm.controls; }
 
   crearEmpresa():void {
+    this.submitted = true;
+    console.log("Formulario enviado", this.addEmpresaForm.value);
+    if (this.addEmpresaForm.invalid) {
+      console.log("Formulario inválido");
+      return;
+    }
+
     const empresa = new Empresa(
-      this.f.nombre.value,
-      this.f.apellido.value,
-      this.f.nombreDepartamento.value,
-      this.f.documento.value,
-      this.f.cargo.value,
-      this.f.razonSocial.value,
-      this.f.url_pagina.value,
-      this.f.telefono.value,
-      this.f.celular.value,
-      this.f.email.value,
-      this.f.profesion.value,
-      this.f.experiencia.value,
-      this.f.funciones.value,
-      this.f.direccion.value,
-      this.f.municipio.value
+      this.f['nombre'].value,
+      this.f['apellido'].value,
+      this.f['nombretipodoc'].value,
+      this.f['documento'].value,
+      this.f['cargo'].value,
+      this.f['razonSocial'].value,
+      this.f['url_pagina'].value,
+      this.f['telefono'].value,
+      this.f['celular'].value,
+      this.f['email'].value,
+      this.f['profesion'].value,
+      this.f['experiencia'].value,
+      this.f['funciones'].value,
+      this.f['direccion'].value,
+      this.f['municipio'].value
     );
-    this.addEmpresaService.addEmpresa(this.addEmpresaForm.value).subscribe(
-      data => {
-        console.log(data);
-        this.router.navigate(['/emprendedores']);
+    this.addEmpresaService.addEmpresa(this.token,empresa).subscribe(
+      (response:any) => {
+        console.log(response);
+        this.router.navigate(['/add-empresa']);
       },
       error => {
         console.log(error);

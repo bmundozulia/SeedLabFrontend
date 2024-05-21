@@ -1,5 +1,5 @@
 <app-header [title]="'Título específico'" [subtitle]="'Subtítulo específico'"></app-header>
-<form [formGroup]="addEmpresaForm">
+<form [formGroup]="addEmpresaForm" (ngSubmit)="crearEmpresa()">
     <div class="container mx-auto px-4 py-12">
         <div class="grid grid-cols-12 gap-4 mb-6">
             <div class="col-span-12 rounded-lg">
@@ -56,6 +56,19 @@
                             <div class="flex flex-wrap justify-center">
                                 <div
                                     class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
+                                    <input class="w-full outline-none" formControlName="email"
+                                        placeholder="Email" />
+                                </div>
+                                <div
+                                    class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
+                                    <input class="w-full outline-none" formControlName="cargo"
+                                        placeholder="Cargo" />
+                                </div>
+                            </div>
+                            <!-- Separación a otros 4 campos -->
+                            <div class="flex flex-wrap justify-center">
+                                <div
+                                    class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
                                     <input class="w-full outline-none" formControlName="razonSocial"
                                         placeholder="Razón social" />
                                 </div>
@@ -81,7 +94,7 @@
                                 </div>
                                 <div
                                     class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
-                                    <input class="w-full outline-none" placeholder="Dirección del emprendimiento" />
+                                    <input class="w-full outline-none" formControlName="direccion" placeholder="Dirección del emprendimiento" />
                                 </div>
                                 <div
                                     class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">

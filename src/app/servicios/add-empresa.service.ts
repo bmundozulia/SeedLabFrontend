@@ -14,9 +14,13 @@ export class AddEmpresaService {
 
   constructor(private http: HttpClient) { }
 
- addEmpresa(empresa:Empresa, apoyoEmpresa?:ApoyoEmpresa): Observable<any> {
-    const headers = new HttpHeaders({'content-type': 'application/json'});
+ addEmpresa(access_token: any,empresa:Empresa, apoyoEmpresa?:ApoyoEmpresa): Observable<any> {
+    const headers = new HttpHeaders({
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + access_token
+    });
+    const options = {headers: headers}
     const body = {empresa, apoyoEmpresa}
-    return this.http.post(this.url, body, {headers});
+    return this.http.post(this.url, body, options);
   }
 }
