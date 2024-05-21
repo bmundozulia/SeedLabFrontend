@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 //import { ColorPickerModule } from 'ngx-color-picker';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+import { FanPageComponent } from './aliados/fan-page/fan-page.component';
 
 
 
@@ -45,7 +46,8 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
     ListEmpresasComponent,
     AsesoriasComponent,
     ListAliadosComponent,
-    SuperAdminComponent
+    SuperAdminComponent,
+    FanPageComponent
 
   ],
   imports: [
@@ -66,8 +68,6 @@ import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.compon
     ReactiveFormsModule,
     NgxPaginationModule,
     FormsModule,
-    
-  
    
   ],
   providers: [
