@@ -51,7 +51,7 @@
                             class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:h-5 md:hidden pl-8 pt-2 "></fa-icon>
                     </div>
                 </div>
-                <div class="flex px-2 max-md:h-7 md:w-auto">
+                <div class="flex px-2 max-md:h-7">
                     <h3 class="block md:hidden mr-1 font-bold ">Correo: </h3>
                     <h3 class="md:w-52 whitespace-nowrap overflow-hidden max-md:h-6  md:pt-2"
                         style="text-overflow: ellipsis;">
@@ -61,18 +61,16 @@
                     <h3 class="block md:hidden mr-1 font-bold ">Estado: </h3>
                     <h3 class="md:w-20 whitespace-nowrap overflow-hidden max-md:h-6 md:pt-2 "
                         style="text-overflow: ellipsis;">
-                        {{aliados.estado_usuario }}</h3>
+                        {{ aliados.estado_usuario }} </h3>
                 </div>
-                <div class="flex justify-center  px-2 md:w-20">
+                <div class="flex justify-center  px-2">
                     <h3 class="block md:hidden"></h3>
-                    <h3 class="md:w-11  md:pr-16 max-md:absolute max-md:right-56 md:pt-2">
-                        <fa-icon [icon]="faeye"
-                            class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:h-5  max-md:hidden  "></fa-icon>
+                    <h3 class="md:w-11 md:mr-9 md:pr-14 "><fa-icon [icon]="faeye"
+                            class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:h-5"></fa-icon>
                     </h3>
                 </div>
 
             </div>
-
             <div class="text-center max-md:pr-10">
                 <pagination-controls (pageChange)="page = $event" previousLabel="Anterior"
                     nextLabel="Siguiente"></pagination-controls>
