@@ -19,7 +19,6 @@ export class AliadoService {
 
   url = environment.apiUrl + 'aliado'
 
-  constructor(private http: HttpClient) { }
 
   getinfoAliado(access_token: any, estado: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };

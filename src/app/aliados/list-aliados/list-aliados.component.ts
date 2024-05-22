@@ -11,15 +11,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './list-aliados.component.html',
   styleUrls: ['./list-aliados.component.css'],
 })
-export class ListAliadosComponent {
+export class ListAliadosComponent implements OnInit {
+  userFilter: any = { nombre: '', estado_usuario: 'Activo' };
   faeye = faEye;
+  falupa = faMagnifyingGlass;
   public page!: number;
   listaAliado: Aliado[] = [];
   token: string | null = null;
 
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
-    2: 'Inactivo'
+    0: 'Inactivo'
   };
 
   constructor(

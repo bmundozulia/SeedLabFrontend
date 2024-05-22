@@ -38,6 +38,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
 import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,8 +54,6 @@ import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component
     ListAliadosComponent,
     SuperAdminComponent,
     FanPageComponent,
-
-,
     CrearAsesoriaModalComponent,
     ListAsesoriaComponent,
     VerAsesoriasComponent,
