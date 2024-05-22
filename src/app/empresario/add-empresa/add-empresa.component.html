@@ -1,5 +1,5 @@
-<form [formGroup]="addEmpresaForm" (ngSubmit)="crearEmpresa()">
-    <div class="container mx-auto px-4 py-12">
+<div class="container mx-auto px-4 py-12">
+        <form [formGroup]="addEmpresaForm" (ngSubmit)="crearEmpresa()">
         <div class="grid grid-cols-12 gap-4 mb-6">
             <div class="col-span-12 rounded-lg">
                 <div class="flex flex-col">
@@ -18,7 +18,7 @@
                             </div>
                             <div class="flex flex-wrap justify-center">
                                 <div class="mt-2 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
-                                    <select id="tipoDocumento" formControlName="nombretipodoc" class="w-full outline-none border-none bg-transparent">
+                                    <select id="tipoDocumento" formControlName="id_tipo_documento" class="w-full outline-none border-none bg-transparent">
                                         <option value="" disabled selected>Seleccionar tipo de documento...</option>
                                         <option value="1">Cédula ciudadanía</option>
                                         <option value="2">Pasaporte</option>
@@ -55,7 +55,7 @@
                                     <fa-icon [icon]="faGlobe" class="absolute text-xl right-5 top-1/2 transform -translate-y-1/2"></fa-icon>
                                 </div>
                                 <div class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
-                                    <input class="w-full outline-none" formControlName="telefono" placeholder="Telefono" />
+                                    <input class="w-full outline-none" type="text" formControlName="telefono" placeholder="Telefono" />
                                 </div>
                             </div>
                             <div class="flex flex-wrap justify-center">
@@ -63,7 +63,7 @@
                                     <input class="w-full outline-none" formControlName="celular" placeholder="Celular" />
                                 </div>
                                 <div class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
-                                    <input class="w-full outline-none" formControlName="direccion" placeholder="Dirección del emprendimiento" />
+                                    <input class="w-full outline-none" type="text" formControlName="direccion" placeholder="Dirección del emprendimiento" />
                                 </div>
                                 <div class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
                                     <input class="w-full outline-none" formControlName="profesion" placeholder="Profesión" />
@@ -87,13 +87,14 @@
                                 </div>
                             </div>
                             <div class="flex flex-wrap justify-end pr-10 pt-8">
-                                <button id="guardar" class="px-10 py-2 bg-blue-500 bg-opacity-80 text-white rounded-xl cursor-pointer btn btn-primary">Guardar cambios</button>
+                                <button id="guardar" type="submit" class="px-10 py-2 bg-blue-500 bg-opacity-80 text-white rounded-xl cursor-pointer btn btn-primary">Guardar cambios</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
     </div>
     <div id="contenido" style="display: none;">
         <hr class="mt-4">
@@ -131,4 +132,4 @@
             </div>
         </div>
     </div>
-</form>
+
