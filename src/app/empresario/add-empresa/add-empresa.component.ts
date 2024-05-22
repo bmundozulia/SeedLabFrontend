@@ -26,6 +26,7 @@ export class AddEmpresaComponent{
   departamentoPredeterminado = '';
   submitted = false;
   token = '';
+  documento:string;
   user: User | null = null;
   currentRolId: string | null = null;
 
@@ -71,6 +72,7 @@ export class AddEmpresaComponent{
             let identity = JSON.parse(identityJSON);
             console.log(identity);
             this.user = identity;
+            this.documento = this.user.emprendedor.documento;
             this.currentRolId = this.user.id_rol?.toString();
             console.log(this.currentRolId);
         }
@@ -109,7 +111,7 @@ export class AddEmpresaComponent{
     this.addEmpresaService.addEmpresa(this.token,empresa).subscribe(
       (response:any) => {
         console.log(response);
-        this.router.navigate(['/add-empresa']);
+        this.router.navigate(['list-empresa/:documento']);
       },
       error => {
         console.log(error);
