@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Asesoria } from '../../Modelos/asesoria.model';
-import { AsesoriaService } from '../../servicios/asesoria.service';
+import { Asesoria } from '../../../Modelos/asesoria.model';
+import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { CrearAsesoriaModalComponent } from './crear-asesoria-modal/crear-asesoria-modal.component';
+import { CrearAsesoriaModalComponent } from '../crear-asesoria-modal/crear-asesoria-modal.component';
 
 @Component({
   selector: 'app-list-asesoria',

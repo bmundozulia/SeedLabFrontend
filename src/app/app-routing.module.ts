@@ -10,7 +10,7 @@ import { PersonalizacionesComponent } from './personalizaciones/personalizacione
 import { EncuestaEmpresaComponent } from './emprendedor/formulario-diagnostico/encuesta-empresa.component';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 import { FanPageComponent } from './aliados/fan-page/fan-page.component';
-import { ListAsesoriaComponent } from './emprendedor/list-asesoria/list-asesoria.component';
+import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/list-asesoria.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { ModalComponent } from './super-admin/modal/modal.component'
