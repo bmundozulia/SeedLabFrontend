@@ -15,22 +15,25 @@ import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
+import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 
 
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'register', component: RegisterComponent },
-  { path: 'modal-superadmin', component: ModalComponent },
+  { path: 'verification', component: VerificationComponent },
+
   { path: 'add-empresa', component: AddEmpresaComponent },
   { path: 'list-empresa/:documento', component: ListEmpresasComponent },
+  { path: 'list-aliados', component: ListAliadosComponent },
+  { path: 'modal-superadmin', component: ModalComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
-  { path: 'verification', component: VerificationComponent },
+  { path: 'list-rutas', component: ListRutasComponent },
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
-  { path: 'list-aliados', component: ListAliadosComponent },
   {path: 'fan-page', component: FanPageComponent },
 
-  { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent},  //de asesor
   { path: 'add-aliados', component: AddAliadosComponent },
