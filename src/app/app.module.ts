@@ -27,7 +27,6 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
-import { ColorPickerModule } from 'ngx-color-picker';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 import { FanPageComponent } from './aliados/fan-page/fan-page.component';
 import { CrearAsesoriaModalComponent } from './empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
@@ -36,6 +35,7 @@ import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 @NgModule({
@@ -80,9 +80,10 @@ import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component
     ReactiveFormsModule,
     NgxPaginationModule,
     FormsModule,
-    ColorPickerModule,
     FilterPipeModule,
     MatDialogModule,
+    ColorPickerModule, 
+    ColorPickerModule
 
   ],
   providers: [
