@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { EmprendedorService } from '../../servicios/emprendedor.service';
-import { Empresa } from '../../Modelos/empresa.model';
+import { EmprendedorService } from '../../../servicios/emprendedor.service';
+import { Empresa } from '../../../Modelos/empresa.model';
 import { Router } from '@angular/router';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
-import { HeaderComponent } from '../../header/header.component';
-import { User } from '../../Modelos/user.model';
+import { HeaderComponent } from '../../../header/header.component';
+import { User } from '../../../Modelos/user.model';
+
 
 @Component({
   selector: 'app-list-empresas',

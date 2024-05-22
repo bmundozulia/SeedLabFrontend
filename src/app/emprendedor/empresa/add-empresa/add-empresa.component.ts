@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
-import { HeaderComponent } from '../../header/header.component';
-import { AddEmpresaService } from '../../servicios/add-empresa.service';
+import { HeaderComponent } from '../../../header/header.component';
+import { AddEmpresaService } from '../../../servicios/add-empresa.service';
 import { FormBuilder,ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Empresa } from '../../Modelos/empresa.model';
-import { DepartamentoService } from '../../servicios/departamento.service';
-import { MunicipioService } from '../../servicios/municipio.service';
-import { User } from '../../Modelos/user.model';
+import { Empresa } from '../../../Modelos/empresa.model';
+import { DepartamentoService } from '../../../servicios/departamento.service';
+import { MunicipioService } from '../../../servicios/municipio.service';
+import { User } from '../../../Modelos/user.model';
+
 
 @Component({
   selector: 'app-add-empresa',
