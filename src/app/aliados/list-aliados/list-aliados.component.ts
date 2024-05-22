@@ -1,6 +1,6 @@
 // list-aliados.component.ts
 import { Component, OnInit } from '@angular/core';
-import { faEye, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { AliadoService } from '../../servicios/aliado.service';
 import { Aliado } from '../../Modelos/aliado.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,6 +15,7 @@ export class ListAliadosComponent implements OnInit {
   userFilter: any = { nombre: '', estado_usuario: 'Activo' };
   faeye = faEye;
   falupa = faMagnifyingGlass;
+  fax= faXmark;
   public page!: number;
   listaAliado: Aliado[] = [];
   token: string | null = null;
