@@ -8,19 +8,18 @@
       </div>
       <div class="container mx-auto mt-5">
         <div class=" p-6 flex flex-wrap justify-between items-start">
-          <!-- Logo Section -->
+          <!-- Logo-->
           <div class="w-full md:w-1/3 flex flex-col items-center p-4">
             <label class="text-center text-2xl font-mono mb-4 text-blue-400">Logo</label>
             <input id="color-picker-logo" type="file" name="logo"
               class="text-sky-600 border-2 border-gray-300 p-2 rounded" (change)="onFileChange($event)" />
             <div class="img mt-2">
               <img [src]="previewUrl" alt="Logo preview" *ngIf="previewUrl"
-                class="image-preview text-sky-600 border-2 border-blue-300 p-2 rounded"
+                class="image-preview text-sky-600 border-2 border-gray-300  p-2 rounded"
                 style="width: 300%; max-height: 155%; object-fit: contain" />
             </div>
           </div>
-
-          <!-- Color Principal Section -->
+          <!-- Color Principal -->
           <div class="w-full md:w-1/3 flex flex-col items-center p-4">
             <label class="text-center text-2xl mb-4 text-blue-400 font-mono">Color Principal</label>
             <div class="w-full p-4 border-2 border-gray-300 rounded-lg flex flex-col items-center">
@@ -35,8 +34,7 @@
               </button>
             </div>
           </div>
-
-          <!-- Color Secundario Section -->
+          <!-- Color Secundario-->
           <div class="w-full md:w-1/3 flex flex-col items-center p-4">
             <label class="text-center text-2xl font-mono mb-4 text-blue-400">Color Secundario</label>
             <div class="w-full p-4 border-2 border-gray-300 rounded-lg flex flex-col items-center">
@@ -52,7 +50,6 @@
             </div>
           </div>
         </div>
-
         <div class="flex justify-end mt-8">
           <button type="submit" class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded">
             GUARDAR
