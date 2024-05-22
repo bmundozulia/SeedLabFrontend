@@ -10,7 +10,7 @@ export class AliadoService {
 
   constructor(private http: HttpClient) { }
 
-  private CreacionHeaders(access_token: string): HttpHeaders {
+  private CreacionHeaders(access_token: any): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + access_token
