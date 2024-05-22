@@ -9,13 +9,16 @@ import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
 import { EncuestaEmpresaComponent } from './empresario/encuesta-empresa/encuesta-empresa.component';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
-
+import { FanPageComponent } from './aliados/fan-page/fan-page.component';
+import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
+import { ModalComponent } from './super-admin/modal/modal.component'
 
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
+  { path: 'modal-superadmin', component: ModalComponent },
   { path: 'add-empresa', component: AddEmpresaComponent },
   { path: 'list-empresa/:documento', component: ListEmpresasComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
@@ -23,9 +26,12 @@ const routes: Routes = [
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
+  {path: 'fan-page', component: FanPageComponent },
 
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
-  { path: 'asesorias', component: AsesoriasComponent},
+  { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
+  { path: 'asesorias', component: AsesoriasComponent},  //de asesor
+  
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
   { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
 ];
