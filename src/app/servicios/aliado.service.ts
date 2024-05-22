@@ -17,11 +17,13 @@ export class AliadoService {
     });
   }
 
-  url = environment.apiUrl + 'aliado/0';
+  url = environment.apiUrl + 'aliado'
 
-  getinfoAliado(access_token: string): Observable<any> {
+
+  getinfoAliado(access_token: any, estado: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.get(this.url, options);
+    const url = `${environment.apiUrl}aliado/${estado}`;
+    return this.http.get(url, options);
   }
 
   crearAliado(aliado: any, access_token: string): Observable<any> {
