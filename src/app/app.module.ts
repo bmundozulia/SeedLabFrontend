@@ -25,17 +25,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormBuilder,FormsModule, FormGroup} from '@angular/forms';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
+import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
 import { FanPageComponent } from './aliados/fan-page/fan-page.component';
 import { CrearAsesoriaModalComponent } from './emprendedor/asesorias/crear-asesoria-modal/crear-asesoria-modal.component';
 import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/list-asesoria.component';
-import { VerAsesoriasComponent } from './orientador/asesorias/ver-asesorias.component';
+import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
-import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
+import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
+
 
 
 

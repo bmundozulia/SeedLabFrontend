@@ -6,15 +6,16 @@ import { AddEmpresaComponent } from './emprendedor/empresa/add-empresa/add-empre
 import { VerificationComponent } from './auth/verification/verification.component';
 import { BodyComponent } from './inicio/body/body.component';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
-import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
+import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
 import { EncuestaEmpresaComponent } from './emprendedor/formulario-diagnostico/encuesta-empresa.component';
-import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
+import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
 import { FanPageComponent } from './aliados/fan-page/fan-page.component';
 import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/list-asesoria.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
-import { ModalComponent } from './super-admin/modal/modal.component'
-import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
+import { ModalComponent } from './super-admin/modal/modal.component';
+import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
+
 
 
 const routes: Routes = [

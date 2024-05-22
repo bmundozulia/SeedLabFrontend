@@ -1,10 +1,10 @@
 // list-aliados.component.ts
 import { Component, OnInit } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { AliadoService } from '../../servicios/aliado.service';
-import { Aliado } from '../../Modelos/aliado.model';
+import { AliadoService } from '../../../servicios/aliado.service';
+import { Aliado } from '../../../Modelos/aliado.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../../Modelos/user.model';
+import { User } from '../../../Modelos/user.model';
 
 @Component({
   selector: 'app-list-aliados',
