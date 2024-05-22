@@ -4,7 +4,7 @@ import { AsesoriaService } from '../../servicios/asesoria.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Asesoria } from '../../Modelos/asesoria.model';
-import { CrearAsesoriaModalComponent } from '../../empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
+import { CrearAsesoriaModalComponent } from '../../emprendedor/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
