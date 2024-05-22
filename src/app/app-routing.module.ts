@@ -14,6 +14,7 @@ import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { ModalComponent } from './super-admin/modal/modal.component'
+import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent},  //de asesor
+  { path: 'add-aliados', component: AddAliadosComponent },
   
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
   { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
