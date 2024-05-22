@@ -9,20 +9,15 @@ import { environment } from '../../environment/env';
 })
 export class AsesoriaService {
 
-  private CreacionHeaders(access_token: any): HttpHeaders { //para la creacion de los header y que sea autortizado
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + access_token
-    });
-  }
-
-  url = environment.apiUrl + 'mis_asesorias/'
+  private apiUrl = `${environment.apiUrl}mis_asesorias`;
 
   constructor(private http: HttpClient) { }
 
-  getAsesorias(access_token: any, doc_emprendedor: string, asignacion: boolean): Observable<any> {
-    const options = { headers: this.CreacionHeaders(access_token) };
-    const body = { doc_emprendedor, asignacion };
-    return this.http.post(this.url, body, options);
+  getMisAsesorias(body: { documento: string, asignacion: boolean }): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer tu-token-aqui'  // Asegúrate de reemplazar esto con tu token real
+    });
+    return this.http.post<any>(this.apiUrl, body, { headers });
   }
 }

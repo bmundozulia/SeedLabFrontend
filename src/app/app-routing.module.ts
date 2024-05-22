@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
-  { path: 'list-asesoria/:doc_emprendedor/:asignacion', component: ListAsesoriaComponent }, //de emprendedor
+  { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent},  //de asesor
   { path: 'add-aliados', component: AddAliadosComponent },
   

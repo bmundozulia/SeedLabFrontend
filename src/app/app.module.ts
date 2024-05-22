@@ -58,8 +58,6 @@ import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-alia
     PersonalizacionesComponent,
     ModalComponent,
     AddAliadosComponent,
-
-
     RutaEmprendedorComponent,
     AsesoriaAliadoComponent,
   ],
