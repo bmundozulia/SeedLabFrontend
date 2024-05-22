@@ -9,13 +9,14 @@ import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { MatIconModule } from '@angular/material/icon';
-import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormGroup, Validators,AbstractControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { MunicipioService } from '../../servicios/municipio.service';
 import { RegistroService } from '../../servicios/registro.service';
 import { Router } from '@angular/router';
 import { Emprendedor } from '../../Modelos/emprendedor.model';
+
 
 
 
@@ -61,20 +62,32 @@ export class RegisterComponent implements OnInit {
     this.cargarDepartamentos();
 
     this.registerForm = this.fb.group({
-      documento: ['', Validators.required],
+      documento: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
       nombretipodoc: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      celular: ['', Validators.required],
+      celular: ['', [Validators.required, Validators.maxLength(10)]],
       genero: ['', Validators.required],
       fecha_nacimiento: ['', Validators.required],
       municipio: ['', Validators.required],
       direccion: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
       estado: '1'
     });
   }
+
+  passwordValidator(control: AbstractControl) {
+    const value = control.value;
+    const hasUpperCase = /[A-Z]+/.test(value);
+    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(value);
+
+    if (hasUpperCase && hasSpecialChar) {
+        return null;
+    } else {
+        return { passwordStrength: 'La contraseña debe contener al menos una letra mayúscula y un carácter especial *'};
+    }
+}
 
   get f() { return this.registerForm.controls; }
 
@@ -147,7 +160,6 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
-
 }
 
 

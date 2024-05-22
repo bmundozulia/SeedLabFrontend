@@ -15,25 +15,26 @@ import { AddEmpresaComponent } from './empresario/add-empresa/add-empresa.compon
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './auth/login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder,FormsModule } from '@angular/forms';
 import { ListEmpresasComponent } from './empresario/list-empresas/list-empresas.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { PersonalizacionesComponent } from './personalizaciones/personalizaciones.component';
-import { FormsModule } from '@angular/forms';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
-//import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorPickerModule } from 'ngx-color-picker';
 import { ListAliadosComponent } from './aliados/list-aliados/list-aliados.component';
 import { CrearAsesoriaModalComponent } from './empresario/list-asesoria/crear-asesoria-modal/crear-asesoria-modal.component';
 import { ListAsesoriaComponent } from './empresario/list-asesoria/list-asesoria.component';
 import { VerAsesoriasComponent } from './orientador/ver-asesorias/ver-asesorias.component';
-import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emprendedor.component';
+import { ModalComponent } from './super-admin/modal/modal.component';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { AddAliadosComponent } from './aliados/add-aliados/add-aliados.component';import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emprendedor.component';
 import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
 
 
@@ -54,6 +55,11 @@ import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-alia
     CrearAsesoriaModalComponent,
     ListAsesoriaComponent,
     VerAsesoriasComponent,
+    PersonalizacionesComponent,
+    ModalComponent,
+    AddAliadosComponent,
+
+
     RutaEmprendedorComponent,
     AsesoriaAliadoComponent,
   ],
@@ -75,7 +81,10 @@ import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-alia
     ReactiveFormsModule,
     NgxPaginationModule,
     FormsModule,
+    ColorPickerModule,
+    FilterPipeModule,
     MatDialogModule,
+
   ],
   providers: [
     provideClientHydration(),
@@ -84,6 +93,6 @@ import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-alia
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
-  
+
 })
 export class AppModule { }
