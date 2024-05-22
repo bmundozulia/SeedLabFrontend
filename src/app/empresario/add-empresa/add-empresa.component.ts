@@ -3,7 +3,7 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { HeaderComponent } from '../../header/header.component';
 import { AddEmpresaService } from '../../servicios/add-empresa.service';
-import { FormBuilder,ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder,ReactiveFormsModule, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Empresa } from '../../Modelos/empresa.model';
 import { DepartamentoService } from '../../servicios/departamento.service';
@@ -59,7 +59,8 @@ export class AddEmpresaComponent{
     direccion: ['', Validators.required],
     profesion: ['', Validators.required],
     experiencia: ['',Validators.required],
-    funciones: ['',Validators.required]
+    funciones: ['',Validators.required],
+    apoyos: this.fb.array([]) 
   });
 
   validateToken(): void {
@@ -103,8 +104,9 @@ export class AddEmpresaComponent{
       experiencia: this.addEmpresaForm.get('experiencia')?.value,
       funciones: this.addEmpresaForm.get('funciones')?.value,
       id_emprendedor: this.user?.emprendedor.documento,
+      apoyos: this.apoyos.value,
     }
-      
+     
     console.log(empresa);
     this.addEmpresaService.addEmpresa(this.token,empresa).subscribe(
       (response:any) => {
@@ -116,6 +118,31 @@ export class AddEmpresaComponent{
       }
     );
   }
+///////////////
+  get apoyos(): FormArray {
+    return this.addEmpresaForm.get('apoyos') as FormArray;
+  }
+  
+  nuevoApoyo(): FormGroup {
+    return this.fb.group({
+      documento: ['', Validators.required],
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      cargo: ['', Validators.required],
+      telefono: [''],
+      celular: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      id_tipo_documento: ['', Validators.required],
+    });
+  }
+  agregarApoyo(): void {
+    this.apoyos.push(this.nuevoApoyo());
+  }
+  
+ /* eliminarApoyo(index: number): void {
+    this.apoyos.removeAt(index);
+  }*/
+  
 
 
   mostrarOcultarContenido() {

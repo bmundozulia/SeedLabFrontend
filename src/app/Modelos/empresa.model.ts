@@ -1,4 +1,5 @@
 import { Emprendedor } from "./emprendedor.model";
+import { ApoyoEmpresa } from "./apoyo-empresa.modelo";
 
 export class Empresa {
 
@@ -17,6 +18,7 @@ export class Empresa {
     id_tipo_documento:string;
     id_municipio:string;
     id_emprendedor: string;
+    apoyos: ApoyoEmpresa[];
 
     constructor(
         nombre: string ,
@@ -33,7 +35,10 @@ export class Empresa {
         funciones: string | null | undefined,
         id_tipo_documento:string,
         id_municipio:string,
-        id_emprendedor: string){
+        id_emprendedor: string,
+        apoyos: ApoyoEmpresa[]
+    
+    ){
             this.nombre = nombre;
             this.documento = documento;
             this.cargo = cargo;
@@ -49,6 +54,7 @@ export class Empresa {
             this.id_tipo_documento = id_tipo_documento;
             this.id_municipio = id_municipio;
             this.id_emprendedor = id_emprendedor;
+            this.apoyos = apoyos;
         }
 
 }
