@@ -16,7 +16,7 @@ export class Empresa {
     funciones: string | null | undefined;
     id_tipo_documento:number;
     id_municipio:number;
-    id_emprendedor: Emprendedor;
+    id_emprendedor: number;
 
     constructor(
         documento: number,
@@ -33,7 +33,7 @@ export class Empresa {
         funciones: string | null | undefined,
         id_tipo_documento:number,
         id_municipio:number,
-        id_emprendedor: Emprendedor){
+        id_emprendedor: number){
             this.documento = documento;
             this.nombre = nombre;
             this.cargo = cargo;

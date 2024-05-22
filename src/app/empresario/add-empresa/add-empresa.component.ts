@@ -35,27 +35,28 @@ export class AddEmpresaComponent{
     private addEmpresaService:AddEmpresaService,
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
-  ){}
+  ){
+    this.addEmpresaForm = this.fb.group({
+      nombre: ['', Validators.required],
+      documento: ['', Validators.required],
+      nombretipodoc: ['', Validators.required],
+      municipio: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
+      cargo: ['', Validators.required],
+      razonSocial: ['', Validators.required],
+      url_pagina: [''],
+      telefono: ['', Validators.required],
+      celular: ['', Validators.required],
+      direccion: ['', Validators.required],
+      profesion: ['', Validators.required],
+      experiencia: [''],
+      funciones: ['']
+    });
+  }
 
   ngOnInit(): void {
     this.validateToken();
-      this.addEmpresaForm = this.fb.group({
-        nombre:['',Validators.required],
-        apellido:['',Validators.required],
-        nombretipodoc: ['', Validators.required],
-        documento:['',Validators.required],
-        cargo:['',Validators.required],
-        razonSocial:['',Validators.required],
-        url_pagina:['',Validators.required],
-        telefono:['',Validators.required],
-        celular:['',Validators.required],
-        email:['',Validators.required],
-        direccion:['',Validators.required],
-        profesion:['',Validators.required],
-        experiencia:['',Validators.required],
-        funciones:['',Validators.required],
-        municipio:['',Validators.required],
-      });
+    
       this.cargarDepartamentos();
       
   }
@@ -86,22 +87,23 @@ export class AddEmpresaComponent{
     }
 
     const empresa = new Empresa(
-      this.f['nombre'].value,
-      this.f['apellido'].value,
-      this.f['nombretipodoc'].value,
-      this.f['documento'].value,
-      this.f['cargo'].value,
-      this.f['razonSocial'].value,
-      this.f['url_pagina'].value,
-      this.f['telefono'].value,
-      this.f['celular'].value,
-      this.f['email'].value,
-      this.f['profesion'].value,
-      this.f['experiencia'].value,
-      this.f['funciones'].value,
-      this.f['direccion'].value,
-      this.f['municipio'].value
+      this.f.documento.value,
+      this.f.nombre.value,
+      this.f.correo.value,
+      this.f.cargo.value,
+      this.f.razonSocial.value,
+      this.f.url_pagina.value,
+      this.f.telefono.value,
+      this.f.celular.value,
+      this.f.direccion.value,
+      this.f.profesion.value,
+      this.f.experiencia.value,
+      this.f.funciones.value,
+      this.f.nombretipodoc.value,
+      this.f.municipio.value,
+      this.user.id
     );
+    console.log(empresa);
     this.addEmpresaService.addEmpresa(this.token,empresa).subscribe(
       (response:any) => {
         console.log(response);
