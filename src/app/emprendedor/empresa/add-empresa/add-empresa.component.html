@@ -1,4 +1,6 @@
-<div class="container mx-auto px-4 py-12">
+<app-header [title]="'Bienvenido al panel de empresas'"
+    [subtitle]="'Aqui podras ver y gestionar tus empresas'"></app-header>
+    <div class="container mx-auto px-4 py-12">
         <form [formGroup]="addEmpresaForm" (ngSubmit)="crearEmpresa()">
         <div class="grid grid-cols-12 gap-4 mb-6">
             <div class="col-span-12 rounded-lg">
@@ -15,6 +17,10 @@
                                 <div class="mt-2 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
                                     <input class="w-full outline-none" formControlName="documento" placeholder="Numero documento" />
                                 </div>
+                                <div class="mt-2 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
+                                    <input class="w-full outline-none" formControlName="correo" placeholder="Email"  />
+                                </div>
+                                
                             </div>
                             <div class="flex flex-wrap justify-center">
                                 <div class="mt-2 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
@@ -39,11 +45,9 @@
                                 </div>
                             </div>
                             <div class="flex flex-wrap justify-center">
+                                
                                 <div class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
-                                    <input class="w-full outline-none" formControlName="correo" placeholder="Email" />
-                                </div>
-                                <div class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
-                                    <input class="w-full outline-none" formControlName="cargo" placeholder="Cargo" />
+                                    <input class="w-full outline-none" type="text" formControlName="telefono" placeholder="Telefono" />
                                 </div>
                             </div>
                             <div class="flex flex-wrap justify-center">
@@ -51,12 +55,14 @@
                                     <input class="w-full outline-none" formControlName="razonSocial" placeholder="Razón social" />
                                 </div>
                                 <div class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
+                                    <input class="w-full outline-none" formControlName="cargo" placeholder="Cargo" />
+                                </div>
+                                <div class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
                                     <input class="w-full pr-6 outline-none" formControlName="url_pagina" placeholder="Pagina web" />
                                     <fa-icon [icon]="faGlobe" class="absolute text-xl right-5 top-1/2 transform -translate-y-1/2"></fa-icon>
                                 </div>
-                                <div class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
-                                    <input class="w-full outline-none" type="text" formControlName="telefono" placeholder="Telefono" />
-                                </div>
+                                   
+                                
                             </div>
                             <div class="flex flex-wrap justify-center">
                                 <div class="mt-9 rounded-xl outline-none border-1 py-3 px-4 text-base form-control w-[290px] mx-4 justify-center sm:mx-[25px] relative">
@@ -94,8 +100,7 @@
                 </div>
             </div>
         </div>
-    </form>
-    </div>
+   
     <div id="contenido" style="display: none;">
         <hr class="mt-4">
         <div class="flex flex-wrap justify-between">
@@ -132,4 +137,6 @@
             </div>
         </div>
     </div>
+</form>
+</div>
 
