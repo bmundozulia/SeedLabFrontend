@@ -1,4 +1,4 @@
-<nav class="sidebar shadow-xl" [ngClass]="{ 'slide-left': isLeft }">
+<nav class="sidebar shadow-xl" [ngClass]="{ 'slide-left': isLeft }" *ngIf = "logueado">
     <header class="relative">
         <div class="flex justify-center">
             <span class="p-11">
@@ -158,18 +158,8 @@
 
         <div>
 
-            <li class="h-14 flex items-center">
-                <a href="" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-
-                    <i
-                        class="bx bx-log-out icon text-center text-xl min-w-14 text-gray-700 transition duration-200"></i>
-                    <span class="text nav-text">salir</span>
-                </a>
-                <form id="logout-form" action="" method="POST" class="d-none">
-
-                </form>
-
+            <li class="h-14 flex items-center" *ngIf = "logueado">
+                <button mat-button *ngIf="token !=null" (click)="logout()">Cerrar Sesion</button>|
             </li>
 
             <!-- <li class="mode list-none">

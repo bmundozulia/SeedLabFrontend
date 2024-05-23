@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SwitchService } from '../servicios/switch.service';
 
 
+
 @Component({
   selector: 'app-super-admin',
 
