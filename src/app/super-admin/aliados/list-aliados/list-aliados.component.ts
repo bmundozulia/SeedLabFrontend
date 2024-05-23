@@ -21,7 +21,7 @@ export class ListAliadosComponent implements OnInit {
   listaAliado: Aliado[] = [];
   token: string | null = null;
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
 
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
@@ -49,7 +49,7 @@ export class ListAliadosComponent implements OnInit {
             let identity = JSON.parse(identityJSON);
             console.log(identity);
             this.user = identity; 
-            this.currentRolId = this.user.id_rol?.toString();
+            this.currentRolId = this.user.id_rol;
             console.log(this.currentRolId);
         }
     }
