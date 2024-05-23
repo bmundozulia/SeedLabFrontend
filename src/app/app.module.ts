@@ -37,6 +37,7 @@ import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
+import { ReportesComponent } from './orientador/reportes/reportes.component';
 
 
 
@@ -61,6 +62,7 @@ import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.com
     AddAliadosComponent,
     SuperAdminComponent,
     ListRutasComponent,
+    ReportesComponent,
     
 
   ],
