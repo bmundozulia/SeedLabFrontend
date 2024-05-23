@@ -16,6 +16,7 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
+import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 
 
 
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   {path: 'fan-page', component: FanPageComponent },
+  { path: 'perfil', component: PerfilEmprendedorComponent},
 
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent},  //de asesor

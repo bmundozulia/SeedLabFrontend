@@ -37,6 +37,7 @@ import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
+import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 
 
 
@@ -61,7 +62,7 @@ import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.com
     AddAliadosComponent,
     SuperAdminComponent,
     ListRutasComponent,
-    
+    PerfilEmprendedorComponent,
 
   ],
   imports: [
