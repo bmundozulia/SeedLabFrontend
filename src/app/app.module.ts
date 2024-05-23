@@ -39,6 +39,7 @@ import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliad
 import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
 
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
+import { ReportesComponent } from './orientador/reportes/reportes.component';
 
 
 
@@ -63,6 +64,7 @@ import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.com
     AddAliadosComponent,
     SuperAdminComponent,
     ListRutasComponent,
+    ReportesComponent,
         RutaEmprendedorComponent,
     AsesoriaAliadoComponent,
   ],
