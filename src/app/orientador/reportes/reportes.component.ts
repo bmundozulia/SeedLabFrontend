@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-reportes',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './reportes.component.css'
 })
 export class ReportesComponent {
+  faPrint = faPrint;
 
 }

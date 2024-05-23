@@ -20,6 +20,7 @@ import { ReportesComponent } from './orientador/reportes/reportes.component'
 
 
 
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'register', component: RegisterComponent },
