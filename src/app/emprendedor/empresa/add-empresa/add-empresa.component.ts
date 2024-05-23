@@ -21,7 +21,6 @@ import { User } from '../../../Modelos/user.model';
 export class AddEmpresaComponent{
   faGlobe = faGlobe;
   faCircleQuestion = faCircleQuestion;
-  //addEmpresaForm:FormGroup;
   listDepartamentos: any[] = [];
   listMunicipios: any[] = [];
   departamentoPredeterminado = '';
