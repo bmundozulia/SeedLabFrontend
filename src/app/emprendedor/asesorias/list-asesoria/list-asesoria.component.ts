@@ -1,116 +1,121 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Asesoria } from '../../../Modelos/asesoria.model';
 import { AsesoriaService } from '../../../servicios/asesoria.service';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearAsesoriaModalComponent } from '../crear-asesoria-modal/crear-asesoria-modal.component';
 
 @Component({
   selector: 'app-list-asesoria',
   templateUrl: './list-asesoria.component.html',
-  styleUrl: './list-asesoria.component.css'
+  styleUrls: ['./list-asesoria.component.css']
 })
-export class ListAsesoriaComponent {
+export class ListAsesoriaComponent implements OnInit {
+  asesoriasTrue: Asesoria[] = [];
+  asesoriasFalse: Asesoria[] = []; 
+  asesorias: Asesoria[] = [];
   barritaColor: string;
+  showAll: boolean = true;
+  showTrue: boolean = false;
+  showFalse: boolean = false;
   token: string | null = null;
-  documento: string | null;
-  listaAsesorias: Asesoria[] = [];
+  documento: string | null = null;
+  user: any = null;
+  currentRolId: string | null = null;
+
+  constructor(
+    private asesoriaService: AsesoriaService, 
+    public dialog: MatDialog,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.initDatos();
-    this.validartoken();
+    this.validateToken();
+    this.listarAsesoriaTrue();
+    this.listarAsesoriaFalse();
   }
-  
-  validartoken(): void {
-    this.token = localStorage.getItem('token');
-    this.documento = localStorage.getItem('documento');
+
+  validateToken(): void {
+    if (!this.token) {
+      this.token = localStorage.getItem('token');
+      let identityJSON = localStorage.getItem('identity');
+
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        console.log(identity);
+        this.user = identity;
+        this.documento = this.user.emprendedor.documento;
+        this.currentRolId = this.user.id_rol?.toString();
+        console.log(this.currentRolId);
+      }
+    }
+
     if (!this.token || !this.documento) {
       this.router.navigate(['/inicio/body']);
-     // console.log('no lista empresa no esta tomando el token');
     }
-    // console.log(localStorage.getItem('documento'));
   }
 
-/*
-  constructor(private asesoriaService: AsesoriaService, 
-    private router: Router, 
-    private aRoute: ActivatedRoute, 
-    private fb: FormBuilder,) {
-    this.documento = this.aRoute.snapshot.paramMap.get('id');
+  loadAsesorias() {
+    this.asesorias = [...this.asesoriasTrue, ...this.asesoriasFalse];
   }
 
-  Con este codigo pienso que se puede conectar, el constructor de abajo funciona para el modal de crear
-*/
-
-constructor(
-  private asesoriaService: AsesoriaService,
-  private router: Router,
-  private aRoute: ActivatedRoute,
-  private fb: FormBuilder,
-  private dialog: MatDialog
-) {
-  this.documento = this.aRoute.snapshot.paramMap.get('id');
-}
-
-openCrearAsesoriaModal() {
-  const dialogRef = this.dialog.open(CrearAsesoriaModalComponent, {
-    width: '400px',
-    data: {}
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    if (result) {
-      // Lógica para manejar el resultado del modal
-      console.log('Asesoría creada:', result);
-    }
-  });
-}
-
-
-
-  cargarAsesorias(): void {
-    if (this.token) {
-      this.asesoriaService.getAsesorias(this.token, this.documento).subscribe(
-        (data) => {
-          this.listaAsesorias = data;
-          this.initDatos();
+  listarAsesoriaTrue() {
+    if (this.documento && this.token) {
+      const body = {
+        documento: this.documento,
+        asignacion: true
+      };
+      this.asesoriaService.getMisAsesorias(body).subscribe(
+        response => {
+          this.asesoriasTrue = response;
+          this.loadAsesorias();
+          console.log(this.asesoriasTrue); 
         },
-        (err) => {
-          console.log(err);
+        error => {
+          console.error(error);
         }
       );
+    } else {
+      console.error('Documento o token no encontrado en el localStorage');
     }
   }
-  
-  initDatos() {
-    const contenedor = document.getElementById('contenedorp');
-    if (contenedor && this.listaAsesorias) {
-      this.listaAsesorias.forEach((item) => {
-        const nuevaTarjeta = document.createElement('div');
-        nuevaTarjeta.classList.add('relative', 'bg-white', 'rounded-lg', 'shadow-md',
-          'overflow-hidden', 'w-80', 'm-4');
-  
-        this.barritaColor = item.asignacion === false ? 'bg-[#C5F9AD]' : 'bg-[#FFB7B7]';
-  
-        nuevaTarjeta.innerHTML = `
-          <div class="absolute h-full w-2 ${this.barritaColor}"></div>
-          <div class="p-4 border border-gray-200">
-            <h2 class="text-xl font-bold mb-2">${item.nombre_sol}</h2>
-            <p class="text-gray-700 mb-4">${item.fecha}</p>
-            <h2 class="text-l font-semibold">${item.notas}</h2>
-            <p class="text-gray-700">${item.isorientador}</p>
-            <p class="text-gray-700">${item.id_aliado}</p>
-            <p class="text-gray-700">${item.doc_emprendedor}</p>
-          </div>
-        `;
-  
-        contenedor.appendChild(nuevaTarjeta);
-      });
+
+  listarAsesoriaFalse() {
+    if (this.documento && this.token) {
+      const body = {
+        documento: this.documento,
+        asignacion: false
+      };
+
+      this.asesoriaService.getMisAsesorias(body).subscribe(
+        response => {
+          this.asesoriasFalse = response;
+          this.loadAsesorias();
+          console.log(this.asesoriasFalse); 
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.error('Documento o token no encontrado en el localStorage');
     }
   }
+
+  openCrearAsesoriaModal() {
+    const dialogRef = this.dialog.open(CrearAsesoriaModalComponent, {
+      width: '400px',
+      data: {}
+    });
   
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Asesoría creada:', result);
+        this.listarAsesoriaTrue();
+        this.listarAsesoriaFalse();
+      }
+    });
+  }
 
   changeColor(button) {
     const buttons = document.querySelectorAll('.btn-color');
@@ -118,5 +123,23 @@ openCrearAsesoriaModal() {
       btn.classList.remove('bg-gray-200');
     });
     button.classList.add('bg-gray-200');
+  }
+
+  showSinAsignar() {
+    this.showAll = false;
+    this.showTrue = false;
+    this.showFalse = true;
+  }
+
+  showAsignadas() {
+    this.showAll = false;
+    this.showTrue = true;
+    this.showFalse = false;
+  }
+
+  showAllAsesorias() {
+    this.showAll = true;
+    this.showTrue = false;
+    this.showFalse = false;
   }
 }
