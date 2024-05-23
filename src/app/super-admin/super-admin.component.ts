@@ -28,12 +28,24 @@ export class SuperAdminComponent implements OnInit {
 
 
   persona = {
+    tipoDocumento: '',
     descripcion: '',
-    titulo: ''
+    titulo: '',
+    cuerpo: '',
+    links: ''
+  };
+
+  submitted = false;
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.isFormValid()) {
+      console.log('Form data:', this.persona);
+      // Realizar acción de guardar
+    }
   }
 
-
-  procesar() {
-    console.log(this.persona)
+  isFormValid() {
+    return this.persona.tipoDocumento && this.persona.descripcion && this.persona.titulo && this.persona.cuerpo && this.persona.links;
   }
 }
