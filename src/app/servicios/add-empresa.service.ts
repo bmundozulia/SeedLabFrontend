@@ -10,17 +10,15 @@ import { ApoyoEmpresa } from '../Modelos/apoyo-empresa.modelo';
 })
 export class AddEmpresaService {
 
-  url = environment.apiUrl + 'empresa/';
+  url = environment.apiUrl + 'empresa';
 
   constructor(private http: HttpClient) { }
 
- addEmpresa(access_token: any,empresa:Empresa, apoyoEmpresa?:ApoyoEmpresa): Observable<any> {
+ addEmpresa(access_token: any, empresa:Empresa): Observable<any> {
     const headers = new HttpHeaders({
       'content-type': 'application/json',
       'Authorization': 'Bearer ' + access_token
     });
-    const options = {headers: headers}
-    const body = {empresa, apoyoEmpresa}
-    return this.http.post(this.url, body, options);
+    return this.http.post(this.url, empresa,{headers});
   }
 }

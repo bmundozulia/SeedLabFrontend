@@ -1,9 +1,10 @@
 // list-aliados.component.ts
 import { Component, OnInit } from '@angular/core';
-import { faEye, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { AliadoService } from '../../servicios/aliado.service';
-import { Aliado } from '../../Modelos/aliado.model';
+import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { AliadoService } from '../../../servicios/aliado.service';
+import { Aliado } from '../../../Modelos/aliado.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../../../Modelos/user.model';
 
 @Component({
   selector: 'app-list-aliados',
@@ -15,9 +16,12 @@ export class ListAliadosComponent implements OnInit {
   userFilter: any = { nombre: '', estado_usuario: 'Activo' };
   faeye = faEye;
   falupa = faMagnifyingGlass;
+  fax= faXmark;
   public page!: number;
   listaAliado: Aliado[] = [];
   token: string | null = null;
+  user: User | null = null;
+  currentRolId: string | null = null;
 
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
@@ -31,16 +35,23 @@ export class ListAliadosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.validartoken();
+    this.validateToken();
     this.cargarAliados(1); // Cargar inicialmente con estado 'Activo'
   }
 
-  validartoken(): void {
-    if (typeof localStorage !== 'undefined') {
-      this.token = localStorage.getItem('token');
-      if (!this.token) {
-        this.router.navigate(['/inicio/body']);
-      }
+  
+  validateToken(): void {
+    if (!this.token) {
+        this.token = localStorage.getItem("token");
+        let identityJSON = localStorage.getItem('identity');
+
+        if (identityJSON) {
+            let identity = JSON.parse(identityJSON);
+            console.log(identity);
+            this.user = identity; 
+            this.currentRolId = this.user.id_rol?.toString();
+            console.log(this.currentRolId);
+        }
     }
   }
 
