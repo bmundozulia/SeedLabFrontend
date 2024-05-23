@@ -40,9 +40,6 @@ import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.com
 
 
 
-import { ColorPickerModule } from 'ngx-color-picker';
-
-
 @NgModule({
   declarations: [
     AppComponent,
