@@ -1,4 +1,5 @@
-import { Component, QueryList, ViewChildren, ElementRef } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ColorPickerDirective } from 'ngx-color-picker';
 
 @Component({
   selector: 'app-personalizaciones',
@@ -9,26 +10,20 @@ export class PersonalizacionesComponent {
   selectedColorPrincipal = '#C2FFFB';
   selectedColorSecundario = '#C2FFFB';
   previewUrl: any = null;
-  
 
-  @ViewChildren('colorPicker') colorPickers: QueryList<ElementRef>;
+  @ViewChild('colorPickerPrincipal') colorPickerPrincipal: ColorPickerDirective;
+  @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
 
-  openColorPicker(index: number): void {
-    const colorPicker = this.colorPickers.toArray()[index];
-    if (colorPicker) {
-      colorPicker.nativeElement.click();
-    }
+  onColorChangePrincipal(color: string): void {
+    this.selectedColorPrincipal = color;
   }
 
-  onColorChangePrincipal(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.selectedColorPrincipal = input.value;
+  onColorChangeSecundario(color: string): void {
+    this.selectedColorSecundario = color;
   }
 
-  onColorChangeSecundario(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.selectedColorSecundario = input.value;
-  }
+  // Resto de tu código...
+
 
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -41,4 +36,5 @@ export class PersonalizacionesComponent {
       };
     }
   }
+  
 }

@@ -1,0 +1,17 @@
+
+.imagen{
+    width: 800px;
+    height: 100px;
+}
+.img{
+    width: 300px;
+    height: 100px;
+    object-fit: contain;
+}
+.cancel-button {
+    background-color: #ff0000; /* Cambia este valor al color que desees para el botón "Cancelar" */
+  }
+
+  .ok-button {
+    background-color: #00ff00; /* Cambia este valor al color que desees para el botón "Elegir" */
+  }

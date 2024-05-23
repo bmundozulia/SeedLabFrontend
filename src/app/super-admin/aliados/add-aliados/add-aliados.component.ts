@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AliadoService } from '../../servicios/aliado.service';
+import { AliadoService } from '../../../servicios/aliado.service';
 @Component({
   selector: 'app-add-aliados',
   templateUrl: './add-aliados.component.html',

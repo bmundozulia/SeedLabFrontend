@@ -7,6 +7,7 @@ import { SwitchService } from '../../servicios/switch.service'
   styleUrl: './modal.component.css'
 })
 export class ModalComponent implements OnInit {
+  
   constructor(private modalSS: SwitchService) {
 
   }
