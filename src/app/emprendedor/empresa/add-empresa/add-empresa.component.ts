@@ -5,11 +5,11 @@ import { HeaderComponent } from '../../../header/header.component';
 import { AddEmpresaService } from '../../../servicios/add-empresa.service';
 import { FormBuilder,ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Empresa } from '../../Modelos/empresa.model';
-import { DepartamentoService } from '../../servicios/departamento.service';
-import { MunicipioService } from '../../servicios/municipio.service';
-import { User } from '../../Modelos/user.model';
-import { ApoyoEmpresa } from '../../Modelos/apoyo-empresa.modelo';
+import { Empresa } from '../../../Modelos/empresa.model';
+import { DepartamentoService } from '../../../servicios/departamento.service';
+import { MunicipioService } from '../../../servicios/municipio.service';
+import { User } from '../../../Modelos/user.model';
+import { ApoyoEmpresa } from '../../../Modelos/apoyo-empresa.modelo';
 import { response } from 'express';
 import { error } from 'console';
 
@@ -146,9 +146,6 @@ export class AddEmpresaComponent{
       id_tipo_documento: ['', Validators.required],
   });
   
-  get apoyos(): FormArray {
-    return this.addEmpresaForm.get('apoyos') as FormArray;
-  }
   
  /* eliminarApoyo(index: number): void {
     this.apoyos.removeAt(index);
