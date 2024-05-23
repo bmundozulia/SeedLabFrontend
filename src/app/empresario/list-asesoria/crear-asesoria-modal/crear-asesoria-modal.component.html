@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="p-4 bg-white">
   <h2>Crear Asesoría</h2>
   <form [formGroup]="asesoriaForm" (ngSubmit)="onSubmit()">
     <label class="mb-1 text-">Nombre Solicitud</label>
@@ -23,8 +23,8 @@
     </div>
     <!-- Agrega más campos según sea necesario -->
     <div mat-dialog-actions>
-      <button mat-button mat-dialog-close>Cancelar</button>
-      <button mat-button type="submit">Guardar</button>
+      <button mat-button mat-dialog-close class="bg-red-500">Cancelar</button>
+      <button mat-button class="bg-sky-500" type="submit">Guardar</button>
     </div>
   </form>
   
