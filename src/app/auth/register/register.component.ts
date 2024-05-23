@@ -20,6 +20,8 @@ import { Emprendedor } from '../../Modelos/emprendedor.model';
 
 
 
+
+
 @Component({
   selector: 'app-register',
   standalone: true,
