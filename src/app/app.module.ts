@@ -35,7 +35,9 @@ import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/lis
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
-import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
+import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emprendedor.component';
+import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
+
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component';
 
@@ -63,8 +65,8 @@ import { ReportesComponent } from './orientador/reportes/reportes.component';
     SuperAdminComponent,
     ListRutasComponent,
     ReportesComponent,
-    
-
+        RutaEmprendedorComponent,
+    AsesoriaAliadoComponent,
   ],
   imports: [
     BrowserModule,
