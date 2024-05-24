@@ -1,3 +1,4 @@
+// list-rutas.component.ts
 import { Component, OnInit } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { RutaService } from '../../../servicios/rutas.service';
@@ -5,16 +6,15 @@ import { Router } from '@angular/router';
 import { User } from '../../../Modelos/user.model';
 import { Ruta } from '../../../Modelos/ruta.modelo';
 
-
 @Component({
   selector: 'app-list-rutas',
   templateUrl: './list-rutas.component.html',
-  styleUrl: './list-rutas.component.css',
+  styleUrls: ['./list-rutas.component.css'],
   providers: [RutaService]
 })
 export class ListRutasComponent implements OnInit {
-  userFilter: any = { nombre: '', estado: 'Activo', fecha_creacion:'' };
-  public page!: number;
+  userFilter: any = { nombre: '', estado: 'Activo', fecha_creacion: '' };
+  public page: number = 1;
   listaRutas: Ruta[] = [];
   fax = faXmark;
   falupa = faMagnifyingGlass;
@@ -32,11 +32,11 @@ export class ListRutasComponent implements OnInit {
     this.validateToken();
     this.cargarRutas();
   }
+
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
     0: 'Inactivo'
   };
-
 
   validateToken(): void {
     if (!this.token) {
@@ -52,14 +52,13 @@ export class ListRutasComponent implements OnInit {
         console.log(this.currentRolId);
       }
     }
-
   }
 
   cargarRutas(): void {
     if (this.token) {
       this.rutaService.getAllRutas(this.token).subscribe(
         (data: Ruta[]) => {
-          this.listaRutas = data.map((item: any) =>
+          this.listaRutas = data.filter(item => this.ESTADO_MAP[item.estado] === this.userFilter.estado).map((item: any) =>
             new Ruta(
               item.nombre,
               item.fecha_creacion,
@@ -76,17 +75,14 @@ export class ListRutasComponent implements OnInit {
     }
   }
 
-
-
   onEstadoChange(event: any): void {
     const estado = event.target.value;
+    this.userFilter.estado = estado === '1' ? 'Activo' : 'Inactivo';
     this.cargarRutas();
   }
 
-
   limpiarFiltro(): void {
-    this.userFilter = { nombre: '', estado_usuario: 'Activo' };
-    // Opcional: recargar los aliados con el estado por defecto
+    this.userFilter = { nombre: '', estado: 'Activo', fecha_creacion: '' };
     this.cargarRutas();
   }
 }
