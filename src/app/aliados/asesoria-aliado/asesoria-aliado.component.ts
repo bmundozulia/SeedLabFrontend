@@ -46,8 +46,8 @@ export class AsesoriaAliadoComponent {
     }
   }
 
-  loadAsesorias(): void {
-    this.asesoriaService.getAsesoriasOrientador().subscribe(
+  loadAsesorias(pendiente: boolean = true): void {
+    this.asesoriaService.postAsesoriasOrientador(pendiente).subscribe(
       data => {
         console.log('Respuesta de la API:', data); // Escribir la respuesta en la consola
         this.asesorias = data;

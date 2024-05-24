@@ -37,15 +37,29 @@ export class AsesoriaService {
     return this.http.post<any>(`${this.apiUrl}solicitud_asesoria`, data, { headers });
   }
 
-  getAsesoriasOrientador(): Observable<any> {
+  postAsesoriasOrientador(pendiente: boolean): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
     });
-
-    return this.http.get<any>(`${this.apiUrl}asesoriaOrientador`, { headers });
+    const body = {
+      pendiente: pendiente
+    };
+    return this.http.post<any>(`${this.apiUrl}asesoriaOrientador`, body, { headers });
   }
 
+  asignarAliado(id: number, nombreAliado: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+
+    const body = { nombreAliado: nombreAliado };
+
+    return this.http.post<any>(`${this.apiUrl}asesorias/${id}/asignar-aliado`, body, { headers });
+  }
 
 }
 
