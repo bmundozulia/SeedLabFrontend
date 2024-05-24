@@ -40,260 +40,329 @@
     </div>
 
 
-    <div class="">
+    <div class=" flex-1  xl:m-8 p-4   rounded-lg">
+        <!-- Separacion -->
         <div class="">
-            <div class="">
-                <div class="">
-                    <div class="">
-                        <div class="">
-                            <div class="">
-                                <!-- Separacion -->
-                                <div class="">
-                                    <div class="">
-                                        <h3 class="">¿Cuantos integrantes conforman su equipo de
-                                            trabajo?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class=" ">Cuenta con personas de apoyo en:</h3>
-                                        <div class="">
-                                            <h3 class="">Administrativo</h3>
-                                            <div class="">
-                                                <select id="1Select" class="" [(ngModel)]="selectedOption1">
-                                                    <option value="" disabled selected hidden>Si / No</option>
-                                                    <option value="tipo1">Si</option>
-                                                    <option value="tipo2">No</option>
-                                                </select>
+            <table class="min-w-full bg-white my-3">
+                <tbody>
+                    <tr>
+                        <td class="py-2 px-4"><b>1.</b>¿Cuantos integrantes conforman su equipo de
+                            trabajo?</td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Tipo 1</option>
+                                <option value="tipo2">Tipo 2</option>
+                                <option value="tipo3">Tipo 3</option>
+                            </select>
+                        </td>
+                    </tr>
 
-                                                <select id="2Select" class=""
-                                                    [style.display]="selectedOption1 === 'tipo1' ? 'block' : 'none'">
-                                                    <option value="" disabled selected hidden>¿Cuantos?</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <h3 class="">Desarrollo</h3>
-                                            <div class="">
-                                                <select id="3Select" class="" [(ngModel)]="selectedOption2">
-                                                    <option value="" disabled selected hidden>Si / No</option>
-                                                    <option value="tipo1">Si</option>
-                                                    <option value="tipo2">No</option>
-                                                </select>
+                </tbody>
+            </table>
+            <div class="border ">
+                <h3 class="relative bottom-4 left-4 bg-white inline-block mx-2"><b>2. </b> Cuenta con personas de
+                    apoyo
+                    en:</h3>
+                <div class="mx-8 ">
+                    <div class="sm:block lg:flex lg:flex-wrap md:flex md:flex-wrap my-2 lg:content-center">
+                        <h3 class="lg:mr-72 md:mr-72">Administrativo</h3>
+                        <div class="flex  space-x-4 ">
+                            <select id="1Select"
+                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [(ngModel)]="selectedOption1">
+                                <option value="" disabled selected hidden>Si / No</option>
+                                <option value="tipo1">Si</option>
+                                <option value="tipo2">No</option>
+                            </select>
 
-                                                <select id="4Select" class=""
-                                                    [style.display]="selectedOption2 === 'tipo1' ? 'block' : 'none'">
-                                                    <option value="" disabled selected hidden>¿Cuantos?</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                            <select id="2Select"
+                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [style.display]="selectedOption1 === 'tipo1' ? 'block' : 'none'">
+                                <option value="" disabled selected hidden>¿Cuantos?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" sm:block lg:flex lg:flex-wrap md:flex md:flex-wrap my-2 lg:content-center">
+                        <h3 class="lg:mr-80 md:mr-80">Desarrollo</h3>
+                        <div class="flex space-x-4">
+                            <select id="3Select"
+                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [(ngModel)]="selectedOption2">
+                                <option value="" disabled selected hidden>Si / No</option>
+                                <option value="tipo1">Si</option>
+                                <option value="tipo2">No</option>
+                            </select>
 
-                                        <div class="">
-                                            <h3 class="">Producción</h3>
-                                            <div class="">
-                                                <select id="1Select" class="" [(ngModel)]="selectedOption3">
-                                                    <option value="" disabled selected hidden>Si / No</option>
-                                                    <option value="tipo1">Si</option>
-                                                    <option value="tipo2">No</option>
-                                                </select>
+                            <select id="4Select"
+                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [style.display]="selectedOption2 === 'tipo1' ? 'block' : 'none'">
+                                <option value="" disabled selected hidden>¿Cuantos?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
 
-                                                <select id="2Select" class=""
-                                                    [style.display]="selectedOption3 === 'tipo1' ? 'block' : 'none'">
-                                                    <option value="" disabled selected hidden>¿Cuantos?</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <h3 class="">Innovación y/o desarrollo</h3>
-                                            <div class="">
-                                                <select id="1Select" class="" [(ngModel)]="selectedOption4">
-                                                    <option value="" disabled selected hidden>Si / No</option>
-                                                    <option value="tipo1">Si</option>
-                                                    <option value="tipo2">No</option>
-                                                </select>
+                    <div class="sm:block lg:flex lg:flex-wrap md:flex md:flex-wrap my-2 lg:content-center">
+                        <h3 class="lg:mr-72 md:mr-72">Producción</h3>
+                        <div class="flex space-x-4">
+                            <select id="1Select"
+                                class="h-7 rounded px-2 lg:ml-6 md:ml-6 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [(ngModel)]="selectedOption3">
+                                <option value="" disabled selected hidden>Si / No</option>
+                                <option value="tipo1">Si</option>
+                                <option value="tipo2">No</option>
+                            </select>
 
-                                                <select id="2Select" class=""
-                                                    [style.display]="selectedOption4 === 'tipo1' ? 'block' : 'none'">
-                                                    <option value="" disabled selected hidden>¿Cuantos?</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <h3 class="">Comercialización</h3>
-                                            <div class="">
-                                                <select id="1Select" class="" [(ngModel)]="selectedOption5">
-                                                    <option value="" disabled selected hidden>Si / No</option>
-                                                    <option value="tipo1">Si</option>
-                                                    <option value="tipo2">No</option>
-                                                </select>
+                            <select id="2Select"
+                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [style.display]="selectedOption3 === 'tipo1' ? 'block' : 'none'">
+                                <option value="" disabled selected hidden>¿Cuantos?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sm:block lg:flex lg:flex-wrap md:flex md:flex-wrap my-2 lg:content-center">
+                        <h3 class="lg:mr-52 md:mr-52">Innovación y/o desarrollo</h3>
+                        <div class="flex space-x-4">
+                            <select id="1Select"
+                                class="h-7 rounded px-2 lg:ml-1 md:ml-1 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [(ngModel)]="selectedOption4">
+                                <option value="" disabled selected hidden>Si / No</option>
+                                <option value="tipo1">Si</option>
+                                <option value="tipo2">No</option>
+                            </select>
 
-                                                <select id="2Select" class=""
-                                                    [style.display]="selectedOption5 === 'tipo1' ? 'block' : 'none'">
-                                                    <option value="" disabled selected hidden>¿Cuantos?</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <select id="2Select"
+                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [style.display]="selectedOption4 === 'tipo1' ? 'block' : 'none'">
+                                <option value="" disabled selected hidden>¿Cuantos?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="lg:flex lg:flex-wrap md:flex md:flex-wrap my-1 mb-4 lg:content-center ">
+                        <h3 class="lg:mr-64 md:mr-64">Comercialización</h3>
+                        <div class="flex space-x-4">
+                            <select id="1Select"
+                                class="h-7 rounded px-2 lg:ml-4 md:ml-4 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [(ngModel)]="selectedOption5">
+                                <option value="" disabled selected hidden>Si / No</option>
+                                <option value="tipo1">Si</option>
+                                <option value="tipo2">No</option>
+                            </select>
 
-                                <!-- Separacion -->
-                                <div class="">
-                                    <div class="">
-                                        <h3 class="">¿Su emprendimiento esta legalmente
-                                            constituido?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class="">¿Cumple con las normas tributarias,
-                                            contables, laborales, comerciales y/o legales para desempeñar la actividad?
-                                        </h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!----------------------------------------------- Separacion -------------------------------------------------->
-                                <div class="">
-                                    <div class="">
-                                        <h3 class="">¿Tiene claramente definido su modelo
-                                            de negocio?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class="">¿Tiene claramente definido su plan de
-                                            negocios?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class="">¿Tiene experiencia comercial
-                                            relacionada con el producto y/o servicio?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class=" ">
-                                        <h3 class="">Si la respuesta anterior fue
-                                            afirmativa indicar: ¿Cuánto tiempo de experiencia relacionada tiene?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class="">¿Su emprendimiento tiene definido la
-                                            misión y la visión?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class="">Si la respuesta anterior fue
-                                            afirmativa indicar ¿Cuál es su misión?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class=" ">
-                                        <h3 class="">Si la respuesta anterior fue
-                                            afirmativa indicar ¿Cuál es su visión?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class="">¿Tiene definidas metas empresariales?
-                                        </h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class="">¿El personal de apoyo está
-                                            debidamente contratado?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class="">¿Los cargos de apoyo tienen funciones
-                                            claramente definidas?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <h3 class="">¿El perfil de los apoyos está
-                                            debidamente definido?</h3>
-                                        <select class="">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                            <select id="2Select"
+                                class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                [style.display]="selectedOption5 === 'tipo1' ? 'block' : 'none'">
+                                <option value="" disabled selected hidden>¿Cuantos?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Separacion -->
+
+
+        <table class="min-w-full bg-white">
+            <tbody>
+                <tr>
+                    <td class="py-2 px-4"><b>3. </b>¿Su emprendimiento esta legalmente
+                        constituido?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4"><b>4. </b> ¿Cumple con las normas tributarias,
+                        contables, laborales, comerciales y/o legales para desempeñar la actividad?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 ">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 "><b>5.</b>¿Tiene claramente definido su modelo
+                        de negocio?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 ">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!-- separacion -->
+
+                <tr>
+                    <td class="py-2 px-4">
+                        <b>6.</b>¿Tiene claramente definido su plan de
+                        negocios?
+                    </td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4">
+                        <b>7.</b>¿Tiene experiencia comercial
+                        relacionada con el producto y/o servicio?
+                    </td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4"><b>8.</b>Si la respuesta anterior fue
+                        afirmativa indicar: ¿Cuánto tiempo de experiencia relacionada tiene?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4"><b>9.</b>¿Su emprendimiento tiene definido la
+                        misión y la visión?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4"><b>10.</b>Si la respuesta anterior fue
+                        afirmativa indicar ¿Cuál es su misión?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4"><b>11.</b>Si la respuesta anterior fue
+                        afirmativa indicar ¿Cuál es su visión?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4">
+                        <b>12.</b>¿Tiene definidas metas empresariales?
+                    </td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4"><b>13.</b>¿El personal de apoyo está
+                        debidamente contratado?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4"><b>14.</b>¿Los cargos de apoyo tienen funciones
+                        claramente definidas?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4"><b>15.</b>¿El perfil de los apoyos está
+                        debidamente definido?</td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
     </div>
 </div>
 
