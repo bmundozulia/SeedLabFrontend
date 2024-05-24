@@ -17,12 +17,10 @@ export class AsesoriaService {
       console.error('Token no encontrado en el localStorage');
       return new Observable<any>();
     }
-
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`  // Incluye el token en las cabeceras
+      'Authorization': `Bearer ${token}`  
     });
-
     return this.http.post<any>(`${this.apiUrl}mis_asesorias`, body, { headers });
   }
 
@@ -32,12 +30,23 @@ export class AsesoriaService {
       console.error('Token no encontrado en el localStorage');
       return new Observable<any>();
     }
-
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`  // Incluye el token en las cabeceras
     });
-
     return this.http.post<any>(`${this.apiUrl}solicitud_asesoria`, data, { headers });
   }
+
+  getAsesoriasOrientador(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<any>(`${this.apiUrl}asesoriaOrientador`, { headers });
+  }
+
+
 }
+
+  

@@ -18,7 +18,7 @@ import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliad
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component'
 
-
+import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 
 
 const routes: Routes = [
@@ -41,6 +41,7 @@ const routes: Routes = [
 
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor
+  { path: 'ver-asesoria', component: VerAsesoriasComponent}, //de orientador
   { path: 'add-aliados', component: AddAliadosComponent },
 
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
