@@ -22,7 +22,7 @@ export class AliadoService {
 
   getinfoAliado(access_token: any, estado: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    const url = `${environment.apiUrl}aliado/aliado/${estado}`;
+    const url = `${environment.apiUrl}aliado/${estado}`;
     return this.http.get(url, options);
   }
 

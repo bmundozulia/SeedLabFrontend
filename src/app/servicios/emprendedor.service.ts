@@ -17,7 +17,7 @@ export class EmprendedorService {
     })
   }
 
-  url = environment.apiUrl + 'emprendedor'
+  private url = `${environment.apiUrl}/userProfile`;
 
   constructor(private http: HttpClient) { }
 
@@ -29,5 +29,10 @@ export class EmprendedorService {
   updateEmprendedor(emprendedor:Emprendedor, access_token: any, documento: string): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.put(this.url + "/" + documento, emprendedor, options);
+  }
+
+  getInfoEmprendedor(accessToken: string, documento: string): Observable<any> {
+    const headers = this.CreacionHeaders(accessToken);
+    return this.http.get<any>(`${this.url}/${documento}`, { headers });
   }
 }

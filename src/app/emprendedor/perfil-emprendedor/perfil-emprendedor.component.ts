@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DepartamentoService } from '../../servicios/departamento.service';
+import { EmprendedorService } from '../../servicios/emprendedor.service';
 import { MunicipioService } from '../../servicios/municipio.service';
 import { RegistroService } from '../../servicios/registro.service';
 import { Router } from '@angular/router';
@@ -42,34 +43,36 @@ export class PerfilEmprendedorComponent {
   documento: string;
   user: User | null = null;
   currentRolId: string | null = null;
+  emprendedorForm = this.fb.group({
+    documento: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+    nombre: ['', Validators.required],
+    apellido: ['', Validators.required],
+    celular: ['', [Validators.required, Validators.maxLength(10)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
+    genero: ['', Validators.required],
+    fecha_nacimiento: ['', Validators.required],
+    direccion: ['', Validators.required],
+    nombretipodoc: ['', Validators.required],
+    municipio: ['', Validators.required],
+  })
   registerForm: FormGroup; //ahorita quitarlo
+  listEmprendedor: Emprendedor[] =[];
 
 
   constructor(
     private fb: FormBuilder,
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
+    private emprendedorService: EmprendedorService,
     private registroService: RegistroService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.cargarDepartamentos();
-
-    this.registerForm = this.fb.group({
-      documento: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
-      nombretipodoc: ['', Validators.required],
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      celular: ['', [Validators.required, Validators.maxLength(10)]],
-      genero: ['', Validators.required],
-      fecha_nacimiento: ['', Validators.required],
-      municipio: ['', Validators.required],
-      direccion: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
-      estado: '1'
-    });
+    this.verEditar();
+    
   }
 
   validateToken(): void {
@@ -88,7 +91,30 @@ export class PerfilEmprendedorComponent {
     }
   }
 
-  
+  verEditar(): void {
+    if (this.token) {
+      this.emprendedorService.getInfoEmprendedor(this.token, this.documento).subscribe(
+        (data) => {
+          this.emprendedorForm.setValue({
+          documento: data.documento,
+          nombre: data.nombre,
+          apellido: data.apellido,
+          celular: data.celular,
+          email: data.email,
+          password:  data.password,
+          genero: data.genero,
+          fecha_nacimiento: data.fecha_nacimiento,
+          direccion: data.direccion,
+          nombretipodoc: data.nombretipodoc,
+          municipio: data.municipio,
+          });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
+  }
 
   passwordValidator(control: AbstractControl) {
     const value = control.value;
@@ -135,5 +161,5 @@ export class PerfilEmprendedorComponent {
   }
 
   //Funcion para registrar un emprendedor
- 
+
 }
