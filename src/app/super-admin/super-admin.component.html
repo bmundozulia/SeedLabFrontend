@@ -5,7 +5,7 @@
         <div class="col-span-4">
 
             <div class=" flex justify-between my-8 relative ">
-                <p class="text-lg font-bold mb-2 ">Ruta</p>
+                <p class="text-lg font-bold mb-1 ">Ruta</p>
                 <button (click)="openModal()" class="bg-sky-400 rounded text-white px-6 inline-block ">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class=""
                         viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -18,48 +18,55 @@
 
                 </div>
             </div>
-            <ul class="p-0 m-06">
-                <hr class="divide ">
-                <li class=" flex justify-between   hover:bg-sky-100 hover:h-10">
-                    <p class="m-2 text-lg">
-                        1. Convocatoria y selección
-                    </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
-                        viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path
-                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                    </svg>
-                </li>
-                <hr class="divide ">
-                <li class=" flex justify-between   hover:bg-sky-100 hover:h-10">
-                    <p class="m-2 text-lg">2. Kickoff (evento IMPRENDE)</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
-                        viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path
-                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                    </svg>
+            <div class=" overflow-y-auto max-h-72">
+                <ul class="sidebar p-0 m-06">
+                    <hr class="divide m-0">
+                    <li class="    hover:bg-sky-100 h-10">
+                        <a href="
+                        " class="flex justify-between no-underline text-black">
+                            <p class="m-2 text-base">
+                                1. Convocatoria y selección
+                            </p>
+                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
+                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <hr class="divide m-0">
+                    <li class=" ">
+                        <a href="" class="flex justify-between no-underline text-black   hover:bg-sky-100 h-10">
+                            <p class="m-2 text-base">2. Kickoff (evento IMPRENDE)</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
+                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                            </svg>
+                        </a>
 
-                </li>
-                <hr class="divide ">
+                    </li>
+                    <hr class="divide m-0">
 
-            </ul>
+                </ul>
+            </div>
         </div>
 
         <!-- Contenido principal -->
         <div class=" col-span-8 ">
-            <h1 class="text-center my-8">2 Kickoff (evento imprende)</h1>
+            <h2 class="text-center my-8">2 Kickoff (evento imprende)</h2>
             <form (ngSubmit)="onSubmit()">
                 <div class="xl:bg-gray-100 rounded xl:p-4">
-                    <div class="flex flex-wrap items-center">
-                        <h2 class="mr-4">Responsive</h2>
+                    <div class="flex flex-wrap  contetnt-center">
+                        <h2 class="mr-4">Responsable</h2>
                         <div class="relative">
                             <select id="tipoDocumento" name="tipoDocumento" required [(ngModel)]="persona.tipoDocumento"
                                 #tipoDocumento="ngModel"
-                                class="p-2 w-full border border-gray-700 rounded-xl bg-white-50 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 ">
+                                class="p-2 w-full h-10 border border-gray-700 rounded-xl bg-white-50 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 ">
                                 <option value="" disabled selected>Seleccionar Aliado...</option>
-                                <option value="Cedula">Cédula ciudadanía</option>
-                                <option value="pasaporte">Pasaporte</option>
-                                <option value="carnetExtranjeria">Carnet de Extranjería</option>
+                                <option value="Cedula">xxxx</option>
+                                <option value="pasaporte">xxxx</option>
+                                <option value="carnetExtranjeria">xxxx</option>
                             </select>
                             <div *ngIf="submitted && tipoDocumento.invalid"
                                 class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50 "
@@ -69,10 +76,10 @@
                         </div>
                     </div>
 
-                    <div class="mb-2 mt-4">
+                    <div class="mb-2 mt-2">
                         <h3>Descripcion Corta</h3>
                         <textarea name="descripcion" required [(ngModel)]="persona.descripcion" #descripcion="ngModel"
-                            class="border h-28 border-gray-700 rounded-xl w-full resize-none p-2 bg-white-50 focus:outline-none focus:ring-2 focus:ring-blue-200 "></textarea>
+                            class="border h-14 border-gray-700 rounded-xl w-full resize-none p-2 bg-white-50 focus:outline-none focus:ring-2 focus:ring-blue-200 "></textarea>
                         <div *ngIf="submitted && descripcion.invalid"
                             class="inline-block  p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 " role="alert">
                             <span class="font-medium">Este campo es requerido *</span>
@@ -82,7 +89,7 @@
                     <div class="bg-gray-50 rounded-xl border border-black-50 p-4">
                         <div class="py-2">
                             <h3 class="font-bold ">Actividades</h3>
-                            <p class="text-lg">Titulo</p>
+                            <p class="text-base">Titulo</p>
                             <input type="text" name="titulo" required [(ngModel)]="persona.titulo" #titulo="ngModel"
                                 class="border border-gray-700 h-10 rounded-xl w-full p-4 bg-white-50 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 ">
                             <div *ngIf="submitted && titulo.invalid"
@@ -95,7 +102,7 @@
                         <div class="py-2">
                             <h3>Cuerpo</h3>
                             <textarea name="cuerpo" required [(ngModel)]="persona.cuerpo" #cuerpo="ngModel"
-                                class="h-28 border border-gray-700 rounded-xl w-full resize-none p-2 bg-white-50 focus:outline-none focus:ring-2 focus:ring-blue-200 "></textarea>
+                                class="h-14 border border-gray-700 rounded-xl w-full resize-none p-2 bg-white-50 focus:outline-none focus:ring-2 focus:ring-blue-200 "></textarea>
                             <div *ngIf="submitted && cuerpo.invalid"
                                 class="p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 inline-block"
                                 role="alert">
@@ -116,16 +123,12 @@
                                 <span class="font-medium" *ngIf="links.errors?.pattern">El enlace debe comenzar con
                                     "https://"</span>
                             </div>
-                            <button type="submit"
-                                class="block bg-sky-400 text-white px-4 py-2 rounded mt-4 text-md">Agregar
-                                otro
-                                link</button>
 
 
                             <hr class="divide-y divide-light-blue-400 ">
                             <div class="flex justify-center">
 
-                                <button type="submit" class=" bg-sky-400 text-white px-4 py-2 rounded mt-4 text-md">
+                                <button type="submit" class=" bg-sky-400 text-white px-4 py-2 rounded mt-2 text-md">
                                     Agregar otra actividad
                                 </button>
                             </div>
