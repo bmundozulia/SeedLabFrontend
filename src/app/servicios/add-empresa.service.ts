@@ -11,7 +11,7 @@ import { ApoyoEmpresa } from '../Modelos/apoyo-empresa.modelo';
 })
 export class AddEmpresaService {
 
-  url = environment.apiUrl + 'empresa';
+  url = environment.apiUrl + 'empresa/';
 
   constructor(private http: HttpClient) { }
 
