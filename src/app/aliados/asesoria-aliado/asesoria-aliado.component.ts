@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Asesoria } from '../../../Modelos/asesoria.model';
-import { AsesoriaService } from '../../../servicios/asesoria.service';
+import { Asesoria } from '../../Modelos/asesoria.model';
+import { AsesoriaService } from '../../servicios/asesoria.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-ver-asesorias',
-  templateUrl: './ver-asesorias.component.html',
-  styleUrl: './ver-asesorias.component.css'
+  selector: 'app-asesoria-aliado',
+  templateUrl: './asesoria-aliado.component.html',
+  styleUrl: './asesoria-aliado.component.css'
 })
-export class VerAsesoriasComponent {
+export class AsesoriaAliadoComponent {
   asesorias: Asesoria[] = [];
   barritaColor: string;
   token: string | null = null;

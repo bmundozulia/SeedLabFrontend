@@ -1,27 +1,52 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment } from '../../environment/env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AsesoriaService {
-
-  private CreacionHeaders(access_token: any): HttpHeaders { //para la creacion de los header y que sea autortizado
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + access_token
-    })
-  }
-
-  url = environment.apiUrl + 'mis_asesorias/'
+  private apiUrl = `${environment.apiUrl}asesorias/`;
 
   constructor(private http: HttpClient) { }
 
-  getAsesorias(access_token:any, doc_emprendedor: string): Observable<any>{
-    const options= { headers: this.CreacionHeaders(access_token) };
-    return this.http.get(this.url+"/"+doc_emprendedor, options);
+  getMisAsesorias(body: { documento: string, asignacion: boolean }): Observable<any> {
+    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+    if (!token) {
+      console.error('Token no encontrado en el localStorage');
+      return new Observable<any>();
+    }
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`  
+    });
+    return this.http.post<any>(`${this.apiUrl}mis_asesorias`, body, { headers });
   }
+
+  crearAsesoria(data: any): Observable<any> {
+    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+    if (!token) {
+      console.error('Token no encontrado en el localStorage');
+      return new Observable<any>();
+    }
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`  // Incluye el token en las cabeceras
+    });
+    return this.http.post<any>(`${this.apiUrl}solicitud_asesoria`, data, { headers });
+  }
+
+  getAsesoriasOrientador(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<any>(`${this.apiUrl}asesoriaOrientador`, { headers });
+  }
+
+
 }
+
+  
