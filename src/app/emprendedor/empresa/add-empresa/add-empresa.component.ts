@@ -133,8 +133,8 @@ export class AddEmpresaComponent {
     
 
     const empresa: Empresa = {
-      nombre: this.addEmpresaForm.get('nombre')?.value,
       documento: this.addEmpresaForm.get('documento')?.value,
+      nombre: this.addEmpresaForm.get('nombre')?.value,
       correo: this.addEmpresaForm.get('correo')?.value,
       cargo: this.addEmpresaForm.get('cargo')?.value,
       razonSocial: this.addEmpresaForm.get('razonSocial')?.value,
