@@ -30,8 +30,6 @@ export class AddEmpresaComponent {
   documento: string;
   user: User | null = null;
   currentRolId: string | null = null;
-  
-  empresa: Empresa | null = null;
 
 
 
@@ -180,7 +178,7 @@ export class AddEmpresaComponent {
           console.log('Datos de apoyoEmpresa con ID de empresa:', apoyos);
           return this.addEmpresaService.addApoyoEmpresa(this.token, apoyos);
         }
-        // Si apoyoEmpresa es null o empresaId es null, retornar un observable vacío
+        // Si apoyoEmpresa es null, retornar un observable vacío
         return of(null);
       })
     ).subscribe(
