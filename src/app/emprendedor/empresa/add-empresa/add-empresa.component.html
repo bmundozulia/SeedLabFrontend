@@ -151,59 +151,62 @@
                             Guardar cambios
                         </button>
                     </div>
-                    <div id="contenido" class="mt-6 sm:mt-14">
-                        <hr class="w-full border-t-gray-600 border-gray-400" />
-                        <div class="flex justify-between items-center mb-6">
-                            <h1 class="text-xl md:text-4xl font-bold text-sky-600">Apoyo</h1>
+                    <form [formGroup]="addApoyoEmpresaForm" (ngSubmit)="crearEmpresa()">
+                        <div id="contenido" class="mt-6 sm:mt-14">
+                            <hr class="w-full border-t-gray-600 border-gray-400" />
+                            <div class="flex justify-between items-center mb-6">
+                                <h1 class="text-xl md:text-4xl font-bold text-sky-600">Apoyo</h1>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                <div class="w-full text-base relative">
+                                    <label for="nombre" class="block mb-2 text-blue-400">Nombre:</label>
+                                    <input formControlName="nombre" class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                </div>
+                                <div class="w-full text-base relative">
+                                    <label for="cargo" class="block mb-2 text-blue-400">Cargo:</label>
+                                    <input  formControlName="cargo" class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                </div>
+                                <div class="w-full text-base relative">
+                                    <label for="celular" class="block mb-2 text-blue-400">Celular:</label>
+                                    <input formControlName="celular" class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                </div>
+                                <div class="w-full text-base relative">
+                                    <label for="correo" class="block mb-2 text-blue-400">Correo:</label>
+                                    <input formControlName="email" class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                </div>
+                                <div class="w-full text-base relative">
+                                    <label for="tipodocumento" class="block mb-2 text-blue-400">Tipo de Documento:</label>
+                                <select id="tipoDocumento" formControlName="id_tipo_documento"
+                                    class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                    <option value="" disabled selected>
+                                        Seleccionar tipo de documento...
+                                    </option>
+                                    <option value="1">Cédula ciudadanía</option>
+                                    <option value="2">Pasaporte</option>
+                                    <option value="3">Carnet de Extranjería</option>
+                                    <option value="4">NIT</option>
+                                </select>
+                                    <fa-icon [icon]="faIdCard" class="absolute right-5 top-4 mt-7 text-cyan-500 z-0"
+                                        styles=" pointer-events: auto;"></fa-icon>
+                                </div>
+                                <div class="w-full text-base relative">
+                                    <label for="numeroDocumento" class="block mb-2 text-blue-400">Número de documento:</label>
+                                    <input formControlName="documento" class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                </div>
+                                <div class="w-full text-base relative">
+                                    <label for="fijo" class="block mb-2 text-blue-400">Fijo:</label>
+                                    <input formControlName="telefono" class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <button id="guardar" type="submit"
+                                    class="px-10 py-3 bg-sky-500 bg-opacity-80 text-white rounded-xl cursor-pointer">
+                                    Guardar cambios
+                                </button>
+                            </div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                            <div class="w-full text-base relative">
-                                <label for="nombre" class="block mb-2 text-blue-400">Nombre:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                            </div>
-                            <div class="w-full text-base relative">
-                                <label for="cargo" class="block mb-2 text-blue-400">Cargo:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                            </div>
-                            <div class="w-full text-base relative">
-                                <label for="celular" class="block mb-2 text-blue-400">Celular:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                            </div>
-                            <div class="w-full text-base relative">
-                                <label for="correo" class="block mb-2 text-blue-400">Correo:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                            </div>
-                            <div class="w-full text-base relative">
-                                <label for="tipodocumento" class="block mb-2 text-blue-400">Tipo de Documento:</label>
-                            <select id="tipoDocumento" formControlName="id_tipo_documento"
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
-                                <option value="" disabled selected>
-                                    Seleccionar tipo de documento...
-                                </option>
-                                <option value="1">Cédula ciudadanía</option>
-                                <option value="2">Pasaporte</option>
-                                <option value="3">Carnet de Extranjería</option>
-                                <option value="4">NIT</option>
-                            </select>
-                                <fa-icon [icon]="faIdCard" class="absolute right-5 top-4 mt-7 text-cyan-500 z-0"
-                                    styles=" pointer-events: auto;"></fa-icon>
-                            </div>
-                            <div class="w-full text-base relative">
-                                <label for="numeroDocumento" class="block mb-2 text-blue-400">Número de documento:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                            </div>
-                            <div class="w-full text-base relative">
-                                <label for="fijo" class="block mb-2 text-blue-400">Fijo:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                            </div>
-                        </div>
-                        <div class="flex justify-end">
-                            <button id="guardar" type="submit"
-                                class="px-10 py-3 bg-sky-500 bg-opacity-80 text-white rounded-xl cursor-pointer">
-                                Guardar cambios
-                            </button>
-                        </div>
-                    </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>
