@@ -10,6 +10,7 @@ import { DepartamentoService } from '../../../servicios/departamento.service';
 import { MunicipioService } from '../../../servicios/municipio.service';
 import { User } from '../../../Modelos/user.model';
 import { ApoyoEmpresa } from '../../../Modelos/apoyo-empresa.modelo';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-add-empresa',
@@ -29,6 +30,9 @@ export class AddEmpresaComponent {
   documento: string;
   user: User | null = null;
   currentRolId: string | null = null;
+  
+  empresa: Empresa | null = null;
+
 
 
   constructor(
@@ -108,8 +112,8 @@ export class AddEmpresaComponent {
   });
 
   addApoyoEmpresaForm = this.fb.group({
-    nombre: ['', Validators.required],
     documento: ['', Validators.required],
+    nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     cargo: ['', Validators.required],
     telefono: [''],
@@ -118,7 +122,7 @@ export class AddEmpresaComponent {
     id_tipo_documento: ['', Validators.required],
   });
 
-
+ 
 
 
 
@@ -131,8 +135,7 @@ export class AddEmpresaComponent {
       return;
     }
     
-
-    const empresa: Empresa = {
+    const empresa: any = {
       documento: this.addEmpresaForm.get('documento')?.value,
       nombre: this.addEmpresaForm.get('nombre')?.value,
       correo: this.addEmpresaForm.get('correo')?.value,
@@ -149,38 +152,52 @@ export class AddEmpresaComponent {
       id_municipio: this.addEmpresaForm.get('id_municipio')?.value,
       id_emprendedor: this.user?.emprendedor.documento,
     };
-    console.log(empresa.id_municipio);
-    let apoyoEmpresa: ApoyoEmpresa | null = null;
-    if (this.addApoyoEmpresaForm.valid) {
-      apoyoEmpresa = {
-        nombre: this.addApoyoEmpresaForm.get('nombre')?.value,
-        documento: this.addApoyoEmpresaForm.get('documento')?.value,
-        apellido: this.addApoyoEmpresaForm.get('apellido')?.value,
-        cargo: this.addApoyoEmpresaForm.get('cargo')?.value,
-        telefono: this.addApoyoEmpresaForm.get('telefono')?.value,
-        celular: this.addApoyoEmpresaForm.get('celular')?.value,
-        email: this.addApoyoEmpresaForm.get('email')?.value,
-        id_tipo_documento: this.addApoyoEmpresaForm.get('id_tipo_documento')?.value,
-        id_empresa: empresa.documento,
-      };
-    }
 
-    console.log(empresa);
-    console.log(apoyoEmpresa);
+    const apoyos = this.addApoyoEmpresaForm.valid ? {
+      documento: this.addApoyoEmpresaForm.get('documento')?.value,
+      nombre: this.addApoyoEmpresaForm.get('nombre')?.value,
+      apellido: this.addApoyoEmpresaForm.get('apellido')?.value,
+      cargo: this.addApoyoEmpresaForm.get('cargo')?.value,
+      telefono: this.addApoyoEmpresaForm.get('telefono')?.value,
+      celular: this.addApoyoEmpresaForm.get('celular')?.value,
+      email: this.addApoyoEmpresaForm.get('email')?.value,
+      id_tipo_documento: this.addApoyoEmpresaForm.get('id_tipo_documento')?.value,
+      id_empresa: empresa.documento,
+    } : null;
+  
+    const payload = {
+      empresa: empresa,
+      apoyos: apoyos ? [apoyos] : [] // Enviar un array vacío si no hay apoyos
+    };
 
-    this.addEmpresaService.addEmpresa(this.token, empresa, apoyoEmpresa).subscribe(
-      (response: any) => {
-        console.log(response);
-        this.router.navigate(['list-empresa/:documento']);
+
+    this.addEmpresaService.addEmpresa(this.token, payload).pipe(
+      switchMap((response: any) => {
+        console.log('Respuesta de la API (empresa creada):', response);
+        this.router.navigate(['list-empresa', empresa.documento]);
+
+        if (apoyos) { 
+          console.log('Datos de apoyoEmpresa con ID de empresa:', apoyos);
+          return this.addEmpresaService.addApoyoEmpresa(this.token, apoyos);
+        }
+        // Si apoyoEmpresa es null o empresaId es null, retornar un observable vacío
+        return of(null);
+      })
+    ).subscribe(
+      (apoyoResponse: any) => {
+        if (apoyoResponse) {
+          console.log('Respuesta de la API (apoyoEmpresa creado):', apoyoResponse);
+          this.router.navigate(['list-empresa', empresa.documento]);
+        } else {
+          console.log('No se creó el apoyoEmpresa');
+        }
+        
       },
-      error => {
-        console.log(error);
+      (error) => {
+        console.log('Error:', error);
       }
     );
   }
-
-
-
 
   mostrarOcultarContenido() {
     const checkbox = document.getElementById("mostrarContenido") as HTMLInputElement;
@@ -191,5 +208,7 @@ export class AddEmpresaComponent {
       guardar.style.display = checkbox.checked ? "none" : "block";
     }
   }
-
 }
+
+
+
