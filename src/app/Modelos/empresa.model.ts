@@ -1,7 +1,8 @@
 import { Emprendedor } from "./emprendedor.model";
+import { ApoyoEmpresa } from "./apoyo-empresa.modelo";
 
 export class Empresa {
-
+    id?:number;
     nombre?: string ;
     documento?: string;
     cargo: string | null | undefined;
@@ -17,8 +18,8 @@ export class Empresa {
     id_tipo_documento:string;
     id_municipio:string;
     id_emprendedor: string;
-
     constructor(
+        id:number,
         nombre: string ,
         documento: string,
         cargo: string | null | undefined,
@@ -33,7 +34,8 @@ export class Empresa {
         funciones: string | null | undefined,
         id_tipo_documento:string,
         id_municipio:string,
-        id_emprendedor: string){
+        id_emprendedor: string,     
+    ){      this.id = id;
             this.nombre = nombre;
             this.documento = documento;
             this.cargo = cargo;
