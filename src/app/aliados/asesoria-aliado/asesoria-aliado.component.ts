@@ -7,11 +7,10 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-asesoria-aliado',
   templateUrl: './asesoria-aliado.component.html',
-  styleUrl: './asesoria-aliado.component.css'
+  styleUrls: ['./asesoria-aliado.component.css']
 })
-export class AsesoriaAliadoComponent {
+export class AsesoriaAliadoComponent implements OnInit {
   asesorias: Asesoria[] = [];
-  barritaColor: string;
   token: string | null = null;
   user: any = null;
   currentRolId: string | null = null;
@@ -24,7 +23,6 @@ export class AsesoriaAliadoComponent {
 
   ngOnInit() {
     this.validateToken();
-    this.loadAsesorias();
   }
 
   validateToken(): void {
@@ -43,19 +41,21 @@ export class AsesoriaAliadoComponent {
 
     if (!this.token || !this.currentRolId) {
       this.router.navigate(['/inicio/body']);
+    } else {
+      // Llama a loadAsesorias después de que currentRolId se haya establecido
+      this.loadAsesorias(parseInt(this.currentRolId), 1);
     }
   }
 
-  loadAsesorias(): void {
-    this.asesoriaService.getAsesoriasOrientador().subscribe(
+  loadAsesorias(rol: number, estado: number): void {
+    this.asesoriaService.getAsesoriasPorRolYEstado(rol, estado).subscribe(
       data => {
-        console.log('Respuesta de la API:', data); // Escribir la respuesta en la consola
+        console.log('Respuesta de la API:', data);
         this.asesorias = data;
       },
       error => {
-        console.error('Error al obtener las asesorías orientador:', error);
+        console.error('Error al obtener las asesorías:', error);
       }
     );
   }
-  
 }
