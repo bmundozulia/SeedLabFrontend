@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ElementRef, Renderer2 } from '@angular/core';
 
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -27,8 +27,8 @@ export class EncuestaEmpresaComponent {
 
     seccion1.style.display = 'block';
     seccion2.style.display = 'none';
-    seccion3.style.display = 'none'; 
-    seccion4.style.display = 'none'; 
+    seccion3.style.display = 'none';
+    seccion4.style.display = 'none';
   }
 
   mostrarSeccion2() {
@@ -39,8 +39,8 @@ export class EncuestaEmpresaComponent {
 
     seccion1.style.display = 'none';
     seccion2.style.display = 'block';
-    seccion3.style.display = 'none'; 
-    seccion4.style.display = 'none'; 
+    seccion3.style.display = 'none';
+    seccion4.style.display = 'none';
   }
 
   mostrarSeccion3() {
@@ -51,8 +51,8 @@ export class EncuestaEmpresaComponent {
 
     seccion1.style.display = 'none';
     seccion2.style.display = 'none';
-    seccion3.style.display = 'block'; 
-    seccion4.style.display = 'none'; 
+    seccion3.style.display = 'block';
+    seccion4.style.display = 'none';
   }
 
   mostrarSeccion4() {
@@ -63,7 +63,62 @@ export class EncuestaEmpresaComponent {
 
     seccion1.style.display = 'none';
     seccion2.style.display = 'none';
-    seccion3.style.display = 'none'; 
-    seccion4.style.display = 'block'; 
+    seccion3.style.display = 'none';
+    seccion4.style.display = 'block';
+  }
+  private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.processAttributesBasedOnScreenSize();
+  }
+
+  ngOnInit() {
+    this.processAttributesBasedOnScreenSize();
+  }
+
+  processAttributesBasedOnScreenSize() {
+    const isMobile = window.innerWidth < 768; // Ancho considerado como pantalla móvil
+
+    // Seleccionar todas las etiquetas <td> con los atributos colspan o rowspan
+    const tdElements = this.elementRef.nativeElement.querySelectorAll('td[colspan], td[rowspan]');
+    tdElements.forEach(tdElement => {
+      if (!this.originalAttributes.has(tdElement)) {
+        // Guardar los valores originales
+        this.originalAttributes.set(tdElement, {
+          colspan: tdElement.getAttribute('colspan'),
+          rowspan: tdElement.getAttribute('rowspan')
+        });
+      }
+
+      if (isMobile) {
+        // Eliminar los atributos en pantallas móviles
+        this.renderer.removeAttribute(tdElement, 'colspan');
+        this.renderer.removeAttribute(tdElement, 'rowspan');
+      } else {
+        // Restaurar los atributos en pantallas grandes
+        const original = this.originalAttributes.get(tdElement);
+        if (original) {
+          if (original.colspan !== null) {
+            this.renderer.setAttribute(tdElement, 'colspan', original.colspan);
+          }
+          if (original.rowspan !== null) {
+            this.renderer.setAttribute(tdElement, 'rowspan', original.rowspan);
+          }
+        }
+      }
+    });
+
+    // Seleccionar todas las etiquetas <td> con la clase "cell"
+    const cellElements = this.elementRef.nativeElement.querySelectorAll('td.cell');
+    cellElements.forEach(cellElement => {
+      if (isMobile) {
+        this.renderer.setAttribute(cellElement, 'colspan', '2');
+      } else {
+        this.renderer.removeAttribute(cellElement, 'colspan');
+      }
+    });
   }
 }
