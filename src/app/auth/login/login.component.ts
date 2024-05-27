@@ -57,19 +57,35 @@ validateToken(): void {
     if (!this.token) {
         this.router.navigate(['/login']); 
     } else {
-        switch (this.currentRolId) {
-            case '1':
-                this.router.navigate(['list-aliados']);
-                break;
-            case '5':
-                this.router.navigate(['list-empresa/', this.user?.emprendedor?.documento]);
-                break;
-            default:
-                this.router.navigate(['/home/body']);
-                break;
+        if (this.currentRolId) {
+            switch (this.currentRolId) {
+                case '1':
+                    this.router.navigate(['list-aliados']);
+                    break;
+                case '2':
+                    this.router.navigate(['/home/body']);
+                    break;
+                case '3':
+                    this.router.navigate(['/home/body']);
+                    break;
+                case '4':
+                    this.router.navigate(['/home/body']);
+                    break;
+                case '5':
+                    this.router.navigate(['list-empresa/', this.user.emprendedor.documento]);
+                    break;
+                default:
+                    this.router.navigate(['/home/body']);
+                    break;
+            }
+        } else {
+            console.error('Id de rol no está definido.');
+            this.router.navigate(['/home/body']);
         }
     }
 }
+
+
 
 login(): void {
   const email = this.loginForm.get('email')?.value;
