@@ -36,14 +36,14 @@ const routes: Routes = [
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'fan-page', component: FanPageComponent },
-  { path: 'perfil', component: PerfilEmprendedorComponent},
+  { path: 'perfil', component: PerfilEmprendedorComponent },
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
 
 
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor
-  { path: 'ver-asesoria', component: VerAsesoriasComponent}, //de orientador
+  { path: 'ver-asesoria', component: VerAsesoriasComponent }, //de orientador
   { path: 'add-aliados', component: AddAliadosComponent },
 
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent

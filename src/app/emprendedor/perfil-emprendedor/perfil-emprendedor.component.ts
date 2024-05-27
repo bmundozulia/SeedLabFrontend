@@ -24,7 +24,7 @@ import { User } from '../../Modelos/user.model';
   templateUrl: './perfil-emprendedor.component.html',
   styleUrl: './perfil-emprendedor.component.css'
 })
-export class PerfilEmprendedorComponent {
+export class PerfilEmprendedorComponent implements OnInit {
   faVenusMars = faVenusMars;
   faMountainCity = faMountainCity;
   faLandmarkFlag = faLandmarkFlag;
@@ -40,6 +40,8 @@ export class PerfilEmprendedorComponent {
   errorMessage: string | null = null;
   email: string;
   token = '';
+  blockedInputs = true; // Inicialmente bloqueados
+  bloqueado = true;
   documento: string;
   user: User | null = null;
   currentRolId: string | null = null;
@@ -55,10 +57,11 @@ export class PerfilEmprendedorComponent {
     direccion: ['', Validators.required],
     nombretipodoc: ['', Validators.required],
     municipio: ['', Validators.required],
-  })
+  });
   registerForm: FormGroup; //ahorita quitarlo
-  listEmprendedor: Emprendedor[] =[];
-
+  listEmprendedor: Emprendedor[] = [];
+  originalData: any;
+  perfil:'';
 
   constructor(
     private fb: FormBuilder,
@@ -70,9 +73,8 @@ export class PerfilEmprendedorComponent {
   ) { }
 
   ngOnInit(): void {
-    this.cargarDepartamentos();
+    this.validateToken();
     this.verEditar();
-    
   }
 
   validateToken(): void {
@@ -95,19 +97,22 @@ export class PerfilEmprendedorComponent {
     if (this.token) {
       this.emprendedorService.getInfoEmprendedor(this.token, this.documento).subscribe(
         (data) => {
-          this.emprendedorForm.setValue({
-          documento: data.documento,
-          nombre: data.nombre,
-          apellido: data.apellido,
-          celular: data.celular,
-          email: data.email,
-          password:  data.password,
-          genero: data.genero,
-          fecha_nacimiento: data.fecha_nacimiento,
-          direccion: data.direccion,
-          nombretipodoc: data.nombretipodoc,
-          municipio: data.municipio,
+          this.emprendedorForm.patchValue({
+            documento: data.documento,
+            nombre: data.nombre,
+            apellido: data.apellido,
+            celular: data.celular,
+            email: data.auth ? data.auth.email : '',
+            password: data.password,
+            genero: data.genero,
+            fecha_nacimiento: data.fecha_nac,
+            direccion: data.direccion,
+            nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : '',
+            municipio: data.id_municipio ? data.id_municipio.toString() : ''
           });
+          console.log(data);
+          console.log(data);
+
         },
         (err) => {
           console.log(err);
@@ -115,6 +120,14 @@ export class PerfilEmprendedorComponent {
       );
     }
   }
+
+
+  // updateEmprendedor(): void {
+  //   const perfil: Emprendedor = {
+
+  //   }
+  // }
+
 
   passwordValidator(control: AbstractControl) {
     const value = control.value;
@@ -160,6 +173,18 @@ export class PerfilEmprendedorComponent {
     );
   }
 
-  //Funcion para registrar un emprendedor
+  toggleInputsLock(): void {
+    this.blockedInputs = !this.blockedInputs;
+    if (this.blockedInputs) {
+      this.emprendedorForm.disable();
+    } else {
+      this.emprendedorForm.enable();
+    }
+  }
+
+  onCancel(): void {
+    // Restaura los datos originales
+    this.verEditar();
+  }
 
 }

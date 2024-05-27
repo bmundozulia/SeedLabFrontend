@@ -25,7 +25,7 @@ export class Emprendedor {
         fecha_nacimiento: Date | null,
         direccion: string | null,
         estado: string | null,
-        municipio: string | null
+        municipio: string | null,
     ) {
         this.documento = documento;
         this.nombretipodoc = nombretipodoc;
