@@ -9,9 +9,11 @@ import { Empresa } from '../../../Modelos/empresa.model';
 import { DepartamentoService } from '../../../servicios/departamento.service';
 import { MunicipioService } from '../../../servicios/municipio.service';
 import { User } from '../../../Modelos/user.model';
-import { ApoyoEmpresa } from '../../../Modelos/apoyo-empresa.modelo';
-import { response } from 'express';
-import { error } from 'console';
+import { faIdCard } from '@fortawesome/free-solid-svg-icons';
+import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
+import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-add-empresa',
@@ -31,6 +33,10 @@ export class AddEmpresaComponent{
   documento:string;
   user: User | null = null;
   currentRolId: string | null = null;
+  faIdCard = faIdCard;
+  faMountainCity = faMountainCity;
+  faLandmarkFlag = faLandmarkFlag;
+  faLocationDot=faLocationDot;
 
   constructor(
     private fb:FormBuilder,
