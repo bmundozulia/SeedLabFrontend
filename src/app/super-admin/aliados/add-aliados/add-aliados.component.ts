@@ -1,4 +1,3 @@
-// add-aliados.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AliadoService } from '../../../servicios/aliado.service';
@@ -8,7 +7,7 @@ import { AliadoService } from '../../../servicios/aliado.service';
   templateUrl: './add-aliados.component.html',
   styleUrls: ['./add-aliados.component.css']
 })
-export class AddAliadosComponent  {
+export class AddAliadosComponent {
   nombre: string = '';
   logo: string = '';
   descripcion: string = '';
@@ -18,6 +17,8 @@ export class AddAliadosComponent  {
   password: string = ''; 
   estado: boolean = true;
   token: string | null = localStorage.getItem('token'); 
+  passwordFieldType: string = 'password';
+  hide = true;
 
   constructor(private aliadoService: AliadoService, private router: Router) {}
 
@@ -65,4 +66,11 @@ export class AddAliadosComponent  {
       alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
     }
   }
+
+  togglePasswordVisibility(): void {
+    this.hide = !this.hide;
+  }
+ 
 }
+
+
