@@ -1,23 +1,19 @@
-
-/* NO BORRAR, ESTILOS DEL CARRUSEL*/
-
-.my-swiper-container {
-  width: 80%; /* Ancho del contenedor del carrusel */
-  height: auto; /* Altura del contenedor del carrusel */
-  margin: 0 auto; /* Centrar el carrusel horizontalmente */
-  overflow: hidden; /* Ocultar slides adicionales */
-  display: flex; /* Utilizar flexbox para centrar el contenido */
-  justify-content: center; /* Centrar el contenido horizontalmente */
+.carousel-btn {
+  @apply absolute top-1/2 transform -translate-y-1/2 bg-blue-50 text-black border-none w-12 h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg z-10;
 }
 
-.swiper-slide {
-  width: calc((100% - 6px) / 2); /* Ancho de cada slide (incluyendo espacio entre ellos) */
-  float: left; /* Hacer que los slides floten a la izquierda */
+.carousel-btn.left-0 {
+  @apply left-36; /* Incrementa el margen izquierdo */
 }
 
-.swiper-slide-img {
-  width: 320px; /* Ancho fijo para todas las imágenes */
-  height: 150px; /* Altura fija para todas las imágenes */
-  object-fit: contain; /* Escalar la imagen manteniendo su relación de aspecto y cubriendo todo el espacio disponible */
+.carousel-btn.right-0 {
+  @apply right-36; /* Incrementa el margen derecho */
 }
 
+.carousel-btn:hover {
+  @apply bg-gray-200;
+}
+
+.carousel-btn:focus {
+  @apply outline-none;
+}
