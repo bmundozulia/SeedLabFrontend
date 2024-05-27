@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AsesoriaService } from '../../../servicios/asesoria.service';
+import { AliadoService } from '../../../servicios/aliado.service';
 
 @Component({
   selector: 'app-crear-asesoria-modal',
@@ -14,6 +15,7 @@ export class CrearAsesoriaModalComponent {
   token: string | null = null;
   documento: string | null = null;
   user: any;
+  aliados: any[] = []; 
   currentRolId: string | null = null;
   docEmprendedor: string | null = null; // Variable para almacenar el documento del emprendedor
 
@@ -21,7 +23,8 @@ export class CrearAsesoriaModalComponent {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CrearAsesoriaModalComponent>,
     private asesoriaService: AsesoriaService,
-    private router: Router
+    private router: Router,
+    private aliadoService: AliadoService,
   ) {
     this.asesoriaForm = this.fb.group({
       nombre: [''],
@@ -33,6 +36,10 @@ export class CrearAsesoriaModalComponent {
     });
 
     this.validateToken();
+  }
+
+  ngOnInit() {
+    this.loadAliados();
   }
 
   validateToken(): void {
@@ -54,6 +61,18 @@ export class CrearAsesoriaModalComponent {
     if (!this.token || !this.documento) {
       this.router.navigate(['/inicio/body']);
     }
+  }
+
+  loadAliados(): void {
+    this.aliadoService.mostrarAliado().subscribe(
+      (data: any[]) => {
+        this.aliados = data;
+        console.log(this.aliados);
+      },
+      error => {
+        console.error('Error al obtener la lista de aliados:', error);
+      }
+    );
   }
 
   // Método para controlar el cambio en el checkbox
