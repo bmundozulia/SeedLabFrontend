@@ -15,9 +15,8 @@ export class ListAsesoriaComponent implements OnInit {
   asesoriasFalse: Asesoria[] = []; 
   asesorias: Asesoria[] = [];
   barritaColor: string;
-  showAll: boolean = true;
   showTrue: boolean = false;
-  showFalse: boolean = false;
+  showFalse: boolean = true; // Set to true by default to show "Sin Asignar" asesorias
   token: string | null = null;
   documento: string | null = null;
   user: any = null;
@@ -126,20 +125,12 @@ export class ListAsesoriaComponent implements OnInit {
   }
 
   showSinAsignar() {
-    this.showAll = false;
     this.showTrue = false;
     this.showFalse = true;
   }
 
   showAsignadas() {
-    this.showAll = false;
     this.showTrue = true;
-    this.showFalse = false;
-  }
-
-  showAllAsesorias() {
-    this.showAll = true;
-    this.showTrue = false;
     this.showFalse = false;
   }
 }
