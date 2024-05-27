@@ -26,4 +26,5 @@ onFileSelected(event: Event): void {
     reader.readAsDataURL(file);
   }
 }
+
 }
