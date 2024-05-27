@@ -23,7 +23,7 @@ export class LoginComponent {
   token: string | null = null;
   user: User | null = null;
   currentRolId: string | null = null;
-
+  
 
   loginForm = this.fb.group({
     email: '',

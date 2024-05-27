@@ -18,7 +18,7 @@ export class VerAsesoriasComponent implements OnInit {
   currentRolId: string | null = null;
 
   constructor(
-    private asesoriaService: AsesoriaService, 
+    private asesoriaService: AsesoriaService,
     public dialog: MatDialog,
     private router: Router
   ) { }
@@ -67,7 +67,9 @@ export class VerAsesoriasComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // Aquí puedes manejar el resultado si es necesario
+      if (result) {
+        this.loadAsesorias(); // Recargar asesorías si el modal se cerró con éxito
+      }
     });
   }
 
@@ -79,4 +81,3 @@ export class VerAsesoriasComponent implements OnInit {
     this.loadAsesorias(false);
   }
 }
-

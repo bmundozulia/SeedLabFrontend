@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment/env';
+import { Asesoria } from '../Modelos/asesoria.model';
 
 @Injectable({
   providedIn: 'root'
@@ -58,9 +59,17 @@ export class AsesoriaService {
 
     const body = { nombreAliado: nombreAliado };
 
-    return this.http.post<any>(`${this.apiUrl}asesorias/${id}/asignar-aliado`, body, { headers });
+    return this.http.post<any>(`${this.apiUrl}${id}/asignar-aliado`, body, { headers });
   }
 
+  // Método para obtener asesorías por rol y estado
+  getAsesoriasPorRolYEstado(rol: number, estado: number): Observable<Asesoria[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    const url = `${this.apiUrl}mostrarAsesorias/${rol}/${estado}`;
+    return this.http.get<Asesoria[]>(url, { headers });
+  }
 }
-
-  
