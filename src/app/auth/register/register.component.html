@@ -46,7 +46,7 @@
                         <div *ngIf="submitted && f.nombretipodoc.errors" class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
                             <div *ngIf="f.nombretipodoc.errors.required">Este campo es requerido *</div>
                         </div>
-                        <fa-icon [icon]="faIdCard" class="absolute right-5 top-4 mt-7 text-cyan-500  z-0  "
+                        <fa-icon [icon]="faIdCard" class="absolute right-5 top-4 mt-7 text-cyan-500  z-0  text-lg "
                             styles=" pointer-events: auto;"></fa-icon>
                     </div>
                     <div class="w-full md:w-1/3 pl-0 md:pl-2 md:-mt-32">
@@ -67,7 +67,7 @@
                             class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 appearance-none"
                             style="background-image: none;" />
                         <div class="absolute top-0 right-0 h-full flex items-center pr-2 mt-2 pointer-events-none">
-                            <i class="fas fa-calendar-alt text-cyan-500 cursor-pointer md:-mt-4 pr-3"
+                            <i class="fas fa-calendar-alt text-cyan-500 cursor-pointer md:-mt-4 pr-3  text-lg"
                                 onclick="document.getElementById('fechaNacimiento').focus();"></i>
                         </div>
                         <div *ngIf="submitted && f.fecha_nacimiento.errors" class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
@@ -87,7 +87,7 @@
                         <div *ngIf="submitted && f.genero.errors" class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
                             <div *ngIf="f.genero.errors.required">Este campo es requerido *</div>
                         </div>
-                        <fa-icon [icon]="faVenusMars" class="absolute right-3 top-4 mt-7 text-cyan-500  z-0"
+                        <fa-icon [icon]="faVenusMars" class="absolute right-3 top-4 mt-7 text-cyan-500  z-0  text-lg"
                             styles=" pointer-events: auto;"></fa-icon>
                     </div>
                     <div class="w-full md:w-1/3 pr-0 md:pr-2 "></div>
@@ -99,8 +99,8 @@
                             <button type="button"
                                 class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-gray-500"
                                 (click)="hide = !hide">
-                                <i *ngIf="hide" class="fa fa-eye-slash text-cyan-500"></i>
-                                <i *ngIf="!hide" class="fa fa-eye text-cyan-500"></i>
+                                <i *ngIf="hide" class="fa fa-eye-slash text-cyan-500  text-lg"></i>
+                                <i *ngIf="!hide" class="fa fa-eye text-cyan-500  text-lg"></i>
                             </button>
                         </div>
                         <div *ngIf="submitted && f.password.errors" class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
@@ -156,7 +156,7 @@
                         <!-- <div *ngIf="submitted && f.nameDepartamento.errors" class="text-red-500 pl-2">
                             <div *ngIf="f.nameDepartamento.errors.required">Este campo es requerido</div>
                         </div> -->
-                        <fa-icon [icon]="faLandmarkFlag" class="absolute right-4 top-5 mt-6 text-cyan-500  z-0  "
+                        <fa-icon [icon]="faLandmarkFlag" class="absolute right-5 top-5 mt-6 text-cyan-500  z-0 text-lg"
                             styles=" pointer-events: auto;"></fa-icon>
                     </div>
                     <div class="w-full md:w-1/3 pl-0 md:pl-2 relative">
@@ -170,7 +170,7 @@
                         <div *ngIf="submitted && f.municipio.errors" class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
                             <div *ngIf="f.municipio.errors.required">Este campo es requerido *</div>
                         </div>
-                        <fa-icon [icon]="faMountainCity" class="absolute right-3 top-4 mt-6 text-cyan-500 z-0 "
+                        <fa-icon [icon]="faMountainCity" class="absolute right-3 top-11  text-cyan-500 z-0  text-lg"
                             styles=" pointer-events: auto;"></fa-icon>
                     </div>
                     <div class="w-full md:w-1/3 pr-0 md:pr-2"></div>
