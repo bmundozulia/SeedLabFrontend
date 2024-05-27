@@ -13,14 +13,15 @@ import { CrearAsesoriaModalComponent } from '../crear-asesoria-modal/crear-aseso
 export class ListAsesoriaComponent implements OnInit {
   asesoriasTrue: Asesoria[] = [];
   asesoriasFalse: Asesoria[] = []; 
-  asesorias: Asesoria[] = [];
-  barritaColor: string;
-  showTrue: boolean = false;
-  showFalse: boolean = true; // Set to true by default to show "Sin Asignar" asesorias
+  showTrue: boolean = true; // Muestra "Asignadas" por defecto
+  showFalse: boolean = false;
+
   token: string | null = null;
   documento: string | null = null;
   user: any = null;
   currentRolId: string | null = null;
+  sinAsignarCount: number = 0;
+  asignadasCount: number = 0;
 
   constructor(
     private asesoriaService: AsesoriaService, 
@@ -30,8 +31,7 @@ export class ListAsesoriaComponent implements OnInit {
 
   ngOnInit() {
     this.validateToken();
-    this.listarAsesoriaTrue();
-    this.listarAsesoriaFalse();
+    this.listarAsesorias();
   }
 
   validateToken(): void {
@@ -54,42 +54,33 @@ export class ListAsesoriaComponent implements OnInit {
     }
   }
 
-  loadAsesorias() {
-    this.asesorias = [...this.asesoriasTrue, ...this.asesoriasFalse];
-  }
-
-  listarAsesoriaTrue() {
+  listarAsesorias() {
     if (this.documento && this.token) {
-      const body = {
+      const bodyTrue = {
         documento: this.documento,
         asignacion: true
       };
-      this.asesoriaService.getMisAsesorias(body).subscribe(
+
+      const bodyFalse = {
+        documento: this.documento,
+        asignacion: false
+      };
+
+      this.asesoriaService.getMisAsesorias(bodyTrue).subscribe(
         response => {
           this.asesoriasTrue = response;
-          this.loadAsesorias();
+          this.asignadasCount = this.asesoriasTrue.length; // Actualiza el contador
           console.log(this.asesoriasTrue); 
         },
         error => {
           console.error(error);
         }
       );
-    } else {
-      console.error('Documento o token no encontrado en el localStorage');
-    }
-  }
 
-  listarAsesoriaFalse() {
-    if (this.documento && this.token) {
-      const body = {
-        documento: this.documento,
-        asignacion: false
-      };
-
-      this.asesoriaService.getMisAsesorias(body).subscribe(
+      this.asesoriaService.getMisAsesorias(bodyFalse).subscribe(
         response => {
           this.asesoriasFalse = response;
-          this.loadAsesorias();
+          this.sinAsignarCount = this.asesoriasFalse.length; // Actualiza el contador
           console.log(this.asesoriasFalse); 
         },
         error => {
@@ -110,27 +101,19 @@ export class ListAsesoriaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Asesoría creada:', result);
-        this.listarAsesoriaTrue();
-        this.listarAsesoriaFalse();
+        this.listarAsesorias();
       }
     });
   }
 
-  changeColor(button) {
-    const buttons = document.querySelectorAll('.btn-color');
-    buttons.forEach(btn => {
-      btn.classList.remove('bg-gray-200');
-    });
-    button.classList.add('bg-gray-200');
-  }
-
-  showSinAsignar() {
+ showSinAsignar() {
     this.showTrue = false;
     this.showFalse = true;
-  }
+}
 
-  showAsignadas() {
+showAsignadas() {
     this.showTrue = true;
     this.showFalse = false;
-  }
+}
+
 }
