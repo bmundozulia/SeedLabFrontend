@@ -1,32 +1,33 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<app-header [title]="'Bienvenido al panel de empresas'" [subtitle]="'Aquí podrás ver y gestionar tus empresas'"></app-header>
 
-<app-header [title]="'Bienvenido al panel de empresas'"
-    [subtitle]="'Aqui podras ver y gestionar tus empresas'"></app-header><body class="bg-gray-100">
-  
+    <!-- Contenedor principal para el buscador y los botones -->
     <div class="flex flex-wrap items-center justify-between mt-10 mx-4 lg:mx-28">
-
+        <!-- Sección de búsqueda -->
         <div class="rounded-xl border border-gray-300 py-2 bg-white w-[280px] sm:w-[400px] relative shadow-md">
-            <input class="w-full h-12 pl-10 pr-4 outline-none rounded-md" placeholder="Buscar">
-            <span class="absolute left-4 top-3 text-gray-500">
-                <i class="fa-solid fa-magnifying-glass"></i>
+            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+                <i class="fas fa-search"></i>
             </span>
+            <input class="w-full h-12 pl-12 pr-4 outline-none rounded-md" placeholder="Buscar">
         </div>
 
-        <div class="flex flex-wrap justify-center lg:justify-start mt-4 lg:mt-0">
-            <button id="sinAsignar" class="btn-color flex items-center px-5 py-3 text-white bg-gray-700 hover:bg-gray-600 rounded-md mr-2 mb-2 transition duration-200" onclick="showSinAsignar()">
+        <!-- Sección de botones -->
+        <div class="flex flex-wrap justify-center lg:justify-start mt-4 lg:mt-0 space-x-2">
+            <button id="sinAsignar" class="flex items-center px-5 py-3 text-white bg-gray-700 hover:bg-gray-600 rounded transition duration-200" onclick="showSinAsignar()">
                 Sin asignar
                 <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">1</span>
             </button>
-            <button id="Asignadas" class="btn-color flex items-center px-5 py-3 text-white bg-gray-700 hover:bg-gray-600 rounded-md mr-2 mb-2 transition duration-200" onclick="showAsignadas()">
+            <button id="Asignadas" class="flex items-center px-5 py-3 text-white bg-gray-700 hover:bg-gray-600 rounded transition duration-200" onclick="showAsignadas()">
                 Asignadas
                 <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">2</span>
             </button>
-            <button class="btn-color flex items-center px-5 py-3 text-white bg-sky-500 hover:bg-sky-400 rounded-md mr-2 mb-2 transition duration-200" onclick="openCrearAsesoriaModal()">
-                Crear Asesoria
+            <button class="flex items-center px-5 py-3 text-white bg-sky-500 hover:bg-sky-400 rounded transition duration-200" onclick="openCrearAsesoriaModal()">
+                Crear Asesoría
             </button>
         </div>
     </div>
 
-  
+    <!-- Sección de tarjetas -->
     <div *ngIf="showAll" class="flex flex-wrap justify-center mt-6">
         <div *ngFor="let asesoria of asesorias" class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4">
             <div class="absolute h-full w-2" [ngClass]="asesoria.asignacion ? 'bg-red-200' : 'bg-green-200'"></div>
