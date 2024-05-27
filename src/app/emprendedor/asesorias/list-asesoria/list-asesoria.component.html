@@ -11,23 +11,22 @@
             <input class="w-full h-12 pl-12 pr-4 outline-none rounded-md" placeholder="Buscar">
         </div>
 
-        <!-- Sección de botones -->
-        <div class="flex flex-wrap justify-center lg:justify-start mt-4 lg:mt-0 space-x-2">
-            <button id="sinAsignar" class="flex items-center px-5 py-3 text-white bg-gray-700 hover:bg-gray-600 rounded transition duration-200" onclick="showSinAsignar()">
+        <div class="flex flex-wrap justify-center lg:justify-start mt-4 lg:mt-0">
+            <button id="sinAsignar" class="btn-color flex items-center px-5 py-3 text-white bg-gray-700 hover:bg-gray-600 rounded-md mr-2 mb-2 transition duration-200" onclick="showSinAsignar()">
                 Sin asignar
                 <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">1</span>
             </button>
-            <button id="Asignadas" class="flex items-center px-5 py-3 text-white bg-gray-700 hover:bg-gray-600 rounded transition duration-200" onclick="showAsignadas()">
+            <button id="Asignadas" class="btn-color flex items-center px-5 py-3 text-white bg-gray-700 hover:bg-gray-600 rounded-md mr-2 mb-2 transition duration-200" onclick="showAsignadas()">
                 Asignadas
                 <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">2</span>
             </button>
-            <button class="flex items-center px-5 py-3 text-white bg-sky-500 hover:bg-sky-400 rounded transition duration-200" onclick="openCrearAsesoriaModal()">
-                Crear Asesoría
+            <button class="btn-color flex items-center px-5 py-3 text-white bg-sky-500 hover:bg-sky-400 rounded-md mr-2 mb-2 transition duration-200" onclick="openCrearAsesoriaModal()">
+                Crear Asesoria
             </button>
-        </div>
+          </div>          
     </div>
 
-    <!-- Sección de tarjetas -->
+  
     <div *ngIf="showAll" class="flex flex-wrap justify-center mt-6">
         <div *ngFor="let asesoria of asesorias" class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4">
             <div class="absolute h-full w-2" [ngClass]="asesoria.asignacion ? 'bg-red-200' : 'bg-green-200'"></div>
