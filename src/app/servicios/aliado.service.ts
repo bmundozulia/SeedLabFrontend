@@ -32,7 +32,7 @@ export class AliadoService {
   }
 
   mostrarAliado() {
-    return this.http.get(`${environment.apiUrl}listaAliado`);
+    return this.http.get(`${environment.apiUrl}orientador/listaAliado`);
   }
 
 }
