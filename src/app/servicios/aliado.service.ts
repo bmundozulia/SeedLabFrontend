@@ -28,7 +28,7 @@ export class AliadoService {
 
   crearAliado(aliado: any, access_token: string): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.post(`${environment.apiUrl}create_aliado`, aliado, options);
+    return this.http.post(`${this.url}/create_aliado`, aliado, options);
   }
 
   mostrarAliado() {
