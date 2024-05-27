@@ -10,7 +10,7 @@
         <div class=" p-6 flex flex-wrap justify-between items-start">
           <!-- Logo-->
           <div class="w-full md:w-1/3 flex flex-col items-center p-4">
-            <label class="text-center text-2xl font-mono mb-4 text-blue-400">Logo</label>
+            <label class="text-center text-2xl font-mono mb-4 text-sky-600">Logo</label>
             <input id="color-picker-logo" type="file" name="logo"
               class="text-sky-600 border-2 border-gray-300 p-2 rounded" (change)="onFileChange($event)" />
             <div class="img mt-2">
@@ -21,7 +21,7 @@
           </div>
           <!-- Color Principal -->
           <div class="w-full md:w-1/3 flex flex-col items-center p-4">
-            <label class="text-center text-2xl mb-4 text-blue-400 font-mono">Color Principal</label>
+            <label class="text-center text-2xl mb-4 text-sky-600 font-mono">Color Principal</label>
             <div class="w-full p-4 border-2 border-gray-300 rounded-lg flex flex-col items-center">
               <div class="w-full h-20 mb-2" [style.background]="selectedColorPrincipal"></div>
               <p class="text-center">{{ selectedColorPrincipal }}</p>
@@ -36,7 +36,7 @@
           </div>
           <!-- Color Secundario-->
           <div class="w-full md:w-1/3 flex flex-col items-center p-4">
-            <label class="text-center text-2xl font-mono mb-4 text-blue-400">Color Secundario</label>
+            <label class="text-center text-2xl font-mono mb-4 text-sky-600">Color Secundario</label>
             <div class="w-full p-4 border-2 border-gray-300 rounded-lg flex flex-col items-center">
               <div class="w-full h-20 mb-2" [style.background]="selectedColorSecundario"></div>
               <p class="text-center">{{ selectedColorSecundario }}</p>
