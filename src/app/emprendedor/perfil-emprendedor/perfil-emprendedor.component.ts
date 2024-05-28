@@ -53,7 +53,7 @@ export class PerfilEmprendedorComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
     genero: ['', Validators.required],
-    fecha_nacimiento: ['', Validators.required],
+    fecha_nac: ['', Validators.required],
     direccion: ['', Validators.required],
     nombretipodoc: ['', Validators.required],
     municipio: ['', Validators.required],
@@ -61,7 +61,7 @@ export class PerfilEmprendedorComponent implements OnInit {
   registerForm: FormGroup; //ahorita quitarlo
   listEmprendedor: Emprendedor[] = [];
   originalData: any;
-  perfil:'';
+  perfil: '';
 
   constructor(
     private fb: FormBuilder,
@@ -75,6 +75,7 @@ export class PerfilEmprendedorComponent implements OnInit {
   ngOnInit(): void {
     this.validateToken();
     this.verEditar();
+    this.cargarDepartamentos();
   }
 
   validateToken(): void {
@@ -105,7 +106,7 @@ export class PerfilEmprendedorComponent implements OnInit {
             email: data.auth ? data.auth.email : '',
             password: data.password,
             genero: data.genero,
-            fecha_nacimiento: data.fecha_nac,
+            fecha_nac: data.fecha_nac,
             direccion: data.direccion,
             nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : '',
             municipio: data.id_municipio ? data.id_municipio.toString() : ''
@@ -124,20 +125,20 @@ export class PerfilEmprendedorComponent implements OnInit {
   updateEmprendedor(): void {
     const perfil: Emprendedor = {
       documento: this.emprendedorForm.get('documento')?.value,
-      nombretipodoc: this.emprendedorForm.get('nombretipodoc')?.value,
+      id_tipo_documento: this.emprendedorForm.get('nombretipodoc')?.value,
       nombre: this.emprendedorForm.get('nombre')?.value,
       apellido: this.emprendedorForm.get('apellido')?.value,
       celular: this.emprendedorForm.get('celular')?.value,
       email: this.emprendedorForm.get('email')?.value,
       password: this.emprendedorForm.get('password')?.value,
       genero: this.emprendedorForm.get('genero')?.value,
-      fecha_nacimiento: this.emprendedorForm.get('fecha_nacimiento')?.value,
+      fecha_nac: this.emprendedorForm.get('fecha_nac')?.value,
       direccion: this.emprendedorForm.get('direccion')?.value,
       estado: this.emprendedorForm.get('estado')?.value,
-      municipio: this.emprendedorForm.get('municipio')?.value,
+      id_municipio: this.emprendedorForm.get('municipio')?.value,
     }
     this.emprendedorService.updateEmprendedor(perfil, this.token, this.documento).subscribe(
-      data => 
+      data =>
         this.router.navigate(['/perfil-emprendedor']),
       (err) => {
         console.log(err);
