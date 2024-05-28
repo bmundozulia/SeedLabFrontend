@@ -31,12 +31,12 @@ export class AlertService {
 
   successAlert(title: string, text: string) {
     Swal.fire({
-      position: "top-right",
+      position: "center",
       icon: "success",
       title: title,
       text: text,
       showConfirmButton: false,
-      timer: 1500
+      timer: 2500
     });
   }
 

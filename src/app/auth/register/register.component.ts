@@ -153,7 +153,7 @@ export class RegisterComponent implements OnInit {
       (response: any) => {
         console.log(response);
         console.log('Registro exitoso', response);
-        this.alertService.successAlert('Registro exitoso', 'Ya puede loguearse en Seedlab');
+        this.alertService.successAlert('Registro exitoso', response.message);
         this.email = response.email; // Obtiene el correo electrónico de la respuesta
 
         this.router.navigate(['/verification'], { queryParams: { email: this.email } });
