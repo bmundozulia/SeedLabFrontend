@@ -17,7 +17,8 @@ import { ModalComponent } from './super-admin/modal/modal.component';
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component'
-import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
+import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
+
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 
 
@@ -27,7 +28,7 @@ const routes: Routes = [
   { path: 'verification', component: VerificationComponent },
 
   { path: 'add-empresa', component: AddEmpresaComponent },
-  { path: 'list-empresa/:documento', component: ListEmpresasComponent },
+  { path: 'list-empresa', component: ListEmpresasComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
   { path: 'modal-superadmin', component: ModalComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
@@ -35,9 +36,10 @@ const routes: Routes = [
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'fan-page', component: FanPageComponent },
-
+  { path: 'perfil', component: PerfilEmprendedorComponent },
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
+
 
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor

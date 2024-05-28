@@ -2,26 +2,28 @@ import { Empresa } from "./empresa.model";
 
 export class ApoyoEmpresa {
 
-    documento? : number;
+    documento? : string;
     nombre: string | null;
     apellido? : string | null;
-    cargo : string | null;
-    telefono? : number;
-    celular? : number;
+    cargo : string | null| undefined;
+    telefono? : string;
+    celular? : string;
     email? : string | null;
-    id_tipo_documento : number;
-    id_empresa: Empresa;
+    id_tipo_documento : string;
+    id_empresa: string;
 
     constructor(
-        documento: number, 
+        documento: string, 
         nombre: string, 
         apellido: string, 
-        cargo: string, 
-        telefono: number, 
-        celular: number, 
+        cargo: string| undefined, 
+        telefono: string, 
+        celular: string, 
         email: string, 
-        id_tipo_documento: number, 
-        id_empresa: Empresa) {
+        id_tipo_documento: string, 
+        id_empresa: string
+    
+    ) {
             this.documento = documento;
             this.nombre = nombre;
             this.apellido = apellido;
