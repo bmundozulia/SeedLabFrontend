@@ -49,24 +49,20 @@
         </p>
       </div>
     </div>
-    <div class="w-full lg:w-2/4 lg:mt-4 flex items-center justify-center order-last lg:order-none bg-red-100 ">
-      <ng-container *ngIf="cardSeleccionada.tipo_dato === 'video'">
-        <!-- Mostrar video -->
-        <video controls>
-          <iframe width="560" height="315" [src]="getYouTubeEmbedUrl(cardSeleccionada.urlVideo)" frameborder="0" allowfullscreen></iframe>
-        </video>
-      </ng-container>
-      <ng-container *ngIf="cardSeleccionada.tipo_dato === 'pdf'">
-        <!-- Mostrar PDF -->
-        <embed [src]="cardSeleccionada.urlPdf" type="application/pdf" width="100%" height="600px">
-      </ng-container>
-      <ng-container *ngIf="cardSeleccionada.tipo_dato !== 'video' && cardSeleccionada.tipo_dato !== 'pdf'">
-        <!-- Mostrar mensaje de tipo de dato no compatible -->
+    <div class="w-full lg:w-2/4 lg:mt-4 flex items-center justify-center order-last lg:order-none bg-red-100">
+      <ng-container *ngIf="cardSeleccionada.tipo_dato === 'Video'">
+        <iframe [src]="videoUrl" width="560" height="315" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe> </ng-container>
+      <ng-container *ngIf="cardSeleccionada.tipo_dato !== 'Video'">
         <div class="w-full lg:w-2/4 lg:mt-4 flex items-center justify-center order-last lg:order-none bg-red-100 ">
           <img [src]="cardSeleccionada.logo" alt="ImagenCard">
         </div>
       </ng-container>
     </div>
+
+
 
   </div>
 </div>
