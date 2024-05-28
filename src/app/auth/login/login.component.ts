@@ -62,7 +62,7 @@ validateToken(): void {
                 this.router.navigate(['list-aliados']);
                 break;
             case '5':
-                this.router.navigate(['list-empresa/', this.user?.emprendedor?.documento]);
+                this.router.navigate(['list-empresa', this.user?.emprendedor?.documento]);
                 break;
             default:
                 this.router.navigate(['/home/body']);

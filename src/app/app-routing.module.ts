@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'verification', component: VerificationComponent },
 
   { path: 'add-empresa', component: AddEmpresaComponent },
-  { path: 'list-empresa/:documento', component: ListEmpresasComponent },
+  { path: 'list-empresa', component: ListEmpresasComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
   { path: 'modal-superadmin', component: ModalComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },

@@ -25,7 +25,7 @@ export class EmprendedorService {
 
   getEmpresas(access_token: any, documento: string): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.get(this.url + "/" + documento, options);
+    return this.http.get(`${this.url}/${documento}`, options);
   }
 
   updateEmprendedor(emprendedor: PerfilEmprendedor, access_token: any, documento: string): Observable<any> {
