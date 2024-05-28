@@ -56,12 +56,13 @@ export class PerfilEmprendedorComponent implements OnInit {
     fecha_nac: ['', Validators.required],
     direccion: ['', Validators.required],
     nombretipodoc: ['', Validators.required],
-    municipio: ['', Validators.required],
+    municipio: ['' , Validators.required],
   });
   registerForm: FormGroup; //ahorita quitarlo
   listEmprendedor: Emprendedor[] = [];
   originalData: any;
   perfil: '';
+  boton: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -138,8 +139,9 @@ export class PerfilEmprendedorComponent implements OnInit {
       id_municipio: this.emprendedorForm.get('municipio')?.value,
     }
     this.emprendedorService.updateEmprendedor(perfil, this.token, this.documento).subscribe(
-      data =>
-        this.router.navigate(['/perfil-emprendedor']),
+      (data) => {
+        location.reload();
+      },
       (err) => {
         console.log(err);
       }
@@ -200,9 +202,14 @@ export class PerfilEmprendedorComponent implements OnInit {
     }
   }
 
+
   // Restaura los datos originales
   onCancel(): void {
     this.verEditar();
+  }
+
+  mostrarGuardarCambios(): void {
+    this.boton = false;
   }
 
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="emprendedorForm" (ngSubmit)="updateEmprendedor()"> 
+<form [formGroup]="emprendedorForm" (ngSubmit)="updateEmprendedor()">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <div class="container -mx-auto px-4 py-6 md:py-12">
         <div class="grid grid-cols-12 gap-4 mb-6">
@@ -53,8 +53,7 @@
                     <div class="w-full md:w-1/3 pr-0 md:pr-2 md:-mt-1 relative">
                         <label for="fechaNacimiento" class="block mb-2 text-blue-400">Fecha de Nacimiento:</label>
 
-                        <input type="date" id="fecha_nac" formControlName="fecha_nac"
-                            [readonly]="blockedInputs"
+                        <input type="date" id="fecha_nac" formControlName="fecha_nac" [readonly]="blockedInputs"
                             class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 appearance-none"
                             style="background-image: none;" />
                         <div class="absolute top-0 right-0 h-full flex items-center pr-2 mt-2 pointer-events-none">
@@ -177,12 +176,13 @@
                     </div>
                     <div class="flex justify-end mr-2">
                         <button type="submit"
-                            class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-4 rounded -pl-12">
+                            class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-4 rounded -pl-12"
+                            *ngIf="!blockedInputs" (click)="mostrarGuardarCambios()">
                             Guardar cambios
                         </button>
                     </div>
                     <div class="flex justify-end">
-                        <button
+                        <button id="boton"
                             class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-4 rounded -pl-12"
                             *ngIf="blockedInputs" (click)="toggleInputsLock()"> Editar Perfil
                         </button>
