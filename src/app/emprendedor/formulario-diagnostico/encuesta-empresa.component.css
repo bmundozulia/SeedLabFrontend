@@ -1,0 +1,7 @@
+@media only screen and (max-width: 600px) {
+    .cell {
+        rowspan: initial;
+        /* Eliminar el rowspan en dispositivos móviles */
+
+    }
+}

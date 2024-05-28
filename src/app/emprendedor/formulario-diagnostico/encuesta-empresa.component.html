@@ -43,11 +43,13 @@
     <div class=" flex-1  xl:m-8 p-4   rounded-lg">
         <!-- Separacion -->
         <div class="">
-            <table class="min-w-full bg-white my-3">
+            <table class="min-w-full bg-white my-2">
                 <tbody>
                     <tr>
-                        <td class="py-2 px-4"><b>1.</b>¿Cuantos integrantes conforman su equipo de
-                            trabajo?</td>
+                        <td class="py-2 px-4 flex"><b>1.</b>
+                            <h3> ¿Cuantos integrantes conforman su equipo de
+                                trabajo?</h3>
+                        </td>
                         <td class="py-2 px-4">
                             <select
                                 class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 ">
@@ -58,127 +60,175 @@
                             </select>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
-            <div class="border ">
-                <h3 class="relative bottom-4 left-4 bg-white inline-block mx-2"><b>2. </b> Cuenta con personas de
-                    apoyo
-                    en:</h3>
-                <div class="mx-8 ">
-                    <div class="sm:block lg:flex lg:flex-wrap md:flex md:flex-wrap my-2 lg:content-center">
-                        <h3 class="lg:mr-72 md:mr-72">Administrativo</h3>
-                        <div class="flex  space-x-4 ">
-                            <select id="1Select"
-                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [(ngModel)]="selectedOption1">
-                                <option value="" disabled selected hidden>Si / No</option>
-                                <option value="tipo1">Si</option>
-                                <option value="tipo2">No</option>
-                            </select>
+            <table class="border my-4">
+                <thead>
+                    <tr class="">
+                        <th class="px-4 py-2 xl:relative xl:bottom-6 xl:bg-white">
+                            <div class="flex">
+                                <b>2. </b>
+                                <h3 class="">Cuenta con personas de
+                                    apoyo
+                                    en:</h3>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
 
-                            <select id="2Select"
-                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [style.display]="selectedOption1 === 'tipo1' ? 'block' : 'none'">
-                                <option value="" disabled selected hidden>¿Cuantos?</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class=" sm:block lg:flex lg:flex-wrap md:flex md:flex-wrap my-2 lg:content-center">
-                        <h3 class="lg:mr-80 md:mr-80">Desarrollo</h3>
-                        <div class="flex space-x-4">
-                            <select id="3Select"
-                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [(ngModel)]="selectedOption2">
-                                <option value="" disabled selected hidden>Si / No</option>
-                                <option value="tipo1">Si</option>
-                                <option value="tipo2">No</option>
-                            </select>
+                <tbody class="">
 
-                            <select id="4Select"
-                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [style.display]="selectedOption2 === 'tipo1' ? 'block' : 'none'">
-                                <option value="" disabled selected hidden>¿Cuantos?</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="sm:block lg:flex lg:flex-wrap md:flex md:flex-wrap my-2 lg:content-center">
-                        <h3 class="lg:mr-72 md:mr-72">Producción</h3>
-                        <div class="flex space-x-4">
-                            <select id="1Select"
-                                class="h-7 rounded px-2 lg:ml-6 md:ml-6 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [(ngModel)]="selectedOption3">
-                                <option value="" disabled selected hidden>Si / No</option>
-                                <option value="tipo1">Si</option>
-                                <option value="tipo2">No</option>
-                            </select>
+                    <tr class="block sm:table-row">
+                        <td class="block sm:table-cell w-full sm:w-auto px-4 py-2 ">
+                            <h3>
+                                Administrativo
+                            </h3>
+                        </td>
+                        <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto ">
+                            <div class="flex sm:flex-row   space-x-4 ">
+                                <select id="1Select"
+                                    class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [(ngModel)]="selectedOption1">
+                                    <option value="" disabled selected hidden>Si / No</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
+                                </select>
 
-                            <select id="2Select"
-                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [style.display]="selectedOption3 === 'tipo1' ? 'block' : 'none'">
-                                <option value="" disabled selected hidden>¿Cuantos?</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="sm:block lg:flex lg:flex-wrap md:flex md:flex-wrap my-2 lg:content-center">
-                        <h3 class="lg:mr-52 md:mr-52">Innovación y/o desarrollo</h3>
-                        <div class="flex space-x-4">
-                            <select id="1Select"
-                                class="h-7 rounded px-2 lg:ml-1 md:ml-1 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [(ngModel)]="selectedOption4">
-                                <option value="" disabled selected hidden>Si / No</option>
-                                <option value="tipo1">Si</option>
-                                <option value="tipo2">No</option>
-                            </select>
+                                <select id="2Select"
+                                    class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [style.display]="selectedOption1 === 'tipo1' ? 'block' : 'none'">
+                                    <option value="" disabled selected hidden>¿Cuantos?</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="block sm:table-row">
+                        <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <h3>Desarrollo</h3>
+                        </td>
+                        <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto">
+                            <div class="flex sm:flex-row  space-x-4">
+                                <select id="3Select"
+                                    class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [(ngModel)]="selectedOption2">
+                                    <option value="" disabled selected hidden>Si / No</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
+                                </select>
 
-                            <select id="2Select"
-                                class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [style.display]="selectedOption4 === 'tipo1' ? 'block' : 'none'">
-                                <option value="" disabled selected hidden>¿Cuantos?</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="lg:flex lg:flex-wrap md:flex md:flex-wrap my-1 mb-4 lg:content-center ">
-                        <h3 class="lg:mr-64 md:mr-64">Comercialización</h3>
-                        <div class="flex space-x-4">
-                            <select id="1Select"
-                                class="h-7 rounded px-2 lg:ml-4 md:ml-4 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [(ngModel)]="selectedOption5">
-                                <option value="" disabled selected hidden>Si / No</option>
-                                <option value="tipo1">Si</option>
-                                <option value="tipo2">No</option>
-                            </select>
+                                <select id="4Select"
+                                    class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [style.display]="selectedOption2 === 'tipo1' ? 'block' : 'none'">
+                                    <option value="" disabled selected hidden>¿Cuantos?</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="block sm:table-row">
+                        <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <h3>
+                                Producción
+                            </h3>
+                        </td>
+                        <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
+                            <div class="flex sm:flex-row  space-x-4">
+                                <select id="1Select"
+                                    class="h-7 rounded px-2   cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [(ngModel)]="selectedOption3">
+                                    <option value="" disabled selected hidden>Si / No</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
+                                </select>
 
-                            <select id="2Select"
-                                class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                [style.display]="selectedOption5 === 'tipo1' ? 'block' : 'none'">
-                                <option value="" disabled selected hidden>¿Cuantos?</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                <select id="2Select"
+                                    class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [style.display]="selectedOption3 === 'tipo1' ? 'block' : 'none'">
+                                    <option value="" disabled selected hidden>¿Cuantos?</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="block sm:table-row">
+                        <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <h3>
+                                Innovación y/o desarrollo
+                            </h3>
+                        </td>
+                        <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
+                            <div class="flex sm:flex-row  space-x-4">
+                                <select id="1Select"
+                                    class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [(ngModel)]="selectedOption4">
+                                    <option value="" disabled selected hidden>Si / No</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
+                                </select>
+
+                                <select id="2Select"
+                                    class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [style.display]="selectedOption4 === 'tipo1' ? 'block' : 'none'">
+                                    <option value="" disabled selected hidden>¿Cuantos?</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="block sm:table-row">
+                        <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <h3>
+                                Comercialización
+                            </h3>
+                        </td>
+                        <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
+                            <div class="flex sm:flex-row  space-x-4">
+                                <select id="1Select"
+                                    class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [(ngModel)]="selectedOption5">
+                                    <option value="" disabled selected hidden>Si / No</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
+                                </select>
+
+                                <select id="2Select"
+                                    class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
+                                    [style.display]="selectedOption5 === 'tipo1' ? 'block' : 'none'">
+                                    <option value="" disabled selected hidden>¿Cuantos?</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+
         </div>
 
         <!-- Separacion -->
 
 
-        <table class="min-w-full bg-white">
+        <table class="min-w-full bg-white ">
             <tbody>
-                <tr>
-                    <td class="py-2 px-4"><b>3. </b>¿Su emprendimiento esta legalmente
-                        constituido?</td>
+                <tr class="">
+                    <td class="py-2 px-4 " colspan="2">
+                        <div class="flex">
+                            <b>3. </b>
+                            <h3>¿Su emprendimiento esta legalmente
+                                constituido?</h3>
+                        </div>
+                    </td>
                     <td class="py-2 px-4">
                         <select
                             class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
@@ -190,8 +240,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4"><b>4. </b> ¿Cumple con las normas tributarias,
-                        contables, laborales, comerciales y/o legales para desempeñar la actividad?</td>
+                    <td class="py-2 px-4" colspan="2">
+                        <div class="flex">
+                            <b>4. </b>
+                            <h3> ¿Cumple con las normas tributarias,
+                                contables, laborales, comerciales y/o legales para desempeñar la actividad?</h3>
+                        </div>
+                    </td>
                     <td class="py-2 px-4">
                         <select
                             class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 ">
@@ -203,8 +258,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 "><b>5.</b>¿Tiene claramente definido su modelo
-                        de negocio?</td>
+                    <td class="py-2 px-4 " colspan="2">
+                        <div class="flex">
+                            <b>5.</b>
+                            <h3>¿Tiene claramente definido su modelo
+                                de negocio?</h3>
+                        </div>
+                    </td>
                     <td class="py-2 px-4">
                         <select
                             class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 ">
@@ -219,9 +279,12 @@
                 <!-- separacion -->
 
                 <tr>
-                    <td class="py-2 px-4">
-                        <b>6.</b>¿Tiene claramente definido su plan de
-                        negocios?
+                    <td class="py-2 px-4 " colspan="2">
+                        <div class="flex">
+                            <b>6.</b>
+                            <h3>¿Tiene claramente definido su plan de
+                                negocios?</h3>
+                        </div>
                     </td>
                     <td class="py-2 px-4">
                         <select
@@ -234,9 +297,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4">
-                        <b>7.</b>¿Tiene experiencia comercial
-                        relacionada con el producto y/o servicio?
+                    <td class="py-2 px-4 " colspan="2">
+                        <div class="flex">
+                            <b>7.</b>
+                            <h3>¿Tiene experiencia comercial
+                                relacionada con el producto y/o servicio?</h3>
+                        </div>
                     </td>
                     <td class="py-2 px-4">
                         <select
@@ -249,60 +315,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4"><b>8.</b>Si la respuesta anterior fue
-                        afirmativa indicar: ¿Cuánto tiempo de experiencia relacionada tiene?</td>
-                    <td class="py-2 px-4">
-                        <select
-                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
-                            <option value="" disabled selected hidden>Seleccione</option>
-                            <option value="tipo1">Tipo 1</option>
-                            <option value="tipo2">Tipo 2</option>
-                            <option value="tipo3">Tipo 3</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4"><b>9.</b>¿Su emprendimiento tiene definido la
-                        misión y la visión?</td>
-                    <td class="py-2 px-4">
-                        <select
-                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
-                            <option value="" disabled selected hidden>Seleccione</option>
-                            <option value="tipo1">Tipo 1</option>
-                            <option value="tipo2">Tipo 2</option>
-                            <option value="tipo3">Tipo 3</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4"><b>10.</b>Si la respuesta anterior fue
-                        afirmativa indicar ¿Cuál es su misión?</td>
-                    <td class="py-2 px-4">
-                        <select
-                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
-                            <option value="" disabled selected hidden>Seleccione</option>
-                            <option value="tipo1">Tipo 1</option>
-                            <option value="tipo2">Tipo 2</option>
-                            <option value="tipo3">Tipo 3</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4"><b>11.</b>Si la respuesta anterior fue
-                        afirmativa indicar ¿Cuál es su visión?</td>
-                    <td class="py-2 px-4">
-                        <select
-                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
-                            <option value="" disabled selected hidden>Seleccione</option>
-                            <option value="tipo1">Tipo 1</option>
-                            <option value="tipo2">Tipo 2</option>
-                            <option value="tipo3">Tipo 3</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4">
-                        <b>12.</b>¿Tiene definidas metas empresariales?
+                    <td class="py-2 px-4 " colspan="2">
+                        <div class="flex">
+                            <b>8.</b>
+                            <h3>Si la respuesta anterior fue
+                                afirmativa indicar: ¿Cuánto tiempo de experiencia relacionada tiene?</h3>
+                        </div>
                     </td>
                     <td class="py-2 px-4">
                         <select
@@ -315,8 +333,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4"><b>13.</b>¿El personal de apoyo está
-                        debidamente contratado?</td>
+                    <td class="py-2 px-4" colspan="2">
+                        <div class="flex">
+                            <b>9.</b>
+                            <h3>¿Su emprendimiento tiene definido la
+                                misión y la visión?</h3>
+                        </div>
+                    </td>
                     <td class="py-2 px-4">
                         <select
                             class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
@@ -328,8 +351,30 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4"><b>14.</b>¿Los cargos de apoyo tienen funciones
-                        claramente definidas?</td>
+                    <td class="py-2 px-4 " colspan="2">
+                        <div class="flex"><b>10.</b>
+                            <h3>Si la respuesta anterior fue
+                                afirmativa indicar ¿Cuál es su misión?</h3>
+                        </div>
+                    </td>
+                    <td class="py-2 px-4 ">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4" colspan="2">
+                        <div class="flex">
+                            <b>11.</b>
+                            <h3>Si la respuesta anterior fue
+                                afirmativa indicar ¿Cuál es su visión?</h3>
+                        </div>
+                    </td>
                     <td class="py-2 px-4">
                         <select
                             class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
@@ -341,8 +386,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4"><b>15.</b>¿El perfil de los apoyos está
-                        debidamente definido?</td>
+                    <td class="py-2 px-4 " colspan="2">
+                        <div class="flex"><b>12.</b>
+                            <h3>¿Tiene definidas metas empresariales?</h3>
+                        </div>
+                    </td>
                     <td class="py-2 px-4">
                         <select
                             class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
@@ -353,6 +401,62 @@
                         </select>
                     </td>
                 </tr>
+                <tr>
+                    <td class="py-2 px-4 " colspan="2">
+                        <div class="flex">
+                            <b>13.</b>
+                            <h3>El personal de apoyo está
+                                debidamente contratado?</h3>
+                        </div>
+                    </td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 " colspan="2">
+                        <div class="flex">
+                            <b>14.</b>
+                            <h3>¿Los cargos de apoyo tienen funciones
+                                claramente definidas?</h3>
+                        </div>
+                    </td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4" colspan="2">
+                        <div class="flex">
+                            <b>15.</b>
+                            <h3>¿El perfil de los apoyos está
+                                debidamente definido?</h3>
+                        </div>
+                    </td>
+                    <td class="py-2 px-4">
+                        <select
+                            class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="" disabled selected hidden>Seleccione</option>
+                            <option value="tipo1">Tipo 1</option>
+                            <option value="tipo2">Tipo 2</option>
+                            <option value="tipo3">Tipo 3</option>
+                        </select>
+                    </td>
+                </tr>
+
+
             </tbody>
         </table>
 
@@ -409,182 +513,491 @@
         </div>
     </div>
 
+    <!-- separacion 2 -->
 
-    <div class="col-span-12 bg-white rounded-lg md:mx-auto p-8 shadow-lg 2xl:w-3/6 w-5/6 mx-10 justify-center">
-        <div class="flex flex-col lg:flex-row w-full lg:h-full items-center justify-center">
-            <div class="flex w-auto h-auto items-center justify-center">
-                <div class="">
-                    <div class="flex flex-col">
-                        <div class="flex flex-wrap justify-between pr-6">
-                            <div class="flex-col">
-                                <div class="flex flex-wrap justify-center">
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">¿Tiene identificado los gastos y
-                                            costos de su emprendimiento?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">Si la respuesta anterior fue
-                                            afirmativa indicar: ¿Cuáles?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!-- Separacion -->
-                                <div class="flex flex-wrap justify-center">
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">¿En su emprendimiento elabora estados
-                                            financieros?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">Si la respuesta anterior fue
-                                            afirmativa indicar: ¿Cuáles?'</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">¿Tiene claridad sobre qué
-                                            presupuestos debe elaborar para su emprendimiento?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">Si la respuesta anterior fue
-                                            afirmativa indicar: ¿Cuáles?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">¿Los costos de su producto y/o
-                                            servicio están claramente definidos?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">Si la anterior respuesta fue
-                                            afirmativa: ¿Qué factores tiene en cuenta para definir el precio de su
-                                            producto y/o servicio?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">¿Cuáles alternativas de
-                                            financiamiento usa para apoyar su emprendimiento?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">¿Su producto y/o servicio presenta en
-                                            la actualidad ventas?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">Si la anterior respuesta fue
-                                            afirmativa: ¿Cuál es el valor promedio / estimado de las ventas al año?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">¿Cuáles canales de ventas usa para
-                                            comercializar su negocio?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">¿Sabe cuáles obligaciones aplican a
-                                            su emprendimiento?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                    <div
-                                        class="md:flex md:justify-between rounded-xl pb-2 w-5/6 md:w-full justify-center text-center">
-                                        <h3 class="mr-8 lg:w-[500px] md:w-[400px]">Si la anterior respuesta fue
-                                            afirmativa: ¿Cuáles?</h3>
-                                        <select class="md:w-[150px] w-4/6 outline-none h-3/6 text-start">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Tipo 1</option>
-                                            <option value="tipo2">Tipo 2</option>
-                                            <option value="tipo3">Tipo 3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <table class="min-w-full my-4">
+        <tbody>
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex">
+                        <b>1.</b>
+                        <h3> ¿Tiene identificado los gastos y
+                            costos de su emprendimiento?</h3>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!--infromacion finaciera pregunta 2 -->
+            <tr class="bg-gray-50  ">
+                <td class=" py-2 px-4  xl:w-96 cell" rowspan="9">
+                    <div class="flex">
+                        <b class=" m-0 p-0">2.</b>
+                        <h3 class=" m-0 p-0">Si la respuesta anterior fue
+                            afirmativa indicar: ¿Cuáles?</h3>
+                    </div>
+                </td>
+
+            </tr>
+            <tr class="bg-gray-200 ">
+                <td class="px-4 py-2">
+                    <h3>Gastos fijos</h3>
+                </td>
+                <td class="px-4 py-2">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr class="bg-gray-300">
+                <td class="py-2 px-4 ">
+                    <h3>Gatos Variables</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="bg-gray-200">
+                <td class="px-4 py-2">
+                    <h3>Gastos Operacionales</h3>
+                </td>
+                <td class="px-4 py-2">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr class="bg-gray-300">
+                <td class="py-2 px-4">
+                    <h3>Gatos no Operaciones</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="bg-gray-200">
+                <td class="px-4 py-2">
+                    <h3>Costos fijos</h3>
+                </td>
+                <td class="px-4 py-2">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr class="bg-gray-300">
+                <td class="py-2 px-4">
+                    <h3>Costos Variables</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="bg-gray-200">
+                <td class="px-4 py-2">
+                    <h3>Costos Directos</h3>
+                </td>
+                <td class="px-4 py-2">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr class="bg-gray-300">
+                <td class="py-2 px-4">
+                    <h3>Costos indirectos</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- fin de la pregunta -->
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex">
+                        <b>3.</b>
+                        <h3 class="">¿En su emprendimiento elabora estados financieros?</h3>
+                    </div>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+
+
+
+            <!------------------------- inicio de pregunta ------------------------>
+            <tr class="bg-gray-50 ">
+                <td class="py-2 px-4 xl:w-96 cell" rowspan="5">
+                    <div class="flex">
+                        <b>4.</b>
+                        <h3>
+                            Si la respuesta anterior fue
+                            afirmativa indicar: ¿Cuáles?'
+                        </h3>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4">
+                    <h3>Balance General</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Si</option>
+                        <option value="tipo2">Medio</option>
+                        <option value="tipo3">No</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4">
+                    <h3>Estado de flujo</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Si</option>
+                        <option value="tipo2">No</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4">
+                    <h3>Registro de Compras</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Si</option>
+
+                        <option value="tipo3">No</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4">
+                    <h3>Registro de Ventas</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Si</option>
+
+                        <option value="tipo3">No</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- fin de pregunta -->
+
+
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex">
+                        <b>5.</b>
+                        <h3>
+                            ¿Tiene claridad sobre qué
+                            presupuestos debe elaborar para su emprendimiento?
+                        </h3>
+                    </div>
+
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- inicio de pregunta -->
+            <tr class="bg-gray-50">
+                <td class="py-2 px-4 xl:w-96 cell" rowspan="4">
+                    <div class="flex">
+                        <b>6.</b>
+                        <h3>
+                            Si la respuesta anterior fue
+                            afirmativa indicar: ¿Cuáles?
+                        </h3>
+                    </div>
+
+                </td>
+
+
+            </tr>
+            <tr>
+                <td class="py-2 px-4">
+                    <h3>Ingresos</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Si</option>
+                        <option value="tipo2">Medio</option>
+                        <option value="tipo3">No</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4">
+                    <h3>Egresos</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Si</option>
+                        <option value="tipo2">Medio</option>
+                        <option value="tipo2">No</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4">
+                    <h3>Deudas</h3>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Si</option>
+                        <option value="tipo2">Medio</option>
+                        <option value="tipo3">No</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- fin de pregunta  -->
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex">
+                        <b>7.</b>
+                        <h3>¿Los costos de su producto y/o
+                            servicio están claramente definidos?</h3>
+                    </div>
+
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex">
+                        <b>8.</b>
+                        <h3>
+                            Si la anterior respuesta fue
+                            afirmativa: ¿Qué factores tiene en cuenta para definir el precio de su
+                            producto y/o servicio?
+                        </h3>
+                    </div>
+
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex">
+                        <b>9.</b>
+                        <h3>
+                            ¿Cuáles alternativas de
+                            financiamiento usa para apoyar su emprendimiento?
+
+                        </h3>
+                    </div>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex">
+                        <b>10.</b>
+                        <h3>¿Su producto y/o servicio presenta en
+                            la actualidad ventas?</h3>
+                    </div>
+
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex"><b>11.</b>
+                        <h3>Si la anterior respuesta fue
+                            afirmativa: ¿Cuál es el valor promedio / estimado de las ventas al año?</h3>
+                    </div>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4  " colspan="2">
+                    <div class="flex">
+                        <b>12.</b>
+                        <h3>¿Cuáles canales de ventas usa para
+                            comercializar su negocio?</h3>
+                    </div>
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex">
+                        <b>13.</b>
+                        <h3>¿Sabe cuáles obligacioness aplican a su emprendimiento</h3>
+                    </div>
+
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 " colspan="2">
+                    <div class="flex">
+                        <b>14 .</b>
+                        <h3>Si la anterior respuesta fue afirmativas:¿Cuáles?</h3>
+                    </div>
+
+                </td>
+                <td class="py-2 px-4">
+                    <select
+                        class="h-7  px-2 cursor-pointer border rounded-md bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <option value="" disabled selected hidden>Seleccione</option>
+                        <option value="tipo1">Tipo 1</option>
+                        <option value="tipo2">Tipo 2</option>
+                        <option value="tipo3">Tipo 3</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
 </div>
 
 <!-- Separacion seccion 2 con 3-->
@@ -626,6 +1039,10 @@
             </button>
         </div>
     </div>
+
+
+
+
 
 
     <div class="col-span-12 bg-white rounded-lg md:mx-auto p-8 shadow-lg 2xl:w-3/6 w-5/6 mx-10 justify-center">
