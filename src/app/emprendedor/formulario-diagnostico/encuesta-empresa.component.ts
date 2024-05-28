@@ -1,5 +1,4 @@
-import { Component, HostListener, ElementRef, Renderer2 } from '@angular/core';
-
+import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef } from '@angular/core';
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -19,60 +18,29 @@ export class EncuestaEmpresaComponent {
   selectedOption4: string = '';
   selectedOption5: string = '';
 
-  mostrarSeccion1() {
-    var seccion1 = document.getElementById('seccion1');
-    var seccion2 = document.getElementById('seccion2');
-    var seccion3 = document.getElementById('seccion3');
-    var seccion4 = document.getElementById('seccion4');
+  currentIndex = 0;
 
-    seccion1.style.display = 'block';
-    seccion2.style.display = 'none';
-    seccion3.style.display = 'none';
-    seccion4.style.display = 'none';
+  next() {
+    if (this.currentIndex < 3) {
+      this.currentIndex++;
+      this.updateAttributes();
+    }
   }
 
-  mostrarSeccion2() {
-    var seccion1 = document.getElementById('seccion1');
-    var seccion2 = document.getElementById('seccion2');
-    var seccion3 = document.getElementById('seccion3');
-    var seccion4 = document.getElementById('seccion4');
-
-    seccion1.style.display = 'none';
-    seccion2.style.display = 'block';
-    seccion3.style.display = 'none';
-    seccion4.style.display = 'none';
+  prev() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.updateAttributes();
+    }
   }
 
-  mostrarSeccion3() {
-    var seccion1 = document.getElementById('seccion1');
-    var seccion2 = document.getElementById('seccion2');
-    var seccion3 = document.getElementById('seccion3');
-    var seccion4 = document.getElementById('seccion4');
-
-    seccion1.style.display = 'none';
-    seccion2.style.display = 'none';
-    seccion3.style.display = 'block';
-    seccion4.style.display = 'none';
-  }
-
-  mostrarSeccion4() {
-    var seccion1 = document.getElementById('seccion1');
-    var seccion2 = document.getElementById('seccion2');
-    var seccion3 = document.getElementById('seccion3');
-    var seccion4 = document.getElementById('seccion4');
-
-    seccion1.style.display = 'none';
-    seccion2.style.display = 'none';
-    seccion3.style.display = 'none';
-    seccion4.style.display = 'block';
-  }
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.processAttributesBasedOnScreenSize();
+    this.debouncedProcessAttributes();
   }
 
   ngOnInit() {
@@ -120,5 +88,19 @@ export class EncuestaEmpresaComponent {
         this.renderer.removeAttribute(cellElement, 'colspan');
       }
     });
+
+    // Forzar detección de cambios
+    this.cdr.detectChanges();
   }
+
+  updateAttributes() {
+    requestAnimationFrame(() => this.processAttributesBasedOnScreenSize());
+  }
+
+  private debouncedProcessAttributes() {
+    clearTimeout(this.debounceTimeout);
+    this.debounceTimeout = setTimeout(() => this.updateAttributes(), 200);
+  }
+
+  private debounceTimeout: any;
 }
