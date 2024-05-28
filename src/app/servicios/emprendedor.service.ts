@@ -32,8 +32,8 @@ export class EmprendedorService {
     return this.http.put(this.url + "/" + documento, emprendedor, options);
   }
 
-  getInfoEmprendedor(accessToken: string, documento: string): Observable<any> {
-    const headers = this.CreacionHeaders(accessToken);
-    return this.http.get<any>(`${this.url2}${documento}`, { headers });
+  getInfoEmprendedor(access_token: any, documento: string): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get<any>(`${this.url2}${documento}`, options);
   }
 }

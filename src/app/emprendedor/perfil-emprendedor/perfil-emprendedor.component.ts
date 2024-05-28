@@ -111,7 +111,6 @@ export class PerfilEmprendedorComponent implements OnInit {
             municipio: data.id_municipio ? data.id_municipio.toString() : ''
           });
           console.log(data);
-          console.log(data);
 
         },
         (err) => {
@@ -122,11 +121,29 @@ export class PerfilEmprendedorComponent implements OnInit {
   }
 
 
-  // updateEmprendedor(): void {
-  //   const perfil: Emprendedor = {
-
-  //   }
-  // }
+  updateEmprendedor(): void {
+    const perfil: Emprendedor = {
+      documento: this.emprendedorForm.get('documento')?.value,
+      nombretipodoc: this.emprendedorForm.get('nombretipodoc')?.value,
+      nombre: this.emprendedorForm.get('nombre')?.value,
+      apellido: this.emprendedorForm.get('apellido')?.value,
+      celular: this.emprendedorForm.get('celular')?.value,
+      email: this.emprendedorForm.get('email')?.value,
+      password: this.emprendedorForm.get('password')?.value,
+      genero: this.emprendedorForm.get('genero')?.value,
+      fecha_nacimiento: this.emprendedorForm.get('fecha_nacimiento')?.value,
+      direccion: this.emprendedorForm.get('direccion')?.value,
+      estado: this.emprendedorForm.get('estado')?.value,
+      municipio: this.emprendedorForm.get('municipio')?.value,
+    }
+    this.emprendedorService.updateEmprendedor(perfil, this.token, this.documento).subscribe(
+      data => 
+        this.router.navigate(['/perfil-emprendedor']),
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
 
 
   passwordValidator(control: AbstractControl) {
@@ -182,8 +199,8 @@ export class PerfilEmprendedorComponent implements OnInit {
     }
   }
 
+  // Restaura los datos originales
   onCancel(): void {
-    // Restaura los datos originales
     this.verEditar();
   }
 

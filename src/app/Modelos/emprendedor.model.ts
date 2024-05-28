@@ -7,7 +7,7 @@ export class Emprendedor {
     email: string | null;
     password: string | null;
     genero: string | null;
-    fecha_nacimiento: Date | null;
+    fecha_nacimiento: string | null;
     direccion: string | null;
     nombretipodoc: string | null;
     estado: string | null;
@@ -22,7 +22,7 @@ export class Emprendedor {
         email: string | null,
         password: string | null,
         genero: string | null,
-        fecha_nacimiento: Date | null,
+        fecha_nacimiento: string | null,
         direccion: string | null,
         estado: string | null,
         municipio: string | null,

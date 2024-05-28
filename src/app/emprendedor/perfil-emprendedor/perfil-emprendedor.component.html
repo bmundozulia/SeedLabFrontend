@@ -1,4 +1,4 @@
-<form [formGroup]="emprendedorForm">
+<form [formGroup]="emprendedorForm" (ngSubmit)="updateEmprendedor()"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <div class="container -mx-auto px-4 py-6 md:py-12">
         <div class="grid grid-cols-12 gap-4 mb-6">
@@ -169,7 +169,7 @@
                 </div>
                 <div class="flex justify-end mt-4">
                     <div class="flex justify-end mr-2">
-                        <button type="submit"
+                        <button
                             class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-4 rounded -pl-12"
                             (click)="onCancel()" *ngIf="!blockedInputs" (click)="toggleInputsLock()">
                             Cancelar
@@ -182,7 +182,7 @@
                         </button>
                     </div>
                     <div class="flex justify-end">
-                        <button type="submit"
+                        <button
                             class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-4 rounded -pl-12"
                             *ngIf="blockedInputs" (click)="toggleInputsLock()"> Editar Perfil
                         </button>

@@ -13,6 +13,7 @@ import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { ApoyoEmpresa } from '../../../Modelos/apoyo-empresa.modelo';
 
 
 @Component({
