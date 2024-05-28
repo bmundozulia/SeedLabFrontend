@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { } from '@fortawesome/free-solid-svg-icons';
 import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { MatIconModule } from '@angular/material/icon';
-import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { EmprendedorService } from '../../servicios/emprendedor.service';
@@ -17,7 +17,9 @@ import { MunicipioService } from '../../servicios/municipio.service';
 import { RegistroService } from '../../servicios/registro.service';
 import { Router } from '@angular/router';
 import { Emprendedor } from '../../Modelos/emprendedor.model';
+import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
 import { User } from '../../Modelos/user.model';
+
 
 @Component({
   selector: 'app-perfil-emprendedor',
@@ -55,11 +57,11 @@ export class PerfilEmprendedorComponent implements OnInit {
     genero: ['', Validators.required],
     fecha_nac: ['', Validators.required],
     direccion: ['', Validators.required],
-    nombretipodoc: ['', Validators.required],
-    municipio: ['' , Validators.required],
+    nombretipodoc: new FormControl({ value: '', disabled: true }, Validators.required), // Aquí se deshabilita el campo
+    municipio: ['', Validators.required],
   });
   registerForm: FormGroup; //ahorita quitarlo
-  listEmprendedor: Emprendedor[] = [];
+  listEmprendedor: PerfilEmprendedor[] = [];
   originalData: any;
   perfil: '';
   boton: boolean;
@@ -124,7 +126,7 @@ export class PerfilEmprendedorComponent implements OnInit {
 
 
   updateEmprendedor(): void {
-    const perfil: Emprendedor = {
+    const perfil: PerfilEmprendedor = {
       documento: this.emprendedorForm.get('documento')?.value,
       id_tipo_documento: this.emprendedorForm.get('nombretipodoc')?.value,
       nombre: this.emprendedorForm.get('nombre')?.value,
@@ -193,15 +195,21 @@ export class PerfilEmprendedorComponent implements OnInit {
     );
   }
 
+  //para que no me deje editar el nombre del tipo del documento
   toggleInputsLock(): void {
     this.blockedInputs = !this.blockedInputs;
-    if (this.blockedInputs) {
-      this.emprendedorForm.disable();
-    } else {
-      this.emprendedorForm.enable();
-    }
+    const fieldsToToggle = ['documento', 'nombre', 'apellido', 'celular', 'email', 'password', 'genero', 'fecha_nac', 'direccion', 'municipio'];
+    fieldsToToggle.forEach(field => {
+      const control = this.emprendedorForm.get(field);
+      if (control && field !== 'nombretipodoc') {
+        if (this.blockedInputs) {
+          control.disable();
+        } else {
+          control.enable();
+        }
+      }
+    });
   }
-
 
   // Restaura los datos originales
   onCancel(): void {
