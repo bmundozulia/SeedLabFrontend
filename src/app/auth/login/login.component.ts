@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { Login } from '../../Modelos/login.modelo';
 import { User } from '../../Modelos/user.model';
+import { AlertService } from '../../servicios/alert.service';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class LoginComponent {
     private loginService: LoginService,
     private router: Router,
     private fb: FormBuilder,
+    private alertService: AlertService
   ) { }
 
 
@@ -102,11 +104,19 @@ login(): void {
               if (this.reply.user.emprendedor) {
                   localStorage.setItem('documento', this.reply.user.emprendedor.documento);
               }
+              this.alertService.successAlert('Exito', 'Inicio de sesión exitoso');
               location.reload();
           }
       },
       err => {
           console.error(err);
+          if(err.status === 401) {
+            this.alertService.errorAlert('Error', err.error.message);
+          } else if(err.status === 422){
+            this.alertService.errorAlert('Error', err.error.message);
+          } else if(err.status === 403){
+            this.alertService.errorAlert('Error', err.error.message);
+          }
       }
   );
 }

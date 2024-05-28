@@ -35,6 +35,7 @@ import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/lis
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emprendedor.component';
 import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
 
@@ -89,7 +90,8 @@ import { ReportesComponent } from './orientador/reportes/reportes.component';
     FilterPipeModule,
     MatDialogModule,
     ColorPickerModule, 
-    ColorPickerModule
+    ColorPickerModule,
+    SweetAlert2Module.forRoot()
 
   ],
   providers: [
