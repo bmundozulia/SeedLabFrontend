@@ -1,26 +1,30 @@
-
 <div class="flex flex-wrap justify-around">
-    <div class="rounded-xl border border-gray-300 py-2  bg-white mt-10 w-[280px] mx-auto justify-center sm:mx-28 relative">
-        <input class="w-full h-16 outline-none pl-10" placeholder="Buscar">
-        <span class="absolute left-4 top-4">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </span>
-    </div>
-    <div class="rounded-2xl border border-gray-300 p-4 bg-white mt-10 w-auto flex flex-wrap justify-center lg:justify-normal mx-28">
-        <button class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2" (click)="changeColor(this)">
-            Pendientes
-            <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">1</span>
-        </button>
-        <button class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2" (click)="changeColor(this)">
-            En curso
-            <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">2</span>
-        </button>
-        <button class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2" (click)="changeColor(this)">
-            Finalizadas
-            <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">3</span>
-        </button>
-    </div>
+  <div class="rounded-xl border border-gray-300 py-2 bg-white mt-10 w-[280px] mx-auto justify-center sm:mx-28 relative">
+    <input class="w-full h-16 outline-none pl-10" placeholder="Buscar">
+    <span class="absolute left-4 top-4">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </span>
+  </div>
+  <div class="rounded-2xl border border-gray-300 p-4 bg-white mt-10 w-auto flex flex-wrap justify-center lg:justify-normal mx-28">
+    <button id="sinAsignar" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2">
+      Sin asignar
+      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasSinAsesor.length }}</span>
+    </button>
+    <button id="Asignadas" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2">
+      Asignadas
+      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasConAsesor.length }}</span>
+    </button>
+  </div>
 </div>
 
-<div id="contenedorp" class="flex flex-wrap justify-center mt-6">
+<div *ngFor="let asesoria of asesorias" class="card mt-4">
+  <div class="card-body">
+    <h5 class="card-title">{{ asesoria.Nombre_sol }}</h5>
+    <p class="card-text">{{ asesoria.notas }}</p>
+    <p class="card-text">{{ asesoria.fecha }}</p>
+    <p class="card-text">{{ asesoria.nombre }} {{ asesoria.apellido }}</p>
+    <p class="card-text">{{ asesoria.celular }}</p>
+    <p class="card-text">{{ asesoria.correo }}</p>
+    <p class="card-text">{{ asesoria.mensaje }}</p>
+  </div>
 </div>
