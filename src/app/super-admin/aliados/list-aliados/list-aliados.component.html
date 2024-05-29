@@ -13,7 +13,7 @@
             </div>
             <div class="flex justify-end w-full space-x-4">
                 <select (change)="onEstadoChange($event)"
-                    class="border rounded-lg text-gray-400 md:w-24 pl-2 h-12 ml-3">
+                    class="border rounded-lg text-gray-400 md:w-24 h-12 ml-3 focus:outline-none text-center ">
                     <option value="1" class="text-gray-600">Activo</option>
                     <option value="0" class="text-gray-600">Inactivo</option>
                 </select>
@@ -33,11 +33,14 @@
 
         <div class="headers md:flex md:justify-between md:mb-6 md:w-auto">
             <h2 class="hidden md:block md:w-28 whitespace-nowrap overflow-hidden text-center font-bold">Nombre</h2>
-            <h2 class="hidden md:block md:w-24 whitespace-nowrap overflow-hidden text-center font-bold ml-20">Correo
+            <h2
+                class="hidden md:block md:w-36 whitespace-nowrap overflow-hidden font-bold text-end md:mr-20 max-[900px]:ml-6  max-[770px]:ml-10">
+                Correo
             </h2>
-            <h2 class="hidden md:block md:w-auto whitespace-nowrap overflow-hidden text-center font-bold md:ml-16">
+            <h2
+                class="hidden md:block md:w-32 whitespace-nowrap overflow-hidden font-bold text-start mr-4 max-[900px]:pl-5 max-[770px]:pl-7">
                 Estado</h2>
-            <h2 class="hidden md:block  whitespace-nowrap overflow-hidden text-center font-bold md:w-20"></h2>
+            <h2 class="hidden md:block  whitespace-nowrap overflow-hidden text-left font-bold md:w-5"></h2>
         </div>
         <div class="contenido">
             <div *ngFor="let aliados of listaAliado |filterBy:userFilter | paginate: { itemsPerPage: 5, currentPage: page }"
