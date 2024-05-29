@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment/env';
 import { Asesoria } from '../Modelos/asesoria.model';
+import { AsesorDisponible } from '../Modelos/AsesorDisponible.model';
 
 @Injectable({
   providedIn: 'root'
@@ -72,4 +73,27 @@ export class AsesoriaService {
     const url = `${this.apiUrl}mostrarAsesorias/${rol}/${estado}`;
     return this.http.get<Asesoria[]>(url, { headers });
   }
+
+
+  listarAsesores(idaliado: number): Observable<AsesorDisponible[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    const url = `${this.apiUrl}asesores_disponibles/${idaliado}`;
+    return this.http.get<AsesorDisponible[]>(url, { headers });
+  }
+
+  asignarAsesoria(idAsesoria: number, idAsesor: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    const url = `${this.apiUrl}asignar_asesoria`;
+    const body = { id_asesoria: idAsesoria, id_asesor: idAsesor };
+    return this.http.post(url, body, { headers });
+  }
+
 }

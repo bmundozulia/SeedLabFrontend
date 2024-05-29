@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AliadoService } from '../../../servicios/aliado.service';
 
@@ -17,7 +17,6 @@ export class AddAliadosComponent {
   password: string = ''; 
   estado: boolean = true;
   token: string | null = localStorage.getItem('token'); 
-  passwordFieldType: string = 'password';
   hide = true;
 
   constructor(private aliadoService: AliadoService, private router: Router) {}
@@ -62,15 +61,13 @@ export class AddAliadosComponent {
       };
       reader.readAsDataURL(file);
     } else {
-      // Mostrar un mensaje de error al usuario indicando que solo se permiten imágenes
       alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
     }
   }
+  passwordVisible: boolean = false;
 
-  togglePasswordVisibility(): void {
-    this.hide = !this.hide;
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
   }
- 
 }
-
 
