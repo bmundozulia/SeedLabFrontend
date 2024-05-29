@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Asesoria } from '../../Modelos/asesoria.model';
 import { AsesoriaService } from '../../servicios/asesoria.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DarAsesorModalComponent } from './dar-asesor-modal/dar-asesor-modal.component';
 
 @Component({
   selector: 'app-asesoria-aliado',
@@ -11,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AsesoriaAliadoComponent implements OnInit {
   asesorias: Asesoria[] = [];
+  asesoriasConAsesor: Asesoria[] = [];
+  asesoriasSinAsesor: Asesoria[] = [];
   token: string | null = null;
   user: any = null;
   currentRolId: string | null = null;
@@ -22,7 +25,7 @@ export class AsesoriaAliadoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.validateToken();
+    this.validateToken();    
   }
 
   validateToken(): void {
@@ -42,7 +45,6 @@ export class AsesoriaAliadoComponent implements OnInit {
     if (!this.token || !this.currentRolId) {
       this.router.navigate(['/inicio/body']);
     } else {
-      // Llama a loadAsesorias después de que currentRolId se haya establecido
       this.loadAsesorias(parseInt(this.currentRolId), 1);
     }
   }
@@ -52,10 +54,33 @@ export class AsesoriaAliadoComponent implements OnInit {
       data => {
         console.log('Respuesta de la API:', data);
         this.asesorias = data;
+        this.separarAsesorias();
       },
       error => {
         console.error('Error al obtener las asesorías:', error);
       }
     );
+  }
+
+  separarAsesorias(): void {
+    this.asesoriasConAsesor = this.asesorias.filter(asesoria => asesoria.Asesor);
+    this.asesoriasSinAsesor = this.asesorias.filter(asesoria => !asesoria.Asesor);
+    console.log('Asesorías con asesor:', this.asesoriasConAsesor);
+    console.log('Asesorías sin asesor:', this.asesoriasSinAsesor);
+  }
+
+  openModal(asesoria: Asesoria): void {
+    const dialogRef = this.dialog.open(DarAsesorModalComponent, {
+      width: '400px',
+      data: { asesoria: asesoria }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El modal se cerró');
+    });
+  }
+
+  rechazarAsesoria(asesoria: Asesoria): void {
+    console.log('Rechazar asesoria:', asesoria);
   }
 }

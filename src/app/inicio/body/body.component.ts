@@ -1,6 +1,8 @@
 import { Component, AfterViewInit, PLATFORM_ID, Inject, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { TraeraliadosfanpageService } from '../../servicios/traeraliadosfanpage.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 // Importar función para registrar elementos personalizados de Swiper
 import { register } from 'swiper/element/bundle';
@@ -16,6 +18,7 @@ import Swiper from 'swiper';
 export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   cardSeleccionada: any;
+  videoUrl: any;
   resizedCardImage: string | undefined;
   currentIndex = 0;
   intervalId: any;
@@ -26,20 +29,31 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private traeraliadosfanpageService: TraeraliadosfanpageService // Inyecta el servicio
+    private traeraliadosfanpageService: TraeraliadosfanpageService,
+    private sanitizer: DomSanitizer // Inyecta el servicio
   ) {
     this.cardSeleccionada = {}; // Inicializar cardSeleccionada
   }
 
   ngOnInit(): void {
     this.traeraliadosfanpageService.getaliados().subscribe(data => {
+      console.log(data); // Mostrar por consola los datos recibidos
       this.cards = data;
       this.totalSlides = this.cards.length;
       this.cardSeleccionada = this.cards[0]; // Inicializar con la primera imagen
+
+
       this.updateSlidesPerView();
       this.startAutoSlide();
       this.mostrarCard(0); // Mostrar la primera card al cargar
     });
+  }
+
+
+  extractVideoId(url: string): string {
+    const regExp = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regExp);
+    return (match && match[1]) ? match[1] : '';
   }
 
   ngAfterViewInit(): void {
@@ -58,6 +72,7 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   prevSlide(): void {
     this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : 0;
+    
   }
 
   nextSlide(): void {
@@ -103,6 +118,13 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
     }).catch(error => {
       console.error('Error al redimensionar la imagen:', error);
     });
+    
+    if (this.cardSeleccionada.tipo_dato === 'Video') {
+      let url = this.cardSeleccionada.ruta_multi;
+      let videoId = this.extractVideoId(url);
+      let embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    }
   }
 
   private resizeImage(base64Image: string): Promise<string> {
