@@ -2,21 +2,24 @@ import { Component } from '@angular/core';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { HeaderComponent } from '../../../header/header.component';
-import { AddEmpresaService } from '../../../servicios/add-empresa.service';
 import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Empresa } from '../../../Modelos/empresa.model';
 import { DepartamentoService } from '../../../servicios/departamento.service';
 import { MunicipioService } from '../../../servicios/municipio.service';
 import { User } from '../../../Modelos/user.model';
-import { ApoyoEmpresa } from '../../../Modelos/apoyo-empresa.modelo';
-import { of, switchMap } from 'rxjs';
+import { faIdCard } from '@fortawesome/free-solid-svg-icons';
+import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
+import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { catchError, of, switchMap, tap } from 'rxjs';
+import { EmpresaService } from '../../../servicios/empresa.service';
+import { AlertService } from '../../../servicios/alert.service';
 
 @Component({
   selector: 'app-add-empresa',
   templateUrl: './add-empresa.component.html',
   styleUrl: './add-empresa.component.css',
-  providers: [HeaderComponent, AddEmpresaService, DepartamentoService, MunicipioService]
+  providers: [HeaderComponent, EmpresaService, DepartamentoService, MunicipioService, AlertService]
 })
 
 export class AddEmpresaComponent {
@@ -30,15 +33,19 @@ export class AddEmpresaComponent {
   documento: string;
   user: User | null = null;
   currentRolId: string | null = null;
-
-
+  faIdCard = faIdCard;
+  faMountainCity = faMountainCity;
+  faLandmarkFlag = faLandmarkFlag;
+  faLocationDot = faLocationDot;
+  empresaDocumento: string;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private addEmpresaService: AddEmpresaService,
+    private addEmpresaService: EmpresaService,
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
+    private alertService: AlertService
   ) {
 
   }
@@ -120,7 +127,7 @@ export class AddEmpresaComponent {
     id_tipo_documento: ['', Validators.required],
   });
 
- 
+
 
 
 
@@ -132,7 +139,7 @@ export class AddEmpresaComponent {
       console.log("Formulario inválido");
       return;
     }
-    
+
     const empresa: any = {
       documento: this.addEmpresaForm.get('documento')?.value,
       nombre: this.addEmpresaForm.get('nombre')?.value,
@@ -162,7 +169,7 @@ export class AddEmpresaComponent {
       id_tipo_documento: this.addApoyoEmpresaForm.get('id_tipo_documento')?.value,
       id_empresa: empresa.documento,
     } : null;
-  
+
     const payload = {
       empresa: empresa,
       apoyos: apoyos ? [apoyos] : [] // Enviar un array vacío si no hay apoyos
@@ -170,29 +177,36 @@ export class AddEmpresaComponent {
 
 
     this.addEmpresaService.addEmpresa(this.token, payload).pipe(
-      switchMap((response: any) => {
+      tap((response: any) => {
         console.log('Respuesta de la API (empresa creada):', response);
-        this.router.navigate(['list-empresa', empresa.documento]);
+        this.alertService.successAlert('Éxito', 'Registro exitoso');
+        this.empresaDocumento = response.documento;
+        this.router.navigate(['list-empresa', this.empresaDocumento]);
 
-        if (apoyos) { 
-          console.log('Datos de apoyoEmpresa con ID de empresa:', apoyos);
-          return this.addEmpresaService.addApoyoEmpresa(this.token, apoyos);
+        location.reload();
+      }),
+      switchMap((response: any) => {
+        if (!apoyos) { 
+          return of(null);
         }
-        // Si apoyoEmpresa es null, retornar un observable vacío
+        console.log('Datos de apoyoEmpresa con ID de empresa:', apoyos);
+        return this.addEmpresaService.addApoyoEmpresa(this.token, apoyos);
+      }),
+      catchError(error => {
+        console.error('Error al crear la empresa o apoyoEmpresa:', error);
+        this.alertService.successAlert('Éxito', 'Empresa y apoyo creados');
+        this.router.navigate(['list-empresa', this.empresaDocumento]);
+        location.reload();
         return of(null);
       })
     ).subscribe(
       (apoyoResponse: any) => {
         if (apoyoResponse) {
           console.log('Respuesta de la API (apoyoEmpresa creado):', apoyoResponse);
-          this.router.navigate(['list-empresa', empresa.documento]);
-        } else {
-          console.log('No se creó el apoyoEmpresa');
+          this.alertService.successAlert('Éxito', 'Apoyo Empresa creado');
         }
-        
-      },
-      (error) => {
-        console.log('Error:', error);
+        // Navegar a la ruta de la empresa después de que se crea la empresa y el apoyo (si existe)
+        this.router.navigate(['list-empresa', this.empresaDocumento]);
       }
     );
   }

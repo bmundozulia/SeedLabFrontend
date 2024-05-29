@@ -35,10 +35,12 @@ import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/lis
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
-import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emprendedor.component';
+import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
+
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
-
-
+import { ReportesComponent } from './orientador/reportes/reportes.component';
 
 
 
@@ -63,8 +65,9 @@ import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.com
     AddAliadosComponent,
     SuperAdminComponent,
     ListRutasComponent,
-    
-
+    ReportesComponent,
+        RutaEmprendedorComponent,
+    AsesoriaAliadoComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,11 +87,12 @@ import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.com
     ReactiveFormsModule,
     NgxPaginationModule,
     FormsModule,
-    ColorPickerModule,
     FilterPipeModule,
     MatDialogModule,
-    
-    
+    ColorPickerModule, 
+    ColorPickerModule,
+    SweetAlert2Module.forRoot()
+
   ],
   providers: [
     provideClientHydration(),

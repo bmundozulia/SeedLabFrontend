@@ -12,14 +12,14 @@
     position: relative;
     top: 0;
     left: 0;
-    height: 100%;
+    height: 100vh;
     width: 250px;
     padding: 10px 14px;
     background: #fff;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     /* transition: all 0.5 eases; */
     transform: margin-left;
-    /* z-index: 100; */
+    z-index: 40;
 }
 
 .sidebar.close {
@@ -203,7 +203,7 @@ padding: 8px 40px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
         overflow: visible;
         transform: margin-left;
-        z-index: 100;
+        z-index: 40;
     }
 
 

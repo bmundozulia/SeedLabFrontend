@@ -54,7 +54,6 @@ export class MenuComponent {
     localStorage.clear();
     this.router.navigate(['home/body']);
     this.logueado = false;
-    window.location.reload();
   }
 }
 

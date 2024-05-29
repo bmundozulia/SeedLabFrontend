@@ -16,7 +16,9 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
+import { ReportesComponent } from './orientador/reportes/reportes.component'
 
+import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 
 
 const routes: Routes = [
@@ -32,12 +34,16 @@ const routes: Routes = [
   { path: 'list-rutas', component: ListRutasComponent },
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
-  {path: 'fan-page', component: FanPageComponent },
+  { path: 'fan-page', component: FanPageComponent },
+
+  // orientador  //reportes
+  { path: 'reportesOrientador', component: ReportesComponent },
 
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
-  { path: 'asesorias', component: AsesoriasComponent},  //de asesor
+  { path: 'asesorias', component: AsesoriasComponent },  //de asesor
+  { path: 'ver-asesoria', component: VerAsesoriasComponent}, //de orientador
   { path: 'add-aliados', component: AddAliadosComponent },
-  
+
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
   { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
 ];
