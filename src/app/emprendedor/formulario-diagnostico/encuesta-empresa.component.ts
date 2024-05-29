@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef } from '@angular/core';
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -19,51 +18,89 @@ export class EncuestaEmpresaComponent {
   selectedOption4: string = '';
   selectedOption5: string = '';
 
-  mostrarSeccion1() {
-    var seccion1 = document.getElementById('seccion1');
-    var seccion2 = document.getElementById('seccion2');
-    var seccion3 = document.getElementById('seccion3');
-    var seccion4 = document.getElementById('seccion4');
+  currentIndex = 0;
 
-    seccion1.style.display = 'block';
-    seccion2.style.display = 'none';
-    seccion3.style.display = 'none'; 
-    seccion4.style.display = 'none'; 
+  next() {
+    if (this.currentIndex < 3) {
+      this.currentIndex++;
+      this.updateAttributes();
+    }
   }
 
-  mostrarSeccion2() {
-    var seccion1 = document.getElementById('seccion1');
-    var seccion2 = document.getElementById('seccion2');
-    var seccion3 = document.getElementById('seccion3');
-    var seccion4 = document.getElementById('seccion4');
-
-    seccion1.style.display = 'none';
-    seccion2.style.display = 'block';
-    seccion3.style.display = 'none'; 
-    seccion4.style.display = 'none'; 
+  prev() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.updateAttributes();
+    }
   }
 
-  mostrarSeccion3() {
-    var seccion1 = document.getElementById('seccion1');
-    var seccion2 = document.getElementById('seccion2');
-    var seccion3 = document.getElementById('seccion3');
-    var seccion4 = document.getElementById('seccion4');
+  private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
-    seccion1.style.display = 'none';
-    seccion2.style.display = 'none';
-    seccion3.style.display = 'block'; 
-    seccion4.style.display = 'none'; 
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.debouncedProcessAttributes();
   }
 
-  mostrarSeccion4() {
-    var seccion1 = document.getElementById('seccion1');
-    var seccion2 = document.getElementById('seccion2');
-    var seccion3 = document.getElementById('seccion3');
-    var seccion4 = document.getElementById('seccion4');
-
-    seccion1.style.display = 'none';
-    seccion2.style.display = 'none';
-    seccion3.style.display = 'none'; 
-    seccion4.style.display = 'block'; 
+  ngOnInit() {
+    this.processAttributesBasedOnScreenSize();
   }
+
+  processAttributesBasedOnScreenSize() {
+    const isMobile = window.innerWidth < 768; // Ancho considerado como pantalla móvil
+
+    // Seleccionar todas las etiquetas <td> con los atributos colspan o rowspan
+    const tdElements = this.elementRef.nativeElement.querySelectorAll('td[colspan], td[rowspan]');
+    tdElements.forEach(tdElement => {
+      if (!this.originalAttributes.has(tdElement)) {
+        // Guardar los valores originales
+        this.originalAttributes.set(tdElement, {
+          colspan: tdElement.getAttribute('colspan'),
+          rowspan: tdElement.getAttribute('rowspan')
+        });
+      }
+
+      if (isMobile) {
+        // Eliminar los atributos en pantallas móviles
+        this.renderer.removeAttribute(tdElement, 'colspan');
+        this.renderer.removeAttribute(tdElement, 'rowspan');
+      } else {
+        // Restaurar los atributos en pantallas grandes
+        const original = this.originalAttributes.get(tdElement);
+        if (original) {
+          if (original.colspan !== null) {
+            this.renderer.setAttribute(tdElement, 'colspan', original.colspan);
+          }
+          if (original.rowspan !== null) {
+            this.renderer.setAttribute(tdElement, 'rowspan', original.rowspan);
+          }
+        }
+      }
+    });
+
+    // Seleccionar todas las etiquetas <td> con la clase "cell"
+    const cellElements = this.elementRef.nativeElement.querySelectorAll('td.cell');
+    cellElements.forEach(cellElement => {
+      if (isMobile) {
+        this.renderer.setAttribute(cellElement, 'colspan', '2');
+      } else {
+        this.renderer.removeAttribute(cellElement, 'colspan');
+      }
+    });
+
+    // Forzar detección de cambios
+    this.cdr.detectChanges();
+  }
+
+  updateAttributes() {
+    requestAnimationFrame(() => this.processAttributesBasedOnScreenSize());
+  }
+
+  private debouncedProcessAttributes() {
+    clearTimeout(this.debounceTimeout);
+    this.debounceTimeout = setTimeout(() => this.updateAttributes(), 200);
+  }
+
+  private debounceTimeout: any;
 }

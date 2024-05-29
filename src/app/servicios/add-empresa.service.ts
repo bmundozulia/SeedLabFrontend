@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Empresa } from '../Modelos/empresa.model';
 import { ApoyoEmpresa } from '../Modelos/apoyo-empresa.modelo';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +15,12 @@ export class AddEmpresaService {
 
   constructor(private http: HttpClient) { }
 
- addEmpresa(access_token: any, empresa:Empresa): Observable<any> {
+ addEmpresa(access_token: any, empresa:Empresa, apoyoEmpresa:ApoyoEmpresa = null): Observable<any> {
     const headers = new HttpHeaders({
       'content-type': 'application/json',
       'Authorization': 'Bearer ' + access_token
     });
-    return this.http.post(this.url, empresa,{headers});
+    const body = {empresa,apoyoEmpresa}
+    return this.http.post(this.url,body,{headers});
   }
 }
