@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faIdCard } from '@fortawesome/free-solid-svg-icons';
+import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
+import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-edit-empresa',
@@ -8,6 +12,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class EditEmpresaComponent implements OnInit {
   empresaForm: FormGroup;
+  faIdCard = faIdCard;
+  faMountainCity = faMountainCity;
+  faLandmarkFlag = faLandmarkFlag;
+  faLocationDot=faLocationDot;
 
   constructor(private fb: FormBuilder) { }
 
@@ -53,6 +61,15 @@ export class EditEmpresaComponent implements OnInit {
     // Asignar los datos de la empresa al formulario
     this.empresaForm.patchValue(empresa);
   }
+  mostrarOcultarContenido() {
+    const checkbox = document.getElementById("mostrarContenido") as HTMLInputElement;
+    const contenidoDiv = document.getElementById("contenido");
+    const guardar = document.getElementById("guardar");
+    if (contenidoDiv && guardar) {
+      contenidoDiv.style.display = checkbox.checked ? "block" : "none";
+      guardar.style.display = checkbox.checked ? "none" : "block";
+    }
+  }
 
   onSubmit(): void {
     // Aquí implementarías la lógica para enviar los datos editados al servidor
@@ -60,10 +77,7 @@ export class EditEmpresaComponent implements OnInit {
     console.log(this.empresaForm.value);
   }
 
-  mostrarOcultarContenido(): void {
-    // Lógica para mostrar u ocultar el contenido según el estado del checkbox
-  }
-
+ 
   onDepartamentoSeleccionado(departamento: string): void {
     // Lógica para cargar los municipios correspondientes al departamento seleccionado
   }
