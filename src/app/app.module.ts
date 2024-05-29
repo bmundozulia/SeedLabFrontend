@@ -49,6 +49,7 @@ import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/per
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { RutasComponent } from './rutas/rutas.component';
 
 
 
@@ -81,6 +82,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
     EditEmpresaComponent,
+    RutasComponent,
   ],
   imports: [
     BrowserModule,
