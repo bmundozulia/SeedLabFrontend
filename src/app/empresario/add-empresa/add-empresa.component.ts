@@ -28,6 +28,8 @@ export class AddEmpresaComponent{
   token = '';
   user: User | null = null;
   currentRolId: string | null = null;
+ 
+
 
   constructor(
     private fb:FormBuilder,

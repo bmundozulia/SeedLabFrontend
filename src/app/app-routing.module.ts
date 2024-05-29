@@ -17,9 +17,10 @@ import { ModalComponent } from './super-admin/modal/modal.component';
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component'
-import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
-
+import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
+import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
+import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
 
   { path: 'add-empresa', component: AddEmpresaComponent },
   { path: 'list-empresa', component: ListEmpresasComponent },
+  { path: 'edit-empresa', component: EditEmpresaComponent},
   { path: 'list-aliados', component: ListAliadosComponent },
   { path: 'modal-superadmin', component: ModalComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },

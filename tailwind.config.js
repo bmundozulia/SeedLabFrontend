@@ -8,4 +8,15 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  
+  "styles": [
+    "src/styles.css"
+  ],
+  "postcss": {
+    "procesors": [
+      require('tailwindcss'),
+      require('autoprefixer')
+    ]
+  }
+  
 }
