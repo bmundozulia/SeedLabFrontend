@@ -35,13 +35,13 @@ export class AddAliadosComponent {
       console.error('Token no disponible.');
       return;
     }
-
+  
     // Validaciones
     if (!this.logo) {
       alert('Por favor, seleccione una imagen.');
       return;
     }
-    if (!this.nombre) {
+    if (!this.nombre.trim()) {
       alert('Por favor, escriba el nombre de un aliado.');
       return;
     }
@@ -49,7 +49,7 @@ export class AddAliadosComponent {
       alert('Por favor, ingrese un correo válido con @.');
       return;
     }
-    if (!this.descripcion) {
+    if (!this.descripcion.trim()) {
       alert('Por favor, ingrese una descripción.');
       return;
     }
@@ -57,18 +57,18 @@ export class AddAliadosComponent {
       alert('Por favor, ingrese una contraseña válida de mínimo 8 caracteres.');
       return;
     }
-
+  
     const aliado = {
-      nombre: this.nombre,
-      descripcion: this.descripcion,
+      nombre: this.nombre.trim(),
+      descripcion: this.descripcion.trim(),
       logo: this.logo,
       ruta: this.ruta,
       tipodato: this.tipodato,
-      email: this.email,
+      email: this.email.trim(),
       password: this.password,
       estado: this.estado
     };
-
+  
     this.aliadoService.crearAliado(aliado, this.token).subscribe({
       next: (response) => {
         alert('Creación exitosa');
