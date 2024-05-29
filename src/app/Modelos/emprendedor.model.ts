@@ -1,4 +1,3 @@
-
 export class Emprendedor {
     documento: string | null;
     nombre: string | null;
@@ -41,4 +40,3 @@ export class Emprendedor {
         this.municipio = municipio;
     }
 }
-

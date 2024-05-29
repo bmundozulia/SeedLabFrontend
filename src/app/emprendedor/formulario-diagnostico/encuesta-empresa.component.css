@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@media (max-width: 800px) {
+    .contenedores {
+        display: block;
+    }
+
+    .contenedor {
+        width: 100%;
+        display: none;
+    }
+
+    .contenedor.active {
+        display: block;
+    }
+
+    .navegacion {
+        justify-content: space-between;
+    }
+}

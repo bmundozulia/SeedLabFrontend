@@ -13,6 +13,7 @@ import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { ApoyoEmpresa } from '../../../Modelos/apoyo-empresa.modelo';
 
 
 @Component({
@@ -25,7 +26,6 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 export class AddEmpresaComponent{
   faGlobe = faGlobe;
   faCircleQuestion = faCircleQuestion;
-  //addEmpresaForm:FormGroup;
   listDepartamentos: any[] = [];
   listMunicipios: any[] = [];
   departamentoPredeterminado = '';
@@ -59,7 +59,7 @@ export class AddEmpresaComponent{
     nombre: ['', Validators.required],
     documento: ['', Validators.required],
     id_tipo_documento: ['', Validators.required],
-    municipio: ['', Validators.required],
+    id_municipio: ['', Validators.required],
     correo: ['', [Validators.required, Validators.email]],
     cargo: ['', Validators.required],
     razonSocial: ['', Validators.required],
@@ -69,7 +69,8 @@ export class AddEmpresaComponent{
     direccion: ['', Validators.required],
     profesion: ['', Validators.required],
     experiencia: ['',Validators.required],
-    funciones: ['',Validators.required]
+    funciones: ['',Validators.required],
+    apoyos: this.fb.array([]) 
   });
 
   validateToken(): void {
@@ -92,17 +93,16 @@ export class AddEmpresaComponent{
 
   crearEmpresa():void {
     this.submitted = true;
-    console.log("Formulario enviado", this.addEmpresaForm.value);
+    console.log("Formulario enviado", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
     if (this.addEmpresaForm.invalid) {
       console.log("Formulario inválido");
       return;
     }
-
     const empresa : Empresa = {
       nombre: this.addEmpresaForm.get('nombre')?.value,
       documento: this.addEmpresaForm.get('documento')?.value,
       id_tipo_documento: this.addEmpresaForm.get('id_tipo_documento')?.value,
-      id_municipio: this.addEmpresaForm.get('municipio')?.value,
+      id_municipio: this.addEmpresaForm.get('id_municipio')?.value,
       correo: this.addEmpresaForm.get('correo')?.value,
       cargo: this.addEmpresaForm.get('cargo')?.value,
       razonSocial: this.addEmpresaForm.get('razonSocial')?.value,
@@ -114,10 +114,23 @@ export class AddEmpresaComponent{
       experiencia: this.addEmpresaForm.get('experiencia')?.value,
       funciones: this.addEmpresaForm.get('funciones')?.value,
       id_emprendedor: this.user?.emprendedor.documento,
+
     }
-      
+    const apoyoEmpresa : ApoyoEmpresa={
+      nombre: this.addApoyoEmpresaForm.get('nombre')?.value,
+      documento: this.addApoyoEmpresaForm.get('documento')?.value,
+      apellido: this.addApoyoEmpresaForm.get('apellido')?.value,
+      cargo: this.addApoyoEmpresaForm.get('cargo')?.value,
+      telefono: this.addApoyoEmpresaForm.get('telefono')?.value,
+      celular: this.addApoyoEmpresaForm.get('celular')?.value,
+      email: this.addApoyoEmpresaForm.get('email')?.value,
+      id_tipo_documento: this.addApoyoEmpresaForm.get('id_tipo_documento')?.value,
+      id_empresa: this.user?.emprendedor.documento,
+    }
+     
     console.log(empresa);
-    this.addEmpresaService.addEmpresa(this.token,empresa).subscribe(
+    
+    this.addEmpresaService.addEmpresa(this.token,empresa,apoyoEmpresa ? apoyoEmpresa:null).subscribe(
       (response:any) => {
         console.log(response);
         this.router.navigate(['list-empresa/:documento']);
@@ -127,6 +140,24 @@ export class AddEmpresaComponent{
       }
     );
   }
+//////////////
+  
+  addApoyoEmpresaForm = this.fb.group({
+      nombre: ['', Validators.required],
+      documento: ['', Validators.required],
+      apellido: ['', Validators.required],
+      cargo: ['', Validators.required],
+      telefono: [''],
+      celular: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      id_tipo_documento: ['', Validators.required],
+  });
+  
+  
+ /* eliminarApoyo(index: number): void {
+    this.apoyos.removeAt(index);
+  }*/
+  
 
 
   mostrarOcultarContenido() {
