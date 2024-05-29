@@ -8,5 +8,5 @@ export class Asesoria {
     fecha: Date;
     id_aliado: number;
     doc_emprendedor: number;
-
+    Asesor?: string;
 }
