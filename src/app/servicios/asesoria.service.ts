@@ -96,4 +96,10 @@ export class AsesoriaService {
     return this.http.post(url, body, { headers });
   }
 
+  rechazarAsesoria(id_asesoria: number, accion: string): Observable<any> {
+    const url = `${this.apiUrl}gestionar`;
+    const body = { id_asesoria, accion };
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.post<any>(url, body, { headers });
+  }
 }
