@@ -47,427 +47,209 @@
     </button>
 </div>
 
-<div class="contenido xl:mx-20 my-10">
+<div class="contenido mx-4 xl:mx-20 my-10 ">
     <p>
         <!------------------------------------------------------------------------- contenedor 1 ------------------------------->
         <ng-container *ngIf="currentIndex === 0" class="">
-            <div class=" flex-1     rounded-lg">
-                <!-- Separacion -->
-                <div class="">
-                    <table class="min-w-full bg-white my-2">
-                        <tbody>
-                            <tr>
-                                <td class=" flex"><b>1.</b>
-                                    <h3> ¿Cuantos integrantes conforman su equipo de
-                                        trabajo?</h3>
-                                </td>
-                                <td class="py-2 px-4">
-                                    <select
-                                        class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 ">
-                                        <option value="" disabled selected hidden>Seleccione</option>
-                                        <option value="tipo1">Tipo 1</option>
-                                        <option value="tipo2">Tipo 2</option>
-                                        <option value="tipo3">Tipo 3</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="border my-4">
-                        <thead>
-                            <tr class="">
-                                <th class="px-4 py-2 xl:relative xl:bottom-6 xl:bg-white">
-                                    <div class="flex">
-                                        <b>2. </b>
-                                        <h3 class="">Cuenta con personas de
-                                            apoyo
-                                            en:</h3>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
 
-                        <tbody class="">
-
-
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2 ">
-                                    <h3>
-                                        Administrativo
-                                    </h3>
-                                </td>
-                                <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto ">
-                                    <div class="flex sm:flex-row   space-x-4 ">
-                                        <select id="1Select"
-                                            class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [(ngModel)]="selectedOption1">
-                                            <option value="" disabled selected hidden>Si / No</option>
-                                            <option value="tipo1">Si</option>
-                                            <option value="tipo2">No</option>
-                                        </select>
-
-                                        <select id="2Select"
-                                            class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [style.display]="selectedOption1 === 'tipo1' ? 'block' : 'none'">
-                                            <option value="" disabled selected hidden>¿Cuantos?</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
-                                    <h3>Desarrollo</h3>
-                                </td>
-                                <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto">
-                                    <div class="flex sm:flex-row  space-x-4">
-                                        <select id="3Select"
-                                            class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [(ngModel)]="selectedOption2">
-                                            <option value="" disabled selected hidden>Si / No</option>
-                                            <option value="tipo1">Si</option>
-                                            <option value="tipo2">No</option>
-                                        </select>
-
-                                        <select id="4Select"
-                                            class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [style.display]="selectedOption2 === 'tipo1' ? 'block' : 'none'">
-                                            <option value="" disabled selected hidden>¿Cuantos?</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
-                                    <h3>
-                                        Producción
-                                    </h3>
-                                </td>
-                                <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row  space-x-4">
-                                        <select id="1Select"
-                                            class="h-7 rounded px-2   cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [(ngModel)]="selectedOption3">
-                                            <option value="" disabled selected hidden>Si / No</option>
-                                            <option value="tipo1">Si</option>
-                                            <option value="tipo2">No</option>
-                                        </select>
-
-                                        <select id="2Select"
-                                            class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [style.display]="selectedOption3 === 'tipo1' ? 'block' : 'none'">
-                                            <option value="" disabled selected hidden>¿Cuantos?</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
-                                    <h3>
-                                        Innovación y/o desarrollo
-                                    </h3>
-                                </td>
-                                <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row  space-x-4">
-                                        <select id="1Select"
-                                            class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [(ngModel)]="selectedOption4">
-                                            <option value="" disabled selected hidden>Si / No</option>
-                                            <option value="tipo1">Si</option>
-                                            <option value="tipo2">No</option>
-                                        </select>
-
-                                        <select id="2Select"
-                                            class="h-7 rounded px-2 cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [style.display]="selectedOption4 === 'tipo1' ? 'block' : 'none'">
-                                            <option value="" disabled selected hidden>¿Cuantos?</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
-                                    <h3>
-                                        Comercialización
-                                    </h3>
-                                </td>
-                                <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row  space-x-4">
-                                        <select id="1Select"
-                                            class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [(ngModel)]="selectedOption5">
-                                            <option value="" disabled selected hidden>Si / No</option>
-                                            <option value="tipo1">Si</option>
-                                            <option value="tipo2">No</option>
-                                        </select>
-
-                                        <select id="2Select"
-                                            class="h-7 rounded px-2  cursor-pointer border  bg-gray-50   focus:outline-none focus:ring-2 focus:ring-blue-200 "
-                                            [style.display]="selectedOption5 === 'tipo1' ? 'block' : 'none'">
-                                            <option value="" disabled selected hidden>¿Cuantos?</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
-
-
-
-                </div>
-
-                <!-- Separacion -->
-
-
-                <table class="min-w-full bg-white ">
+            <!-- Separacion -->
+            <div class="">
+                <table class="min-w-full bg-white my-2">
                     <tbody>
                         <tr class="">
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>3. </b>
-                                    <h3>¿Su emprendimiento esta legalmente
-                                        constituido?</h3>
+                                    <b>1. </b>
+                                    <h3> ¿Cuantos integrantes conforman su equipo de
+                                        trabajo?</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
-                                <div class="flex">
-                                    <b>4. </b>
-                                    <h3> ¿Cumple con las normas tributarias,
-                                        contables, laborales, comerciales y/o legales para desempeñar la actividad?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none ">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>5.</b>
-                                    <h3>¿Tiene claramente definido su modelo
-                                        de negocio?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none ">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
+                                    <option value="tipo1"> 1</option>
+                                    <option value="tipo2"> 2</option>
+                                    <option value="tipo3"> 3</option>
+                                    <option value="tipo3"> 4</option>
+                                    <option value="tipo3"> 5</option>
+                                    <option value="tipo3"> Más</option>
                                 </select>
                             </td>
                         </tr>
 
-                        <!-- separacion -->
+                    </tbody>
+                </table>
+                <table class="border my-4">
+                    <thead>
+                        <tr class="">
+                            <th class="px-4 py-2 xl:relative xl:bottom-6 xl:bg-white">
+                                <div class="flex">
+                                    <b>2. </b>
+                                    <h3 class="">Cuenta con personas de
+                                        apoyo
+                                        en:</h3>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
 
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>6.</b>
-                                    <h3>¿Tiene claramente definido su plan de
-                                        negocios?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>7.</b>
-                                    <h3>¿Tiene experiencia comercial
-                                        relacionada con el producto y/o servicio?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>8.</b>
-                                    <h3>Si la respuesta anterior fue
-                                        afirmativa indicar: ¿Cuánto tiempo de experiencia relacionada tiene?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
-                                <div class="flex">
-                                    <b>9.</b>
-                                    <h3>¿Su emprendimiento tiene definido la
-                                        misión y la visión?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex"><b>10.</b>
-                                    <h3>Si la respuesta anterior fue
-                                        afirmativa indicar ¿Cuál es su misión?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 ">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
-                                <div class="flex">
-                                    <b>11.</b>
-                                    <h3>Si la respuesta anterior fue
-                                        afirmativa indicar ¿Cuál es su visión?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex"><b>12.</b>
-                                    <h3>¿Tiene definidas metas empresariales?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>13.</b>
-                                    <h3>El personal de apoyo está
-                                        debidamente contratado?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>14.</b>
-                                    <h3>¿Los cargos de apoyo tienen funciones
-                                        claramente definidas?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
-                                <div class="flex">
-                                    <b>15.</b>
-                                    <h3>¿El perfil de los apoyos está
-                                        debidamente definido?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
+                    <tbody class="">
 
 
+                        <tr class="block sm:table-row">
+                            <td class="block sm:table-cell w-full sm:w-auto px-4 py-2 ">
+                                <h3>
+                                    Administrativo
+                                </h3>
+                            </td>
+                            <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto ">
+                                <div class="flex sm:flex-row   space-x-4 ">
+                                    <select id="1Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
+                                        [(ngModel)]="selectedOption1">
+                                        <option value="" disabled selected hidden>Si / No</option>
+                                        <option value="tipo1">Si</option>
+                                        <option value="tipo2">No</option>
+                                    </select>
+
+                                    <select id="2Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
+                                        [style.display]="selectedOption1 === 'tipo1' ? 'block' : 'none'">
+                                        <option value="" disabled selected hidden>¿Cuantos?</option>
+                                        <option value="" disabled selected hidden>Seleccione</option>
+                                        <option value="tipo1"> 1</option>
+                                        <option value="tipo2"> 2</option>
+                                        <option value="tipo3"> 3</option>
+                                        <option value="tipo3"> 4</option>
+                                        <option value="tipo3"> 5</option>
+                                        <option value="tipo3"> Más</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="block sm:table-row">
+                            <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                                <h3>Desarrollo</h3>
+                            </td>
+                            <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto">
+                                <div class="flex sm:flex-row  space-x-4">
+                                    <select id="3Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
+                                        [(ngModel)]="selectedOption2">
+                                        <option value="" disabled selected hidden>Si / No</option>
+                                        <option value="tipo1">Si</option>
+                                        <option value="tipo2">No</option>
+                                    </select>
+
+                                    <select id="4Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
+                                        [style.display]="selectedOption2 === 'tipo1' ? 'block' : 'none'">
+                                        <option value="" disabled selected hidden>¿Cuantos?</option>
+                                        <option value="" disabled selected hidden>Seleccione</option>
+                                        <option value="tipo1"> 1</option>
+                                        <option value="tipo2"> 2</option>
+                                        <option value="tipo3"> 3</option>
+                                        <option value="tipo3"> 4</option>
+                                        <option value="tipo3"> 5</option>
+                                        <option value="tipo3"> Más</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="block sm:table-row">
+                            <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                                <h3>
+                                    Producción
+                                </h3>
+                            </td>
+                            <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
+                                <div class="flex sm:flex-row  space-x-4">
+                                    <select id="1Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
+                                        [(ngModel)]="selectedOption3">
+                                        <option value="" disabled selected hidden>Si / No</option>
+                                        <option value="tipo1">Si</option>
+                                        <option value="tipo2">No</option>
+                                    </select>
+
+                                    <select id="2Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
+                                        [style.display]="selectedOption3 === 'tipo1' ? 'block' : 'none'">
+                                        <option value="" disabled selected hidden>¿Cuantos?</option>
+                                        <option value="" disabled selected hidden>Seleccione</option>
+                                        <option value="tipo1"> 1</option>
+                                        <option value="tipo2"> 2</option>
+                                        <option value="tipo3"> 3</option>
+                                        <option value="tipo3"> 4</option>
+                                        <option value="tipo3"> 5</option>
+                                        <option value="tipo3"> Más</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="block sm:table-row">
+                            <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                                <h3>
+                                    Innovación y/o desarrollo
+                                </h3>
+                            </td>
+                            <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
+                                <div class="flex sm:flex-row  space-x-4">
+                                    <select id="1Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
+                                        [(ngModel)]="selectedOption4">
+                                        <option value="" disabled selected hidden>Si / No</option>
+                                        <option value="tipo1">Si</option>
+                                        <option value="tipo2">No</option>
+                                    </select>
+
+                                    <select id="2Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
+                                        [style.display]="selectedOption4 === 'tipo1' ? 'block' : 'none'">
+                                        <option value="" disabled selected hidden>¿Cuantos?</option>
+                                        <option value="" disabled selected hidden>Seleccione</option>
+                                        <option value="tipo1"> 1</option>
+                                        <option value="tipo2"> 2</option>
+                                        <option value="tipo3"> 3</option>
+                                        <option value="tipo3"> 4</option>
+                                        <option value="tipo3"> 5</option>
+                                        <option value="tipo3"> Más</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="block sm:table-row">
+                            <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                                <h3>
+                                    Comercialización
+                                </h3>
+                            </td>
+                            <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
+                                <div class="flex sm:flex-row  space-x-4">
+                                    <select id="1Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
+                                        [(ngModel)]="selectedOption5">
+                                        <option value="" disabled selected hidden>Si / No</option>
+                                        <option value="tipo1">Si</option>
+                                        <option value="tipo2">No</option>
+                                    </select>
+
+                                    <select id="2Select"
+                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
+                                        [style.display]="selectedOption5 === 'tipo1' ? 'block' : 'none'">
+                                        <option value="" disabled selected hidden>¿Cuantos?</option>
+                                        <option value="" disabled selected hidden>Seleccione</option>
+                                        <option value="tipo1"> 1</option>
+                                        <option value="tipo2"> 2</option>
+                                        <option value="tipo3"> 3</option>
+                                        <option value="tipo3"> 4</option>
+                                        <option value="tipo3"> 5</option>
+                                        <option value="tipo3"> Más</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -475,10 +257,259 @@
 
 
 
-
-
-
             </div>
+
+            <!-- Separacion -->
+
+
+            <table class="min-w-full bg-white ">
+                <tbody>
+                    <tr class="">
+                        <td class="py-2 px-4 " colspan="2">
+                            <div class="flex">
+                                <b>3. </b>
+                                <h3>¿Su emprendimiento esta legalmente
+                                    constituido?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Sí</option>
+                                <option value="tipo3">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4" colspan="2">
+                            <div class="flex">
+                                <b>4. </b>
+                                <h3> ¿Cumple con las normas tributarias,
+                                    contables, laborales, comerciales y/o legales para desempeñar la actividad?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Sí</option>
+
+                                <option value="tipo3">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 " colspan="2">
+                            <div class="flex">
+                                <b>5.</b>
+                                <h3>¿Tiene claramente definido su modelo
+                                    de negocio?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Sí</option>
+                                <option value="tipo2">Medio</option>
+                                <option value="tipo3">No</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!-- separacion -->
+
+                    <tr>
+                        <td class="py-2 px-4 " colspan="2">
+                            <div class="flex">
+                                <b>6.</b>
+                                <h3>¿Tiene claramente definido su plan de
+                                    negocios?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Sí</option>
+                                <option value="tipo2">Medio</option>
+                                <option value="tipo3">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 " colspan="2">
+                            <div class="flex">
+                                <b>7.</b>
+                                <h3>¿Tiene experiencia comercial
+                                    relacionada con el producto y/o servicio?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  mr-4">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Sí</option>
+                                <option value="tipo2">Medio</option>
+                                <option value="tipo3">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 " colspan="2">
+                            <div class="flex">
+                                <b>8.</b>
+                                <h3>Si la respuesta anterior fue
+                                    afirmativa indicar: ¿Cuánto tiempo de experiencia relacionada tiene?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">
+                                    < 1 año</option>
+                                <option value="tipo2">Entre 1 y 2 años</option>
+                                <option value="tipo3">Entre 2 y 4 años</option>
+                                <option value="tipo3">5 o más</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4" colspan="2">
+                            <div class="flex">
+                                <b>9.</b>
+                                <h3>¿Su emprendimiento tiene definido la
+                                    misión y la visión?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Sí</option>
+                                <option value="tipo2">Medio</option>
+                                <option value="tipo3">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cell">
+                            <div class="px-4">
+                                <div class="flex">
+                                    <b>10.</b>
+                                    <h3 class="ml-2">Si la respuesta anterior fue afirmativa indicar ¿Cuál es su misión?
+                                    </h3>
+                                </div>
+
+                                <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                    class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="py-2 px-4" colspan="2">
+                            <div class="flex">
+                                <b>11.</b>
+                                <h3>Si la respuesta anterior fue
+                                    afirmativa indicar ¿Cuál es su visión?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Tipo 1</option>
+                                <option value="tipo2">Tipo 2</option>
+                                <option value="tipo3">Tipo 3</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cell">
+                            <div class="flex-1 px-4">
+                                <div class="flex">
+                                    <b>12.</b>
+                                    <h3 class="ml-2">¿Tiene definidas metas empresariales?</h3>
+                                </div>
+
+                                <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                    class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="py-2 px-4 " colspan="2">
+                            <div class="flex">
+                                <b>13.</b>
+                                <h3>El personal de apoyo está
+                                    debidamente contratado?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Sí</option>
+                                <option value="tipo2">Medio</option>
+                                <option value="tipo3">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 " colspan="2">
+                            <div class="flex">
+                                <b>14.</b>
+                                <h3>¿Los cargos de apoyo tienen funciones
+                                    claramente definidas?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Sí</option>
+                                <option value="tipo2">Medio</option>
+                                <option value="tipo3">No</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4" colspan="2">
+                            <div class="flex">
+                                <b>15.</b>
+                                <h3>¿El perfil de los apoyos está
+                                    debidamente definido?</h3>
+                            </div>
+                        </td>
+                        <td class="py-2 px-4">
+                            <select
+                                class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="tipo1">Sí</option>
+                                <option value="tipo2">Medio</option>
+                                <option value="tipo3">No</option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+
+
+
+
+
+
+
+
 
 
         </ng-container>
@@ -486,11 +517,8 @@
 
         <!--------------------------------------------------------- contenedor 2 -------------------------------------------------------------->
         <ng-container *ngIf="currentIndex === 1">
-
-
-
             <div>
-                <table class="min-w-full ">
+                <table class="min-w-full bg-white my-2">
                     <tbody>
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
@@ -502,7 +530,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -513,14 +541,13 @@
 
                         <!--infromacion finaciera pregunta 2 -->
                         <tr class="bg-gray-50  ">
-                            <td class=" py-2 px-4  xl:w-96 cell" rowspan="9">
+                            <td class="py-2 px-4 xl:w-96 cell" rowspan="9">
                                 <div class="flex">
                                     <b class=" m-0 p-0">2.</b>
                                     <h3 class=" m-0 p-0">Si la respuesta anterior fue
                                         afirmativa indicar: ¿Cuáles?</h3>
                                 </div>
                             </td>
-
                         </tr>
                         <tr class=" ">
                             <td class="px-4 py-2">
@@ -528,7 +555,7 @@
                             </td>
                             <td class="px-4 py-2">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -538,12 +565,12 @@
 
                         </tr>
                         <tr class="">
-                            <td class="py-2 px-4 ">
+                            <td class="py-2 px-4">
                                 <h3>Gatos Variables</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -552,12 +579,12 @@
                             </td>
                         </tr>
                         <tr class="">
-                            <td class="px-4 py-2">
+                            <td class="py-2 px-4">
                                 <h3>Gastos Operacionales</h3>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="py-2 px-4 ">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -572,7 +599,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -586,7 +613,7 @@
                             </td>
                             <td class="px-4 py-2">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -601,7 +628,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -615,7 +642,7 @@
                             </td>
                             <td class="px-4 py-2">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -630,7 +657,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -648,7 +675,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -672,12 +699,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="py-2 px-4">
+                            <td class="px-4 py-2">
                                 <h3>Balance General</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -691,7 +718,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -705,7 +732,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
 
@@ -719,7 +746,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
 
@@ -743,7 +770,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -772,7 +799,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -786,7 +813,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -801,7 +828,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -822,7 +849,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -851,7 +878,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -865,7 +892,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -880,7 +907,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -913,7 +940,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -928,7 +955,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -942,7 +969,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -956,7 +983,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -977,7 +1004,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -994,7 +1021,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -1020,7 +1047,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1035,7 +1062,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1049,7 +1076,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1063,7 +1090,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1087,7 +1114,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -1111,7 +1138,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1126,7 +1153,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1140,7 +1167,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1154,7 +1181,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
 
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
@@ -1188,7 +1215,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none ">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1197,19 +1224,22 @@
                             </td>
                         </tr>
 
-                        <tr class="">
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>2. </b>
-                                    <h3>Si tiene clientes actuales:¿Quiénes son?</h3>
+
+                        <tr>
+                            <td class="cell">
+                                <div class="px-4">
+                                    <div class="flex">
+                                        <b>2.</b>
+                                        <h3 class="ml-2">Si tiene clientes actuales:¿Quiénes son?</h3>
+                                    </div>
+
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
-                                <textarea
-                                    class="p-2 w-full h-full mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
-                                    name="" id=""></textarea>
-                            </td>
                         </tr>
+
+
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
@@ -1219,7 +1249,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none ">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1227,18 +1257,21 @@
                                 </select>
                             </td>
                         </tr>
+
                         <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>4.</b>
-                                    <h3>Si tiene definido sus clientes potenciales: ¿Quiénes son?</h3>
+                            <td class="cell">
+                                <div class="px-4">
+                                    <div class="flex">
+                                        <b>4.</b>
+                                        <h3 class="ml-2">Si tiene definido sus clientes potenciales: ¿Quiénes son?</h3>
+                                    </div>
+
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 border rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
-                                <textarea name="" id=""
-                                    class="p-2 w-full h-full mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"></textarea>
-                            </td>
                         </tr>
+
 
                         <!-- separacion -->
 
@@ -1252,7 +1285,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1261,31 +1294,32 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>6.</b>
-                                    <h3>¿le gustaría ser cómo??</h3>
+                            <td class="cell">
+                                <div class="px-4">
+                                    <div class="flex">
+                                        <b>6.</b>
+                                        <h3 class="ml-2">¿le gustaría ser cómo?</h3>
+                                    </div>
+
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 border rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <textarea
-                                    class="p-2 w-full h-full mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
-                                    name="" id=""></textarea>
                             </td>
                         </tr>
                         <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex">
-                                    <b>7.</b>
-                                    <h3>¿No te gustaría ser cómo??</h3>
+                            <td class="cell">
+                                <div class="px-4">
+                                    <div class="flex">
+                                        <b>7.</b>
+                                        <h3 class="ml-2">¿No te gustaría ser cómo?</h3>
+                                    </div>
+
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 border rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
-                                <textarea
-                                    class="p-2 w-full h-full mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
-                                    name="" id=""></textarea>
-                            </td>
                         </tr>
+
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
@@ -1296,7 +1330,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1313,7 +1347,7 @@
                             </td>
                             <td class="py-2 px-4 ">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo2">Si</option>
                                     <option value="tipo3">No</option>
@@ -1330,7 +1364,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo2">Si</option>
                                     <option value="tipo3">No</option>
@@ -1346,7 +1380,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
 
                                     <option value="tipo2">Si</option>
@@ -1364,7 +1398,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1399,6 +1433,11 @@
                 <table class="min-w-full bg-white ">
                     <tbody>
                         <!-- inicio de trl1 -->
+                        <tr>
+                            <td>
+                                <b>4.1</b>
+                            </td>
+                        </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
                                 <h3>
@@ -1408,7 +1447,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1425,7 +1464,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1440,7 +1479,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1458,7 +1497,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1472,7 +1511,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1487,7 +1526,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1501,7 +1540,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1518,7 +1557,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1537,7 +1576,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1551,7 +1590,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1565,7 +1604,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1581,7 +1620,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1597,7 +1636,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1612,7 +1651,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1626,7 +1665,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1644,7 +1683,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1658,7 +1697,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1672,7 +1711,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1688,7 +1727,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1702,7 +1741,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1716,7 +1755,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1733,7 +1772,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1748,7 +1787,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1763,7 +1802,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1779,7 +1818,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1794,7 +1833,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1808,7 +1847,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1823,7 +1862,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1838,7 +1877,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1854,7 +1893,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1870,7 +1909,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1886,13 +1925,13 @@
                         <tr>
                             <td class="px-4 py-2" colspan="2">
                                 <div class="flex">
-                                    <b>4</b>
+                                    <b>4.2</b>
                                     <h3>¿cuenta con área o departamento de innovación y/o desarrollo tecnológico?</h3>
                                 </div>
                             </td>
                             <td class="px-4 py-2">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1909,7 +1948,7 @@
                             </td>
                             <td class="px-4 py-2">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1919,7 +1958,7 @@
                         </tr>
                         <!-- pregunta 4.3 -->
                         <tr class="bg-gray-50">
-                            <td class="py-2 px-4 xl:w-96  cell" rowspan="8">
+                            <td class="py-2 px-4 xl:w-96 cell" rowspan="8">
                                 <div class="flex">
                                     <b>4.4</b>
                                     <h3>si la anterior respuesta fue afirmativa: ¿cuáles?</h3>
@@ -1933,7 +1972,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1948,7 +1987,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1962,7 +2001,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1976,7 +2015,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1990,7 +2029,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2004,7 +2043,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2018,7 +2057,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2039,7 +2078,7 @@
                             </td>
                             <td class="px-4 py-2">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -2064,7 +2103,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2079,7 +2118,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2093,7 +2132,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2107,7 +2146,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2121,7 +2160,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2135,7 +2174,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2149,7 +2188,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2163,7 +2202,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2177,7 +2216,7 @@
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="px-4 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none">
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
