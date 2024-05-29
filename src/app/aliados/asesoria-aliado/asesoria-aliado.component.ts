@@ -3,15 +3,17 @@ import { Router } from '@angular/router';
 import { Asesoria } from '../../Modelos/asesoria.model';
 import { AsesoriaService } from '../../servicios/asesoria.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DarAsesorModalComponent } from './dar-asesor-modal/dar-asesor-modal.component';
 
 @Component({
   selector: 'app-asesoria-aliado',
   templateUrl: './asesoria-aliado.component.html',
-  styleUrl: './asesoria-aliado.component.css'
+  styleUrls: ['./asesoria-aliado.component.css']
 })
-export class AsesoriaAliadoComponent {
+export class AsesoriaAliadoComponent implements OnInit {
   asesorias: Asesoria[] = [];
-  barritaColor: string;
+  asesoriasConAsesor: Asesoria[] = [];
+  asesoriasSinAsesor: Asesoria[] = [];
   token: string | null = null;
   user: any = null;
   currentRolId: string | null = null;
@@ -23,8 +25,7 @@ export class AsesoriaAliadoComponent {
   ) { }
 
   ngOnInit() {
-    this.validateToken();
-    this.loadAsesorias();
+    this.validateToken();    
   }
 
   validateToken(): void {
@@ -43,19 +44,43 @@ export class AsesoriaAliadoComponent {
 
     if (!this.token || !this.currentRolId) {
       this.router.navigate(['/inicio/body']);
+    } else {
+      this.loadAsesorias(parseInt(this.currentRolId), 1);
     }
   }
 
-  loadAsesorias(): void {
-    this.asesoriaService.getAsesoriasOrientador().subscribe(
+  loadAsesorias(rol: number, estado: number): void {
+    this.asesoriaService.getAsesoriasPorRolYEstado(rol, estado).subscribe(
       data => {
-        console.log('Respuesta de la API:', data); // Escribir la respuesta en la consola
+        console.log('Respuesta de la API:', data);
         this.asesorias = data;
+        this.separarAsesorias();
       },
       error => {
-        console.error('Error al obtener las asesorías orientador:', error);
+        console.error('Error al obtener las asesorías:', error);
       }
     );
   }
-  
+
+  separarAsesorias(): void {
+    this.asesoriasConAsesor = this.asesorias.filter(asesoria => asesoria.Asesor);
+    this.asesoriasSinAsesor = this.asesorias.filter(asesoria => !asesoria.Asesor);
+    console.log('Asesorías con asesor:', this.asesoriasConAsesor);
+    console.log('Asesorías sin asesor:', this.asesoriasSinAsesor);
+  }
+
+  openModal(asesoria: Asesoria): void {
+    const dialogRef = this.dialog.open(DarAsesorModalComponent, {
+      width: '400px',
+      data: { asesoria: asesoria }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El modal se cerró');
+    });
+  }
+
+  rechazarAsesoria(asesoria: Asesoria): void {
+    console.log('Rechazar asesoria:', asesoria);
+  }
 }

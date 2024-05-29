@@ -1,3 +1,4 @@
+// list-rutas.component.ts
 import { Component, OnInit } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { RutaService } from '../../../servicios/rutas.service';
@@ -5,19 +6,19 @@ import { Router } from '@angular/router';
 import { User } from '../../../Modelos/user.model';
 import { Ruta } from '../../../Modelos/ruta.modelo';
 
-
 @Component({
   selector: 'app-list-rutas',
   templateUrl: './list-rutas.component.html',
-  styleUrl: './list-rutas.component.css',
+  styleUrls: ['./list-rutas.component.css'],
   providers: [RutaService]
 })
 export class ListRutasComponent implements OnInit {
-  userFilter: any = { nombre: '', estado_usuario: 'Activo' };
-  public page!: number;
+  userFilter: any = { nombre: '', estado: 'Activo', fecha_creacion: '' };
+  public page: number = 1;
   listaRutas: Ruta[] = [];
   fax = faXmark;
   falupa = faMagnifyingGlass;
+  faeye = faEye;
   token: string | null = null;
   user: User | null = null;
   currentRolId: string | null = null;
@@ -29,10 +30,13 @@ export class ListRutasComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateToken();
-    //this.cargarRutas();
+    this.cargarRutas();
   }
 
-
+  private ESTADO_MAP: { [key: number]: string } = {
+    1: 'Activo',
+    0: 'Inactivo'
+  };
 
   validateToken(): void {
     if (!this.token) {
@@ -48,37 +52,37 @@ export class ListRutasComponent implements OnInit {
         console.log(this.currentRolId);
       }
     }
-
   }
 
-  /*cargarRutas(): void {
-    this.rutaService.getAllRutas(this.token).subscribe(
-      (data: Ruta[]) => {
-        console.log(data);
-        this.listaRutas = data.map((item: any) => {
-          new Ruta(
-            item.id,
-            item.nombre,
-            item.fecha_creacion,
-            item.estado)
-          
-      });
-  },
-      (error) => {
-  console.error('Error al cargar las rutas', error);
-}
-    );
-  }*/
+  cargarRutas(): void {
+    if (this.token) {
+      this.rutaService.getAllRutas(this.token).subscribe(
+        (data: Ruta[]) => {
+          this.listaRutas = data.filter(item => this.ESTADO_MAP[item.estado] === this.userFilter.estado).map((item: any) =>
+            new Ruta(
+              item.nombre,
+              item.fecha_creacion,
+              this.ESTADO_MAP[item.estado] ?? 'Desconocido')
+          );
+          console.log(this.listaRutas);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } else {
+      console.error('Token is not available');
+    }
+  }
 
-onEstadoChange(event: any): void {
-  const estado = event.target.value;
-  //this.cargarAliados(parseInt(estado, 10));
-}
+  onEstadoChange(event: any): void {
+    const estado = event.target.value;
+    this.userFilter.estado = estado === '1' ? 'Activo' : 'Inactivo';
+    this.cargarRutas();
+  }
 
-
-limpiarFiltro(): void {
-  this.userFilter = { nombre: '', estado_usuario: 'Activo' };
-  // Opcional: recargar los aliados con el estado por defecto
-  //this.cargarAliados(1);
-}
+  limpiarFiltro(): void {
+    this.userFilter = { nombre: '', estado: 'Activo', fecha_creacion: '' };
+    this.cargarRutas();
+  }
 }

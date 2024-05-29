@@ -52,7 +52,7 @@ export class MenuComponent {
 
   logout() {
     localStorage.clear();
-    this.router.navigate(['home/body']);
+    this.router.navigate(['/home/body']);
     this.logueado = false;
   }
 }

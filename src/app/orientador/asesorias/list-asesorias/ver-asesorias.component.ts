@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { Asesoria } from '../../../Modelos/asesoria.model';
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DarAliadoAsesoriaModalComponent } from '../dar-aliado-asesoria-modal/dar-aliado-asesoria-modal.component';
 
 @Component({
   selector: 'app-ver-asesorias',
   templateUrl: './ver-asesorias.component.html',
-  styleUrl: './ver-asesorias.component.css'
+  styleUrls: ['./ver-asesorias.component.css']
 })
-export class VerAsesoriasComponent {
+export class VerAsesoriasComponent implements OnInit {
   asesorias: Asesoria[] = [];
   barritaColor: string;
   token: string | null = null;
@@ -17,7 +18,7 @@ export class VerAsesoriasComponent {
   currentRolId: string | null = null;
 
   constructor(
-    private asesoriaService: AsesoriaService, 
+    private asesoriaService: AsesoriaService,
     public dialog: MatDialog,
     private router: Router
   ) { }
@@ -46,8 +47,8 @@ export class VerAsesoriasComponent {
     }
   }
 
-  loadAsesorias(): void {
-    this.asesoriaService.getAsesoriasOrientador().subscribe(
+  loadAsesorias(pendiente: boolean = true): void {
+    this.asesoriaService.postAsesoriasOrientador(pendiente).subscribe(
       data => {
         console.log('Respuesta de la API:', data); // Escribir la respuesta en la consola
         this.asesorias = data;
@@ -57,5 +58,26 @@ export class VerAsesoriasComponent {
       }
     );
   }
-  
+
+  openModal(asesoria: Asesoria): void {
+    const dialogRef = this.dialog.open(DarAliadoAsesoriaModalComponent, {
+      width: '400px',
+      data: asesoria
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result) {
+        this.loadAsesorias(); // Recargar asesorías si el modal se cerró con éxito
+      }
+    });
+  }
+
+  loadSinAsignar(): void {
+    this.loadAsesorias(true);
+  }
+
+  loadAsignadas(): void {
+    this.loadAsesorias(false);
+  }
 }
