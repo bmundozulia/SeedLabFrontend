@@ -46,6 +46,7 @@ import { DarAliadoAsesoriaModalComponent } from './orientador/asesorias/dar-alia
 import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-modal/dar-asesor-modal.component';
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { EditEmpresaComponent } from './empresario/edit-empresa/edit-empresa.component';
+import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emprendedor.component';
 
 
 
@@ -70,7 +71,8 @@ import { EditEmpresaComponent } from './empresario/edit-empresa/edit-empresa.com
     AddAliadosComponent,
     SuperAdminComponent,
     ListRutasComponent,
-    PerfilEmprendedorComponent,ReportesComponent,
+    PerfilEmprendedorComponent,
+    ReportesComponent,
     RutaEmprendedorComponent,
     AsesoriaAliadoComponent,
     DarAliadoAsesoriaModalComponent,
