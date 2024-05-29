@@ -43,6 +43,7 @@ import { ReportesComponent } from './orientador/reportes/reportes.component';
 import { DarAliadoAsesoriaModalComponent } from './orientador/asesorias/dar-aliado-asesoria-modal/dar-aliado-asesoria-modal.component';
 import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-modal/dar-asesor-modal.component';
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
+import { EditEmpresaComponent } from './empresario/edit-empresa/edit-empresa.component';
 
 
 
@@ -72,6 +73,7 @@ import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/per
     AsesoriaAliadoComponent,
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
+    EditEmpresaComponent,
   ],
   imports: [
     BrowserModule,
