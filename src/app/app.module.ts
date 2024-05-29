@@ -107,6 +107,8 @@ import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emp
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
 
   ],
   providers: [
