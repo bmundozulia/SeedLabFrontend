@@ -1,14 +1,14 @@
-<app-header [title]="'Bienvenido al panel de Agregar Aliados'"
-      [subtitle]="'Aquí puedes crear tus aliados'"></app-header>
-
+<app-header [title]="'Bienvenido al panel de Agregar Aliados'" [subtitle]="'Aquí puedes crear tus aliados'"></app-header>
+<!-- ---------------------------------------------------------------------------- -->
+<!-- pantalla -->
 <div class="max-w-screen-2xl mx-auto flex justify-center mt-5 mb-5">
   <div class="w-full bg-white rounded-lg overflow-hidden p-6 sm:p-6">
     <div class="flex flex-col items-center justify-start">
       <form (ngSubmit)="onSubmit()" class="flex flex-col items-center w-full max-w-4xl">
-
-        <!-- Row for Logo and Placeholders -->
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- LOGO -->
         <div class="flex flex-col sm:flex-row items-center w-full mb-6 gap-8">
-          <div class="flex flex-col items-center sm:items-start mb-6 sm:mb-0 sm:mr-8">
+          <div class="flex flex-col items-center sm:items-start mb-6 sm:mb-0 sm:mr-8 ">
             <div class="w-32 h-32 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-black">
               <img *ngIf="logo" [src]="logo" alt="Logo" class="object-cover w-full h-full">
               <span *ngIf="!logo" class="text-gray-500">Logo</span>
@@ -18,7 +18,7 @@
             </label>
             <input id="logoInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="hidden">
           </div>
-
+<!-- --------------------------------------------------------------------------------------------------------- -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
             <div class="flex flex-col items-center sm:items-start w-full">
               <p class="font-semibold text-sky-400 text-lg">Nombre del Aliado</p>
@@ -32,6 +32,8 @@
                 <input [(ngModel)]="descripcion" name="descripcion" class="w-full outline-none" placeholder="Descripción" required />
               </div>
             </div>
+<!-- ------------------------------------------------------------------------ -->
+
             <div class="flex flex-col items-center sm:items-start w-full">
               <p class="font-semibold text-sky-400 text-lg">Correo del Aliado</p>
               <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control w-full">
@@ -41,25 +43,61 @@
 
             <div class="flex flex-col items-center sm:items-start w-full">
               <p class="font-semibold text-sky-400 text-lg">Contraseña del Aliado</p>
-              <div class="relative mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                <input [(ngModel)]="password" name="password" [type]="passwordVisible ? 'text' : 'password'" class="w-full outline-none" placeholder="Contraseña" required />
-                <button type="button" mat-icon-button class=" absolute inset-y-1 right-0 flex items-center pr-3" (click)="togglePasswordVisibility()">
+              <div class="relative mt-2 rounded-xl border-black py-3 px-4 text-base form-control w-full">
+                <input [(ngModel)]="password" name="password" [type]="passwordVisible ? 'text' : 'password'" class="w-64 outline-none" placeholder="Contraseña" required />
+                <button type="button" mat-icon-button class="absolute inset-y-1 right-1 flex items-center pr-3" (click)="togglePasswordVisibility()">
                   <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
                 </button>
               </div>
             </div>
-            <div class="flex flex-col items-center sm:items-start w-full">
-              <p class="font-semibold text-sky-400 text-lg">Ruta del Aliado</p>
+<!-- ---------------------------------------------------------------------------------------- -->
+            <div class=" flex sm:items-start w-full">
+              <p class="font-semibold text-sky-400 text-lg w-full mt-3 ">Tipo de Ruta</p>
               <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control w-full">
-                <input [(ngModel)]="ruta" name="ruta" class="w-full outline-none" placeholder="Ruta" required />
+                <select [(ngModel)]="tipodato" (change)="onRutaChange($event)" class="w-full outline-none">
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="video">Video</option>
+                  <option value="imagen">Imagen</option>
+                  <option value="pdf">PDF</option>
+                </select>
               </div>
             </div>
-            <div class="flex flex-col items-center sm:items-start w-full">
-              <p class="font-semibold text-sky-400 text-lg">Estado del Aliado</p>
-              <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control w-full">
-                <input [(ngModel)]="estado" name="estado" type="hidden" value="1">
-                <input disabled class="w-full outline-none bg-white text-gray-500" placeholder="Estado" value="ACTIVO"> 
-              </div>
+          </div>
+        </div>
+
+        <!-- Condicional para mostrar campos de ruta -->
+        <div *ngIf="rutaSeleccionada === 'video'" class="w-full mb-6">
+          <p class="font-semibold text-sky-400 text-lg">Ruta del Video</p>
+          <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control w-full">
+            <input [(ngModel)]="ruta" name="rutaVideo" class="w-full outline-none" placeholder="Ruta del Video" required />
+          </div>
+        </div>
+
+        <div *ngIf="rutaSeleccionada === 'imagen'" class="w-full mb-6">
+          <p class="font-semibold text-sky-400 text-lg">Imagen de la Ruta</p>
+          <div class="flex flex-col items-center sm:items-start mb-6 sm:mb-0 sm:mr-8">
+            <div class="w-32 h-32 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-black">
+              <img *ngIf="ruta" [src]="ruta" alt="Ruta Imagen" class="object-cover w-full h-full">
+              <span *ngIf="!ruta" class="text-gray-500">Imagen</span>
+            </div>
+            <label for="rutaImagenInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer">
+              Seleccionar Imagen
+            </label>
+            <input id="rutaImagenInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="hidden">
+          </div>
+        </div>
+
+        <div *ngIf="rutaSeleccionada === 'pdf'" class="w-full mb-6">
+          <p class="font-semibold text-sky-400 text-lg">Ruta del PDF</p>
+          <div class="flex items-center mt-2">
+            <label for="rutaPdfInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer flex items-center">
+              <span class="mr-2">Seleccionar PDF</span>
+              <mat-icon>attach_file</mat-icon>
+            </label>
+            <input id="rutaPdfInput" type="file" (change)="onPdfSelected($event)" accept="application/pdf" class="hidden">
+            <div *ngIf="pdfFileName" class="ml-3 text-gray-600 flex items-center mt-2 rounded-xl border-black py-3 px-4 text-base form-control w-full ">
+              <img src="//res.cdn.office.net/assets/fluentui-resources/1.0.23/app-min/assets/item-types/20/pdf.svg" alt=".pdf" class="mr-2 w-10 h-10">
+              <span class="ml-1">{{ pdfFileName }}</span>
             </div>
           </div>
         </div>
@@ -69,6 +107,5 @@
         </div>
 
       </form>
-    </div>
   </div>
 </div>
