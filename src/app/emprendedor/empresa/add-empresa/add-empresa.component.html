@@ -12,14 +12,14 @@
                         <div class="w-full text-base relative">
                             <label for="nombre" class="block mb-2 text-blue-400">Nombre:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="nombre" />
                         </div>
 
                         <div class="w-full text-base relative">
                             <label for="correo" class="block mb-2 text-blue-400">Email:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="correo" />
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <div class="w-full text-base relative">
                             <label for="tipodocumento" class="block mb-2 text-blue-400">Tipo de Documento:</label>
                             <select id="tipoDocumento" formControlName="id_tipo_documento"
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 <option value="" disabled selected>
                                     Seleccionar tipo de documento...
                                 </option>
@@ -42,20 +42,20 @@
                         <div class="w-full text-base relative">
                             <label for="documento" class="block mb-2 text-blue-400">Número Documento:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="documento" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="razonSocial" class="block mb-2 text-blue-400">Razón Social:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="razonSocial" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="departamento" class="block mb-2 text-blue-400">Departamento:</label>
                             <select id="departamento" name="departamento"
                                 (change)="onDepartamentoSeleccionado($event.target.value)"
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 <option value="" disabled selected>
                                     Seleccionar Departamento...
                                 </option>
@@ -69,7 +69,7 @@
                         <div class="w-full text-base relative">
                             <label for="municipio" class="block mb-2 text-blue-400">Municipio:</label>
                             <select id="municipio" name="municipio" formControlName="id_municipio"
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 <option value="" disabled selected>
                                     Seleccionar Municipio...
                                 </option>
@@ -84,7 +84,7 @@
                             <label for="direccion" class="block mb-2 text-blue-400">Dirección del
                                 emprendimiento:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="direccion" />
                                 <fa-icon [icon]="faLocationDot" class="absolute right-3 top-12 text-cyan-500 z-0 text-lg"
                             styles=" pointer-events: auto;"></fa-icon>
@@ -92,31 +92,31 @@
                         <div class="w-full text-base relative">
                             <label for="telefono" class="block mb-2 text-blue-400">Teléfono:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="telefono" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="celular" class="block mb-2 text-blue-400">Celular:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="celular" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="url_pagina" class="block mb-2 text-blue-400">Página web:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="url_pagina" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="profesion" class="block mb-2 text-blue-400">Profesión:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="profesion" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="cargo" class="block mb-2 text-blue-400">Cargo:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="cargo" />
                         </div>
                     </div>
@@ -163,35 +163,35 @@
                                 <div class="w-full text-base relative">
                                     <label for="nombre" class="block mb-2 text-blue-400">Nombre:</label>
                                     <input formControlName="nombre"
-                                        class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                        class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                                 </div>
                                 <div class="w-full text-base relative">
                                     <label for="nombre" class="block mb-2 text-blue-400">Apellido:</label>
-                                    <input formControlName="apellido" class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                    <input formControlName="apellido" class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                                 </div>
                                 <div class="w-full text-base relative">
                                     <label for="cargo" class="block mb-2 text-blue-400">Cargo:</label>
                                     <input formControlName="cargo"
-                                        class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                        class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                                 </div>
                                 <div class="w-full text-base relative">
                                     <label for="celular" class="block mb-2 text-blue-400">Celular:</label>
                                     <input formControlName="celular"
-                                        class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                        class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                                 </div>
                                 <div class="w-full text-base relative">
                                     <label for="correo" class="block mb-2 text-blue-400">Correo:</label>
                                     <input formControlName="email"
-                                        class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                        class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                                 </div>
                                 <div class="w-full text-base relative">
                                     <label for="tipodocumento" class="block mb-2 text-blue-400">Tipo de
                                         Documento:</label>
                                     <select id="tipoDocumento" formControlName="id_tipo_documento"
-                                        class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                        class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                         <option value="" disabled selected>
-                                            Seleccionar tipo de documento...
-                                        </option>
+                                            Seleccionar tipo de documento...h-12
+                                        </option>h-12
                                         <option value="1">Cédula ciudadanía</option>
                                         <option value="2">Pasaporte</option>
                                         <option value="3">Carnet de Extranjería</option>
@@ -204,12 +204,12 @@
                                     <label for="numeroDocumento" class="block mb-2 text-blue-400">Número de
                                         documento:</label>
                                     <input formControlName="documento"
-                                        class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                        class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                                 </div>
                                 <div class="w-full text-base relative">
                                     <label for="fijo" class="block mb-2 text-blue-400">Fijo:</label>
                                     <input formControlName="telefono"
-                                        class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                        class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                                 </div>
                             </div>
                             <div class="flex justify-end">
