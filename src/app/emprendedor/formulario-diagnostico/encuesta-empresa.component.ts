@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef } from '@angular/core';
+import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './encuesta-empresa.component.html',
   styleUrls: ['./encuesta-empresa.component.css'],
 })
-export class EncuestaEmpresaComponent {
+export class EncuestaEmpresaComponent implements AfterViewInit {
   fa1 = fa1;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
@@ -19,6 +19,9 @@ export class EncuestaEmpresaComponent {
   selectedOption5: string = '';
 
   currentIndex = 0;
+  private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
 
   next() {
     if (this.currentIndex < 3) {
@@ -34,10 +37,6 @@ export class EncuestaEmpresaComponent {
     }
   }
 
-  private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
-
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
-
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.debouncedProcessAttributes();
@@ -47,17 +46,23 @@ export class EncuestaEmpresaComponent {
     this.processAttributesBasedOnScreenSize();
   }
 
+  ngAfterViewInit() {
+    this.processAttributesBasedOnScreenSize();
+  }
+
   processAttributesBasedOnScreenSize() {
     const isMobile = window.innerWidth < 768; // Ancho considerado como pantalla móvil
 
     // Seleccionar todas las etiquetas <td> con los atributos colspan o rowspan
-    const tdElements = this.elementRef.nativeElement.querySelectorAll('td[colspan], td[rowspan]');
+    const tdElements = this.elementRef.nativeElement.querySelectorAll('td');
     tdElements.forEach(tdElement => {
+      const colspan = tdElement.getAttribute('colspan');
+      const rowspan = tdElement.getAttribute('rowspan');
       if (!this.originalAttributes.has(tdElement)) {
         // Guardar los valores originales
         this.originalAttributes.set(tdElement, {
-          colspan: tdElement.getAttribute('colspan'),
-          rowspan: tdElement.getAttribute('rowspan')
+          colspan: colspan,
+          rowspan: rowspan
         });
       }
 
@@ -94,7 +99,9 @@ export class EncuestaEmpresaComponent {
   }
 
   updateAttributes() {
-    requestAnimationFrame(() => this.processAttributesBasedOnScreenSize());
+    requestAnimationFrame(() => {
+      this.processAttributesBasedOnScreenSize();
+    });
   }
 
   private debouncedProcessAttributes() {
