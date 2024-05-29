@@ -16,6 +16,7 @@ import { MunicipioService } from '../../servicios/municipio.service';
 import { RegistroService } from '../../servicios/registro.service';
 import { Router } from '@angular/router';
 import { Emprendedor } from '../../Modelos/emprendedor.model';
+import { AlertService } from '../../servicios/alert.service';
 
 
 
@@ -26,7 +27,7 @@ import { Emprendedor } from '../../Modelos/emprendedor.model';
   selector: 'app-register',
   standalone: true,
   imports: [FontAwesomeModule, ReactiveFormsModule, CommonModule],
-  providers: [DepartamentoService, MunicipioService, RegistroService],
+  providers: [DepartamentoService, MunicipioService, RegistroService, AlertService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -58,6 +59,7 @@ export class RegisterComponent implements OnInit {
     private municipioService: MunicipioService,
     private registroService: RegistroService,
     private router: Router,
+    private alertService: AlertService,
   ) { }
 
   ngOnInit(): void {
@@ -132,7 +134,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-
     const emprendedor = new Emprendedor(
       this.f.documento.value,
       this.f.nombretipodoc.value,
@@ -152,13 +153,18 @@ export class RegisterComponent implements OnInit {
       (response: any) => {
         console.log(response);
         console.log('Registro exitoso', response);
+        this.alertService.successAlert('Registro exitoso', response.message);
         this.email = response.email; // Obtiene el correo electrónico de la respuesta
 
         this.router.navigate(['/verification'], { queryParams: { email: this.email } });
       },
       (error) => {
         console.log('Error en el registro', error);
-        this.errorMessage = error.error.message || 'An error occurred during registration.';
+        if(error.status === 400){
+          this.alertService.errorAlert('Error', error.error.message)
+        } else if(this.errorMessage = error.error.message){
+          this.alertService.errorAlert('Error', error.message)
+        }
       }
     );
   }

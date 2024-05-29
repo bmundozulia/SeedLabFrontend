@@ -13,9 +13,8 @@ import { CrearAsesoriaModalComponent } from '../crear-asesoria-modal/crear-aseso
 export class ListAsesoriaComponent implements OnInit {
   asesoriasTrue: Asesoria[] = [];
   asesoriasFalse: Asesoria[] = []; 
-  showTrue: boolean = true; // Muestra "Asignadas" por defecto
-  showFalse: boolean = false;
-
+  showTrue: boolean = false; // Set to false by default to show "Sin Asignar"
+  showFalse: boolean = true; // Set to true by default to show "Sin Asignar"
   token: string | null = null;
   documento: string | null = null;
   user: any = null;
@@ -106,14 +105,13 @@ export class ListAsesoriaComponent implements OnInit {
     });
   }
 
- showSinAsignar() {
+  showSinAsignar() {
     this.showTrue = false;
     this.showFalse = true;
-}
+  }
 
-showAsignadas() {
+  showAsignadas() {
     this.showTrue = true;
     this.showFalse = false;
-}
-
+  }
 }
