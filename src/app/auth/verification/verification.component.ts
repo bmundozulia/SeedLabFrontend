@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VerificacionService } from '../../servicios/verificacion.service';
+import { AlertService } from '../../servicios/alert.service';
 
 @Component({
   selector: 'app-verification',
@@ -22,6 +23,7 @@ export class VerificationComponent implements OnInit {
 constructor(private router:Router,
   private verificacionservice:VerificacionService,
   private route: ActivatedRoute,
+  private alertService:AlertService
 ){}
 
   ngOnInit(){
@@ -55,10 +57,15 @@ verificarEmail():void{
       console.log(data);
       console.log('Validación exitosa',data);
       this.router.navigate(['/login']);
+      this.alertService.successAlert('Exito',data.message);
     },
     err => {
       console.log('Error al verificar el correo electrónico:',err);
-      alert(`Error: ${err.message}`);
+      if(err.status === 400){
+        this.alertService.errorAlert('Error',err.message);
+      }else if(err.status === 409){
+        this.alertService.errorAlert('Error',err.message);
+      }
       this.router.navigate(['/verification']);
     }
   );
