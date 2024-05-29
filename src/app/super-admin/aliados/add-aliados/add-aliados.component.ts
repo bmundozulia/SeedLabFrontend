@@ -64,4 +64,10 @@ export class AddAliadosComponent {
       alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
     }
   }
+  passwordVisible: boolean = false;
+
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
 }
+
