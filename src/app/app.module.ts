@@ -22,7 +22,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormBuilder,FormsModule, FormGroup} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormsModule, FormGroup } from '@angular/forms';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
@@ -50,6 +50,7 @@ import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-em
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RutasComponent } from './rutas/rutas.component';
+import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 
 
 
@@ -83,6 +84,7 @@ import { RutasComponent } from './rutas/rutas.component';
     DarAsesorModalComponent,
     EditEmpresaComponent,
     RutasComponent,
+    OrientadorCrearComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,7 +106,7 @@ import { RutasComponent } from './rutas/rutas.component';
     FormsModule,
     FilterPipeModule,
     MatDialogModule,
-    ColorPickerModule, 
+    ColorPickerModule,
     ColorPickerModule,
     SweetAlert2Module.forRoot(),
     BrowserModule,

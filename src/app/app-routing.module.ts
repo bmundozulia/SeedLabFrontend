@@ -22,6 +22,7 @@ import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/per
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutasComponent } from './rutas/rutas.component';
+import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 
 
 
@@ -42,6 +43,9 @@ const routes: Routes = [
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'fan-page', component: FanPageComponent },
   { path: 'perfil', component: PerfilEmprendedorComponent },
+  // orientador crear
+  { path: 'orientador-crear', component: OrientadorCrearComponent },
+
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
   { path: 'rutas', component: RutasComponent },//de rutas
