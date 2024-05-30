@@ -1,25 +1,25 @@
 <app-header [title]="'Bienvenido al panel de empresas'"
-    [subtitle]="'Aquí podrás ver y gestionar tus empresas'"></app-header>
+    [subtitle]="'Aqui podras ver y gestionar tus empresas'"></app-header>
 <div class="container mx-auto px-4 py-12">
     <!-- <form [formGroup]="editEmpresaForm" (ngSubmit)="editEmpresa()"> -->
         <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 mb-6 p-4 sm:p-12">
             <div class="col-span-12 rounded-lg">
                 <div class="flex flex-col">
                     <div class="text-3xl md:text-9xl">
-                        <h5 class="text-xl md:text-4xl font-bold text-sky-600 -mt-16">Líder</h5>
+                        <h3 class="text-xl md:text-4xl font-bold text-sky-600 -mt-16">Líder</h3>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                         <div class="w-full text-base relative">
                             <label for="nombre" class="block mb-2 text-blue-400">Nombre:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="nombre" />
                         </div>
 
                         <div class="w-full text-base relative">
                             <label for="correo" class="block mb-2 text-blue-400">Email:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="correo" />
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <div class="w-full text-base relative">
                             <label for="tipodocumento" class="block mb-2 text-blue-400">Tipo de Documento:</label>
                             <select id="tipoDocumento" formControlName="id_tipo_documento"
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 <option value="" disabled selected>
                                     Seleccionar tipo de documento...
                                 </option>
@@ -42,20 +42,20 @@
                         <div class="w-full text-base relative">
                             <label for="documento" class="block mb-2 text-blue-400">Número Documento:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="documento" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="razonSocial" class="block mb-2 text-blue-400">Razón Social:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="razonSocial" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="departamento" class="block mb-2 text-blue-400">Departamento:</label>
                             <select id="departamento" name="departamento"
                                 (change)="onDepartamentoSeleccionado($event.target.value)"
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 <option value="" disabled selected>
                                     Seleccionar Departamento...
                                 </option>
@@ -69,7 +69,7 @@
                         <div class="w-full text-base relative">
                             <label for="municipio" class="block mb-2 text-blue-400">Municipio:</label>
                             <select id="municipio" name="municipio" formControlName="municipio"
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 <option value="" disabled selected>
                                     Seleccionar Municipio...
                                 </option>
@@ -83,7 +83,7 @@
                         <div class="w-full text-base relative">
                             <label for="direccion" class="block mb-2 text-blue-400">Dirección del emprendimiento:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="direccion" />
                                 <fa-icon [icon]="faLocationDot" class="absolute right-3 top-12 text-cyan-500 z-0 text-lg"
                             styles=" pointer-events: auto;"></fa-icon>
@@ -91,31 +91,31 @@
                         <div class="w-full text-base relative">
                             <label for="telefono" class="block mb-2 text-blue-400">Teléfono:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="telefono" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="celular" class="block mb-2 text-blue-400">Celular:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="celular" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="url_pagina" class="block mb-2 text-blue-400">Página web:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="url_pagina" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="profesion" class="block mb-2 text-blue-400">Profesión:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="profesion" />
                         </div>
                         <div class="w-full text-base relative">
                             <label for="cargo" class="block mb-2 text-blue-400">Cargo:</label>
                             <input
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
+                                class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100"
                                 formControlName="cargo" />
                         </div>
                     </div>
@@ -148,44 +148,44 @@
                     <div class="flex justify-end relative bottom-12 -left-2">
                         <button id="guardar" type="submit"
                             class="px-10 py-3 bg-sky-500 bg-opacity-80 text-white rounded-xl cursor-pointer">
-                            Guardar cambios
+                            Guardar Empresa
                         </button>
                     </div>
                     <div id="contenido" class="mt-6 sm:mt-14">
                         <hr class="w-full border-t-gray-600 border-gray-400" />
                         <div class="flex justify-between items-center mb-6">
-                            <h1 class="text-xl md:text-4xl font-bold text-sky-600">Apoyo</h1>
+                            <h3 class="text-xl md:text-4xl font-bold text-sky-600">Apoyo</h3>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                             <div class="w-full text-base relative">
                                 <label for="nombre" class="block mb-2 text-blue-400">Nombre:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                <input class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                             </div>
                             <div class="w-full text-base relative">
                                 <label for="cargo" class="block mb-2 text-blue-400">Cargo:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                <input class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                             </div>
                             <div class="w-full text-base relative">
                                 <label for="celular" class="block mb-2 text-blue-400">Celular:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                <input class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                             </div>
                             <div class="w-full text-base relative">
                                 <label for="correo" class="block mb-2 text-blue-400">Correo:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                <input class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                             </div>
                             <div class="w-full text-base relative">
                                 <label for="tipoDocumento" class="block mb-2 text-blue-400">Tipo de documento:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                <input class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                                 <fa-icon [icon]="faIdCard" class="absolute right-3 top-4 mt-7 text-cyan-500 z-0 text-lg"
                                     styles=" pointer-events: auto;"></fa-icon>
                             </div>
                             <div class="w-full text-base relative">
                                 <label for="numeroDocumento" class="block mb-2 text-blue-400">Número de documento:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                <input class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                             </div>
                             <div class="w-full text-base relative">
                                 <label for="fijo" class="block mb-2 text-blue-400">Fijo:</label>
-                                <input class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
+                                <input class="p-2 w-full h-12 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
                             </div>
                         </div>
                         <div class="flex justify-end -mt-20">

@@ -48,6 +48,9 @@ import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-mo
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { RutasComponent } from './rutas/rutas.component';
+
 
 
 
@@ -79,6 +82,7 @@ import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-em
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
     EditEmpresaComponent,
+    RutasComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,7 +106,9 @@ import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-em
     MatDialogModule,
     ColorPickerModule, 
     ColorPickerModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    BrowserModule,
+    ReactiveFormsModule,
 
   ],
   providers: [
@@ -115,3 +121,8 @@ import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-em
 
 })
 export class AppModule { }
+// main.ts
+
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
