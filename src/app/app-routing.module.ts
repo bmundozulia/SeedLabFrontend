@@ -22,6 +22,7 @@ import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/per
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutasComponent } from './rutas/rutas.component';
+import { CursorutasComponent } from './cursorutas/cursorutas.component';
 
 
 const routes: Routes = [
@@ -43,7 +44,7 @@ const routes: Routes = [
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
   { path: 'rutas', component: RutasComponent},//de rutas
-
+  { path: 'cursorutas', component: CursorutasComponent},//de curso rutas
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor
   { path: 'ver-asesoria', component: VerAsesoriasComponent}, //de osesoria

@@ -50,6 +50,8 @@ import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-em
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RutasComponent } from './rutas/rutas.component';
+import { CursorutasComponent } from './cursorutas/cursorutas.component';
+
 
 
 
@@ -83,6 +85,7 @@ import { RutasComponent } from './rutas/rutas.component';
     DarAsesorModalComponent,
     EditEmpresaComponent,
     RutasComponent,
+    CursorutasComponent,
   ],
   imports: [
     BrowserModule,
