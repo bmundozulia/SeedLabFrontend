@@ -8,7 +8,6 @@ import { SwitchService } from '../../servicios/switch.service'
 })
 export class ModalComponent implements OnInit {
 
-  .
   constructor(private modalSS: SwitchService) {
 
   }

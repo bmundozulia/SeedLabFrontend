@@ -5,11 +5,12 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-super-admin',
-  templateUrl: './Orientadorsuper-admin.component.html',
+  templateUrl: './Orientador-crear.component.html',
+  standalone: true,
   imports: [FontAwesomeModule],
-  styleUrl: './Orientadorsuper-admin.component.css'
+  styleUrl: './Orientador-crear.component.ts'
 })
-export class OrientadorSuperAdminComponent {
+export class OrientadorCrearComponent {
   faPen = faPenToSquare;
 
 }

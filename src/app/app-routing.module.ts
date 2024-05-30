@@ -21,7 +21,7 @@ import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-alia
 
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 
-import { OrientadorSuperAdminComponent } from './orientador/Orientadorsuper-admin/Orientadorsuper-admin.component'
+import { OrientadorCrearComponent } from './orientador/Orientador-Crear/Orientador-crear.component'
 
 
 const routes: Routes = [
@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'fan-page', component: FanPageComponent },
   { path: 'perfil', component: PerfilEmprendedorComponent },
   // orientador superAdministrador
-  { path: 'orientador-SuperAdmin', component: OrientadorSuperAdminComponent },
+  { path: 'orientador-crear', component: OrientadorCrearComponent },
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
 
