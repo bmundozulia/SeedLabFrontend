@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AsesoriaService } from '../../servicios/asesoria.service';
 import { Asesoria } from '../../Modelos/asesoria.model';
 import { MatDialog } from '@angular/material/dialog';
+import { HorarioModalComponent } from '../horario-modal/horario-modal/horario-modal.component';
 
 @Component({
   selector: 'app-asesorias',
@@ -73,4 +74,16 @@ export class AsesoriasComponent implements OnInit {
       }
     );
   }
+
+  openModal(asesoria: any): void {
+    const dialogRef = this.dialog.open(HorarioModalComponent, {
+      width: '400px',
+      data: { asesoria }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Maneja el resultado del modal si es necesario
+    });
+  }
+
 }
