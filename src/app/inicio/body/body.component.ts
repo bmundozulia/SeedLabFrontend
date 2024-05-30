@@ -50,11 +50,6 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
 
-  extractVideoId(url: string): string {
-    const regExp = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    const match = url.match(regExp);
-    return (match && match[1]) ? match[1] : '';
-  }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -62,9 +57,17 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  ngOnDestroy(): void {
+    ngOnDestroy(): void {
     this.stopAutoSlide();
   }
+
+  
+  extractVideoId(url: string): string {
+    const regExp = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regExp);
+    return (match && match[1]) ? match[1] : '';
+  }
+
 
   get currentTransform(): number {
     return -this.currentIndex * (100 / this.slidesPerView);
