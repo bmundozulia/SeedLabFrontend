@@ -125,5 +125,20 @@ export class AddAliadosComponent {
     } else {
       alert('Por favor, seleccione un archivo PDF.');
     }
+    
+  }
+  onImageSelected(event: any): void {
+    const file = event.target.files[0];
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+  
+    if (file && allowedExtensions.exec(file.name)) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.ruta = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
+    }
   }
 }
