@@ -19,13 +19,8 @@ export class AddAliadosComponent {
   token: string | null = localStorage.getItem('token');
   hide = true;
 
-  // Nueva propiedad para la visibilidad de la contraseña
   passwordVisible: boolean = false;
-
-  // Nueva propiedad para el tipo de ruta seleccionado
   rutaSeleccionada: string = '';
-
-  // Nueva propiedad para el nombre del archivo PDF seleccionado
   pdfFileName: string = '';
 
   constructor(private aliadoService: AliadoService, private router: Router) {}
@@ -36,7 +31,6 @@ export class AddAliadosComponent {
       return;
     }
   
-    // Validaciones
     if (!this.logo) {
       alert('Por favor, seleccione una imagen.');
       return;
@@ -96,49 +90,72 @@ export class AddAliadosComponent {
     }
   }
 
-  // Método para alternar la visibilidad de la contraseña
+  resizeImage(file: File, maxWidth: number, maxHeight: number, callback: (dataUrl: string) => void): void {
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      const img = new Image();
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+        
+        if (width > height) {
+          if (width > maxWidth) {
+            height = Math.round((height *= maxWidth / width));
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = Math.round((width *= maxHeight / height));
+            height = maxHeight;
+          }
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx?.drawImage(img, 0, 0, width, height);
+        callback(canvas.toDataURL(file.type));
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  onImageSelected(event: any): void {
+    const file = event.target.files[0];
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+    if (file && allowedExtensions.exec(file.name)) {
+      this.resizeImage(file, 800, 800, (dataUrl) => {
+        this.ruta = dataUrl;
+      });
+    } else {
+      alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
+    }
+  }
+
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  // Método para manejar el cambio de la ruta seleccionada
   onRutaChange(event: any): void {
     this.rutaSeleccionada = event.target.value;
     if (this.rutaSeleccionada === 'pdf') {
       this.ruta = '';
-      this.pdfFileName = '';  // Resetear el nombre del archivo PDF
+      this.pdfFileName = '';
     }
   }
 
-  // Método para seleccionar archivo PDF
   onPdfSelected(event: any): void {
     const file = event.target.files[0];
     const allowedExtensions = /(\.pdf)$/i;
 
     if (file && allowedExtensions.exec(file.name)) {
       this.pdfFileName = file.name;
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.ruta = e.target.result;
-      };
-      reader.readAsDataURL(file);
+      this.ruta = file.name;  // Guardar solo el nombre del archivo PDF
     } else {
       alert('Por favor, seleccione un archivo PDF.');
-    }
-    
-  }
-  onImageSelected(event: any): void {
-    const file = event.target.files[0];
-    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-  
-    if (file && allowedExtensions.exec(file.name)) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.ruta = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    } else {
-      alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
     }
   }
 }
