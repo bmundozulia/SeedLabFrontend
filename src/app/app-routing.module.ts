@@ -18,12 +18,12 @@ import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliad
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component'
 import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
- import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
+import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutasComponent } from './rutas/rutas.component';
 
-import { OrientadorCrearComponent } from './orientador/Orientador-Crear/Orientador-crear.component'
+
 
 
 const routes: Routes = [
@@ -33,7 +33,7 @@ const routes: Routes = [
 
   { path: 'add-empresa', component: AddEmpresaComponent },
   { path: 'list-empresa', component: ListEmpresasComponent },
-  { path: 'edit-empresa', component: EditEmpresaComponent},
+  { path: 'edit-empresa', component: EditEmpresaComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
   { path: 'modal-superadmin', component: ModalComponent },
   { path: 'personalizaciones', component: PersonalizacionesComponent },
@@ -42,15 +42,13 @@ const routes: Routes = [
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'fan-page', component: FanPageComponent },
   { path: 'perfil', component: PerfilEmprendedorComponent },
-  // orientador superAdministrador
-  { path: 'orientador-crear', component: OrientadorCrearComponent },
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
-  { path: 'rutas', component: RutasComponent},//de rutas
+  { path: 'rutas', component: RutasComponent },//de rutas
 
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor
-  { path: 'ver-asesoria', component: VerAsesoriasComponent}, //de osesoria
+  { path: 'ver-asesoria', component: VerAsesoriasComponent }, //de osesoria
   { path: 'add-aliados', component: AddAliadosComponent }, //de orientador
   { path: 'asesorias/hola', component: AsesoriaAliadoComponent }, //de Aliado
 
