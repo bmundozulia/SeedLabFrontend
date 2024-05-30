@@ -51,6 +51,7 @@ import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-em
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RutasComponent } from './rutas/rutas.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
+import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
 
 
 
@@ -85,6 +86,7 @@ import { OrientadorCrearComponent } from './orientador/orientador-crear/orientad
     EditEmpresaComponent,
     RutasComponent,
     OrientadorCrearComponent,
+    ModalCrearOrientadorComponent,
   ],
   imports: [
     BrowserModule,
