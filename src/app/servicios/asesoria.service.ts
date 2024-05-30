@@ -13,6 +13,13 @@ export class AsesoriaService {
 
   constructor(private http: HttpClient) { }
 
+  private CreacionHeaders(access_token: any): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${access_token}`
+    });
+  }
+
   getMisAsesorias(body: { documento: string, asignacion: boolean }): Observable<any> {
     const token = localStorage.getItem('token'); // Obtén el token del localStorage
     if (!token) {
@@ -74,7 +81,6 @@ export class AsesoriaService {
     return this.http.get<Asesoria[]>(url, { headers });
   }
 
-
   listarAsesores(idaliado: number): Observable<AsesorDisponible[]> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -96,4 +102,24 @@ export class AsesoriaService {
     return this.http.post(url, body, { headers });
   }
 
+  rechazarAsesoria(id_asesoria: number, accion: string): Observable<any> {
+    const url = `${this.apiUrl}gestionar`;
+    const body = { id_asesoria, accion };
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.post<any>(url, body, { headers });
+  }
+
+  mostrarAsesoriasAsesor(idAsesor: number, horario: boolean): Observable<any> {
+    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+    if (!token) {
+      console.error('Token no encontrado en el localStorage');
+      return new Observable<any>();
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    const url = `${environment.apiUrl}mostrarAsesoriasAsesor/${idAsesor}/${horario}`;
+    return this.http.get<any>(url, { headers });
+  }
 }

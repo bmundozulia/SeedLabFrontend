@@ -35,4 +35,5 @@ export class AliadoService {
     return this.http.get(`${environment.apiUrl}orientador/listaAliado`);
   }
 
+  
 }
