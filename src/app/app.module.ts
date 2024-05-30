@@ -35,18 +35,22 @@ import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/lis
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component';
 import { DarAliadoAsesoriaModalComponent } from './orientador/asesorias/dar-aliado-asesoria-modal/dar-aliado-asesoria-modal.component';
 import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-modal/dar-asesor-modal.component';
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
-import { EditEmpresaComponent } from './empresario/edit-empresa/edit-empresa.component';
-import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emprendedor.component';
+import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
+import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { RutasComponent } from './rutas/rutas.component';
+
 
 
 
@@ -78,6 +82,7 @@ import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emp
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
     EditEmpresaComponent,
+    RutasComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,13 +106,8 @@ import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emp
     MatDialogModule,
     ColorPickerModule, 
     ColorPickerModule,
+    SweetAlert2Module.forRoot(),
     BrowserModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    FormsModule,
     ReactiveFormsModule,
 
   ],
@@ -121,3 +121,8 @@ import { RutaEmprendedorComponent } from './empresario/ruta-emprendedor/ruta-emp
 
 })
 export class AppModule { }
+// main.ts
+
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
