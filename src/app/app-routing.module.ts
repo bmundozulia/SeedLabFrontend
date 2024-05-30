@@ -21,6 +21,8 @@ import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-alia
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
+import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
+import { AddAsesoresComponent } from './aliados/asesores/add-asesores/add-asesores.component';
 
 
 const routes: Routes = [
@@ -48,6 +50,10 @@ const routes: Routes = [
   { path: 'ver-asesoria', component: VerAsesoriasComponent}, //de orientador
   { path: 'add-aliados', component: AddAliadosComponent }, //de orientador
   { path: 'asesorias/hola', component: AsesoriaAliadoComponent }, //de Aliado
+
+  //ingreso de aliados 
+  // { path: 'list-asesores'}
+
 
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
   { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
