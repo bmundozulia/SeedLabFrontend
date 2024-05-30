@@ -13,6 +13,8 @@ export class AsesoriasComponent implements OnInit {
   asesorias: Asesoria[] = [];
   asesoriasConAsesor: Asesoria[] = [];
   asesoriasSinAsesor: Asesoria[] = [];
+  showTrue: boolean = true; // Variable para controlar si mostrar asesorías con asignación
+  showFalse: boolean = true; // Variable para controlar si mostrar asesorías sin asignación
   token: string | null = null;
   user: any = null;
   currentRolId: string | null = null;
@@ -50,10 +52,15 @@ export class AsesoriasComponent implements OnInit {
 
   loadAsesorias(): void {
     if (!this.token) return;
-
-    const idAsesor = parseInt(this.currentRolId!, 10); // Asume que el rol ID es el ID del asesor
-    const horario = true; // Cambia esto según sea necesario
-
+  
+    const userData = localStorage.getItem('identity');
+    if (!userData) {
+      console.error('Error: No se encontraron datos de usuario en el local storage.');
+      return;
+    }
+    const user = JSON.parse(userData);
+    const idAsesor = user.id; // Obtener el ID del asesor del objeto de usuario
+    const horario = false; // Cambia esto según sea necesario
     this.asesoriaService.mostrarAsesoriasAsesor(idAsesor, horario).subscribe(
       response => {
         console.log('Asesorías cargadas:', response);
