@@ -22,7 +22,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormBuilder,FormsModule, FormGroup} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormsModule, FormGroup } from '@angular/forms';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
@@ -50,6 +50,8 @@ import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-em
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RutasComponent } from './rutas/rutas.component';
+import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
+import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
 import { CursorutasComponent } from './cursorutas/cursorutas.component';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -89,6 +91,8 @@ import { SafeUrlPipe } from './cursorutas/cursorutas.component';
     DarAsesorModalComponent,
     EditEmpresaComponent,
     RutasComponent,
+    OrientadorCrearComponent,
+    ModalCrearOrientadorComponent,
     CursorutasComponent,
     SafeUrlPipe,
    
@@ -114,7 +118,7 @@ import { SafeUrlPipe } from './cursorutas/cursorutas.component';
     FormsModule,
     FilterPipeModule,
     MatDialogModule,
-    ColorPickerModule, 
+    ColorPickerModule,
     ColorPickerModule,
     SweetAlert2Module.forRoot(),
     BrowserModule,

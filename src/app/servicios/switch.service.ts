@@ -8,4 +8,6 @@ export class SwitchService {
 
   constructor() { }
   $modal = new EventEmitter<any>();
+
+  $modalCrearOrientador = new EventEmitter<any>();
 }
