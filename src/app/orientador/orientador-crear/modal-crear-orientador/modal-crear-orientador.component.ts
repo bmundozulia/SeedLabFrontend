@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SwitchService } from '../../../servicios/switch.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { SwitchService } from '../../../servicios/switch.service';
   styleUrl: './modal-crear-orientador.component.css'
 })
 export class ModalCrearOrientadorComponent implements OnInit {
-
+  @Input() isEditing: boolean = false;
   constructor(private modalCRO: SwitchService) {
 
   }

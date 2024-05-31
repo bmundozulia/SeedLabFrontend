@@ -1,27 +1,24 @@
 <div class="pl-11">
 
     <div class="mt-6">
-        <h1 class="text-3xl font-bold mb-2 ">Bienvenidos al panel de reportes</h1>
-        <p class="mb-2 text-gray-700 ">Aquí podra ver y gestionar fromulario de reportes </p>
+        <h1 class="text-3xl font-bold mb-2 ">Bienvenidos al panel Orientador</h1>
+        <p class="mb-2 text-gray-700 ">Aquí puedes ver y gestionar a tus tutoresorientadores </p>
         <hr class="divide-y divide-light-blue-400 ">
     </div>
 
     <div class="flex justify-center items-center h-full md:w-full my-8">
         <div class="justify-center items-center w-4/6 max-md:w-72">
             <div class="flex justify-end mb-16">
-                <button (click)="OpenModalCrearOrientador()" type="submit"
-                    class=" md:w-auto bg-sky-400 hover:bg-sky-500 text-white  py-2 px-4 rounded">
-
-                    Añadir Empresa
-
+                <button (click)="openModalCrearOrientador()" type="button"
+                    class="md:w-auto bg-sky-400 hover:bg-sky-500 text-white py-2 px-4 rounded">
+                    Añadir Orientador
                     <fa-icon [icon]="faPlus" class="text-md ml-2"></fa-icon>
                 </button>
 
+                <app-modal-crear-orientador *ngIf="modalCrearOrientador"
+                    [isEditing]="isEditing"></app-modal-crear-orientador>
 
-                <div class="absolute top-0 right-0" *ngIf=" modalCrearOrientador == true">
-                    <app-modal-crear-orientador [isEditMode]="isEditMode"
-                        [orientador]="orientadorSeleccionado"></app-modal-crear-orientador>
-                </div>
+
             </div>
             <div class="headers md:flex md:justify-between md:mb-6 pl-10 pr-8">
                 <h2 class="hidden md:block md:w-28 whitespace-nowrap overflow-hidden text-center font-bold">Nombre</h2>
@@ -67,7 +64,7 @@
                     <div class="flex justify-center  px-2 ">
                         <h3 class="block md:hidden"></h3>
                         <div class="md:w-11 md:mr-9 md:pr-14 max-md:absolute max-md:right-56 md:pt-2">
-                            <button class="">
+                            <button class="" (click)="openModalEditarOrientador()" type="submit">
                                 <fa-icon [icon]="faPen"
                                     class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:h-5  max-md:hidden  "></fa-icon>
                             </button>
