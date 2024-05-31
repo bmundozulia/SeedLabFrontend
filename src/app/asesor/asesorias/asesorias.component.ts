@@ -76,6 +76,13 @@ export class AsesoriasComponent implements OnInit {
   }
 
   openModal(asesoria: any): void {
+    // Logs para depuración
+    console.log('Abriendo modal para asesoria:', asesoria);
+    if (!asesoria || !asesoria.id) {
+      console.error('ID de asesoria no encontrado');
+      return;
+    }
+
     const dialogRef = this.dialog.open(HorarioModalComponent, {
       width: '400px',
       data: { asesoria }
@@ -85,5 +92,4 @@ export class AsesoriasComponent implements OnInit {
       // Maneja el resultado del modal si es necesario
     });
   }
-
 }

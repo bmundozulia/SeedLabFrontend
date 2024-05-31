@@ -8,7 +8,11 @@
   </div>
   <div class="rounded-xl pb-2 w-4/6 justify-start text-center" id="nomAliadoContainer">
     <label class="mb-1">¿En qué fecha quiere la asesoría?</label>
-    <input type="datetime-local" formControlName="nomAliado">
+    <input type="datetime-local" formControlName="fecha">
+  </div>
+  <div class="rounded-xl pb-2 w-4/6 justify-start text-center" id="observacionesContainer">
+    <label class="mb-1">Observaciones</label>
+    <textarea formControlName="observaciones"></textarea>
   </div>
   <div mat-dialog-actions>
     <button mat-button mat-dialog-close class="bg-red-500">Cancelar</button>
