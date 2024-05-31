@@ -51,6 +51,9 @@ import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-em
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RutasComponent } from './rutas/rutas.component';
 import { CursorutasComponent } from './cursorutas/cursorutas.component';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { SafeUrlPipe } from './cursorutas/cursorutas.component';
 
 
 
@@ -58,6 +61,7 @@ import { CursorutasComponent } from './cursorutas/cursorutas.component';
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     MenuComponent,
     HeaderComponent,
@@ -86,6 +90,9 @@ import { CursorutasComponent } from './cursorutas/cursorutas.component';
     EditEmpresaComponent,
     RutasComponent,
     CursorutasComponent,
+    SafeUrlPipe,
+   
+    
   ],
   imports: [
     BrowserModule,
@@ -111,7 +118,9 @@ import { CursorutasComponent } from './cursorutas/cursorutas.component';
     ColorPickerModule,
     SweetAlert2Module.forRoot(),
     BrowserModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
+    HttpClientModule
+    
 
   ],
   providers: [
