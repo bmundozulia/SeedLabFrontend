@@ -42,6 +42,7 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
       this.totalSlides = this.cards.length;
       this.cardSeleccionada = this.cards[0]; // Inicializar con la primera imagen
 
+      
 
       this.updateSlidesPerView();
       this.startAutoSlide();
@@ -114,7 +115,6 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   mostrarCard(index: number): void {
-    console.log('Mostrar card número', index + 1);
     this.cardSeleccionada = this.cards[index];
     this.resizeImage(this.cardSeleccionada.logo).then(resizedImage => {
       this.resizedCardImage = resizedImage;
@@ -125,7 +125,7 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.cardSeleccionada.tipo_dato === 'Video') {
       let url = this.cardSeleccionada.ruta_multi;
       let videoId = this.extractVideoId(url);
-      let embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      let embedUrl = `https://www.youtube.com/embed/${videoId}?controls=0&showinfo=0&rel=0&modestbranding=1`;
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
     }
   }

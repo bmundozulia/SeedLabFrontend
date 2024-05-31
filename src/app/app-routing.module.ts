@@ -25,6 +25,7 @@ import { RutasComponent } from './rutas/rutas.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 
 
+import { CursorutasComponent } from './cursorutas/cursorutas.component';
 
 
 const routes: Routes = [
@@ -49,7 +50,7 @@ const routes: Routes = [
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
   { path: 'rutas', component: RutasComponent },//de rutas
-
+  { path: 'cursorutas', component: CursorutasComponent},//de curso rutas
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor
   { path: 'ver-asesoria', component: VerAsesoriasComponent }, //de osesoria

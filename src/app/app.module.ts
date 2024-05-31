@@ -52,6 +52,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RutasComponent } from './rutas/rutas.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
+import { CursorutasComponent } from './cursorutas/cursorutas.component';
+
 
 
 
@@ -87,6 +89,7 @@ import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/mod
     RutasComponent,
     OrientadorCrearComponent,
     ModalCrearOrientadorComponent,
+    CursorutasComponent,
   ],
   imports: [
     BrowserModule,
