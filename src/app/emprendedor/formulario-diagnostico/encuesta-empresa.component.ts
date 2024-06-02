@@ -2,6 +2,9 @@ import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef, Afte
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Respuesta } from '../../Modelos/respuesta.model';
+import { Preguntas } from '../../Modelos/preguntas.model';
+import { PREGUNTAS } from './preguntas.component';
 
 @Component({
   selector: 'app-encuesta-empresa',
@@ -17,11 +20,34 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   selectedOption3: string = '';
   selectedOption4: string = '';
   selectedOption5: string = '';
+  respuestas: Respuesta[]=[];
+  preguntas: Preguntas[] = PREGUNTAS;
+  section: number = 1;
 
   currentIndex = 0;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
+
+  loadNextSection(): void {
+    this.section++;
+  }
+
+  handleAnswerChange(questionId: number, subQuestionId: number | null, event: any): void {
+    if (subQuestionId !== null) {
+      const pregunta = this.preguntas.find(q => q.id === questionId);
+      const subPregunta = pregunta?.subPreguntas?.find(sq => sq.id === subQuestionId);
+      if (subPregunta) {
+        subPregunta.texto = event.target.value;
+      }
+    } else {
+      const pregunta = this.preguntas.find(q => q.id === questionId);
+      if (pregunta) {
+        pregunta.nombre = event.target.value;
+      }
+    }
+  }
+
 
   next() {
     if (this.currentIndex < 3) {

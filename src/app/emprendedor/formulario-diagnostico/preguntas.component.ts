@@ -227,7 +227,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: [
             {id:37, texto:'Ingreso supperior al egreso', puntaje:0, id_pregunta:26},
             {id:38, texto:'Ingreso superior al egreso', puntaje:0, id_pregunta:26},
-            {id:39, texto:'ingreso inferior al egreso', puntaje:0, id_pregunta:26},
+            {id:39, texto:'Ingreso inferior al egreso', puntaje:0, id_pregunta:26},
             {id:40, texto:'No sabe', puntaje:0, id_pregunta:26}
         ]
     },
@@ -335,14 +335,14 @@ export const PREGUNTAS: Preguntas[] = [
     },
     {
         id: 40,
-        nombre: '¿está dispuesto a realizar alianzas y/o convenios para el uso de equipos con otras instituciones y/u organizaciones para el desarrollo de productos?',
+        nombre: '¿Está dispuesto a realizar alianzas y/o convenios para el uso de equipos con otras instituciones y/u organizaciones para el desarrollo de productos?',
         puntaje: 0,
         id_seccion: 3,
         subPreguntas: []
     },
     {
         id: 41,
-        nombre: '¿está dispuesto a realizar alianza y/o convenios para recibir apoyo técnico especializado para el desarrollo de productos y/o servicios?',
+        nombre: '¿Está dispuesto a realizar alianza y/o convenios para recibir apoyo técnico especializado para el desarrollo de productos y/o servicios?',
         puntaje: 0,
         id_seccion: 3,
         subPreguntas: []

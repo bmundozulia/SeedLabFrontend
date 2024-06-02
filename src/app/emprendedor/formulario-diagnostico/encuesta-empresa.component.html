@@ -59,9 +59,8 @@
                         <tr class="">
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>1. </b>
-                                    <h3> ¿Cuantos integrantes conforman su equipo de
-                                        trabajo?</h3>
+                                    <b>{{ preguntas[0].id }}. </b>
+                                    <h3> {{ preguntas[1].nombre }}.</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
@@ -85,10 +84,8 @@
                         <tr class="">
                             <th class="px-4 py-2 xl:relative xl:bottom-6 xl:bg-white">
                                 <div class="flex">
-                                    <b>2. </b>
-                                    <h3 class="">Cuenta con personas de
-                                        apoyo
-                                        en:</h3>
+                                    <b>{{ preguntas[1].id }}. </b>
+                                    <h3 class="">{{ preguntas[1].nombre }}</h3>
                                 </div>
                             </th>
                         </tr>
@@ -100,7 +97,7 @@
                         <tr class="block sm:table-row">
                             <td class="block sm:table-cell w-full sm:w-auto px-4 py-2 ">
                                 <h3>
-                                    Administrativo
+                                    {{ preguntas[1].subPreguntas[0].texto }}
                                 </h3>
                             </td>
                             <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto ">
@@ -130,7 +127,7 @@
                         </tr>
                         <tr class="block sm:table-row">
                             <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
-                                <h3>Desarrollo</h3>
+                                <h3>{{ preguntas[1].subPreguntas[1].texto }}</h3>
                             </td>
                             <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto">
                                 <div class="flex sm:flex-row  space-x-4">
@@ -160,7 +157,7 @@
                         <tr class="block sm:table-row">
                             <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
                                 <h3>
-                                    Producción
+                                    {{ preguntas[1].subPreguntas[2].texto }}
                                 </h3>
                             </td>
                             <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
@@ -191,7 +188,7 @@
                         <tr class="block sm:table-row">
                             <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
                                 <h3>
-                                    Innovación y/o desarrollo
+                                    {{ preguntas[1].subPreguntas[3].texto }}
                                 </h3>
                             </td>
                             <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
@@ -222,7 +219,7 @@
                         <tr class="block sm:table-row">
                             <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
                                 <h3>
-                                    Comercialización
+                                    {{ preguntas[1].subPreguntas[4].texto }}
                                 </h3>
                             </td>
                             <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
@@ -252,11 +249,6 @@
                         </tr>
                     </tbody>
                 </table>
-
-
-
-
-
             </div>
 
             <!-- Separacion -->
@@ -267,9 +259,8 @@
                     <tr class="">
                         <td class="py-2 px-4 " colspan="2">
                             <div class="flex">
-                                <b>3. </b>
-                                <h3>¿Su emprendimiento esta legalmente
-                                    constituido?</h3>
+                                <b>{{preguntas[2].id}}. </b>
+                                <h3>{{preguntas[2].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -284,9 +275,8 @@
                     <tr>
                         <td class="py-2 px-4" colspan="2">
                             <div class="flex">
-                                <b>4. </b>
-                                <h3> ¿Cumple con las normas tributarias,
-                                    contables, laborales, comerciales y/o legales para desempeñar la actividad?</h3>
+                                <b>{{preguntas[3].id}}. </b>
+                                <h3> {{preguntas[3].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -302,9 +292,8 @@
                     <tr>
                         <td class="py-2 px-4 " colspan="2">
                             <div class="flex">
-                                <b>5.</b>
-                                <h3>¿Tiene claramente definido su modelo
-                                    de negocio?</h3>
+                                <b>{{preguntas[4].id}}.</b>
+                                <h3>{{preguntas[4].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -323,9 +312,8 @@
                     <tr>
                         <td class="py-2 px-4 " colspan="2">
                             <div class="flex">
-                                <b>6.</b>
-                                <h3>¿Tiene claramente definido su plan de
-                                    negocios?</h3>
+                                <b>{{preguntas[5].id}}</b>
+                                <h3>{{ preguntas[5].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -341,9 +329,8 @@
                     <tr>
                         <td class="py-2 px-4 " colspan="2">
                             <div class="flex">
-                                <b>7.</b>
-                                <h3>¿Tiene experiencia comercial
-                                    relacionada con el producto y/o servicio?</h3>
+                                <b>{{preguntas[6].id}}.</b>
+                                <h3>{{preguntas[6].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -359,9 +346,8 @@
                     <tr>
                         <td class="py-2 px-4 " colspan="2">
                             <div class="flex">
-                                <b>8.</b>
-                                <h3>Si la respuesta anterior fue
-                                    afirmativa indicar: ¿Cuánto tiempo de experiencia relacionada tiene?</h3>
+                                <b>{{preguntas[7].id}}.</b>
+                                <h3>{{preguntas[7].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -379,9 +365,8 @@
                     <tr>
                         <td class="py-2 px-4" colspan="2">
                             <div class="flex">
-                                <b>9.</b>
-                                <h3>¿Su emprendimiento tiene definido la
-                                    misión y la visión?</h3>
+                                <b>{{preguntas[8].id}}.</b>
+                                <h3>{{preguntas[8].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -398,8 +383,8 @@
                         <td class="cell">
                             <div class="px-4">
                                 <div class="flex">
-                                    <b>10.</b>
-                                    <h3 class="ml-2">Si la respuesta anterior fue afirmativa indicar ¿Cuál es su misión?
+                                    <b>{{preguntas[9].id}}.</b>
+                                    <h3 class="ml-2">{{preguntas[9].nombre}}
                                     </h3>
                                 </div>
 
@@ -408,14 +393,11 @@
                             </div>
                         </td>
                     </tr>
-
-
                     <tr>
                         <td class="py-2 px-4" colspan="2">
                             <div class="flex">
-                                <b>11.</b>
-                                <h3>Si la respuesta anterior fue
-                                    afirmativa indicar ¿Cuál es su visión?</h3>
+                                <b>{{preguntas[10].id}}.</b>
+                                <h3>{{preguntas[10].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -432,8 +414,8 @@
                         <td class="cell">
                             <div class="flex-1 px-4">
                                 <div class="flex">
-                                    <b>12.</b>
-                                    <h3 class="ml-2">¿Tiene definidas metas empresariales?</h3>
+                                    <b>{{preguntas[11].id}}.</b>
+                                    <h3 class="ml-2">{{preguntas[11].nombre}}</h3>
                                 </div>
 
                                 <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
@@ -446,9 +428,8 @@
                     <tr>
                         <td class="py-2 px-4 " colspan="2">
                             <div class="flex">
-                                <b>13.</b>
-                                <h3>El personal de apoyo está
-                                    debidamente contratado?</h3>
+                                <b>{{preguntas[12].id}}.</b>
+                                <h3>{{preguntas[12].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -464,9 +445,8 @@
                     <tr>
                         <td class="py-2 px-4 " colspan="2">
                             <div class="flex">
-                                <b>14.</b>
-                                <h3>¿Los cargos de apoyo tienen funciones
-                                    claramente definidas?</h3>
+                                <b>{{preguntas[13].id}}.</b>
+                                <h3>{{preguntas[13].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -482,9 +462,8 @@
                     <tr>
                         <td class="py-2 px-4" colspan="2">
                             <div class="flex">
-                                <b>15.</b>
-                                <h3>¿El perfil de los apoyos está
-                                    debidamente definido?</h3>
+                                <b>{{preguntas[14].id}}.</b>
+                                <h3>{{preguntas[14].nombre}}</h3>
                             </div>
                         </td>
                         <td class="py-2 px-4">
@@ -497,21 +476,8 @@
                             </select>
                         </td>
                     </tr>
-
-
                 </tbody>
             </table>
-
-
-
-
-
-
-
-
-
-
-
         </ng-container>
 
 
@@ -523,9 +489,8 @@
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>1.</b>
-                                    <h3> ¿Tiene identificado los gastos y
-                                        costos de su emprendimiento?</h3>
+                                    <b>{{preguntas[15].id}}.</b>
+                                    <h3> {{preguntas[15].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
@@ -543,15 +508,14 @@
                         <tr class="bg-gray-50  ">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="9">
                                 <div class="flex">
-                                    <b class=" m-0 p-0">2.</b>
-                                    <h3 class=" m-0 p-0">Si la respuesta anterior fue
-                                        afirmativa indicar: ¿Cuáles?</h3>
+                                    <b class=" m-0 p-0"> {{preguntas[16].id}}.</b>
+                                    <h3 class=" m-0 p-0">{{preguntas[16].nombre}}</h3>
                                 </div>
                             </td>
                         </tr>
                         <tr class=" ">
                             <td class="px-4 py-2">
-                                <h3>Gastos fijos</h3>
+                                <h3>{{ preguntas[16].subPreguntas[0].texto }}</h3>
                             </td>
                             <td class="px-4 py-2">
                                 <select
@@ -566,7 +530,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Gatos Variables</h3>
+                                <h3>{{ preguntas[16].subPreguntas[1].texto }}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -580,7 +544,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Gastos Operacionales</h3>
+                                <h3>{{ preguntas[16].subPreguntas[2].texto }}</h3>
                             </td>
                             <td class="py-2 px-4 ">
                                 <select
@@ -595,7 +559,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Gatos no Operaciones</h3>
+                                <h3>{{ preguntas[16].subPreguntas[3].texto }}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -609,36 +573,7 @@
                         </tr>
                         <tr class="">
                             <td class="px-4 py-2">
-                                <h3>Costos fijos</h3>
-                            </td>
-                            <td class="px-4 py-2">
-                                <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-
-                        </tr>
-                        <tr class="">
-                            <td class="py-2 px-4">
-                                <h3>Costos Variables</h3>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td class="px-4 py-2">
-                                <h3>Costos Directos</h3>
+                                <h3>{{ preguntas[16].subPreguntas[4].texto }}</h3>
                             </td>
                             <td class="px-4 py-2">
                                 <select
@@ -653,7 +588,36 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Costos indirectos</h3>
+                                <h3>{{ preguntas[16].subPreguntas[5].texto }}</h3>
+                            </td>
+                            <td class="py-2 px-4">
+                                <select
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    <option value="" disabled selected hidden>Seleccione</option>
+                                    <option value="tipo1">Tipo 1</option>
+                                    <option value="tipo2">Tipo 2</option>
+                                    <option value="tipo3">Tipo 3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="px-4 py-2">
+                                <h3>{{ preguntas[16].subPreguntas[6].texto }}</h3>
+                            </td>
+                            <td class="px-4 py-2">
+                                <select
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    <option value="" disabled selected hidden>Seleccione</option>
+                                    <option value="tipo1">Tipo 1</option>
+                                    <option value="tipo2">Tipo 2</option>
+                                    <option value="tipo3">Tipo 3</option>
+                                </select>
+                            </td>
+
+                        </tr>
+                        <tr class="">
+                            <td class="py-2 px-4">
+                                <h3>{{ preguntas[16].subPreguntas[7].texto }}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -669,8 +633,8 @@
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>3.</b>
-                                    <h3 class="">¿En su emprendimiento elabora estados financieros?</h3>
+                                    <b>{{ preguntas[17].id }}.</b>
+                                    <h3 class="">{{ preguntas[17].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
@@ -690,17 +654,16 @@
                         <tr class="bg-gray-50 ">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="5">
                                 <div class="flex">
-                                    <b>4.</b>
+                                    <b> {{preguntas[18].id}}.</b>
                                     <h3>
-                                        Si la respuesta anterior fue
-                                        afirmativa indicar: ¿Cuáles?'
+                                        {{preguntas[18].nombre}}
                                     </h3>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td class="px-4 py-2">
-                                <h3>Balance General</h3>
+                                <h3>{{ preguntas[18].subPreguntas[0].texto }}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -714,7 +677,7 @@
                         </tr>
                         <tr>
                             <td class="py-2 px-4">
-                                <h3>Estado de flujo</h3>
+                                <h3>{{ preguntas[18].subPreguntas[1].texto }}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -722,13 +685,12 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td class="py-2 px-4">
-                                <h3>Registro de Compras</h3>
+                                <h3>{{ preguntas[18].subPreguntas[2].texto }}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -742,28 +704,24 @@
                         </tr>
                         <tr>
                             <td class="py-2 px-4">
-                                <h3>Registro de Ventas</h3>
+                                <h3>{{ preguntas[18].subPreguntas[3].texto }}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
-
                                     <option value="tipo3">No</option>
                                 </select>
                             </td>
                         </tr>
                         <!-- fin de pregunta -->
-
-
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>5.</b>
+                                    <b>{{ preguntas[19].id }}.</b>
                                     <h3>
-                                        ¿Tiene claridad sobre qué
-                                        presupuestos debe elaborar para su emprendimiento?
+                                        {{ preguntas[19].nombre }}
                                     </h3>
                                 </div>
 
@@ -782,20 +740,16 @@
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="4">
                                 <div class="flex">
-                                    <b>6.</b>
+                                    <b> {{preguntas[20].id}}.</b>
                                     <h3>
-                                        Si la respuesta anterior fue
-                                        afirmativa indicar: ¿Cuáles?
+                                        {{preguntas[20].nombre}}
                                     </h3>
                                 </div>
-
                             </td>
-
-
                         </tr>
                         <tr>
                             <td class="py-2 px-4">
-                                <h3>Ingresos</h3>
+                                <h3> {{preguntas[20].subPreguntas[0].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -809,7 +763,7 @@
                         </tr>
                         <tr>
                             <td class="py-2 px-4">
-                                <h3>Egresos</h3>
+                                <h3>{{preguntas[20].subPreguntas[1].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -818,13 +772,12 @@
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td class="py-2 px-4">
-                                <h3>Deudas</h3>
+                                <h3>{{preguntas[20].subPreguntas[2].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -836,14 +789,12 @@
                                 </select>
                             </td>
                         </tr>
-
                         <!-- fin de pregunta  -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>7.</b>
-                                    <h3>¿Los costos de su producto y/o
-                                        servicio están claramente definidos?</h3>
+                                    <b>{{preguntas[21].id}}.</b>
+                                    <h3>{{preguntas[21].nombre}}</h3>
                                 </div>
 
                             </td>
@@ -861,20 +812,16 @@
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 cell" rowspan="4">
                                 <div class="flex">
-                                    <b>8.</b>
+                                    <b>{{preguntas[22].id}}.</b>
                                     <h3>
-                                        Si la anterior respuesta fue
-                                        afirmativa: ¿Qué factores tiene en cuenta para definir el precio de su
-                                        producto y/o servicio?
+                                        {{preguntas[22].nombre}}
                                     </h3>
                                 </div>
-
                             </td>
-
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Costos</h3>
+                                <h3>{{preguntas[22].subPreguntas[0].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -888,7 +835,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Demanda</h3>
+                                <h3>{{preguntas[22].subPreguntas[1].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -903,7 +850,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Competencia</h3>
+                                <h3>{{preguntas[22].subPreguntas[2].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -915,28 +862,21 @@
                                 </select>
                             </td>
                         </tr>
-
-
                         <!-- fin de pregunta 8  -->
-
                         <!------------------------------- inicio de pregunat 9 --------------------------->
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 cell" rowspan="5">
                                 <div class="flex">
-                                    <b>9.</b>
+                                    <b>{{preguntas[23].id}}.</b>
                                     <h3>
-                                        ¿Cuáles alternativas de
-                                        financiamiento usa para apoyar su emprendimiento?
-
+                                        {{preguntas[23].nombre}}
                                     </h3>
                                 </div>
                             </td>
-
                         </tr>
-
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Prestamo Formal </h3>
+                                <h3>{{preguntas[23].subPreguntas[0].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -945,13 +885,12 @@
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Prestamo informal</h3>
+                                <h3>{{preguntas[23].subPreguntas[1].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -965,7 +904,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Disminuyendo Gastos</h3>
+                                <h3>{{preguntas[23].subPreguntas[2].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -979,7 +918,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Ahorros/Propios</h3>
+                                <h3>{{preguntas[23].subPreguntas[3].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -993,12 +932,12 @@
                         </tr>
 
                         <!---------------------------------------------- fin de pregunta ------------------------------------------------>
+                        <!---------------------------------------------- Pregunta 10 ------------------------------------------------>
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>10.</b>
-                                    <h3>¿Su producto y/o servicio presenta en
-                                        la actualidad ventas?</h3>
+                                    <b>{{preguntas[24].id}}.</b>
+                                    <h3>{{preguntas[24].nombre}}</h3>
                                 </div>
 
                             </td>
@@ -1006,26 +945,25 @@
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
-                                <div class="flex"><b>11.</b>
-                                    <h3>Si la anterior respuesta fue
-                                        afirmativa: ¿Cuál es el valor promedio / estimado de las ventas al año?</h3>
+                                <div class="flex"><b>{{preguntas[25].id}}.</b>
+                                    <h3>{{preguntas[25].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
+                                    <option value="tipo1">Ingreso supperior al egreso</option>
+                                    <option value="tipo2">Ingreso superior al egreso</option>
+                                    <option value="tipo3">Ingreso inferior al egreso</option>
+                                    <option value="tipo4">No sabe</option>
                                 </select>
                             </td>
                         </tr>
@@ -1034,23 +972,21 @@
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4  cell" rowspan="5">
                                 <div class="flex">
-                                    <b>12.</b>
-                                    <h3>¿Cuáles canales de ventas usa para
-                                        comercializar su negocio?</h3>
+                                    <b>{{preguntas[26].id}}.</b>
+                                    <h3>{{preguntas[26].nombre}}</h3>
                                 </div>
                             </td>
 
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Punto de venta </h3>
+                                <h3>{{preguntas[26].subPreguntas[0].texto}} </h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
-                                    <option value="tipo2">Medio</option>
                                     <option value="tipo2">No</option>
 
                                 </select>
@@ -1058,57 +994,49 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Telemarketing</h3>
+                                <h3>{{preguntas[26].subPreguntas[1].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
-                                    <option value="tipo2">Medio</option>
                                     <option value="tipo3">No</option>
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Marketplace</h3>
+                                <h3>{{preguntas[26].subPreguntas[2].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
-                                    <option value="tipo2">Medio</option>
                                     <option value="tipo3">No</option>
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Ecommerce</h3>
+                                <h3>{{preguntas[26].subPreguntas[3].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
-                                    <option value="tipo2">Medio</option>
                                     <option value="tipo3">No</option>
                                 </select>
                             </td>
                         </tr>
-
-
                         <!---------------------- fin de pregunta 12 -------------------->
-
-
-
                         <tr class="bg-grya-50">
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
-                                    <b>13.</b>
-                                    <h3>¿Sabe cuáles obligacioness aplican a su emprendimiento</h3>
+                                    <b>{{preguntas[27].id}}.</b>
+                                    <h3>{{preguntas[27].nombre}}</h3>
                                 </div>
 
                             </td>
@@ -1116,101 +1044,87 @@
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Tipo 1</option>
-                                    <option value="tipo2">Tipo 2</option>
-                                    <option value="tipo3">Tipo 3</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 cell" rowspan="5">
                                 <div class="flex">
-                                    <b>14 .</b>
-                                    <h3>Si la anterior respuesta fue afirmativas:¿Cuáles?</h3>
+                                    <b>{{preguntas[28].id}} .</b>
+                                    <h3>{{preguntas[28].nombre}}</h3>
                                 </div>
-
                             </td>
-
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Iva </h3>
+                                <h3>{{preguntas[28].subPreguntas[0].texto}} </h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
-                                    <option value="tipo2">Medio</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Ica</h3>
+                                <h3>{{preguntas[28].subPreguntas[1].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
-                                    <option value="tipo2">Medio</option>
                                     <option value="tipo3">No</option>
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Retefuente</h3>
+                                <h3>{{preguntas[28].subPreguntas[2].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
-                                    <option value="tipo2">Medio</option>
                                     <option value="tipo3">No</option>
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Impuesto a la renta</h3>
+                                <h3>{{preguntas[28].subPreguntas[3].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
-                                    <option value="tipo2">Medio</option>
                                     <option value="tipo3">No</option>
                                 </select>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
         </ng-container>
 
-
-
-
         <!------------------------------------------------------- contendor 3 ------------------------------------------------------------>
         <ng-container *ngIf="currentIndex === 2">
             <!-- Separacion -->
             <div class="">
-
                 <table class="min-w-full bg-white">
                     <tbody>
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
-                                    <b>1. </b>
-                                    <h3> ¿Tiene claramente definico sus clientes actuales?</h3>
+                                    <b>{{preguntas[29].id}}. </b>
+                                    <h3> {{preguntas[29].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
@@ -1229,22 +1143,19 @@
                             <td class="cell">
                                 <div class="px-4">
                                     <div class="flex">
-                                        <b>2.</b>
-                                        <h3 class="ml-2">Si tiene clientes actuales:¿Quiénes son?</h3>
+                                        <b>{{preguntas[30].id}}.</b>
+                                        <h3 class="ml-2">{{preguntas[30].nombre}}</h3>
                                     </div>
-
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
                         </tr>
-
-
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
-                                    <b>3. </b>
-                                    <h3> ¿Tiene definido sus clientes potenciales?</h3>
+                                    <b>{{preguntas[31].id}}. </b>
+                                    <h3> {{preguntas[31].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
@@ -1262,24 +1173,20 @@
                             <td class="cell">
                                 <div class="px-4">
                                     <div class="flex">
-                                        <b>4.</b>
-                                        <h3 class="ml-2">Si tiene definido sus clientes potenciales: ¿Quiénes son?</h3>
+                                        <b>{{preguntas[32].id}}.</b>
+                                        <h3 class="ml-2">{{preguntas[32].nombre}}</h3>
                                     </div>
-
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
                         </tr>
-
-
                         <!-- separacion -->
-
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>5.</b>
-                                    <h3> ¿tiene definido los competidores de su producto y/o servicio?
+                                    <b>{{preguntas[33].id}}.</b>
+                                    <h3> {{preguntas[33].nombre}}
                                     </h3>
                                 </div>
                             </td>
@@ -1297,10 +1204,9 @@
                             <td class="cell">
                                 <div class="px-4">
                                     <div class="flex">
-                                        <b>6.</b>
-                                        <h3 class="ml-2">¿le gustaría ser cómo?</h3>
+                                        <b>{{preguntas[34].id}}.</b>
+                                        <h3 class="ml-2">{{preguntas[34].nombre}}</h3>
                                     </div>
-
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
@@ -1310,8 +1216,8 @@
                             <td class="cell">
                                 <div class="px-4">
                                     <div class="flex">
-                                        <b>7.</b>
-                                        <h3 class="ml-2">¿No te gustaría ser cómo?</h3>
+                                        <b>{{preguntas[35].id}}.</b>
+                                        <h3 class="ml-2">{{preguntas[35].nombre }}</h3>
                                     </div>
 
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
@@ -1323,9 +1229,8 @@
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
-                                    <b>8.</b>
-                                    <h3>¿tiene identificado con claridad el factor diferencial de su empresa, producto
-                                        y/o servicio?</h3>
+                                    <b>{{preguntas[36].id}}.</b>
+                                    <h3>{{preguntas[36].nombre }}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
@@ -1340,9 +1245,9 @@
                         </tr>
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
-                                <div class="flex"><b>9.</b>
-                                    <h3>¿ha participado en otras estrategias de fortalecimeinto, semilla, aceleración
-                                        y/o similares?</h3>
+                                <div class="flex">
+                                    <b>{{preguntas[37].id}}.</b>
+                                    <h3>{{preguntas[37].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4 ">
@@ -1357,32 +1262,14 @@
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
-                                    <b>10.</b>
-                                    <h3>¿está dispuesto a realizar alianzas para la venta y/o distribución de sus
-                                        productos, así como para la adquisición de equipos, insumos y/o materiales?</h3>
+                                    <b>{{preguntas[38].id}}.</b>
+                                    <h3>{{preguntas[38].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo2">Si</option>
-                                    <option value="tipo3">No</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
-                                <div class="flex"><b>11.</b>
-                                    <h3>¿está dispuesto a realizar alianzas y/o convenios para el uso de equipos con
-                                        otras instituciones y/u organizaciones para el desarrollo de productos?</h3>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-
                                     <option value="tipo2">Si</option>
                                     <option value="tipo3">No</option>
                                 </select>
@@ -1391,9 +1278,24 @@
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>12.</b>
-                                    <h3>¿está dispuesto a realizar alianza y/o convenios para recibir apoyo técnico
-                                        especializado para el desarrollo de productos y/o servicios?</h3>
+                                    <b>{{preguntas[39].id}}.</b>
+                                    <h3>{{preguntas[39].nombre }}</h3>
+                                </div>
+                            </td>
+                            <td class="py-2 px-4">
+                                <select
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    <option value="" disabled selected hidden>Seleccione</option>
+                                    <option value="tipo2">Si</option>
+                                    <option value="tipo3">No</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 " colspan="2">
+                                <div class="flex">
+                                    <b>{{preguntas[40].id}}.</b>
+                                    <h3>{{preguntas[40].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
@@ -1406,26 +1308,10 @@
                                 </select>
                             </td>
                         </tr>
-
-
-
                     </tbody>
                 </table>
-
-
-
-
-
-
-
-
             </div>
         </ng-container>
-
-
-
-
-
 
         <!------------------------------------------------------- contenedor 4 ------------------------------------------------------------>
         <ng-container *ngIf="currentIndex === 3">
@@ -1434,15 +1320,17 @@
                     <tbody>
                         <!-- inicio de trl1 -->
                         <tr>
-                            <td>
-                                <b>4.1</b>
+                            <td class="py-2 px-4" colspan="2">
+                                <div class="flex">
+                                    <b>{{preguntas[41].id}}.</b>
+                                    <h3>{{preguntas[41].nombre}}</h3>
+                                </div>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
                                 <h3>
-                                    ¿La propuesta cuenta con una identificación básica de información científica
-                                    susceptible de ser aplicada?
+                                    {{preguntas[41].subPreguntas[0].texto}}
                                 </h3>
                             </td>
                             <td class="py-2 px-4">
@@ -1451,16 +1339,14 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
                                 <h3>
-                                    ¿Tiene al menos una imagen general de lo que debe hacer su producto y/o servicio?
+                                    {{preguntas[41].subPreguntas[1].texto}}
                                 </h3>
-
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1474,8 +1360,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Tiene claridad en las necesidades para el desarrollo de su producto y/o servicio?
-                                </h3>
+                                <h3>{{preguntas[41].subPreguntas[2].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1483,17 +1368,15 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
-
                         <!-- fin trl1 -->
 
                         <!-- inicio de trl2 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Se cuenta con un aparente diseño que dé solución a la oportunidad detectada?</h3>
+                                <h3>{{preguntas[41].subPreguntas[3].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1507,7 +1390,20 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Los elementos básicos del producto y/o servicio se encuentran identificados?</h3>
+                                <h3>{{preguntas[41].subPreguntas[4].texto}}</h3>
+                            </td>
+                            <td class="py-2 px-4">
+                                <select
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    <option value="" disabled selected hidden>Seleccione</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="py-2 px-4" colspan="2">
+                                <h3>{{preguntas[41].subPreguntas[5].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1521,8 +1417,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Se cuenta con experiencia en el desarrollo de producto y/o servicios similares?
-                                </h3>
+                                <h3>{{preguntas[41].subPreguntas[6].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1530,29 +1425,13 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
-                                <h3>¿Tiene algún cliente interesado ya en dicho producto y/o servicio?</h3>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Si</option>
-                                    <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
                                 <h3>
-                                    ¿Se tiene claro los requerimientos legales para la puesta en marcha del producto y o
-                                    servicio propuesto?
+                                    {{preguntas[41].subPreguntas[7].texto}}
                                 </h3>
                             </td>
                             <td class="py-2 px-4">
@@ -1561,17 +1440,15 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
-
                         <!-- fin trl2 -->
 
                         <!-- inicio de trl3 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿El producto y/o servicio resuelve la necesidad del mercado de manera sostenible?
+                                <h3>{{preguntas[41].subPreguntas[8].texto}}
                                 </h3>
                             </td>
                             <td class="py-2 px-4">
@@ -1586,7 +1463,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Se cuenta con un modelo/prototipo de simulación del producto y/o servicio?</h3>
+                                <h3>{{preguntas[41].subPreguntas[9].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1594,13 +1471,12 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Se tienen estrategias de mitigación de riesgos identificados?</h3>
+                                <h3>{{preguntas[41].subPreguntas[10].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1616,7 +1492,7 @@
                         <!-- inicio de trl4 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                ¿Los diseños del producto y/o servicio ya se encuentra validados en entorno controlado?
+                                <h3>{{preguntas[41].subPreguntas[11].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1632,7 +1508,7 @@
                         <!-- inicio de trl5 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿se conoce lo que se necesita para implementar producto y o servicio?</h3>
+                                <h3>{{preguntas[41].subPreguntas[12].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1646,8 +1522,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿el producto y/o servicio fue validado por un laboratorio y está validación es
-                                    favorable adecuada?</h3>
+                                <h3>{{preguntas[41].subPreguntas[13].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1655,13 +1530,12 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Los costos de la propuestas ya se encuentran analizados?</h3>
+                                <h3>{{preguntas[41].subPreguntas[14].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1678,8 +1552,7 @@
                         <!-- inicio de trl6 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Tiene definidos los proveedores de insumos y materiales para la ejecución del
-                                    producto y/o servicio?</h3>
+                                <h3>{{preguntas[41].subPreguntas[15].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1693,7 +1566,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Tiene definido criterios para la selección de proveedores?</h3>
+                                <h3>{{preguntas[41].subPreguntas[16].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1707,7 +1580,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿El producto esta validado a nivel de detalle?</h3>
+                                <h3>{{preguntas[41].subPreguntas[17].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1723,7 +1596,7 @@
                         <!-- inicio de trl 7 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿han sido identificados los efectos adversos del producto y/o servicio?</h3>
+                                <h3>{{preguntas[41].subPreguntas[18].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1737,7 +1610,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿El producto y/o servicio ha sido validad en un entorno real?</h3>
+                                <h3>{{preguntas[41].subPreguntas[19].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1751,7 +1624,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿producto y/o servicio ya esta lista para la producción?</h3>
+                                <h3>{{preguntas[41].subPreguntas[20].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1767,8 +1640,7 @@
                         <!-- trl 8 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿El producto y/o servicio cuenta con documentación de usuario, mantenimiento y de
-                                    servicio especificadas y controladas?</h3>
+                                <h3>{{preguntas[41].subPreguntas[21].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1782,8 +1654,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿El producto y/o servicio esta validado, comprobado y acreditado completamente?</h3>
-
+                                <h3>{{preguntas[41].subPreguntas[22].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1797,7 +1668,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿El producto y/o servicio cuenta con una producción estable?</h3>
+                                <h3>{{preguntas[41].subPreguntas[22].texto}}</h3>
 
                             </td>
                             <td class="py-2 px-4">
@@ -1814,7 +1685,7 @@
                         <!-- trl 9 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Se tiene la capacidad para desarrollar el producto y/o servicio?</h3>
+                                <h3>{{preguntas[41].subPreguntas[23].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1828,36 +1699,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Implementa planes de producción?</h3>
-
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Si</option>
-                                    <option value="tipo2">No</option>
-
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
-                                <h3>¿Implementa planes de compra?</h3>
-                            </td>
-                            <td class="py-2 px-4">
-                                <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                    <option value="" disabled selected hidden>Seleccione</option>
-                                    <option value="tipo1">Si</option>
-                                    <option value="tipo2">No</option>
-
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
-                                <h3>¿El producto y/o servicio se encuentra implementado y funcionando?</h3>
+                                <h3>{{preguntas[41].subPreguntas[24].texto}}</h3>
 
                             </td>
                             <td class="py-2 px-4">
@@ -1872,7 +1714,21 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿Tienen parámetros de calidad definidos para su producto y/o servicio?</h3>
+                                <h3>{{preguntas[41].subPreguntas[25].texto}}</h3>
+                            </td>
+                            <td class="py-2 px-4">
+                                <select
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    <option value="" disabled selected hidden>Seleccione</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="py-2 px-4" colspan="2">
+                                <h3>{{preguntas[41].subPreguntas[26].texto}}</h3>
 
                             </td>
                             <td class="py-2 px-4">
@@ -1887,8 +1743,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿El producto y/o servicio cuenta con patente, propiedad intelectual y/o industrial
-                                    registrada?</h3>
+                                <h3>{{preguntas[41].subPreguntas[27].texto}}</h3>
 
                             </td>
                             <td class="py-2 px-4">
@@ -1903,9 +1758,22 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
-                                <h3>¿El producto y/o servicio cuenta con certificados de calidad, ambientales, otros?
-                                </h3>
+                                <h3>{{preguntas[41].subPreguntas[28].texto}}</h3>
 
+                            </td>
+                            <td class="py-2 px-4">
+                                <select
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    <option value="" disabled selected hidden>Seleccione</option>
+                                    <option value="tipo1">Si</option>
+                                    <option value="tipo2">No</option>
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="py-2 px-4" colspan="2">
+                                <h3>{{preguntas[41].subPreguntas[29].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1918,15 +1786,12 @@
                             </td>
                         </tr>
                         <!-- fin trl 9 -->
-
-
-
                         <!-- separacion  -->
                         <tr>
                             <td class="px-4 py-2" colspan="2">
                                 <div class="flex">
-                                    <b>4.2</b>
-                                    <h3>¿cuenta con área o departamento de innovación y/o desarrollo tecnológico?</h3>
+                                    <b>{{preguntas[42].id}}.</b>
+                                    <h3>{{preguntas[42].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="px-4 py-2">
@@ -1942,8 +1807,8 @@
                         <tr>
                             <td class="px-4 py-2" colspan="2">
                                 <div class="flex">
-                                    <b>4.3</b>
-                                    <h3>¿ tiene definidas las necesidades de su producto y/o servicio?</h3>
+                                    <b>{{preguntas[43].id}}.</b>
+                                    <h3>{{preguntas[43].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="px-4 py-2">
@@ -1960,15 +1825,14 @@
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="8">
                                 <div class="flex">
-                                    <b>4.4</b>
-                                    <h3>si la anterior respuesta fue afirmativa: ¿cuáles?</h3>
+                                    <b>{{preguntas[44].id}}.</b>
+                                    <h3>{{preguntas[44].nombre}}</h3>
                                 </div>
                             </td>
-
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Apoyo Tecnico </h3>
+                                <h3>{{preguntas[44].subPreguntas[0].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1977,13 +1841,12 @@
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Capacitacion</h3>
+                                <h3>{{preguntas[44].subPreguntas[1].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1997,7 +1860,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Financiamiento</h3>
+                                <h3>{{preguntas[44].subPreguntas[2].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2011,7 +1874,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Redes / Alianzas</h3>
+                                <h3>{{preguntas[44].subPreguntas[3].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2025,7 +1888,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Redes / Alianzas</h3>
+                                <h3>{{preguntas[44].subPreguntas[4].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2039,7 +1902,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Mejora de calidad P/S</h3>
+                                <h3>{{preguntas[44].subPreguntas[5].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2053,7 +1916,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Infraestructura</h3>
+                                <h3>{{preguntas[44].subPreguntas[6].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2065,15 +1928,12 @@
                                 </select>
                             </td>
                         </tr>
-
-
                         <!-- fin de pregunta 4.3 -->
-
                         <tr>
                             <td class="px-4 py-2" colspan="2">
                                 <div class="flex">
-                                    <b>4.5</b>
-                                    <h3>¿ tiene definidas las necesidades de su emprendimiento (organizacional)?</h3>
+                                    <b>{{preguntas[45].id}}.</b>
+                                    <h3>{{preguntas[45].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="px-4 py-2">
@@ -2082,7 +1942,6 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
@@ -2091,15 +1950,14 @@
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="10">
                                 <div class="flex">
-                                    <b>4.4</b>
-                                    <h3>si la anterior respuesta fue afirmativa: ¿cuáles?</h3>
+                                    <b>{{preguntas[46].id}}.</b>
+                                    <h3>{{preguntas[46].nombre}}</h3>
                                 </div>
                             </td>
-
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Apoyo Tecnico </h3>
+                                <h3>{{preguntas[46].subPreguntas[0].texto}} </h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2114,7 +1972,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Capacitacion</h3>
+                                <h3>{{preguntas[46].subPreguntas[1].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2128,7 +1986,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Financiamiento</h3>
+                                <h3>{{preguntas[46].subPreguntas[2].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2142,7 +2000,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Redes / Alianzas</h3>
+                                <h3>{{preguntas[46].subPreguntas[3].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2156,7 +2014,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Redes / Alianzas</h3>
+                                <h3>{{preguntas[46].subPreguntas[4].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2170,7 +2028,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Infraestructura</h3>
+                                <h3>{{preguntas[46].subPreguntas[5].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2184,7 +2042,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Aumento de clientes</h3>
+                                <h3>{{preguntas[46].subPreguntas[6].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2198,7 +2056,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Bajar costos y/ o Gastos</h3>
+                                <h3>{{preguntas[46].subPreguntas[7].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2212,7 +2070,7 @@
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4">
-                                <h3>Mejorar ventas</h3>
+                                <h3>{{preguntas[46].subPreguntas[8].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -2224,17 +2082,10 @@
                                 </select>
                             </td>
                         </tr>
-
-
                         <!-- fin de pregunta 4.6 -->
                     </tbody>
                 </table>
             </div>
-
-
         </ng-container>
-
-
-
     </p>
 </div>
