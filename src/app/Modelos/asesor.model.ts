@@ -5,9 +5,9 @@ export class Asesor {
     celular: number;
     id_autentication: number;
     id_aliado: number;
-    estado:boolean;
+    estado:string;
 
-    constructor(id:number, nombre:string, apellido:string, celular:number, id_autentication:number, id_aliado:number, estado:boolean){
+    constructor(id:number, nombre:string, apellido:string, celular:number, id_autentication:number, id_aliado:number, estado:string){
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

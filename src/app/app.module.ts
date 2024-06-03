@@ -50,7 +50,7 @@ import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-em
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
-import { AddAsesoresComponent } from './aliados/asesores/add-asesores/add-asesores.component';
+import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
 
 
 
@@ -84,7 +84,7 @@ import { AddAsesoresComponent } from './aliados/asesores/add-asesores/add-asesor
     DarAsesorModalComponent,
     EditEmpresaComponent,
     ListAsesoresComponent,
-    AddAsesoresComponent,
+    ModalAddAsesoresComponent,
   ],
   imports: [
     BrowserModule,

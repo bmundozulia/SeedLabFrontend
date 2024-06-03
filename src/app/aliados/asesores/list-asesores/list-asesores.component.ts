@@ -4,6 +4,9 @@ import { AsesorService } from '../../../servicios/asesor.service';
 import { Router } from '@angular/router';
 import { Asesor } from '../../../Modelos/asesor.model';
 import { AliadoService } from '../../../servicios/aliado.service';
+import { faEye, faMagnifyingGlass, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalAddAsesoresComponent } from './modal-add-asesores/modal-add-asesores.component';
 
 @Component({
   selector: 'app-list-asesores',
@@ -12,6 +15,12 @@ import { AliadoService } from '../../../servicios/aliado.service';
   providers: [AsesorService]
 })
 export class ListAsesoresComponent implements OnInit {
+  asesor: Asesor[] = [];
+  faPen = faPenToSquare;
+  faeye = faEye;
+  fax = faXmark;
+  falupa = faMagnifyingGlass;
+  public page!: number;
   token: string | null = null;
   user: User | null = null;
   currentRolId: string | null = null;
@@ -22,16 +31,17 @@ export class ListAsesoresComponent implements OnInit {
     1: 'Activo',
     0: 'Inactivo'
   };
-  userFilter: any = { nombre: '', estado_usuario: 'Activo' };
+  userFilter: any = { nombre: ''};
 
   constructor(
     private asesorService: AsesorService,
+    public dialog: MatDialog,
     private route: Router
   ) { }
 
   ngOnInit(): void {
     this.validateToken();
-    //this.cargarRutas();
+    this.cargarAsesores();
   }
 
   validateToken(): void {
@@ -42,48 +52,78 @@ export class ListAsesoresComponent implements OnInit {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        // console.log(identity);
+         //console.log(identity);
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
-        console.log(this.estado);
+        this.id = this.user.id;
+        console.log(this.user.estado);
       }
     }
   }
 
-  //   cargarAsesores() {
-  //     if (this.token) {
-  //       this.asesorService.getinfoAsesor(this.token, this.id).subscribe(
-  //         (data: Asesor[]) => {
-  //           this.listaAsesores = data.filter(item => this.ESTADO_MAP[item.estado] === this.userFilter.estado).map((item: any) =>
-  //             new Asesor(
-  //               item.nombre,
-  //               item.fecha_creacion,
-  //               this.ESTADO_MAP[item.estado] ?? 'Desconocido')
-  //           );
-  //           console.log(this.listaRutas);
-  //         },
-  //         (err) => {
-  //           console.log(err);
-  //         }
-  //       );
-  //     } else {
-  //       console.error('Token is not available');
-  //     }
-  //   }
-  // }
+    cargarAsesores() {
+      if (this.token) {
+      this.asesorService.getinfoAsesor(this.token, this.user.id).subscribe(
+        (data) => {
+          this.listaAsesores = data;  
+          console.log(this.listaAsesores);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
 
+    
+  }
+      
+  onEstadoChange(event: any): void {
+    const estado = event.target.value;
+    this.cargarAsesores();
+  }
 
+  limpiarFiltro(): void {
+    this.userFilter = { nombre: ''};
+    // Opcional: recargar los aliados con el estado por defecto
+    this.cargarAsesores();
+  }
 
-  // onEstadoChange(event: any): void {
-  //   const estado = event.target.value;
-  //   this.cargarAsesores(parseInt(estado, 10));
-  // }
+  openModal(): void {
+    const dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
+      width: '600px',
+      height: '600px'
+    });
 
-  // limpiarFiltro(): void {
-  //   this.userFilter = { nombre: '', estado_usuario: 'Activo' };
-  //   // Opcional: recargar los aliados con el estado por defecto
-  //   this.cargarAsesores(1);
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El modal se cerró');
+    });
+  }
 
 }
+
+
+//   if (this.token) {
+//     this.asesorService.getinfoAsesor(this.token, this.user.id).subscribe(
+//       (data: Asesor[]) => {
+//         this.listaAsesores = data.filter(item => this.ESTADO_MAP[item.estado] === this.userFilter.estado).map((item: any) =>
+//           new Asesor(
+//             item.id,
+//             item.nombre,
+//             item.apellido,
+//             item.celular,
+//             item.id_autentication,
+//             item.id_aliado,
+//            item.estado,
+//         ),
+//         console.log(this.listaAsesores));
+//       },
+//       (err) => {
+//         console.log(err);
+//       }
+//     );
+//   } else {
+//     console.error('Token is not available');
+//   }
+// }
+// }

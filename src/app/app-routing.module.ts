@@ -22,7 +22,6 @@ import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/per
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
-import { AddAsesoresComponent } from './aliados/asesores/add-asesores/add-asesores.component';
 
 
 const routes: Routes = [
@@ -53,7 +52,6 @@ const routes: Routes = [
 
   //ingreso de aliados 
   { path: 'list-asesores', component: ListAsesoresComponent},
-  { path: 'add-asesores', component: AddAsesoresComponent},
 
 
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
