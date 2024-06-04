@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { User } from '../../../../Modelos/user.model';
 import { Asesor } from '../../../../Modelos/asesor.model';
 import { AsesorService } from '../../../../servicios/asesor.service';
-import { identity } from 'rxjs';
 
 
 @Component({
@@ -21,13 +20,13 @@ export class ModalAddAsesoresComponent implements OnInit {
   estado: boolean;
   id: number | null = null;
   token: string | null = null;
-  nombre: string;
-  idAliado: string | null = null;
+  nombre: string | null = null;
+  nombreAliado: string | null = null;
   asesorForm = this.fb.group({
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     celular: ['', [Validators.required, Validators.maxLength(10)]],
-    id_aliado: ['', Validators.required],
+    aliado: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(10)]],
     estado: '1',
@@ -58,14 +57,14 @@ export class ModalAddAsesoresComponent implements OnInit {
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
         this.id = this.user.id;
-        console.log("this", identity);
+        this.nombreAliado = this.user.nombre; 
+        //console.log("this", identity);
 
-
-        if (this.user && this.user.aliado && this.user.aliado.id) {
-          this.idAliado = this.user.aliado.id.toString(); // Convertir a string
-          this.asesorForm.patchValue({ id_aliado: this.idAliado }); // Asignar valor al formulario
+        if (this.user && this.user.nombre) {
+          this.nombreAliado = this.user.nombre; 
+          this.asesorForm.patchValue({ aliado: this.nombreAliado });
         } else {
-          console.warn('El ID del aliado no está definido en el objeto identity');
+          console.warn('El nombre del aliado no está definido en el objeto identity');
         }
       } else {
         console.error('No se encontró información de identity en localStorage');
@@ -75,24 +74,21 @@ export class ModalAddAsesoresComponent implements OnInit {
 
 
   AddAsesor(): void {
-    if (!this.idAliado) {
-      console.error('El ID del aliado no está definido en el objeto identity');
-      return;
-    }
-        
     const asesor: Asesor = {
       nombre: this.asesorForm.get('nombre')?.value,
       apellido: this.asesorForm.get('apellido')?.value,
       celular: this.asesorForm.get('celular')?.value,
-      id_aliado: this.idAliado,
+      aliado: this.nombreAliado,
       email: this.asesorForm.get('email')?.value,
       password: this.asesorForm.get('password')?.value,
       estado: this.asesorForm.get('estado')?.value,
     }
+    console.log("Objeto Asesor:", asesor);
     this.asesorService.createAsesor(this.token, asesor).subscribe(
       data => {
         console.log("siuuuuuuuuu");
         console.log(data);
+        location.reload();
       },
       error => {
         console.error('Error al crear el asesor:', error);

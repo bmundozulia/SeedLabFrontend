@@ -24,7 +24,7 @@ export class ListAsesoresComponent implements OnInit {
   token: string | null = null;
   user: User | null = null;
   currentRolId: string | null = null;
-  estado: boolean;
+  estado: boolean | null = null;
   id: number | null = null;
   nombre: string | null = null;
   listaAsesores: Asesor[] = [];
@@ -32,7 +32,7 @@ export class ListAsesoresComponent implements OnInit {
     1: 'Activo',
     0: 'Inactivo'
   };
-  userFilter: any = { nombre: ''};
+  userFilter: any = { nombre: '' };
 
   constructor(
     private asesorService: AsesorService,
@@ -48,26 +48,26 @@ export class ListAsesoresComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      console.log(this.token);
+      //console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-         //console.log(identity);
+        console.log(identity);
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
         this.id = this.user.id;
-        console.log(this.user);
+        console.log(this.estado);
       }
     }
   }
 
-    cargarAsesores() {
-      if (this.token) {
+  cargarAsesores() {
+    if (this.token) {
       this.asesorService.getinfoAsesor(this.token, this.user.id).subscribe(
         (data) => {
-          this.listaAsesores = data;  
+          this.listaAsesores = data;
           console.log(this.listaAsesores);
         },
         (err) => {
@@ -76,16 +76,16 @@ export class ListAsesoresComponent implements OnInit {
       );
     }
 
-    
+
   }
-      
+
   onEstadoChange(event: any): void {
     const estado = event.target.value;
     this.cargarAsesores();
   }
 
   limpiarFiltro(): void {
-    this.userFilter = { nombre: ''};
+    this.userFilter = { nombre: '' };
     // Opcional: recargar los aliados con el estado por defecto
     this.cargarAsesores();
   }

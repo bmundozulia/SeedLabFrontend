@@ -10,9 +10,10 @@ export class User {
     id_rol: number;
     emprendedor?: Emprendedor;
     aliado?:Aliado;
+    nombre: string;
     
 
-    constructor(id:number, email: string, password: string, estado: boolean, id_rol: number, emprendedor: Emprendedor, aliado: Aliado) {
+    constructor(id:number, email: string, password: string, estado: boolean, id_rol: number, emprendedor: Emprendedor, aliado: Aliado, nombre:string) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -20,5 +21,6 @@ export class User {
         this.id_rol = id_rol;
         this.emprendedor = emprendedor;
         this.aliado= aliado;
+        this.nombre = nombre;
     }
 }
