@@ -19,7 +19,7 @@ export class AsesorService {
   }
 
   url = environment.apiUrl + 'aliado/'
-  url2 = environment.apiUrl + 'asesor/'
+  url2 = environment.apiUrl + 'asesor'
 
   
   getinfoAsesor(access_token: any, id: number): Observable<any> {
@@ -30,6 +30,6 @@ export class AsesorService {
 
   createAsesor(access_token: any, asesor:Asesor,):Observable<any>{
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.put(this.url2 + "/" + asesor, options);
+    return this.http.post(this.url2, asesor, options);
   }
 }

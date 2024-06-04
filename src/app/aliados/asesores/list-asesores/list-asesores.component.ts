@@ -26,6 +26,7 @@ export class ListAsesoresComponent implements OnInit {
   currentRolId: string | null = null;
   estado: boolean;
   id: number | null = null;
+  nombre: string | null = null;
   listaAsesores: Asesor[] = [];
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
@@ -57,7 +58,7 @@ export class ListAsesoresComponent implements OnInit {
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
         this.id = this.user.id;
-        console.log(this.user.estado);
+        console.log(this.user);
       }
     }
   }
