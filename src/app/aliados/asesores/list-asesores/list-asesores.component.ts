@@ -7,6 +7,7 @@ import { AliadoService } from '../../../servicios/aliado.service';
 import { faEye, faMagnifyingGlass, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAddAsesoresComponent } from './modal-add-asesores/modal-add-asesores.component';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-list-asesores',
@@ -28,11 +29,8 @@ export class ListAsesoresComponent implements OnInit {
   id: number | null = null;
   nombre: string | null = null;
   listaAsesores: Asesor[] = [];
-  private ESTADO_MAP: { [key: number]: string } = {
-    1: 'Activo',
-    0: 'Inactivo'
-  };
-  userFilter: any = { nombre: '' };
+
+  userFilter: any = { nombre: '', estado: 'Activo' };
 
   constructor(
     private asesorService: AsesorService,
@@ -53,12 +51,12 @@ export class ListAsesoresComponent implements OnInit {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
+        //console.log(identity);
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
         this.id = this.user.id;
-        console.log(this.estado);
+        //console.log(this.estado);
       }
     }
   }
@@ -68,7 +66,7 @@ export class ListAsesoresComponent implements OnInit {
       this.asesorService.getinfoAsesor(this.token, this.user.id).subscribe(
         (data) => {
           this.listaAsesores = data;
-          console.log(this.listaAsesores);
+          //console.log(this.listaAsesores);
         },
         (err) => {
           console.log(err);
@@ -85,21 +83,25 @@ export class ListAsesoresComponent implements OnInit {
   }
 
   limpiarFiltro(): void {
-    this.userFilter = { nombre: '' };
+    this.userFilter = { nombre: '', estado: 'Activo' };
     // Opcional: recargar los aliados con el estado por defecto
     this.cargarAsesores();
   }
 
-  openModal(): void {
+  openModal(id: number | null): void {
     const dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
       width: '600px',
-      height: '600px'
+      height: '600px',
+      data: { id: id },
     });
+    //console.log(data);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('El modal se cerró');
     });
   }
+
+
 
 }
 

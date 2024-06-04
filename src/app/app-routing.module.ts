@@ -22,6 +22,7 @@ import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/per
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
+import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'fan-page', component: FanPageComponent },
-  { path: 'perfil', component: PerfilEmprendedorComponent },
+  { path: 'perfil-emprendedor', component: PerfilEmprendedorComponent },
+
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
 
@@ -52,6 +54,9 @@ const routes: Routes = [
 
   //ingreso de aliados 
   { path: 'list-asesores', component: ListAsesoresComponent},
+
+  //ingreso de asesores
+  { path: 'perfil-asesores', component: PerfilAsesorComponent},
 
 
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent

@@ -17,6 +17,7 @@ export class ModalAddAsesoresComponent implements OnInit {
   hide = true;
   user: User | null = null;
   currentRolId: string | null = null;
+  listaAsesores: Asesor[] = [];
   estado: boolean;
   id: number | null = null;
   token: string | null = null;
@@ -34,10 +35,10 @@ export class ModalAddAsesoresComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModalAddAsesoresComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number | null },
     private fb: FormBuilder,
     private asesorService: AsesorService,
-  ) { }
+  ) { console.log('ID recibido:', 'ID recibido:', data.id) }
 
   ngOnInit(): void {
     this.validateToken();
@@ -47,7 +48,7 @@ export class ModalAddAsesoresComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      console.log(this.token);
+      //console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
@@ -57,11 +58,11 @@ export class ModalAddAsesoresComponent implements OnInit {
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
         this.id = this.user.id;
-        this.nombreAliado = this.user.nombre; 
+        this.nombreAliado = this.user.nombre;
         //console.log("this", identity);
 
         if (this.user && this.user.nombre) {
-          this.nombreAliado = this.user.nombre; 
+          this.nombreAliado = this.user.nombre;
           this.asesorForm.patchValue({ aliado: this.nombreAliado });
         } else {
           console.warn('El nombre del aliado no está definido en el objeto identity');
