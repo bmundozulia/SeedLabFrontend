@@ -50,6 +50,7 @@
             <h2 class="text-lg font-semibold">PDF {{i + 1}}</h2>
             <embed [src]="getSafeUrl(content.url)" type="application/pdf" class="w-full h-48 bg-gray-200 mb-2">
           </div>
+          
           <div *ngSwitchCase="'form'">
             <h2 class="text-lg font-semibold">Formulario {{i + 1}}</h2>
             <form class="w-full h-48 bg-gray-200 mb-2 p-4">
