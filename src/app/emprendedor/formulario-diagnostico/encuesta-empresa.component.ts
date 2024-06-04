@@ -28,12 +28,12 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   respuestas: Respuesta[] = [];
   preguntas: Preguntas[] = PREGUNTAS;
   section: number = 1;
-  user:User;
+  user: User;
   token = '';
   documento: string;
   currentRolId: string | null = null;
   currentIndex = 0;
-  respuestasForm1:FormGroup;
+  respuestasForm1: FormGroup;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
   constructor(
@@ -44,19 +44,34 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     private respuestasService: RespuestasService,
   ) {  //Formulario seccion 1
     this.respuestasForm1 = this.fb.group({
-      opcion: [''],
-      texto_res: [''],
-      valor: [''],
-      verform_pr: true,
-      verform_se: false,
-      fecha_reg: [new Date()],
-      id_pregunta: [null],
-      id_empresa: [null],
-      id_subpregunta: [null],
+     respuesta1:[''],
+     respuesta2: [''],
+     respuesta3: [''],
+     respuesta4: [''],
+     respuesta5: [''],
+     respuesta6: [''],
+     respuesta7: [''],
+     respuesta8: [''],
+     respuesta9: [''],
+     respuesta10: [''],
+     respuesta11: [''],
+     respuesta12: [''],
+     respuesta13: [''],
+     respuesta14: [''],
+     respuesta15: [''],
+     respuesta16: [''],
+     respuesta17: [''],
+     respuesta18: [''],
+     respuesta19: [''],
+     respuesta20: [''],
+     respuesta21: [''],
+     respuesta22: [''],
+     respuesta23: [''],
+
     });
   }
 
- 
+
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
@@ -100,41 +115,30 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   }
 
   onSubmitSeccion1() {
-    let firstForm = <any>[];
+    let firstForm: any[] = [];
     const id_empresa = 1;
 
-    for (let i = 0; i < 15; i++) {
-      opcion: this.respuestasForm1.get('opcion${i}')?.value;
-      text_res: this.respuestasForm1.get('text_res${i}')?.value;
-      
+    for (let i = 0; i < 23; i++) {
       let id_pregunta = this.getIdPregunta(i);
+      
       const tieneSubPregunta = this.tieneSubPregunta(id_pregunta);
 
-
-      if (tieneSubPregunta) {
         firstForm.push(new Respuesta(
           id_pregunta,
           id_empresa,
-          null,
-          
-        ));      
-      } else {
-        firstForm.push(new Respuesta(
-          id_pregunta,
-          id_empresa,
-          null,
-          
+          this.respuestasForm1.get(`respuesta${i}`)?.value,
+          this.respuestasForm1.get(`respuesta${i}`)?.value 
         ));
-      }
+        console.log(firstForm); 
     }
-    this.respuestasService.saveAnswers(this.token,firstForm).subscribe(
-      data => {
+    this.respuestasService.saveAnswers(this.token, firstForm).subscribe(
+      (data:any) => {
         console.log(data);
       },
       error => {
         console.log(error);
       }
-    ); 
+    );
   }
 
 

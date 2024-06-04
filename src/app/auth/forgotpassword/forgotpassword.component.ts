@@ -3,11 +3,13 @@ import { LoginService } from '../../servicios/login.service';
 
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from '../../servicios/alert.service';
 
 @Component({
   selector: 'app-forgotpassword',
   templateUrl: './forgotpassword.component.html',
-  styleUrl: './forgotpassword.component.css'
+  styleUrl: './forgotpassword.component.css',
+  providers: [LoginService, AlertService]
 })
 export class ForgotpasswordComponent {
 
@@ -19,14 +21,15 @@ export class ForgotpasswordComponent {
     private loginService: LoginService,
     private router: Router,
     private fb: FormBuilder,
+    private alertService: AlertService,
   ){}
 
 
   password():void{
     const email = this.passwordForm.get('email')?.value;
     this.loginService.forgotPassword(email).subscribe(
-      response => {
-        console.log(response);
+      (response:any) => {
+        this.alertService.successAlert('Éxito', response.message);
         this.router.navigate(['/login']);
       },
       error => {
