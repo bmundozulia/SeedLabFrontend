@@ -75,7 +75,6 @@
                                     </select>
                                 </td>
                             </tr>
-
                         </tbody>
                     </table>
                     <table class="border my-4">
@@ -100,7 +99,7 @@
                                     <div class="flex sm:flex-row   space-x-4 ">
                                         <select id="1Select" formControlName="opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
-                                            [(ngModel)]="selectedOption1">
+                                            >
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
@@ -128,7 +127,7 @@
                                     <div class="flex sm:flex-row  space-x-4">
                                         <select id="3Select" formControlName="opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
-                                            [(ngModel)]="selectedOption2">
+                                           >
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
@@ -158,7 +157,7 @@
                                     <div class="flex sm:flex-row  space-x-4">
                                         <select id="1Select" formControlName="opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
-                                            [(ngModel)]="selectedOption3">
+                                           >
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
@@ -188,7 +187,7 @@
                                     <div class="flex sm:flex-row  space-x-4">
                                         <select id="1Select" formControlName="opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
-                                            [(ngModel)]="selectedOption4">
+                                            >
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
@@ -219,7 +218,7 @@
                                     <div class="flex sm:flex-row  space-x-4">
                                         <select id="1Select" formControlName="opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
-                                            [(ngModel)]="selectedOption5">
+                                            >
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
@@ -253,7 +252,7 @@
                             </div>
                         </td>
                         <td class="py-2 px-4">
-                            <select formControlName="value"
+                            <select formControlName="opcion"
                                 class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                 <option value="" disabled selected hidden>Seleccione</option>
                                 <option value="Si">Sí</option>
@@ -269,7 +268,7 @@
                             </div>
                         </td>
                         <td class="py-2 px-4">
-                            <select formControlName="value"
+                            <select formControlName="opcion"
                                 class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                 <option value="" disabled selected hidden>Seleccione</option>
                                 <option value="Si">Sí</option>
@@ -373,7 +372,7 @@
                                     <h3 class="ml-2">{{preguntas[9].nombre}}
                                     </h3>
                                 </div>
-                                <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos" formControlName="opcion"
+                                <input type="text" id="respuesta-presupuestos" formControlName="text_res" name="respuesta-presupuestos" 
                                     class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                             </div>
                         </td>
@@ -402,7 +401,7 @@
                                     <b>{{preguntas[11].id}}.</b>
                                     <h3 class="ml-2">{{preguntas[11].nombre}}</h3>
                                 </div>
-                                <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos" formControlName="opcion"
+                                <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos" formControlName="text_res"
                                     class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                             </div>
                         </td>

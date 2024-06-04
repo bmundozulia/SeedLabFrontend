@@ -44,7 +44,8 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     private respuestasService: RespuestasService,
   ) {  //Formulario seccion 1
     this.respuestasForm1 = this.fb.group({
-      opcion: OpcionesRespuesta,
+      opcion: [''],
+      texto_res: [''],
       valor: [''],
       verform_pr: true,
       verform_se: false,
@@ -103,7 +104,9 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     const id_empresa = 1;
 
     for (let i = 0; i < 15; i++) {
-      let object: OpcionesRespuesta = this.respuestasForm1.get('option${i}')!.value;
+      opcion: this.respuestasForm1.get('opcion${i}')?.value;
+      text_res: this.respuestasForm1.get('text_res${i}')?.value;
+      
       let id_pregunta = this.getIdPregunta(i);
       const tieneSubPregunta = this.tieneSubPregunta(id_pregunta);
 
@@ -113,16 +116,14 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
           id_pregunta,
           id_empresa,
           null,
-          object.isText ? object.option : null,
-          object.option ? object.option : null,
+          
         ));      
       } else {
         firstForm.push(new Respuesta(
           id_pregunta,
           id_empresa,
           null,
-          object.isText ? object.option : null,
-          object.option ? object.option : null,
+          
         ));
       }
     }
@@ -145,22 +146,6 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   loadNextSection(): void {
     this.section++;
   }
-
-  /*handleAnswerChange(questionId: number, subQuestionId: number | null, event: any): void {
-    if (subQuestionId !== null) {
-      const pregunta = this.preguntas.find(q => q.id === questionId);
-      const subPregunta = pregunta?.subPreguntas?.find(sq => sq.id === subQuestionId);
-      if (subPregunta) {
-        subPregunta.texto = event.target.value;
-      }
-    } else {
-      const pregunta = this.preguntas.find(q => q.id === questionId);
-      if (pregunta) {
-        pregunta.nombre = event.target.value;
-      }
-    }
-  }*/
-
 
   next() {
     if (this.currentIndex < 3) {

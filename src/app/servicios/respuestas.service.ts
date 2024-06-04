@@ -16,7 +16,7 @@ export class RespuestasService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + access_token
     });
-    return this.http.post<any>(this.url, response, { headers });
+    return this.http.post(this.url, response, { headers });
   }
 
 }
