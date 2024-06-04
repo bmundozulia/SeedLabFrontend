@@ -129,9 +129,9 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
           this.respuestasForm1.get(`respuesta${i}`)?.value,
           this.respuestasForm1.get(`respuesta${i}`)?.value 
         ));
-        console.log(firstForm); 
-    }
-    this.respuestasService.saveAnswers(this.token, firstForm).subscribe(
+      }
+      console.log(firstForm); 
+      this.respuestasService.saveAnswers(this.token, firstForm).subscribe(
       (data:any) => {
         console.log(data);
       },
