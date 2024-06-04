@@ -33,7 +33,11 @@
     "bootstrap": "^5.3.3",
     "force": "^0.0.3",
     "jquery": "^3.7.1",
+<<<<<<< Updated upstream
     "js-base64": "^3.7.7",
+=======
+    "ngx-color": "^9.0.0",
+>>>>>>> Stashed changes
     "ngx-color-picker": "^16.0.0",
     "ngx-filter-pipe": "^3.0.0",
     "ngx-image-compress": "^15.1.6",
