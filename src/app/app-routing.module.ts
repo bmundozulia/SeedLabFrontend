@@ -21,12 +21,14 @@ import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-alia
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'register', component: RegisterComponent },
   { path: 'verification', component: VerificationComponent },
+  { path: 'forgotPassword', component: ForgotpasswordComponent}, //restablecer contraseña
 
   { path: 'add-empresa', component: AddEmpresaComponent },
   { path: 'list-empresa', component: ListEmpresasComponent },

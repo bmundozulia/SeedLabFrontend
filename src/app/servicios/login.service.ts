@@ -15,4 +15,8 @@ export class LoginService {
   login(email: any, password: any) {
     return this.http.post(this.url + "login", { email: email, password: password });
   }
+
+  forgotPassword(email: any){
+    return this.http.post(this.url + "send-reset-password", { email: email });
+  }
 }
