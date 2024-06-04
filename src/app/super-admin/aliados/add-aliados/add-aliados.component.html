@@ -74,16 +74,13 @@
           </div>
         </div>
   
-        <div *ngIf="rutaSeleccionada === 'imagen'" class="w-full mb-6">
-          <p class="font-semibold text-sky-400 text-lg">Imagen de la Ruta</p>
-          <div class="flex flex-col items-center sm:items-start mb-6 sm:mb-0 sm:mr-8">
-            <div class="w-32 h-32 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-black">
-              <img *ngIf="ruta" [src]="ruta" alt="Imagen" class="object-cover w-full h-full">
-              <span *ngIf="!ruta" class="text-gray-500">Imagen</span>
-            </div>
-            <label for="imagenInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer">Seleccionar Imagen</label>
-            <input id="imagenInput" type="file" (change)="onImageSelected($event)" accept="image/*" class="hidden">
+        <div *ngIf="rutaSeleccionada === 'imagen'" class="flex flex-col items-center sm:items-start mb-6 sm:mb-0 sm:mr-8">
+          <div class="w-32 h-32 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-black">
+            <img *ngIf="ruta" [src]="ruta" alt="Imagen" class="object-cover w-full h-full">
+            <span *ngIf="!ruta" class="text-gray-500">Imagen</span>
           </div>
+          <label for="imagenInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer">Seleccionar Imagen</label>
+          <input id="imagenInput" type="file" (change)="onImageSelected($event)" accept="image/*" class="hidden">
         </div>
   
         <div *ngIf="rutaSeleccionada === 'pdf'" class="w-full mb-6">

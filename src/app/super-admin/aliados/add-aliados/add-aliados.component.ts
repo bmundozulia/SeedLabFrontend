@@ -12,7 +12,8 @@ export class AddAliadosComponent {
   logo: string = '';
   descripcion: string = '';
   tipodato: string = '';
-  ruta: string = '';
+  ruta: string = ''; // Ruta para la imagen o el video
+  pdfRuta: string = ''; // Ruta para el PDF
   email: string = '';
   password: string = '';
   estado: boolean = true;
@@ -56,7 +57,7 @@ export class AddAliadosComponent {
       nombre: this.nombre.trim(),
       descripcion: this.descripcion.trim(),
       logo: this.logo,
-      ruta: this.ruta,
+      ruta: this.tipodato === 'pdf' ? this.pdfRuta : this.ruta, // Utilizar pdfRuta si la ruta seleccionada es pdf
       tipodato: this.tipodato,
       email: this.email.trim(),
       password: this.password,
@@ -77,17 +78,12 @@ export class AddAliadosComponent {
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
-    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.pdf)$/i;
-
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+  
     if (file && allowedExtensions.exec(file.name)) {
-      if (file.type === 'application/pdf') {
-        this.pdfFileName = file.name;
-        this.ruta = file.name;
-      } else {
-        this.logo = URL.createObjectURL(file);
-      }
+      this.logo = URL.createObjectURL(file);
     } else {
-      alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif) o PDF.');
+      alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif).');
     }
   }
 
@@ -109,8 +105,9 @@ export class AddAliadosComponent {
   onRutaChange(event: any): void {
     this.rutaSeleccionada = event.target.value;
     if (this.rutaSeleccionada === 'pdf') {
-      this.ruta = '';
       this.pdfFileName = '';
+    } else {
+      this.pdfRuta = ''; // Limpiar pdfRuta si la ruta seleccionada no es pdf
     }
   }
 
@@ -119,8 +116,17 @@ export class AddAliadosComponent {
     const allowedExtensions = /(\.pdf)$/i;
 
     if (file && allowedExtensions.exec(file.name)) {
+      // Guardar el PDF en la carpeta assets
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const pdfSrc = e.target.result as string;
+        const pdfPath = 'assets/content' + file.name;
+        localStorage.setItem('uploadedPdf', pdfPath);
+      };
+      reader.readAsDataURL(file);
+
       this.pdfFileName = file.name;
-      this.ruta = file.name;
+      this.pdfRuta = 'assets/content' + file.name;
     } else {
       alert('Por favor, seleccione un archivo PDF.');
     }
