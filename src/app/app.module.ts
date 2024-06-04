@@ -44,6 +44,7 @@ import { DarAliadoAsesoriaModalComponent } from './orientador/asesorias/dar-alia
 import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-modal/dar-asesor-modal.component';
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { EditEmpresaComponent } from './empresario/edit-empresa/edit-empresa.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 
 
 
@@ -74,6 +75,7 @@ import { EditEmpresaComponent } from './empresario/edit-empresa/edit-empresa.com
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
     EditEmpresaComponent,
+    ForgotpasswordComponent,
   ],
   imports: [
     BrowserModule,
