@@ -116,17 +116,16 @@ export class AddAliadosComponent {
     const allowedExtensions = /(\.pdf)$/i;
 
     if (file && allowedExtensions.exec(file.name)) {
-      // Guardar el PDF en la carpeta assets
       const reader = new FileReader();
       reader.onload = (e) => {
         const pdfSrc = e.target.result as string;
-        const pdfPath = 'assets/content' + file.name;
+        const pdfPath = 'assets/content/' + file.name;
         localStorage.setItem('uploadedPdf', pdfPath);
       };
       reader.readAsDataURL(file);
 
       this.pdfFileName = file.name;
-      this.pdfRuta = 'assets/content' + file.name;
+      this.pdfRuta = 'assets/content/' + file.name;
     } else {
       alert('Por favor, seleccione un archivo PDF.');
     }
