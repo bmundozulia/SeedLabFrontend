@@ -6,13 +6,13 @@
     </span>
   </div>
   <div class="rounded-2xl border border-gray-300 p-4 bg-white mt-10 w-auto flex flex-wrap justify-center lg:justify-normal mx-28">
-    <button id="sinAsignar" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2">
+    <button id="sinAsignar" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2" (click)="loadAsesoriasFalse()">
       Sin asignar
-      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasSinAsesor.length }}</span>
+      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasSinHorario.length }}</span>
     </button>
-    <button id="Asignadas" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2">
+    <button id="Asignadas" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2" (click)="loadAsesoriasTrue()">
       Asignadas
-      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasConAsesor.length }}</span>
+      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasConHorario.length }}</span>
     </button>
   </div>
 </div>
@@ -20,7 +20,7 @@
 
 
 <div class="flex flex-wrap justify-center mt-6">
-  <div *ngFor="let asesoria of (showTrue ? asesoriasConAsesor : [])" class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4" (click)="openModal(asesoria)">
+  <div *ngFor="let asesoria of (showTrue ? asesoriasConHorario : [])" class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4" (click)="openModal(asesoria)">
     <div class="absolute h-full w-2" [ngClass]="{'bg-green-500': asesoria.asignacion, 'bg-red-500': !asesoria.asignacion}"></div>
     <div class="p-4">
       <h2 class="text-lg font-bold mb-2">{{ asesoria.Nombre_sol }}</h2>
@@ -31,7 +31,7 @@
       <p class="text-sm text-gray-700">{{ asesoria.doc_emprendedor }}</p>
     </div>
   </div>
-  <div *ngFor="let asesoria of (showFalse ? asesoriasSinAsesor : [])" class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4" (click)="openModal(asesoria)">
+  <div *ngFor="let asesoria of (showFalse ? asesoriasSinHorario : [])" class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4" (click)="openModal(asesoria)">
     <div class="absolute h-full w-2" [ngClass]="{'bg-green-500': asesoria.asignacion, 'bg-red-500': !asesoria.asignacion}"></div>
     <div class="p-4">
       <h2 class="text-lg font-bold mb-2">{{ asesoria.Nombre_sol }}</h2>
