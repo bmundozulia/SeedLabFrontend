@@ -5,11 +5,16 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Respuesta } from '../../Modelos/respuesta.model';
 import { Preguntas } from '../../Modelos/preguntas.model';
 import { PREGUNTAS } from './preguntas.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OpcionesRespuesta } from '../../Modelos/opciones-respuesta.model';
+import { RespuestasService } from '../../servicios/respuestas.service';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-encuesta-empresa',
   templateUrl: './encuesta-empresa.component.html',
   styleUrls: ['./encuesta-empresa.component.css'],
+  providers: [RespuestasService]
 })
 export class EncuestaEmpresaComponent implements AfterViewInit {
   fa1 = fa1;
@@ -20,20 +25,128 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   selectedOption3: string = '';
   selectedOption4: string = '';
   selectedOption5: string = '';
-  respuestas: Respuesta[]=[];
+  respuestas: Respuesta[] = [];
   preguntas: Preguntas[] = PREGUNTAS;
   section: number = 1;
-
+  user:User;
+  token = '';
+  documento: string;
+  currentRolId: string | null = null;
   currentIndex = 0;
+  respuestasForm1:FormGroup;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    private cdr: ChangeDetectorRef,
+    private fb: FormBuilder,
+    private respuestasService: RespuestasService,
+  ) {  //Formulario seccion 1
+    this.respuestasForm1 = this.fb.group({
+      opcion: OpcionesRespuesta,
+      valor: [''],
+      verform_pr: true,
+      verform_se: false,
+      fecha_reg: [new Date()],
+      id_pregunta: [null],
+      id_empresa: [null],
+      id_subpregunta: [null],
+    });
+  }
+
+ 
+  validateToken(): void {
+    if (!this.token) {
+      this.token = localStorage.getItem("token");
+      let identityJSON = localStorage.getItem('identity');
+
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        console.log(identity);
+        this.user = identity;
+        this.documento = this.user.emprendedor.documento;
+        this.currentRolId = this.user.id_rol?.toString();
+      }
+    }
+  }
+
+  getIdPregunta(index: number): number | null {
+    let preguntaCounter = 0;
+    let subPreguntaCounter = 0;
+
+    for (const pregunta of this.preguntas) {
+      if (preguntaCounter === index) {
+        return pregunta.id;
+      }
+      preguntaCounter++;
+
+      if (pregunta.subPreguntas) {
+        for (const subPregunta of pregunta.subPreguntas) {
+          if (subPreguntaCounter === index) {
+            return subPregunta.id;
+          }
+          subPreguntaCounter++;
+        }
+      }
+    }
+    return null;
+  }
+
+  tieneSubPregunta(id_pregunta: number): boolean {
+    const pregunta = this.preguntas.find(p => p.id === id_pregunta);
+    return pregunta && pregunta.subPreguntas && pregunta.subPreguntas.length > 0;
+  }
+
+  onSubmitSeccion1() {
+    let firstForm = <any>[];
+    const id_empresa = 1;
+
+    for (let i = 0; i < 15; i++) {
+      let object: OpcionesRespuesta = this.respuestasForm1.get('option${i}')!.value;
+      let id_pregunta = this.getIdPregunta(i);
+      const tieneSubPregunta = this.tieneSubPregunta(id_pregunta);
+
+
+      if (tieneSubPregunta) {
+        firstForm.push(new Respuesta(
+          id_pregunta,
+          id_empresa,
+          null,
+          object.isText ? object.option : null,
+          object.option ? object.option : null,
+        ));      
+      } else {
+        firstForm.push(new Respuesta(
+          id_pregunta,
+          id_empresa,
+          null,
+          object.isText ? object.option : null,
+          object.option ? object.option : null,
+        ));
+      }
+    }
+    this.respuestasService.saveAnswers(this.token,firstForm).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    ); 
+  }
+
+
+
+
+
+
 
   loadNextSection(): void {
     this.section++;
   }
 
-  handleAnswerChange(questionId: number, subQuestionId: number | null, event: any): void {
+  /*handleAnswerChange(questionId: number, subQuestionId: number | null, event: any): void {
     if (subQuestionId !== null) {
       const pregunta = this.preguntas.find(q => q.id === questionId);
       const subPregunta = pregunta?.subPreguntas?.find(sq => sq.id === subQuestionId);
@@ -46,7 +159,7 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
         pregunta.nombre = event.target.value;
       }
     }
-  }
+  }*/
 
 
   next() {

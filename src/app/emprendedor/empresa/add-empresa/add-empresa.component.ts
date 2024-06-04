@@ -15,8 +15,6 @@ import { catchError, of, switchMap, tap } from 'rxjs';
 import { EmpresaService } from '../../../servicios/empresa.service';
 import { AlertService } from '../../../servicios/alert.service';
 
-import { forkJoin } from 'rxjs';
-import { error } from 'console';
 
 @Component({
   selector: 'app-add-empresa',
@@ -184,7 +182,7 @@ export class AddEmpresaComponent {
           console.log('Respuesta de la API (empresa creada):', data);
           this.alertService.successAlert('Éxito', 'Registro exitoso');
           this.emprendedorDocumento = data.empresa.id_emprendedor;
-          console.log(`------------------------------------------------ ${this.emprendedorDocumento}`);
+          //console.log(`------------------------------------------------ ${this.emprendedorDocumento}`);
           //debugger;
           this.router.navigate(['list-empresa']);
         },
