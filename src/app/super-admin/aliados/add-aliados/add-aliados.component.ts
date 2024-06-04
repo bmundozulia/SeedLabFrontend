@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AliadoService } from '../../../servicios/aliado.service';
-import Pica from 'pica';
 
 @Component({
   selector: 'app-add-aliados',
@@ -85,42 +84,11 @@ export class AddAliadosComponent {
         this.pdfFileName = file.name;
         this.ruta = file.name;
       } else {
-        this.compressImage(file).then((compressedImage) => {
-          this.logo = compressedImage;
-        }).catch((error) => {
-          console.error('Error leyendo el archivo:', error);
-          alert('Error leyendo el archivo.');
-        });
+        this.logo = URL.createObjectURL(file);
       }
     } else {
       alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif) o PDF.');
     }
-  }
-
-  async compressImage(file: File): Promise<string> {
-    const pica = Pica();
-    const img = new Image();
-    img.src = URL.createObjectURL(file);
-    await img.decode();
-
-    const canvas = document.createElement('canvas');
-    const MAX_WIDTH = 500; // Ajusta este valor según sea necesario
-    const scale = MAX_WIDTH / img.width;
-    canvas.width = MAX_WIDTH;
-    canvas.height = img.height * scale;
-
-    await pica.resize(img, canvas, {
-      quality: 3,
-      alpha: true,
-    });
-
-    const compressedImage = await pica.toBlob(canvas, 'image/jpeg', 0.5); // Ajusta la calidad según sea necesario
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = reject;
-      reader.readAsDataURL(compressedImage);
-    });
   }
 
   onImageSelected(event: any): void {
@@ -128,12 +96,7 @@ export class AddAliadosComponent {
     const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
     if (file && allowedExtensions.exec(file.name)) {
-      this.compressImage(file).then((compressedImage) => {
-        this.ruta = compressedImage;
-      }).catch((error) => {
-        console.error('Error leyendo el archivo:', error);
-        alert('Error leyendo el archivo.');
-      });
+      this.ruta = URL.createObjectURL(file);
     } else {
       alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
     }
@@ -147,7 +110,6 @@ export class AddAliadosComponent {
     this.rutaSeleccionada = event.target.value;
     if (this.rutaSeleccionada === 'pdf') {
       this.ruta = '';
-      this.pdfFileName = '';
       this.pdfFileName = '';
     }
   }
