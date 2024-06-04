@@ -22,7 +22,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormBuilder,FormsModule, FormGroup} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormsModule, FormGroup } from '@angular/forms';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
@@ -51,12 +51,20 @@ import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-em
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RutasComponent } from './rutas/rutas.component';
 import { HorarioModalComponent } from './asesor/horario-modal/horario-modal/horario-modal.component';
+import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
+import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
+import { CursorutasComponent } from './cursorutas/cursorutas.component';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { SafeUrlPipe } from './cursorutas/cursorutas.component';
+
 
 
 
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     MenuComponent,
     HeaderComponent,
@@ -85,6 +93,12 @@ import { HorarioModalComponent } from './asesor/horario-modal/horario-modal/hora
     EditEmpresaComponent,
     RutasComponent,
     HorarioModalComponent,
+    OrientadorCrearComponent,
+    ModalCrearOrientadorComponent,
+    CursorutasComponent,
+    SafeUrlPipe,
+   
+    
   ],
   imports: [
     BrowserModule,
@@ -106,11 +120,13 @@ import { HorarioModalComponent } from './asesor/horario-modal/horario-modal/hora
     FormsModule,
     FilterPipeModule,
     MatDialogModule,
-    ColorPickerModule, 
+    ColorPickerModule,
     ColorPickerModule,
     SweetAlert2Module.forRoot(),
     BrowserModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
+    HttpClientModule
+    
 
   ],
   providers: [

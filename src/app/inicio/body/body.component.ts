@@ -18,11 +18,12 @@ import Swiper from 'swiper';
 export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   cardSeleccionada: any;
+  dir: any;
   videoUrl: any;
   resizedCardImage: string | undefined;
   currentIndex = 0;
   intervalId: any;
-  slidesPerView = 4; // Por defecto, mostramos 4 imágenes
+  slidesPerView = 5; // Por defecto, mostramos 4 imágenes
   totalSlides = 0; // Inicializar totalSlides a 0
   transitionEnabled = true;
   cards: any[] = []; // Añadir propiedad para almacenar los datos obtenidos
@@ -41,8 +42,6 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
       this.cards = data;
       this.totalSlides = this.cards.length;
       this.cardSeleccionada = this.cards[0]; // Inicializar con la primera imagen
-
-
       this.updateSlidesPerView();
       this.startAutoSlide();
       this.mostrarCard(0); // Mostrar la primera card al cargar
@@ -101,8 +100,10 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   updateSlidesPerView(): void {
     const width = window.innerWidth;
-    if (width >= 1024) {
-      this.slidesPerView = 4; // Pantallas grandes
+    if (width >= 1440) {
+      this.slidesPerView = 5; // Pantallas grandes
+    }else if (width >= 1024) {
+      this.slidesPerView = 4; // Pantallas medianas
     } else if (width >= 768) {
       this.slidesPerView = 3; // Pantallas medianas
     } else if (width >= 640) {
@@ -110,23 +111,28 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.slidesPerView = 1; // Pantallas móviles
     }
-    this.currentIndex = 0; // Reinicia al inicio al cambiar la cantidad de vistas
+    this.currentIndex = 0;
   }
 
   mostrarCard(index: number): void {
-    console.log('Mostrar card número', index + 1);
     this.cardSeleccionada = this.cards[index];
     this.resizeImage(this.cardSeleccionada.logo).then(resizedImage => {
       this.resizedCardImage = resizedImage;
     }).catch(error => {
       console.error('Error al redimensionar la imagen:', error);
     });
-    
     if (this.cardSeleccionada.tipo_dato === 'Video') {
       let url = this.cardSeleccionada.ruta_multi;
       let videoId = this.extractVideoId(url);
-      let embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      let embedUrl = `https://www.youtube.com/embed/${videoId}?controls=0&showinfo=0&rel=0&modestbranding=1`;
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    }
+    else if(this.cardSeleccionada.tipo_dato === 'Imagen'){
+      let path = this.cardSeleccionada.ruta_multi;
+      this.dir =  `../../../assets/images/${path}`
+    }
+    else{
+      this.dir = this.cardSeleccionada.logo;
     }
   }
 
