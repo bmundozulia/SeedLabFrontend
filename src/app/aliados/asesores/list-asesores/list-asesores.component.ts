@@ -56,7 +56,7 @@ export class ListAsesoresComponent implements OnInit {
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
         this.id = this.user.id;
-        //console.log(this.estado);
+        console.log(this.id);
       }
     }
   }
@@ -66,7 +66,7 @@ export class ListAsesoresComponent implements OnInit {
       this.asesorService.getinfoAsesor(this.token, this.user.id).subscribe(
         (data) => {
           this.listaAsesores = data;
-          //console.log(this.listaAsesores);
+          console.log(this.listaAsesores);
         },
         (err) => {
           console.log(err);
@@ -88,11 +88,11 @@ export class ListAsesoresComponent implements OnInit {
     this.cargarAsesores();
   }
 
-  openModal(id: number | null): void {
+  openModal(): void {
     const dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
       width: '600px',
       height: '600px',
-      data: { id: id },
+      data: {  }
     });
     //console.log(data);
 
@@ -101,32 +101,9 @@ export class ListAsesoresComponent implements OnInit {
     });
   }
 
+  editarAsesor(): void {
+    this.openModal();
+  }
 
 
 }
-
-
-//   if (this.token) {
-//     this.asesorService.getinfoAsesor(this.token, this.user.id).subscribe(
-//       (data: Asesor[]) => {
-//         this.listaAsesores = data.filter(item => this.ESTADO_MAP[item.estado] === this.userFilter.estado).map((item: any) =>
-//           new Asesor(
-//             item.id,
-//             item.nombre,
-//             item.apellido,
-//             item.celular,
-//             item.id_autentication,
-//             item.id_aliado,
-//            item.estado,
-//         ),
-//         console.log(this.listaAsesores));
-//       },
-//       (err) => {
-//         console.log(err);
-//       }
-//     );
-//   } else {
-//     console.error('Token is not available');
-//   }
-// }
-// }

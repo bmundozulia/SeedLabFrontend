@@ -16,6 +16,7 @@ export class AsesorService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + access_token
     });
+    
   }
 
   url = environment.apiUrl + 'aliado/'
