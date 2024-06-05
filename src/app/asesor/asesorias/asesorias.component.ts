@@ -14,8 +14,8 @@ export class AsesoriasComponent implements OnInit {
   asesorias: Asesoria[] = [];
   asesoriasConHorario: Asesoria[] = [];
   asesoriasSinHorario: Asesoria[] = [];
-  showTrue: boolean = true; // Variable para controlar si mostrar asesorías con asignación
-  showFalse: boolean = true; // Variable para controlar si mostrar asesorías sin asignación
+  showTrue: boolean = false; // Inicializa en false para no mostrar asesorías con horario al principio
+  showFalse: boolean = true; // Inicializa en true para mostrar asesorías sin horario al principio
   token: string | null = null;
   user: any = null;
   filteredAsesorias: Asesoria[] = [];
@@ -79,9 +79,8 @@ export class AsesoriasComponent implements OnInit {
     const horario = false; // Cambia esto según sea necesario
     this.asesoriaService.mostrarAsesoriasAsesor(idAsesor, horario).subscribe(
       response => {
-        console.log('Asesorías cargadas:', response);
+        console.log('Asesorías sin horario cargadas:', response);
         this.asesoriasSinHorario = response;
-       
       },
       error => {
         console.error('Error al cargar asesorías:', error);
@@ -102,7 +101,7 @@ export class AsesoriasComponent implements OnInit {
     const horario = true; // Cambia esto según sea necesario
     this.asesoriaService.mostrarAsesoriasAsesor(idAsesor, horario).subscribe(
       response => {
-        console.log('Asesorías cargadas:', response);
+        console.log('Asesorías con horario cargadas:', response);
         this.asesoriasConHorario = response;
       },
       error => {
@@ -125,7 +124,9 @@ export class AsesoriasComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // Maneja el resultado del modal si es necesario
+      // Recargar las asesorías después de cerrar el modal
+      this.loadAsesoriasFalse();
+      this.loadAsesoriasTrue();
     });
   }
 }
