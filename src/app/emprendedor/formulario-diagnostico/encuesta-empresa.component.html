@@ -366,7 +366,7 @@
                     </tr>
                     <tr>
                         <td class="cell">
-                            <div class="px-4">
+                            <div class="px-4 my-1">
                                 <div class="flex">
                                     <b>{{preguntas[9].id}}.</b>
                                     <h3 class="ml-2">{{preguntas[9].nombre}}
@@ -396,7 +396,7 @@
                     </tr>
                     <tr>
                         <td class="cell">
-                            <div class="flex-1 px-4">
+                            <div class="flex-1 px-4 my-1">
                                 <div class="flex">
                                     <b>{{preguntas[11].id}}.</b>
                                     <h3 class="ml-2">{{preguntas[11].nombre}}</h3>
@@ -466,7 +466,7 @@
         <!--------------------------------------------------------- contenedor 2 -------------------------------------------------------------->
         <ng-container *ngIf="currentIndex === 1">
             <div>
-                <table class="min-w-full bg-white my-2">
+                <table class="border-collapse min-w-full bg-white my-2">
                     <tbody>
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
@@ -612,7 +612,7 @@
                             </td>
                         </tr>
                         <!-- fin de la pregunta -->
-                        <tr>
+                        <tr class="border-t  border-gray-300">
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
                                     <b>{{ preguntas[17].id }}.</b>
@@ -633,7 +633,7 @@
 
 
                         <!------------------------- inicio de pregunta ------------------------>
-                        <tr class="bg-gray-50 ">
+                        <tr class="bg-gray-50 border-t  border-gray-300">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="5">
                                 <div class="flex">
                                     <b> {{preguntas[18].id}}.</b>
@@ -719,7 +719,7 @@
                             </td>
                         </tr>
                         <!-- inicio de pregunta -->
-                        <tr class="bg-gray-50">
+                        <tr class="bg-gray-50 ">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="4">
                                 <div class="flex">
                                     <b> {{preguntas[20].id}}.</b>
@@ -772,7 +772,7 @@
                             </td>
                         </tr>
                         <!-- fin de pregunta  -->
-                        <tr>
+                        <tr class="border-b border-t  border-gray-300">
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[21].id}}.</b>
@@ -846,7 +846,7 @@
                         </tr>
                         <!-- fin de pregunta 8  -->
                         <!------------------------------- inicio de pregunat 9 --------------------------->
-                        <tr class="bg-gray-50">
+                        <tr class="bg-gray-50 border-t  border-gray-300">
                             <td class="py-2 px-4 cell" rowspan="5">
                                 <div class="flex">
                                     <b>{{preguntas[23].id}}.</b>
@@ -932,7 +932,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="border-b  border-gray-300">
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex"><b>{{preguntas[25].id}}.</b>
                                     <h3>{{preguntas[25].nombre}}</h3>
@@ -1031,7 +1031,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="bg-gray-50">
+                        <tr class="bg-gray-50 border-t  border-gray-300">
                             <td class="py-2 px-4 cell" rowspan="5">
                                 <div class="flex">
                                     <b>{{preguntas[28].id}} .</b>
@@ -1804,7 +1804,7 @@
                             </td>
                         </tr>
                         <!-- pregunta 4.3 -->
-                        <tr class="bg-gray-50">
+                        <tr class="bg-gray-50 border-y border-gray-300">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="8">
                                 <div class="flex">
                                     <b>{{preguntas[44].id}}.</b>
@@ -1900,7 +1900,7 @@
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[6].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 ">
                                 <select
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1929,7 +1929,7 @@
                         </tr>
 
                         <!-- pregunta 4.6 -->
-                        <tr class="bg-gray-50">
+                        <tr class="bg-gray-50 border-t border-gray-300">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="10">
                                 <div class="flex">
                                     <b>{{preguntas[46].id}}.</b>
@@ -1937,7 +1937,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr class="">
+                        <tr class="border-t border-gray-300">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[0].texto}} </h3>
                             </td>
