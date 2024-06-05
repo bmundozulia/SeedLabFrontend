@@ -22,7 +22,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormBuilder,FormsModule, FormGroup} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormsModule, FormGroup } from '@angular/forms';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
@@ -50,6 +50,16 @@ import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-em
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
 import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { RutasComponent } from './rutas/rutas.component';
+import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
+import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
+import { CursorutasComponent } from './cursorutas/cursorutas.component';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { SafeUrlPipe } from './cursorutas/cursorutas.component';
+import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component';
+import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadmin/modalcrear-superadmin.component';
+
 import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
 import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
 import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
@@ -59,6 +69,7 @@ import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.comp
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     MenuComponent,
     HeaderComponent,
@@ -85,6 +96,15 @@ import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.comp
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
     EditEmpresaComponent,
+    RutasComponent,
+    OrientadorCrearComponent,
+    ModalCrearOrientadorComponent,
+    CursorutasComponent,
+    SafeUrlPipe,
+    CrearSuperadminComponent,
+    ModalcrearSuperadminComponent,
+   
+    
     ForgotpasswordComponent,
     ListAsesoresComponent,
     ModalAddAsesoresComponent,
@@ -110,11 +130,13 @@ import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.comp
     FormsModule,
     FilterPipeModule,
     MatDialogModule,
-    ColorPickerModule, 
+    ColorPickerModule,
     ColorPickerModule,
     SweetAlert2Module.forRoot(),
     BrowserModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
+    HttpClientModule
+    
 
   ],
   providers: [
