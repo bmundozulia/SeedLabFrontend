@@ -15,6 +15,7 @@ import { AsesorService } from '../../../../servicios/asesor.service';
 })
 export class ModalAddAsesoresComponent implements OnInit {
   hide = true;
+  asesorId: any;
   user: User | null = null;
   currentRolId: string | null = null;
   listaAsesores: Asesor[] = [];
@@ -35,10 +36,14 @@ export class ModalAddAsesoresComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModalAddAsesoresComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { },
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private asesorService: AsesorService,
-  ) { }
+  ) {      this.asesorId = data.id;
+    console.log('ID recibido en el modal:', this.asesorId);
+
+    // Aquí puedes usar el id para cargar los detalles del asesor si es necesario
+    }
 
   ngOnInit(): void {
     this.validateToken();
