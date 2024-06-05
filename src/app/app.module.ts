@@ -48,10 +48,8 @@ import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-mo
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
-import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
-import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 import { RutasComponent } from './rutas/rutas.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
@@ -62,6 +60,9 @@ import { SafeUrlPipe } from './cursorutas/cursorutas.component';
 import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component';
 import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadmin/modalcrear-superadmin.component';
 
+import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
+import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
+import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 
 
 
@@ -95,9 +96,6 @@ import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadm
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
     EditEmpresaComponent,
-    ListAsesoresComponent,
-    ModalAddAsesoresComponent,
-    PerfilAsesorComponent,
     RutasComponent,
     OrientadorCrearComponent,
     ModalCrearOrientadorComponent,
@@ -107,6 +105,10 @@ import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadm
     ModalcrearSuperadminComponent,
    
     
+    ForgotpasswordComponent,
+    ListAsesoresComponent,
+    ModalAddAsesoresComponent,
+    PerfilAsesorComponent,
   ],
   imports: [
     BrowserModule,
