@@ -48,6 +48,7 @@ import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-mo
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
 import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
@@ -84,6 +85,7 @@ import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.comp
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
     EditEmpresaComponent,
+    ForgotpasswordComponent,
     ListAsesoresComponent,
     ModalAddAsesoresComponent,
     PerfilAsesorComponent,
