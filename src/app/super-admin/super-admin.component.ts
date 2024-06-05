@@ -5,7 +5,6 @@ import { SwitchService } from '../servicios/switch.service';
 
 @Component({
   selector: 'app-super-admin',
-
   templateUrl: './super-admin.component.html',
   styleUrl: './super-admin.component.css'
 })
