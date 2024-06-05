@@ -66,7 +66,7 @@ export class ListAsesoresComponent implements OnInit {
       this.asesorService.getinfoAsesor(this.token, this.user.id).subscribe(
         (data) => {
           this.listaAsesores = data;
-          //console.log(this.listaAsesores);
+          console.log(this.listaAsesores);
         },
         (err) => {
           console.log(err);
