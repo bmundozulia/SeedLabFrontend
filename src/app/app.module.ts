@@ -49,6 +49,9 @@ import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/per
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
+import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
+import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 import { RutasComponent } from './rutas/rutas.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
@@ -92,6 +95,9 @@ import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadm
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
     EditEmpresaComponent,
+    ListAsesoresComponent,
+    ModalAddAsesoresComponent,
+    PerfilAsesorComponent,
     RutasComponent,
     OrientadorCrearComponent,
     ModalCrearOrientadorComponent,
