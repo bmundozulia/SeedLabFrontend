@@ -56,7 +56,7 @@ export class ListAsesoresComponent implements OnInit {
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
         this.id = this.user.id;
-        //console.log(this.estado);
+        console.log(this.id);
       }
     }
   }
@@ -88,11 +88,10 @@ export class ListAsesoresComponent implements OnInit {
     this.cargarAsesores();
   }
 
-  openModal(id: number | null): void {
+  openModal(asesorId: number): void {
     const dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
       width: '600px',
       height: '600px',
-      data: { id: id },
     });
     //console.log(data);
 
