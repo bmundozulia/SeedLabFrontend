@@ -65,10 +65,10 @@ const routes: Routes = [
   { path: 'asesorias/hola', component: AsesoriaAliadoComponent }, //de Aliado
 
   //ingreso de aliados 
-  { path: 'list-asesores', component: ListAsesoresComponent},
+  { path: 'list-asesores', component: ListAsesoresComponent },
 
   //ingreso de asesores
-  { path: 'perfil-asesores', component: PerfilAsesorComponent},
+  { path: 'perfil-asesores', component: PerfilAsesorComponent },
 
 
 
