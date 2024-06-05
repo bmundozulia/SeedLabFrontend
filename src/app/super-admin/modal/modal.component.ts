@@ -81,15 +81,15 @@ export class ModalComponent implements OnInit {
   }
 
   confirmarModal() {
-    this.submitted = true;
-    if (this.isFormValid()) {
-      console.log('Form data:', this.persona);
-      // Realizar acción de guardar
-      this.modalSS.$modal.emit(false);
-    }
+    // this.submitted = true;
+    // if (this.isFormValid()) {
+    //   console.log('Form data:', this.persona);
+    //   // Realizar acción de guardar
+    // }
+    this.modalSS.$modal.emit(false);
   }
 
-  isFormValid() {
-    return this.persona.nombre.trim() !== '';
-  }
+  // isFormValid() {
+  //   return this.persona.nombre.trim() !== '';
+  // }
 }
