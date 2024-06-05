@@ -5,4 +5,5 @@ export const environment = {
   apiUrl: 'http://127.0.0.1:8000/api/'
     //apiUrl: 'https://seedlab-back-1.onrender.com/api/'
   //apiUrl: 'https://seedlab-back-1.onrender.com/api/'
+  
 };

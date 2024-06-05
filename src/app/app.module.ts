@@ -53,6 +53,7 @@ import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-ase
 import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
 import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 import { RutasComponent } from './rutas/rutas.component';
+import { HorarioModalComponent } from './asesor/horario-modal/horario-modal/horario-modal.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
 import { CursorutasComponent } from './cursorutas/cursorutas.component';
@@ -101,6 +102,7 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
     PerfilAsesorComponent,
     ForgotpasswordComponent,
     RutasComponent,
+    HorarioModalComponent,
     OrientadorCrearComponent,
     ModalCrearOrientadorComponent,
     CursorutasComponent,

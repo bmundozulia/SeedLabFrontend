@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AsesoriaService } from '../../servicios/asesoria.service';
 import { Asesoria } from '../../Modelos/asesoria.model';
 import { MatDialog } from '@angular/material/dialog';
+import { HorarioModalComponent } from '../horario-modal/horario-modal/horario-modal.component';
 
 @Component({
   selector: 'app-asesorias',
@@ -11,12 +12,13 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AsesoriasComponent implements OnInit {
   asesorias: Asesoria[] = [];
-  asesoriasConAsesor: Asesoria[] = [];
-  asesoriasSinAsesor: Asesoria[] = [];
+  asesoriasConHorario: Asesoria[] = [];
+  asesoriasSinHorario: Asesoria[] = [];
   showTrue: boolean = true; // Variable para controlar si mostrar asesorías con asignación
   showFalse: boolean = true; // Variable para controlar si mostrar asesorías sin asignación
   token: string | null = null;
   user: any = null;
+  filteredAsesorias: Asesoria[] = [];
   currentRolId: string | null = null;
 
   constructor(
@@ -26,7 +28,9 @@ export class AsesoriasComponent implements OnInit {
   ) { }
  
   ngOnInit() {
-    this.validateToken();    
+    this.validateToken();
+    this.loadAsesoriasFalse();    
+    this.loadAsesoriasTrue();
   }
 
   validateToken(): void {
@@ -46,11 +50,23 @@ export class AsesoriasComponent implements OnInit {
     if (!this.token || !this.currentRolId) {
       this.router.navigate(['/inicio/body']);
     } else {
-      this.loadAsesorias();
+      this.loadAsesoriasFalse();
     }
   }
 
-  loadAsesorias(): void {
+  filterAsesorias(status: boolean): void {
+    if (status) {
+      this.showTrue = true;
+      this.showFalse = false;
+      this.filteredAsesorias = this.asesoriasConHorario;
+    } else {
+      this.showTrue = false;
+      this.showFalse = true;
+      this.filteredAsesorias = this.asesoriasSinHorario;
+    }
+  }
+
+  loadAsesoriasFalse(): void {
     if (!this.token) return;
   
     const userData = localStorage.getItem('identity');
@@ -64,13 +80,52 @@ export class AsesoriasComponent implements OnInit {
     this.asesoriaService.mostrarAsesoriasAsesor(idAsesor, horario).subscribe(
       response => {
         console.log('Asesorías cargadas:', response);
-        this.asesorias = response;
-        this.asesoriasConAsesor = this.asesorias.filter(asesoria => asesoria.Asesor);
-        this.asesoriasSinAsesor = this.asesorias.filter(asesoria => !asesoria.Asesor);
+        this.asesoriasSinHorario = response;
+       
       },
       error => {
         console.error('Error al cargar asesorías:', error);
       }
     );
+  }
+
+  loadAsesoriasTrue(): void {
+    if (!this.token) return;
+  
+    const userData = localStorage.getItem('identity');
+    if (!userData) {
+      console.error('Error: No se encontraron datos de usuario en el local storage.');
+      return;
+    }
+    const user = JSON.parse(userData);
+    const idAsesor = user.id; // Obtener el ID del asesor del objeto de usuario
+    const horario = true; // Cambia esto según sea necesario
+    this.asesoriaService.mostrarAsesoriasAsesor(idAsesor, horario).subscribe(
+      response => {
+        console.log('Asesorías cargadas:', response);
+        this.asesoriasConHorario = response;
+      },
+      error => {
+        console.error('Error al cargar asesorías:', error);
+      }
+    );
+  }
+
+  openModal(asesoria: any): void {
+    // Logs para depuración
+    console.log('Abriendo modal para asesoria:', asesoria);
+    if (!asesoria || !asesoria.id) {
+      console.error('ID de asesoria no encontrado');
+      return;
+    }
+
+    const dialogRef = this.dialog.open(HorarioModalComponent, {
+      width: '400px',
+      data: { asesoria }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Maneja el resultado del modal si es necesario
+    });
   }
 }
