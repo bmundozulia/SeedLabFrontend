@@ -34,6 +34,8 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   currentRolId: string | null = null;
   currentIndex = 0;
   respuestasForm1: FormGroup;
+  id_pregunta: number[];
+  id_subpregunta: number[][] | null = null;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
   constructor(
@@ -87,6 +89,8 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     }
   }
 
+
+
   getIdPregunta(index: number): number | null {
     let preguntaCounter = 0;
     let subPreguntaCounter = 0;
@@ -109,26 +113,58 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     return null;
   }
 
-  tieneSubPregunta(id_pregunta: number): boolean {
-    const pregunta = this.preguntas.find(p => p.id === id_pregunta);
+  /*obtenerIds(index: number):any{
+    PREGUNTAS.map(pregunta=>{
+      console.log(pregunta.id);
+      if(pregunta.subPreguntas.length > 0){
+        pregunta.subPreguntas.map(subPregunta=>{
+          this.id_subpregunta = subPregunta.id;
+          console.log(subPregunta.id);
+          return subPregunta.id;
+        })
+      }
+      return pregunta.id;
+    });
+  }*/
+
+  tieneSubPregunta(id_preguntas: number): boolean {
+    const pregunta = this.preguntas.find(p => p.id === id_preguntas);
     return pregunta && pregunta.subPreguntas && pregunta.subPreguntas.length > 0;
   }
 
   onSubmitSeccion1() {
     let firstForm: any[] = [];
     const id_empresa = 1;
+    this.id_pregunta = PREGUNTAS.map(pregunta=>{
+      return pregunta.id;
+    });
+
+    this.id_subpregunta = PREGUNTAS.map(pregunta=>{
+      return pregunta.subPreguntas.map(subPregunta=>{
+        return subPregunta.id;
+      })
+    })
 
     for (let i = 0; i < 23; i++) {
-      let id_pregunta = this.getIdPregunta(i);
-      
-      const tieneSubPregunta = this.tieneSubPregunta(id_pregunta);
-
+      let id_preguntas = this.getIdPregunta(i);
+      const tieneSubPregunta = this.tieneSubPregunta(id_preguntas);
+      if(tieneSubPregunta) {
         firstForm.push(new Respuesta(
-          id_pregunta,
+          this.id_pregunta[i],
+          id_empresa,
+          this.respuestasForm1.get(`respuesta${i}`)?.value,
+          this.respuestasForm1.get(`respuesta${i}`)?.value,
+          this.id_subpregunta [i][i]
+        ));
+      }else{
+        firstForm.push(new Respuesta(
+          this.id_pregunta[i],
           id_empresa,
           this.respuestasForm1.get(`respuesta${i}`)?.value,
           this.respuestasForm1.get(`respuesta${i}`)?.value 
         ));
+      }
+      
       }
       console.log(firstForm); 
       this.respuestasService.saveAnswers(this.token, firstForm).subscribe(
