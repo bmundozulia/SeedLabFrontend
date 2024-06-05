@@ -3,22 +3,30 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { AliadoService } from '../../../servicios/aliado.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dar-aliado-asesoria-modal',
   templateUrl: './dar-aliado-asesoria-modal.component.html',
-  styleUrls: ['./dar-aliado-asesoria-modal.component.css']
+  styleUrls: ['./dar-aliado-asesoria-modal.component.css'],
+  providers: [AsesoriaService, AliadoService]
 })
 export class DarAliadoAsesoriaModalComponent {
   asignarForm: FormGroup;
   aliados: any[] = []; 
+  token: string | null = null;
+  currentRolId: string | null = null;
+  docEmprendedor: string | null = null;
+
+  user: any;
 
   constructor(
     public dialogRef: MatDialogRef<DarAliadoAsesoriaModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private asesoriaService: AsesoriaService,
-    private aliadoService: AliadoService
+    private aliadoService: AliadoService,
+    private router: Router
   ) {
     this.asignarForm = this.fb.group({
       nom_aliado: ['', Validators.required]
@@ -26,7 +34,28 @@ export class DarAliadoAsesoriaModalComponent {
   }
 
   ngOnInit() {
+    this.validateToken();
     this.loadAliados();
+  }
+  validateToken(): void {
+    if (!this.token) {
+      this.token = localStorage.getItem('token');
+      let identityJSON = localStorage.getItem('identity');
+
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        console.log(identity);
+        this.user = identity;
+
+        this.currentRolId = this.user.id_rol?.toString();
+        console.log(this.currentRolId);
+        // Asigna el valor del documento del emprendedor a la variable docEmprendedor
+
+      }
+    }
+    if (!this.token ) {
+      this.router.navigate(['/inicio/body']);
+    }
   }
 
   onGuardar(): void {
@@ -49,7 +78,7 @@ export class DarAliadoAsesoriaModalComponent {
   }
 
   loadAliados(): void {
-    this.aliadoService.mostrarAliado().subscribe(
+    this.aliadoService.mostrarAliado(this.token).subscribe(
       (data: any[]) => {
         this.aliados = data;
         console.log(this.aliados);

@@ -64,7 +64,7 @@ export class CrearAsesoriaModalComponent {
   }
 
   loadAliados(): void {
-    this.aliadoService.mostrarAliado().subscribe(
+    this.aliadoService.mostrarAliado(this.token).subscribe(
       (data: any[]) => {
         this.aliados = data;
         console.log(this.aliados);

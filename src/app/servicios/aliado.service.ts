@@ -31,8 +31,9 @@ export class AliadoService {
     return this.http.post(`${this.url}/create_aliado`, aliado, options);
   }
 
-  mostrarAliado() {
-    return this.http.get(`${environment.apiUrl}orientador/listaAliado`);
+  mostrarAliado(access_token: any) {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get(`${environment.apiUrl}orientador/listaAliado`,options);
   }
 
   
