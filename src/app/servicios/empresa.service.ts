@@ -35,11 +35,7 @@ export class EmpresaService {
     return this.http.post(this.url, payload, { headers });
   }
 
-  addApoyoEmpresa(access_token: any, apoyos:ApoyoEmpresa):Observable<any>{
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+ access_token
-    });
-    return this.http.post(this.url, apoyos, { headers });
-  }
+  
+
 }
+

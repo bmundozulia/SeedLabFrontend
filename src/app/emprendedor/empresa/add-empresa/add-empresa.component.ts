@@ -15,6 +15,7 @@ import { catchError, of, switchMap, tap } from 'rxjs';
 import { EmpresaService } from '../../../servicios/empresa.service';
 import { AlertService } from '../../../servicios/alert.service';
 
+
 @Component({
   selector: 'app-add-empresa',
   templateUrl: './add-empresa.component.html',
@@ -37,7 +38,7 @@ export class AddEmpresaComponent {
   faMountainCity = faMountainCity;
   faLandmarkFlag = faLandmarkFlag;
   faLocationDot = faLocationDot;
-  empresaDocumento: string;
+  emprendedorDocumento: string;
 
   constructor(
     private fb: FormBuilder,
@@ -66,7 +67,6 @@ export class AddEmpresaComponent {
         this.user = identity;
         this.documento = this.user.emprendedor.documento;
         this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
       }
     }
   }
@@ -128,9 +128,6 @@ export class AddEmpresaComponent {
   });
 
 
-
-
-
   crearEmpresa(): void {
     this.submitted = true;
     console.log("Formulario enviado", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
@@ -169,46 +166,31 @@ export class AddEmpresaComponent {
       id_tipo_documento: this.addApoyoEmpresaForm.get('id_tipo_documento')?.value,
       id_empresa: empresa.documento,
     } : null;
-
+    
+    const apoyosList: Array<any>= [];
+    if (apoyos) {
+      apoyosList.push(apoyos);
+    }
     const payload = {
       empresa: empresa,
-      apoyos: apoyos ? [apoyos] : [] // Enviar un array vacío si no hay apoyos
+      apoyos: apoyosList
     };
 
-
-    this.addEmpresaService.addEmpresa(this.token, payload).pipe(
-      tap((response: any) => {
-        console.log('Respuesta de la API (empresa creada):', response);
-        this.alertService.successAlert('Éxito', 'Registro exitoso');
-        this.empresaDocumento = response.documento;
-        this.router.navigate(['list-empresa', this.empresaDocumento]);
-
-        location.reload();
-      }),
-      switchMap((response: any) => {
-        if (!apoyos) { 
-          return of(null);
+   
+      this.addEmpresaService.addEmpresa(this.token, payload).subscribe(
+        data=> {
+          console.log('Respuesta de la API (empresa creada):', data);
+          this.alertService.successAlert('Éxito', 'Registro exitoso');
+          this.emprendedorDocumento = data.empresa.id_emprendedor;
+          //console.log(`------------------------------------------------ ${this.emprendedorDocumento}`);
+          //debugger;
+          this.router.navigate(['list-empresa']);
+        },
+        error=>{
+          this.alertService.errorAlert('Error', error.message);
+          console.log('Respuesta de la API ERRRRORRRRRR')
         }
-        console.log('Datos de apoyoEmpresa con ID de empresa:', apoyos);
-        return this.addEmpresaService.addApoyoEmpresa(this.token, apoyos);
-      }),
-      catchError(error => {
-        console.error('Error al crear la empresa o apoyoEmpresa:', error);
-        this.alertService.successAlert('Éxito', 'Empresa y apoyo creados');
-        this.router.navigate(['list-empresa', this.empresaDocumento]);
-        location.reload();
-        return of(null);
-      })
-    ).subscribe(
-      (apoyoResponse: any) => {
-        if (apoyoResponse) {
-          console.log('Respuesta de la API (apoyoEmpresa creado):', apoyoResponse);
-          this.alertService.successAlert('Éxito', 'Apoyo Empresa creado');
-        }
-        // Navegar a la ruta de la empresa después de que se crea la empresa y el apoyo (si existe)
-        this.router.navigate(['list-empresa', this.empresaDocumento]);
-      }
-    );
+      );
   }
 
   mostrarOcultarContenido() {
@@ -221,6 +203,8 @@ export class AddEmpresaComponent {
     }
   }
 }
+
+
 
 
 

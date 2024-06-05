@@ -10,7 +10,10 @@
                     <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
                     <input type="text" id="nombre" name="nombre" ngModel required pattern="^[a-zA-Z\s]+$"
                         class="mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
-                    <div *ngIf="submitted && formulario.controls['nombre']?.invalid"
+                    <div *ngIf="submitted && formulario.controls['
+                    
+                    
+                    ']?.invalid"
                         class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50 " role="alert">
                         <span class="font-medium" *ngIf="formulario.controls['nombre']?.errors?.['required']">Este campo
                             es requerido *</span>
