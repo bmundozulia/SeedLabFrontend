@@ -19,7 +19,6 @@ export class AddAliadosComponent {
   estado: boolean = true;
   token: string | null = localStorage.getItem('token');
   hide = true;
-
   passwordVisible: boolean = false;
   rutaSeleccionada: string = '';
   pdfFileName: string = '';
@@ -57,7 +56,7 @@ export class AddAliadosComponent {
       nombre: this.nombre.trim(),
       descripcion: this.descripcion.trim(),
       logo: this.logo,
-      ruta: this.tipodato === 'pdf' ? this.pdfRuta : this.ruta, // Utilizar pdfRuta si la ruta seleccionada es pdf
+      ruta: this.tipodato === 'pdf' ? this.generateUniqueFileName(this.pdfFileName) : this.ruta, // Guardar solo el nombre del PDF
       tipodato: this.tipodato,
       email: this.email.trim(),
       password: this.password,
@@ -116,18 +115,17 @@ export class AddAliadosComponent {
     const allowedExtensions = /(\.pdf)$/i;
 
     if (file && allowedExtensions.exec(file.name)) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const pdfSrc = e.target.result as string;
-        const pdfPath = 'assets/content/' + file.name;
-        localStorage.setItem('uploadedPdf', pdfPath);
-      };
-      reader.readAsDataURL(file);
-
       this.pdfFileName = file.name;
-      this.pdfRuta = 'assets/content/' + file.name;
+      this.pdfRuta = 'assets/content/' + this.generateUniqueFileName(file.name);
     } else {
       alert('Por favor, seleccione un archivo PDF.');
     }
+  }
+
+  generateUniqueFileName(fileName: string): string {
+    // Generar un identificador único para el nombre del archivo para asegurar la unicidad
+    const uniqueId = new Date().getTime();
+    const extension = fileName.split('.').pop(); // Obtener la extensión del archivo
+    return `${uniqueId}.${extension}`;
   }
 }
