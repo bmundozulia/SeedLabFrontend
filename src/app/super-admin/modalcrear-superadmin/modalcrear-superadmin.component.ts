@@ -69,6 +69,7 @@ export class ModalcrearSuperadminComponent implements OnInit {
 
 
   addSuperadmin(): void {
+    this.submitted = true;
     const superadmin: Superadmin = {
       nombre: this.superadminForm.value.nombre,
       apellido: this.superadminForm.value.apellido,
