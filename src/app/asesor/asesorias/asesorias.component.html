@@ -4,18 +4,18 @@
 
     <!-- Sección de búsqueda -->
         <div class="flex flex-col space-y-8 mb-6 pl-12 max-sm:mt-6">
-          <div class="relative w-full max-w-xs">
-            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 ">
+          <div class="relative w-full sm:max-w-xs max-sm:px-2">
+            <span class="bsolute left-5 top-1/2 transform -translate-y-1/2 text-gray-500 max-sm:left-7 ">
               <i class="fas fa-search"></i>
             </span>
             <input type="text" placeholder="Buscar" class="lg:w-96  h-12 pl-12 pr-4 border border-gray-300 rounded-full outline-none shadow-md transition duration-200 hover:border-sky-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-300">
           </div>
   <div class="flex flex-wrap items-center justify-center sm:justify-start bg-white transition duration-200 hover:border-sky-400 lg:shadow-md mr-12 border-gray-300 rounded-full px-3 py-2 sm:border sm:border-gray-300">
-    <button id="sinAsignar" class="btn-color flex items-center px-4 py-2 max-sm:ml-2 text-black ml-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-100 ease-in hover:bg-gray-100 focus:bg-gray-200 mr-4">
+    <button id="sinAsignar" class="btn-color flex items-center px-4 py-2 max-sm:ml-14 max-sm:bg-slate-200  text-black ml-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-100 ease-in hover:bg-gray-100 focus:bg-gray-200 mr-4">
       Sin asignar
       <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasSinAsesor.length }}</span>
     </button>
-    <button id="Asignadas" class="btn-color flex items-center px-4 py-2 max-sm:ml-2 text-black ml-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-100 ease-in hover:bg-gray-100 focus:bg-gray-200 mr-4">
+    <button id="Asignadas" class="btn-color flex items-center px-4 py-2 max-sm:ml-14 max-sm:bg-slate-200  text-black ml-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-100 ease-in hover:bg-gray-100 focus:bg-gray-200 mr-4">
       Asignadas
       <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasConAsesor.length }}</span>
     </button>
