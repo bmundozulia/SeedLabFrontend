@@ -1,16 +1,21 @@
-<div class="flex flex-wrap justify-around">
-  <div class="rounded-xl border border-gray-300 py-2 bg-white mt-10 w-[280px] mx-auto justify-center sm:mx-28 relative">
-    <input class="w-full h-16 outline-none pl-10" placeholder="Buscar">
-    <span class="absolute left-4 top-4">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </span>
-  </div>
-  <div class="rounded-2xl border border-gray-300 p-4 bg-white mt-10 w-auto flex flex-wrap justify-center lg:justify-normal mx-28">
-    <button id="sinAsignar" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<app-header [title]="'Panel de Asesorias'"
+    [subtitle]="'Aca podra ver un listado de Asesorias y asignarla a distintos aliados'"></app-header>
+
+    <!-- Sección de búsqueda -->
+        <div class="flex flex-col space-y-8 mb-6 pl-12 max-sm:mt-6">
+          <div class="relative w-full max-w-xs">
+            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 ">
+              <i class="fas fa-search"></i>
+            </span>
+            <input type="text" placeholder="Buscar" class="lg:w-96  h-12 pl-12 pr-4 border border-gray-300 rounded-full outline-none shadow-md transition duration-200 hover:border-sky-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-300">
+          </div>
+  <div class="flex flex-wrap items-center justify-center sm:justify-start bg-white transition duration-200 hover:border-sky-400 lg:shadow-md mr-12 border-gray-300 rounded-full px-3 py-2 sm:border sm:border-gray-300">
+    <button id="sinAsignar" class="btn-color flex items-center px-4 py-2 max-sm:ml-2 text-black ml-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-100 ease-in hover:bg-gray-100 focus:bg-gray-200 mr-4">
       Sin asignar
       <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasSinAsesor.length }}</span>
     </button>
-    <button id="Asignadas" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2">
+    <button id="Asignadas" class="btn-color flex items-center px-4 py-2 max-sm:ml-2 text-black ml-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-100 ease-in hover:bg-gray-100 focus:bg-gray-200 mr-4">
       Asignadas
       <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasConAsesor.length }}</span>
     </button>
@@ -18,7 +23,7 @@
 </div>
 
 <div *ngIf="showTrue || showFalse" class="flex flex-wrap justify-center mt-6">
-  <div *ngFor="let asesoria of (showTrue ? asesoriasConAsesor : [])" class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4">
+  <div *ngFor="let asesoria of (showTrue ? asesoriasConAsesor : [])" class="relative bg-white rounded-lg shadow-lg overflow-hidden w-80 m-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
       <div class="absolute h-full w-2" [ngClass]="{'bg-green-500': asesoria.asignacion, 'bg-red-500': !asesoria.asignacion}"></div>
       <div class="p-4">
           <h2 class="text-lg font-bold mb-2">{{ asesoria.Nombre_sol }}</h2>
@@ -29,7 +34,7 @@
           <p class="text-sm text-gray-700">{{ asesoria.doc_emprendedor }}</p>
       </div>
   </div>
-  <div *ngFor="let asesoria of (showFalse ? asesoriasSinAsesor : [])" class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4">
+  <div *ngFor="let asesoria of (showFalse ? asesoriasSinAsesor : [])" class="relative bg-white rounded-lg shadow-lg overflow-hidden w-80 m-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
       <div class="absolute h-full w-2" [ngClass]="{'bg-green-500': asesoria.asignacion, 'bg-red-500': !asesoria.asignacion}"></div>
       <div class="p-4">
           <h2 class="text-lg font-bold mb-2">{{ asesoria.Nombre_sol }}</h2>
