@@ -41,6 +41,7 @@ export class VerAsesoriasComponent implements OnInit {
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
         console.log(this.currentRolId);
+        this.loadAsesorias(false);
       }
     }
 

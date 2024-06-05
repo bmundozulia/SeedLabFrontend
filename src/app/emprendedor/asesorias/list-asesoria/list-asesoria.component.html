@@ -22,6 +22,9 @@
       Asignadas
       <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asignadasCount }}</span>
     </button>
+    <button (click)="openCrearAsesoriaModal()">
+      a
+    </button>
   </div>
 </div>
 
@@ -36,19 +39,22 @@
   <div *ngIf="showFalse && asesoriasFalse.length === 0" class="text-center text-gray-500 mt-6">
     Aún no has creado ninguna asesoría.
   </div>
- <!-- Listado de asesorías -->
-<div *ngFor="let asesoria of (showTrue ? asesoriasTrue : asesoriasFalse)"
-class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4 ">
-<div class="absolute h-full w-2"
-  [ngClass]="{'bg-green-500': showTrue, 'bg-red-500': showFalse}"></div>
-<div class="p-4">
-  <h2 class="text-lg font-bold mb-2">{{ asesoria.Nombre_sol }}</h2>
-  <div class="block w-full h-24 pr-2 py-2 mt-1 text-gray-900 focus:outline-none resize-none overflow-hidden text-ellipsis" title="{{ asesoria.notas }}">
-    {{ asesoria.notas }}
+
+
+  <div *ngFor="let asesoria of (showTrue ? asesoriasTrue : asesoriasFalse)"
+  class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4">
+  <div class="absolute h-full w-2"
+    [ngClass]="{'bg-green-500': showTrue, 'bg-red-500': showFalse}"></div>
+  <div class="p-4 py-3">
+    <h2 class="text-lg font-bold h-[3.3rem]  overflow-hidden text-ellipsis">{{ asesoria.Nombre_sol }}</h2>
+    <div class="block w-full h-[3.7rem] text-gray-900 focus:outline-none resize-none overflow-hidden text-ellipsis mb-3" title="{{ asesoria.notas }}">{{ asesoria.notas }}
+    </div>
+    <p class="text-sm text-gray-700 mb-2"><strong>Fecha: </strong> {{ asesoria.fecha_solicitud.slice(0, 10) }}</p>
+    <p class="text-sm text-gray-700 mb-2"><strong>Aliado: </strong>{{ asesoria.nombre }}</p>
   </div>
-  <p class="text-sm text-gray-700 mb-2"><strong>Fecha: </strong> {{ asesoria.fecha_solicitud.slice(0, 10) }}</p>
-  <p class="text-sm text-gray-700 mb-2"><strong>Aliado: </strong>{{ asesoria.nombre }}</p>
 </div>
-</div>
+
+
+
 
 

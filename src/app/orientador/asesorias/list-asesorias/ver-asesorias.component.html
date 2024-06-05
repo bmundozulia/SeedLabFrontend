@@ -29,13 +29,14 @@
        class="relative rounded-lg shadow-md overflow-hidden w-80 m-4 card" 
        (click)="openModal(asesoria)">
     <div class="absolute h-full w-2" [class]="backgroundClass"></div>
-    <div class="p-4 border border-gray-200">
-      <h2 class="text-xl font-bold mb-2">{{ asesoria.Nombre_sol }}</h2>
-      <p class="text-gray-700 mb-4">{{ asesoria.notas }}</p>
-      <h2 class="text-l font-semibold">{{ asesoria.fecha }}</h2>
-      <p class="text-gray-700">{{ asesoria.nombres }}</p>
-      <p class="text-gray-700">{{ asesoria.celular }}</p>
-      <p class="text-gray-700">{{ asesoria.email }}</p>
+    <div class="p-4 py-3 border-gray-200">
+      <h2 class="text-lg font-bold h-[3.3rem]  overflow-hidden text-ellipsis">{{ asesoria.Nombre_sol }}</h2>
+      <div class="block w-full h-[3.7rem] text-gray-900 focus:outline-none resize-none overflow-hidden text-ellipsis mb-3" title="{{ asesoria.notas }}">{{ asesoria.notas }}
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Fecha: </strong> {{ asesoria.fecha.slice(0, 10) }}</p>
+      <p class="text-gray-700"><strong>Emprendedor: </strong>{{ asesoria.nombres }}</p>
+      <p class="text-gray-700"><strong>Correo: </strong>{{ asesoria.email }}</p>
+      <p *ngIf="asesoria.aliado_redirigido" class="text-sm text-gray-700 mb-2"><strong>Aliado: </strong>{{ asesoria.aliado_redirigido }}</p>
     </div>
   </div>
 </div>
