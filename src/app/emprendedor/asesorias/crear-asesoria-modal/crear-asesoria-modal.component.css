@@ -1,0 +1,17 @@
+.custom-checkbox:checked + label .custom-checkbox-span {
+    background-color: #7adbf3; /* Cambia esto al color de fondo deseado cuando está marcado */
+    border-color: #3c7bf0;  /* Cambia esto al color de borde deseado cuando está marcado */
+}
+.custom-checkbox-span::after {
+    content: "";
+    display: none;
+    position: absolute;
+    width: 0.4rem; 
+    height: 0.8rem; 
+    border: solid rgb(58, 161, 245);
+    border-width: 0 3px 3px 0; 
+    transform: rotate(45deg);
+}
+.custom-checkbox:checked + label .custom-checkbox-span::after {
+    display: block;
+}
