@@ -35,10 +35,10 @@ export class ModalAddAsesoresComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModalAddAsesoresComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number | null },
+    @Inject(MAT_DIALOG_DATA) public data: { },
     private fb: FormBuilder,
     private asesorService: AsesorService,
-  ) { console.log('ID recibido:', 'ID recibido:', data.id) }
+  ) { }
 
   ngOnInit(): void {
     this.validateToken();
