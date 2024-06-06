@@ -19,6 +19,8 @@ export class AsesoriaAliadoComponent implements OnInit {
   currentRolId: string | null = null;
   mensaje: string | null = null;
   @ViewChild('sinAsignarButton') sinAsignarButton!: ElementRef;
+  userFilter: any = { Nombre_sol: ''};
+  Nombre_sol: string | null = null;
 
   constructor(
     private asesoriaService: AsesoriaService, 

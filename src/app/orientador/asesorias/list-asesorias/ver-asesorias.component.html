@@ -8,16 +8,16 @@
     <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
       <i class="fas fa-search"></i>
     </span>
-    <input type="text" placeholder="Buscar" class="max-sm:w-5/6 w-96 h-12 pl-14 P-2 pr-4 border border-gray-300 rounded-md outline-none shadow-md transition duration-200 hover:border-sky-300">
+    <input type="text" [(ngModel)]="userFilter.Nombre_sol" placeholder="Buscar" class="max-sm:w-5/6 w-96 h-12 pl-14 P-2 pr-4 border border-gray-300 rounded-md outline-none shadow-md transition duration-200 hover:border-sky-300">
   </div>
 
 
-   <div class="sm:flex grid sm:items-center border border-gray-300 rounded-full px-2 py-1 mr-12 bg-white transition duration-200">
-    <button id="sinAsignar" class="btn-color flex mx-auto sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md mr-2 transition duration-200 focus:outline-none ease-in" (click)="loadSinAsignar()">
+   <div class="sm:flex grid sm:items-center justify-start border  border-gray-300 rounded-2xl px-2 py-1 mr-12 bg-white transition duration-200">
+    <button id="sinAsignar" class="btn-color flex  md:px-2 sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md mr-2 transition duration-200 focus:outline-none ease-in" (click)="loadSinAsignar()">
       Sin asignar
       <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ sinAsignarCount }}</span>
     </button>
-    <button id="Asignadas" class="btn-color flex mx-auto sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md  focus:outline-none  transition duration-200 ease-in" (click)="loadAsignadas()">
+    <button id="Asignadas" class="btn-color flex sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md  focus:outline-none  transition duration-200 ease-in" (click)="loadAsignadas()">
       Asignadas
       <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asignadasCount }}</span>
     </button>
@@ -25,14 +25,16 @@
 </div>
 
 <div class="flex flex-wrap justify-center mt-6">
-  <div *ngFor="let asesoria of asesorias" 
+  <div *ngFor="let asesoria of asesorias | filterBy: userFilter" 
        class="relative rounded-lg shadow-md overflow-hidden w-80 m-4 card" 
        [ngClass]="{'clickable': !asesoria.aliado_redirigido}"
        (click)="!asesoria.aliado_redirigido && openModal(asesoria)">
     <div class="absolute h-full w-2" [class]="backgroundClass"></div>
     <div class="p-4 py-3 border-gray-200">
-      <h2 class="text-lg font-bold h-[3.3rem] overflow-hidden text-ellipsis">{{ asesoria.Nombre_sol }}</h2>
-      <div class="block w-full h-[3.7rem] text-gray-900 focus:outline-none resize-none overflow-hidden text-ellipsis mb-3" title="{{ asesoria.notas }}">{{ asesoria.notas }}</div>
+      <h2 class="text-lg font-bold overflow-hidden text-ellipsis">{{ asesoria.Nombre_sol }}</h2>
+      <div class="block w-full text-gray-900 focus:outline-none resize-none overflow-hidden text-ellipsis mb-3 content" title="{{ asesoria.notas }}">
+        {{ asesoria.notas }}
+      </div>
       <p class="text-sm text-gray-700 mb-2"><strong>Fecha: </strong> {{ asesoria.fecha.slice(0, 10) }}</p>
       <p class="text-gray-700"><strong>Emprendedor: </strong>{{ asesoria.nombres }}</p>
       <p class="text-gray-700"><strong>Correo: </strong>{{ asesoria.email }}</p>

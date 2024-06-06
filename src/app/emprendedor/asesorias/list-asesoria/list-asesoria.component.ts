@@ -23,8 +23,11 @@ export class ListAsesoriaComponent implements OnInit {
   asignadasCount: number = 0;
   busqueda: string = '';
   asesorias: any[] = []; // Tus datos
-  resultadosBusqueda: any[] = []; // 
-
+  resultadosBusqueda: any[] = []; //
+  
+  userFilter: any = { Nombre_sol: ''};
+  Nombre_sol: string | null = null;
+  
   constructor(
     private asesoriaService: AsesoriaService, 
     public dialog: MatDialog,
