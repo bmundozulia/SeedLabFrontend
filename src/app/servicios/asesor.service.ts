@@ -16,21 +16,27 @@ export class AsesorService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + access_token
     });
-    
+
   }
 
   url = environment.apiUrl + 'aliado/'
-  url2 = environment.apiUrl + 'asesor'
+  url2 = environment.apiUrl + 'asesor/asesor'
 
-  
+
   getinfoAsesor(access_token: any, id: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.get<any>(`${this.url}mostrarAsesorAliado/${id}`, options);
   }
- 
 
-  createAsesor(access_token: any, asesor:Asesor,):Observable<any>{
+
+  createAsesor(access_token: any, asesor: Asesor,): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.post(this.url2, asesor, options);
+  }
+
+  getAsesor(access_token: any, id: number): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    const url = `${environment.apiUrl}aliado/userProfileAsesor/${id}`;
+    return this.http.get(url, options);
   }
 }
