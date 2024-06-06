@@ -11,12 +11,12 @@ export class RespuestasService {
   url = environment.apiUrl + 'respuestas';
   constructor(private http: HttpClient) { }
 
-  saveAnswers(access_token: any, response: any): Observable<any> {
+  saveAnswers(access_token: any, respuestas: any[]): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + access_token
     });
-    return this.http.post(this.url, response, { headers });
+    return this.http.post(this.url+'/guardar-respuestas', respuestas, { headers });
   }
 
 }

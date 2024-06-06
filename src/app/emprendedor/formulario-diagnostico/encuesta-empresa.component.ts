@@ -29,6 +29,7 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   selectedOption5: string = '';
   respuestas: Respuesta[] = [];
   preguntas: Preguntas[] = PREGUNTAS;
+  firstForm: any[] = [];
   section: number = 1;
   user: User;
   token = '';
@@ -63,18 +64,22 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
       respuesta13: [new Respuesta({}), Validators.required],
       respuesta14: [new Respuesta({}), Validators.required],
       respuesta15: [new Respuesta({}), Validators.required],
-      respuesta16: [new Respuesta({}), Validators.required],
+      /*respuesta16: [new Respuesta({}), Validators.required],
       respuesta17: [new Respuesta({}), Validators.required],
       respuesta18: [new Respuesta({}), Validators.required],
       respuesta19: [new Respuesta({}), Validators.required],
       respuesta20: [new Respuesta({}), Validators.required],
       respuesta21: [new Respuesta({}), Validators.required],
       respuesta22: [new Respuesta({}), Validators.required],
-      respuesta23: [new Respuesta({}), Validators.required],
+      respuesta23: [new Respuesta({}), Validators.required],*/
 
     });
   }
 
+  ngOnInit() {
+    this.processAttributesBasedOnScreenSize();
+    this.validateToken();
+  }
 
   validateToken(): void {
     if (!this.token) {
@@ -94,14 +99,14 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
 
   obtenerIds(): any[] {
     return PREGUNTAS.slice(0, 15).map(pregunta => {
-      console.log(pregunta.id); // Verificar los IDs en la consola
+      //console.log(pregunta.id); // Verificar los IDs en la consola
       return pregunta.id;
     });
   }
 
 
   onSubmitSeccion1() {
-    let firstForm: any[] = [];
+    
     const id_empresa = 1;
     const ids_preguntas = this.obtenerIds();
     let answerCounter = 0;
@@ -112,8 +117,9 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
         for (let j = 0; j < currentPregunta.subPreguntas.length; j++) {
 
           const currentResponse: Respuesta = this.respuestasForm1.get(`respuesta${j + answerCounter}`)?.value;
+          console.log(currentResponse);
           if (currentResponse.texto_res) {
-            firstForm.push(new Respuesta(
+            this.firstForm.push(new Respuesta(
               {
                 id_pregunta: currentPregunta.id,
                 id_empresa: id_empresa,
@@ -122,7 +128,7 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
               }
             ));
           } else {
-            firstForm.push(new Respuesta(
+            this.firstForm.push(new Respuesta(
               {
                 id_pregunta: currentPregunta.id,
                 id_empresa: id_empresa,
@@ -138,9 +144,10 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
 
       console.log(this.id_pregunta);
       const currentResponse: Respuesta = this.respuestasForm1.get(`respuesta${i + 1}`)?.value;
-
+      console.log('CuurrentResponsee',currentResponse);
+      
       if (currentResponse.texto_res) {
-        firstForm.push(new Respuesta(
+        this.firstForm.push(new Respuesta(
           {
             id_pregunta: currentPregunta.id,
             id_empresa: id_empresa,
@@ -148,7 +155,7 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
           }
         ));
       } else {
-        firstForm.push(new Respuesta(
+        this.firstForm.push(new Respuesta(
           {
             id_pregunta: currentPregunta.id,
             id_empresa: id_empresa,
@@ -157,16 +164,17 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
         ));
       }
       answerCounter++;
-      /*console.log(firstForm);
-      this.respuestasService.saveAnswers(this.token, firstForm).subscribe(
-        (data: any) => {
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        }
-      );*/
     }
+    console.log(this.firstForm);
+    console.log (this.respuestasForm1.value);
+    this.respuestasService.saveAnswers(this.token, this.firstForm).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 
@@ -198,9 +206,7 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     this.debouncedProcessAttributes();
   }
 
-  ngOnInit() {
-    this.processAttributesBasedOnScreenSize();
-  }
+  
 
   ngAfterViewInit() {
     this.processAttributesBasedOnScreenSize();
