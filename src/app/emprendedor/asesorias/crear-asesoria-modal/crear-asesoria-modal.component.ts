@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { AliadoService } from '../../../servicios/aliado.service';
 
 @Component({
   selector: 'app-crear-asesoria-modal',
   templateUrl: './crear-asesoria-modal.component.html',
-  styleUrls: ['./crear-asesoria-modal.component.css']
+  styleUrls: ['./crear-asesoria-modal.component.css'],
+  providers: [AsesoriaService, AliadoService]
 })
 export class CrearAsesoriaModalComponent {
   asesoriaForm: FormGroup;

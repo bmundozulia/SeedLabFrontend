@@ -1,13 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VerificacionService } from '../../servicios/verificacion.service';
+
 import { AlertService } from '../../servicios/alert.service';
+import { VerificacionService } from '../../servicios/verificacion.service';
 
 @Component({
   selector: 'app-verification',
   templateUrl: './verification.component.html',
   styleUrl: './verification.component.css',
-  providers: [VerificacionService],
+  providers: [VerificacionService, AlertService],
 })
 export class VerificationComponent implements OnInit {
   email: string;

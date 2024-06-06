@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Asesoria } from '../../../Modelos/asesoria.model';
-import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+
+import { AsesoriaService } from '../../../servicios/asesoria.service';
+
+import { Asesoria } from '../../../Modelos/asesoria.model';
 import { DarAliadoAsesoriaModalComponent } from '../dar-aliado-asesoria-modal/dar-aliado-asesoria-modal.component';
 
 @Component({
   selector: 'app-ver-asesorias',
   templateUrl: './ver-asesorias.component.html',
-  styleUrls: ['./ver-asesorias.component.css']
+  styleUrls: ['./ver-asesorias.component.css'],
+  providers: [AsesoriaService]
 })
 export class VerAsesoriasComponent implements OnInit {
   asesorias: Asesoria[] = [];

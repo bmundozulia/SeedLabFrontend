@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../../servicios/login.service';
-
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { LoginService } from '../../servicios/login.service';
 import { AlertService } from '../../servicios/alert.service';
 
 @Component({

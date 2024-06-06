@@ -1,10 +1,12 @@
 // list-rutas.component.ts
 import { Component, OnInit } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { RutaService } from '../../../servicios/rutas.service';
 import { Router } from '@angular/router';
-import { User } from '../../../Modelos/user.model';
+
+import { RutaService } from '../../../servicios/rutas.service';
+
 import { Ruta } from '../../../Modelos/ruta.modelo';
+import { User } from '../../../Modelos/user.model';
 
 @Component({
   selector: 'app-list-rutas',

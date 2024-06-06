@@ -1,13 +1,15 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { AliadoService } from '../../../servicios/aliado.service';
 
 @Component({
   selector: 'app-dar-aliado-asesoria-modal',
   templateUrl: './dar-aliado-asesoria-modal.component.html',
-  styleUrls: ['./dar-aliado-asesoria-modal.component.css']
+  styleUrls: ['./dar-aliado-asesoria-modal.component.css'],
+  providers: [AsesoriaService, AliadoService]
 })
 export class DarAliadoAsesoriaModalComponent {
   asignarForm: FormGroup;

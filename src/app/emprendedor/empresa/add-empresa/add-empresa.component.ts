@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
-import { HeaderComponent } from '../../../header/header.component';
-import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { DepartamentoService } from '../../../servicios/departamento.service';
-import { MunicipioService } from '../../../servicios/municipio.service';
-import { User } from '../../../Modelos/user.model';
 import { faIdCard } from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { catchError, of, switchMap, tap } from 'rxjs';
+import { HeaderComponent } from '../../../header/header.component';
+import { Router } from '@angular/router';
+
+import { DepartamentoService } from '../../../servicios/departamento.service';
+import { MunicipioService } from '../../../servicios/municipio.service';
 import { EmpresaService } from '../../../servicios/empresa.service';
 import { AlertService } from '../../../servicios/alert.service';
+import { User } from '../../../Modelos/user.model';
 
 
 @Component({

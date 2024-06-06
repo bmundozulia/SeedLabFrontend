@@ -1,24 +1,22 @@
 import { Component, OnInit, input } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { } from '@fortawesome/free-solid-svg-icons';
-import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
-import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
-import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
+import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
+import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { EmprendedorService } from '../../servicios/emprendedor.service';
 import { MunicipioService } from '../../servicios/municipio.service';
 import { RegistroService } from '../../servicios/registro.service';
-import { Router } from '@angular/router';
-import { Emprendedor } from '../../Modelos/emprendedor.model';
-import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
+
 import { User } from '../../Modelos/user.model';
+import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
 
 
 @Component({

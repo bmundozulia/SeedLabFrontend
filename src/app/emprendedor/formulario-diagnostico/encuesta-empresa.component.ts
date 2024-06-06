@@ -2,13 +2,15 @@ import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef, Afte
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { PREGUNTAS } from './preguntas.component';
+
+import { RespuestasService } from '../../servicios/respuestas.service';
+
+import { User } from '../../Modelos/user.model';
 import { Respuesta } from '../../Modelos/respuesta.model';
 import { Preguntas } from '../../Modelos/preguntas.model';
-import { PREGUNTAS } from './preguntas.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { OpcionesRespuesta } from '../../Modelos/opciones-respuesta.model';
-import { RespuestasService } from '../../servicios/respuestas.service';
-import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-encuesta-empresa',
@@ -90,41 +92,12 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   }
 
 
-
-  getIdPregunta(index: number): number | null {
-    let preguntaCounter = 0;
-    let subPreguntaCounter = 0;
-
-    for (const pregunta of this.preguntas) {
-      if (preguntaCounter === index) {
-        return pregunta.id;
-      }
-      preguntaCounter++;
-
-      if (pregunta.subPreguntas) {
-        for (const subPregunta of pregunta.subPreguntas) {
-          if (subPreguntaCounter === index) {
-            return subPregunta.id;
-          }
-          subPreguntaCounter++;
-        }
-      }
-    }
-    return null;
-  }
-
   obtenerIds(): any[] {
     return PREGUNTAS.slice(0, 15).map(pregunta => {
       console.log(pregunta.id); // Verificar los IDs en la consola
       return pregunta.id;
     });
   }
-
-  tieneSubPregunta(id_preguntas: number): boolean {
-    const pregunta = this.preguntas.find(p => p.id === id_preguntas);
-    return pregunta && pregunta.subPreguntas && pregunta.subPreguntas.length > 0;
-  }
-
 
 
   onSubmitSeccion1() {

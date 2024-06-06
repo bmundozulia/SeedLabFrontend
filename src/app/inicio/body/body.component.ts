@@ -1,7 +1,8 @@
 import { Component, AfterViewInit, PLATFORM_ID, Inject, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { TraeraliadosfanpageService } from '../../servicios/traeraliadosfanpage.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
+import { TraeraliadosfanpageService } from '../../servicios/traeraliadosfanpage.service';
 
 
 // Importar función para registrar elementos personalizados de Swiper
@@ -13,7 +14,8 @@ import Swiper from 'swiper';
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css']  // Corrige la propiedad de estilo a 'styleUrls'
+  styleUrls: ['./body.component.css'],// Corrige la propiedad de estilo a 'styleUrls'
+  providers:[TraeraliadosfanpageService]  
 })
 export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
 
