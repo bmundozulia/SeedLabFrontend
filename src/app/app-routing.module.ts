@@ -21,15 +21,15 @@ import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-alia
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
-import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
-import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
-import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { RutasComponent } from './rutas/rutas.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 
 
 import { CursorutasComponent } from './cursorutas/cursorutas.component';
 import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component'
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
+import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
+import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 
 
 const routes: Routes = [
@@ -49,12 +49,12 @@ const routes: Routes = [
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'fan-page', component: FanPageComponent },
   { path: 'perfil-emprendedor', component: PerfilEmprendedorComponent },
-
   // orientador crear
   { path: 'orientador-crear', component: OrientadorCrearComponent },
 
   // crear de superadmin
   { path: 'crear-superadmin', component: CrearSuperadminComponent },
+
 
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
@@ -66,11 +66,12 @@ const routes: Routes = [
   { path: 'add-aliados', component: AddAliadosComponent }, //de orientador
   { path: 'asesorias/aliado', component: AsesoriaAliadoComponent }, //de Aliado
 
+
   //ingreso de aliados 
-  { path: 'list-asesores', component: ListAsesoresComponent},
+  { path: 'list-asesores', component: ListAsesoresComponent },
 
   //ingreso de asesores
-  { path: 'perfil-asesores', component: PerfilAsesorComponent},
+  { path: 'perfil-asesores', component: PerfilAsesorComponent },
 
 
 

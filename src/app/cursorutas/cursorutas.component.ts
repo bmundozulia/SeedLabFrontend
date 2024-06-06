@@ -3,6 +3,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { Pipe, PipeTransform } from '@angular/core';
 
+
 @Pipe({
   name: 'safeUrl'
 })
@@ -107,3 +108,5 @@ export class CursorutasComponent implements OnInit {
     }
   }
 }
+
+
