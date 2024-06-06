@@ -12,6 +12,7 @@ export class SuperadminService {
   constructor(private http: HttpClient) { }
 
   url = environment.apiUrl + 'superadmin/crearSuperAdmin'
+  private url2 = `${environment.apiUrl}userProfile/`
 
   private CreacionHeaders(access_token: any): HttpHeaders {
     return new HttpHeaders({
@@ -23,5 +24,10 @@ export class SuperadminService {
   createSuperadmin(access_token: any, superadmin: Superadmin,): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.post(this.url, superadmin, options);
+  }
+
+  getInfoAdmin(access_token: any,id:string): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.get<any>(`${this.url2}${id}`, options);
   }
 }

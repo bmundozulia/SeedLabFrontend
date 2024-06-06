@@ -1,1 +1,51 @@
-<p>perfil-admin works!</p>
+<form>
+    <div class="container -mx-auto px-4 py-6 md:py-12 md:flex items-center justify-center h-screen">
+        <div class="grid grid-cols-12 gap-4 mb-6">
+            <div class="col-span-12 bg-white rounded-lg p-4 md:p-8">
+                <div class="text-3xl md:text-9xl">
+                    <h5 class="text-xl md:text-2xl md:pl-20 font-bold mb-2 md:mb-4  text-sky-600">
+                        Información Personal Administrador
+                    </h5>
+                </div>
+                <div class="flex flex-wrap mt-12">
+                    <div class="w-full md:w-1/3 pr-6 max-md:mb-2 max-md:-mt-7">
+
+                    </div>
+                    <div class="w-full md:w-1/3 pr-0 md:pr-2 md:-mt-12 lg:-mt-6">
+                        <label for="nombre" class="block mb-2 text-blue-400">Nombre:</label>
+                        <input type="text" id="nombre" formControlName="nombre"
+                            class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200  appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                    </div>
+
+                    <div class="w-full md:w-1/3 pl-0 md:pl-2  md:-mt-12 lg:-mt-6">
+                        <label for="apellido" class="block mb-2 text-blue-400">Apellido:</label>
+                        <input type="text" id="apellido" formControlName="apellido"
+                            class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200  appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                    </div>
+
+                    <div class="w-full md:w-1/3 pr-0 md:pr-2"></div>
+                    <hr class="w-full border-t-2 border-gray-400 " />
+                    <div class="w-full md:w-1/3 pl-0 md:pl-2">
+                        <h5 class="text-xl md:text-2xl font-bold mb-2  md:-mx-5 md:pl-24 md:mb-4 text-sky-600 md:mt-5">
+                            Contacto
+                        </h5>
+                    </div>
+                    <div class="w-full md:w-1/3 pr-0 md:pr-2 relative ">
+                        <label for="nombre" class="block mb-2 text-blue-400">Correo Electronico:</label>
+                        <input type="text" id="correo" formControlName="email"
+                            class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200  appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200">
+                        <!-- <fa-icon [icon]="faEnvelope" class="absolute right-4 top-5 mt-6 text-cyan-500  z-0  " styles=" pointer-events: auto;"></fa-icon> -->
+                    </div>
+                    <div class="flex justify-end mt-14">
+                        <div class="flex justify-end">
+                            <button id="boton"
+                                class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-4 rounded -pl-12">
+                                Editar Perfil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
