@@ -5,13 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { User } from '../../../../Modelos/user.model';
 import { Asesor } from '../../../../Modelos/asesor.model';
 import { AsesorService } from '../../../../servicios/asesor.service';
+import { error } from 'console';
+import { AliadoService } from '../../../../servicios/aliado.service';
 
 
 @Component({
   selector: 'app-modal-add-asesores',
   templateUrl: './modal-add-asesores.component.html',
   styleUrl: './modal-add-asesores.component.css',
-  providers: [AsesorService]
+  providers: [AsesorService, AliadoService]
 })
 export class ModalAddAsesoresComponent implements OnInit {
   hide = true;
@@ -39,16 +41,17 @@ export class ModalAddAsesoresComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private asesorService: AsesorService,
-  ) {      this.asesorId = data.id;
-    console.log('ID recibido en el modal:', this.asesorId);
+    private aliadoService: AliadoService,
 
-    // Aquí puedes usar el id para cargar los detalles del asesor si es necesario
-    }
+  ) {
+    this.asesorId = data.asesorId;
+    console.log(' en el modal:', this.asesorId);
+  }
 
   ngOnInit(): void {
     this.validateToken();
+    this.verEditar();
   }
-
 
   validateToken(): void {
     if (!this.token) {
@@ -75,6 +78,29 @@ export class ModalAddAsesoresComponent implements OnInit {
       } else {
         console.error('No se encontró información de identity en localStorage');
       }
+    }
+  }
+
+  verEditar(): void {
+    if (this.asesorId != null) {
+      this.aliadoService.getAsesorAliado(this.token, this.id).subscribe(
+        data => {
+          this.asesorForm.patchValue({
+            nombre: data.nombre,
+            apellido: data.apellido,
+            celular: data.celular,
+            aliado: data.aliado,
+            email: data.email,
+            password: data.password,
+            estado: data.estado,
+          });
+          console.log(data);
+        },
+        error => {
+          console.log(error)
+          console.log(this.asesorId);
+        }
+      )
     }
   }
 

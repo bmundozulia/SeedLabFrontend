@@ -38,5 +38,10 @@ export class AliadoService {
     return this.http.get(`${environment.apiUrl}orientador/listaAliado`,options);
   }
 
+  getAsesorAliado(access_token: any, id: number): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    const url = `${environment.apiUrl}aliado/userProfileAsesor/${id}`;
+    return this.http.get(url, options);
+  }
   
 }

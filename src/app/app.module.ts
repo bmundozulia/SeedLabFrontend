@@ -63,6 +63,7 @@ import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadm
 import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
 import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
 import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
+import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
 
 import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 
@@ -111,6 +112,7 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
     ListAsesoresComponent,
     ModalAddAsesoresComponent,
     PerfilAsesorComponent,
+    PerfilAdminComponent,
   ],
   imports: [
     BrowserModule,
