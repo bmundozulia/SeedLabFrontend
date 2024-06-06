@@ -19,6 +19,19 @@ export class VerAsesoriasComponent implements OnInit {
   asignadasCount: number = 0;
   backgroundClass: string = 'bg-red-500'; // Default to 'sin asignar'
 
+  userFilter: any = { Nombre_sol: ''};
+  Nombre_sol: string | null = null;
+
+  fullHeightIndices: number[] = [];
+  toggleFullHeight(index: number): void {
+    const idx = this.fullHeightIndices.indexOf(index);
+    if (idx > -1) {
+      this.fullHeightIndices.splice(idx, 1);
+    } else {
+      this.fullHeightIndices.push(index);
+    }
+  }
+
   constructor(
     private asesoriaService: AsesoriaService,
     public dialog: MatDialog,
