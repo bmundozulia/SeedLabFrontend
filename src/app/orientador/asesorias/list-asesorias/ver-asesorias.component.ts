@@ -17,7 +17,7 @@ export class VerAsesoriasComponent implements OnInit {
   currentRolId: string | null = null;
   sinAsignarCount: number = 0;
   asignadasCount: number = 0;
-  backgroundClass: string = 'bg-[#FFB7B7]'; // Default to 'sin asignar'
+  backgroundClass: string = 'bg-red-500'; // Default to 'sin asignar'
 
   constructor(
     private asesoriaService: AsesoriaService,
@@ -58,10 +58,10 @@ export class VerAsesoriasComponent implements OnInit {
 
         if (pendiente) {
           this.sinAsignarCount = this.asesorias.length; // Actualiza el contador de sin asignar
-          this.backgroundClass = 'bg-[#FFB7B7]'; // Set background class for 'sin asignar'
+          this.backgroundClass = 'bg-red-500'; // Set background class for 'sin asignar'
         } else {
           this.asignadasCount = this.asesorias.length; // Actualiza el contador de asignadas
-          this.backgroundClass = 'bg-[#C5F9AD]'; // Set background class for 'asignadas'
+          this.backgroundClass = 'bg-green-500'; // Set background class for 'asignadas'
         }
       },
       error => {
