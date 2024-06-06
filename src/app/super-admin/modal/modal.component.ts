@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SwitchService } from '../../servicios/switch.service'
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RutaService } from '../../servicios/rutas.service';
 import { DatePipe } from '@angular/common';
 import { User } from '../../Modelos/user.model';
