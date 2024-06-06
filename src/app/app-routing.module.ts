@@ -68,10 +68,11 @@ const routes: Routes = [
 
 
   //ingreso de aliados 
-  { path: 'list-asesores', component: ListAsesoresComponent},
+  { path: 'list-asesores', component: ListAsesoresComponent },
 
   //ingreso de asesores
-  { path: 'perfil-asesores', component: PerfilAsesorComponent},
+  { path: 'perfil-asesores', component: PerfilAsesorComponent },
+
 
 
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
