@@ -83,27 +83,26 @@ export class ModalAddAsesoresComponent implements OnInit {
 
   verEditar(): void {
     if (this.asesorId != null) {
-      this.aliadoService.getAsesorAliado(this.token, this.id).subscribe(
+      this.aliadoService.getAsesorAliado(this.token, this.asesorId).subscribe(
         data => {
           this.asesorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
             celular: data.celular,
-            aliado: data.aliado,
-            email: data.email,
-            password: data.password,
-            estado: data.estado,
+            aliado: data.auth?.id,
+            email: data.auth?.email,
+            password: '',
+            estado: '1',
           });
-          console.log(data);
+          //console.log(data);
         },
         error => {
           console.log(error)
-          console.log(this.asesorId);
+         // console.log(this.asesorId);
         }
       )
     }
   }
-
 
   AddAsesor(): void {
     const asesor: Asesor = {
@@ -115,17 +114,27 @@ export class ModalAddAsesoresComponent implements OnInit {
       password: this.asesorForm.get('password')?.value,
       estado: this.asesorForm.get('estado')?.value,
     }
-    console.log("Objeto Asesor:", asesor);
-    this.asesorService.createAsesor(this.token, asesor).subscribe(
-      data => {
-        console.log("siuuuuuuuuu");
-        console.log(data);
-        location.reload();
-      },
-      error => {
-        console.error('Error al crear el asesor:', error);
-      }
-    )
-  }
+    if (this.asesorId != null) {
+      this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
+        data => {
+          //console.log("aquibueno", data);
+          location.reload();
+        },
+        error => {
+          console.error('Error al actualizar el asesor:', error);
+        });
 
+    } else {
+      console.log("Objeto Asesor:", asesor);
+      this.asesorService.createAsesor(this.token, asesor).subscribe(
+        data => {
+          //console.log("siuuuuuuuuu");
+         // console.log(data);
+          location.reload();
+        },
+        error => {
+          console.error('Error al crear el asesor:', error);
+        });
+    }
+  }
 }

@@ -75,8 +75,6 @@ export class ListAsesoresComponent implements OnInit {
         }
       );
     }
-
-
   }
 
   onEstadoChange(event: any): void {
