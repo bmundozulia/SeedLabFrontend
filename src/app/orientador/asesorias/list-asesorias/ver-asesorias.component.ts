@@ -12,10 +12,12 @@ import { DarAliadoAsesoriaModalComponent } from '../dar-aliado-asesoria-modal/da
 })
 export class VerAsesoriasComponent implements OnInit {
   asesorias: Asesoria[] = [];
-  barritaColor: string;
   token: string | null = null;
   user: any = null;
   currentRolId: string | null = null;
+  sinAsignarCount: number = 0;
+  asignadasCount: number = 0;
+  backgroundClass: string = 'bg-red-500'; // Default to 'sin asignar'
 
   constructor(
     private asesoriaService: AsesoriaService,
@@ -25,7 +27,7 @@ export class VerAsesoriasComponent implements OnInit {
 
   ngOnInit() {
     this.validateToken();
-    this.loadAsesorias();
+    this.loadSinAsignar(); // Load sin asignar by default
   }
 
   validateToken(): void {
@@ -39,6 +41,7 @@ export class VerAsesoriasComponent implements OnInit {
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
         console.log(this.currentRolId);
+        this.loadAsesorias(false);
       }
     }
 
@@ -47,11 +50,19 @@ export class VerAsesoriasComponent implements OnInit {
     }
   }
 
-  loadAsesorias(pendiente: boolean = true): void {
+  loadAsesorias(pendiente: boolean): void {
     this.asesoriaService.postAsesoriasOrientador(pendiente).subscribe(
       data => {
         console.log('Respuesta de la API:', data); // Escribir la respuesta en la consola
         this.asesorias = data;
+
+        if (pendiente) {
+          this.sinAsignarCount = this.asesorias.length; // Actualiza el contador de sin asignar
+          this.backgroundClass = 'bg-red-500'; // Set background class for 'sin asignar'
+        } else {
+          this.asignadasCount = this.asesorias.length; // Actualiza el contador de asignadas
+          this.backgroundClass = 'bg-green-500'; // Set background class for 'asignadas'
+        }
       },
       error => {
         console.error('Error al obtener las asesorías orientador:', error);
@@ -68,7 +79,7 @@ export class VerAsesoriasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result) {
-        this.loadAsesorias(); // Recargar asesorías si el modal se cerró con éxito
+        this.loadAsesorias(this.backgroundClass === 'bg-[#FFB7B7]'); // Recargar asesorías si el modal se cerró con éxito
       }
     });
   }
