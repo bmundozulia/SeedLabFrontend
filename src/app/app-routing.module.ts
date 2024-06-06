@@ -64,7 +64,7 @@ const routes: Routes = [
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor
   { path: 'ver-asesoria', component: VerAsesoriasComponent }, //de osesoria
   { path: 'add-aliados', component: AddAliadosComponent }, //de orientador
-  { path: 'asesorias/hola', component: AsesoriaAliadoComponent }, //de Aliado
+  { path: 'asesorias/aliado', component: AsesoriaAliadoComponent }, //de Aliado
 
   //ingreso de aliados 
   { path: 'list-asesores', component: ListAsesoresComponent},
