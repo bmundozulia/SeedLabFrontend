@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,9 @@ import { AliadoService } from '../../../../servicios/aliado.service';
   providers: [AsesorService, AliadoService]
 })
 export class ModalAddAsesoresComponent implements OnInit {
+  @Input() isEditing: boolean = false;
   hide = true;
+  submitted: boolean = false;
   asesorId: any;
   user: User | null = null;
   currentRolId: string | null = null;
@@ -52,6 +54,8 @@ export class ModalAddAsesoresComponent implements OnInit {
     this.validateToken();
     this.verEditar();
   }
+
+  get f() { return this.asesorForm.controls; } //aquii
 
   validateToken(): void {
     if (!this.token) {
@@ -98,7 +102,7 @@ export class ModalAddAsesoresComponent implements OnInit {
         },
         error => {
           console.log(error)
-         // console.log(this.asesorId);
+          // console.log(this.asesorId);
         }
       )
     }
@@ -129,7 +133,7 @@ export class ModalAddAsesoresComponent implements OnInit {
       this.asesorService.createAsesor(this.token, asesor).subscribe(
         data => {
           //console.log("siuuuuuuuuu");
-         // console.log(data);
+          // console.log(data);
           location.reload();
         },
         error => {
@@ -137,4 +141,10 @@ export class ModalAddAsesoresComponent implements OnInit {
         });
     }
   }
+
+
+  cancelarModal() {
+    this.dialogRef.close();
+  }
+
 }

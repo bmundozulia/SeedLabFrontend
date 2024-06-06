@@ -9,7 +9,7 @@ import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { MatIconModule } from '@angular/material/icon';
-import { FormBuilder, ReactiveFormsModule, FormGroup, Validators,AbstractControl } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { MunicipioService } from '../../servicios/municipio.service';
@@ -87,11 +87,11 @@ export class RegisterComponent implements OnInit {
     const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(value);
 
     if (hasUpperCase && hasSpecialChar) {
-        return null;
+      return null;
     } else {
-        return { passwordStrength: 'La contraseña debe contener al menos una letra mayúscula y un carácter especial *'};
+      return { passwordStrength: 'La contraseña debe contener al menos una letra mayúscula y un carácter especial *' };
     }
-}
+  }
 
   get f() { return this.registerForm.controls; }
 
@@ -160,9 +160,9 @@ export class RegisterComponent implements OnInit {
       },
       (error) => {
         console.log('Error en el registro', error);
-        if(error.status === 400){
+        if (error.status === 400) {
           this.alertService.errorAlert('Error', error.error.message)
-        } else if(this.errorMessage = error.error.message){
+        } else if (this.errorMessage = error.error.message) {
           this.alertService.errorAlert('Error', error.message)
         }
       }

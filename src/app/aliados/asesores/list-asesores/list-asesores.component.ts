@@ -92,8 +92,6 @@ export class ListAsesoresComponent implements OnInit {
     let dialogRef: MatDialogRef<ModalAddAsesoresComponent>;
 
     dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
-      width: '600px',
-      height: '600px',
       data: { asesorId: asesorId }
     });
   
@@ -104,10 +102,7 @@ export class ListAsesoresComponent implements OnInit {
 
   openModalCONId(asesorId: number | null): void {
     let dialogRef: MatDialogRef<ModalAddAsesoresComponent>;
-  
     dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
-      width: '600px',
-      height: '600px',
       data: { asesorId: asesorId }
     });
   
@@ -126,7 +121,7 @@ export class ListAsesoresComponent implements OnInit {
     console.log(`para el modal: ${this.selectedAsesorId}`);
   }
 
-
+  
 
 
 }
