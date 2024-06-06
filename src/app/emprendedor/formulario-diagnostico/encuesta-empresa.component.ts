@@ -34,8 +34,8 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   currentRolId: string | null = null;
   currentIndex = 0;
   respuestasForm1: FormGroup;
-  id_pregunta: number[];
-  id_subpregunta: number[][] | null = null;
+  id_pregunta: number;
+  id_subpregunta: number | null = null;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
   constructor(
@@ -46,29 +46,29 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     private respuestasService: RespuestasService,
   ) {  //Formulario seccion 1
     this.respuestasForm1 = this.fb.group({
-     respuesta1:[''],
-     respuesta2: [''],
-     respuesta3: [''],
-     respuesta4: [''],
-     respuesta5: [''],
-     respuesta6: [''],
-     respuesta7: [''],
-     respuesta8: [''],
-     respuesta9: [''],
-     respuesta10: [''],
-     respuesta11: [''],
-     respuesta12: [''],
-     respuesta13: [''],
-     respuesta14: [''],
-     respuesta15: [''],
-     respuesta16: [''],
-     respuesta17: [''],
-     respuesta18: [''],
-     respuesta19: [''],
-     respuesta20: [''],
-     respuesta21: [''],
-     respuesta22: [''],
-     respuesta23: [''],
+      respuesta1: [new Respuesta({}), Validators.required],
+      respuesta2: [new Respuesta({}), Validators.required],
+      respuesta3: [new Respuesta({}), Validators.required],
+      respuesta4: [new Respuesta({}), Validators.required],
+      respuesta5: [new Respuesta({}), Validators.required],
+      respuesta6: [new Respuesta({}), Validators.required],
+      respuesta7: [new Respuesta({}), Validators.required],
+      respuesta8: [new Respuesta({}), Validators.required],
+      respuesta9: [new Respuesta({}), Validators.required],
+      respuesta10: [new Respuesta({}), Validators.required],
+      respuesta11: [new Respuesta({}), Validators.required],
+      respuesta12: [new Respuesta({}), Validators.required],
+      respuesta13: [new Respuesta({}), Validators.required],
+      respuesta14: [new Respuesta({}), Validators.required],
+      respuesta15: [new Respuesta({}), Validators.required],
+      respuesta16: [new Respuesta({}), Validators.required],
+      respuesta17: [new Respuesta({}), Validators.required],
+      respuesta18: [new Respuesta({}), Validators.required],
+      respuesta19: [new Respuesta({}), Validators.required],
+      respuesta20: [new Respuesta({}), Validators.required],
+      respuesta21: [new Respuesta({}), Validators.required],
+      respuesta22: [new Respuesta({}), Validators.required],
+      respuesta23: [new Respuesta({}), Validators.required],
 
     });
   }
@@ -113,68 +113,87 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     return null;
   }
 
-  /*obtenerIds(index: number):any{
-    PREGUNTAS.map(pregunta=>{
-      console.log(pregunta.id);
-      if(pregunta.subPreguntas.length > 0){
-        pregunta.subPreguntas.map(subPregunta=>{
-          this.id_subpregunta = subPregunta.id;
-          console.log(subPregunta.id);
-          return subPregunta.id;
-        })
-      }
+  obtenerIds(): any[] {
+    return PREGUNTAS.slice(0, 15).map(pregunta => {
+      console.log(pregunta.id); // Verificar los IDs en la consola
       return pregunta.id;
     });
-  }*/
+  }
 
   tieneSubPregunta(id_preguntas: number): boolean {
     const pregunta = this.preguntas.find(p => p.id === id_preguntas);
     return pregunta && pregunta.subPreguntas && pregunta.subPreguntas.length > 0;
   }
 
+
+
   onSubmitSeccion1() {
     let firstForm: any[] = [];
     const id_empresa = 1;
-    this.id_pregunta = PREGUNTAS.map(pregunta=>{
-      return pregunta.id;
-    });
+    const ids_preguntas = this.obtenerIds();
+    let answerCounter = 0;
 
-    this.id_subpregunta = PREGUNTAS.map(pregunta=>{
-      return pregunta.subPreguntas.map(subPregunta=>{
-        return subPregunta.id;
-      })
-    })
+    for (let i = 0; i < ids_preguntas.length; i++) {
+      const currentPregunta = PREGUNTAS[i];
+      if (currentPregunta.isAffirmativeResponse) {
+        for (let j = 0; j < currentPregunta.subPreguntas.length; j++) {
 
-    for (let i = 0; i < 23; i++) {
-      let id_preguntas = this.getIdPregunta(i);
-      const tieneSubPregunta = this.tieneSubPregunta(id_preguntas);
-      if(tieneSubPregunta) {
+          const currentResponse: Respuesta = this.respuestasForm1.get(`respuesta${j + answerCounter}`)?.value;
+          if (currentResponse.texto_res) {
+            firstForm.push(new Respuesta(
+              {
+                id_pregunta: currentPregunta.id,
+                id_empresa: id_empresa,
+                texto_res: currentResponse.texto_res,
+                id_subpregunta: currentPregunta.subPreguntas[j].id,
+              }
+            ));
+          } else {
+            firstForm.push(new Respuesta(
+              {
+                id_pregunta: currentPregunta.id,
+                id_empresa: id_empresa,
+                opcion: currentResponse.opcion,
+                id_subpregunta: currentPregunta.subPreguntas[j].id,
+              }
+            ));
+          }
+        }
+        answerCounter += currentPregunta.subPreguntas.length+1;
+        continue;
+      }
+
+      console.log(this.id_pregunta);
+      const currentResponse: Respuesta = this.respuestasForm1.get(`respuesta${i + 1}`)?.value;
+
+      if (currentResponse.texto_res) {
         firstForm.push(new Respuesta(
-          this.id_pregunta[i],
-          id_empresa,
-          this.respuestasForm1.get(`respuesta${i}`)?.value,
-          this.respuestasForm1.get(`respuesta${i}`)?.value,
-          this.id_subpregunta [i][i]
+          {
+            id_pregunta: currentPregunta.id,
+            id_empresa: id_empresa,
+            texto_res: currentResponse.texto_res,
+          }
         ));
-      }else{
+      } else {
         firstForm.push(new Respuesta(
-          this.id_pregunta[i],
-          id_empresa,
-          this.respuestasForm1.get(`respuesta${i}`)?.value,
-          this.respuestasForm1.get(`respuesta${i}`)?.value 
+          {
+            id_pregunta: currentPregunta.id,
+            id_empresa: id_empresa,
+            opcion: currentResponse.opcion,
+          }
         ));
       }
-      
-      }
-      console.log(firstForm); 
+      answerCounter++;
+      /*console.log(firstForm);
       this.respuestasService.saveAnswers(this.token, firstForm).subscribe(
-      (data:any) => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+        (data: any) => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );*/
+    }
   }
 
 

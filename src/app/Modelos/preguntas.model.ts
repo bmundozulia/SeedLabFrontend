@@ -4,7 +4,8 @@ export interface Preguntas {
     nombre: string;
     puntaje: number;
     id_seccion: number;
-    subPreguntas?: SubPreguntas[]; // Opcionalmente, puedes añadir subPreguntas aquí
+    isAffirmativeResponse : boolean;
+    subPreguntas: SubPreguntas[]; // Opcionalmente, puedes añadir subPreguntas aquí
 }
 
 export interface SubPreguntas {

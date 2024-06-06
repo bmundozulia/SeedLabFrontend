@@ -6,6 +6,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Cuántos integrantes conforman su equipo de trabajo?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -13,6 +14,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Cuenta con personas de apoyo en:',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: [
             { id: 1, texto: 'Administrativo', puntaje: 0, id_pregunta: 2 },
             { id: 2, texto: 'Desarrollo', puntaje: 0, id_pregunta: 2 },
@@ -27,6 +29,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Su emprendimiento está legalmente constituido?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -34,6 +37,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Cumple con las normas tributarias, contables, laborales, comerciales y/o legales para desempeñar la actividad?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -41,6 +45,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene claramente definido su modelo de negocio?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -48,6 +53,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene claramente definido su plan de negocios?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -55,6 +61,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene experiencia comercial relacionada con el producto y/o servicio?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -62,6 +69,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la respuesta anterior fue afirmativa indicar: ¿Cuánto tiempo de experiencia relacionada tiene?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -69,6 +77,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Su emprendimiento tiene definido la misión y la visión?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -76,6 +85,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la respuesta anterior fue afirmativa indicar ¿Cuál es su misión?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -83,6 +93,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la respuesta anterior fue afirmativa indicar ¿Cuál es su visión?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -90,6 +101,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene definidas metas empresariales?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:7, texto: 'Meta 1', puntaje: 0, id_pregunta:12},
             {id:8, texto: 'Meta 2', puntaje: 0, id_pregunta:12},
@@ -102,6 +114,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿El personal de apoyo está debidamente contratado?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -109,6 +122,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Los cargos de apoyo tienen funciones claramente definidas?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -116,6 +130,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿El perfil de los apoyos está debidamente definido?',
         puntaje: 0,
         id_seccion: 1,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -123,6 +138,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene identificado los gastos y costos de su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -130,6 +146,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la respuesta anterior fue afirmativa indicar: ¿Cuáles?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:11, texto:'Gastos fijos', puntaje: 0, id_pregunta: 17},
             {id:12, texto:'Gastos variables', puntaje: 0, id_pregunta: 17},
@@ -146,6 +163,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿En su emprendimiento elabora estados financieros?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -153,6 +171,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la respuesta anterior fue afirmativa indicar: ¿Cuáles?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:19, texto:'Balance General', puntaje:0, id_pregunta:19},
             {id:20, texto:'Estado de Flujo', puntaje:0, id_pregunta:19},
@@ -166,6 +185,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene claridad sobre qué presupuestos debe elaborar para su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -173,6 +193,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la respuesta anterior fue afirmativa indicar: ¿Cuáles?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:24, texto:'Ingresos', puntaje:0, id_pregunta:21},
             {id:25, texto:'Egresos', puntaje:0, id_pregunta:21},
@@ -185,6 +206,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Los costos de su producto y/o servicio están claramente definidos?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -192,6 +214,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la anterior respuesta fue afirmativa: ¿Qué factores tiene en cuenta para definir el precio de su producto y/o servicio?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:28, texto:'Costos', puntaje:0, id_pregunta:23},
             {id:29, texto:'Demanda', puntaje:0, id_pregunta:23},
@@ -204,6 +227,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Cuáles alternativas de financiamiento usa para apoyar su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:32, texto:'Prestamo Formal', puntaje:0, id_pregunta:24},
             {id:33, texto:'Prestamo Informal', puntaje:0, id_pregunta:24},
@@ -217,6 +241,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Su producto y/o servicio presenta en la actualidad ventas?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -224,6 +249,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la anterior respuesta fue afirmativa: ¿Cuál es el valor promedio / estimado de las ventas al año?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:37, texto:'Ingreso supperior al egreso', puntaje:0, id_pregunta:26},
             {id:38, texto:'Ingreso superior al egreso', puntaje:0, id_pregunta:26},
@@ -236,6 +262,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Cuáles canales de ventas usa para comercializar su negocio?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:41, texto:'Punto de venta', puntaje:0, id_pregunta:27},
             {id:42, texto:'Telemarketing', puntaje:0, id_pregunta:27},
@@ -249,6 +276,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Sabe cuáles obligacioness aplican a su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -256,6 +284,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la anterior respuesta fue afirmativa: ¿Cuáles?',
         puntaje: 0,
         id_seccion: 2,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:46, texto:'Iva', puntaje:0, id_pregunta:29},
             {id:47, texto:'Ica', puntaje:0, id_pregunta:29},
@@ -268,6 +297,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene claramente definico sus clientes actuales?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -275,6 +305,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si tiene clientes actuales:¿Quiénes son?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -282,6 +313,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene definido sus clientes potenciales?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -289,6 +321,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si tiene definido sus clientes potenciales: ¿Quiénes son?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -296,6 +329,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene definido los competidores de su producto y/o servicio?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -303,6 +337,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Le gustaría ser cómo?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -310,6 +345,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿No te gustaría ser cómo?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -317,6 +353,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene identificado con claridad el factor diferencial de su empresa, producto y/o servicio?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -324,6 +361,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Ha participado en otras estrategias de fortalecimeinto, semilla, aceleración y/o similares?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -331,6 +369,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Está dispuesto a realizar alianzas para la venta y/o distribución de sus productos, así como para la adquisición de equipos, insumos y/o materiales?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -338,6 +377,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Está dispuesto a realizar alianzas y/o convenios para el uso de equipos con otras instituciones y/u organizaciones para el desarrollo de productos?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -345,6 +385,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Está dispuesto a realizar alianza y/o convenios para recibir apoyo técnico especializado para el desarrollo de productos y/o servicios?',
         puntaje: 0,
         id_seccion: 3,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -352,6 +393,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Definición de TRL',
         puntaje: 0,
         id_seccion: 4,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:50, texto:'¿La propuesta cuenta con una identificación básica de información científica susceptible de ser aplicada?', puntaje:0, id_pregunta:42},
             {id:51, texto:'¿Tiene al menos una imagen general de lo que debe hacer su producto y/o servicio?', puntaje:0, id_pregunta:42},
@@ -391,6 +433,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Cuenta con área o departamento de innovación y/o desarrollo tecnológico?',
         puntaje: 0,
         id_seccion: 4,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -398,6 +441,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene definidas las necesidades de su producto y/o servicio?',
         puntaje: 0,
         id_seccion: 4,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -405,6 +449,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la anterior respuesta fue afirmativa: ¿cuáles?',
         puntaje: 0,
         id_seccion: 4,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:81, texto:'Apoyo Tecnico', puntaje:0, id_pregunta:45},
             {id:82, texto:'Capacitación', puntaje:0, id_pregunta:45},
@@ -420,6 +465,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene definidas las necesidades de su emprendimiento (organizacional)?',
         puntaje: 0,
         id_seccion: 4,
+        isAffirmativeResponse: false,
         subPreguntas: []
     },
     {
@@ -427,6 +473,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: 'Si la anterior respuesta fue afirmativa: ¿cuáles?',
         puntaje: 0,
         id_seccion: 4,
+        isAffirmativeResponse: false,
         subPreguntas: [
             {id:88, texto:'Apoyo Tecnico', puntaje:0, id_pregunta:47},
             {id:89, texto:'Capacitación', puntaje:0, id_pregunta:47},
