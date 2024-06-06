@@ -2,11 +2,19 @@ import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef, Afte
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Respuesta } from '../../Modelos/respuesta.model';
+import { Preguntas } from '../../Modelos/preguntas.model';
+import { PREGUNTAS } from './preguntas.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OpcionesRespuesta } from '../../Modelos/opciones-respuesta.model';
+import { RespuestasService } from '../../servicios/respuestas.service';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-encuesta-empresa',
   templateUrl: './encuesta-empresa.component.html',
   styleUrls: ['./encuesta-empresa.component.css'],
+  providers: [RespuestasService]
 })
 export class EncuestaEmpresaComponent implements AfterViewInit {
   fa1 = fa1;
@@ -17,11 +25,131 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   selectedOption3: string = '';
   selectedOption4: string = '';
   selectedOption5: string = '';
-
+  respuestas: Respuesta[] = [];
+  preguntas: Preguntas[] = PREGUNTAS;
+  section: number = 1;
+  user: User;
+  token = '';
+  documento: string;
+  currentRolId: string | null = null;
   currentIndex = 0;
+  respuestasForm1: FormGroup;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    private cdr: ChangeDetectorRef,
+    private fb: FormBuilder,
+    private respuestasService: RespuestasService,
+  ) {  //Formulario seccion 1
+    this.respuestasForm1 = this.fb.group({
+     respuesta1:[''],
+     respuesta2: [''],
+     respuesta3: [''],
+     respuesta4: [''],
+     respuesta5: [''],
+     respuesta6: [''],
+     respuesta7: [''],
+     respuesta8: [''],
+     respuesta9: [''],
+     respuesta10: [''],
+     respuesta11: [''],
+     respuesta12: [''],
+     respuesta13: [''],
+     respuesta14: [''],
+     respuesta15: [''],
+     respuesta16: [''],
+     respuesta17: [''],
+     respuesta18: [''],
+     respuesta19: [''],
+     respuesta20: [''],
+     respuesta21: [''],
+     respuesta22: [''],
+     respuesta23: [''],
+
+    });
+  }
+
+
+  validateToken(): void {
+    if (!this.token) {
+      this.token = localStorage.getItem("token");
+      let identityJSON = localStorage.getItem('identity');
+
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        console.log(identity);
+        this.user = identity;
+        this.documento = this.user.emprendedor.documento;
+        this.currentRolId = this.user.id_rol?.toString();
+      }
+    }
+  }
+
+  getIdPregunta(index: number): number | null {
+    let preguntaCounter = 0;
+    let subPreguntaCounter = 0;
+
+    for (const pregunta of this.preguntas) {
+      if (preguntaCounter === index) {
+        return pregunta.id;
+      }
+      preguntaCounter++;
+
+      if (pregunta.subPreguntas) {
+        for (const subPregunta of pregunta.subPreguntas) {
+          if (subPreguntaCounter === index) {
+            return subPregunta.id;
+          }
+          subPreguntaCounter++;
+        }
+      }
+    }
+    return null;
+  }
+
+  tieneSubPregunta(id_pregunta: number): boolean {
+    const pregunta = this.preguntas.find(p => p.id === id_pregunta);
+    return pregunta && pregunta.subPreguntas && pregunta.subPreguntas.length > 0;
+  }
+
+  onSubmitSeccion1() {
+    let firstForm: any[] = [];
+    const id_empresa = 1;
+
+    for (let i = 0; i < 23; i++) {
+      let id_pregunta = this.getIdPregunta(i);
+      
+      const tieneSubPregunta = this.tieneSubPregunta(id_pregunta);
+
+        firstForm.push(new Respuesta(
+          id_pregunta,
+          id_empresa,
+          this.respuestasForm1.get(`respuesta${i}`)?.value,
+          this.respuestasForm1.get(`respuesta${i}`)?.value 
+        ));
+      }
+      console.log(firstForm); 
+      this.respuestasService.saveAnswers(this.token, firstForm).subscribe(
+      (data:any) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+
+
+
+
+
+
+  loadNextSection(): void {
+    this.section++;
+  }
 
   next() {
     if (this.currentIndex < 3) {

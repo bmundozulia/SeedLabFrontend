@@ -111,8 +111,7 @@ export class PerfilEmprendedorComponent implements OnInit {
             genero: data.genero,
             fecha_nac: data.fecha_nac,
             direccion: data.direccion,
-            nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : '',
-            municipio: data.id_municipio ? data.id_municipio.toString() : ''
+            nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : ''
           });
           console.log(data);
 

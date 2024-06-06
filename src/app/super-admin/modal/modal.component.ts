@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { SwitchService } from '../../servicios/switch.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RutaService } from '../../servicios/rutas.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css'
+  styleUrl: './modal.component.css',
+  providers: [RutaService, DatePipe]
+
 })
 export class ModalComponent implements OnInit {
 

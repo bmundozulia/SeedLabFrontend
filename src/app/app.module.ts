@@ -48,6 +48,7 @@ import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-mo
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RutasComponent } from './rutas/rutas.component';
 import { HorarioModalComponent } from './asesor/horario-modal/horario-modal/horario-modal.component';
@@ -57,7 +58,12 @@ import { CursorutasComponent } from './cursorutas/cursorutas.component';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { SafeUrlPipe } from './cursorutas/cursorutas.component';
+import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component';
+import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadmin/modalcrear-superadmin.component';
 
+import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
+import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
+import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 
 
 
@@ -97,8 +103,14 @@ import { SafeUrlPipe } from './cursorutas/cursorutas.component';
     ModalCrearOrientadorComponent,
     CursorutasComponent,
     SafeUrlPipe,
+    CrearSuperadminComponent,
+    ModalcrearSuperadminComponent,
    
     
+    ForgotpasswordComponent,
+    ListAsesoresComponent,
+    ModalAddAsesoresComponent,
+    PerfilAsesorComponent,
   ],
   imports: [
     BrowserModule,

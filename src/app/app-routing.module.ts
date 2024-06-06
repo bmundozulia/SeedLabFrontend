@@ -26,12 +26,17 @@ import { OrientadorCrearComponent } from './orientador/orientador-crear/orientad
 
 
 import { CursorutasComponent } from './cursorutas/cursorutas.component';
+import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component'
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
+import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
+import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'register', component: RegisterComponent },
   { path: 'verification', component: VerificationComponent },
+  { path: 'forgotPassword', component: ForgotpasswordComponent}, //restablecer contraseña
 
   { path: 'add-empresa', component: AddEmpresaComponent },
   { path: 'list-empresa', component: ListEmpresasComponent },
@@ -43,19 +48,31 @@ const routes: Routes = [
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'fan-page', component: FanPageComponent },
-  { path: 'perfil', component: PerfilEmprendedorComponent },
+  { path: 'perfil-emprendedor', component: PerfilEmprendedorComponent },
   // orientador crear
   { path: 'orientador-crear', component: OrientadorCrearComponent },
+
+  // crear de superadmin
+  { path: 'crear-superadmin', component: CrearSuperadminComponent },
+
 
   // orientador  //reportes
   { path: 'reportesOrientador', component: ReportesComponent },
   { path: 'rutas', component: RutasComponent },//de rutas
-  { path: 'cursorutas', component: CursorutasComponent},//de curso rutas
+  { path: 'cursorutas', component: CursorutasComponent },//de curso rutas
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor
   { path: 'ver-asesoria', component: VerAsesoriasComponent }, //de osesoria
   { path: 'add-aliados', component: AddAliadosComponent }, //de orientador
   { path: 'asesorias/hola', component: AsesoriaAliadoComponent }, //de Aliado
+
+
+  //ingreso de aliados 
+  { path: 'list-asesores', component: ListAsesoresComponent },
+
+  //ingreso de asesores
+  { path: 'perfil-asesores', component: PerfilAsesorComponent },
+
 
 
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
