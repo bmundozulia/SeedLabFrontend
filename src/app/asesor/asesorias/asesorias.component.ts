@@ -21,6 +21,9 @@ export class AsesoriasComponent implements OnInit {
   filteredAsesorias: Asesoria[] = [];
   currentRolId: string | null = null;
 
+  userFilter: any = { Nombre_sol: ''};
+  Nombre_sol: string | null = null;
+
   constructor(
     private asesoriaService: AsesoriaService, 
     public dialog: MatDialog,
