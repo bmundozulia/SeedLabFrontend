@@ -18,6 +18,8 @@ import { AliadoService } from '../../../../servicios/aliado.service';
 export class ModalAddAsesoresComponent implements OnInit {
   @Input() isEditing: boolean;
   hide = true;
+  boton = true;
+  isActive: boolean = false;
   submitted: boolean = false;
   asesorId: any;
   user: User | null = null;
@@ -60,7 +62,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     } else {
       this.asesorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
-  
+
     this.asesorForm.get('password')?.updateValueAndValidity();
   }
 
@@ -105,7 +107,7 @@ export class ModalAddAsesoresComponent implements OnInit {
             aliado: data.auth?.id,
             email: data.auth?.email,
             password: '',
-            estado: '1',
+            estado: data.auth?.estado,
           });
           //console.log(data);
         },
@@ -155,9 +157,18 @@ export class ModalAddAsesoresComponent implements OnInit {
     }
   }
 
-
   cancelarModal() {
     this.dialogRef.close();
   }
 
+  toggleActive() {
+    this.isActive = !this.isActive;
+  }
+
+  mostrarToggle(): void {
+    if (this.asesorId != null) {
+      this.boton = false;
+    }
+    this.boton = true;
+  }
 }
