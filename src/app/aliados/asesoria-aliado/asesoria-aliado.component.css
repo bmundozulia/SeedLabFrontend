@@ -1,10 +1,11 @@
 .card {
   position: relative;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 .hover-buttons {
@@ -12,12 +13,17 @@
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  display: none;
+  display: flex; /* Mantenemos display: flex */
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover .hover-buttons {
-  display: flex;
-  gap: 10px;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0); /* Suavizar la aparición con una ligera transformación */
 }
 
 .btn {

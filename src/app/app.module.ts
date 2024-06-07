@@ -51,6 +51,7 @@ import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-em
 import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RutasComponent } from './rutas/rutas.component';
+import { HorarioModalComponent } from './asesor/horario-modal/horario-modal/horario-modal.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
 import { CursorutasComponent } from './cursorutas/cursorutas.component';
@@ -99,6 +100,7 @@ import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil
     DarAsesorModalComponent,
     EditEmpresaComponent,
     RutasComponent,
+    HorarioModalComponent,
     OrientadorCrearComponent,
     ModalCrearOrientadorComponent,
     CursorutasComponent,

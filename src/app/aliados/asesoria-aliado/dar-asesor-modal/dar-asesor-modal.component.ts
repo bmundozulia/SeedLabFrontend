@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AsesoriaService } from '../../../servicios/asesoria.service';
@@ -12,6 +12,7 @@ import { AsesorDisponible } from '../../../Modelos/AsesorDisponible.model';
 export class DarAsesorModalComponent implements OnInit {
   asignarForm: FormGroup;
   asesores: AsesorDisponible[] = [];
+  @Output() asesoriaAsignada = new EventEmitter<void>();
 
   constructor(
     public dialogRef: MatDialogRef<DarAsesorModalComponent>,
@@ -42,6 +43,7 @@ export class DarAsesorModalComponent implements OnInit {
       this.asesoriaService.asignarAsesoria(idAsesoria, idAsesor).subscribe(
         response => {
           console.log('Asesoría asignada con éxito:', response);
+          this.asesoriaAsignada.emit(); // Emit the event
           this.dialogRef.close(true);
         },
         error => {

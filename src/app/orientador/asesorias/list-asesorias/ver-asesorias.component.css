@@ -1,10 +1,24 @@
 .card {
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
+  position: relative;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.card h2, .card div.content {
+  height: 1.6rem; /* Ajusta según necesites */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: height 0.3s ease;
+}
+
+.card div.content {
+  height: 2.7rem; /* Ajusta según necesites */
+}
+
+.card:hover h2, .card:hover div.content {
+  height: auto;
+}
