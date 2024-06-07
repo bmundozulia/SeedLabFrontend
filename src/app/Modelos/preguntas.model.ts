@@ -1,11 +1,7 @@
 
-export interface Preguntas {
-    id: number;
-    nombre: string;
-    puntaje: number;
-    id_seccion: number;
-    isAffirmativeResponse : boolean;
-    subPreguntas: SubPreguntas[]; // Opcionalmente, puedes añadir subPreguntas aquí
+export interface OpcionesRespuesta {
+    option: string;
+    isText: boolean;
 }
 
 export interface SubPreguntas {
@@ -13,4 +9,16 @@ export interface SubPreguntas {
     texto: string;
     puntaje: number;
     id_pregunta: number;
+    respuesta?: OpcionesRespuesta[]
 }
+export interface Preguntas {
+    id: number;
+    nombre: string;
+    puntaje: number;
+    id_seccion: number;
+    isAffirmativeResponse: boolean;
+    respuesta: OpcionesRespuesta[];
+    subPreguntas: SubPreguntas[]; // Opcionalmente, puedes añadir subPreguntas aquí
+}
+
+

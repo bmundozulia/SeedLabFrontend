@@ -142,7 +142,7 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
         continue;
       }
 
-      console.log(this.id_pregunta);
+      
       const currentResponse: Respuesta = this.respuestasForm1.get(`respuesta${i + 1}`)?.value;
       console.log('CuurrentResponsee',currentResponse);
       

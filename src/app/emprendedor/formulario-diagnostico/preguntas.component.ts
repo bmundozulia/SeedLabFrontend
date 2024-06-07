@@ -1,4 +1,4 @@
-import { Preguntas} from "../../Modelos/preguntas.model";
+import { Preguntas, SubPreguntas, OpcionesRespuesta} from "../../Modelos/preguntas.model";
 
 export const PREGUNTAS: Preguntas[] = [
     {
@@ -7,6 +7,14 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta: [
+            ({ option: '1', isText: false }),
+            ({ option: '2', isText: false }),
+            ({ option: '3', isText: false }),
+            ({ option: '4', isText: false }),
+            ({ option: '5', isText: false }),
+            ({ option: 'Más', isText: false }), 
+        ],
         subPreguntas: []
     },
     {
@@ -15,13 +23,14 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
-            { id: 1, texto: 'Administrativo', puntaje: 0, id_pregunta: 2 },
-            { id: 2, texto: 'Desarrollo', puntaje: 0, id_pregunta: 2 },
-            { id: 3, texto: 'Producción', puntaje: 0, id_pregunta: 2 },
-            { id: 4, texto: 'Innovación y/o desarrollo', puntaje: 0, id_pregunta: 2 },
-            { id: 5, texto: 'Comercialización', puntaje: 0, id_pregunta: 2 },
-            { id: 6, texto: 'Otro, cuál / cuántos?', puntaje: 0, id_pregunta: 2 },
+            { id: 1, texto: 'Administrativo', puntaje: 0, id_pregunta: 2, respuesta: [({ option: 'Si', isText: false }),({ option: 'No', isText: false }),]},
+            { id: 2, texto: 'Desarrollo', puntaje: 0, id_pregunta: 2, respuesta: [({ option: 'Si', isText: false }),({ option: 'No', isText: false }),]},
+            { id: 3, texto: 'Producción', puntaje: 0, id_pregunta: 2, respuesta: [({ option: 'Si', isText: false }),({ option: 'No', isText: false }),]},
+            { id: 4, texto: 'Innovación y/o desarrollo', puntaje: 0, id_pregunta: 2, respuesta: [({ option: 'Si', isText: false }),({ option: 'No', isText: false }),] },
+            { id: 5, texto: 'Comercialización', puntaje: 0, id_pregunta: 2, respuesta: [({ option: 'Si', isText: false }),({ option: 'No', isText: false }),] },
+            { id: 6, texto: 'Otro, cuál / cuántos?', puntaje: 0, id_pregunta: 2, respuesta: [({ option: 'Si', isText: false }),({ option: 'No', isText: false }),] },
         ]
     },
     {
@@ -30,6 +39,10 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -38,6 +51,10 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -46,6 +63,10 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -54,6 +75,10 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -62,6 +87,10 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -70,6 +99,12 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option: '< 1 año', isText: false}),
+            ({option: 'Entre 1 y 2 años', isText: false}),
+            ({option: 'Entre 2 y 4 años', isText: false}),
+            ({option: '5 o más', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -78,6 +113,10 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -86,6 +125,9 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option: null, isText: true})
+        ],
         subPreguntas: []
     },
     {
@@ -94,6 +136,9 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option: null, isText: true})
+        ],
         subPreguntas: []
     },
     {
@@ -102,11 +147,15 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: [
-            {id:7, texto: 'Meta 1', puntaje: 0, id_pregunta:12},
-            {id:8, texto: 'Meta 2', puntaje: 0, id_pregunta:12},
-            {id:9, texto: 'Meta 3', puntaje: 0, id_pregunta:12},
-            {id:10, texto: 'Meta 4', puntaje: 0, id_pregunta:12},
+            {id:7, texto: 'Meta 1', puntaje: 0, id_pregunta:12, respuesta:[({option: null, isText: true})]},
+            {id:8, texto: 'Meta 2', puntaje: 0, id_pregunta:12, respuesta:[({option: null, isText: true})]},
+            {id:9, texto: 'Meta 3', puntaje: 0, id_pregunta:12, respuesta:[({option: null, isText: true})]},
+            {id:10, texto: 'Meta 4', puntaje: 0, id_pregunta:12, respuesta:[({option: null, isText: true})]},
         ]
     },
     {
@@ -115,6 +164,11 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'Medio', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -123,6 +177,11 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'Medio', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -131,6 +190,11 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 1,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'Medio', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -139,6 +203,10 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[
+            ({option:'Si', isText: false}),
+            ({option:'No', isText: false}),
+        ],
         subPreguntas: []
     },
     {
@@ -147,6 +215,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:11, texto:'Gastos fijos', puntaje: 0, id_pregunta: 17},
             {id:12, texto:'Gastos variables', puntaje: 0, id_pregunta: 17},
@@ -164,6 +233,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -172,6 +242,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:19, texto:'Balance General', puntaje:0, id_pregunta:19},
             {id:20, texto:'Estado de Flujo', puntaje:0, id_pregunta:19},
@@ -186,6 +257,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -194,6 +266,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:24, texto:'Ingresos', puntaje:0, id_pregunta:21},
             {id:25, texto:'Egresos', puntaje:0, id_pregunta:21},
@@ -207,6 +280,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -215,6 +289,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:28, texto:'Costos', puntaje:0, id_pregunta:23},
             {id:29, texto:'Demanda', puntaje:0, id_pregunta:23},
@@ -228,6 +303,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:32, texto:'Prestamo Formal', puntaje:0, id_pregunta:24},
             {id:33, texto:'Prestamo Informal', puntaje:0, id_pregunta:24},
@@ -242,6 +318,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -250,6 +327,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:37, texto:'Ingreso supperior al egreso', puntaje:0, id_pregunta:26},
             {id:38, texto:'Ingreso superior al egreso', puntaje:0, id_pregunta:26},
@@ -263,6 +341,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:41, texto:'Punto de venta', puntaje:0, id_pregunta:27},
             {id:42, texto:'Telemarketing', puntaje:0, id_pregunta:27},
@@ -277,6 +356,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -285,6 +365,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:46, texto:'Iva', puntaje:0, id_pregunta:29},
             {id:47, texto:'Ica', puntaje:0, id_pregunta:29},
@@ -298,6 +379,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -306,6 +388,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -314,6 +397,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -322,6 +406,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -330,6 +415,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -338,6 +424,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -346,6 +433,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -354,6 +442,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -362,6 +451,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -370,6 +460,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -378,6 +469,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -386,6 +478,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -394,6 +487,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 4,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:50, texto:'¿La propuesta cuenta con una identificación básica de información científica susceptible de ser aplicada?', puntaje:0, id_pregunta:42},
             {id:51, texto:'¿Tiene al menos una imagen general de lo que debe hacer su producto y/o servicio?', puntaje:0, id_pregunta:42},
@@ -434,6 +528,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 4,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -442,6 +537,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 4,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -450,6 +546,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 4,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:81, texto:'Apoyo Tecnico', puntaje:0, id_pregunta:45},
             {id:82, texto:'Capacitación', puntaje:0, id_pregunta:45},
@@ -466,6 +563,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 4,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: []
     },
     {
@@ -474,6 +572,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 4,
         isAffirmativeResponse: false,
+        respuesta:[],
         subPreguntas: [
             {id:88, texto:'Apoyo Tecnico', puntaje:0, id_pregunta:47},
             {id:89, texto:'Capacitación', puntaje:0, id_pregunta:47},

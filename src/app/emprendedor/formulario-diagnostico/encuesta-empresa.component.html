@@ -51,11 +51,11 @@
         <ng-container *ngIf="currentIndex === 0" class="">
 
             <!-- Separacion -->
-            <form [formGroup]="respuestasForm1" (ngSubmit)="onSubmitSeccion1()">
-            <div class="">
+            <form [formGroup]="respuestasForm1" (ngSubmit)="onSubmitSeccion1()" >
+            <div class="" >
                     <table class="min-w-full bg-white my-2">
                         <tbody>
-                            <tr class="">
+                            <tr class="" x>
                                 <td class="py-2 px-4 " colspan="2">
                                     <div class="flex">
                                         <b>{{ preguntas[0].id }}. </b>
