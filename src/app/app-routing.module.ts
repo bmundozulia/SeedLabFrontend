@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'fan-page', component: FanPageComponent },
   { path: 'perfil-emprendedor', component: PerfilEmprendedorComponent },
   // orientador crear
-  { path: 'orientador-crear', component: OrientadorCrearComponent },
+  { path: 'list-orientador', component: OrientadorCrearComponent },
 
   // crear de superadmin
   { path: 'crear-superadmin', component: CrearSuperadminComponent },
