@@ -3,7 +3,7 @@
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.card:hover {
+.card:hover:not(.no-hover) {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
 }
@@ -13,17 +13,17 @@
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex; /* Mantenemos display: flex */
+  display: flex;
   gap: 10px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
-.card:hover .hover-buttons {
+.card:hover:not(.no-hover) .hover-buttons {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0); /* Suavizar la aparición con una ligera transformación */
+  transform: translateX(-50%) translateY(0);
 }
 
 .btn {

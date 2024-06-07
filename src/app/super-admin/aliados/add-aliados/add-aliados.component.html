@@ -1,102 +1,124 @@
 <app-header [title]="'Bienvenido al panel de Agregar Aliados'" [subtitle]="'Aquí puedes crear tus aliados'"></app-header>
 <!-- ---------------------------------------------------------------------------- -->
 <!-- pantalla -->
-<div class="flex justify-center mt-28">
-  <div class="bg-white rounded-lg overflow-hidden sm:p-6">
-    <div class="flex flex-col items-center justify-start">
-      <form (ngSubmit)="onSubmit()" class="flex flex-col items-center w-screen">
-        <div class="flex sm:flex-row items-start mb-6 gap-8">
-          <!-- LOGO -->
-          <div class="flex flex-col sm:items-center sm:mr-8 mt-8">
-            <div class="w-36 h-36 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-black">
-              <img *ngIf="logo" [src]="logo" alt="Logo" class="object-cover">
-              <span *ngIf="!logo" class="text-gray-500">Logo</span>
-            </div>
-            <label for="logoInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-2 border border-blue-700 rounded cursor-pointer">Seleccionar Imagen</label>
-            <input id="logoInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="hidden">
-          </div>
+<div class="w-full flex items-center justify-center min-h-[calc(100vh-128px)] ">
+  <form (ngSubmit)="onSubmit()" class="flex flex-col items-center justify-center w-full max-w-3xl h-auto">
 
-          <!-- CAMPOS CENTRALES -->
-          <div class="flex flex-col items-center">
-            <div class="grid sm:grid-cols-2 gap-8" style="width: 850px;">
-              <div class="flex flex-col items-center sm:items-start">
-                <p class="font-semibold text-sky-400 text-lg">Nombre del Aliado</p>
-                <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                  <input [(ngModel)]="nombre" name="nombre" class="w-11/12 outline-none" placeholder="Nombre" required />
-                </div>
-              </div>
-              <div class="flex flex-col items-center sm:items-start">
-                <p class="font-semibold text-sky-400 text-lg">Descripción del Aliado</p>
-                <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                  <input [(ngModel)]="descripcion" name="descripcion" class="w-11/12 outline-none" placeholder="Descripción" required />
-                </div>
-              </div>
-              <div class="flex flex-col items-center sm:items-start">
-                <p class="font-semibold text-sky-400 text-lg">Correo del Aliado</p>
-                <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                  <input [(ngModel)]="email" name="email" class="w-11/12 outline-none" placeholder="Correo" required />
-                </div>
-              </div>
-              <div class="flex flex-col items-center sm:items-start">
-                <p class="font-semibold text-sky-400 text-lg">Contraseña del Aliado</p>
-                <div class="relative mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                  <input [(ngModel)]="password" name="password" [type]="passwordVisible ? 'text' : 'password'" class="w-11/12 outline-none" placeholder="Contraseña" required />
-                  <button type="button" mat-icon-button class="absolute inset-y-1 right-1 flex items-center pr-3" (click)="togglePasswordVisibility()">
-                    <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
-                  </button>
-                </div>
-              </div>
 
-              <!-- RUTA Y TIPO DE RUTA -->
-              <div class="flex flex-col items-center sm:items-start">
-                <p class="font-semibold text-sky-400 text-lg sm:mt-0">Tipo de Ruta</p>
-                <div class="relative mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                  <select [(ngModel)]="tipodato" name="TipodeDato" (change)="onRutaChange($event)" class="w-full outline-none">
-                    <option value="" disabled selected>Seleccione una opción</option>
-                    <option value="video">Video</option>
-                    <option value="imagen">Imagen</option>
-                    <option value="pdf">PDF</option>
-                  </select>
-                </div>
-              </div>
+    <div class="flex flex-wrap max-lg:">
 
-              <div *ngIf="rutaSeleccionada === 'video'" class="flex flex-col items-center sm:items-start">
-                <p class="font-semibold text-sky-400 text-lg">Ruta del Video</p>
-                <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                  <input [(ngModel)]="ruta" name="rutaVideo" class="w-11/12 outline-none" placeholder="Ruta del Video" required />
-                </div>
-              </div>
-
-              <div *ngIf="rutaSeleccionada === 'imagen'" class="flex flex-col items-center sm:items-start sm:mr-8">
-                <div class="w-72 h-28 flex items-center justify-center border overflow-hidden mb-2 border-black">
-                  <img *ngIf="ruta" [src]="ruta" alt="Imagen">
-                  <span *ngIf="!ruta" class="text-gray-500">Imagen</span>
-                </div>
-                <label for="imagenInput" class=" bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer">Seleccionar Imagen</label>
-                <input id="imagenInput" type="file" (change)="onImageSelected($event)" accept="image/*" class="hidden">
-              </div>
-
-              <div *ngIf="rutaSeleccionada === 'pdf'" class="flex flex-col items-center sm:items-start">
-                <p class="font-semibold text-sky-400 text-lg">Ruta del PDF</p>
-                <div class="flex items-center mt-2 w-full">
-                  <label for="rutaPdfInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer flex items-center">
-                    <span class="mr-2">Seleccionar PDF</span>
-                  </label>
-                  <input id="rutaPdfInput" type="file" (change)="onPdfSelected($event)" accept="application/pdf" class="hidden">
-                  <div *ngIf="pdfFileName" class="ml-3 text-gray-600 flex items-center mt-2 rounded-xl border-black py-3 px-4 text-base form-control w-full overflow-hidden">
-                    <img src="//res.cdn.office.net/assets/fluentui-resources/1.0.23/app-min/assets/item-types/20/pdf.svg" alt=".pdf" class="mr-2 w-10 h-10">
-                    <span class="ml-1 truncate">{{ pdfFileName }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div class="flex flex-col" >
+      <label for="nombre" class="block mb-2 text-blue-400">Selecciona tu logo:</label>
+      <div class="flex items-center flex-wrap justify-center mb-6">
+        <div class="relative">
+          <div class="w-52 h-52 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-x-gray-900 cursor-pointer">
+            <img *ngIf="logo" [src]="logo" alt="Logo" class="object-cover">
+            <span *ngIf="!logo" class="text-gray-500">Click aca!</span>
+            <input id="logoInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
           </div>
         </div>
-
-        <div class="mt-3">
-          <button type="submit" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Crear Aliado</button>
-        </div>
-      </form>
+        <!-- <label for="logoInput" class="bg-sky-400 hover:bg-sky-500 text-white font-bold px-3 py-2 rounded cursor-pointer ml-3 max-md:mt-3">Seleccionar foto</label> -->
+      </div>
+  
+      <div class="w-full pl-0 md:pl-2 max-w-96">
+        <label for="nombre" class="block mb-2 text-blue-400">Nombre:</label>
+        <input name="nombre" type="text" class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200" placeholder="Nombre" required />
+      </div>
+  
+      <div class="w-full pl-0 md:pl-2 max-w-96">
+        <label for="nombre" class="block mb-2 text-blue-400">correo:</label>
+        <input name="nombre" type="text" class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200" placeholder="Correo" required />
+      </div>
+  
+      <div class="w-full pl-0 md:pl-2 max-w-96">
+        <label for="nombre" class="block mb-2 text-blue-400">contraseña:</label>
+        <input name="nombre" type="text" class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200" placeholder="Contraseña" required />
+      </div>
+    </div>
+    <div class="flex flex-col" >
+      <div class="w-full pl-0 md:pl-2 max-w-96">
+        <label for="nombre" class="block mb-2 text-blue-400">Decripción fanpage del aliado:</label>
+        <input name="nombre" type="text" class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200" placeholder="Contraseña" required />
+      </div>
     </div>
   </div>
+
+    
+
+    <div class="mt-3">
+      <button type="submit" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Crear Aliado</button>
+    </div>
+
+       
+        <!-- <div class="flex flex-col items-center">
+          <div class="grid sm:grid-cols-2 gap-8" style="width: 850px;">
+            <div class="flex flex-col items-center sm:items-start">
+              <p class="font-semibold text-sky-400 text-lg">Descripción del Aliado</p>
+              <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
+                <input [(ngModel)]="descripcion" name="descripcion" class="w-11/12 outline-none" placeholder="Descripción" required />
+              </div>
+            </div>
+            <div class="flex flex-col items-center sm:items-start">
+              <p class="font-semibold text-sky-400 text-lg">Correo del Aliado</p>
+              <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
+                <input [(ngModel)]="email" name="email" class="w-11/12 outline-none" placeholder="Correo" required />
+              </div>
+            </div>
+            <div class="flex flex-col items-center sm:items-start">
+              <p class="font-semibold text-sky-400 text-lg">Contraseña del Aliado</p>
+              <div class="relative mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
+                <input [(ngModel)]="password" name="password" [type]="passwordVisible ? 'text' : 'password'" class="w-11/12 outline-none" placeholder="Contraseña" required />
+                <button type="button" mat-icon-button class="absolute inset-y-1 right-1 flex items-center pr-3" (click)="togglePasswordVisibility()">
+                  <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+              </div>
+            </div>
+
+         
+            <div class="flex flex-col items-center sm:items-start">
+              <p class="font-semibold text-sky-400 text-lg sm:mt-0">Tipo de Ruta</p>
+              <div class="relative mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
+                <select [(ngModel)]="tipodato" name="TipodeDato" (change)="onRutaChange($event)" class="w-full outline-none">
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="video">Video</option>
+                  <option value="imagen">Imagen</option>
+                  <option value="pdf">PDF</option>
+                </select>
+              </div>
+            </div>
+
+            <div *ngIf="rutaSeleccionada === 'video'" class="flex flex-col items-center sm:items-start">
+              <p class="font-semibold text-sky-400 text-lg">Ruta del Video</p>
+              <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
+                <input [(ngModel)]="ruta" name="rutaVideo" class="w-11/12 outline-none" placeholder="Ruta del Video" required />
+              </div>
+            </div>
+
+            <div *ngIf="rutaSeleccionada === 'imagen'" class="flex flex-col items-center sm:items-start sm:mr-8">
+              <div class="w-72 h-28 flex items-center justify-center border overflow-hidden mb-2 border-black">
+                <img *ngIf="ruta" [src]="ruta" alt="Imagen">
+                <span *ngIf="!ruta" class="text-gray-500">Imagen</span>
+              </div>
+              <label for="imagenInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer">Seleccionar Imagen</label>
+              <input id="imagenInput" type="file" (change)="onImageSelected($event)" accept="image/*" class="hidden">
+            </div>
+
+            <div *ngIf="rutaSeleccionada === 'pdf'" class="flex flex-col items-center sm:items-start">
+              <p class="font-semibold text-sky-400 text-lg">Ruta del PDF</p>
+              <div class="flex items-center mt-2 w-full">
+                <label for="rutaPdfInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer flex items-center">
+                  <span class="mr-2">Seleccionar PDF</span>
+                </label>
+                <input id="rutaPdfInput" type="file" (change)="onPdfSelected($event)" accept="application/pdf" class="hidden">
+                <div *ngIf="pdfFileName" class="ml-3 text-gray-600 flex items-center mt-2 rounded-xl border-black py-3 px-4 text-base form-control w-full overflow-hidden">
+                  <img src="//res.cdn.office.net/assets/fluentui-resources/1.0.23/app-min/assets/item-types/20/pdf.svg" alt=".pdf" class="mr-2 w-10 h-10">
+                  <span class="ml-1 truncate">{{ pdfFileName }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+
+  </form>
 </div>

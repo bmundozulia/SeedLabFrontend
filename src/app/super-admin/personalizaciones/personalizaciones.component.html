@@ -1,61 +1,79 @@
-<div class="container mx-auto px-4 py-6 md:py-12">
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
-    <div class="col-span-12 bg-white rounded-lg p-4 md:p-8 shadow-lg">
-      <div class="text-xl md:text-3xl lg:text-9xl">
-        <h5 class="text-center text-xl md:text-2xl md:pl-20 font-bold mb-2 md:mb-4 text-sky-600">
-          PERSONALIZACION DEL SISTEMA
-        </h5>
+<div class="p-4">
+  <div class="m-10">
+    <h5 class="text-center text-2xl font-bold mb-4">
+      PERSONALIZACION DEL SISTEMA
+    </h5>
+  </div>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-4">
+    <!-- Logo -->
+    <div class="xl:col-span-7">
+      <div class="bg-white p-4 rounded-lg shadow-lg h-full">
+        <label class="relative cursor-pointer inline-block">
+          <input id="color-picker-logo" type="file" name="logo" class="hidden" (change)="onFileChange($event)" />
+          <span
+            class="text-black px-4 py-2 border-2 border-blue-300 rounded-full inline-block bg-white justify-center hover:bg-blue-100">
+            Subir Imagen
+            <fa-icon [icon]="faImage" class="text-md ml-2"></fa-icon>
+          </span>
+        </label>
+        <div class="mt-4">
+          <div class="container-imagen flex justify-center">
+            <img [src]="previewUrl" alt="Logo preview" *ngIf="previewUrl" class="imagen w-full rounded-lg" />
+          </div>
+        </div>
       </div>
-      <div class="container mx-auto mt-5">
-        <div class="p-6 grid grid-cols-1 md:flex md:flex-wrap justify-between items-start">
-          <!-- Logo-->
-          <div class="flex flex-col items-center p-4">
-            <label class="text-center text-xl md:text-2xl font-mono mb-4 text-sky-600">Logo</label>
-            <input id="color-picker-logo" type="file" name="logo"
-              class="text-sky-600 border-2 border-gray-300 p-2 rounded" (change)="onFileChange($event)" />
-            <div class="img mt-2">
-              <img [src]="previewUrl" alt="Logo preview" *ngIf="previewUrl"
-                class="image-preview text-sky-600 border-2 border-gray-300  p-2 rounded"
-                style="width: 100%; max-height: 155%; object-fit: contain" />
+    </div>
+    <!-- fin del logo -->
+
+    <!-- Formulario de Colores -->
+    <div class="xl:col-span-5 ">
+      <div class="bg-white rounded-lg shadow-lg p-6 h-full ">
+        <div class="w-full">
+          <!-- Color Principal y Color Secundario -->
+          <div class="md:flex md:justify-around md:space-x-4 xl:flex-col xl:space-x-0">
+            <!-- Color Principal -->
+            <div class="mb-4 xl:mb-6">
+              <label class="block text-black font-bold mb-2">Color Principal</label>
+              <div class="flex flex-col  items-center ">
+                <div class="flex content-center mb-2 md:mb-0 w-full">
+                  <div class="w-24 h-24 rounded-l" [style.background]="selectedColorPrincipal"
+                    [(colorPicker)]="selectedColorPrincipal" [cpOKButton]="true"
+                    [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
+                    [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
+                    [cpCancelButtonText]="'Cancelar'"></div>
+                  <p class="bg-gray-200 text-black h-24 py-3 px-4 rounded-r flex-grow flex items-center">{{
+                    selectedColorPrincipal }}</p>
+                </div>
+
+              </div>
             </div>
-          </div>
-          <!-- Color Principal -->
-          <div class="flex flex-col items-center p-4">
-            <label class="text-center text-xl md:text-2xl mb-4 text-sky-600 font-mono">Color Principal</label>
-            <div class="w-full p-4 border-2 border-gray-300 rounded-lg flex flex-col items-center">
-              <div class="w-full h-20 mb-2" [style.background]="selectedColorPrincipal"></div>
-              <p class="text-center">{{ selectedColorPrincipal }}</p>
-              <button [(colorPicker)]="selectedColorPrincipal" [cpOKButton]="true"
-                [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
-                [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
-                [cpCancelButtonText]="'Cancelar'"
-                class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded w-full">
-                Seleccionar Color
-              </button>
-            </div>
-          </div>
-          <!-- Color Secundario-->
-          <div class="flex flex-col items-center p-4">
-            <label class="text-center text-xl md:text-2xl font-mono mb-4 text-sky-600">Color Secundario</label>
-            <div class="w-full p-4 border-2 border-gray-300 rounded-lg flex flex-col items-center">
-              <div class="w-full h-20 mb-2" [style.background]="selectedColorSecundario"></div>
-              <p class="text-center">{{ selectedColorSecundario }}</p>
-              <button [(colorPicker)]="selectedColorSecundario" [cpOKButton]="true"
-                [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
-                [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
-                [cpCancelButtonText]="'Cancelar'"
-                class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded w-full">
-                Seleccionar Color
-              </button>
+
+            <!-- Color Secundario -->
+            <div>
+              <label class="block text-black font-bold mb-2">Color Secundario</label>
+              <div class="flex flex-col  ">
+                <div class="flex content-center mb-2 md:mb-0 w-full">
+                  <div class="w-24 h-24 rounded-l" [style.background]="selectedColorSecundario"
+                    [(colorPicker)]="selectedColorSecundario" [cpOKButton]="true"
+                    [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
+                    [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
+                    [cpCancelButtonText]="'Cancelar'"></div>
+                  <p class="bg-gray-200 text-black h-24 py-3 px-4 rounded-r flex-grow flex items-center">{{
+                    selectedColorSecundario }}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="flex justify-end mt-8">
-          <button type="submit" class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded">
+        <div class="flex justify-end mt-5">
+          <button type=" submit" class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded">
             GUARDAR
           </button>
         </div>
       </div>
+
     </div>
+
   </div>
 </div>

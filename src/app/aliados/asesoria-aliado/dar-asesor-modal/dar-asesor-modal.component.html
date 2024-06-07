@@ -1,20 +1,23 @@
 <div class="p-4 bg-white" [formGroup]="asignarForm">
   <div>
     <h2>Detalles de la Asesoría</h2>
-    <p><strong>Nombre:</strong> {{ data.asesoria.Nombre_sol }}</p>
-    <p><strong>Fecha de Solicitud:</strong> {{ data.asesoria.fecha_solicitud }}</p>
-    <p><strong>Notas:</strong> {{ data.asesoria.notas }}</p>
+    <p><strong class="text-blue-400">Nombre</strong>{{ data.asesoria.Nombre_sol }}</p>
+    <p>{{ data.asesoria.Nombre_sol }}</p>
+    <p class="text-blue-400"><strong>Notas</strong></p>
+    <p>{{ data.asesoria.notas }}</p>
+    <p><strong class="text-blue-400">Fecha de Solicitud</strong></p>
+    <p>{{ data.asesoria.fecha_solicitud }}</p>
     <!-- Agrega más campos según sea necesario -->
   </div>
-  <div class="rounded-xl pb-2 w-4/6 justify-start text-center" id="nomAliadoContainer">
-    <label class="mb-1">¿Con quién quiere la asesoría?</label>
-    <select formControlName="nom_asesor" class="w-3/6 outline-none h-auto text-start border rounded-md px-2 py-2 bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200">
+  <div class="rounded-xl pb-2 pt-2 w-full justify-start" id="nomAliadoContainer">
+    <label class="mb-1">¿Cual de los asesores hará la asesoría?</label>
+    <select formControlName="nom_asesor" class="w-full outline-none h-auto text-start border rounded-md px-2 py-2 bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200">
       <option value="" disabled selected hidden>Seleccione</option>
       <option *ngFor="let asesor of asesores" [value]="asesor.id_asesor">{{ asesor.nombre_completo }}</option>
     </select>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button mat-dialog-close class="bg-red-500">Cancelar</button>
-    <button mat-button class="bg-sky-500" type="submit" (click)="onGuardar()">Guardar</button>
+  <div mat-dialog-actions class="flex justify-end mt-3">
+    <button mat-button mat-dialog-close class="bg-gray-500 text-white">Cancelar</button>
+    <button mat-button class="bg-sky-500 text-white" type="submit" (click)="onGuardar()">Guardar</button>
   </div>
 </div>
