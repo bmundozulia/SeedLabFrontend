@@ -122,4 +122,24 @@ export class AsesoriaService {
     const url = `${environment.apiUrl}mostrarAsesoriasAsesor/${idAsesor}/${horario}`;
     return this.http.get<any>(url, { headers });
   }
+
+  // Nueva función para agregar horario a una asesoría
+  agregarHorarioAsesoria(observaciones: string | null, idAsesoria: string, fecha: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('Token no encontrado en el localStorage');
+      return new Observable<any>();
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    const url = `${this.apiUrl}horario_asesoria`;
+    const body = {
+      observaciones: observaciones,
+      id_asesoria: idAsesoria,
+      fecha: fecha
+    };
+    return this.http.post<any>(url, body, { headers });
+  }
 }

@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
   providers: [RutaService, DatePipe]
+
 })
 export class ModalComponent implements OnInit {
 
