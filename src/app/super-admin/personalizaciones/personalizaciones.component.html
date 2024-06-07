@@ -8,7 +8,7 @@
   <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-4">
     <!-- Logo -->
     <div class="xl:col-span-7">
-      <div class="bg-white p-4 rounded-lg shadow-lg">
+      <div class="bg-white p-4 rounded-lg shadow-lg h-full">
         <label class="relative cursor-pointer inline-block">
           <input id="color-picker-logo" type="file" name="logo" class="hidden" (change)="onFileChange($event)" />
           <span
@@ -27,8 +27,8 @@
     <!-- fin del logo -->
 
     <!-- Formulario de Colores -->
-    <div class="xl:col-span-5">
-      <div class="bg-white rounded-lg shadow-lg p-6">
+    <div class="xl:col-span-5 ">
+      <div class="bg-white rounded-lg shadow-lg p-6 h-full ">
         <div class="w-full">
           <!-- Color Principal y Color Secundario -->
           <div class="md:flex md:justify-between md:space-x-4 xl:flex-col xl:space-x-0">
@@ -69,13 +69,14 @@
             </div>
           </div>
         </div>
+        <div class="flex justify-end my-10">
+          <button type="submit" class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded">
+            GUARDAR
+          </button>
+        </div>
       </div>
 
-      <div class="flex justify-end my-10">
-        <button type="submit" class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded">
-          GUARDAR
-        </button>
-      </div>
     </div>
+
   </div>
 </div>
