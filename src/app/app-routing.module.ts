@@ -31,6 +31,7 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
 import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
 import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
+import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
 
 
 const routes: Routes = [
@@ -55,7 +56,7 @@ const routes: Routes = [
 
   // crear de superadmin
   { path: 'crear-superadmin', component: CrearSuperadminComponent },
-  {path: 'perfil-admin', component: PerfilAdminComponent },
+  { path: 'perfil-admin', component: PerfilAdminComponent },
 
 
   // orientador  //reportes
@@ -67,6 +68,7 @@ const routes: Routes = [
   { path: 'ver-asesoria', component: VerAsesoriasComponent }, //de osesoria
   { path: 'add-aliados', component: AddAliadosComponent }, //de orientador
   { path: 'asesorias/aliado', component: AsesoriaAliadoComponent }, //de Aliado
+  { path: 'perfil-orientador', component: PerfilOrientadorComponent}, //Perfil Orientador
 
 
   //ingreso de aliados 

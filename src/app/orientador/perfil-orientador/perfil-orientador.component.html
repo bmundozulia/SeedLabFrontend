@@ -1,1 +1,66 @@
-<p>perfil-orientador works!</p>
+<form [formGroup]="perfilorientadorForm" (ngSubmit)="updateOrientador()">
+    <div class="max-w-2xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+            <div class="space-y-4">
+                <div class="text-center">
+                    <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-blue-400">Perfil de Orientador</h1>
+                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Actualiza tus datos de perfil aquí.</p>
+                </div>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div class="space-y-2">
+                        <label for="nombre" class="block text-blue-400">Nombre</label>
+                        <input type="text" id="nombre" formControlName="nombre" [readonly]="blockedInputs"
+                            class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200"/>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="apellido" class="block text-blue-400">Apellido</label>
+                        <input type="text" id="apellido" formControlName="apellido" [readonly]="blockedInputs"
+                            class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200"/>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="celular" class="block text-blue-400">Celular</label>
+                        <input type="text" id="celular" formControlName="celular" [readonly]="blockedInputs"
+                            class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200"/>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="email" class="block text-blue-400">Correo electrónico</label>
+                        <input type="email" id="email" formControlName="email" [readonly]="blockedInputs"
+                            class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200"/>
+                    </div>
+                    <div class="space-y-2" *ngIf="!blockedInputs">
+                        <label for="password" class="block text-blue-400">Contraseña</label>
+                        <input [type]="hide ? 'password' : 'text'" id="password" formControlName="password"
+                            [readonly]="blockedInputs"
+                            class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-400"/>
+                        <button type="button"
+                            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-gray-500"
+                            (click)="hide = !hide">
+                            <i *ngIf="hide" class="fa fa-eye-slash text-cyan-500"></i>
+                            <i *ngIf="!hide" class="fa fa-eye text-cyan-500"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <div class="flex justify-end mr-2">
+                        <button class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-0 rounded -pl-12"
+                            (click)="onCancel()" *ngIf="!blockedInputs" (click)="toggleInputsLock()">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="flex justify-end mr-2">
+                        <button type="submit" class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded"
+                            *ngIf="!blockedInputs" (click)="mostrarGuardarCambios()">
+                            Guardar cambios
+                        </button>
+                    </div>
+                    <div class="flex justify-end">
+                        <button id="boton"
+                            class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-0 rounded -pl-12"
+                            *ngIf="blockedInputs" (click)="toggleInputsLock()"> Editar Perfil
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

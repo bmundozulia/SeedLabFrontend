@@ -46,7 +46,7 @@ export class PerfilAdminComponent {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log("token",identity);
+        console.log(identity);
         this.user = identity;
         this.id = this.user.id;
         this.currentRolId = this.user.id_rol?.toString();

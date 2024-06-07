@@ -67,6 +67,7 @@ import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.co
 import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
 
 import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
+import { ListOrientadorComponent } from './super-admin/orientador/list-orientador/list-orientador.component';
 
 
 
@@ -115,6 +116,7 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
     PerfilAsesorComponent,
     PerfilAdminComponent,
     PerfilOrientadorComponent,
+    ListOrientadorComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,9 +12,8 @@ export class OrientadorService {
 
   constructor(private http: HttpClient) { }
 
-  url = environment.apiUrl + 'orientador/crearOrientador'
-  url2 = environment.apiUrl + ''
-
+  url = environment.apiUrl + 'orientador/'
+  
   private CreacionHeaders(access_token: any): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
@@ -31,4 +30,18 @@ export class OrientadorService {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.get<any>(`${this.url}mostrarAsesorAliado/${id}`, options);
   }
+
+
+  updateOrientador(orientador: Orientador, access_token: any, id:number):Observable<any>{
+    const options={headers: this.CreacionHeaders(access_token)};
+    return this.http.put(this.url + "editarOrientador/"+id, orientador, options);
+    }
+
+
+  getinformacionOrientador( access_token:any, id:number):Observable<any> {
+    const options={headers: this.CreacionHeaders(access_token)};
+    return this.http.get<any>(this.url+"userProfileOrientador/"+id, options)
+  }
+
+  
 }
