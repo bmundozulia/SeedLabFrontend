@@ -64,6 +64,7 @@ import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-ase
 import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
 import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
+import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
 
 
 
@@ -111,6 +112,7 @@ import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.co
     ModalAddAsesoresComponent,
     PerfilAsesorComponent,
     PerfilAdminComponent,
+    PerfilOrientadorComponent,
   ],
   imports: [
     BrowserModule,
