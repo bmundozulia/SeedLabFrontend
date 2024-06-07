@@ -22,7 +22,7 @@
           <!-- Color Principal -->
           <div class="flex flex-col items-center p-4">
             <label class="text-center text-xl md:text-2xl mb-4 text-sky-600 font-mono">Color Principal</label>
-            <div class="w-full p-4 border-2 border-gray-300 rounded-lg flex flex-col items-center">
+            <div class="w-full  border-2 border-gray-300 rounded-lg flex flex-col items-center">
               <div class="w-full h-20 mb-2" [style.background]="selectedColorPrincipal"></div>
               <p class="text-center">{{ selectedColorPrincipal }}</p>
               <button [(colorPicker)]="selectedColorPrincipal" [cpOKButton]="true"
@@ -37,7 +37,7 @@
           <!-- Color Secundario-->
           <div class="flex flex-col items-center p-4">
             <label class="text-center text-xl md:text-2xl font-mono mb-4 text-sky-600">Color Secundario</label>
-            <div class="w-full p-4 border-2 border-gray-300 rounded-lg flex flex-col items-center">
+            <div class="w-full border-2 border-gray-300 rounded-lg flex flex-col items-center">
               <div class="w-full h-20 mb-2" [style.background]="selectedColorSecundario"></div>
               <p class="text-center">{{ selectedColorSecundario }}</p>
               <button [(colorPicker)]="selectedColorSecundario" [cpOKButton]="true"
