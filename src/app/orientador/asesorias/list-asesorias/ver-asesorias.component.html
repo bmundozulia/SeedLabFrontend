@@ -11,13 +11,12 @@
     <input type="text" [(ngModel)]="userFilter.Nombre_sol" placeholder="Buscar" class="max-sm:w-5/6 w-96 h-12 pl-14 P-2 pr-4 border border-gray-300 rounded-md outline-none shadow-md transition duration-200 hover:border-sky-300">
   </div>
 
-
-   <div class="sm:flex grid sm:items-center justify-start border  border-gray-300 rounded-2xl px-2 py-1 mr-12 bg-white transition duration-200">
-    <button id="sinAsignar" class="btn-color flex  md:px-2 sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md mr-2 transition duration-200 focus:outline-none ease-in" (click)="loadSinAsignar()">
+  <div class="sm:flex grid max-md:justify-center justify-start border border-gray-300 rounded-2xl px-2 py-1 mr-12 bg-white transition duration-200">
+    <button id="sinAsignar" class="btn-color flex md:px-2 sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md mr-2 transition duration-200 focus:outline-none ease-in" (click)="loadSinAsignar()">
       Sin asignar
       <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ sinAsignarCount }}</span>
     </button>
-    <button id="Asignadas" class="btn-color flex sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md  focus:outline-none  transition duration-200 ease-in" (click)="loadAsignadas()">
+    <button id="Asignadas" class="btn-color flex sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md focus:outline-none transition duration-200 ease-in" (click)="loadAsignadas()">
       Asignadas
       <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asignadasCount }}</span>
     </button>
@@ -25,10 +24,18 @@
 </div>
 
 <div class="flex flex-wrap justify-center mt-6">
-  <div *ngFor="let asesoria of asesorias" 
-       class="relative rounded-lg shadow-md overflow-hidden w-80 m-4 card" 
-       (click)="openModal(asesoria)">
-    <div class="absolute h-full w-2" [class]="backgroundClass"></div>
+  <!-- Mensaje cuando no hay asesorias sin asignar -->
+  <div *ngIf="asesoriasSinAsesor.length === 0 && !showAsignadasFlag" class="text-center text-gray-700 w-full mt-6">
+    No tienes asesorias pendientes por asignar
+  </div>
+
+  <!-- Mensaje cuando no hay asesorias asignadas -->
+  <div *ngIf="asesoriasConAsesor.length === 0 && showAsignadasFlag" class="text-center text-gray-700 w-full mt-6">
+    Aun no asignas aliado a ninguna asesoria
+  </div>
+
+  <div *ngFor="let asesoria of (showAsignadasFlag ? asesoriasConAsesor : asesoriasSinAsesor)" class="relative rounded-lg shadow-md overflow-hidden w-80 m-4 card cursor-pointer" (click)="openModal(asesoria)">
+    <div class="absolute h-full w-2" [ngClass]="{'bg-green-500': showAsignadasFlag, 'bg-red-500': !showAsignadasFlag}"></div>
     <div class="p-4 py-3 border-gray-200">
       <h2 class="text-lg font-bold h-[3.3rem] overflow-hidden text-ellipsis">{{ asesoria.Nombre_sol }}</h2>
       <div class="block w-full h-[3.7rem] text-gray-900 focus:outline-none resize-none overflow-hidden text-ellipsis mb-3" title="{{ asesoria.notas }}">{{ asesoria.notas }}</div>
