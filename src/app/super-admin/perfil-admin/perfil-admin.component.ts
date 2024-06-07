@@ -23,7 +23,8 @@ export class PerfilAdminComponent {
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     email: ['', Validators.required],
-    password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]]
+    password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
+    estado: '1',
   });
 
   constructor(
@@ -47,9 +48,9 @@ export class PerfilAdminComponent {
         let identity = JSON.parse(identityJSON);
         console.log("token",identity);
         this.user = identity;
-        this.id = this.user.superadmin.id;
+        this.id = this.user.id;
         this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.id);
+        console.log(this.currentRolId);
       }
     }
   }
@@ -61,7 +62,7 @@ export class PerfilAdminComponent {
           this.perfiladminForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
-            email: data.email,
+            email: data.auth.email,
             password: data.password
           });
           console.log(data);
