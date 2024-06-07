@@ -22,13 +22,14 @@ export class OrientadorService {
     });
   }
 
+
   createOrientador(access_token: any, orientador: Orientador,): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.post(this.url, orientador, options);
   }
 
-  getinfoOrientador(access_token: any, id: number): Observable<any> {
-    const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.get<any>(`${this.url}mostrarAsesorAliado/${id}`, options);
+  mostrarOrientador(access_token: any, id: number): Observable<any> { 
+    const options = { headers: this.CreacionHeaders(access_token) }; 
+    return this.http.get(`${environment.apiUrl}orientador/listaOrientador`, options);
   }
 }
