@@ -16,7 +16,7 @@ import { AliadoService } from '../../../../servicios/aliado.service';
   providers: [AsesorService, AliadoService]
 })
 export class ModalAddAsesoresComponent implements OnInit {
-  @Input() isEditing: boolean = false;
+  @Input() isEditing: boolean;
   hide = true;
   submitted: boolean = false;
   asesorId: any;
@@ -34,7 +34,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     celular: ['', [Validators.required, Validators.maxLength(10)]],
     aliado: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(10)]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
     estado: '1',
   });
 
@@ -53,6 +53,15 @@ export class ModalAddAsesoresComponent implements OnInit {
   ngOnInit(): void {
     this.validateToken();
     this.verEditar();
+    //para ver si lo estan editando salga la palabra editar
+    if (this.asesorId != null) {
+      this.isEditing = true;
+      this.asesorForm.get('password')?.setValidators([Validators.minLength(8)]);
+    } else {
+      this.asesorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
+    }
+  
+    this.asesorForm.get('password')?.updateValueAndValidity();
   }
 
   get f() { return this.asesorForm.controls; } //aquii
@@ -71,7 +80,7 @@ export class ModalAddAsesoresComponent implements OnInit {
         this.estado = this.user.estado;
         this.id = this.user.id;
         this.nombreAliado = this.user.nombre;
-        //console.log("this", identity);
+        console.log("this", identity);
 
         if (this.user && this.user.nombre) {
           this.nombreAliado = this.user.nombre;
@@ -109,6 +118,10 @@ export class ModalAddAsesoresComponent implements OnInit {
   }
 
   AddAsesor(): void {
+    this.submitted = true;
+    if (this.asesorForm.invalid) {
+      return;
+    }
     const asesor: Asesor = {
       nombre: this.asesorForm.get('nombre')?.value,
       apellido: this.asesorForm.get('apellido')?.value,
@@ -117,7 +130,7 @@ export class ModalAddAsesoresComponent implements OnInit {
       email: this.asesorForm.get('email')?.value,
       password: this.asesorForm.get('password')?.value,
       estado: this.asesorForm.get('estado')?.value,
-    }
+    };
     if (this.asesorId != null) {
       this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
         data => {
@@ -129,7 +142,7 @@ export class ModalAddAsesoresComponent implements OnInit {
         });
 
     } else {
-      console.log("Objeto Asesor:", asesor);
+      //console.log("asesor:", asesor);
       this.asesorService.createAsesor(this.token, asesor).subscribe(
         data => {
           //console.log("siuuuuuuuuu");
