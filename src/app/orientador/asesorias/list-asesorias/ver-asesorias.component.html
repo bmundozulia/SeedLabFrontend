@@ -1,32 +1,44 @@
-<div class="flex flex-wrap justify-around">
-    <div class="rounded-xl border border-gray-300 py-2 bg-white mt-10 w-[280px] mx-auto justify-center sm:mx-28 relative">
-      <input class="w-full h-16 outline-none pl-10" placeholder="Buscar">
-      <span class="absolute left-4 top-4">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </span>
-    </div>
-    <div class="rounded-2xl border border-gray-300 p-4 bg-white mt-10 w-auto flex flex-wrap justify-center lg:justify-normal mx-28">
-      <button id="sinAsignar" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2" (click)="loadSinAsignar()">
-        Sin asignar
-        <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">1</span>
-      </button>
-      <button id="Asignadas" class="btn-color flex items-center px-4 py-2 text-black rounded-md mr-2" (click)="loadAsignadas()">
-        Asignadas
-        <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">2</span>
-      </button>
-    </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<app-header [title]="'Panel de Asesorias'"
+    [subtitle]="'Aca podra ver un listado de Asesorias y asignarla a distintos aliados'"></app-header>
+
+<!-- Sección de búsqueda -->
+<div class="flex flex-col space-y-4 mb-6 pl-14">
+  <div class="relative w-full mx-auto">
+    <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+      <i class="fas fa-search"></i>
+    </span>
+    <input type="text" [(ngModel)]="userFilter.Nombre_sol" placeholder="Buscar" class="max-sm:w-5/6 w-96 h-12 pl-14 P-2 pr-4 border border-gray-300 rounded-md outline-none shadow-md transition duration-200 hover:border-sky-300">
   </div>
 
- <div class="flex flex-wrap justify-center mt-6">
-  <div *ngFor="let asesoria of asesorias" class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4 card" (click)="openModal(asesoria)">
-    <div class="absolute h-full w-2" [ngClass]="asesoria.asignacion ? 'bg-[#FFB7B7]' : 'bg-[#C5F9AD]'"></div>
-    <div class="p-4 border border-gray-200">
-      <h2 class="text-xl font-bold mb-2">{{ asesoria.Nombre_sol }}</h2>
-      <p class="text-gray-700 mb-4">{{ asesoria.notas }}</p>
-      <h2 class="text-l font-semibold">{{ asesoria.fecha }}</h2>
-      <p class="text-gray-700">{{ asesoria.nombres }}</p>
-      <p class="text-gray-700">{{ asesoria.celular }}</p>
-      <p class="text-gray-700">{{ asesoria.email }}</p>
+
+   <div class="sm:flex grid sm:items-center justify-start border  border-gray-300 rounded-2xl px-2 py-1 mr-12 bg-white transition duration-200">
+    <button id="sinAsignar" class="btn-color flex  md:px-2 sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md mr-2 transition duration-200 focus:outline-none ease-in" (click)="loadSinAsignar()">
+      Sin asignar
+      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ sinAsignarCount }}</span>
+    </button>
+    <button id="Asignadas" class="btn-color flex sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md  focus:outline-none  transition duration-200 ease-in" (click)="loadAsignadas()">
+      Asignadas
+      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asignadasCount }}</span>
+    </button>
+  </div>
+</div>
+
+<div class="flex flex-wrap justify-center mt-6">
+  <div *ngFor="let asesoria of asesorias | filterBy: userFilter" 
+       class="relative rounded-lg shadow-md overflow-hidden w-80 m-4 card" 
+       [ngClass]="{'clickable': !asesoria.aliado_redirigido}"
+       (click)="!asesoria.aliado_redirigido && openModal(asesoria)">
+    <div class="absolute h-full w-2" [class]="backgroundClass"></div>
+    <div class="p-4 py-3 border-gray-200">
+      <h2 class="text-lg font-bold overflow-hidden text-ellipsis">{{ asesoria.Nombre_sol }}</h2>
+      <div class="block w-full text-gray-900 focus:outline-none resize-none overflow-hidden text-ellipsis mb-3 content" title="{{ asesoria.notas }}">
+        {{ asesoria.notas }}
+      </div>
+      <p class="text-sm text-gray-700 mb-2"><strong>Fecha: </strong> {{ asesoria.fecha.slice(0, 10) }}</p>
+      <p class="text-gray-700"><strong>Emprendedor: </strong>{{ asesoria.nombres }}</p>
+      <p class="text-gray-700"><strong>Correo: </strong>{{ asesoria.email }}</p>
+      <p *ngIf="asesoria.aliado_redirigido" class="text-sm text-gray-700 mb-2"><strong>Aliado: </strong>{{ asesoria.aliado_redirigido }}</p>
     </div>
   </div>
 </div>
