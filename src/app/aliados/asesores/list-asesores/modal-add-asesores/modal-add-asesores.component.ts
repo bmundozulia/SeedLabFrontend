@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,9 @@ import { AliadoService } from '../../../../servicios/aliado.service';
   providers: [AsesorService, AliadoService]
 })
 export class ModalAddAsesoresComponent implements OnInit {
+  @Input() isEditing: boolean;
   hide = true;
+  submitted: boolean = false;
   asesorId: any;
   user: User | null = null;
   currentRolId: string | null = null;
@@ -32,7 +34,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     celular: ['', [Validators.required, Validators.maxLength(10)]],
     aliado: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(10)]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
     estado: '1',
   });
 
@@ -51,7 +53,18 @@ export class ModalAddAsesoresComponent implements OnInit {
   ngOnInit(): void {
     this.validateToken();
     this.verEditar();
+    //para ver si lo estan editando salga la palabra editar
+    if (this.asesorId != null) {
+      this.isEditing = true;
+      this.asesorForm.get('password')?.setValidators([Validators.minLength(8)]);
+    } else {
+      this.asesorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
+    }
+  
+    this.asesorForm.get('password')?.updateValueAndValidity();
   }
+
+  get f() { return this.asesorForm.controls; } //aquii
 
   validateToken(): void {
     if (!this.token) {
@@ -67,7 +80,7 @@ export class ModalAddAsesoresComponent implements OnInit {
         this.estado = this.user.estado;
         this.id = this.user.id;
         this.nombreAliado = this.user.nombre;
-        //console.log("this", identity);
+        console.log("this", identity);
 
         if (this.user && this.user.nombre) {
           this.nombreAliado = this.user.nombre;
@@ -83,29 +96,32 @@ export class ModalAddAsesoresComponent implements OnInit {
 
   verEditar(): void {
     if (this.asesorId != null) {
-      this.aliadoService.getAsesorAliado(this.token, this.id).subscribe(
+      this.aliadoService.getAsesorAliado(this.token, this.asesorId).subscribe(
         data => {
           this.asesorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
             celular: data.celular,
-            aliado: data.aliado,
-            email: data.email,
-            password: data.password,
-            estado: data.estado,
+            aliado: data.auth?.id,
+            email: data.auth?.email,
+            password: '',
+            estado: '1',
           });
-          console.log(data);
+          //console.log(data);
         },
         error => {
           console.log(error)
-          console.log(this.asesorId);
+          // console.log(this.asesorId);
         }
       )
     }
   }
 
-
   AddAsesor(): void {
+    this.submitted = true;
+    if (this.asesorForm.invalid) {
+      return;
+    }
     const asesor: Asesor = {
       nombre: this.asesorForm.get('nombre')?.value,
       apellido: this.asesorForm.get('apellido')?.value,
@@ -114,18 +130,34 @@ export class ModalAddAsesoresComponent implements OnInit {
       email: this.asesorForm.get('email')?.value,
       password: this.asesorForm.get('password')?.value,
       estado: this.asesorForm.get('estado')?.value,
+    };
+    if (this.asesorId != null) {
+      this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
+        data => {
+          //console.log("aquibueno", data);
+          location.reload();
+        },
+        error => {
+          console.error('Error al actualizar el asesor:', error);
+        });
+
+    } else {
+      //console.log("asesor:", asesor);
+      this.asesorService.createAsesor(this.token, asesor).subscribe(
+        data => {
+          //console.log("siuuuuuuuuu");
+          // console.log(data);
+          location.reload();
+        },
+        error => {
+          console.error('Error al crear el asesor:', error);
+        });
     }
-    console.log("Objeto Asesor:", asesor);
-    this.asesorService.createAsesor(this.token, asesor).subscribe(
-      data => {
-        console.log("siuuuuuuuuu");
-        console.log(data);
-        location.reload();
-      },
-      error => {
-        console.error('Error al crear el asesor:', error);
-      }
-    )
+  }
+
+
+  cancelarModal() {
+    this.dialogRef.close();
   }
 
 }
