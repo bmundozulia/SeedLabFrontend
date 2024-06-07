@@ -107,8 +107,9 @@ export class ModalAddAsesoresComponent implements OnInit {
             aliado: data.auth?.id,
             email: data.auth?.email,
             password: '',
-            estado: data.auth?.estado,
+           // estado: data.auth?.estado,
           });
+          this.isActive = data.estado === 'Activo';
           //console.log(data);
         },
         error => {
@@ -119,7 +120,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     }
   }
 
-  AddAsesor(): void {
+  addAsesor(): void {
     this.submitted = true;
     if (this.asesorForm.invalid) {
       return;
@@ -163,6 +164,7 @@ export class ModalAddAsesoresComponent implements OnInit {
 
   toggleActive() {
     this.isActive = !this.isActive;
+    //this.asesorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
   }
 
   mostrarToggle(): void {

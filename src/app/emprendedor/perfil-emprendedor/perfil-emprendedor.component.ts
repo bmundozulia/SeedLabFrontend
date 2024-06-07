@@ -48,7 +48,7 @@ export class PerfilEmprendedorComponent implements OnInit {
   user: User | null = null;
   currentRolId: string | null = null;
   emprendedorForm = this.fb.group({
-    documento: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+    documento: '',
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     celular: ['', [Validators.required, Validators.maxLength(10)]],

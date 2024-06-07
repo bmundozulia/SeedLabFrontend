@@ -34,9 +34,16 @@ export class AsesorService {
     return this.http.post(this.url2, asesor, options);
   }
 
-  getAsesor(access_token: any, id: number): Observable<any> {
+  getAsesorID(access_token: any, id: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    const url = `${environment.apiUrl}aliado/userProfileAsesor/${id}`;
+    const url = `${environment.apiUrl}asesor/userProfileAsesor/${id}`;
     return this.http.get(url, options);
   }
+
+  updateAsesor(access_token: any, id: number, asesor: Asesor): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    const url = `${environment.apiUrl}asesor/asesor/${id}`;
+    return this.http.put(url, asesor, options);
+  }
 }
+
