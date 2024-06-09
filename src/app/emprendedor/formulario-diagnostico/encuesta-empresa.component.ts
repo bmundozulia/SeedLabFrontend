@@ -11,6 +11,8 @@ import { RespuestasService } from '../../servicios/respuestas.service';
 import { User } from '../../Modelos/user.model';
 import { Respuesta } from '../../Modelos/respuesta.model';
 import { Preguntas } from '../../Modelos/preguntas.model';
+import { OpcionesRespuesta } from '../../Modelos/opciones-respuesta.model';
+import { AlertService } from '../../servicios/alert.service';
 
 @Component({
   selector: 'app-encuesta-empresa',
@@ -18,18 +20,12 @@ import { Preguntas } from '../../Modelos/preguntas.model';
   styleUrls: ['./encuesta-empresa.component.css'],
   providers: [RespuestasService]
 })
-export class EncuestaEmpresaComponent implements AfterViewInit {
+export class EncuestaEmpresaComponent {
   fa1 = fa1;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
-  selectedOption1: string = '';
-  selectedOption2: string = '';
-  selectedOption3: string = '';
-  selectedOption4: string = '';
-  selectedOption5: string = '';
-  respuestas: Respuesta[] = [];
   preguntas: Preguntas[] = PREGUNTAS;
-  firstForm: any[] = [];
+  firstForm: Object = {};
   section: number = 1;
   user: User;
   token = '';
@@ -41,18 +37,38 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   id_subpregunta: number | null = null;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
+  respuesta1: Respuesta = new Respuesta({});
+  respuesta2: Respuesta = new Respuesta({});
+  respuesta3: Respuesta = new Respuesta({});
+  respuesta4: Respuesta = new Respuesta({});
+  respuesta5: Respuesta = new Respuesta({});
+  respuesta6: Respuesta = new Respuesta({});
+  respuesta7: Respuesta = new Respuesta({});
+  respuesta8: Respuesta = new Respuesta({});
+  respuesta9: Respuesta = new Respuesta({});
+  respuesta10: Respuesta = new Respuesta({});
+  respuesta11: Respuesta = new Respuesta({});
+  respuesta12: Respuesta = new Respuesta({});
+  respuesta13: Respuesta = new Respuesta({});
+  respuesta14: Respuesta = new Respuesta({});
+  respuesta15: Respuesta = new Respuesta({});
+
+
+
+
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
     private respuestasService: RespuestasService,
+    private alertService: AlertService,
   ) {  //Formulario seccion 1
-    this.respuestasForm1 = this.fb.group({
-      respuesta1: [new Respuesta({}), Validators.required],
-      respuesta2: [new Respuesta({}), Validators.required],
-      respuesta3: [new Respuesta({}), Validators.required],
-      respuesta4: [new Respuesta({}), Validators.required],
+    /*this.respuestasForm1 = this.fb.group({
+      respuesta1: [new Respuesta({}).opcion, Validators.required],
+      respuesta2: [new Respuesta({}).opcion, Validators.required],
+      respuesta3: [new Respuesta({}).opcion, Validators.required],
+      respuesta4: [new Respuesta({}).opcion, Validators.required],
       respuesta5: [new Respuesta({}), Validators.required],
       respuesta6: [new Respuesta({}), Validators.required],
       respuesta7: [new Respuesta({}), Validators.required],
@@ -64,17 +80,24 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
       respuesta13: [new Respuesta({}), Validators.required],
       respuesta14: [new Respuesta({}), Validators.required],
       respuesta15: [new Respuesta({}), Validators.required],
-      /*respuesta16: [new Respuesta({}), Validators.required],
+      respuesta16: [new Respuesta({}), Validators.required],
       respuesta17: [new Respuesta({}), Validators.required],
       respuesta18: [new Respuesta({}), Validators.required],
       respuesta19: [new Respuesta({}), Validators.required],
       respuesta20: [new Respuesta({}), Validators.required],
       respuesta21: [new Respuesta({}), Validators.required],
       respuesta22: [new Respuesta({}), Validators.required],
-      respuesta23: [new Respuesta({}), Validators.required],*/
+      respuesta23: [new Respuesta({}), Validators.required],
 
-    });
+    });*/
+    /*for(let i = 0; i < 15; i++){
+      this.firstForm[`option${i}`]= new OpcionesRespuesta({}) ;
+    }*/
+
+
   }
+
+
 
   ngOnInit() {
     this.processAttributesBasedOnScreenSize();
@@ -106,8 +129,65 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
 
 
   onSubmitSeccion1() {
+    //console.log(this.respuesta1);
+    let id_empresa = 1;
+
+    const listaRespuestas: Respuesta[] = [];
+    listaRespuestas.push(this.respuesta1);
+    listaRespuestas.push(this.respuesta3);
+    listaRespuestas.push(this.respuesta4);
+    listaRespuestas.push(this.respuesta5);
+    listaRespuestas.push(this.respuesta6);
+    listaRespuestas.push(this.respuesta7);
+    listaRespuestas.push(this.respuesta8);
+    listaRespuestas.push(this.respuesta9);
+    if (this.respuesta9.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta10);
+      listaRespuestas.push(this.respuesta11);
+    }
+    listaRespuestas.push(this.respuesta12);
+    listaRespuestas.push(this.respuesta13);
+    listaRespuestas.push(this.respuesta14);
+    listaRespuestas.push(this.respuesta15);
+    let isValidForm = true;
+
+    for (let i = 0; i < listaRespuestas.length; i++) {
+      listaRespuestas[i].id_pregunta = i + 1;
+      listaRespuestas[i].id_empresa = id_empresa;
+      const currentPregunta = PREGUNTAS[i];
+      if(currentPregunta.isText){
+        if(listaRespuestas[i].texto_res === undefined || listaRespuestas[i].texto_res === ''){
+          this.alertService.errorAlert('Error','Deben llenar los campos');  
+          isValidForm = false;
+          return;
+        }
+      }else{
+        if(listaRespuestas[i].opcion === undefined || listaRespuestas[i].opcion === ''){
+          this.alertService.errorAlert('Error','Deben llenar los campos');  
+          isValidForm = false;
+          return;
+        }
+      }
+      if (currentPregunta.isAffirmativeQuestion) {
+        if (listaRespuestas[i].opcion === 'No') {
+          i += currentPregunta.subPreguntas.length;
+          continue;
+        }
+      }
+      /*if(!isValidForm){
+        return
+      }*/
+      //listaRespuestas[i].valor = 3;
+      console.log(i);
+    }
+    if(!isValidForm){
+      return
+    }
+    console.log('------------------------');
+    console.log('fuera del ciclo',listaRespuestas);
     
-    const id_empresa = 1;
+
+    /*const id_empresa = 1;
     const ids_preguntas = this.obtenerIds();
     let answerCounter = 0;
 
@@ -174,7 +254,7 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
       error => {
         console.log(error);
       }
-    );
+    );*/
   }
 
 
@@ -206,7 +286,7 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     this.debouncedProcessAttributes();
   }
 
-  
+
 
   ngAfterViewInit() {
     this.processAttributesBasedOnScreenSize();
