@@ -47,12 +47,11 @@
 
 <div class="contenido mx-4 xl:mx-20 my-10 ">
     <p>
-        <!------------------------------------------------------------------------- contenedor 1 ------------------------------->
+        <!------------------------------------------------------------------------- Seccion 1 ------------------------------->
         <ng-container *ngIf="currentIndex === 0" class="">
-
-            <!-- Separacion -->
             <div>
                 <div class="">
+                    <!-- Pregunta 1 -->
                     <table class="min-w-full bg-white my-2">
                         <tbody>
                             <tr class="">
@@ -77,6 +76,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <!-- Pregunta 2 -->
                     <table class="border my-4">
                         <thead>
                             <tr class="">
@@ -88,6 +88,7 @@
                                 </th>
                             </tr>
                         </thead>
+                        <!-- Subpregunta 1 -->
                         <tbody class="">
                             <tr class="block sm:table-row">
                                 <td class="block sm:table-cell w-full sm:w-auto px-4 py-2 ">
@@ -97,15 +98,15 @@
                                 </td>
                                 <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto ">
                                     <div class="flex sm:flex-row   space-x-4 ">
-                                        <select id="1Select"
+                                        <select id="1Select" :[(ngModel)]="respuesta2.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
-                                        <select id="2Select"
+                                        <select id="2Select" :[(ngModel)]="respuesta2.texto_res"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
-                                            [style.display]="selectedOption1 === 'tipo1' ? 'block' : 'none'">
+                                            *ngIf="respuesta2.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
                                             <option value="1"> 1</option>
@@ -118,21 +119,22 @@
                                     </div>
                                 </td>
                             </tr>
+                            <!-- Subpregunta 2 -->
                             <tr class="block sm:table-row">
                                 <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
                                     <h3>{{ preguntas[1].subPreguntas[1].texto }}</h3>
                                 </td>
                                 <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto">
                                     <div class="flex sm:flex-row  space-x-4">
-                                        <select id="3Select"
+                                        <select id="3Select" :[(ngModel)]="respuesta3.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
-                                        <select id="4Select"
+                                        <select id="4Select" :[(ngModel)]="respuesta3.texto_res"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
-                                            [style.display]="selectedOption2 === 'tipo1' ? 'block' : 'none'">
+                                            *ngIf="respuesta3.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
                                             <option value="1"> 1</option>
@@ -145,23 +147,24 @@
                                     </div>
                                 </td>
                             </tr>
+                            <!-- Subpregunta 3 -->
                             <tr class="block sm:table-row">
                                 <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[2].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row  space-x-4">
-                                        <select id="1Select"
+                                <td class="block sm:table-cell w-full sm:w-auto py-2 px-4">
+                                    <div class="flex sm:flex-row space-x-4">
+                                        <select id="1Select" :[(ngModel)]="respuesta4.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
-                                        <select id="2Select"
+                                        <select id="2Select" :[(ngModel)]="respuesta4.texto_res"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
-                                            [style.display]="selectedOption3 === 'tipo1' ? 'block' : 'none'">
+                                            *ngIf="respuesta4.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
                                             <option value="1"> 1</option>
@@ -174,24 +177,24 @@
                                     </div>
                                 </td>
                             </tr>
+                            <!-- Subpregunta 4 -->
                             <tr class="block sm:table-row">
                                 <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[3].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row  space-x-4">
-                                        <select id="1Select"
+                                <td class="block sm:table-cell w-full sm:w-auto py-2 px-4">
+                                    <div class="flex sm:flex-row space-x-4">
+                                        <select id="1Select" :[(ngModel)]="respuesta5.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
-
-                                        <select id="2Select"
+                                        <select id="2Select" :[(ngModel)]="respuesta5.texto_res"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
-                                            [style.display]="selectedOption4 === 'tipo1' ? 'block' : 'none'">
+                                            *ngIf="respuesta5.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
                                             <option value="1"> 1</option>
@@ -204,6 +207,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            <!-- Subpregunta 5 -->
                             <tr class="block sm:table-row">
                                 <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
                                     <h3>
@@ -212,15 +216,15 @@
                                 </td>
                                 <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
                                     <div class="flex sm:flex-row  space-x-4">
-                                        <select id="1Select"
+                                        <select id="1Select" :[(ngModel)]="respuesta6.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
-                                        <select id="2Select"
+                                        <select id="2Select" :[(ngModel)]="respuesta6.texto_res"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
-                                            [style.display]="selectedOption5 === 'tipo1' ? 'block' : 'none'">
+                                            *ngIf="respuesta6.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
                                             <option value="1"> 1</option>
@@ -236,7 +240,7 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Separacion -->
+                <!-- Pregunta 3 -->
                 <table class="min-w-full bg-white ">
                     <tbody>
                         <tr class="">
@@ -247,7 +251,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta3.opcion"
+                                <select :[(ngModel)]="respuesta7.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -255,6 +259,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 4 -->
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
@@ -263,7 +268,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta4.opcion"
+                                <select :[(ngModel)]="respuesta8.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -271,6 +276,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 5 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -279,7 +285,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta5.opcion"
+                                <select :[(ngModel)]="respuesta9.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -288,7 +294,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!-- separacion -->
+                        <!-- Pregunta 6 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -297,7 +303,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta6.opcion"
+                                <select :[(ngModel)]="respuesta10.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -306,16 +312,17 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 7 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
-                                    <b>{{preguntas[6].id}}.</b>
-                                    <h3>{{preguntas[6].nombre}}</h3>
+                                    <b>{{preguntas[6].id}}</b>
+                                    <h3>{{ preguntas[6].nombre}}</h3>
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta7.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  mr-4">
+                                <select :[(ngModel)]="respuesta11.opcion"
+                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="Medio">Medio</option>
@@ -323,6 +330,8 @@
                                 </select>
                             </td>
                         </tr>
+
+                        <!-- Pregunta 8 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -331,7 +340,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta8.opcion"
+                                <select :[(ngModel)]="respuesta12.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="-1">
@@ -342,6 +351,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 9 -->
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
@@ -350,17 +360,17 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta9.opcion"
+                                <select :[(ngModel)]="respuesta13.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
-                                    <option value="Medio">Medio</option>
                                     <option value="No">No</option>
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 10 -->
                         <tr>
-                            <td class="cell">
+                            <td class="cell" *ngIf="respuesta13.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[9].id}}.</b>
@@ -368,41 +378,96 @@
                                         </h3>
                                     </div>
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
-                                        :[(ngModel)]="respuesta10.texto_res"
+                                        :[(ngModel)]="respuesta14.texto_res"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
                         </tr>
+                        <!-- Pregunta 11 -->
+                        <tr>
+                            <td class="cell"  *ngIf="respuesta13.opcion === 'Si'">
+                                <div class="px-4">
+                                    <div class="flex">
+                                        <b>{{preguntas[10].id}}.</b>
+                                        <h3>{{preguntas[10].nombre}}</h3>
+                                    </div>
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                        :[(ngModel)]="respuesta15.texto_res"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Pregunta 12 -->
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
-                                    <b>{{preguntas[10].id}}.</b>
-                                    <h3>{{preguntas[10].nombre}}</h3>
+                                    <b>{{preguntas[11].id}}.</b>
+                                    <h3>{{preguntas[11].nombre}}</h3>
                                 </div>
-                                <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
-                                    :[(ngModel)]="respuesta10.texto_res"
-                                    class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                             </td>
-                        </tr>
-                        <tr>
-                            <td class="cell">
-                                <div class="flex-1 px-4">
-                                    <div class="flex">
-                                        <b>{{preguntas[11].id}}.</b>
-                                        <h3 class="ml-2">{{preguntas[11].nombre}}</h3>
-                                    </div>
-                                    </div>
-                            </td>
-                            <td>
-                                <select :[(ngModel)]="respuesta12.opcion"
+                            <td class="py-2 px-4">
+                                <select :[(ngModel)]="respuesta16.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
-                                    <option value="Medio">Medio</option>
                                     <option value="No">No</option>
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 1 -->
+                        <tr>
+                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                                <div class="px-4">
+                                    <div class="flex">
+                                        <h3 class="ml-2">{{preguntas[11].subPreguntas[0].texto }}
+                                        </h3>
+                                    </div>
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                        :[(ngModel)]="respuesta17.texto_res"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Subpregunta 2 -->
+                        <tr>
+                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                                <div class="px-4">
+                                    <div class="flex">
+                                        <h3 class="ml-2">{{preguntas[11].subPreguntas[1].texto }}</h3>
+                                    </div>
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                        :[(ngModel)]="respuesta18.texto_res"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Subpregunta 3 -->
+                        <tr>
+                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                                <div class="px-4">
+                                    <div class="flex">
+                                        <h3 class="ml-2">{{preguntas[11].subPreguntas[2].texto }}</h3>
+                                    </div>
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                        :[(ngModel)]="respuesta19.texto_res"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Subpregunta 4 -->
+                        <tr>
+                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                                <div class="px-4">
+                                    <div class="flex">
+                                        <h3 class="ml-2">{{preguntas[11].subPreguntas[3].texto }}</h3>
+                                    </div>
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                        :[(ngModel)]="respuesta20.texto_res"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Pregunta 13 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -411,7 +476,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta13.opcion"
+                                <select :[(ngModel)]="respuesta21.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -420,6 +485,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 14 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -428,7 +494,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta14.opcion"
+                                <select :[(ngModel)]="respuesta22.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -437,6 +503,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 15 -->
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
@@ -445,7 +512,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4">
-                                <select :[(ngModel)]="respuesta15.opcion"
+                                <select :[(ngModel)]="respuesta23.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -460,11 +527,12 @@
             </div>
         </ng-container>
 
-        <!--------------------------------------------------------- contenedor 2 -------------------------------------------------------------->
+        <!--------------------------------------------------------- Seccion 2 -------------------------------------------------------------->
         <ng-container *ngIf="currentIndex === 1">
             <div>
                 <table class="min-w-full bg-white my-2">
                     <tbody>
+                        <!--Pregunta 16 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -483,7 +551,7 @@
                             </td>
                         </tr>
 
-                        <!--infromacion finaciera pregunta 2 -->
+                        <!--Pregunta 17 -->
                         <tr class="bg-gray-50  ">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="9">
                                 <div class="flex">
@@ -492,6 +560,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Subpregunta 1 -->
                         <tr class=" ">
                             <td class="px-4 py-2">
                                 <h3>{{ preguntas[16].subPreguntas[0].texto }}</h3>
@@ -505,8 +574,8 @@
                                     <option value="tipo3">Tipo 3</option>
                                 </select>
                             </td>
-
                         </tr>
+                        <!-- Subpregunta 2 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{ preguntas[16].subPreguntas[1].texto }}</h3>
@@ -521,6 +590,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 3 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{ preguntas[16].subPreguntas[2].texto }}</h3>
@@ -534,8 +604,8 @@
                                     <option value="tipo3">Tipo 3</option>
                                 </select>
                             </td>
-
                         </tr>
+                        <!-- Subpregunta 4 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{ preguntas[16].subPreguntas[3].texto }}</h3>
@@ -550,6 +620,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 5 -->
                         <tr class="">
                             <td class="px-4 py-2">
                                 <h3>{{ preguntas[16].subPreguntas[4].texto }}</h3>
@@ -563,8 +634,8 @@
                                     <option value="tipo3">Tipo 3</option>
                                 </select>
                             </td>
-
                         </tr>
+                        <!-- Subpregunta 6 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{ preguntas[16].subPreguntas[5].texto }}</h3>
@@ -579,6 +650,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 7 -->
                         <tr class="">
                             <td class="px-4 py-2">
                                 <h3>{{ preguntas[16].subPreguntas[6].texto }}</h3>
@@ -592,8 +664,8 @@
                                     <option value="tipo3">Tipo 3</option>
                                 </select>
                             </td>
-
                         </tr>
+                        <!-- Subpregunta 8 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{ preguntas[16].subPreguntas[7].texto }}</h3>
@@ -608,7 +680,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!-- fin de la pregunta -->
+                        <!-- Pregunta 18 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -626,10 +698,7 @@
                                 </select>
                             </td>
                         </tr>
-
-
-
-                        <!------------------------- inicio de pregunta ------------------------>
+                        <!-- Pregunta 19 -->
                         <tr class="bg-gray-50 ">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="5">
                                 <div class="flex">
@@ -640,6 +709,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Subpregunta 1 -->
                         <tr>
                             <td class="px-4 py-2">
                                 <h3>{{ preguntas[18].subPreguntas[0].texto }}</h3>
@@ -654,6 +724,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 2 -->
                         <tr>
                             <td class="py-2 px-4">
                                 <h3>{{ preguntas[18].subPreguntas[1].texto }}</h3>
@@ -667,6 +738,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 3 -->
                         <tr>
                             <td class="py-2 px-4">
                                 <h3>{{ preguntas[18].subPreguntas[2].texto }}</h3>
@@ -681,6 +753,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 4 -->
                         <tr>
                             <td class="py-2 px-4">
                                 <h3>{{ preguntas[18].subPreguntas[3].texto }}</h3>
@@ -694,7 +767,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!-- fin de pregunta -->
+                        <!-- Pregunta 20 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -703,7 +776,6 @@
                                         {{ preguntas[19].nombre }}
                                     </h3>
                                 </div>
-
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -715,7 +787,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!-- inicio de pregunta -->
+                        <!-- Pregunta 21 -->
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="4">
                                 <div class="flex">
@@ -726,6 +798,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Subpregunta 1 -->
                         <tr>
                             <td class="py-2 px-4">
                                 <h3> {{preguntas[20].subPreguntas[0].texto}}</h3>
@@ -740,6 +813,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 2 -->
                         <tr>
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[20].subPreguntas[1].texto}}</h3>
@@ -754,6 +828,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 3 -->
                         <tr>
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[20].subPreguntas[2].texto}}</h3>
@@ -768,7 +843,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!-- fin de pregunta  -->
+                        <!-- Pregunta 22  -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -787,7 +862,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!------------------------------------ pregunta 8 ----------------------------->
+                        <!-- Pregunta 23 -->
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 cell" rowspan="4">
                                 <div class="flex">
@@ -798,6 +873,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Subpregunta 1 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[22].subPreguntas[0].texto}}</h3>
@@ -812,6 +888,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 2 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[22].subPreguntas[1].texto}}</h3>
@@ -823,10 +900,10 @@
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 3 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[22].subPreguntas[2].texto}}</h3>
@@ -841,8 +918,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!-- fin de pregunta 8  -->
-                        <!------------------------------- inicio de pregunat 9 --------------------------->
+                        <!-- Pregunta 24 -->
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 cell" rowspan="5">
                                 <div class="flex">
@@ -853,6 +929,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Subpregunta 1 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[23].subPreguntas[0].texto}}</h3>
@@ -867,6 +944,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 2 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[23].subPreguntas[1].texto}}</h3>
@@ -881,6 +959,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 3 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[23].subPreguntas[2].texto}}</h3>
@@ -895,6 +974,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 4 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[23].subPreguntas[3].texto}}</h3>
@@ -909,16 +989,13 @@
                                 </select>
                             </td>
                         </tr>
-
-                        <!---------------------------------------------- fin de pregunta ------------------------------------------------>
-                        <!---------------------------------------------- Pregunta 10 ------------------------------------------------>
+                        <!-- Pregunta 25 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[24].id}}.</b>
                                     <h3>{{preguntas[24].nombre}}</h3>
                                 </div>
-
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -929,6 +1006,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 26 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex"><b>{{preguntas[25].id}}.</b>
@@ -946,8 +1024,7 @@
                                 </select>
                             </td>
                         </tr>
-
-                        <!--------------------- inicio de pregunat 12 ------------------------>
+                        <!-- Pregunta 27 -->
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4  cell" rowspan="5">
                                 <div class="flex">
@@ -955,8 +1032,8 @@
                                     <h3>{{preguntas[26].nombre}}</h3>
                                 </div>
                             </td>
-
                         </tr>
+                        <!-- Subpregunta 1 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[26].subPreguntas[0].texto}} </h3>
@@ -967,10 +1044,10 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 2 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[26].subPreguntas[1].texto}}</h3>
@@ -984,6 +1061,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 3 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[26].subPreguntas[2].texto}}</h3>
@@ -997,6 +1075,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 4 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[26].subPreguntas[3].texto}}</h3>
@@ -1010,14 +1089,13 @@
                                 </select>
                             </td>
                         </tr>
-                        <!---------------------- fin de pregunta 12 -------------------->
+                        <!-- Pregunta 28 -->
                         <tr class="bg-grya-50">
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[27].id}}.</b>
                                     <h3>{{preguntas[27].nombre}}</h3>
                                 </div>
-
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1028,6 +1106,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 29 -->
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 cell" rowspan="5">
                                 <div class="flex">
@@ -1036,6 +1115,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Subpregunta 1 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[28].subPreguntas[0].texto}} </h3>
@@ -1049,6 +1129,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 2 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[28].subPreguntas[1].texto}}</h3>
@@ -1062,6 +1143,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 3 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[28].subPreguntas[2].texto}}</h3>
@@ -1075,6 +1157,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 4 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[28].subPreguntas[3].texto}}</h3>
@@ -1093,12 +1176,12 @@
             </div>
         </ng-container>
 
-        <!------------------------------------------------------- contendor 3 ------------------------------------------------------------>
+        <!------------------------------------------------------- Seccion 3 ------------------------------------------------------------>
         <ng-container *ngIf="currentIndex === 2">
-            <!-- Separacion -->
             <div class="">
                 <table class="min-w-full bg-white">
                     <tbody>
+                        <!-- Pregunta 30 -->
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
@@ -1116,8 +1199,7 @@
                                 </select>
                             </td>
                         </tr>
-
-
+                        <!-- Pregunta 31 -->
                         <tr>
                             <td class="cell">
                                 <div class="px-4">
@@ -1130,6 +1212,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Pregunta 32 -->
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
@@ -1147,7 +1230,7 @@
                                 </select>
                             </td>
                         </tr>
-
+                        <!-- Pregunta 33 -->
                         <tr>
                             <td class="cell">
                                 <div class="px-4">
@@ -1160,7 +1243,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <!-- separacion -->
+                        <!-- Pregunta 34 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -1179,6 +1262,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 35 -->
                         <tr>
                             <td class="cell">
                                 <div class="px-4">
@@ -1191,6 +1275,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Pregunta 36 -->
                         <tr>
                             <td class="cell">
                                 <div class="px-4">
@@ -1198,13 +1283,12 @@
                                         <b>{{preguntas[35].id}}.</b>
                                         <h3 class="ml-2">{{preguntas[35].nombre }}</h3>
                                     </div>
-
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
                         </tr>
-
+                        <!-- Pregunta 37 -->
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
@@ -1222,6 +1306,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 38 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -1238,6 +1323,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 39 -->
                         <tr>
                             <td class="py-2 px-4" colspan="2">
                                 <div class="flex">
@@ -1254,6 +1340,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 40 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -1270,6 +1357,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Pregunta 41 -->
                         <tr>
                             <td class="py-2 px-4 " colspan="2">
                                 <div class="flex">
@@ -1283,7 +1371,6 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
@@ -1390,7 +1477,6 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
@@ -1583,7 +1669,6 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
@@ -1597,7 +1682,6 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
@@ -1611,11 +1695,11 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <!-- fin de trl7 -->
+
                         <!-- trl 8 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
@@ -1627,7 +1711,6 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
@@ -1641,14 +1724,12 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[22].texto}}</h3>
-
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1656,11 +1737,11 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <!-- fin de trl8 -->
+
                         <!-- trl 9 -->
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
@@ -1672,14 +1753,12 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[24].texto}}</h3>
-
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1687,7 +1766,6 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
@@ -1701,14 +1779,12 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[26].texto}}</h3>
-
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1716,14 +1792,12 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[27].texto}}</h3>
-
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1731,14 +1805,12 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <tr class="">
                             <td class="py-2 px-4" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[28].texto}}</h3>
-
                             </td>
                             <td class="py-2 px-4">
                                 <select
@@ -1746,7 +1818,6 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
@@ -1760,12 +1831,12 @@
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
                         <!-- fin trl 9 -->
-                        <!-- separacion  -->
+
+                        <!-- Pregunta 43  -->
                         <tr>
                             <td class="px-4 py-2" colspan="2">
                                 <div class="flex">
@@ -1783,6 +1854,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- pregunta 44 -->
                         <tr>
                             <td class="px-4 py-2" colspan="2">
                                 <div class="flex">
@@ -1800,7 +1872,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!-- pregunta 4.3 -->
+                        <!-- pregunta 45 -->
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="8">
                                 <div class="flex">
@@ -1809,6 +1881,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Subpregunta 1 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[0].texto}}</h3>
@@ -1823,6 +1896,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 2 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[1].texto}}</h3>
@@ -1837,6 +1911,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 3 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[2].texto}}</h3>
@@ -1851,6 +1926,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 4 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[3].texto}}</h3>
@@ -1865,6 +1941,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 5 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[4].texto}}</h3>
@@ -1879,6 +1956,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 6 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[5].texto}}</h3>
@@ -1893,6 +1971,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 7 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[6].texto}}</h3>
@@ -1907,7 +1986,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!-- fin de pregunta 4.3 -->
+                        <!-- Pregunta 46 -->
                         <tr>
                             <td class="px-4 py-2" colspan="2">
                                 <div class="flex">
@@ -1925,7 +2004,7 @@
                             </td>
                         </tr>
 
-                        <!-- pregunta 4.6 -->
+                        <!-- Pregunta 47 -->
                         <tr class="bg-gray-50">
                             <td class="py-2 px-4 xl:w-96 cell" rowspan="10">
                                 <div class="flex">
@@ -1934,6 +2013,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Subpregunta 1 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[0].texto}} </h3>
@@ -1945,10 +2025,10 @@
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
                                     <option value="tipo2">No</option>
-
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 2 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[1].texto}}</h3>
@@ -1963,6 +2043,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 3 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[2].texto}}</h3>
@@ -1977,6 +2058,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 4 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[3].texto}}</h3>
@@ -1991,6 +2073,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 5 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[4].texto}}</h3>
@@ -2005,6 +2088,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 6 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[5].texto}}</h3>
@@ -2019,6 +2103,7 @@
                                 </select>
                             </td>no.. se supone
                         </tr>
+                        <!-- Subpregunta 7 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[6].texto}}</h3>
@@ -2033,6 +2118,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 8 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[7].texto}}</h3>
@@ -2047,6 +2133,7 @@
                                 </select>
                             </td>
                         </tr>
+                        <!-- Subpregunta 9 -->
                         <tr class="">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[46].subPreguntas[8].texto}}</h3>
@@ -2061,7 +2148,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <!-- fin de pregunta 4.6 -->
+                        <!-- fin de pregunta 47 -->
                     </tbody>
                 </table>
             </div>

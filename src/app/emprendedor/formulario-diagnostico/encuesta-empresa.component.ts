@@ -52,6 +52,14 @@ export class EncuestaEmpresaComponent {
   respuesta13: Respuesta = new Respuesta({});
   respuesta14: Respuesta = new Respuesta({});
   respuesta15: Respuesta = new Respuesta({});
+  respuesta16: Respuesta = new Respuesta({});
+  respuesta17: Respuesta = new Respuesta({});
+  respuesta18: Respuesta = new Respuesta({});
+  respuesta19: Respuesta = new Respuesta({});
+  respuesta20: Respuesta = new Respuesta({});
+  respuesta21: Respuesta = new Respuesta({});
+  respuesta22: Respuesta = new Respuesta({});
+  respuesta23: Respuesta = new Respuesta({});
 
 
 
@@ -63,33 +71,7 @@ export class EncuestaEmpresaComponent {
     private fb: FormBuilder,
     private respuestasService: RespuestasService,
     private alertService: AlertService,
-  ) {  //Formulario seccion 1
-    /*this.respuestasForm1 = this.fb.group({
-      respuesta1: [new Respuesta({}).opcion, Validators.required],
-      respuesta2: [new Respuesta({}).opcion, Validators.required],
-      respuesta3: [new Respuesta({}).opcion, Validators.required],
-      respuesta4: [new Respuesta({}).opcion, Validators.required],
-      respuesta5: [new Respuesta({}), Validators.required],
-      respuesta6: [new Respuesta({}), Validators.required],
-      respuesta7: [new Respuesta({}), Validators.required],
-      respuesta8: [new Respuesta({}), Validators.required],
-      respuesta9: [new Respuesta({}), Validators.required],
-      respuesta10: [new Respuesta({}), Validators.required],
-      respuesta11: [new Respuesta({}), Validators.required],
-      respuesta12: [new Respuesta({}), Validators.required],
-      respuesta13: [new Respuesta({}), Validators.required],
-      respuesta14: [new Respuesta({}), Validators.required],
-      respuesta15: [new Respuesta({}), Validators.required],
-      respuesta16: [new Respuesta({}), Validators.required],
-      respuesta17: [new Respuesta({}), Validators.required],
-      respuesta18: [new Respuesta({}), Validators.required],
-      respuesta19: [new Respuesta({}), Validators.required],
-      respuesta20: [new Respuesta({}), Validators.required],
-      respuesta21: [new Respuesta({}), Validators.required],
-      respuesta22: [new Respuesta({}), Validators.required],
-      respuesta23: [new Respuesta({}), Validators.required],
-
-    });*/
+  ) {
     /*for(let i = 0; i < 15; i++){
       this.firstForm[`option${i}`]= new OpcionesRespuesta({}) ;
     }*/
@@ -134,131 +116,188 @@ export class EncuestaEmpresaComponent {
 
     const listaRespuestas: Respuesta[] = [];
     listaRespuestas.push(this.respuesta1);
+    //pregunta 2
+    listaRespuestas.push(this.respuesta2);
     listaRespuestas.push(this.respuesta3);
     listaRespuestas.push(this.respuesta4);
     listaRespuestas.push(this.respuesta5);
     listaRespuestas.push(this.respuesta6);
+    //fin pregunta 2
     listaRespuestas.push(this.respuesta7);
     listaRespuestas.push(this.respuesta8);
     listaRespuestas.push(this.respuesta9);
-    if (this.respuesta9.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta10);
-      listaRespuestas.push(this.respuesta11);
-    }
+    listaRespuestas.push(this.respuesta10);
+    listaRespuestas.push(this.respuesta11);
     listaRespuestas.push(this.respuesta12);
     listaRespuestas.push(this.respuesta13);
-    listaRespuestas.push(this.respuesta14);
-    listaRespuestas.push(this.respuesta15);
+    if (this.respuesta13.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta14);
+      listaRespuestas.push(this.respuesta15);
+    }
+    listaRespuestas.push(this.respuesta16);
+    if (this.respuesta16.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta17);
+      listaRespuestas.push(this.respuesta18);
+      listaRespuestas.push(this.respuesta19);
+      listaRespuestas.push(this.respuesta20);
+    }
+    listaRespuestas.push(this.respuesta21);
+    listaRespuestas.push(this.respuesta22);
+    listaRespuestas.push(this.respuesta23);
     let isValidForm = true;
 
-    for (let i = 0; i < listaRespuestas.length; i++) {
-      listaRespuestas[i].id_pregunta = i + 1;
-      listaRespuestas[i].id_empresa = id_empresa;
+    let respCounter = 0;
+    for (let i = 0; i < 15; i++) {
       const currentPregunta = PREGUNTAS[i];
-      if(currentPregunta.isText){
-        if(listaRespuestas[i].texto_res === undefined || listaRespuestas[i].texto_res === ''){
-          this.alertService.errorAlert('Error','Deben llenar los campos');  
-          isValidForm = false;
-          return;
+      listaRespuestas[respCounter].id_pregunta = i + 1;
+      listaRespuestas[respCounter].id_empresa = id_empresa;
+
+      if (currentPregunta.id === 2) {
+        for (let j = 0; j < currentPregunta.subPreguntas.length - 1; j++) {
+          debugger;
+          if (listaRespuestas[respCounter + j].opcion !== 'Si') {
+            listaRespuestas[respCounter + j].texto_res = '0';
+          }
+          listaRespuestas[respCounter + j].id_pregunta = i;
+          listaRespuestas[respCounter + j].id_subpregunta = j;
         }
-      }else{
-        if(listaRespuestas[i].opcion === undefined || listaRespuestas[i].opcion === ''){
-          this.alertService.errorAlert('Error','Deben llenar los campos');  
-          isValidForm = false;
-          return;
+        respCounter += currentPregunta.subPreguntas.length - 1;
+        
+      } else if (currentPregunta.id === 12) {
+        debugger
+        if (listaRespuestas[respCounter].opcion === 'Si') {
+          for (let k = 0; k < currentPregunta.subPreguntas.length; k++) {
+            listaRespuestas[respCounter + 1 + k].id_pregunta = i;
+            listaRespuestas[respCounter + 1 + k].id_subpregunta = k;
+          }
+          respCounter += currentPregunta.subPreguntas.length;
         }
-      }
-      if (currentPregunta.isAffirmativeQuestion) {
-        if (listaRespuestas[i].opcion === 'No') {
-          i += currentPregunta.subPreguntas.length;
-          continue;
+        respCounter++;
+      } else {
+        if (currentPregunta.isText) {
+          //if(currentPregunta.id === 10){
+          debugger;
+          //}
+          if (!listaRespuestas[respCounter].texto_res || listaRespuestas[respCounter].texto_res === '') {
+            this.alertService.errorAlert('Error', 'Deben llenar los campos');
+            isValidForm = false;
+            return;
+          }
+        } else {
+          //if(currentPregunta.id === 10){
+          debugger;
+          //}
+          if (!listaRespuestas[respCounter].opcion || listaRespuestas[respCounter].opcion === '') {
+            this.alertService.errorAlert('Error', 'Deben llenar los campos');
+            isValidForm = false;
+            return;
+          }
         }
+        if (currentPregunta.isAffirmativeQuestion) {
+          if (listaRespuestas[respCounter].opcion === 'No') {
+            i += currentPregunta.subPreguntas.length;
+            respCounter += currentPregunta.subPreguntas.length;
+            continue;
+          }
+        }
+        respCounter++;
       }
       /*if(!isValidForm){
         return
       }*/
       //listaRespuestas[i].valor = 3;
       console.log(i);
+      //console.log('fuera del ciclo', listaRespuestas);
     }
-    if(!isValidForm){
+    if (!isValidForm) {
       return
-    }
-    console.log('------------------------');
-    console.log('fuera del ciclo',listaRespuestas);
-    
-
-    /*const id_empresa = 1;
-    const ids_preguntas = this.obtenerIds();
-    let answerCounter = 0;
-
-    for (let i = 0; i < ids_preguntas.length; i++) {
-      const currentPregunta = PREGUNTAS[i];
-      if (currentPregunta.isAffirmativeResponse) {
-        for (let j = 0; j < currentPregunta.subPreguntas.length; j++) {
-
-          const currentResponse: Respuesta = this.respuestasForm1.get(`respuesta${j + answerCounter}`)?.value;
-          console.log(currentResponse);
-          if (currentResponse.texto_res) {
-            this.firstForm.push(new Respuesta(
-              {
-                id_pregunta: currentPregunta.id,
-                id_empresa: id_empresa,
-                texto_res: currentResponse.texto_res,
-                id_subpregunta: currentPregunta.subPreguntas[j].id,
-              }
-            ));
-          } else {
-            this.firstForm.push(new Respuesta(
-              {
-                id_pregunta: currentPregunta.id,
-                id_empresa: id_empresa,
-                opcion: currentResponse.opcion,
-                id_subpregunta: currentPregunta.subPreguntas[j].id,
-              }
-            ));
-          }
-        }
-        answerCounter += currentPregunta.subPreguntas.length+1;
-        continue;
-      }
-
-      
-      const currentResponse: Respuesta = this.respuestasForm1.get(`respuesta${i + 1}`)?.value;
-      console.log('CuurrentResponsee',currentResponse);
-      
-      if (currentResponse.texto_res) {
-        this.firstForm.push(new Respuesta(
-          {
-            id_pregunta: currentPregunta.id,
-            id_empresa: id_empresa,
-            texto_res: currentResponse.texto_res,
-          }
-        ));
-      } else {
-        this.firstForm.push(new Respuesta(
-          {
-            id_pregunta: currentPregunta.id,
-            id_empresa: id_empresa,
-            opcion: currentResponse.opcion,
-          }
-        ));
-      }
-      answerCounter++;
-    }
-    console.log(this.firstForm);
-    console.log (this.respuestasForm1.value);
-    this.respuestasService.saveAnswers(this.token, this.firstForm).subscribe(
+    } this.respuestasService.saveAnswers(this.token, listaRespuestas).subscribe(
       (data: any) => {
         console.log(data);
       },
       error => {
         console.log(error);
-      }
-    );*/
+      });
+
+
   }
 
 
-
+  /**
+   * onSubmitSeccion1() {
+     //console.log(this.respuesta1);
+     let id_empresa = 1;
+ 
+     const listaRespuestas: Respuesta[] = [];
+     listaRespuestas.push(this.respuesta1);
+     listaRespuestas.push(this.respuesta3);
+     listaRespuestas.push(this.respuesta4);
+     listaRespuestas.push(this.respuesta5);
+     listaRespuestas.push(this.respuesta6);
+     listaRespuestas.push(this.respuesta7);
+     listaRespuestas.push(this.respuesta8);
+     listaRespuestas.push(this.respuesta9);
+     listaRespuestas.push(this.respuesta10);
+     listaRespuestas.push(this.respuesta11);
+     listaRespuestas.push(this.respuesta12);
+     listaRespuestas.push(this.respuesta13);
+     if (this.respuesta13.opcion === 'Si') {
+       listaRespuestas.push(this.respuesta14);
+       listaRespuestas.push(this.respuesta15);
+     }
+     listaRespuestas.push(this.respuesta16);
+     if (this.respuesta16.opcion === 'Si') {
+       listaRespuestas.push(this.respuesta17);
+       listaRespuestas.push(this.respuesta18);
+       listaRespuestas.push(this.respuesta19);
+       listaRespuestas.push(this.respuesta20);
+     }
+     listaRespuestas.push(this.respuesta21);
+     listaRespuestas.push(this.respuesta22);
+     let isValidForm = true;
+ 
+     for (let i = 0; i < listaRespuestas.length; i++) {
+       listaRespuestas[i].id_pregunta = i + 1;
+       listaRespuestas[i].id_empresa = id_empresa;
+       const currentPregunta = PREGUNTAS[i];
+       if (currentPregunta.isText) {
+         if (!listaRespuestas[i].texto_res || listaRespuestas[i].texto_res === '') {
+           this.alertService.errorAlert('Error', 'Deben llenar los campos');
+           isValidForm = false;
+           return;
+         }
+       } else {
+         if (!listaRespuestas[i].opcion || listaRespuestas[i].opcion === '') {
+           this.alertService.errorAlert('Error', 'Deben llenar los campos');
+           isValidForm = false;
+           return;
+         }
+       }
+       if (currentPregunta.isAffirmativeQuestion) {
+         if (listaRespuestas[i].opcion === 'No') {
+           i += currentPregunta.subPreguntas.length;
+           continue;
+         }
+       }
+       /*if(!isValidForm){
+         return
+       }
+       //listaRespuestas[i].valor = 3;
+       console.log(i);
+       console.log('fuera del ciclo', listaRespuestas);
+     }
+     if (!isValidForm) {
+       return
+     } this.respuestasService.saveAnswers(this.token, listaRespuestas).subscribe(
+       (data: any) => {
+         console.log(data);
+       },
+       error => {
+         console.log(error);
+       });
+ 
+ 
+   }  */
 
 
 
