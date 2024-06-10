@@ -24,7 +24,7 @@ export class OrientadorService {
 
   createOrientador(access_token: any, orientador: Orientador,): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.post(this.url, orientador, options);
+    return this.http.post(this.url+"crearOrientador", orientador, options);
   }
 
   mostrarOrientador(access_token: any, id: number): Observable<any> { 
