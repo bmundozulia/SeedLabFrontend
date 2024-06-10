@@ -2,8 +2,8 @@ import { Component, AfterViewInit, PLATFORM_ID, Inject, HostListener, OnInit, On
 import { isPlatformBrowser } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import { TraeraliadosfanpageService } from '../../servicios/traeraliadosfanpage.service';
 
+import { AliadoService } from '../../servicios/aliado.service';
 
 // Importar función para registrar elementos personalizados de Swiper
 import { register } from 'swiper/element/bundle';
@@ -15,7 +15,7 @@ import Swiper from 'swiper';
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css'],// Corrige la propiedad de estilo a 'styleUrls'
-  providers:[TraeraliadosfanpageService]  
+  providers:[AliadoService]  
 })
 export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
 
@@ -32,14 +32,14 @@ export class BodyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private traeraliadosfanpageService: TraeraliadosfanpageService,
+    private aliadoService: AliadoService,
     private sanitizer: DomSanitizer // Inyecta el servicio
   ) {
     this.cardSeleccionada = {}; // Inicializar cardSeleccionada
   }
 
   ngOnInit(): void {
-    this.traeraliadosfanpageService.getaliados().subscribe(data => {
+    this.aliadoService.getaliados().subscribe(data => {
       console.log(data); // Mostrar por consola los datos recibidos
       this.cards = data;
       this.totalSlides = this.cards.length;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
-import { LoginService } from '../../servicios/login.service';
+import { AuthService } from '../../servicios/auth.service';
 import { AlertService } from '../../servicios/alert.service';
 
 import { User } from '../../Modelos/user.model';
@@ -13,7 +13,7 @@ import { Login } from '../../Modelos/login.modelo';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrl: './login.component.css',
-
+    providers: [AuthService, ReactiveFormsModule, AlertService]
 })
 
 export class LoginComponent {
@@ -30,7 +30,7 @@ export class LoginComponent {
     });
 
     constructor(
-        private loginService: LoginService,
+        private loginService: AuthService,
         private router: Router,
         private fb: FormBuilder,
         private alertService: AlertService

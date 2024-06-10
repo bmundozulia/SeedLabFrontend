@@ -12,12 +12,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { MunicipioService } from '../../servicios/municipio.service';
-import { RegistroService } from '../../servicios/registro.service';
 
 import { Emprendedor } from '../../Modelos/emprendedor.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AlertService } from '../../servicios/alert.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../servicios/auth.service';
 
 
 
@@ -28,7 +28,7 @@ import { Router } from '@angular/router';
   selector: 'app-register',
   standalone: true,
   imports: [FontAwesomeModule, ReactiveFormsModule, CommonModule],
-  providers: [DepartamentoService, MunicipioService, RegistroService, AlertService],
+  providers: [DepartamentoService, MunicipioService, AuthService, AlertService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
-    private registroService: RegistroService,
+    private registroService: AuthService,
     private router: Router,
     private alertService: AlertService,
   ) { }

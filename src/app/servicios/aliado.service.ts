@@ -53,4 +53,8 @@ export class AliadoService {
     return this.http.put(url, asesor, options);
   }
 
+  getaliados(): Observable<any>{
+    return this.http.get(this.url+"/"+1);
+  }
+
 }
