@@ -1,7 +1,6 @@
 import { Component, AfterViewInit, PLATFORM_ID, Inject, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
 
 import { AliadoService } from '../../servicios/aliado.service';
 

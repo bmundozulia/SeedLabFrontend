@@ -4,8 +4,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { RutaService } from '../../servicios/rutas.service';
 import { SwitchService } from '../../servicios/switch.service'
-import { User } from '../../Modelos/user.model';
+
 import { Ruta } from '../../Modelos/ruta.modelo';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-modal',

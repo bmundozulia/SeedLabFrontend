@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { SuperadminService } from '../../servicios/superadmin.service';
-import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { AlertService } from '../../servicios/alert.service';
-import { User } from '../../Modelos/user.model';
+import { SuperadminService } from '../../servicios/superadmin.service';
+
 import { Superadmin } from '../../Modelos/superadmin.model';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-perfil-admin',

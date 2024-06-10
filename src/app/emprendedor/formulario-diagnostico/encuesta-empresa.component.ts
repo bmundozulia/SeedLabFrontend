@@ -1,18 +1,19 @@
-import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef} from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { PREGUNTAS } from './preguntas.component';
 
+import { AlertService } from '../../servicios/alert.service';
 import { RespuestasService } from '../../servicios/respuestas.service';
 
-import { User } from '../../Modelos/user.model';
-import { Respuesta } from '../../Modelos/respuesta.model';
 import { Preguntas } from '../../Modelos/preguntas.model';
-import { OpcionesRespuesta } from '../../Modelos/opciones-respuesta.model';
-import { AlertService } from '../../servicios/alert.service';
+import { Respuesta } from '../../Modelos/respuesta.model';
+import { User } from '../../Modelos/user.model';
+
 
 @Component({
   selector: 'app-encuesta-empresa',

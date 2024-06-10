@@ -1,26 +1,23 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { } from '@fortawesome/free-solid-svg-icons';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
-import { MatIconModule } from '@angular/material/icon';
-import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { DepartamentoService } from '../../servicios/departamento.service';
-import { MunicipioService } from '../../servicios/municipio.service';
-
-import { Emprendedor } from '../../Modelos/emprendedor.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { AlertService } from '../../servicios/alert.service';
-import { Router } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
-
-
-
+import { DepartamentoService } from '../../servicios/departamento.service';
+import { Emprendedor } from '../../Modelos/emprendedor.model';
+import { MunicipioService } from '../../servicios/municipio.service';
 
 
 

@@ -1,22 +1,23 @@
-import { Component, OnInit, input } from '@angular/core';
-import { } from '@fortawesome/free-solid-svg-icons';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { faIdCard } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
-import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
-import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faIdCard } from '@fortawesome/free-solid-svg-icons';
+import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
+import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
+
+import { AuthService } from '../../servicios/auth.service';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { EmprendedorService } from '../../servicios/emprendedor.service';
 import { MunicipioService } from '../../servicios/municipio.service';
 
-import { User } from '../../Modelos/user.model';
 import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
-import { AuthService } from '../../servicios/auth.service';
+import { User } from '../../Modelos/user.model';
 
 
 @Component({

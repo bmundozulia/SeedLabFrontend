@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
-import { OrientadorService } from '../../servicios/orientador.service';
 import { Router } from '@angular/router';
+
 import { AlertService } from '../../servicios/alert.service';
-import { User } from '../../Modelos/user.model';
+import { OrientadorService } from '../../servicios/orientador.service';
+
 import { Orientador } from '../../Modelos/orientador.model';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-perfil-orientador',

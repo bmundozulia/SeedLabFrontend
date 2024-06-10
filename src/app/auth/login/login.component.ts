@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AlertService } from '../../servicios/alert.service';
 import { AuthService } from '../../servicios/auth.service';

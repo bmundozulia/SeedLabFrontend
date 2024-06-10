@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { faFileLines} from '@fortawesome/free-solid-svg-icons';
+
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
+import { faFileLines} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-fan-page',

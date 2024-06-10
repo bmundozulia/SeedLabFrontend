@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AsesoriaService } from '../../servicios/asesoria.service';
-import { Asesoria } from '../../Modelos/asesoria.model';
 import { MatDialog } from '@angular/material/dialog';
-import { HorarioModalComponent } from '../horario-modal/horario-modal/horario-modal.component';
+import { Router } from '@angular/router';
+
+import { HorarioModalComponent } from '../horario-modal/horario-modal.component';
+
+import { AsesoriaService } from '../../servicios/asesoria.service';
+
+import { Asesoria } from '../../Modelos/asesoria.model';
 
 @Component({
   selector: 'app-asesorias',

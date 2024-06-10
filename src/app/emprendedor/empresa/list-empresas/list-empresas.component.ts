@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { HeaderComponent } from '../../../header/header.component';
 import { Router } from '@angular/router';
+
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+
+import { HeaderComponent } from '../../../header/header.component';
 
 import { EmprendedorService } from '../../../servicios/emprendedor.service';
 

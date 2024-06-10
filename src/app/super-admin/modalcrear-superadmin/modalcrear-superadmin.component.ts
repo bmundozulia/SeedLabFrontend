@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { SwitchService } from '../../servicios/switch.service'
-import { User } from '../../Modelos/user.model';
+
 import { SuperadminService } from '../../servicios/superadmin.service';
+import { SwitchService } from '../../servicios/switch.service'
+
 import { Superadmin } from '../../Modelos/superadmin.model';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-modalcrear-superadmin',
