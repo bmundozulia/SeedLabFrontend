@@ -29,7 +29,7 @@ export class OrientadorService {
 
   mostrarOrientador(access_token: any, id: number): Observable<any> { 
     const options = { headers: this.CreacionHeaders(access_token) }; 
-    return this.http.get(`${environment.apiUrl}orientador/listaOrientador`, options);
+    return this.http.get(this.url+"listaOrientador/"+id, options);
   }
 
 
