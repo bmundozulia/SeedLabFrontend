@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { AddEmpresaComponent } from './emprendedor/empresa/add-empresa/add-empresa.component';
-import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
+import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/list-asesorias/asesoria-aliado.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 import { BodyComponent } from './inicio/body/body.component';

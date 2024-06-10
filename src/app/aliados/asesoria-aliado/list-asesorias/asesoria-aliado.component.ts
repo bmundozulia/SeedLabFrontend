@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
-import { DarAsesorModalComponent } from './dar-asesor-modal/dar-asesor-modal.component';
+import { DarAsesorModalComponent } from '../dar-asesor-modal/dar-asesor-modal.component';
 
-import { AsesoriaService } from '../../servicios/asesoria.service';
+import { AsesoriaService } from '../../../servicios/asesoria.service';
 
-import { Asesoria } from '../../Modelos/asesoria.model';
+import { Asesoria } from '../../../Modelos/asesoria.model';
 
 
 @Component({

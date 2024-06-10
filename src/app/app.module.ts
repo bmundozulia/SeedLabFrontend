@@ -37,7 +37,7 @@ import { ModalComponent } from './super-admin/modal/modal.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
-import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/asesoria-aliado.component';
+import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/list-asesorias/asesoria-aliado.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
