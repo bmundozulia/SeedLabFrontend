@@ -41,7 +41,7 @@ export class OrientadorService {
 
   getinformacionOrientador( access_token:any, id:number):Observable<any> {
     const options={headers: this.CreacionHeaders(access_token)};
-    return this.http.get<any>(this.url+"userProfileOrientador/"+id, options)
+    return this.http.get(this.url+"userProfileOrientador/"+id, options)
   }
 
   
