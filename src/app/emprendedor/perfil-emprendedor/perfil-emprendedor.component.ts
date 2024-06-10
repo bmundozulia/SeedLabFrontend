@@ -13,10 +13,10 @@ import { Router } from '@angular/router';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { EmprendedorService } from '../../servicios/emprendedor.service';
 import { MunicipioService } from '../../servicios/municipio.service';
-import { RegistroService } from '../../servicios/registro.service';
 
 import { User } from '../../Modelos/user.model';
 import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
+import { AuthService } from '../../servicios/auth.service';
 
 
 @Component({
@@ -69,7 +69,7 @@ export class PerfilEmprendedorComponent implements OnInit {
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
     private emprendedorService: EmprendedorService,
-    private registroService: RegistroService,
+    private registroService: AuthService,
     private router: Router,
   ) { }
 
