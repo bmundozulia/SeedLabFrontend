@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
-import { AuthService } from '../../servicios/auth.service';
 import { AlertService } from '../../servicios/alert.service';
+import { AuthService } from '../../servicios/auth.service';
 
-import { User } from '../../Modelos/user.model';
 import { Login } from '../../Modelos/login.modelo';
+import { User } from '../../Modelos/user.model';
 
 
 @Component({
@@ -72,7 +72,7 @@ export class LoginComponent {
                         this.router.navigate(['/home/body']);
                         break;
                     case '5':
-                        this.router.navigate(['list-empresa/', this.user.emprendedor.documento]);
+                        this.router.navigate(['list-empresa/']);
                         break;
                     default:
                         this.router.navigate(['/home/body']);
