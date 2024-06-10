@@ -8,11 +8,9 @@ import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 import { BodyComponent } from './inicio/body/body.component';
 
-import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { EncuestaEmpresaComponent } from './emprendedor/formulario-diagnostico/encuesta-empresa.component';
 
 import { FanPageComponent } from './aliados/fan-page/fan-page.component';
-import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 
 import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
 import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/list-asesoria.component';
@@ -43,6 +41,7 @@ import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-ase
 import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
 import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
+import { VerificationComponent } from './auth/verification/verification.component';
 
 
 const routes: Routes = [

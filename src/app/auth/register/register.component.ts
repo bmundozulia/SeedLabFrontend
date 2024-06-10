@@ -7,14 +7,17 @@ import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
 import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { MunicipioService } from '../../servicios/municipio.service';
 import { RegistroService } from '../../servicios/registro.service';
 
 import { Emprendedor } from '../../Modelos/emprendedor.model';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AlertService } from '../../servicios/alert.service';
+import { Router } from '@angular/router';
 
 
 
