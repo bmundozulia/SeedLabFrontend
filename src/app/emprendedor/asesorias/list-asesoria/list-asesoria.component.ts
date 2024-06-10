@@ -21,7 +21,13 @@ export class ListAsesoriaComponent implements OnInit {
   currentRolId: string | null = null;
   sinAsignarCount: number = 0;
   asignadasCount: number = 0;
-
+  busqueda: string = '';
+  asesorias: any[] = []; // Tus datos
+  resultadosBusqueda: any[] = []; //
+  
+  userFilter: any = { Nombre_sol: ''};
+  Nombre_sol: string | null = null;
+  
   constructor(
     private asesoriaService: AsesoriaService, 
     public dialog: MatDialog,
@@ -40,11 +46,9 @@ export class ListAsesoriaComponent implements OnInit {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
         this.user = identity;
         this.documento = this.user.emprendedor.documento;
         this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
       }
     }
 
@@ -69,7 +73,6 @@ export class ListAsesoriaComponent implements OnInit {
         response => {
           this.asesoriasTrue = response;
           this.asignadasCount = this.asesoriasTrue.length; // Actualiza el contador
-          console.log(this.asesoriasTrue); 
         },
         error => {
           console.error(error);
@@ -80,7 +83,6 @@ export class ListAsesoriaComponent implements OnInit {
         response => {
           this.asesoriasFalse = response;
           this.sinAsignarCount = this.asesoriasFalse.length; // Actualiza el contador
-          console.log(this.asesoriasFalse); 
         },
         error => {
           console.error(error);
@@ -114,4 +116,17 @@ export class ListAsesoriaComponent implements OnInit {
     this.showTrue = true;
     this.showFalse = false;
   }
+  manejarCambio(event: Event) {
+    this.busqueda = (event.target as HTMLInputElement).value;
+
+    // Lógica de búsqueda
+    if (this.busqueda) {
+      this.resultadosBusqueda = this.asesorias.filter(asesoria =>
+        asesoria.Nombre_sol.toLowerCase().includes(this.busqueda.toLowerCase())
+      );
+    } else {
+      this.resultadosBusqueda = this.asesorias;
+    }
+  }
+  
 }

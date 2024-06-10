@@ -19,7 +19,7 @@ export class ListAliadosComponent implements OnInit {
   userFilter: any = { nombre: '', estado_usuario: 'Activo' };
   faeye = faEye;
   falupa = faMagnifyingGlass;
-  fax= faXmark;
+  fax = faXmark;
   public page!: number;
   listaAliado: Aliado[] = [];
   token: string | null = null;
@@ -42,19 +42,19 @@ export class ListAliadosComponent implements OnInit {
     this.cargarAliados(1); // Cargar inicialmente con estado 'Activo'
   }
 
-  
+
   validateToken(): void {
     if (!this.token) {
-        this.token = localStorage.getItem("token");
-        let identityJSON = localStorage.getItem('identity');
+      this.token = localStorage.getItem("token");
+      let identityJSON = localStorage.getItem('identity');
 
-        if (identityJSON) {
-            let identity = JSON.parse(identityJSON);
-            console.log(identity);
-            this.user = identity; 
-            this.currentRolId = this.user.id_rol;
-            console.log(this.currentRolId);
-        }
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        console.log(identity);
+        this.user = identity;
+        this.currentRolId = this.user.id_rol;
+        console.log(this.currentRolId);
+      }
     }
   }
 
@@ -86,13 +86,17 @@ export class ListAliadosComponent implements OnInit {
   }
 
   onEstadoChange(event: any): void {
-    const estado = event.target.value;
-    this.cargarAliados(parseInt(estado, 10));
+    var estado = event.target.value;
+    if (estado == "Activo") {
+      this.cargarAliados(1);
+    } 
+    else{
+      this.cargarAliados(0);
+    }
   }
 
   limpiarFiltro(): void {
     this.userFilter = { nombre: '', estado_usuario: 'Activo' };
-    // Opcional: recargar los aliados con el estado por defecto
     this.cargarAliados(1);
   }
 }

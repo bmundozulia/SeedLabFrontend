@@ -4,7 +4,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { RutaService } from '../../servicios/rutas.service';
 import { SwitchService } from '../../servicios/switch.service'
-
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { RutaService } from '../../servicios/rutas.service';
+import { DatePipe } from '@angular/common';
 import { User } from '../../Modelos/user.model';
 import { Ruta } from '../../Modelos/ruta.modelo';
 
@@ -13,6 +15,7 @@ import { Ruta } from '../../Modelos/ruta.modelo';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
   providers: [RutaService, DatePipe]
+
 })
 export class ModalComponent implements OnInit {
 
@@ -34,14 +37,7 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.validateToken();
-    this.formattedDate = this.datePipe.transform(this.now, 'yyyy-MM-dd');
-    this.createRutaForm = this.fb.group({
-      nombre: [''],
-      fecha_creacion: [this.formattedDate],
-      estado: ['1']
-    });
-    
+
   }
 
  
@@ -79,10 +75,19 @@ export class ModalComponent implements OnInit {
   };
 
   closeModal() {
-    this.modalSS.$modal.emit(false)
+    this.modalSS.$modal.emit(false);
   }
 
   confirmarModal() {
+    // this.submitted = true;
+    // if (this.isFormValid()) {
+    //   console.log('Form data:', this.persona);
+    //   // Realizar acción de guardar
+    // }
     this.modalSS.$modal.emit(false);
   }
+
+  // isFormValid() {
+  //   return this.persona.nombre.trim() !== '';
+  // }
 }

@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ColorPickerDirective } from 'ngx-color-picker';
-
+import { faImage } from
+  '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-personalizaciones',
   templateUrl: './personalizaciones.component.html',
@@ -10,6 +11,7 @@ export class PersonalizacionesComponent {
   selectedColorPrincipal = '#C2FFFB';
   selectedColorSecundario = '#C2FFFB';
   previewUrl: any = null;
+  faImage = faImage;
 
   @ViewChild('colorPickerPrincipal') colorPickerPrincipal: ColorPickerDirective;
   @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
@@ -36,5 +38,5 @@ export class PersonalizacionesComponent {
       };
     }
   }
-  
+
 }

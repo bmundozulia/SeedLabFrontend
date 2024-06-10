@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { AliadoService } from '../../../servicios/aliado.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-crear-asesoria-modal',
@@ -19,7 +20,9 @@ export class CrearAsesoriaModalComponent {
   user: any;
   aliados: any[] = []; 
   currentRolId: string | null = null;
-  docEmprendedor: string | null = null; // Variable para almacenar el documento del emprendedor
+  docEmprendedor: string | null = null; 
+  isorientador = new FormControl(false);
+
 
   constructor(
     private fb: FormBuilder,
@@ -66,7 +69,7 @@ export class CrearAsesoriaModalComponent {
   }
 
   loadAliados(): void {
-    this.aliadoService.mostrarAliado().subscribe(
+    this.aliadoService.mostrarAliado(this.token).subscribe(
       (data: any[]) => {
         this.aliados = data;
         console.log(this.aliados);

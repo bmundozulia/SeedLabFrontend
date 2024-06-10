@@ -4,11 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { HeaderComponent } from '../../../header/header.component';
 
 @Component({
   selector: 'app-edit-empresa',
   templateUrl: './edit-empresa.component.html',
-  styleUrl: './edit-empresa.component.css'
+  styleUrl: './edit-empresa.component.css',
+  providers:[HeaderComponent]
 })
 export class EditEmpresaComponent implements OnInit {
   empresaForm: FormGroup;

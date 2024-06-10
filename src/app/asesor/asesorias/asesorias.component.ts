@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
-import { CrearAsesoriaModalComponent } from '../../emprendedor/asesorias/crear-asesoria-modal/crear-asesoria-modal.component';
-
 import { AsesoriaService } from '../../servicios/asesoria.service';
-
 import { Asesoria } from '../../Modelos/asesoria.model';
+import { MatDialog } from '@angular/material/dialog';
+import { HorarioModalComponent } from '../horario-modal/horario-modal/horario-modal.component';
 
 @Component({
   selector: 'app-asesorias',
@@ -16,97 +11,125 @@ import { Asesoria } from '../../Modelos/asesoria.model';
   styleUrls: ['./asesorias.component.css']
 })
 export class AsesoriasComponent implements OnInit {
-  barritaColor: string;
+  asesorias: Asesoria[] = [];
+  asesoriasConHorario: Asesoria[] = [];
+  asesoriasSinHorario: Asesoria[] = [];
+  showTrue: boolean = false; // Inicializa en false para no mostrar asesorías con horario al principio
+  showFalse: boolean = true; // Inicializa en true para mostrar asesorías sin horario al principio
   token: string | null = null;
-  documento: string | null;
-  listaAsesorias: Asesoria[] = [];
+  user: any = null;
+  filteredAsesorias: Asesoria[] = [];
+  currentRolId: string | null = null;
 
+  userFilter: any = { Nombre_sol: ''};
+  Nombre_sol: string | null = null;
+
+  constructor(
+    private asesoriaService: AsesoriaService, 
+    public dialog: MatDialog,
+    private router: Router
+  ) { }
+ 
   ngOnInit() {
-    this.initDatos();
-    this.validartoken();
+    this.validateToken();
+    this.loadAsesoriasFalse();    
+    this.loadAsesoriasTrue();
   }
-  
-  validartoken(): void {
-    this.token = localStorage.getItem('token');
-    this.documento = localStorage.getItem('documento');
-    if (!this.token || !this.documento) {
+
+  validateToken(): void {
+    if (!this.token) {
+      this.token = localStorage.getItem('token');
+      let identityJSON = localStorage.getItem('identity');
+
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        console.log(identity);
+        this.user = identity;
+        this.currentRolId = this.user.id_rol?.toString();
+        console.log(this.currentRolId);
+      }
+    }
+
+    if (!this.token || !this.currentRolId) {
       this.router.navigate(['/inicio/body']);
-     // console.log('no lista empresa no esta tomando el token');
-    }
-    // console.log(localStorage.getItem('documento'));
-  }
-
-/*
-  constructor(private asesoriaService: AsesoriaService, 
-    private router: Router, 
-    private aRoute: ActivatedRoute, 
-    private fb: FormBuilder,) {
-    this.documento = this.aRoute.snapshot.paramMap.get('id');
-  }
-
-  Con este codigo pienso que se puede conectar, el constructor de abajo funciona para el modal de crear
-*/
-
-constructor(
-  private asesoriaService: AsesoriaService,
-  private router: Router,
-  private aRoute: ActivatedRoute,
-  private fb: FormBuilder,
-  private dialog: MatDialog
-) {
-  this.documento = this.aRoute.snapshot.paramMap.get('id');
-}
-
-
-
-
-  // cargarAsesorias(): void {
-  //   if (this.token) {
-  //     this.asesoriaService.getAsesorias(this.token, this.documento).subscribe(
-  //       (data) => {
-  //         this.listaAsesorias = data;
-  //         this.initDatos();
-  //       },
-  //       (err) => {
-  //         console.log(err);
-  //       }
-  //     );
-  //   }
-  // }
-  
-  initDatos() {
-    const contenedor = document.getElementById('contenedorp');
-    if (contenedor && this.listaAsesorias) {
-      this.listaAsesorias.forEach((item) => {
-        const nuevaTarjeta = document.createElement('div');
-        nuevaTarjeta.classList.add('relative', 'bg-white', 'rounded-lg', 'shadow-md',
-          'overflow-hidden', 'w-80', 'm-4');
-  
-        this.barritaColor = item.asignacion === false ? 'bg-[#C5F9AD]' : 'bg-[#FFB7B7]';
-  
-        nuevaTarjeta.innerHTML = `
-          <div class="absolute h-full w-2 ${this.barritaColor}"></div>
-          <div class="p-4 border border-gray-200">
-            <h2 class="text-xl font-bold mb-2">${item.nombre_sol}</h2>
-            <p class="text-gray-700 mb-4">${item.fecha}</p>
-            <h2 class="text-l font-semibold">${item.notas}</h2>
-            <p class="text-gray-700">${item.isorientador}</p>
-            <p class="text-gray-700">${item.id_aliado}</p>
-            <p class="text-gray-700">${item.doc_emprendedor}</p>
-          </div>
-        `;
-  
-        contenedor.appendChild(nuevaTarjeta);
-      });
+    } else {
+      this.loadAsesoriasFalse();
     }
   }
-  
 
-  changeColor(button) {
-    const buttons = document.querySelectorAll('.btn-color');
-    buttons.forEach(btn => {
-      btn.classList.remove('bg-gray-200');
+  filterAsesorias(status: boolean): void {
+    if (status) {
+      this.showTrue = true;
+      this.showFalse = false;
+      this.filteredAsesorias = this.asesoriasConHorario;
+    } else {
+      this.showTrue = false;
+      this.showFalse = true;
+      this.filteredAsesorias = this.asesoriasSinHorario;
+    }
+  }
+
+  loadAsesoriasFalse(): void {
+    if (!this.token) return;
+  
+    const userData = localStorage.getItem('identity');
+    if (!userData) {
+      console.error('Error: No se encontraron datos de usuario en el local storage.');
+      return;
+    }
+    const user = JSON.parse(userData);
+    const idAsesor = user.id; // Obtener el ID del asesor del objeto de usuario
+    const horario = false; // Cambia esto según sea necesario
+    this.asesoriaService.mostrarAsesoriasAsesor(idAsesor, horario).subscribe(
+      response => {
+        console.log('Asesorías sin horario cargadas:', response);
+        this.asesoriasSinHorario = response;
+      },
+      error => {
+        console.error('Error al cargar asesorías:', error);
+      }
+    );
+  }
+
+  loadAsesoriasTrue(): void {
+    if (!this.token) return;
+  
+    const userData = localStorage.getItem('identity');
+    if (!userData) {
+      console.error('Error: No se encontraron datos de usuario en el local storage.');
+      return;
+    }
+    const user = JSON.parse(userData);
+    const idAsesor = user.id; // Obtener el ID del asesor del objeto de usuario
+    const horario = true; // Cambia esto según sea necesario
+    this.asesoriaService.mostrarAsesoriasAsesor(idAsesor, horario).subscribe(
+      response => {
+        console.log('Asesorías con horario cargadas:', response);
+        this.asesoriasConHorario = response;
+      },
+      error => {
+        console.error('Error al cargar asesorías:', error);
+      }
+    );
+  }
+
+  openModal(asesoria: any): void {
+    // Logs para depuración
+    console.log('Abriendo modal para asesoria:', asesoria);
+    if (!asesoria || !asesoria.id) {
+      console.error('ID de asesoria no encontrado');
+      return;
+    }
+
+    const dialogRef = this.dialog.open(HorarioModalComponent, {
+      width: '400px',
+      data: { asesoria }
     });
-    button.classList.add('bg-gray-200');
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Recargar las asesorías después de cerrar el modal
+      this.loadAsesoriasFalse();
+      this.loadAsesoriasTrue();
+    });
   }
 }

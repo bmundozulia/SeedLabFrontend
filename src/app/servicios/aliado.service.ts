@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environment/env';
+import { environment } from '../../environment/env'
+import { catchError } from 'rxjs/operators';
+
+import { Asesor } from '../Modelos/asesor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +34,23 @@ export class AliadoService {
     return this.http.post(`${this.url}/create_aliado`, aliado, options);
   }
 
-  mostrarAliado() {
-    return this.http.get(`${environment.apiUrl}orientador/listaAliado`);
+  mostrarAliado(access_token: any) {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get(`${environment.apiUrl}orientador/listaAliado`,options);
+  }
+
+  getAsesorAliado(access_token: any, asesorId: number): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    const url = `${environment.apiUrl}asesor/userProfileAsesor/${asesorId}`;
+    console.log(url);
+    return this.http.get(url, options);
+  }
+
+  updateAsesorAliado(access_token: any, asesorId: number, asesor: Asesor): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    const url = `${environment.apiUrl}aliado/editarAsesorAliado/${asesorId}`;
+    console.log(url);
+    return this.http.put(url, asesor, options);
   }
 
 }

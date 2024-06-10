@@ -22,7 +22,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormBuilder,FormsModule, FormGroup} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormsModule, FormGroup } from '@angular/forms';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
@@ -48,6 +48,24 @@ import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-mo
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { RutasComponent } from './rutas/rutas.component';
+import { HorarioModalComponent } from './asesor/horario-modal/horario-modal/horario-modal.component';
+import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
+import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
+import { CursorutasComponent } from './cursorutas/cursorutas.component';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { SafeUrlPipe } from './cursorutas/cursorutas.component';
+import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component';
+import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadmin/modalcrear-superadmin.component';
+
+import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
+import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
+import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
+import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
+import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
+
 import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 
 
@@ -80,7 +98,20 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
     DarAliadoAsesoriaModalComponent,
     DarAsesorModalComponent,
     EditEmpresaComponent,
+    RutasComponent,
+    HorarioModalComponent,
+    OrientadorCrearComponent,
+    ModalCrearOrientadorComponent,
+    CursorutasComponent,
+    SafeUrlPipe,
+    CrearSuperadminComponent,
+    ModalcrearSuperadminComponent,
     ForgotpasswordComponent,
+    ListAsesoresComponent,
+    ModalAddAsesoresComponent,
+    PerfilAsesorComponent,
+    PerfilAdminComponent,
+    PerfilOrientadorComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,9 +133,13 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
     FormsModule,
     FilterPipeModule,
     MatDialogModule,
-    ColorPickerModule, 
     ColorPickerModule,
-    SweetAlert2Module.forRoot()
+    ColorPickerModule,
+    SweetAlert2Module.forRoot(),
+    BrowserModule,
+    ReactiveFormsModule, 
+    HttpClientModule
+    
 
   ],
   providers: [
@@ -117,3 +152,8 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
 
 })
 export class AppModule { }
+// main.ts
+
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));

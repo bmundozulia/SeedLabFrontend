@@ -46,7 +46,7 @@ export class PerfilEmprendedorComponent implements OnInit {
   user: User | null = null;
   currentRolId: string | null = null;
   emprendedorForm = this.fb.group({
-    documento: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+    documento: '',
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     celular: ['', [Validators.required, Validators.maxLength(10)]],
@@ -109,8 +109,7 @@ export class PerfilEmprendedorComponent implements OnInit {
             genero: data.genero,
             fecha_nac: data.fecha_nac,
             direccion: data.direccion,
-            nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : '',
-            municipio: data.id_municipio ? data.id_municipio.toString() : ''
+            nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : ''
           });
           console.log(data);
 
