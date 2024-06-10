@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../Modelos/user.model';
-import { AsesorService } from '../../../servicios/asesor.service';
-import { Router } from '@angular/router';
-import { Asesor } from '../../../Modelos/asesor.model';
-import { AliadoService } from '../../../servicios/aliado.service';
-import { faEye, faMagnifyingGlass, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ModalAddAsesoresComponent } from './modal-add-asesores/modal-add-asesores.component';
-import { data } from 'jquery';
-import { DialogRef } from '@angular/cdk/dialog';
+import { Router } from '@angular/router';
+
+import { faEye, faMagnifyingGlass, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
+
+import { ModalAddAsesoresComponent } from '../modal-add-asesores/modal-add-asesores.component';
+
+import { AsesorService } from '../../../servicios/asesor.service';
+
+import { User } from '../../../Modelos/user.model';
+import { Asesor } from '../../../Modelos/asesor.model';
+
 
 @Component({
   selector: 'app-list-asesores',

@@ -1,12 +1,12 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { User } from '../../../../Modelos/user.model';
-import { Asesor } from '../../../../Modelos/asesor.model';
-import { AsesorService } from '../../../../servicios/asesor.service';
-import { error } from 'console';
-import { AliadoService } from '../../../../servicios/aliado.service';
+
+import { AliadoService } from '../../../servicios/aliado.service';
+import { AsesorService } from '../../../servicios/asesor.service';
+
+import { User } from '../../../Modelos/user.model';
+import { Asesor } from '../../../Modelos/asesor.model';
 
 
 @Component({

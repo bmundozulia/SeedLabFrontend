@@ -61,7 +61,7 @@ import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-s
 import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadmin/modalcrear-superadmin.component';
 
 import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
-import { ModalAddAsesoresComponent } from './aliados/asesores/list-asesores/modal-add-asesores/modal-add-asesores.component';
+import { ModalAddAsesoresComponent } from './aliados/asesores/modal-add-asesores/modal-add-asesores.component';
 import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
 import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
