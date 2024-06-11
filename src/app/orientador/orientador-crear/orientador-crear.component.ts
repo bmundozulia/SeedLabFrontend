@@ -5,12 +5,15 @@ import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-i
 import { Orientador } from '../../Modelos/orientador.model';
 import { OrientadorService } from '../../servicios/orientador.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../../Modelos/user.model';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ModalCrearOrientadorComponent } from './modal-crear-orientador/modal-crear-orientador.component';
 
 @Component({
   selector: 'app-orientador-crear',
   templateUrl: './orientador-crear.component.html',
-  styleUrls: ['./orientador-crear.component.css']
+  styleUrls: ['./orientador-crear.component.css'],
+  providers: [OrientadorService]
+
 })
 export class OrientadorCrearComponent implements OnInit {
   userFilter: any = { nombre: '', estado_usuario: 'Activo' };
@@ -22,11 +25,14 @@ export class OrientadorCrearComponent implements OnInit {
   filteredOrientador: Orientador[] = [];
   token: string | null = null;
   user: User | null = null;
-  currentRolId: number;
+  currentRolId: string | null = null; // Initialize currentRolId
   faPen = faPenToSquare;
   faPlus = faPlus;
   modalCrearOrientador: boolean = false;
   isEditing: boolean = false;
+  estado: boolean | null = null;
+  id: number | null = null;
+  selectedOrientadorId: number | null = null;
 
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
@@ -34,18 +40,15 @@ export class OrientadorCrearComponent implements OnInit {
   };
 
   constructor(
-    private modalCRO: SwitchService,
     private orientadorService: OrientadorService,
+    public dialog: MatDialog,
     private router: Router,
     private aRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.validateToken();
     this.cargarOrientador(1);
-    this.modalCRO.$modalCrearOrientador.subscribe((valor) => {
-      this.modalCrearOrientador = valor;
-    });
   }
 
   validateToken(): void {
@@ -57,8 +60,10 @@ export class OrientadorCrearComponent implements OnInit {
         let identity = JSON.parse(identityJSON);
         console.log(identity);
         this.user = identity;
-        this.currentRolId = this.user.id_rol;
-        console.log(this.currentRolId);
+        this.currentRolId = this.user.id_rol?.toString();
+        this.estado = this.user.estado;
+        this.id = this.user.id;
+        console.log(this.id);
       }
     }
   }
@@ -105,14 +110,32 @@ export class OrientadorCrearComponent implements OnInit {
     this.cargarOrientador(1);
   }
 
+  openModal(orientadorId:number | null): void {
+    let dialogRef:MatDialogRef<ModalCrearOrientadorComponent>;
+
+    dialogRef = this.dialog.open(ModalCrearOrientadorComponent, {
+      data: { orientadorId: orientadorId }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El modal se cerró');
+    });
+  }
   openModalCrearOrientador(): void {
     this.isEditing = false;
     this.modalCrearOrientador = true;
   }
 
-  openModalEditarOrientador(): void {
-    this.isEditing = true;
-    this.modalCrearOrientador = true;
+  openModalSINId(): void {
+    this.openModal(null); // Llama a openModalCONId con null
+  }
+
+  openModalEditarOrientador(orientadorId: number): void {
+    this.selectedOrientadorId = orientadorId;
+    this.openModal(this.selectedOrientadorId);
+    console.log(`para el modal: ${this.selectedOrientadorId}`);
+
+    // this.isEditing = true;
+    // this.modalCrearOrientador = true;
   }
 
   filtrarOrientador(): void {
