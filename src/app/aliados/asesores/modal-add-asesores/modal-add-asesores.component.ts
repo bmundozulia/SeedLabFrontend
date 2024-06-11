@@ -30,6 +30,7 @@ export class ModalAddAsesoresComponent implements OnInit {
   token: string | null = null;
   nombre: string | null = null;
   nombreAliado: string | null = null;
+  
   asesorForm = this.fb.group({
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
