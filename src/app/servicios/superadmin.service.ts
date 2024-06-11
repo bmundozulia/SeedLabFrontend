@@ -38,4 +38,9 @@ export class SuperadminService {
     const options = { headers: this.CreacionHeaders(access_token)};
     return this.http.get<any>(this.url+"perfilAdmin/"+id,options);
   }
+
+  getAdmins(access_token: any):Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get<any>(this.url + "mostrarSuperAdmins/", options);
+  }
 }
