@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
+
 import { SwitchService } from '../../servicios/switch.service';
 
 @Component({

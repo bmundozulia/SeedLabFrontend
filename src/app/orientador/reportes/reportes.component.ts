@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPrint } from '@fortawesome/free-solid-svg-icons';
+
 import { HeaderComponent } from '../../header/header.component';
 
 

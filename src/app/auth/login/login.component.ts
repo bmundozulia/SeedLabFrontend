@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common';
-
-import { LoginService } from '../../servicios/login.service';
-import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { AlertService } from '../../servicios/alert.service';
+import { AuthService } from '../../servicios/auth.service';
+
 import { Login } from '../../Modelos/login.modelo';
 import { User } from '../../Modelos/user.model';
-import { AlertService } from '../../servicios/alert.service';
 
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrl: './login.component.css',
-
+    providers: [AuthService, ReactiveFormsModule, AlertService]
 })
 
 export class LoginComponent {
@@ -32,7 +30,7 @@ export class LoginComponent {
     });
 
     constructor(
-        private loginService: LoginService,
+        private loginService: AuthService,
         private router: Router,
         private fb: FormBuilder,
         private alertService: AlertService
@@ -74,7 +72,7 @@ export class LoginComponent {
                         this.router.navigate(['/home/body']);
                         break;
                     case '5':
-                        this.router.navigate(['list-empresa/', this.user.emprendedor.documento]);
+                        this.router.navigate(['list-empresa/']);
                         break;
                     default:
                         this.router.navigate(['/home/body']);

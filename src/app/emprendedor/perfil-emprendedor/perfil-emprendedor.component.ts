@@ -1,22 +1,21 @@
-import { Component, OnInit, input } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { } from '@fortawesome/free-solid-svg-icons';
-import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
-import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
-import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
+import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { MatIconModule } from '@angular/material/icon';
-import { FormBuilder, ReactiveFormsModule, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
+
+import { AuthService } from '../../servicios/auth.service';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { EmprendedorService } from '../../servicios/emprendedor.service';
 import { MunicipioService } from '../../servicios/municipio.service';
-import { RegistroService } from '../../servicios/registro.service';
-import { Router } from '@angular/router';
-import { Emprendedor } from '../../Modelos/emprendedor.model';
+
 import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
 import { User } from '../../Modelos/user.model';
 
@@ -48,7 +47,7 @@ export class PerfilEmprendedorComponent implements OnInit {
   user: User | null = null;
   currentRolId: string | null = null;
   emprendedorForm = this.fb.group({
-    documento: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+    documento: '',
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     celular: ['', [Validators.required, Validators.maxLength(10)]],
@@ -71,7 +70,7 @@ export class PerfilEmprendedorComponent implements OnInit {
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
     private emprendedorService: EmprendedorService,
-    private registroService: RegistroService,
+    private registroService: AuthService,
     private router: Router,
   ) { }
 

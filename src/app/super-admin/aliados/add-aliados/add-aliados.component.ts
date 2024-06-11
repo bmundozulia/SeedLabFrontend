@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AliadoService } from '../../../servicios/aliado.service';
 
 @Component({
   selector: 'app-add-aliados',
   templateUrl: './add-aliados.component.html',
-  styleUrls: ['./add-aliados.component.css']
+  styleUrls: ['./add-aliados.component.css'],
+  providers: [AliadoService]
 })
 export class AddAliadosComponent {
   nombre: string = '';

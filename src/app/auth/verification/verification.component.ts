@@ -1,13 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VerificacionService } from '../../servicios/verificacion.service';
+
 import { AlertService } from '../../servicios/alert.service';
+import { AuthService } from '../../servicios/auth.service';
 
 @Component({
   selector: 'app-verification',
   templateUrl: './verification.component.html',
   styleUrl: './verification.component.css',
-  providers: [VerificacionService],
+  providers: [AuthService, AlertService],
 })
 export class VerificationComponent implements OnInit {
   email: string;
@@ -21,7 +22,7 @@ export class VerificationComponent implements OnInit {
 
 
 constructor(private router:Router,
-  private verificacionservice:VerificacionService,
+  private authService:AuthService,
   private route: ActivatedRoute,
   private alertService:AlertService
 ){}
@@ -52,7 +53,7 @@ actualizarCodigo(){
 
 
 verificarEmail():void{
-  this.verificacionservice.verificarEmail(this.email, this.codigoVerificacion).subscribe(
+  this.authService.verificarEmail(this.email, this.codigoVerificacion).subscribe(
     data => {
       console.log(data);
       console.log('Validación exitosa',data);

@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { EmprendedorService } from '../../../servicios/emprendedor.service';
-import { Empresa } from '../../../Modelos/empresa.model';
-import { Router } from '@angular/router';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+
 import { HeaderComponent } from '../../../header/header.component';
+
+import { EmprendedorService } from '../../../servicios/emprendedor.service';
+
+import { Empresa } from '../../../Modelos/empresa.model';
 import { User } from '../../../Modelos/user.model';
 
 
@@ -15,6 +19,7 @@ import { User } from '../../../Modelos/user.model';
   templateUrl: './list-empresas.component.html',
   styleUrl: './list-empresas.component.css'
 })
+
 export class ListEmpresasComponent implements OnInit {
   faPen = faPenToSquare;
   listaEmpresas: Empresa[] = [];
@@ -22,8 +27,6 @@ export class ListEmpresasComponent implements OnInit {
   documento: string | null;
   public page!: number;
   token: string | null = null;
-
-
 
   constructor(private emprendedorService: EmprendedorService, 
     private router: Router, 

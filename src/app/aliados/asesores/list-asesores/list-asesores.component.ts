@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../Modelos/user.model';
-import { AsesorService } from '../../../servicios/asesor.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Asesor } from '../../../Modelos/asesor.model';
-import { AliadoService } from '../../../servicios/aliado.service';
+
 import { faEye, faMagnifyingGlass, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalAddAsesoresComponent } from './modal-add-asesores/modal-add-asesores.component';
-import { data } from 'jquery';
+
+import { ModalAddAsesoresComponent } from '../modal-add-asesores/modal-add-asesores.component';
+
+import { AsesorService } from '../../../servicios/asesor.service';
+
+import { User } from '../../../Modelos/user.model';
+import { Asesor } from '../../../Modelos/asesor.model';
+
 
 @Component({
   selector: 'app-list-asesores',
@@ -29,6 +32,7 @@ export class ListAsesoresComponent implements OnInit {
   id: number | null = null;
   nombre: string | null = null;
   listaAsesores: Asesor[] = [];
+  selectedAsesorId: number | null = null;
 
   userFilter: any = { nombre: '', estado: 'Activo' };
 
@@ -46,12 +50,12 @@ export class ListAsesoresComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      //console.log(this.token);
+      console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        //console.log(identity);
+        console.log(identity);
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
@@ -73,8 +77,6 @@ export class ListAsesoresComponent implements OnInit {
         }
       );
     }
-
-
   }
 
   onEstadoChange(event: any): void {
@@ -88,22 +90,40 @@ export class ListAsesoresComponent implements OnInit {
     this.cargarAsesores();
   }
 
-  openModal(): void {
-    const dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
-      width: '600px',
-      height: '600px',
-      data: {  }
-    });
-    //console.log(data);
+  openModal(asesorId: number | null): void {
+    let dialogRef: MatDialogRef<ModalAddAsesoresComponent>;
 
+    dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
+      data: { asesorId: asesorId }
+    });
+  
     dialogRef.afterClosed().subscribe(result => {
       console.log('El modal se cerró');
     });
   }
 
-  editarAsesor(): void {
-    this.openModal();
+  openModalCONId(asesorId: number | null): void {
+    let dialogRef: MatDialogRef<ModalAddAsesoresComponent>;
+    dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
+      data: { asesorId: asesorId }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El modal se cerró');
+    });
   }
+  
+  openModalSINId(): void {
+    this.openModalCONId(null); // Llama a openModalCONId con null
+  }
+  
+  editarAsesor(asesorId: number): void {
+    this.selectedAsesorId = asesorId;
+    this.openModal(this.selectedAsesorId);
+    console.log(`para el modal: ${this.selectedAsesorId}`);
+  }
+
+  
 
 
 }

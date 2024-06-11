@@ -1,8 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environment/env';
-import { Orientador } from '../Modelos/orientador.model';
+
 import { Observable } from 'rxjs';
+
+import { environment } from '../../environment/env';
+
+import { Orientador } from '../Modelos/orientador.model';
 
 
 @Injectable({
@@ -12,9 +15,8 @@ export class OrientadorService {
 
   constructor(private http: HttpClient) { }
 
-  url = environment.apiUrl + 'orientador/crearOrientador'
-  url2 = environment.apiUrl + ''
-
+  url = environment.apiUrl + 'orientador/'
+  
   private CreacionHeaders(access_token: any): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
@@ -22,13 +24,28 @@ export class OrientadorService {
     });
   }
 
+
   createOrientador(access_token: any, orientador: Orientador,): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.post(this.url, orientador, options);
+    return this.http.post(this.url+"crearOrientador", orientador, options);
   }
 
-  getinfoOrientador(access_token: any, id: number): Observable<any> {
-    const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.get<any>(`${this.url}mostrarAsesorAliado/${id}`, options);
+  mostrarOrientador(access_token: any, id: number): Observable<any> { 
+    const options = { headers: this.CreacionHeaders(access_token) }; 
+    return this.http.get(this.url+"listaOrientador/"+id, options);
   }
+
+
+  updateOrientador(orientador: Orientador, access_token: any, id:number):Observable<any>{
+    const options={headers: this.CreacionHeaders(access_token)};
+    return this.http.put(this.url + "editarOrientador/"+id, orientador, options);
+    }
+
+
+  getinformacionOrientador( access_token:any, id:number):Observable<any> {
+    const options={headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+"userProfileOrientador/"+id, options)
+  }
+
+  
 }

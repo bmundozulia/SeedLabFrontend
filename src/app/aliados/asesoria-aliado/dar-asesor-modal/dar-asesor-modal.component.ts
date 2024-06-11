@@ -1,13 +1,16 @@
 import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { AsesoriaService } from '../../../servicios/asesoria.service';
+
 import { AsesorDisponible } from '../../../Modelos/AsesorDisponible.model';
 
 @Component({
   selector: 'app-dar-asesor-modal',
   templateUrl: './dar-asesor-modal.component.html',
-  styleUrls: ['./dar-asesor-modal.component.css']
+  styleUrls: ['./dar-asesor-modal.component.css'],
+  providers: [AsesoriaService]
 })
 export class DarAsesorModalComponent implements OnInit {
   asignarForm: FormGroup;

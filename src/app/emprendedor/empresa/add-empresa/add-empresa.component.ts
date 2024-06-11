@@ -1,33 +1,19 @@
 import { Component } from '@angular/core';
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
-import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
-import { HeaderComponent } from '../../../header/header.component';
-import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DepartamentoService } from '../../../servicios/departamento.service';
-import { MunicipioService } from '../../../servicios/municipio.service';
-import { User } from '../../../Modelos/user.model';
+
+import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
-import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
-import { faBuilding } from '@fortawesome/free-solid-svg-icons';
-import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
-import { faUserTie } from '@fortawesome/free-solid-svg-icons';
-import { faLightbulb } from '@fortawesome/free-solid-svg-icons';
-import { faTasks } from '@fortawesome/free-solid-svg-icons';
-import { faRankingStar } from '@fortawesome/free-solid-svg-icons';
-
-import { catchError, of, switchMap, tap } from 'rxjs';
+import { HeaderComponent } from '../../../header/header.component';
+import { AlertService } from '../../../servicios/alert.service';
+import { DepartamentoService } from '../../../servicios/departamento.service';
 import { EmpresaService } from '../../../servicios/empresa.service';
-import { AlertService, } from '../../../servicios/alert.service';
- // Importa el servicio
-
+import { MunicipioService } from '../../../servicios/municipio.service';
+import { User } from '../../../Modelos/user.model';
 
 @Component({
   selector: 'app-add-empresa',

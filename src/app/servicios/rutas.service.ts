@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../environment/env';
-import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs';
+
+import { environment } from '../../environment/env';
+
 import { Ruta } from '../Modelos/ruta.modelo';
 
 @Injectable({
@@ -20,12 +23,12 @@ export class RutaService {
     });
   }
 
-  getAllRutas(access_token:any){
+  getAllRutas(access_token:any): Observable<any>{
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.get(this.url, options);
   }
 
-  createRutas(access_token:any, ruta:Ruta){
+  createRutas(access_token:any, ruta:Ruta): Observable<any>{
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.post(this.url, ruta,options);
   }

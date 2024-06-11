@@ -1,14 +1,19 @@
-import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef} from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { Respuesta } from '../../Modelos/respuesta.model';
-import { Preguntas } from '../../Modelos/preguntas.model';
+
 import { PREGUNTAS } from './preguntas.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { OpcionesRespuesta } from '../../Modelos/opciones-respuesta.model';
+
+import { AlertService } from '../../servicios/alert.service';
 import { RespuestasService } from '../../servicios/respuestas.service';
+
+import { Preguntas } from '../../Modelos/preguntas.model';
+import { Respuesta } from '../../Modelos/respuesta.model';
 import { User } from '../../Modelos/user.model';
+
 
 @Component({
   selector: 'app-encuesta-empresa',
@@ -16,17 +21,12 @@ import { User } from '../../Modelos/user.model';
   styleUrls: ['./encuesta-empresa.component.css'],
   providers: [RespuestasService]
 })
-export class EncuestaEmpresaComponent implements AfterViewInit {
+export class EncuestaEmpresaComponent {
   fa1 = fa1;
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
-  selectedOption1: string = '';
-  selectedOption2: string = '';
-  selectedOption3: string = '';
-  selectedOption4: string = '';
-  selectedOption5: string = '';
-  respuestas: Respuesta[] = [];
   preguntas: Preguntas[] = PREGUNTAS;
+  firstForm: Object = {};
   section: number = 1;
   user: User;
   token = '';
@@ -34,7 +34,36 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
   currentRolId: string | null = null;
   currentIndex = 0;
   respuestasForm1: FormGroup;
+  id_pregunta: number;
+  id_subpregunta: number | null = null;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
+
+  respuesta1: Respuesta = new Respuesta({});
+  respuesta2: Respuesta = new Respuesta({});
+  respuesta3: Respuesta = new Respuesta({});
+  respuesta4: Respuesta = new Respuesta({});
+  respuesta5: Respuesta = new Respuesta({});
+  respuesta6: Respuesta = new Respuesta({});
+  respuesta7: Respuesta = new Respuesta({});
+  respuesta8: Respuesta = new Respuesta({});
+  respuesta9: Respuesta = new Respuesta({});
+  respuesta10: Respuesta = new Respuesta({});
+  respuesta11: Respuesta = new Respuesta({});
+  respuesta12: Respuesta = new Respuesta({});
+  respuesta13: Respuesta = new Respuesta({});
+  respuesta14: Respuesta = new Respuesta({});
+  respuesta15: Respuesta = new Respuesta({});
+  respuesta16: Respuesta = new Respuesta({});
+  respuesta17: Respuesta = new Respuesta({});
+  respuesta18: Respuesta = new Respuesta({});
+  respuesta19: Respuesta = new Respuesta({});
+  respuesta20: Respuesta = new Respuesta({});
+  respuesta21: Respuesta = new Respuesta({});
+  respuesta22: Respuesta = new Respuesta({});
+  respuesta23: Respuesta = new Respuesta({});
+
+
+
 
   constructor(
     private elementRef: ElementRef,
@@ -42,35 +71,21 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
     private respuestasService: RespuestasService,
-  ) {  //Formulario seccion 1
-    this.respuestasForm1 = this.fb.group({
-     respuesta1:[''],
-     respuesta2: [''],
-     respuesta3: [''],
-     respuesta4: [''],
-     respuesta5: [''],
-     respuesta6: [''],
-     respuesta7: [''],
-     respuesta8: [''],
-     respuesta9: [''],
-     respuesta10: [''],
-     respuesta11: [''],
-     respuesta12: [''],
-     respuesta13: [''],
-     respuesta14: [''],
-     respuesta15: [''],
-     respuesta16: [''],
-     respuesta17: [''],
-     respuesta18: [''],
-     respuesta19: [''],
-     respuesta20: [''],
-     respuesta21: [''],
-     respuesta22: [''],
-     respuesta23: [''],
+    private alertService: AlertService,
+  ) {
+    /*for(let i = 0; i < 15; i++){
+      this.firstForm[`option${i}`]= new OpcionesRespuesta({}) ;
+    }*/
 
-    });
+
   }
 
+
+
+  ngOnInit() {
+    this.processAttributesBasedOnScreenSize();
+    this.validateToken();
+  }
 
   validateToken(): void {
     if (!this.token) {
@@ -87,62 +102,203 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     }
   }
 
-  getIdPregunta(index: number): number | null {
-    let preguntaCounter = 0;
-    let subPreguntaCounter = 0;
 
-    for (const pregunta of this.preguntas) {
-      if (preguntaCounter === index) {
-        return pregunta.id;
-      }
-      preguntaCounter++;
-
-      if (pregunta.subPreguntas) {
-        for (const subPregunta of pregunta.subPreguntas) {
-          if (subPreguntaCounter === index) {
-            return subPregunta.id;
-          }
-          subPreguntaCounter++;
-        }
-      }
-    }
-    return null;
+  obtenerIds(): any[] {
+    return PREGUNTAS.slice(0, 15).map(pregunta => {
+      //console.log(pregunta.id); // Verificar los IDs en la consola
+      return pregunta.id;
+    });
   }
 
-  tieneSubPregunta(id_pregunta: number): boolean {
-    const pregunta = this.preguntas.find(p => p.id === id_pregunta);
-    return pregunta && pregunta.subPreguntas && pregunta.subPreguntas.length > 0;
-  }
 
   onSubmitSeccion1() {
-    let firstForm: any[] = [];
-    const id_empresa = 1;
+    //console.log(this.respuesta1);
+    let id_empresa = 1;
 
-    for (let i = 0; i < 23; i++) {
-      let id_pregunta = this.getIdPregunta(i);
-      
-      const tieneSubPregunta = this.tieneSubPregunta(id_pregunta);
+    const listaRespuestas: Respuesta[] = [];
+    listaRespuestas.push(this.respuesta1);
+    //pregunta 2
+    listaRespuestas.push(this.respuesta2);
+    listaRespuestas.push(this.respuesta3);
+    listaRespuestas.push(this.respuesta4);
+    listaRespuestas.push(this.respuesta5);
+    listaRespuestas.push(this.respuesta6);
+    //fin pregunta 2
+    listaRespuestas.push(this.respuesta7);
+    listaRespuestas.push(this.respuesta8);
+    listaRespuestas.push(this.respuesta9);
+    listaRespuestas.push(this.respuesta10);
+    listaRespuestas.push(this.respuesta11);
+    listaRespuestas.push(this.respuesta12);
+    listaRespuestas.push(this.respuesta13);
+    if (this.respuesta13.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta14);
+      listaRespuestas.push(this.respuesta15);
+    }
+    listaRespuestas.push(this.respuesta16);
+    if (this.respuesta16.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta17);
+      listaRespuestas.push(this.respuesta18);
+      listaRespuestas.push(this.respuesta19);
+      listaRespuestas.push(this.respuesta20);
+    }
+    listaRespuestas.push(this.respuesta21);
+    listaRespuestas.push(this.respuesta22);
+    listaRespuestas.push(this.respuesta23);
+    let isValidForm = true;
 
-        firstForm.push(new Respuesta(
-          id_pregunta,
-          id_empresa,
-          this.respuestasForm1.get(`respuesta${i}`)?.value,
-          this.respuestasForm1.get(`respuesta${i}`)?.value 
-        ));
+    let respCounter = 0;
+    for (let i = 0; i < 15; i++) {
+      const currentPregunta = PREGUNTAS[i];
+      listaRespuestas[respCounter].id_pregunta = i + 1;
+      listaRespuestas[respCounter].id_empresa = id_empresa;
+
+      if (currentPregunta.id === 2) {
+        for (let j = 0; j < currentPregunta.subPreguntas.length - 1; j++) {
+          debugger;
+          if (listaRespuestas[respCounter + j].opcion !== 'Si') {
+            listaRespuestas[respCounter + j].texto_res = '0';
+          }
+          listaRespuestas[respCounter + j].id_pregunta = i;
+          listaRespuestas[respCounter + j].id_subpregunta = j;
+        }
+        respCounter += currentPregunta.subPreguntas.length - 1;
+        
+      } else if (currentPregunta.id === 12) {
+        debugger
+        if (listaRespuestas[respCounter].opcion === 'Si') {
+          for (let k = 0; k < currentPregunta.subPreguntas.length; k++) {
+            listaRespuestas[respCounter + 1 + k].id_pregunta = i;
+            listaRespuestas[respCounter + 1 + k].id_subpregunta = k;
+          }
+          respCounter += currentPregunta.subPreguntas.length;
+        }
+        respCounter++;
+      } else {
+        if (currentPregunta.isText) {
+          //if(currentPregunta.id === 10){
+          debugger;
+          //}
+          if (!listaRespuestas[respCounter].texto_res || listaRespuestas[respCounter].texto_res === '') {
+            this.alertService.errorAlert('Error', 'Deben llenar los campos');
+            isValidForm = false;
+            return;
+          }
+        } else {
+          //if(currentPregunta.id === 10){
+          debugger;
+          //}
+          if (!listaRespuestas[respCounter].opcion || listaRespuestas[respCounter].opcion === '') {
+            this.alertService.errorAlert('Error', 'Deben llenar los campos');
+            isValidForm = false;
+            return;
+          }
+        }
+        if (currentPregunta.isAffirmativeQuestion) {
+          if (listaRespuestas[respCounter].opcion === 'No') {
+            i += currentPregunta.subPreguntas.length;
+            respCounter += currentPregunta.subPreguntas.length;
+            continue;
+          }
+        }
+        respCounter++;
       }
-      console.log(firstForm); 
-      this.respuestasService.saveAnswers(this.token, firstForm).subscribe(
-      (data:any) => {
+      /*if(!isValidForm){
+        return
+      }*/
+      //listaRespuestas[i].valor = 3;
+      console.log(i);
+      //console.log('fuera del ciclo', listaRespuestas);
+    }
+    if (!isValidForm) {
+      return
+    } this.respuestasService.saveAnswers(this.token, listaRespuestas).subscribe(
+      (data: any) => {
         console.log(data);
       },
       error => {
         console.log(error);
-      }
-    );
+      });
+
+
   }
 
 
-
+  /**
+   * onSubmitSeccion1() {
+     //console.log(this.respuesta1);
+     let id_empresa = 1;
+ 
+     const listaRespuestas: Respuesta[] = [];
+     listaRespuestas.push(this.respuesta1);
+     listaRespuestas.push(this.respuesta3);
+     listaRespuestas.push(this.respuesta4);
+     listaRespuestas.push(this.respuesta5);
+     listaRespuestas.push(this.respuesta6);
+     listaRespuestas.push(this.respuesta7);
+     listaRespuestas.push(this.respuesta8);
+     listaRespuestas.push(this.respuesta9);
+     listaRespuestas.push(this.respuesta10);
+     listaRespuestas.push(this.respuesta11);
+     listaRespuestas.push(this.respuesta12);
+     listaRespuestas.push(this.respuesta13);
+     if (this.respuesta13.opcion === 'Si') {
+       listaRespuestas.push(this.respuesta14);
+       listaRespuestas.push(this.respuesta15);
+     }
+     listaRespuestas.push(this.respuesta16);
+     if (this.respuesta16.opcion === 'Si') {
+       listaRespuestas.push(this.respuesta17);
+       listaRespuestas.push(this.respuesta18);
+       listaRespuestas.push(this.respuesta19);
+       listaRespuestas.push(this.respuesta20);
+     }
+     listaRespuestas.push(this.respuesta21);
+     listaRespuestas.push(this.respuesta22);
+     let isValidForm = true;
+ 
+     for (let i = 0; i < listaRespuestas.length; i++) {
+       listaRespuestas[i].id_pregunta = i + 1;
+       listaRespuestas[i].id_empresa = id_empresa;
+       const currentPregunta = PREGUNTAS[i];
+       if (currentPregunta.isText) {
+         if (!listaRespuestas[i].texto_res || listaRespuestas[i].texto_res === '') {
+           this.alertService.errorAlert('Error', 'Deben llenar los campos');
+           isValidForm = false;
+           return;
+         }
+       } else {
+         if (!listaRespuestas[i].opcion || listaRespuestas[i].opcion === '') {
+           this.alertService.errorAlert('Error', 'Deben llenar los campos');
+           isValidForm = false;
+           return;
+         }
+       }
+       if (currentPregunta.isAffirmativeQuestion) {
+         if (listaRespuestas[i].opcion === 'No') {
+           i += currentPregunta.subPreguntas.length;
+           continue;
+         }
+       }
+       /*if(!isValidForm){
+         return
+       }
+       //listaRespuestas[i].valor = 3;
+       console.log(i);
+       console.log('fuera del ciclo', listaRespuestas);
+     }
+     if (!isValidForm) {
+       return
+     } this.respuestasService.saveAnswers(this.token, listaRespuestas).subscribe(
+       (data: any) => {
+         console.log(data);
+       },
+       error => {
+         console.log(error);
+       });
+ 
+ 
+   }  */
 
 
 
@@ -170,9 +326,7 @@ export class EncuestaEmpresaComponent implements AfterViewInit {
     this.debouncedProcessAttributes();
   }
 
-  ngOnInit() {
-    this.processAttributesBasedOnScreenSize();
-  }
+
 
   ngAfterViewInit() {
     this.processAttributesBasedOnScreenSize();
