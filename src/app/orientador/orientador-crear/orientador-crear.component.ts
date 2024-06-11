@@ -7,6 +7,7 @@ import { OrientadorService } from '../../servicios/orientador.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalCrearOrientadorComponent } from './modal-crear-orientador/modal-crear-orientador.component';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-orientador-crear',
