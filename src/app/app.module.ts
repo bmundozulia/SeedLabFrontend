@@ -66,7 +66,6 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 
 
-
 @NgModule({
   declarations: [
     AddAliadosComponent,
