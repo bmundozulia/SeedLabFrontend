@@ -25,7 +25,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
     apellido: ['', Validators.required],
     celular: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10)]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(10)]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
     estado: '1',
   });
 

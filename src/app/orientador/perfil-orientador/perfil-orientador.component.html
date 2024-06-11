@@ -1,11 +1,8 @@
+<app-header [title]="'Perfil Orientador'" [subtitle]="'Actualiza tus datos de perfil aquí.'"></app-header>
 <form [formGroup]="perfilorientadorForm" (ngSubmit)="updateOrientador()">
     <div class="max-w-2xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div class="max-w-2xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
             <div class="space-y-4">
-                <div class="text-center">
-                    <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-blue-400">Perfil de Orientador</h1>
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Actualiza tus datos de perfil aquí.</p>
-                </div>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div class="space-y-2">
                         <label for="nombre" class="block text-blue-400">Nombre</label>
@@ -42,20 +39,20 @@
                 </div>
                 <div class="flex justify-end mt-4">
                     <div class="flex justify-end mr-2">
-                        <button class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-0 rounded -pl-12"
+                        <button class="bg-sky-400 hover:bg-sky-500 text-white font-bold py-2 px-4 md:-mt-0 rounded -pl-12"
                             (click)="onCancel()" *ngIf="!blockedInputs" (click)="toggleInputsLock()">
                             Cancelar
                         </button>
                     </div>
                     <div class="flex justify-end mr-2">
-                        <button type="submit" class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded"
+                        <button type="submit" class="bg-sky-400 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded"
                             *ngIf="!blockedInputs" (click)="mostrarGuardarCambios()">
                             Guardar cambios
                         </button>
                     </div>
                     <div class="flex justify-end">
                         <button id="boton"
-                            class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-0 rounded -pl-12"
+                            class="bg-sky-400 hover:bg-sky-500 text-white font-bold py-2 px-4 md:-mt-0 rounded -pl-12"
                             *ngIf="blockedInputs" (click)="toggleInputsLock()"> Editar Perfil
                         </button>
                     </div>
