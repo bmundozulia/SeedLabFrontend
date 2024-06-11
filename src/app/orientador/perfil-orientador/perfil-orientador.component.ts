@@ -89,7 +89,7 @@ export class PerfilOrientadorComponent {
       password:this.perfilorientadorForm.get('password')?.value,
       estado: '1',
     }
-    this.orientadorService.updateOrientador(perfil,  this.token,this.id).subscribe(
+    this.orientadorService.updateOrientador(this.token, this.id, perfil).subscribe(
       (data)=>{
         location.reload();
       },

@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(['/home/body']);
                         break;
                     case '3':
-                        this.router.navigate(['/home/body']);
+                        this.router.navigate(['list-asesores']);
                         break;
                     case '4':
                         this.router.navigate(['/home/body']);

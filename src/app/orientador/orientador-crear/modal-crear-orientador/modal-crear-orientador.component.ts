@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { SwitchService } from '../../../servicios/switch.service';
 import { User } from '../../../Modelos/user.model';
 import { Orientador } from '../../../Modelos/orientador.model';
 import { OrientadorService } from '../../../servicios/orientador.service';
+import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { SuperadminService } from '../../../servicios/superadmin.service';
 
 @Component({
   selector: 'app-modal-crear-orientador',
@@ -14,34 +16,52 @@ import { OrientadorService } from '../../../servicios/orientador.service';
 export class ModalCrearOrientadorComponent implements OnInit {
   @Input() isEditing: boolean = false;
   submitted: boolean = false;
-  token = '';
+  boton = true;
+  estado: boolean;
+  isActive: boolean = false;
+  token: string | null = null;
   user: User | null = null;
   id: number | null = null;
   currentRolId: string | null = null;
-
+  orientadorId: any;
 
   orientadorForm = this.fb.group({
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     celular: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10)]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(10)]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
     estado: '1',
   });
 
+  constructor(public dialogRef: MatDialogRef<ModalCrearOrientadorComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private fb: FormBuilder,
+    private orientadorServices: OrientadorService,
+    private superadminService: SuperadminService,
 
-
-
-
-
-  constructor(private modalCRO: SwitchService, private fb: FormBuilder, private orientadorServices: OrientadorService) { }
+  ) {
+    this.orientadorId = data.orientadorId;
+    console.log(' en el modal:', this.orientadorId);
+  }
 
   ngOnInit(): void {
     this.validateToken();
+    this.verEditar();
+    if (this.orientadorId != null) {
+      this.isEditing = true;
+      this.orientadorForm.get('password')?.setValidators([Validators.minLength(8)]);
+    } else {
+      this.orientadorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
+    }
+    this.orientadorForm.get('password')?.updateValueAndValidity();
   }
 
+  get f() { return this.orientadorForm.controls; } //aquii
+
   cancelarCrearOrientador() {
-    this.modalCRO.$modalCrearOrientador.emit(false);
+    this.dialogRef.close();
+
   }
 
 
@@ -53,38 +73,84 @@ export class ModalCrearOrientadorComponent implements OnInit {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
+        //console.log(identity);
         this.user = identity;
-        this.id = this.user.id;
         this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
+        this.estado = this.user.estado;
+        this.id = this.user.id;
+        console.log("this", identity);
       }
     }
   }
 
-  addOrientador(): void {
-    this.submitted = true;
 
-    if (this.orientadorForm.valid) {
-      const orientador: Orientador = {
-        nombre: this.orientadorForm.value.nombre,
-        apellido: this.orientadorForm.value.apellido,
-        celular: this.orientadorForm.value.celular,
-        email: this.orientadorForm.value.email,
-        password: this.orientadorForm.value.password,
-        estado: this.orientadorForm.value.estado,
-      }
-      this.orientadorServices.createOrientador(this.token, orientador).subscribe(
+  verEditar(): void {
+    if (this.orientadorId != null) {
+      this.orientadorServices.getinformacionOrientador(this.token, this.orientadorId).subscribe(
         data => {
-          console.log("si funciona");
-          location.reload();
+          this.orientadorForm.patchValue({
+            nombre: data.nombre,
+            apellido: data.apellido,
+            celular: data.celular,
+            email: data.auth?.email,
+            password:'',
+            estado: '1',
+          });
+          this.isActive = data.estado === 'Activo'
         },
         error => {
-          console.error("No funciona", error);
-        }
+          console.log(error);
+        }   
       )
     }
   }
 
 
+  addOrientador(): void {
+    this.submitted = true;
+    if (this.orientadorForm.invalid) {
+      return;
+    }
+    const orientador: Orientador = {
+      nombre: this.orientadorForm.value.nombre,
+      apellido: this.orientadorForm.value.apellido,
+      celular: this.orientadorForm.value.celular,
+      email: this.orientadorForm.value.email,
+      password: this.orientadorForm.value.password,
+      estado: this.orientadorForm.value.estado,
+    };
+    if (this.orientadorId != null) {
+      this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
+        data => {
+          location.reload();
+        },
+        error => {
+          console.error("Error al actualizar el orientador:", error);
+        });
+    } else {
+      this.orientadorServices.createOrientador(this.token, orientador).subscribe(
+        data => {
+          location.reload();
+        },
+        error => {
+          console.error("Error al crear el orientador:", error);
+        });
+    }
+  }
+
+  cancelarModal() {
+    this.dialogRef.close();
+  }
+
+  toggleActive() {
+    this.isActive = !this.isActive;
+    //this.asesorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
+  }
+
+  mostrarToggle(): void {
+    if (this.orientadorId != null) {
+      this.boton = false;
+    }
+    this.boton = true;
+  }
 }
