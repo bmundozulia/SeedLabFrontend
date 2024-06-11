@@ -48,20 +48,21 @@
 
               </div>
             </div>
-          </div>
-          <!-- Color Secundario-->
-          <div class="flex flex-col items-center p-4">
-            <label class="text-center text-xl md:text-2xl font-mono mb-4 text-sky-600">Color Secundario</label>
-            <div class="w-full p-4 border-2 border-gray-300 rounded-lg flex flex-col items-center">
-              <div class="w-full h-20 mb-2" [style.background]="selectedColorSecundario"></div>
-              <p class="text-center">{{ selectedColorSecundario }}</p>
-              <button [(colorPicker)]="selectedColorSecundario" [cpOKButton]="true"
-                [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
-                [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
-                [cpCancelButtonText]="'Cancelar'"
-                class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded w-full">
-                Seleccionar Color
-              </button>
+
+            <!-- Color Secundario -->
+            <div>
+              <label class="block text-black font-bold mb-2">Color Secundario</label>
+              <div class="flex flex-col  ">
+                <div class="flex content-center mb-2 md:mb-0 w-full">
+                  <div class="w-24 h-24 rounded-l" [style.background]="selectedColorSecundario"
+                    [(colorPicker)]="selectedColorSecundario" [cpOKButton]="true"
+                    [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
+                    [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
+                    [cpCancelButtonText]="'Cancelar'"></div>
+                  <p class="bg-gray-200 text-black h-24 py-3 px-4 rounded-r flex-grow flex items-center">{{
+                    selectedColorSecundario }}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
