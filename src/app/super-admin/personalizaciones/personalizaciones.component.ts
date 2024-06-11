@@ -30,16 +30,23 @@ export class PersonalizacionesComponent implements OnInit {
   @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
 
 
-  constructor(private fb: FormBuilder, private personalizacionesService: PersonalizacionesService) { }
+  constructor(private fb: FormBuilder, private personalizacionesService: PersonalizacionesService) {
+    this.personalizacionForm = this.fb.group({
+      imagen_Logo: [''],
+    })
+  }
+
+
+
 
 
   ngOnInit(): void {
     this.validateToken();
     this.personalizacionForm = this.fb.group({
-      nombre_sistema: ['',Validators.required],
-      imagen_Logo: ['',Validators.required],
-      color_principal: ['#C2FFFB',Validators.required],
-      color_secundario: ['#C2FFFB',Validators.required],
+      nombre_sistema: ['', Validators.required],
+      imagen_Logo: ['', Validators.required],
+      color_principal: ['#C2FFFB', Validators.required],
+      color_secundario: ['#C2FFFB', Validators.required],
     })
 
   }
@@ -79,6 +86,9 @@ export class PersonalizacionesComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.previewUrl = reader.result;
+        this.personalizacionForm.patchValue({
+          imagen_Logo: reader.result // Guarda la imagen en base64 en el formulario
+        });
       };
     }
   }
@@ -109,7 +119,10 @@ export class PersonalizacionesComponent implements OnInit {
 
         this.personalizacionesService.createPersonalizacion(this.token, personalizaciones).subscribe(
           data => {
-            console.log("si funciona", data);
+            console.log("personalizacion creada", data);
+            // console.log("Imagen en base64:", this.personalizacionForm.value.imagen_Logo);
+            // alert("Imagen en base64:\n");
+
             location.reload();
           },
           error => {
