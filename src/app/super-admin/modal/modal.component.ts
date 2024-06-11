@@ -7,6 +7,7 @@ import { SwitchService } from '../../servicios/switch.service'
 
 import { Ruta } from '../../Modelos/ruta.modelo';
 import { User } from '../../Modelos/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-modal',
@@ -23,6 +24,9 @@ export class ModalComponent implements OnInit {
   currentRolId: string | null = null;
   now = new Date();
   formattedDate: string = '';
+  submitted: boolean = false;
+  private modalSubscription: Subscription;
+  isVisible = true;
   
 
   constructor(
@@ -31,14 +35,18 @@ export class ModalComponent implements OnInit {
     private fb: FormBuilder,
     private datePipe: DatePipe,
   ) {
-
+    this.createRutaForm = this.fb.group({
+      nombre: [''],
+      fecha_creacion: [this.formattedDate],
+      estado: ['1']
+    });
   }
 
   ngOnInit(): void {
-
+    this.validateToken();
   }
 
- 
+  
 
   validateToken(): void {
     if (!this.token) {
@@ -56,6 +64,7 @@ export class ModalComponent implements OnInit {
   }
 
   createRuta() {
+    this.submitted = true;
     const ruta = new Ruta(
       this.createRutaForm.get('nombre')?.value,
       this.createRutaForm.get('fecha_creacion')?.value,
@@ -64,7 +73,7 @@ export class ModalComponent implements OnInit {
     this.rutaService.createRutas(this.token, ruta).subscribe(
       (response:any) => {
         console.log(response);
-        this.closeModal();
+        this.confirmarModal();
       },
       (error) => {
         console.error(error);
@@ -77,13 +86,10 @@ export class ModalComponent implements OnInit {
   }
 
   confirmarModal() {
-    // this.submitted = true;
-    // if (this.isFormValid()) {
-    //   console.log('Form data:', this.persona);
-    //   // Realizar acción de guardar
-    // }
+    //this.submitted = true;
     this.modalSS.$modal.emit(false);
   }
+  
 
   // isFormValid() {
   //   return this.persona.nombre.trim() !== '';

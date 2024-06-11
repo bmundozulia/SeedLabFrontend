@@ -33,7 +33,6 @@ export class EncuestaEmpresaComponent {
   documento: string;
   currentRolId: string | null = null;
   currentIndex = 0;
-  respuestasForm1: FormGroup;
   id_pregunta: number;
   id_subpregunta: number | null = null;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
@@ -72,13 +71,7 @@ export class EncuestaEmpresaComponent {
     private fb: FormBuilder,
     private respuestasService: RespuestasService,
     private alertService: AlertService,
-  ) {
-    /*for(let i = 0; i < 15; i++){
-      this.firstForm[`option${i}`]= new OpcionesRespuesta({}) ;
-    }*/
-
-
-  }
+  ) {}
 
 
 
