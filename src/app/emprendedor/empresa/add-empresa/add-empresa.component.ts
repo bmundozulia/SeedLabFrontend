@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +13,17 @@ import { DepartamentoService } from '../../../servicios/departamento.service';
 import { EmpresaService } from '../../../servicios/empresa.service';
 import { MunicipioService } from '../../../servicios/municipio.service';
 import { User } from '../../../Modelos/user.model';
+import { faRankingStar } from '@fortawesome/free-solid-svg-icons';
+import { faTasks } from '@fortawesome/free-solid-svg-icons';
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-empresa',
