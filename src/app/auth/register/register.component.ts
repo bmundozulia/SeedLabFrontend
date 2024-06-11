@@ -74,11 +74,12 @@ export class RegisterComponent implements OnInit {
       municipio: ['', Validators.required],
       direccion: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
+      password: ['', [Validators.required, Validators.minLength(8), this.passwordValidator]],
       estado: '1'
     });
   }
 
+  //Funcion validar password
   passwordValidator(control: AbstractControl) {
     const value = control.value;
     const hasUpperCase = /[A-Z]+/.test(value);
