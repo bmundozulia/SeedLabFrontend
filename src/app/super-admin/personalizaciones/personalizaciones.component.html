@@ -32,6 +32,15 @@
         <div class="w-full">
           <!-- Color Principal y Color Secundario -->
           <div class="md:flex md:justify-around md:space-x-4 xl:flex-col xl:space-x-0">
+
+            <div>
+              <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre de la empresa</label>
+              <input type="text" id="nombre" name="nombre" formControlName="nombre"
+                class="mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+              <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+
+              </div>
+            </div>
             <!-- Color Principal -->
             <div class="mb-4 xl:mb-6">
               <label class="block text-black font-bold mb-2">Color Principal</label>
@@ -64,6 +73,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
         <div class="flex justify-end mt-5">
