@@ -112,7 +112,7 @@
                         <div *ngIf="submitted && f.password.errors"
                             class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
                             <div *ngIf="f.password.errors.required">Este campo es requerido *</div>
-                            <div *ngIf="f.password.errors.minlength">La contraseña debe tener al menos 10 caracteres *
+                            <div *ngIf="f.password.errors.minlength">La contraseña debe tener al menos 8 caracteres *
                             </div>
                             <div *ngIf="f.password.errors.passwordStrength">{{ f.password.errors.passwordStrength }}
                             </div>
