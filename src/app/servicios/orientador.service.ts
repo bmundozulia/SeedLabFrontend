@@ -1,12 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
-
 import { environment } from '../../environment/env';
-
 import { Orientador } from '../Modelos/orientador.model';
-
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +12,7 @@ export class OrientadorService {
   constructor(private http: HttpClient) { }
 
   url = environment.apiUrl + 'orientador/'
-  
+
   private CreacionHeaders(access_token: any): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
@@ -24,28 +20,23 @@ export class OrientadorService {
     });
   }
 
-
-  createOrientador(access_token: any, orientador: Orientador,): Observable<any> {
+  createOrientador(access_token: any, orientador: Orientador): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.post(this.url+"crearOrientador", orientador, options);
+    return this.http.post(this.url + 'crearOrientador', orientador, options);
   }
 
   mostrarOrientador(access_token: any, id: number): Observable<any> { 
     const options = { headers: this.CreacionHeaders(access_token) }; 
-    return this.http.get(this.url+"listaOrientador/"+id, options);
+    return this.http.get(this.url + 'listaOrientador/' + id, options);
+}
+
+  updateOrientador(orientador: Orientador, access_token: any, id: number): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.put(this.url + 'editarOrientador/' + id, orientador, options);
   }
 
-
-  updateOrientador(orientador: Orientador, access_token: any, id:number):Observable<any>{
-    const options={headers: this.CreacionHeaders(access_token)};
-    return this.http.put(this.url + "editarOrientador/"+id, orientador, options);
-    }
-
-
-  getinformacionOrientador( access_token:any, id:number):Observable<any> {
-    const options={headers: this.CreacionHeaders(access_token)};
-    return this.http.get(this.url+"userProfileOrientador/"+id, options)
+  getinformacionOrientador(access_token: any, estado: number): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get(this.url + 'userProfileOrientador/' + estado, options);
   }
-
-  
 }

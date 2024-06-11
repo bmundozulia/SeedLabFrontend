@@ -3,9 +3,9 @@ import { faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { SwitchService } from '../../servicios/switch.service';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Orientador } from '../../Modelos/orientador.model';
-import { User } from '../../Modelos/user.model';
 import { OrientadorService } from '../../servicios/orientador.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-orientador-crear',
@@ -19,9 +19,10 @@ export class OrientadorCrearComponent implements OnInit {
   fax = faXmark;
   public page: number = 1; // Initialize page number
   listaOrientador: Orientador[] = [];
+  filteredOrientador: Orientador[] = [];
   token: string | null = null;
   user: User | null = null;
-  currentRolId: number = 0; // Initialize currentRolId
+  currentRolId: number;
   faPen = faPenToSquare;
   faPlus = faPlus;
   modalCrearOrientador: boolean = false;
@@ -32,12 +33,19 @@ export class OrientadorCrearComponent implements OnInit {
     0: 'Inactivo'
   };
 
-  constructor(private modalCRO: SwitchService, private orientadorService: OrientadorService, private router: Router, private aRoute: ActivatedRoute) { }
+  constructor(
+    private modalCRO: SwitchService,
+    private orientadorService: OrientadorService,
+    private router: Router,
+    private aRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.validateToken();
-    this.cargarOrientador(1); 
-    this.modalCRO.$modalCrearOrientador.subscribe((valor) => { this.modalCrearOrientador = valor });
+    this.cargarOrientador(1);
+    this.modalCRO.$modalCrearOrientador.subscribe((valor) => {
+      this.modalCrearOrientador = valor;
+    });
   }
 
   validateToken(): void {
@@ -66,11 +74,13 @@ export class OrientadorCrearComponent implements OnInit {
               item.nombre,
               item.apellido,
               item.celular,
-              item.id_autenticacion,
-              item.email,
-              this.ESTADO_MAP[estado] ?? 'Desconocido'
+              item.correo, // Asignar el correo electrónico directamente del item
+              '', // Password no es necesario aquí
+              this.ESTADO_MAP[item.estado] ?? 'Desconocido',
+              item.id_auth
             )
           );
+          this.filtrarOrientador();
         },
         (err) => {
           console.log(err);
@@ -79,7 +89,7 @@ export class OrientadorCrearComponent implements OnInit {
     } else {
       console.error('Token is not available');
     }
-  }
+}
 
   onEstadoChange(event: any): void {
     const estado = event.target.value;
@@ -89,7 +99,7 @@ export class OrientadorCrearComponent implements OnInit {
       this.cargarOrientador(0);
     }
   }
-  
+
   limpiarFiltro(): void {
     this.userFilter = { nombre: '', estado_usuario: 'Activo' };
     this.cargarOrientador(1);
@@ -103,5 +113,11 @@ export class OrientadorCrearComponent implements OnInit {
   openModalEditarOrientador(): void {
     this.isEditing = true;
     this.modalCrearOrientador = true;
+  }
+
+  filtrarOrientador(): void {
+    this.filteredOrientador = this.listaOrientador.filter(orientador =>
+      orientador.nombre?.toLowerCase().includes(this.userFilter.nombre.toLowerCase())
+    );
   }
 }
