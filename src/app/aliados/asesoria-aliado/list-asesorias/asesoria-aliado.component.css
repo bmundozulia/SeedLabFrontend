@@ -1,3 +1,4 @@
+/* Estilos generales de la tarjeta */
 .card {
   position: relative;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -8,6 +9,7 @@
   transform: translateY(-5px);
 }
 
+/* Estilos de los botones que aparecen al hacer hover */
 .hover-buttons {
   position: absolute;
   bottom: 10px;
@@ -26,19 +28,37 @@
   transform: translateX(-50%) translateY(0);
 }
 
+/* Estilos base de los botones */
 .btn {
   padding: 5px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Estilos específicos para el botón aceptar */
 .btn-aceptar {
-  background-color: #4caf50; /* Verde */
+  background-color:   #bcbcbc ; /* Color predeterminado */
   color: white;
 }
 
+.btn-aceptar:hover,
+.btn-aceptar:focus,
+.btn-aceptar:active {
+  background-color:   #bcbcbc ; /* Color al hacer hover/click */
+  color: white;
+}
+
+/* Estilos específicos para el botón rechazar */
 .btn-rechazar {
-  background-color: #f44336; /* Rojo */
+  background-color:  #0cb4ec; /* Color predeterminado */
+  color: white;
+}
+
+.btn-rechazar:hover,
+.btn-rechazar:focus,
+.btn-rechazar:active {
+  background-color: #0cb4ec; /* Color al hacer hover/click */
   color: white;
 }
