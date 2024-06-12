@@ -1,0 +1,24 @@
+<div class="p-4 bg-white" [formGroup]="asignarForm">
+  <div>
+    <h2 class="text-center  text-xl lg:text-2xl font-semibold mb-4">Asignar horario</h2>
+    <p><strong class="text-blue-400">Nombre</strong></p>
+    <p>{{ data.asesoria.Nombre_sol }}</p>
+    <p><strong class="text-blue-400">Notas</strong></p>
+    <p>{{ data.asesoria.notas }}</p>
+    <p><strong class="text-blue-400">Fecha de Solicitud</strong></p>
+    <p>{{ data.asesoria.fecha }}</p>
+    <!-- Agrega más campos según sea necesario -->
+  </div>
+  <div *ngIf="!data.asesoria.fecha_asignacion" class="rounded-xl pb-2 pt-2 w-full justify-start" id="nomAliadoContainer">
+    <label class="mb-1 text-blue-400 font-semibold">¿En qué fecha quiere la asesoría?</label>
+    <input type="datetime-local" formControlName="fecha" class="block w-full px-3 py-2 mt-1 text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"/>
+  </div>
+  <div *ngIf="!data.asesoria.fecha_asignacion" class="rounded-xl pb-2 w-full justify-start center" id="observacionesContainer">
+    <label class="mb-1 text-blue-400 font-semibold">Observaciones</label>
+    <textarea formControlName="observaciones" class="block w-full h-24 px-3 py-2 mt-1 text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none resize-none" wrap="soft"></textarea>
+  </div>
+  <div mat-dialog-actions class="flex justify-end mt-3">
+    <button mat-button mat-dialog-close class="bg-gray-500 text-white">Cancelar</button>
+    <button *ngIf="!data.asesoria.fecha_asignacion" mat-button class="bg-sky-500 text-white" type="submit" (click)="onGuardar()">Guardar</button>
+  </div>
+</div>
