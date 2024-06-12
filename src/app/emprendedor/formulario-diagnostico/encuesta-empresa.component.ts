@@ -109,6 +109,7 @@ export class EncuestaEmpresaComponent {
     let id_empresa = 1;
 
     const listaRespuestas: Respuesta[] = [];
+    
     listaRespuestas.push(this.respuesta1);
     //pregunta 2
     listaRespuestas.push(this.respuesta2);
@@ -139,7 +140,7 @@ export class EncuestaEmpresaComponent {
     listaRespuestas.push(this.respuesta22);
     listaRespuestas.push(this.respuesta23);
     let isValidForm = true;
-
+    const payload = { respuestas: listaRespuestas };
     let respCounter = 0;
     for (let i = 0; i < 15; i++) {
       const currentPregunta = PREGUNTAS[i];
@@ -148,7 +149,7 @@ export class EncuestaEmpresaComponent {
 
       if (currentPregunta.id === 2) {
         for (let j = 0; j < currentPregunta.subPreguntas.length - 1; j++) {
-          debugger;
+          //debugger;
           if (listaRespuestas[respCounter + j].opcion !== 'Si') {
             listaRespuestas[respCounter + j].texto_res = '0';
           }
@@ -158,7 +159,7 @@ export class EncuestaEmpresaComponent {
         respCounter += currentPregunta.subPreguntas.length - 1;
         
       } else if (currentPregunta.id === 12) {
-        debugger
+        //debugger
         if (listaRespuestas[respCounter].opcion === 'Si') {
           for (let k = 0; k < currentPregunta.subPreguntas.length; k++) {
             listaRespuestas[respCounter + 1 + k].id_pregunta = i;
@@ -169,18 +170,12 @@ export class EncuestaEmpresaComponent {
         respCounter++;
       } else {
         if (currentPregunta.isText) {
-          //if(currentPregunta.id === 10){
-          debugger;
-          //}
           if (!listaRespuestas[respCounter].texto_res || listaRespuestas[respCounter].texto_res === '') {
             this.alertService.errorAlert('Error', 'Deben llenar los campos');
             isValidForm = false;
             return;
           }
         } else {
-          //if(currentPregunta.id === 10){
-          debugger;
-          //}
           if (!listaRespuestas[respCounter].opcion || listaRespuestas[respCounter].opcion === '') {
             this.alertService.errorAlert('Error', 'Deben llenar los campos');
             isValidForm = false;
@@ -205,7 +200,7 @@ export class EncuestaEmpresaComponent {
     }
     if (!isValidForm) {
       return
-    } this.respuestasService.saveAnswers(this.token, listaRespuestas).subscribe(
+    } this.respuestasService.saveAnswers(this.token, payload).subscribe(
       (data: any) => {
         console.log(data);
       },

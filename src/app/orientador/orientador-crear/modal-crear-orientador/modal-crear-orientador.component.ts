@@ -18,7 +18,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
   submitted: boolean = false;
   boton = true;
   estado: boolean;
-  isActive: boolean;
+  isActive: boolean = true;
   token: string | null = null;
   user: User | null = null;
   id: number | null = null;
@@ -88,18 +88,16 @@ export class ModalCrearOrientadorComponent implements OnInit {
     if (this.orientadorId != null) {
       this.orientadorServices.getinformacionOrientador(this.token, this.orientadorId).subscribe(
         data => {
-          console.log("Estado en los datos:", data.estado); // Verificar el estado en los datos
-          this.isActive = data.estado === "Activo" ? true : false; // Establecer el valor de isActive según el estado en los datos
-          console.log("isActive después de la asignación:", this.isActive);
+          
           this.orientadorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
-            celular: data.celular,
-            email: data.auth?.email,
+            celular: data.celular,  
+            email: data.email,
             password:'',
-            estado: this.isActive
             
           });
+          console.log("aquii", data);
         },
         error => {
           console.log(error);
@@ -107,8 +105,9 @@ export class ModalCrearOrientadorComponent implements OnInit {
       )
     }
   }
+  
 
-
+  
   addOrientador(): void {
     this.submitted = true;
     if (this.orientadorForm.invalid) {
@@ -119,13 +118,14 @@ export class ModalCrearOrientadorComponent implements OnInit {
       apellido: this.orientadorForm.value.apellido,
       celular: this.orientadorForm.value.celular,
       email: this.orientadorForm.value.email,
-      password: this.orientadorForm.value.password,
+      password: this.orientadorForm.value.password?  this.orientadorForm.value.password : null,
       estado: this.orientadorForm.value.estado,
     };
     if (this.orientadorId != null) {
       this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
         data => {
           location.reload();
+          console.log(data);
         },
         error => {
           console.error("Error al actualizar el orientador:", error);
@@ -146,6 +146,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
   }
 
   toggleActive() {
+ 
     this.isActive = !this.isActive;
     this.orientadorForm.patchValue({ estado: this.isActive ? true : false });
     //this.orientadorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });

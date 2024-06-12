@@ -8,6 +8,10 @@ import { OrientadorService } from '../../servicios/orientador.service';
 import { Orientador } from '../../Modelos/orientador.model';
 import { User } from '../../Modelos/user.model';
 
+// iconos
+import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+
+
 @Component({
   selector: 'app-perfil-orientador',
   templateUrl: './perfil-orientador.component.html',
@@ -15,12 +19,20 @@ import { User } from '../../Modelos/user.model';
 })
 export class PerfilOrientadorComponent {
 
+  // iconos
+  faEnvelope = faEnvelope;
+  faMobileAlt = faMobileAlt;
+  faUser = faUser;
+
+
   user: User | null = null;
   token = '';
   currentRolId: string | null = null;
   id: number;
   blockedInputs = true;
-  boton: boolean 
+  boton: boolean
+  hide = true;
+  bloqueado = true;
 
 
   perfilorientadorForm = this.fb.group({
@@ -81,7 +93,7 @@ export class PerfilOrientadorComponent {
   }
 
   updateOrientador(): void {
-    const perfil: Orientador={
+    const perfil: Orientador = {
       nombre: this.perfilorientadorForm.get('nombre')?.value,
       apellido: this.perfilorientadorForm.get('apellido')?.value,
       celular: this.perfilorientadorForm.get('celular')?.value,
@@ -92,9 +104,9 @@ export class PerfilOrientadorComponent {
     this.orientadorService.updateOrientador(this.token, this.id, perfil).subscribe(
       (data)=>{
         console.log(data);
-        //location.reload();
+        location.reload();
       },
-      (err)=>{
+      (err) => {
         console.log(err);
       }
     )
@@ -113,14 +125,14 @@ export class PerfilOrientadorComponent {
     }
   }
 
-  toggleInputsLock():void{
-    this.blockedInputs =!this.blockedInputs;
-    const fieldsToToggle = ['nombre','apellido','celular','email','email','password'];
-    fieldsToToggle.forEach(field =>{
+  toggleInputsLock(): void {
+    this.blockedInputs = !this.blockedInputs;
+    const fieldsToToggle = ['nombre', 'apellido', 'celular', 'email', 'email', 'password'];
+    fieldsToToggle.forEach(field => {
       const control = this.perfilorientadorForm.get(field);
       if (this.blockedInputs) {
         control.disable();
-      }else{
+      } else {
         control.enable();
       }
     })

@@ -46,9 +46,7 @@ export class ModalComponent implements OnInit {
     this.validateToken();
   }
 
-  
-
-  validateToken(): void {
+    validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
       let identityJSON = localStorage.getItem('identity');
@@ -58,13 +56,13 @@ export class ModalComponent implements OnInit {
         console.log(identity);
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
+        //console.log(this.currentRolId);
       }
     }
   }
 
   createRuta() {
-    this.submitted = true;
+    this.modalSS.$modal.emit(false);
     const ruta = new Ruta(
       this.createRutaForm.get('nombre')?.value,
       this.createRutaForm.get('fecha_creacion')?.value,
@@ -73,7 +71,7 @@ export class ModalComponent implements OnInit {
     this.rutaService.createRutas(this.token, ruta).subscribe(
       (response:any) => {
         console.log(response);
-        this.confirmarModal();
+        
       },
       (error) => {
         console.error(error);
@@ -85,10 +83,7 @@ export class ModalComponent implements OnInit {
     this.modalSS.$modal.emit(false);
   }
 
-  confirmarModal() {
-    //this.submitted = true;
-    this.modalSS.$modal.emit(false);
-  }
+  
   
 
   // isFormValid() {

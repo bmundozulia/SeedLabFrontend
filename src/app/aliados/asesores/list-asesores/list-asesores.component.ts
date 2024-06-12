@@ -6,13 +6,14 @@ import { ModalAddAsesoresComponent } from '../modal-add-asesores/modal-add-aseso
 import { AsesorService } from '../../../servicios/asesor.service';
 import { User } from '../../../Modelos/user.model';
 import { Asesor } from '../../../Modelos/asesor.model';
+import { AliadoService } from '../../../servicios/aliado.service';
 
 
 @Component({
   selector: 'app-list-asesores',
   templateUrl: './list-asesores.component.html',
   styleUrl: './list-asesores.component.css',
-  providers: [AsesorService]
+  providers: [AsesorService, AliadoService]
 })
 export class ListAsesoresComponent implements OnInit {
   asesor: Asesor[] = [];
@@ -35,7 +36,8 @@ export class ListAsesoresComponent implements OnInit {
   constructor(
     private asesorService: AsesorService,
     public dialog: MatDialog,
-    private route: Router
+    private route: Router,
+    private aliadoService: AliadoService
   ) { }
 
   ngOnInit(): void {
@@ -63,7 +65,7 @@ export class ListAsesoresComponent implements OnInit {
 
   cargarAsesores() {
     if (this.token) {
-      this.asesorService.getinfoAsesor(this.token, this.user.id).subscribe(
+      this.aliadoService.getinfoAsesor(this.token, this.user.id).subscribe(
         (data) => {
           this.listaAsesores = data;
           console.log(this.listaAsesores);
