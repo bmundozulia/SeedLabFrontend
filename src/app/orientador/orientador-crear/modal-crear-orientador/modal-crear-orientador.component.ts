@@ -95,12 +95,13 @@ export class ModalCrearOrientadorComponent implements OnInit {
           this.orientadorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
-            celular: data.celular,
-            email: data.auth?.email,
+            celular: data.celular,  
+            email: data.email,
             password:'',
             estado: this.isActive
             
           });
+          console.log("aquii", data);
         },
         error => {
           console.log(error);
@@ -110,7 +111,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
   }
   
 
-
+  
   addOrientador(): void {
     this.submitted = true;
     if (this.orientadorForm.invalid) {
@@ -121,13 +122,14 @@ export class ModalCrearOrientadorComponent implements OnInit {
       apellido: this.orientadorForm.value.apellido,
       celular: this.orientadorForm.value.celular,
       email: this.orientadorForm.value.email,
-      password: this.orientadorForm.value.password,
+      password: this.orientadorForm.value.password?  this.orientadorForm.value.password : null,
       estado: this.orientadorForm.value.estado,
     };
     if (this.orientadorId != null) {
       this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
         data => {
           location.reload();
+          console.log(data);
         },
         error => {
           console.error("Error al actualizar el orientador:", error);
