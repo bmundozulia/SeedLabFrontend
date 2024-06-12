@@ -40,10 +40,14 @@ export class SuperadminService {
   }
 
   getAdmins(access_token: any, estado: boolean): Observable<any> {
-    const options = {
-      headers: this.CreacionHeaders(access_token),
-      params: new HttpParams().set('estado', estado)
+    const options = {headers: this.CreacionHeaders(access_token),
+    params: new HttpParams().set('estado', estado)
     };
     return this.http.get<any>(this.url + "mostrarSuperAdmins/", options);
+  }
+
+  getInfoAdminxlista(access_token: any, adminId: number): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get<any>(this.url + "perfilAdmin/" + adminId, options);
   }
 }

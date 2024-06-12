@@ -32,15 +32,13 @@ export class CrearSuperadminComponent implements OnInit {
 
   userFilter: any = { nombre: '', estado: 'Activo' };
 
-  constructor(private modalCRSA: SwitchService,
-    private superAdminService: SuperadminService,
+  constructor(private superAdminService: SuperadminService,
     public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
     this.validateToken();
     this.cargarSuperAdmin();
-    this.modalCRSA.$modalCrearSuperadmin.subscribe((valor) => { this.modalCrearSuperadmin = valor })
   }
 
   validateToken(): void {
@@ -56,25 +54,22 @@ export class CrearSuperadminComponent implements OnInit {
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
         this.id = this.user.id;
-        console.log("estadooo", this.estado);
+        console.log("estadooo", this.id);
       }
     }
-  }
-
-  openModalCrearSuperAdmin() {
-    this.isEditing = false;
-    this.modalCrearSuperadmin = true;
   }
 
   openModal(adminId: number | null): void {
     let dialogRef: MatDialogRef<ModalcrearSuperadminComponent>;
     dialogRef = this.dialog.open(ModalcrearSuperadminComponent, {
-      data: { asesorId: adminId }
+      data: { adminId: adminId }
     });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('El modal se cerró');
+      this.cargarSuperAdmin();
     });
+    console.log("para el modal", adminId);
+
   }
 
 
@@ -87,7 +82,7 @@ export class CrearSuperadminComponent implements OnInit {
       this.superAdminService.getAdmins(this.token, this.userFilter.estado).subscribe(
         (data) => {
           this.listaAdmins = data;
-          console.log(this.listaAdmins);
+          console.log("data", this.listaAdmins);
         },
         (error) => {
           console.log(error);
@@ -97,13 +92,11 @@ export class CrearSuperadminComponent implements OnInit {
   }
 
   limpiarFiltro(): void {
-    this.userFilter = { nombre: '' };
-    // Opcional: recargar los aliados con el estado por defecto
+    this.userFilter = { nombre: '', estado: 'Activo' };
     this.cargarSuperAdmin();
   }
 
   onEstadoChange(): void {
-    //const estado = event.target.value;
     this.cargarSuperAdmin();
   }
 
