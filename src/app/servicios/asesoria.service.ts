@@ -17,12 +17,7 @@ export class AsesoriaService {
 
   constructor(private http: HttpClient) { }
 
-  private CreacionHeaders(access_token: any): HttpHeaders {
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${access_token}`
-    });
-  }
+  
 
   getMisAsesorias(body: { documento: string, asignacion: boolean }): Observable<any> {
     const token = localStorage.getItem('token'); // Obtén el token del localStorage
