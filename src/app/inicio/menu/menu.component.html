@@ -1,13 +1,15 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <nav class="sidebar shadow-xl" [ngClass]="{ 'slide-left': isLeft }" *ngIf="logueado">
     <header class="relative">
         <div class="flex justify-center">
-            <span class="p-11">
+            <span class="p-10 mr-4">
                 <img src="../assets/images/logo-seed.jpg" alt="logo" width="150px" height="150px" />
             </span>
         </div>
 
         <div class="bx bx-chevron-right toggle " (click)="toggleSlide()">
-            <svg xmlns="http://www.w3.org/2000/svg" style="width: 15px;height: 15px;"
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 15px;height: 15px;"fill="#FFFFFF" 
                 viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path
                     d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
@@ -18,17 +20,17 @@
     <div class="menu-bar">
         <div class="menu">
 
-            <ul class="menu-links">
+            <ul class="menu-links mr-9">
                 <!-- Inicio -->
-                <li class="h-14 flex items-center">
+                <li class="h-14 flex items-center ">
                     <a href="/" class="">
                         <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;"
-                            class="text-center text-xl min-w-14 text-gray-700 transition duration-200"
+                            class="text-center text-xl min-w-14 text-gray-700 transition duration-200"  
                             viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                             <path
                                 d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
                         </svg>
-                        <span class="mt-1 text nav-text text-gray-700 transition duration-200">Inicio</span>
+                        <span class="mt-1 text nav-text">Inicio</span>
                     </a>
                 </li>
 
@@ -37,7 +39,7 @@
                     <li class="h-14 flex items-center ">
                         <a href="list-aliados">
                             <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;"
-                                class="text-center text-xl min-w-14 text-gray-700 transition duration-200"
+                                class="text-center text-xl min-w-14 text-gray-700 transition duration-200 nav-text"
                                 viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                 <path
                                     d="M323.4 85.2l-96.8 78.4c-16.1 13-19.2 36.4-7 53.1c12.9 17.8 38 21.3 55.3 7.8l99.3-77.2c7-5.4 17-4.2 22.5 2.8s4.2 17-2.8 22.5l-20.9 16.2L512 316.8V128h-.7l-3.9-2.5L434.8 79c-15.3-9.8-33.2-15-51.4-15c-21.8 0-43 7.5-60 21.2zm22.8 124.4l-51.7 40.2C263 274.4 217.3 268 193.7 235.6c-22.2-30.5-16.6-73.1 12.7-96.8l83.2-67.3c-11.6-4.9-24.1-7.4-36.8-7.4C234 64 215.7 69.6 200 80l-72 48V352h28.2l91.4 83.4c19.6 17.9 49.9 16.5 67.8-3.1c5.5-6.1 9.2-13.2 11.1-20.6l17 15.6c19.5 17.9 49.9 16.6 67.8-2.9c4.5-4.9 7.8-10.6 9.9-16.5c19.4 13 45.8 10.3 62.1-7.5c17.9-19.5 16.6-49.9-2.9-67.8l-134.2-123zM16 128c-8.8 0-16 7.2-16 16V352c0 17.7 14.3 32 32 32H64c17.7 0 32-14.3 32-32V128H16zM48 320a16 16 0 1 1 0 32 16 16 0 1 1 0-32zM544 128V352c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V144c0-8.8-7.2-16-16-16H544zm32 208a16 16 0 1 1 32 0 16 16 0 1 1 -32 0z" />
@@ -152,12 +154,9 @@
                     </li>
                     <li class="h-14 flex items-center ">
                         <a href="perfil-orientador">
-                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;"
-                                class="text-center text-xl min-w-14 text-gray-700 transition duration-200"
-                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path
-                                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
-                            </svg>
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;" 
+                            class="text-center text-xl min-w-14 text-gray-700 transition duration-200" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                             <span class="text nav-text"> Mi perfil </span>
                         </a>
                     </li>
@@ -269,14 +268,13 @@
                         </a>
                     </li>
                 </div>
-
-
                 <!-- Menu del emprendedor -->
                 <div *ngIf="currentRolId === '5'">
+                    
                     <li class="h-14 flex items-center">
                         <a href="list-empresa">
                             <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;"
-                                class="text-center text-xl min-w-14 text-gray-700 transition duration-200"
+                                class="text-center text-xl min-w-14 text-gray-700 transition duration-200 "
                                 viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                 <path
                                     d="M480 48c0-26.5-21.5-48-48-48H336c-26.5 0-48 21.5-48 48V96H224V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V96H112V24c0-13.3-10.7-24-24-24S64 10.7 64 24V96H48C21.5 96 0 117.5 0 144v96V464c0 26.5 21.5 48 48 48H304h32 96H592c26.5 0 48-21.5 48-48V240c0-26.5-21.5-48-48-48H480V48zm96 320v32c0 8.8-7.2 16-16 16H528c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16zM240 416H208c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16zM128 400c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32zM560 256c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H528c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h32zM256 176v32c0 8.8-7.2 16-16 16H208c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16zM112 160c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h32zM256 304c0 8.8-7.2 16-16 16H208c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32zM112 320H80c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16zm304-48v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16zM400 64c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h32zm16 112v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16z" />
@@ -322,16 +320,15 @@
                             <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;"
                                 class="text-center text-xl min-w-14 text-gray-700 transition duration-200"
                                 viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path
-                                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
-                            </svg>
+                                <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                            
                             <span class="text nav-text"> Mi perfil </span>
                         </a>
                     </li>
                 </div>
 
                 <!-- Boton de cerrar secion -->
-                <li class="h-14 flex items-center" *ngIf="logueado">
+                <li class="h-14 flex items-center lg:mt-64 max-sm:mt-16 max-xl:mt-72" *ngIf="logueado">
                     <a *ngIf="token != null" (click)="logout()">
                         <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;"
                             class="text-center text-xl min-w-14 text-gray-700 transition duration-200"
@@ -344,11 +341,7 @@
                 </li>
             </ul>
         </div>
-
-
         <!-- <div>
-
-
             <li class="mode list-none">
                 <div class="moon-sun ">
                     <i class="bx bx-moon icon moon active ml-6" id="moon-icon"></i>

@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<app-header [title]="'Panel de Asesorias'"
+    [subtitle]="'Aca podra ver un listado de Asesorias y asignarla a distintos aliados'"></app-header>
+
+<!-- Sección de búsqueda -->
+<div class="flex flex-col space-y-4 mb-6 pl-14">
+  <div class="relative w-full mx-auto">
+    <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+      <i class="fas fa-search"></i>
+    </span>
+    <input type="text" placeholder="Buscar" [(ngModel)]="userFilter.Nombre_sol" class="max-sm:w-5/6 w-96 h-12 pl-14 P-2 pr-4 border border-gray-300 rounded-md outline-none shadow-md transition duration-200 hover:border-sky-300">
+  </div>
+
+  <div class="sm:flex grid sm:items-center justify-start border  border-gray-300 rounded-2xl px-2 py-1 mr-12 bg-white transition duration-200">
+    <button id="sinAsignar" class="btn-color flex  md:px-2 sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md mr-2 transition duration-200 focus:outline-none ease-in" (click)="showSinAsignar()">
+      Sin asignar
+      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasSinAsesor.length }}</span>
+    </button>    
+    <button id="Asignadas" class="btn-color flex sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md  focus:outline-none  transition duration-200 ease-in" (click)="showAsignadas()">
+      Asignadas
+      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasConAsesor.length }}</span>
+    </button>
+  </div>  
+</div>
+
+<div class="flex flex-wrap justify-center mt-6">
+  <div *ngIf="mensaje" class="text-center text-gray-700 w-full mt-6">{{ mensaje }}</div>
+  
+  <div *ngFor="let asesoria of asesorias | filterBy: userFilter" 
+       [ngClass]="{'card': true, 'no-hover': asesoria.Asesor}" 
+       class="relative bg-white rounded-lg shadow-md overflow-hidden w-80 m-4">
+    <div class="absolute h-full w-2" [ngClass]="asesoria.Asesor ? 'bg-red-500' : 'bg-green-500'"></div>
+    <div class="p-4 border border-gray-200">
+      <h2 class="text-lg font-bold h-[3.3rem] overflow-hidden text-ellipsis">{{ asesoria.Nombre_sol }}</h2>
+      <div class="block w-full h-[3.7rem] text-gray-900 focus:outline-none resize-none overflow-hidden text-ellipsis mb-3" title="{{ asesoria.notas }}">{{ asesoria.notas }}
+      </div>
+      <p class="text-gray-700 mb-3"><strong>Emprendedor: </strong>{{ asesoria.Emprendedor }}</p>
+      <p class="text-gray-700 mb-3"><strong>Fecha: </strong>{{ asesoria.fecha_solicitud }}</p>
+      <p class="text-gray-700" *ngIf="asesoria.Asesor"><strong>Asesor: </strong>{{ asesoria.Asesor }}</p>
+      <div class="h-4" *ngIf="!asesoria.Asesor"></div>
+      <div class="hover-buttons" *ngIf="!asesoria.Asesor">
+        <button class="btn btn-aceptar" (click)="openModal(asesoria)">Aceptar</button>
+        <button class="btn btn-rechazar" (click)="rechazarAsesoria(asesoria)">Rechazar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -70,29 +70,28 @@ export class OrientadorCrearComponent implements OnInit {
 
   cargarOrientador(estado: number): void {
     if (this.token) {
-      this.orientadorService.mostrarOrientador(this.token, estado).subscribe(
-        (data: any) => {
-          console.log(data); // Debug log
-          this.listaOrientador = data.map((item: any) =>
-            new Orientador(
-              item.id,
-              item.nombre,
-              item.apellido,
-              item.celular,
-              item.id_autenticacion,
-              item.email,
-              this.ESTADO_MAP[estado] ?? 'Desconocido'
-            )
-          );
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+        this.orientadorService.mostrarOrientador(this.token, estado).subscribe(
+            (data: any) => {
+                this.listaOrientador = data.map((item: any) =>
+                    new Orientador(
+                        item.id,
+                        item.nombre,
+                        item.apellido,
+                        item.celular,
+                        item.id_auth,
+                        item.correo,
+                        this.ESTADO_MAP[estado] ?? 'Desconocido'
+                    )
+                );
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
     } else {
-      console.error('Token is not available');
+        console.error('Token is not available');
     }
-  }
+}
 
   onEstadoChange(event: any): void {
     const estado = event.target.value;
@@ -135,4 +134,13 @@ export class OrientadorCrearComponent implements OnInit {
     // this.isEditing = true;
     // this.modalCrearOrientador = true;
   }
+  buscarOrientadores(): Orientador[] {
+    return this.listaOrientador.filter(orientador =>
+      orientador.nombre.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||
+      orientador.apellido.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||
+      orientador.celular.includes(this.userFilter.nombre) ||
+      orientador.email.toLowerCase().includes(this.userFilter.nombre.toLowerCase())
+    );
+  }
 }
+

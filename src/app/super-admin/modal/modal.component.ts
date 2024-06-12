@@ -7,6 +7,7 @@ import { SwitchService } from '../../servicios/switch.service'
 
 import { Ruta } from '../../Modelos/ruta.modelo';
 import { User } from '../../Modelos/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-modal',
@@ -23,6 +24,9 @@ export class ModalComponent implements OnInit {
   currentRolId: string | null = null;
   now = new Date();
   formattedDate: string = '';
+  submitted: boolean = false;
+  private modalSubscription: Subscription;
+  isVisible = true;
   
 
   constructor(
@@ -31,16 +35,18 @@ export class ModalComponent implements OnInit {
     private fb: FormBuilder,
     private datePipe: DatePipe,
   ) {
-
+    this.createRutaForm = this.fb.group({
+      nombre: [''],
+      fecha_creacion: [this.formattedDate],
+      estado: ['1']
+    });
   }
 
   ngOnInit(): void {
-
+    this.validateToken();
   }
 
- 
-
-  validateToken(): void {
+    validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
       let identityJSON = localStorage.getItem('identity');
@@ -50,12 +56,13 @@ export class ModalComponent implements OnInit {
         console.log(identity);
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
+        //console.log(this.currentRolId);
       }
     }
   }
 
   createRuta() {
+    this.modalSS.$modal.emit(false);
     const ruta = new Ruta(
       this.createRutaForm.get('nombre')?.value,
       this.createRutaForm.get('fecha_creacion')?.value,
@@ -64,7 +71,7 @@ export class ModalComponent implements OnInit {
     this.rutaService.createRutas(this.token, ruta).subscribe(
       (response:any) => {
         console.log(response);
-        this.closeModal();
+        
       },
       (error) => {
         console.error(error);
@@ -76,14 +83,8 @@ export class ModalComponent implements OnInit {
     this.modalSS.$modal.emit(false);
   }
 
-  confirmarModal() {
-    // this.submitted = true;
-    // if (this.isFormValid()) {
-    //   console.log('Form data:', this.persona);
-    //   // Realizar acción de guardar
-    // }
-    this.modalSS.$modal.emit(false);
-  }
+  
+  
 
   // isFormValid() {
   //   return this.persona.nombre.trim() !== '';

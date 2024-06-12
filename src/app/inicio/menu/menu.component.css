@@ -3,13 +3,8 @@
     margin-left: -250px;
 
 }
-
-
-
-
-
 .sidebar {
-    position: relative;
+    position: sticky;
     top: 0;
     left: 0;
     height: 100vh;
@@ -35,16 +30,16 @@
 
 .sidebar header .toggle {
     position: absolute;
-    top: 20%;
+    top: 15%;
     left: 238px;
     transform: translateY(-50%);
     height: 40px;
-    width: 40px;
+    width: 35px;
     background: #0fb5eb;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 0px 40px 40px 0px; 
     color: #fff;
     font-size: 22px;
     transition: all 0.3 eases;
@@ -53,8 +48,6 @@
 .sidebar.close header .toggle {
     transform: translateY(-50%) rotate(180deg);
 }
-
-
 
 .sidebar li a {
     height: 100%;
@@ -82,7 +75,18 @@ body.dark .sidebar li a:hover .icon,
 body.dark .sidebar li a:hover .text {
     color: #707070;
 }
+li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: gray; /* Color inicial del icono y el texto */
+}
 
+/* Estilos para el hover */
+li a:hover svg {
+    fill: #FFFFFF; 
+    color: blue; 
+}
 
 
 .sidebar .menu-bar {
@@ -161,10 +165,37 @@ body.dark .menu-bar .mode i.moon {
 
 }
 
+.view-element {
+    user-select: none;
+  }
 
+li a:focus {
+    outline: none; 
+}
+li a {
+    user-select: none;
+    cursor: none;
+    outline: none;
+}
+
+li a:focus {
+    box-shadow: none; /* Opcional: puedes agregar algún estilo de foco diferente */
+}
+
+  
 body.dark .switch::before {
     left: 24px;
 }
+a:focus {
+    outline: none;
+  }
+  a {
+    user-select: none;
+  }
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+      
 
 
 /* .home {
@@ -185,7 +216,7 @@ padding: 8px 40px;
 } */
 
 
-@media(max-width:30em) {
+@media(max-width:100em) {
     .slide-left {
         /* transform: translateX(-100%); */
         margin-left: -250px;
@@ -212,16 +243,5 @@ padding: 8px 40px;
         top: -148px;
         left: 238px;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

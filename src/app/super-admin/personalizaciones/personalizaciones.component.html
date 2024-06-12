@@ -1,89 +1,96 @@
 <div class="p-4">
-  <!-- <div class="m-10">
+  <div class="m-10">
     <h5 class="text-center text-2xl font-bold mb-4">
       PERSONALIZACION DEL SISTEMA
     </h5>
-  </div>  -->
-  <app-header [title]="'Personalización el sistema'"  [subtitle]="'Aqui podras gestionar tus personalizaciones'"></app-header>
-  <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-4">
-    <!-- Logo -->
-    <div class="xl:col-span-7">
-      <div class="bg-white p-4 rounded-lg shadow-lg h-full">
-        <label class="relative cursor-pointer inline-block">
-          <input id="color-picker-logo" type="file" name="logo" class="hidden" (change)="onFileChange($event)" />
-          <span
-            class="text-black px-4 py-2 border-2 border-blue-300 rounded-full inline-block bg-white justify-center hover:bg-blue-100">
-            Subir Imagen
-            <fa-icon [icon]="faImage" class="text-md ml-2"></fa-icon>
-          </span>
-        </label>
-        <div class="mt-4">
-          <div class="container-imagen flex justify-center">
-            <img [src]="previewUrl" alt="Logo preview" *ngIf="previewUrl" class="imagen w-full rounded-lg" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- fin del logo -->
-
-    <!-- Formulario de Colores -->
-    <div class="xl:col-span-5 ">
-      <div class="bg-white rounded-lg shadow-lg p-6 h-full ">
-        <div class="w-full">
-          <!-- Color Principal y Color Secundario -->
-          <div class="md:flex md:justify-around md:space-x-4 xl:flex-col xl:space-x-0">
-
-            <div>
-              <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre de la empresa</label>
-              <input type="text" id="nombre" name="nombre" formControlName="nombre"
-                class="mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
-              <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
-
-              </div>
-            </div>
-            <!-- Color Principal -->
-            <div class="mb-4 xl:mb-6">
-              <label class="block text-black font-bold mb-2">Color Principal</label>
-              <div class="flex flex-col  items-center ">
-                <div class="flex content-center mb-2 md:mb-0 w-full">
-                  <div class="w-24 h-24 rounded-l" [style.background]="selectedColorPrincipal"
-                    [(colorPicker)]="selectedColorPrincipal" [cpOKButton]="true"
-                    [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
-                    [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
-                    [cpCancelButtonText]="'Cancelar'"></div>
-                  <p class="bg-gray-200 text-black h-24 py-3 px-4 rounded-r flex-grow flex items-center">{{
-                    selectedColorPrincipal }}</p>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- Color Secundario -->
-            <div>
-              <label class="block text-black font-bold mb-2">Color Secundario</label>
-              <div class="flex flex-col  ">
-                <div class="flex content-center mb-2 md:mb-0 w-full">
-                  <div class="w-24 h-24 rounded-l" [style.background]="selectedColorSecundario"
-                    [(colorPicker)]="selectedColorSecundario" [cpOKButton]="true"
-                    [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
-                    [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
-                    [cpCancelButtonText]="'Cancelar'"></div>
-                  <p class="bg-gray-200 text-black h-24 py-3 px-4 rounded-r flex-grow flex items-center">{{
-                    selectedColorSecundario }}</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="flex justify-end mt-5">
-          <button type=" submit" class="bg-sky-400 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded">
-            GUARDAR
-          </button>
-        </div>
-      </div>
-
-    </div>
-
   </div>
+
+  <form action="" [formGroup]="personalizacionForm" (ngSubmit)="addPersonalizacion()">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-4">
+      <!-- Logo -->
+      <div class="xl:col-span-7">
+        <div class="bg-white p-4 rounded-lg shadow-lg h-full">
+          <label class="relative cursor-pointer inline-block">
+            <input id="imagen_Logo" formControlName="imagen_Logo" type="file" name="logo" class="hidden"
+              (change)="onFileChange($event)" />
+            <span
+              class="text-black px-4 py-2 border-2 border-blue-300 rounded-full inline-block bg-white justify-center hover:bg-blue-100">
+              Subir Imagen
+              <fa-icon [icon]="faImage" class="text-md ml-2"></fa-icon>
+            </span>
+          </label>
+          <div class="mt-4">
+            <div class="container-imagen flex justify-center">
+              <img [src]="previewUrl" alt="Logo preview" *ngIf="previewUrl" class="imagen w-full rounded-lg" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin del logo -->
+
+      <!-- Formulario de Colores -->
+      <div class="xl:col-span-5 ">
+        <div class="bg-white rounded-lg shadow-lg p-6 h-full ">
+          <div class="w-full">
+            <!-- Color Principal y Color Secundario -->
+            <div class="md:flex md:justify-around md:space-x-4 xl:flex-col xl:space-x-0">
+
+              <div>
+                <label for="nombre" class="block text-black font-bold mb-2">Nombre de la empresa</label>
+                <input type="text" id="nombre_sistema" name="nombre_sistema" formControlName="nombre_sistema"
+                  class="mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+
+                </div>
+              </div>
+              <!-- Color Principal -->
+              <div class="mb-4 xl:mb-6">
+                <label class="block text-black font-bold mb-2">Color Principal</label>
+                <div class="flex flex-col  items-center ">
+                  <div class="flex content-center mb-2 md:mb-0 w-full">
+                    <div class="w-24 h-24 rounded-l" [style.background]="selectedColorPrincipal"
+                      [(colorPicker)]="selectedColorPrincipal" [cpOKButton]="true"
+                      [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
+                      [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
+                      [cpCancelButtonText]="'Cancelar'"></div>
+                    <input type="text"
+                      class="bg-gray-200 text-black h-24 py-3 px-4 rounded-r flex-grow flex items-center"
+                      id="color_principal" name="color_principal" formControlName="color_principal"
+                      [value]="selectedColorPrincipal" readonly>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Color Secundario -->
+              <div>
+                <label class="block text-black font-bold mb-2">Color Secundario</label>
+                <div class="flex flex-col  ">
+                  <div class="flex content-center mb-2 md:mb-0 w-full">
+                    <div class="w-24 h-24 rounded-l" [style.background]="selectedColorSecundario"
+                      [(colorPicker)]="selectedColorSecundario" [cpOKButton]="true"
+                      [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
+                      [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
+                      [cpCancelButtonText]="'Cancelar'"></div>
+                    <input type="text"
+                      class="bg-gray-200 text-black h-24 py-3 px-4 rounded-r flex-grow flex items-center"
+                      id="color_secundario" formControlName="color_secundario" name="color_secundario"
+                      [value]="selectedColorSecundario" readonly>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="flex justify-end mt-5">
+            <button type="submit" class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded">
+              GUARDAR
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </form>
 </div>

@@ -25,6 +25,9 @@ export class AddAliadosComponent {
   rutaSeleccionada: string = '';
   pdfFileName: string = '';
 
+
+  
+
   constructor(private aliadoService: AliadoService, private router: Router) {}
 
   onSubmit(): void {
