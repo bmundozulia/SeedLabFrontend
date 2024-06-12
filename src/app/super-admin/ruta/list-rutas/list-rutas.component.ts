@@ -43,15 +43,15 @@ export class ListRutasComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      console.log(this.token);
+      //console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
+        //console.log(identity);
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
+        //console.log(this.currentRolId);
       }
     }
   }
