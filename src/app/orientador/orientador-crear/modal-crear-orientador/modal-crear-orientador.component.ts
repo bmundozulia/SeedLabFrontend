@@ -88,6 +88,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
     if (this.orientadorId != null) {
       this.orientadorServices.getinformacionOrientador(this.token, this.orientadorId).subscribe(
         data => {
+          console.log("data modal",data);
           console.log("Estado en los datos:", data.estado); // Verificar el estado en los datos
           this.isActive = data.estado === "Activo" ? true : false; // Establecer el valor de isActive según el estado en los datos
           console.log("isActive después de la asignación:", this.isActive);
@@ -107,6 +108,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
       )
     }
   }
+  
 
 
   addOrientador(): void {

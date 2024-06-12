@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { SwitchService } from '../../servicios/switch.service';
-import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { Orientador } from '../../Modelos/orientador.model';
-import { User } from '../../Modelos/user.model';
-import { OrientadorService } from '../../servicios/orientador.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
+import { faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
+
 import { ModalCrearOrientadorComponent } from './modal-crear-orientador/modal-crear-orientador.component';
+
+import { OrientadorService } from '../../servicios/orientador.service';
+import { SwitchService } from '../../servicios/switch.service';
+
+import { Orientador } from '../../Modelos/orientador.model';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-orientador-crear',
@@ -44,7 +48,6 @@ export class OrientadorCrearComponent implements OnInit {
     private orientadorService: OrientadorService,
     public dialog: MatDialog,
     private router: Router,
-    private aRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
