@@ -5,6 +5,7 @@ import { AsesorService } from '../../servicios/asesor.service';
 
 import { Asesor } from '../../Modelos/asesor.model';
 import { User } from '../../Modelos/user.model';
+import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-perfil-asesor',
@@ -13,6 +14,11 @@ import { User } from '../../Modelos/user.model';
   providers: [AsesorService]
 })
 export class PerfilAsesorComponent implements OnInit {
+// iconoes
+faEnvelope = faEnvelope;
+faMobileAlt = faMobileAlt;
+faUser = faUser;
+
   token: string | null = null;
   blockedInputs = true;
   id: number | null = null;
