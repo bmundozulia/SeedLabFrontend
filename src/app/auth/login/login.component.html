@@ -3,16 +3,15 @@
         <div class="md:rounded md:overflow-hidden  md:bg-gray-200 md:shadow-lg  md:w-full md:border-2">
             <div class="md:flex items-center bg-white" style="height: 60vh;">
                 <div
-                    class="bg-sky-400 md:rounded-r-full overflow-hidden md:px-10 md:p-20 w-full max-md:justify-center h-full flex items-center max-md:rounded-b-full  max-md:h-60 max">
+                    class="bg-sky-400 md:rounded-r-full overflow-hidden md:px-10 md:p-20 w-full max-md:justify-center h-full flex items-center max-md:rounded-b-full max-md:h-60 max">
                     <div class="text-center md:pl-10">
                         <h1 class="text-white text-4xl max-md:text-center">¡Bienvenido!</h1>
                         <img src="../../assets/images/logo_bonito.webp" alt="" style="height: 25vh;"
                             class="max-md:h-28 max-md:pl-5">
                     </div>
                 </div>
-
                 <div class="p-10 w-full text-center">
-                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <form [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="!isSubmitting">
                         <h1>Iniciar Sesión</h1>
                         <div class="mx-auto flex justify-center items-center">
                             <div class="col-md-8">
@@ -23,14 +22,13 @@
                                 </div>
                                 <div>
                                     <div class="relative mb-4">
-                                        <div class=" rounded-xl  border-0 ">
-                                        </div>
+                                        <div class="rounded-xl border-0"></div>
                                         <div class="rounded-xl bg-gray-200 border-0 text-base form-control flex h-14">
                                             <input matInput [type]="hide ? 'password' : 'text'"
                                                 formControlName="password"
-                                                class="rounded-xl bg-gray-200 w-5/6 border-0 h-12 text-base form-control  focus:border-transparent focus:ring-0"
+                                                class="rounded-xl bg-gray-200 w-5/6 border-0 h-12 text-base form-control focus:border-transparent focus:ring-0"
                                                 placeholder="Contraseña">
-                                                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
                                                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                             </button>
@@ -38,19 +36,63 @@
                                     </div>
                                     <div class="flex items-center justify-center h-full mb-4">
                                         <button type="submit"
-                                            class="bg-sky-400 hover:bg-sky-500 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                                            Iniciar Sesión</button>
+                                            class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                                            [disabled]="isSubmitting">
+                                            Iniciar Sesión
+                                        </button>
                                     </div>
-                                    <a class="no-underline text-sky-400" href="forgotPassword">
-                                        ¿Olvidaste tu contraseña?
-                                    </a>
+                                    <a class="no-underline text-sky-400" href="forgotPassword">¿Olvidaste tu
+                                        contraseña?</a>
                                 </div>
                             </div>
                         </div>
                     </form>
+
+                    <div *ngIf="isSubmitting" class="text-center">
+                        <form [formGroup]="loginForm">
+                            <h1>Iniciar Sesión</h1>
+                            <div class="mx-auto flex justify-center items-center">
+                                <div class="col-md-8">
+                                    <div class="items-center">
+                                        <input placeholder="Usuario" id="email" type="email" formControlName="email"
+                                            class="mt-9 mb-4 rounded-xl outline-none bg-gray-200 w-full border-0 py-3 px-4 text-base form-control focus:border-transparent focus:ring-0"
+                                            name="email" value="" autofocus>
+                                    </div>
+                                    <div>
+                                        <div class="relative mb-4">
+                                            <div class="rounded-xl border-0"></div>
+                                            <div
+                                                class="rounded-xl bg-gray-200 border-0 text-base form-control flex h-14">
+                                                <input matInput [type]="hide ? 'password' : 'text'"
+                                                    formControlName="password"
+                                                    class="rounded-xl bg-gray-200 w-5/6 border-0 h-12 text-base form-control focus:border-transparent focus:ring-0"
+                                                    placeholder="Contraseña">
+                                                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-center h-full mb-4">
+                                            <button type="submit"
+                                                class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-3 border border-blue-700 rounded"
+                                                [disabled]="isSubmitting">
+                                                <div id="contenedor">
+                                                    <div class="contenedor-loader">
+                                                        <div class="rueda"></div>
+                                                    </div>
+                                                    <div class="cargando ml-2">Cargando...</div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <a class="no-underline text-sky-400" href="forgotPassword">¿Olvidaste tu
+                                            contraseña?</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
-
             </div>
         </div>
     </div>
