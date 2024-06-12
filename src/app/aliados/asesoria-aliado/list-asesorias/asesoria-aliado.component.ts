@@ -59,7 +59,7 @@ export class AsesoriaAliadoComponent implements OnInit {
   }
 
   loadAsesorias(rol: number, estado: number): void {
-    this.asesoriaService.getAsesoriasPorRolYEstado(rol, estado).subscribe(
+    this.asesoriaService.getAsesoriasPorRolYEstado(this.token, rol, estado).subscribe(
       data => {
         console.log('Respuesta de la API:', data);
         this.asesorias = data;
@@ -107,7 +107,7 @@ export class AsesoriaAliadoComponent implements OnInit {
   rechazarAsesoria(asesoria: Asesoria): void {
     console.log('Asesoría a rechazar:', asesoria);  // <-- Verifica que tienes el objeto correcto
     if (asesoria && asesoria.id_asesoria) {
-      this.asesoriaService.rechazarAsesoria(asesoria.id_asesoria, 'rechazar').subscribe(
+      this.asesoriaService.rechazarAsesoria(this.token, asesoria.id_asesoria, 'rechazar').subscribe(
         response => {
           console.log('Asesoría rechazada con éxito:', response);
           this.loadAsesorias(parseInt(this.currentRolId!), 1);
