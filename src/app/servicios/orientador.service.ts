@@ -1,10 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
-
 import { environment } from '../../environment/env';
-
 import { Orientador } from '../Modelos/orientador.model';
 
 
@@ -30,10 +27,10 @@ export class OrientadorService {
     return this.http.post(this.url+"crearOrientador", orientador, options);
   }
 
-  mostrarOrientador(access_token: any, id: number): Observable<any> { 
-    const options = { headers: this.CreacionHeaders(access_token) }; 
-    return this.http.get(this.url+"listaOrientador/"+id, options);
-  }
+  mostrarOrientador(access_token: any, id: number): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get(this.url + "listaOrientador/" + id, options);
+}
 
 
   updateOrientador( access_token: any, orientadorId:number, orientador: Orientador):Observable<any>{

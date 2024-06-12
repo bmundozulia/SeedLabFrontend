@@ -2,9 +2,9 @@
     [subtitle]="'Aqui podras ver y gestionar tus Orientadores'"></app-header>
 
 <!-- Botón para añadir orientador -->
-<div class="flex justify-center items-center h-full md:w-full my-8">
-    <div class="justify-center items-center w-4/6 max-md:w-72">
-        <div class="flex justify-end mb-16">
+<div class="flex justify-center items-end h-full md:w-full my-8">
+    <div class="justify-center w-4/6 max-md:w-72">
+        <div class="flex justify-end mb-4">
             <button (click)="openModalSINId()" type="button"
                 class="md:w-auto bg-sky-400 hover:bg-sky-500 text-white py-2 px-4 rounded">
                 Añadir Orientador
@@ -15,82 +15,86 @@
     </div>
 </div>
 
-<div class="flex justify-center items-center h-full md:w-full pt-5">
-    <div class="max-lg:w-10/12 w-9/12">
-        <div class="max-md:pb-6 md:pb-9 md:flex hd:w-full max-lg:flex max-lg:flex-wrap">
-            <div class="absolute flex items-center ps-3 pointer-events-none">
-                <fa-icon [icon]="falupa" class="text-xl right-2 transform mt-2" style="color: #adb7c7;"></fa-icon>
-            </div>
-            <input type="text" id="search" [(ngModel)]="userFilter.nombre"
-                class="w-[500px] h-12 ps-5 text-sm border border-gray-300 rounded-lg max-lg:w-full outline-none appearance-none max-lg:mb-5"
-                placeholder="Buscar..." required />
-            <div class="flex flex-wrap justify-center sm:justify-end w-full gap-x-4">
-                <div class="relative max-md:mb-5 max-sm:w-28 w-36 h-12">
-                    <select [(ngModel)]="userFilter.estado_usuario" (change)="onEstadoChange($event)"
-                        class="border-2 rounded-lg text-gray-400 h-full w-full outline-none appearance-none pl-3">
-                        <option value="Activo" class="text-gray-600">Activo</option>
-                        <option value="Inactivo" class="text-gray-600">Inactivo</option>
-                    </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                        <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="relative max-md:mb-5 max-sm:w-24 w-36">
-                    <div class="absolute inset-y-0 lg:end-6 max-lg:end-2 flex items-center">
-                        <fa-icon [icon]="fax" class="text-lg transform" style="color: #4fbbff;"></fa-icon>
-                    </div>
-                    <button class="border-1 border-sky-300 text-sky-400 rounded h-12 font-bold w-full pr-6"
-                        (click)="limpiarFiltro()">Limpiar</button>
-                </div>
-            </div>
+<div class="flex justify-center items-center h-full md:w-full ">
+  <div class="max-lg:w-10/12 w-9/12">
+    <div class="max-md:pb-6 md:pb-9 md:flex hd:w-full max-lg:flex max-lg:flex-wrap">
+      <div class="absolute flex items-center ps-3 pointer-events-none">
+        <fa-icon [icon]="falupa" class="text-xl right-2 transform mt-2" style="color: #adb7c7;"></fa-icon>
+      </div>
+      <input type="text" id="search" [(ngModel)]="userFilter.nombre"
+        class="w-[500px] h-12 ps-5 text-sm border border-gray-300 rounded-lg max-lg:w-full outline-none appearance-none max-lg:mb-5"
+        placeholder="Buscar..." required />
+      <div class="flex flex-wrap justify-center sm:justify-end w-full gap-x-4">
+        <div class="relative max-md:mb-5 max-sm:w-28 w-36 h-12">
+          <select [(ngModel)]="userFilter.estado_usuario" (change)="onEstadoChange($event)"
+            class="border-2 rounded-lg text-gray-400 h-full w-full outline-none appearance-none pl-3">
+            <option value="Activo" class="text-gray-600">Activo</option>
+            <option value="Inactivo" class="text-gray-600">Inactivo</option>
+          </select>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+            <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+              </path>
+            </svg>
+          </div>
         </div>
 
-        <!-- Encabezados de la tabla -->
-        <div class="max-lg:scale-0 max-lg:mt-0 h-14 w-full bg-white rounded-xl grid items-center px-3"
-            style="grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr 0.5fr;">
-            <h1 class="text-vgraylight font-medium">Nombre</h1>
-            <h1 class="text-vgraylight font-medium text-center">Apellido</h1>
-            <h1 class="text-vgraylight font-medium text-center">Celular</h1>
-            <h1 class="text-vgraylight font-medium text-center">Estado</h1>
-            <h1 class="text-vgraylight font-medium text-center">Correo</h1>
-            <div class="flex justify-center items-center"><fa-icon [icon]="faeye"
-                    class="text-lg text-transparent"></fa-icon></div>
+        <div class="relative max-md:mb-5 max-sm:w-24 w-36">
+          <div class="absolute inset-y-0 lg:end-6 max-lg:end-2 flex items-center">
+            <fa-icon [icon]="fax" class="text-lg transform" style="color: #4fbbff;"></fa-icon>
+          </div>
+          <button class="border-1 border-sky-300 text-sky-400 rounded h-12 font-bold w-full pr-6"
+            (click)="limpiarFiltro()">Limpiar</button>
         </div>
-
-        <!-- Lista de orientadores -->
-        <div
-            class="w-full flex xl:items-center lg:flex-col max-lg:justify-center max-lg:flex-row max-lg:flex-wrap max-lg:-translate-y-16 mb-6">
-            <div *ngFor="let orientador of listaOrientador | paginate: { itemsPerPage: 6, currentPage: page }"
-                class="bg-gray-200 rounded-lg items-center mt-4 max-lg:max-w-[250px] max-lg:w-[250px] max-lg:p-5 max-lg:rounded-2lg max-lg:mx-2 lg:grid lg:text-center lg:grid-cols-[1.5fr_1.5fr_1.5fr_1.5fr_1.5fr_0.5fr] lg:min-h-14 lg:w-full">
-                <h4 class="text-left overflow-wrap-normal break-all lg:mx-3 lg:m-0 my-0">
-                    <span class="block lg:hidden font-bold">Nombre: </span>{{ orientador.nombre }}
-                </h4>
-                <h4 class="overflow-wrap-normal break-all m-0">
-                    <span class="block lg:hidden font-bold">Apellido: </span>{{ orientador.apellido }}
-                </h4>
-                <h4 class="overflow-wrap-normal break-all m-0">
-                    <span class="block lg:hidden font-bold">Celular: </span>{{ orientador.celular }}
-                </h4>
-                <h4 class="overflow-wrap-normal break-all m-0">
-                    <span class="block lg:hidden font-bold">Estado: </span>{{ orientador.estado }}
-                </h4>
-                <h4 class="overflow-wrap-normal break-all m-0">
-                    <span class="block lg:hidden font-bold">Correo: </span>{{ orientador.email }}
-                </h4>
-
-                <div class="flex justify-center px- -mt-3 max-md:hidden">
-                    <h3 class="block "></h3>
-                    <button class="md:mr-9 md:pr-14">
-                        <fa-icon [icon]="faPen" (click)="openModal(orientador.id)"
-                            class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:h-5 max-md:hidden">
-                        </fa-icon>
-                    </button>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <!-- Encabezados de la tabla -->
+    <div class="max-lg:scale-0 max-lg:mt-0 h-14 w-full bg-white rounded-xl grid items-center px-3"
+      style="grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr 0.5fr;">
+      <h1 class="text-vgraylight font-medium">Nombre</h1>
+      <h1 class="text-vgraylight font-medium text-center">Apellido</h1>
+      <h1 class="text-vgraylight font-medium text-center">Celular</h1>
+      <h1 class="text-vgraylight font-medium text-center">Correo</h1>
+      <h1 class="text-vgraylight font-medium text-center">Estado</h1>
+      <div class="flex justify-center items-center"><fa-icon [icon]="faeye"
+          class="text-lg text-transparent"></fa-icon></div>
+    </div>
+
+    <!-- Lista de orientadores -->
+    <div
+      class="w-full flex xl:items-center lg:flex-col max-lg:justify-center max-lg:flex-row max-lg:flex-wrap max-lg:-translate-y-16 mb-6">
+      <div *ngFor="let orientador of buscarOrientadores() | paginate: { itemsPerPage: 6, currentPage: page }"
+        class="bg-gray-200 rounded-lg items-center mt-4 max-lg:max-w-[250px] max-lg:w-[250px] max-lg:p-5 max-lg:rounded-2lg max-lg:mx-2 lg:grid lg:text-center lg:grid-cols-[1.5fr_1.5fr_1.5fr_1.5fr_1.5fr_0.5fr] lg:min-h-14 lg:w-full">
+        <h4 class="text-left overflow-wrap-normal break-all lg:mx-3 lg:m-0 my-0">
+          <span class="block lg:hidden font-bold">Nombre: </span>{{ orientador.nombre }}
+        </h4>
+        <h4 class="overflow-wrap-normal break-all m-0">
+          <span class="block lg:hidden font-bold">Apellido: </span>{{ orientador.apellido }}
+        </h4>
+        <h4 class="overflow-wrap-normal break-all m-0">
+          <span class="block lg:hidden font-bold">Celular: </span>{{ orientador.celular }}
+        </h4>
+        <h4 class="overflow-wrap-normal break-all m-0">
+          <span class="block lg:hidden font-bold">Correo: </span>{{ orientador.email }}
+        </h4>
+        <h4 class="overflow-wrap-normal break-all m-0">
+          <span class="block lg:hidden font-bold">Estado: </span>{{ orientador.estado }}
+        </h4>
+
+        <div class="flex justify-center px- -mt-3 max-md:hidden">
+          <h3 class="block "></h3>
+          <button class="md:mr-9 md:pr-14">
+            <fa-icon [icon]="faPen" (click)="openModal(orientador.id)"
+              class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:right-8"
+              style="color: black"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-2 pb-9">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
 </div>
