@@ -54,14 +54,14 @@ export class ListEmpresasComponent implements OnInit {
         (data) => {
           setTimeout(() => {
             this.listaEmpresas = data;
-            this.isLoading = false; // Datos cargados, ocultar pantalla de carga
-          }, 500); // 2 segundos de timeout
+            this.isLoading = false;
+          }, 500);
         },
         (err) => {
           console.log(err);
           setTimeout(() => {
-            this.isLoading = false; // Error al cargar los datos, ocultar pantalla de carga
-          }, 500); // 2 segundos de timeout
+            this.isLoading = false;
+          }, 500); 
         }
       );
     }
