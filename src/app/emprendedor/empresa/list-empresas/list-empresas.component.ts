@@ -12,12 +12,11 @@ import { EmprendedorService } from '../../../servicios/emprendedor.service';
 import { Empresa } from '../../../Modelos/empresa.model';
 import { User } from '../../../Modelos/user.model';
 
-
 @Component({
   selector: 'app-list-empresas',
   providers: [EmprendedorService, HeaderComponent],
   templateUrl: './list-empresas.component.html',
-  styleUrl: './list-empresas.component.css'
+  styleUrls: ['./list-empresas.component.css']
 })
 
 export class ListEmpresasComponent implements OnInit {
@@ -27,6 +26,7 @@ export class ListEmpresasComponent implements OnInit {
   documento: string | null;
   public page!: number;
   token: string | null = null;
+  isLoading: boolean = true; // Variable para gestionar el estado de carga
 
   constructor(private emprendedorService: EmprendedorService, 
     private router: Router, 
@@ -45,23 +45,25 @@ export class ListEmpresasComponent implements OnInit {
     this.documento = localStorage.getItem('documento');
     if (!this.token || !this.documento) {
       this.router.navigate(['/inicio/body']);
-     // console.log('no lista empresa no esta tomando el token');
     }
-    // console.log(localStorage.getItem('documento'));
   }
 
   cargarEmpresas(): void {
     if (this.token) {
       this.emprendedorService.getEmpresas(this.token, this.documento).subscribe(
         (data) => {
-          this.listaEmpresas = data;
+          setTimeout(() => {
+            this.listaEmpresas = data;
+            this.isLoading = false;
+          }, 500);
         },
         (err) => {
           console.log(err);
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 500); 
         }
       );
     }
   }
-
-
 }

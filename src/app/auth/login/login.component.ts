@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AlertService } from '../../servicios/alert.service';
@@ -8,21 +8,19 @@ import { AuthService } from '../../servicios/auth.service';
 import { Login } from '../../Modelos/login.modelo';
 import { User } from '../../Modelos/user.model';
 
-
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrl: './login.component.css',
-    providers: [AuthService, ReactiveFormsModule, AlertService]
+    styleUrls: ['./login.component.css'],
+    providers: [AuthService, AlertService]
 })
-
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     hide = true;
     reply: Login | null = null;
     token: string | null = null;
     user: User | null = null;
     currentRolId: string | null = null;
-
+    isSubmitting = false;
 
     loginForm = this.fb.group({
         email: '',
@@ -35,7 +33,6 @@ export class LoginComponent {
         private fb: FormBuilder,
         private alertService: AlertService
     ) { }
-
 
     ngOnInit(): void {
         this.validateToken();
@@ -85,17 +82,22 @@ export class LoginComponent {
         }
     }
 
-
-
     login(): void {
+        if (this.isSubmitting) {
+            return;
+        }
+        this.isSubmitting = true;
+
         const email = this.loginForm.get('email')?.value;
         const password = this.loginForm.get('password')?.value;
         if (!email) {
             this.alertService.errorAlert('Error', "El campo de usuario es requerido");
+            this.isSubmitting = false;
             return;
         }
         if (!password) {
             this.alertService.errorAlert('Error', "el campo de contraseña es requerido");
+            this.isSubmitting = false;
             return;
         }
         this.loginService.login(email, password).subscribe(
@@ -113,8 +115,9 @@ export class LoginComponent {
                     this.alertService.successAlert('Exito', 'Inicio de sesión exitoso');
                     setTimeout(() => {
                         location.reload();
-                    }, 1000); 
+                    }, 2000);
                 }
+                this.isSubmitting = false;
             },
             err => {
                 console.error(err);
@@ -123,6 +126,9 @@ export class LoginComponent {
                 } else if (err.status === 404) {
                     this.alertService.errorAlert('Error', err.error.message);
                 }
+                setTimeout(() => {
+                    this.isSubmitting = false;
+                }, 2000);
             }
         );
     }
