@@ -30,6 +30,12 @@ export class AliadoService {
     return this.http.get(url, options);
   }
 
+  //Listar asesores por aliados
+  getinfoAsesor(access_token: any, id: number): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get<any>(`${this.url}/mostrarAsesorAliado/${id}`, options);
+  }
+
   crearAliado(aliado: any, access_token: string): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.post(`${this.url}/create_aliado`, aliado, options);
