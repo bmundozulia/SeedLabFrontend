@@ -27,7 +27,7 @@ export class ModalcrearSuperadminComponent implements OnInit {
     apellido: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(10)]],
-    estado: '1',
+    estado: true,
 
   })
 

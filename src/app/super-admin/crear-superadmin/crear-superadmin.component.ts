@@ -84,7 +84,7 @@ export class CrearSuperadminComponent implements OnInit {
 
   cargarSuperAdmin() {
     if (this.token) {
-      this.superAdminService.getAdmins(this.token).subscribe(
+      this.superAdminService.getAdmins(this.token, this.userFilter.estado).subscribe(
         (data) => {
           this.listaAdmins = data;
           console.log(this.listaAdmins);
@@ -102,8 +102,8 @@ export class CrearSuperadminComponent implements OnInit {
     this.cargarSuperAdmin();
   }
 
-  onEstadoChange(event: any): void {
-    const estado = event.target.value;
+  onEstadoChange(): void {
+    //const estado = event.target.value;
     this.cargarSuperAdmin();
   }
 
