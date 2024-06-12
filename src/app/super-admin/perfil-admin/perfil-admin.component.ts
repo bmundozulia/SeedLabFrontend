@@ -7,6 +7,8 @@ import { SuperadminService } from '../../servicios/superadmin.service';
 
 import { Superadmin } from '../../Modelos/superadmin.model';
 import { User } from '../../Modelos/user.model';
+import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-perfil-admin',
@@ -14,6 +16,11 @@ import { User } from '../../Modelos/user.model';
   styleUrl: './perfil-admin.component.css'
 })
 export class PerfilAdminComponent {
+  // iconos
+  faEnvelope = faEnvelope;
+  faMobileAlt = faMobileAlt;
+  faUser = faUser;
+
   token = '';
   blockedInputs = true;
   user: User | null = null;

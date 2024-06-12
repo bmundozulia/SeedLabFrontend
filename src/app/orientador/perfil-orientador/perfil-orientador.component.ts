@@ -8,12 +8,22 @@ import { OrientadorService } from '../../servicios/orientador.service';
 import { Orientador } from '../../Modelos/orientador.model';
 import { User } from '../../Modelos/user.model';
 
+// iconos
+import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+
+
 @Component({
   selector: 'app-perfil-orientador',
   templateUrl: './perfil-orientador.component.html',
   styleUrl: './perfil-orientador.component.css'
 })
 export class PerfilOrientadorComponent {
+
+  // iconos
+  faEnvelope = faEnvelope;
+  faMobileAlt = faMobileAlt;
+  faUser = faUser;
+
 
   user: User | null = null;
   token = '';
