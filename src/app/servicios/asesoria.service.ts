@@ -12,7 +12,8 @@ import { Asesoria } from '../Modelos/asesoria.model';
   providedIn: 'root'
 })
 export class AsesoriaService {
-  private apiUrl = `${environment.apiUrl}asesorias/`;
+
+  private apiUrl = environment.apiUrl + 'asesorias/';
 
   constructor(private http: HttpClient) { }
 
@@ -112,20 +113,7 @@ export class AsesoriaService {
     return this.http.post<any>(url, body, { headers });
   }
 
-  mostrarAsesoriasAsesor(idAsesor: number, horario: boolean): Observable<any> {
-    const token = localStorage.getItem('token'); // Obtén el token del localStorage
-    if (!token) {
-      console.error('Token no encontrado en el localStorage');
-      return new Observable<any>();
-    }
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    });
-    const url = `${environment.apiUrl}mostrarAsesoriasAsesor/${idAsesor}/${horario}`;
-    return this.http.get<any>(url, { headers });
-  }
-
+  
   // Nueva función para agregar horario a una asesoría
   agregarHorarioAsesoria(observaciones: string | null, idAsesoria: string, fecha: string): Observable<any> {
     const token = localStorage.getItem('token');

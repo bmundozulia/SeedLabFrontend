@@ -7,11 +7,13 @@ import { HorarioModalComponent } from '../horario-modal/horario-modal.component'
 import { AsesoriaService } from '../../servicios/asesoria.service';
 
 import { Asesoria } from '../../Modelos/asesoria.model';
+import { AsesorService } from '../../servicios/asesor.service';
 
 @Component({
   selector: 'app-asesorias',
   templateUrl: './asesorias.component.html',
-  styleUrls: ['./asesorias.component.css']
+  styleUrls: ['./asesorias.component.css'],
+  providers: [AsesorService]
 })
 export class AsesoriasComponent implements OnInit {
   asesorias: Asesoria[] = [];
@@ -30,7 +32,8 @@ export class AsesoriasComponent implements OnInit {
   constructor(
     private asesoriaService: AsesoriaService, 
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private asesorService: AsesorService
   ) { }
  
   ngOnInit() {
@@ -60,6 +63,7 @@ export class AsesoriasComponent implements OnInit {
     }
   }
 
+
   filterAsesorias(status: boolean): void {
     if (status) {
       this.showTrue = true;
@@ -73,17 +77,10 @@ export class AsesoriasComponent implements OnInit {
   }
 
   loadAsesoriasFalse(): void {
-    if (!this.token) return;
-  
-    const userData = localStorage.getItem('identity');
-    if (!userData) {
-      console.error('Error: No se encontraron datos de usuario en el local storage.');
-      return;
-    }
-    const user = JSON.parse(userData);
-    const idAsesor = user.id; // Obtener el ID del asesor del objeto de usuario
+ 
+    const idAsesor = this.user.id; // Obtener el ID del asesor del objeto de usuario
     const horario = false; // Cambia esto según sea necesario
-    this.asesoriaService.mostrarAsesoriasAsesor(idAsesor, horario).subscribe(
+    this.asesorService.mostrarAsesoriasAsesor(this.token, idAsesor, horario).subscribe(
       response => {
         console.log('Asesorías sin horario cargadas:', response);
         this.asesoriasSinHorario = response;
@@ -95,17 +92,10 @@ export class AsesoriasComponent implements OnInit {
   }
 
   loadAsesoriasTrue(): void {
-    if (!this.token) return;
-  
-    const userData = localStorage.getItem('identity');
-    if (!userData) {
-      console.error('Error: No se encontraron datos de usuario en el local storage.');
-      return;
-    }
-    const user = JSON.parse(userData);
-    const idAsesor = user.id; // Obtener el ID del asesor del objeto de usuario
+   
+    const idAsesor = this.user.id; // Obtener el ID del asesor del objeto de usuario
     const horario = true; // Cambia esto según sea necesario
-    this.asesoriaService.mostrarAsesoriasAsesor(idAsesor, horario).subscribe(
+    this.asesorService.mostrarAsesoriasAsesor(this.token, idAsesor, horario).subscribe(
       response => {
         console.log('Asesorías con horario cargadas:', response);
         this.asesoriasConHorario = response;
