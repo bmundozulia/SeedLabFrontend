@@ -18,7 +18,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
   submitted: boolean = false;
   boton = true;
   estado: boolean;
-  isActive: boolean = false;
+  isActive: boolean;
   token: string | null = null;
   user: User | null = null;
   id: number | null = null;
@@ -88,6 +88,9 @@ export class ModalCrearOrientadorComponent implements OnInit {
     if (this.orientadorId != null) {
       this.orientadorServices.getinformacionOrientador(this.token, this.orientadorId).subscribe(
         data => {
+          console.log("Estado en los datos:", data.estado); // Verificar el estado en los datos
+          this.isActive = data.estado === "Activo" ? true : false; // Establecer el valor de isActive según el estado en los datos
+          console.log("isActive después de la asignación:", this.isActive);
           this.orientadorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
@@ -95,9 +98,8 @@ export class ModalCrearOrientadorComponent implements OnInit {
             email: data.auth?.email,
             password:'',
             estado: this.isActive
-            //data.estado === 'Activo' ? '1' : '0'
+            
           });
-          //this.isActive = data.estado === 'Activo'
         },
         error => {
           console.log(error);

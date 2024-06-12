@@ -91,7 +91,8 @@ export class PerfilOrientadorComponent {
     }
     this.orientadorService.updateOrientador(this.token, this.id, perfil).subscribe(
       (data)=>{
-        location.reload();
+        console.log(data);
+        //location.reload();
       },
       (err)=>{
         console.log(err);
