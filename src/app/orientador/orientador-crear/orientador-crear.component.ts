@@ -77,19 +77,7 @@ export class OrientadorCrearComponent implements OnInit {
       this.orientadorService.mostrarOrientador(this.token, estado).subscribe(
         (data: any) => {
           console.log("data",data); // Debug log
-          this.listaOrientador = data.map((item: any) =>
-            new Orientador(
-              item.id,
-              item.nombre,
-              item.apellido,
-              item.celular,
-              item.id_autenticacion,
-              item.email,
-              item.estado,
-            ),
-            
-        );
-       
+          this.listaOrientador = data;
         console.log(this.listaOrientador);
       },
       (err) => {
@@ -142,13 +130,6 @@ export class OrientadorCrearComponent implements OnInit {
     // this.isEditing = true;
     // this.modalCrearOrientador = true;
   }
-  buscarOrientadores(): Orientador[] {
-    return this.listaOrientador.filter(orientador =>
-      orientador.nombre.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||
-      orientador.apellido.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||
-      orientador.celular.includes(this.userFilter.nombre) ||
-      orientador.email.toLowerCase().includes(this.userFilter.nombre.toLowerCase())
-    );
-  }
+  
 }
 
