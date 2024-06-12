@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { faMagnifyingGlass, faPenToSquare, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
-
 import { SwitchService } from '../../servicios/switch.service';
 import { User } from '../../Modelos/user.model';
 import { SuperAdminComponent } from '../super-admin.component';
@@ -31,7 +30,7 @@ export class CrearSuperadminComponent implements OnInit {
   modalCrearSuperadmin: boolean;
   isEditing: boolean;
 
-  userFilter: any = { nombre: ''};
+  userFilter: any = { nombre: '', estado: 'Activo' };
 
   constructor(private modalCRSA: SwitchService,
     private superAdminService: SuperadminService,

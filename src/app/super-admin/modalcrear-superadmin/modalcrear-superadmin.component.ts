@@ -39,7 +39,6 @@ export class ModalcrearSuperadminComponent implements OnInit {
 
   }
 
-
   cancelarcrerSuperadmin() {
     this.modalCRSA.$modalCrearSuperadmin.emit(false);
   }
