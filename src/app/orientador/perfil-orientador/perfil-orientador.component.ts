@@ -20,7 +20,8 @@ export class PerfilOrientadorComponent {
   currentRolId: string | null = null;
   id: number;
   blockedInputs = true;
-  boton: boolean 
+  boton: boolean
+  hide = true;
 
 
   perfilorientadorForm = this.fb.group({
@@ -81,19 +82,19 @@ export class PerfilOrientadorComponent {
   }
 
   updateOrientador(): void {
-    const perfil: Orientador={
+    const perfil: Orientador = {
       nombre: this.perfilorientadorForm.get('nombre')?.value,
       apellido: this.perfilorientadorForm.get('apellido')?.value,
       celular: this.perfilorientadorForm.get('celular')?.value,
       email: this.perfilorientadorForm.get('email')?.value,
-      password:this.perfilorientadorForm.get('password')?.value,
+      password: this.perfilorientadorForm.get('password')?.value,
       estado: '1',
     }
     this.orientadorService.updateOrientador(this.token, this.id, perfil).subscribe(
-      (data)=>{
+      (data) => {
         location.reload();
       },
-      (err)=>{
+      (err) => {
         console.log(err);
       }
     )
@@ -112,14 +113,14 @@ export class PerfilOrientadorComponent {
     }
   }
 
-  toggleInputsLock():void{
-    this.blockedInputs =!this.blockedInputs;
-    const fieldsToToggle = ['nombre','apellido','celular','email','email','password'];
-    fieldsToToggle.forEach(field =>{
+  toggleInputsLock(): void {
+    this.blockedInputs = !this.blockedInputs;
+    const fieldsToToggle = ['nombre', 'apellido', 'celular', 'email', 'email', 'password'];
+    fieldsToToggle.forEach(field => {
       const control = this.perfilorientadorForm.get(field);
       if (this.blockedInputs) {
         control.disable();
-      }else{
+      } else {
         control.enable();
       }
     })

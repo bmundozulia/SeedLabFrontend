@@ -20,6 +20,7 @@ export class PerfilAdminComponent {
   currentRolId: string | null = null;
   id: number;
   boton: boolean;
+  hide = true
 
   perfiladminForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -107,16 +108,16 @@ export class PerfilAdminComponent {
     }
   }
 
-  toggleInputsLock():void{
+  toggleInputsLock(): void {
     this.blockedInputs = !this.blockedInputs;
-    const fieldsToToggle = ['nombre','apellido','email', 'password'];
-    fieldsToToggle.forEach(field =>{
+    const fieldsToToggle = ['nombre', 'apellido', 'email', 'password'];
+    fieldsToToggle.forEach(field => {
       const control = this.perfiladminForm.get(field);
       if (this.blockedInputs) {
         control.disable();
-    } else {
+      } else {
         control.enable();
-    }
+      }
     })
   }
 
