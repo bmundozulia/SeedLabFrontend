@@ -32,6 +32,7 @@ export class PerfilOrientadorComponent {
   blockedInputs = true;
   boton: boolean
   hide = true;
+  bloqueado = true;
 
 
   perfilorientadorForm = this.fb.group({
