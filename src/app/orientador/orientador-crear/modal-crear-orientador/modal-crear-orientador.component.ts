@@ -31,7 +31,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
     celular: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    estado: '1',
+    estado: true,
   });
 
   constructor(public dialogRef: MatDialogRef<ModalCrearOrientadorComponent>,
@@ -94,9 +94,10 @@ export class ModalCrearOrientadorComponent implements OnInit {
             celular: data.celular,
             email: data.auth?.email,
             password:'',
-            estado: '1',
+            estado: this.isActive
+            //data.estado === 'Activo' ? '1' : '0'
           });
-          this.isActive = data.estado === 'Activo'
+          //this.isActive = data.estado === 'Activo'
         },
         error => {
           console.log(error);
@@ -144,8 +145,10 @@ export class ModalCrearOrientadorComponent implements OnInit {
 
   toggleActive() {
     this.isActive = !this.isActive;
-    //this.asesorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
+    this.orientadorForm.patchValue({ estado: this.isActive ? true : false });
+    //this.orientadorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
   }
+
 
   mostrarToggle(): void {
     if (this.orientadorId != null) {
