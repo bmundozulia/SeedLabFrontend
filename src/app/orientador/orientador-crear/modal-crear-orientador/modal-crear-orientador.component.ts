@@ -18,7 +18,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
   submitted: boolean = false;
   boton = true;
   estado: boolean;
-  isActive: boolean = false;
+  isActive: boolean;
   token: string | null = null;
   user: User | null = null;
   id: number | null = null;
@@ -31,7 +31,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
     celular: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    estado: '1',
+    estado: true,
   });
 
   constructor(public dialogRef: MatDialogRef<ModalCrearOrientadorComponent>,
@@ -88,15 +88,18 @@ export class ModalCrearOrientadorComponent implements OnInit {
     if (this.orientadorId != null) {
       this.orientadorServices.getinformacionOrientador(this.token, this.orientadorId).subscribe(
         data => {
+          console.log("Estado en los datos:", data.estado); // Verificar el estado en los datos
+          this.isActive = data.estado === "Activo" ? true : false; // Establecer el valor de isActive según el estado en los datos
+          console.log("isActive después de la asignación:", this.isActive);
           this.orientadorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
             celular: data.celular,
             email: data.auth?.email,
             password:'',
-            estado: '1',
+            estado: this.isActive
+            
           });
-          this.isActive = data.estado === 'Activo'
         },
         error => {
           console.log(error);
@@ -144,8 +147,10 @@ export class ModalCrearOrientadorComponent implements OnInit {
 
   toggleActive() {
     this.isActive = !this.isActive;
-    //this.asesorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
+    this.orientadorForm.patchValue({ estado: this.isActive ? true : false });
+    //this.orientadorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
   }
+
 
   mostrarToggle(): void {
     if (this.orientadorId != null) {

@@ -34,10 +34,11 @@ export class OrientadorCrearComponent implements OnInit {
   id: number | null = null;
   selectedOrientadorId: number | null = null;
 
-  private ESTADO_MAP: { [key: number]: string } = {
-    1: 'Activo',
-    0: 'Inactivo'
+  private ESTADO_MAP: { [key: string]: string } = {
+    "true": 'Activo',
+    "false": 'Inactivo'
   };
+  
 
   constructor(
     private orientadorService: OrientadorService,
@@ -72,7 +73,7 @@ export class OrientadorCrearComponent implements OnInit {
     if (this.token) {
       this.orientadorService.mostrarOrientador(this.token, estado).subscribe(
         (data: any) => {
-          console.log(data); // Debug log
+          console.log("data",data); // Debug log
           this.listaOrientador = data.map((item: any) =>
             new Orientador(
               item.id,
@@ -81,17 +82,20 @@ export class OrientadorCrearComponent implements OnInit {
               item.celular,
               item.id_autenticacion,
               item.email,
-              this.ESTADO_MAP[estado] ?? 'Desconocido'
-            )
-          );
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    } else {
-      console.error('Token is not available');
-    }
+              item.estado,
+            ),
+            
+        );
+       
+        console.log(this.listaOrientador);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  } else {
+    console.error('Token is not available');
+  } 
   }
 
   onEstadoChange(event: any): void {
