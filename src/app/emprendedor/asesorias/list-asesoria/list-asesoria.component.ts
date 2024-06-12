@@ -71,7 +71,7 @@ export class ListAsesoriaComponent implements OnInit {
         asignacion: false
       };
 
-      this.asesoriaService.getMisAsesorias(bodyTrue).subscribe(
+      this.asesoriaService.getMisAsesorias(this.token, bodyTrue).subscribe(
         response => {
           this.asesoriasTrue = response;
           this.asignadasCount = this.asesoriasTrue.length; // Actualiza el contador
@@ -81,7 +81,7 @@ export class ListAsesoriaComponent implements OnInit {
         }
       );
 
-      this.asesoriaService.getMisAsesorias(bodyFalse).subscribe(
+      this.asesoriaService.getMisAsesorias(this.token, bodyFalse).subscribe(
         response => {
           this.asesoriasFalse = response;
           this.sinAsignarCount = this.asesoriasFalse.length; // Actualiza el contador

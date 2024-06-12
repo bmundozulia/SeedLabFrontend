@@ -60,7 +60,7 @@ export class VerAsesoriasComponent implements OnInit {
   }
 
   loadAsesorias(pendiente: boolean): void {
-    this.asesoriaService.postAsesoriasOrientador(pendiente).subscribe(
+    this.asesoriaService.postAsesoriasOrientador(this.token, pendiente).subscribe(
       data => {
         if (pendiente) {
           this.asesoriasSinAsesor = data;

@@ -62,7 +62,7 @@ export class DarAliadoAsesoriaModalComponent {
   onGuardar(): void {
     if (this.asignarForm.valid) {
       const nombreAliado = this.asignarForm.get('nom_aliado')?.value;
-      this.asesoriaService.asignarAliado(this.data.id, nombreAliado).subscribe(
+      this.asesoriaService.asignarAliado(this.token, this.data.id, nombreAliado).subscribe(
         response => {
           console.log('Asesoría asignada con éxito:', response);
           this.dialogRef.close(true); // Cerrar el modal y enviar un valor de éxito si lo deseas

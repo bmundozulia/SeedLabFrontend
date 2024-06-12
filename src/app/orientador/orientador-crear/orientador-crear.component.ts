@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { SwitchService } from '../../servicios/switch.service';
-import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { Orientador } from '../../Modelos/orientador.model';
-import { User } from '../../Modelos/user.model';
-import { OrientadorService } from '../../servicios/orientador.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
+import { faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
+
 import { ModalCrearOrientadorComponent } from './modal-crear-orientador/modal-crear-orientador.component';
+
+import { OrientadorService } from '../../servicios/orientador.service';
+import { SwitchService } from '../../servicios/switch.service';
+
+import { Orientador } from '../../Modelos/orientador.model';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-orientador-crear',
@@ -34,16 +38,16 @@ export class OrientadorCrearComponent implements OnInit {
   id: number | null = null;
   selectedOrientadorId: number | null = null;
 
-  private ESTADO_MAP: { [key: number]: string } = {
-    1: 'Activo',
-    0: 'Inactivo'
+  private ESTADO_MAP: { [key: string]: string } = {
+    "true": 'Activo',
+    "false": 'Inactivo'
   };
+  
 
   constructor(
     private orientadorService: OrientadorService,
     public dialog: MatDialog,
     private router: Router,
-    private aRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -70,28 +74,20 @@ export class OrientadorCrearComponent implements OnInit {
 
   cargarOrientador(estado: number): void {
     if (this.token) {
-        this.orientadorService.mostrarOrientador(this.token, estado).subscribe(
-            (data: any) => {
-                this.listaOrientador = data.map((item: any) =>
-                    new Orientador(
-                        item.id,
-                        item.nombre,
-                        item.apellido,
-                        item.celular,
-                        item.id_auth,
-                        item.correo,
-                        this.ESTADO_MAP[estado] ?? 'Desconocido'
-                    )
-                );
-            },
-            (err) => {
-                console.log(err);
-            }
-        );
-    } else {
-        console.error('Token is not available');
-    }
-}
+      this.orientadorService.mostrarOrientador(this.token, estado).subscribe(
+        (data: any) => {
+          console.log("data",data); // Debug log
+          this.listaOrientador = data;
+        console.log(this.listaOrientador);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  } else {
+    console.error('Token is not available');
+  } 
+  }
 
   onEstadoChange(event: any): void {
     const estado = event.target.value;
@@ -134,13 +130,6 @@ export class OrientadorCrearComponent implements OnInit {
     // this.isEditing = true;
     // this.modalCrearOrientador = true;
   }
-  buscarOrientadores(): Orientador[] {
-    return this.listaOrientador.filter(orientador =>
-      orientador.nombre.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||
-      orientador.apellido.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||
-      orientador.celular.includes(this.userFilter.nombre) ||
-      orientador.email.toLowerCase().includes(this.userFilter.nombre.toLowerCase())
-    );
-  }
+  
 }
 
