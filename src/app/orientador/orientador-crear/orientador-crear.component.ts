@@ -130,6 +130,13 @@ export class OrientadorCrearComponent implements OnInit {
     // this.isEditing = true;
     // this.modalCrearOrientador = true;
   }
-  
+  buscarOrientadores(): Orientador[] {
+    return this.listaOrientador.filter(orientador =>
+      orientador.nombre.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||
+      orientador.apellido.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||
+      orientador.celular.includes(this.userFilter.nombre) ||
+      orientador.email.toLowerCase().includes(this.userFilter.nombre.toLowerCase())
+    );
+  }
 }
 
