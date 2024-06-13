@@ -350,7 +350,7 @@
             </ul>
         </div>        
         <div class=" mr-9">
-            <li class="h-14 flex items-center lg:mt-4 max-sm:-mt-28 xl:-mt-32 md:-mt-32 ml-8" *ngIf="logueado">
+            <li class="h-14 flex items-center lg:mt-4 max-sm:-mt-32 xl:-mt-32 md:-mt-32 ml-8" *ngIf="logueado">
                 <a *ngIf="token != null" (click)="logout()">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;"
                         class="text-center text-xl min-w-14 text-gray-700 transition duration-200"
@@ -358,9 +358,10 @@
                         <path
                             d="M160 464 H64 c-35.3 0-64-28.7-64-64 V112 c0-35.3 28.7-64 64-64 h96 c17.7 0 32 14.3 32 32 s-14.3 32-32 32 H64 v288 h96 c17.7 0 32 14.3 32 32 s-14.3 32-32 32 z M502.6 278.6 l-96 96 c-12.5 12.5-32.8 12.5-45.3 0 s-12.5-32.8 0-45.3 L402.7 320 H256 c-17.7 0-32-14.3-32-32 s14.3-32 32-32 h146.7 l-41.4-41.4 c-12.5-12.5-12.5-32.8 0-45.3 s32.8-12.5 45.3 0 l96 96 c12.5 12.5 12.5 32.8 0 45.3 z" />
                     </svg>
-                    <span class="text nav-text text-base "> Cerrar Sesión </span>
+                    <span class="text nav-text text-base "> Cerrar Sesión</span>
                 </a>
             </li>
         </div>
+        
     </div>
 </nav>
