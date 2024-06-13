@@ -18,6 +18,7 @@
   display: flex;
   gap: 10px;
   opacity: 0;
+  margin-top: 20px;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
@@ -61,4 +62,13 @@
 .btn-rechazar:active {
   background-color: #0cb4ec; /* Color al hacer hover/click */
   color: white;
+}
+:focus {
+  outline: none;
+}
+
+/* Estilo específico para los botones y campos de entrada */
+.btn:focus,
+input:focus {
+  outline: none;
 }
