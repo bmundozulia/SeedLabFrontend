@@ -120,7 +120,7 @@ export class CrearAsesoriaModalComponent {
         return;
       }
   
-      this.asesoriaService.crearAsesoria(formData).subscribe(
+      this.asesoriaService.crearAsesoria(this.token, formData).subscribe(
         response => {
           console.log('Asesoría creada:', response);
           this.dialogRef.close(formData);

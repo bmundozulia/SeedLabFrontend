@@ -18,7 +18,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
   submitted: boolean = false;
   boton = true;
   estado: boolean;
-  isActive: boolean = false;
+  isActive: boolean = true;
   token: string | null = null;
   user: User | null = null;
   id: number | null = null;
@@ -31,7 +31,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
     celular: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    estado: '1',
+    estado: true,
   });
 
   constructor(public dialogRef: MatDialogRef<ModalCrearOrientadorComponent>,
@@ -88,15 +88,16 @@ export class ModalCrearOrientadorComponent implements OnInit {
     if (this.orientadorId != null) {
       this.orientadorServices.getinformacionOrientador(this.token, this.orientadorId).subscribe(
         data => {
+          
           this.orientadorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
-            celular: data.celular,
-            email: data.auth?.email,
+            celular: data.celular,  
+            email: data.email,
             password:'',
-            estado: '1',
+            
           });
-          this.isActive = data.estado === 'Activo'
+          console.log("aquii", data);
         },
         error => {
           console.log(error);
@@ -104,8 +105,9 @@ export class ModalCrearOrientadorComponent implements OnInit {
       )
     }
   }
+  
 
-
+  
   addOrientador(): void {
     this.submitted = true;
     if (this.orientadorForm.invalid) {
@@ -116,13 +118,14 @@ export class ModalCrearOrientadorComponent implements OnInit {
       apellido: this.orientadorForm.value.apellido,
       celular: this.orientadorForm.value.celular,
       email: this.orientadorForm.value.email,
-      password: this.orientadorForm.value.password,
+      password: this.orientadorForm.value.password?  this.orientadorForm.value.password : null,
       estado: this.orientadorForm.value.estado,
     };
     if (this.orientadorId != null) {
       this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
         data => {
           location.reload();
+          console.log(data);
         },
         error => {
           console.error("Error al actualizar el orientador:", error);
@@ -143,9 +146,12 @@ export class ModalCrearOrientadorComponent implements OnInit {
   }
 
   toggleActive() {
+ 
     this.isActive = !this.isActive;
-    //this.asesorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
+    this.orientadorForm.patchValue({ estado: this.isActive ? true : false });
+    //this.orientadorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
   }
+
 
   mostrarToggle(): void {
     if (this.orientadorId != null) {

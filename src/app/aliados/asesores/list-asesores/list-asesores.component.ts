@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
 import { faEye, faMagnifyingGlass, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
-
 import { ModalAddAsesoresComponent } from '../modal-add-asesores/modal-add-asesores.component';
-
 import { AsesorService } from '../../../servicios/asesor.service';
-
 import { User } from '../../../Modelos/user.model';
 import { Asesor } from '../../../Modelos/asesor.model';
 import { AliadoService } from '../../../servicios/aliado.service';

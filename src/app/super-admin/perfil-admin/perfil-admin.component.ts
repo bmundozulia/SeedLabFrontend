@@ -7,6 +7,8 @@ import { SuperadminService } from '../../servicios/superadmin.service';
 
 import { Superadmin } from '../../Modelos/superadmin.model';
 import { User } from '../../Modelos/user.model';
+import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-perfil-admin',
@@ -14,19 +16,25 @@ import { User } from '../../Modelos/user.model';
   styleUrl: './perfil-admin.component.css'
 })
 export class PerfilAdminComponent {
+  // iconos
+  faEnvelope = faEnvelope;
+  faMobileAlt = faMobileAlt;
+  faUser = faUser;
+
   token = '';
   blockedInputs = true;
   user: User | null = null;
   currentRolId: string | null = null;
   id: number;
   boton: boolean;
+  hide = true
 
   perfiladminForm = this.fb.group({
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     email: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
-    estado: '1',
+    estado: true,
   });
 
   constructor(
@@ -107,16 +115,16 @@ export class PerfilAdminComponent {
     }
   }
 
-  toggleInputsLock():void{
+  toggleInputsLock(): void {
     this.blockedInputs = !this.blockedInputs;
-    const fieldsToToggle = ['nombre','apellido','email', 'password'];
-    fieldsToToggle.forEach(field =>{
+    const fieldsToToggle = ['nombre', 'apellido', 'email', 'password'];
+    fieldsToToggle.forEach(field => {
       const control = this.perfiladminForm.get(field);
       if (this.blockedInputs) {
         control.disable();
-    } else {
+      } else {
         control.enable();
-    }
+      }
     })
   }
 

@@ -34,7 +34,7 @@
     left: 238px;
     transform: translateY(-50%);
     height: 40px;
-    width: 35px;
+    width: 40px;
     background: #0fb5eb;
     display: flex;
     align-items: center;
@@ -229,7 +229,7 @@ padding: 8px 40px;
         left: 0;
         height: 100%;
         width: 250px;
-        padding: 10px 14px;
+        padding: 10px 12px;
         background: #fff;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
         overflow: visible;
@@ -243,5 +243,11 @@ padding: 8px 40px;
         top: -148px;
         left: 238px;
     }
+/* Para todos los dispositivos */
+   
+
+/* Específico para dispositivos de escritorio */
+   
+
 
 }
