@@ -142,6 +142,7 @@ export class EncuestaEmpresaComponent {
     let isValidForm = true;
     const payload = { respuestas: listaRespuestas };
     let respCounter = 0;
+    
     for (let i = 0; i < 15; i++) {
       const currentPregunta = PREGUNTAS[i];
       listaRespuestas[respCounter].id_pregunta = i + 1;

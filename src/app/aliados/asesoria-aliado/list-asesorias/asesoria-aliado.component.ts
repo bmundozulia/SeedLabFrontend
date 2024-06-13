@@ -111,6 +111,7 @@ export class AsesoriaAliadoComponent implements OnInit {
         response => {
           console.log('Asesoría rechazada con éxito:', response);
           this.loadAsesorias(parseInt(this.currentRolId!), 1);
+          location.reload();
         },
         error => {
           console.error('Error al rechazar asesoría:', error);
