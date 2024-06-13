@@ -72,7 +72,7 @@ export class PerfilAdminComponent {
           this.perfiladminForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
-            email: data.auth.email,
+            email: data.email,
             password: data.password
           });
           console.log(data);
