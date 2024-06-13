@@ -80,8 +80,8 @@ export class PerfilOrientadorComponent {
             nombre: data.nombre,
             apellido: data.apellido,
             celular: data.celular,
-            email: data.auth.email,
-            password: data.auth.password,
+            email: data.email,
+            password: data.password,
           });
           console.log(data);
         },

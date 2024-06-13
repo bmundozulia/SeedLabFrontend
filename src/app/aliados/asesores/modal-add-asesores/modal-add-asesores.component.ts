@@ -38,7 +38,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     aliado: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    estado: '1',
+    estado: true,
   });
 
   constructor(
