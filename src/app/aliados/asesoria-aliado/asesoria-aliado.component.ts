@@ -8,7 +8,8 @@ import { DarAsesorModalComponent } from './dar-asesor-modal/dar-asesor-modal.com
 @Component({
   selector: 'app-asesoria-aliado',
   templateUrl: './asesoria-aliado.component.html',
-  styleUrls: ['./asesoria-aliado.component.css']
+  styleUrls: ['./asesoria-aliado.component.css'],
+  providers: []
 })
 export class AsesoriaAliadoComponent implements OnInit {
   asesorias: Asesoria[] = [];

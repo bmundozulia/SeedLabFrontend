@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 import { HeaderComponent } from '../../../header/header.component';
 
@@ -27,6 +27,10 @@ export class ListEmpresasComponent implements OnInit {
   public page!: number;
   token: string | null = null;
   isLoading: boolean = true; // Variable para gestionar el estado de carga
+  userFilter: any = { nombre: ''};
+  falupa = faMagnifyingGlass;
+
+
 
   constructor(private emprendedorService: EmprendedorService, 
     private router: Router, 

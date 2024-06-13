@@ -13,7 +13,7 @@
                 placeholder="Buscar..." required />
 
             <div class="flex justify-end w-full space-x-4">
-                <select [(ngModel)]="userFilter.estado"
+                <select [(ngModel)]="userFilter.estado" (change)="onEstadoChange()"
                     class="border rounded-lg text-gray-400 md:w-24 h-12 ml-3 focus:outline-none text-center ">
                     <option value="Activo" class="text-gray-600">Activo</option>
                     <option value="Inactivo" class="text-gray-600">Inactivo</option>
