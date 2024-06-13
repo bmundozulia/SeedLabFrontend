@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
@@ -31,8 +31,9 @@ export class AliadoService {
   }
 
   //Listar asesores por aliados
-  getinfoAsesor(access_token: any, id: number): Observable<any> {
-    const options = { headers: this.CreacionHeaders(access_token) };
+  getinfoAsesor(access_token: any, id: number, estado: boolean): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token),
+    params: new HttpParams().set('estado', estado) };
     return this.http.get<any>(`${this.url}/mostrarAsesorAliado/${id}`, options);
   }
 
