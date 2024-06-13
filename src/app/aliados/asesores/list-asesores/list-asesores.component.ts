@@ -65,7 +65,7 @@ export class ListAsesoresComponent implements OnInit {
 
   cargarAsesores() {
     if (this.token) {
-      this.aliadoService.getinfoAsesor(this.token, this.user.id).subscribe(
+      this.aliadoService.getinfoAsesor(this.token, this.user.id, this.userFilter.estado).subscribe(
         (data) => {
           this.listaAsesores = data;
           console.log(this.listaAsesores);
@@ -77,8 +77,7 @@ export class ListAsesoresComponent implements OnInit {
     }
   }
 
-  onEstadoChange(event: any): void {
-    const estado = event.target.value;
+  onEstadoChange(): void {
     this.cargarAsesores();
   }
 
@@ -94,7 +93,7 @@ export class ListAsesoresComponent implements OnInit {
     dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
       data: { asesorId: asesorId }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('El modal se cerró');
     });
@@ -105,23 +104,21 @@ export class ListAsesoresComponent implements OnInit {
     dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
       data: { asesorId: asesorId }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('El modal se cerró');
     });
   }
-  
+
   openModalSINId(): void {
     this.openModalCONId(null); // Llama a openModalCONId con null
   }
-  
+
   editarAsesor(asesorId: number): void {
     this.selectedAsesorId = asesorId;
     this.openModal(this.selectedAsesorId);
     console.log(`para el modal: ${this.selectedAsesorId}`);
   }
-
-  
 
 
 }

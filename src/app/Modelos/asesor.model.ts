@@ -6,9 +6,9 @@ export class Asesor {
     aliado: string;
     email:string;
     password:string;
-    estado:string;
+    estado:boolean;
 
-    constructor(id: number, nombre: string,apellido: string, celular: string,  aliado: string, email: string, password: string, estado: string) {
+    constructor(id: number, nombre: string,apellido: string, celular: string,  aliado: string, email: string, password: string, estado: boolean) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
