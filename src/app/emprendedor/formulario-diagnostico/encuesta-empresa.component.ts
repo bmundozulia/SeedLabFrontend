@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef} from '@angular/core';
+import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
@@ -71,7 +71,7 @@ export class EncuestaEmpresaComponent {
     private fb: FormBuilder,
     private respuestasService: RespuestasService,
     private alertService: AlertService,
-  ) {}
+  ) { }
 
 
 
@@ -109,7 +109,7 @@ export class EncuestaEmpresaComponent {
     let id_empresa = 1;
 
     const listaRespuestas: Respuesta[] = [];
-    
+
     listaRespuestas.push(this.respuesta1);
     //pregunta 2
     listaRespuestas.push(this.respuesta2);
@@ -142,11 +142,12 @@ export class EncuestaEmpresaComponent {
     let isValidForm = true;
     const payload = { respuestas: listaRespuestas };
     let respCounter = 0;
-    
+
     for (let i = 0; i < 15; i++) {
       const currentPregunta = PREGUNTAS[i];
       listaRespuestas[respCounter].id_pregunta = i + 1;
       listaRespuestas[respCounter].id_empresa = id_empresa;
+      listaRespuestas[respCounter].id_subpregunta = null;
 
       if (currentPregunta.id === 2) {
         for (let j = 0; j < currentPregunta.subPreguntas.length - 1; j++) {
@@ -154,17 +155,21 @@ export class EncuestaEmpresaComponent {
           if (listaRespuestas[respCounter + j].opcion !== 'Si') {
             listaRespuestas[respCounter + j].texto_res = '0';
           }
-          listaRespuestas[respCounter + j].id_pregunta = i;
-          listaRespuestas[respCounter + j].id_subpregunta = j;
+          listaRespuestas[respCounter + j].id_pregunta = i+1;
+          listaRespuestas[respCounter + j].id_subpregunta = j + 1;
+          listaRespuestas[respCounter + j].id_empresa = id_empresa;
+
         }
         respCounter += currentPregunta.subPreguntas.length - 1;
-        
+
       } else if (currentPregunta.id === 12) {
         //debugger
         if (listaRespuestas[respCounter].opcion === 'Si') {
           for (let k = 0; k < currentPregunta.subPreguntas.length; k++) {
             listaRespuestas[respCounter + 1 + k].id_pregunta = i;
-            listaRespuestas[respCounter + 1 + k].id_subpregunta = k;
+            listaRespuestas[respCounter + 1 + k].id_subpregunta = k + 1;
+            listaRespuestas[respCounter + 1 + k].id_empresa = id_empresa;
+
           }
           respCounter += currentPregunta.subPreguntas.length;
         }
