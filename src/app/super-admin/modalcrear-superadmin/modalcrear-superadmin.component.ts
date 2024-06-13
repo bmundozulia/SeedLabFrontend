@@ -15,12 +15,15 @@ import e from 'express';
 export class ModalcrearSuperadminComponent implements OnInit {
   @Input() isEditing: boolean = false
   submitted: boolean = false;
-  token = "";
+  token: string | null = null;
   user: User | null = null;
   id: number | null = null;
   currentRolId: string | null = null;
   adminId: any;
   hide = true;
+  estado: boolean;
+  isActive: boolean = true;
+  boton = true;
 
 
   superadminForm = this.fb.group({
@@ -36,17 +39,18 @@ export class ModalcrearSuperadminComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ModalcrearSuperadminComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
-    private superadminService: SuperadminService) {
+    private superadminService: SuperadminService)
+    {
     this.adminId = data.adminId;
     console.log(' en el modal:', this.adminId);
   }
 
   ngOnInit(): void {
     this.validateToken();
-    this.verEditar();
     if (this.adminId != null) {
       this.isEditing = true;
       this.superadminForm.get('password')?.setValidators([Validators.minLength(8)]);
+      this.verEditar();
     } else {
       this.superadminForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
@@ -69,8 +73,9 @@ export class ModalcrearSuperadminComponent implements OnInit {
         let identity = JSON.parse(identityJSON);
         console.log(identity);
         this.user = identity;
-        this.id = this.user.id;
         this.currentRolId = this.user.id_rol?.toString();
+        this.estado = this.user.estado;
+        this.id = this.user.id;
         console.log(this.currentRolId);
       }
     }
@@ -83,10 +88,17 @@ export class ModalcrearSuperadminComponent implements OnInit {
           this.superadminForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
-            email: data.auth.email,
-            password: ''
+            email: data.email,
+            password: '',
+            estado: data.estado
           });
-          console.log("modalaaal", this.data)
+          console.log("dentro de superadmin", data);
+          this.isActive = data.estado === 'Activo';
+          console.log("Estado inicial:", this.isActive); // Verifica el estado inicial en la consola
+          //console.log("modalaaal", this.data)
+          setTimeout(() => {
+            this.superadminForm.get('estado')?.setValue(this.isActive);
+        });
         },
         error => {
           console.error(error);
@@ -125,4 +137,27 @@ export class ModalcrearSuperadminComponent implements OnInit {
     }
 
   }
+
+  cancelarModal() {
+    this.dialogRef.close();
+  }
+
+
+  toggleActive(){
+    this.isActive =!this.isActive;
+    this.superadminForm.patchValue({estado : this.isActive ? true: false});
+    console.log("Estado después de toggle:", this.isActive);
+   
+  }
+
+
+  mostrarToggle(): void {
+    if (this.adminId!= null){
+      this.boton = false;
+    }
+    this.boton = true;
+  }
+
+
+
 }

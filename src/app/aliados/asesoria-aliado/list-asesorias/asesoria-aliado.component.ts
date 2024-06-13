@@ -1,13 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
 import { DarAsesorModalComponent } from '../dar-asesor-modal/dar-asesor-modal.component';
-
 import { AsesoriaService } from '../../../servicios/asesoria.service';
-
+import { HeaderComponent } from '../../../header/header.component';
 import { Asesoria } from '../../../Modelos/asesoria.model';
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-asesoria-aliado',
@@ -111,6 +110,7 @@ export class AsesoriaAliadoComponent implements OnInit {
         response => {
           console.log('Asesoría rechazada con éxito:', response);
           this.loadAsesorias(parseInt(this.currentRolId!), 1);
+          location.reload();
         },
         error => {
           console.error('Error al rechazar asesoría:', error);

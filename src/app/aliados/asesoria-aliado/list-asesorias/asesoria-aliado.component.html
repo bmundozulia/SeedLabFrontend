@@ -4,54 +4,65 @@
 <app-header [title]="'Panel de Asesorías'"
     [subtitle]="'Aquí podrá ver un listado de Asesorías y asignarlas a distintos aliados'"></app-header>
 
-  <!-- Botones y campo de búsqueda -->
-<div class="flex flex-col space-y-4 mb-6 px-4 sm:px-14">
 
-  <div class="flex items-center justify-between space-x-4 border border-gray-300 rounded-2xl px-4 py-2 bg-white transition duration-200 flex-wrap gap-4">
-    <div class="flex"><button id="sinAsignar" class="btn-color flex  md:px-2 sm:items-center px-5 py-2 max-sm:my-1 text-black rounded-md mr-2 transition duration-200 focus:outline-none ease-in" (click)="showSinAsignar()">
-      Sin asignar 
-      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasSinAsesor.length }}</span>
-    </button>    
-    <button id="Asignadas" class="btn-color flex items-center px-5 py-2 text-black rounded-md focus:outline-none transition duration-200 ease-in" (click)="showAsignadas()">
-      Asignadas
-      <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasConAsesor.length }}</span>
-    </button>
-</div>
-    <!-- Barra de búsqueda -->
-    <div class="relative flex-grow max-w-xs ">
-      <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 ">
-        <i class="fas fa-search"></i>
-      </span>
-      <input type="text" placeholder="Buscar" [(ngModel)]="userFilter.Nombre_sol" class="w-full h-12 pl-12 pr-4 border border-gray-300 rounded-md outline-none shadow-md transition duration-200 hover:border-sky-300">
+    <div class="flex flex-col space-y-4 mb-4 px-4 sm:px-14">
+
+      <!-- Contenedor principal -->
+      <div class="flex items-center justify-between space-x-4 border border-gray-300 rounded-2xl px-4 py-2 bg-white transition duration-200 flex-wrap gap-4">
+    
+        <!-- Botones de filtro -->
+        <div class="flex items-center space-x-4">
+          <button id="sinAsignar" class="btn-color flex items-center md:px-4 px-5 py-2 max-sm:my-1 text-gray-800  hover:bg-blue-200 rounded-md mr-2 transition duration-200 focus:outline-none ease-in-out listado-aseorias hover:shadow-md" (click)="showSinAsignar()">
+            <span>Sin asignar</span>
+            <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasSinAsesor.length }}</span>
+          </button>
+          <button id="Asignadas" class="btn btn-color flex items-center px-5 py-2 rounded-md transition duration-200 focus:outline-none" (click)="showAsignadas()">
+            <span>Asignadas</span>
+            <span class="bg-blue-200 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center ml-2">{{ asesoriasConAsesor.length }}</span>
+          </button>
+        </div>
+    
+        <!-- Barra de búsqueda -->
+        <div class="relative flex-grow max-w-md border-l-2">
+          <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <i class="fas fa-search text-sky-500"></i>
+          </span>
+          <input type="text" placeholder="Buscar" [(ngModel)]="userFilter.Nombre_sol" class="w-full h-12 pl-12 pr-4 border-NONE outline-none focus:border-sky-300 transition duration-200">
+        </div>
+      </div>
+    
     </div>
-  </div>  
-</div>
+    
+    
 
 <!-- Listado de asesorías -->
 <div class="flex flex-wrap justify-center mt-6">
   <div *ngIf="mensaje" class="text-center text-gray-700 w-full mt-6">{{ mensaje }}</div>
   
-  <!-- Contenedor de la cuadrícula -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-  <div *ngFor="let asesoria of asesorias | filterBy: userFilter" 
-       [ngClass]="{'card': true, 'no-hover': asesoria.Asesor}" 
-       class="relative bg-white  rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-1 hover:shadow-xl">
-    <!-- Indicador de estado -->
-    <div class="absolute h-full w-3" [ngClass]="asesoria.Asesor ? 'bg-green-500' : 'bg-red-500'"></div>
-    <!-- Contenido de la tarjeta -->
-    <div class="p-6">
-      <h2 class="text-lg font-bold h-14 overflow-hidden text-ellipsis uppercase text-gray-900">{{ asesoria.Nombre_sol }}</h2>
-      <div class="text-gray-700 h-16 overflow-hidden text-ellipsis mb-4" title="{{ asesoria.notas }}">{{ asesoria.notas }}</div>
-      <p class="text-gray-600 mb-2"><strong>Emprendedor: </strong>{{ asesoria.Emprendedor }}</p>
-      <p class="text-gray-600 mb-2"><strong>Fecha: </strong>{{ asesoria.fecha_solicitud }}</p>
-      <p class="text-gray-600" *ngIf="asesoria.Asesor"><strong>Asesor: </strong>{{ asesoria.Asesor }}</p>
-      <!-- Botones de acción -->
-      <div class="flex justify-center gap-4 mt-4" *ngIf="!asesoria.Asesor">
-        <button class="bg-slate-500 text-white py-2 px-4 rounded hover:bg-slate-400 focus:outline-none" (click)="openModal(asesoria)">Aceptar</button>
-        <button class="bg-sky-500 text-white py-2 px-4 rounded hover:bg-sky-400 focus:outline-none" (click)="rechazarAsesoria(asesoria)">Rechazar</button>
+  <!-- Contenedor de la card -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+    <div *ngFor="let asesoria of asesorias | filterBy: userFilter" 
+         [ngClass]="{'card': true, 'no-hover': asesoria.Asesor}" 
+         class="relative bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:-translate-y-1 hover:shadow-xl">
+      <div class="absolute h-full w-3" [ngClass]="asesoria.Asesor ? 'bg-green-500' : 'bg-red-500'"></div>
+      <!-- Contenido de la tarjeta -->
+      <div class="p-6 flex flex-col justify-between space-y-4 space-x-4 mb-12">
+        <div>
+          <h2 class="text-lg font-bold h-14 overflow-hidden text-ellipsis uppercase text-gray-900">{{ asesoria.Nombre_sol }}</h2>
+          <div class="text-gray-700 h-16 overflow-hidden text-ellipsis mb-4" title="{{ asesoria.notas }}">{{ asesoria.notas }}</div>
+          <p class="text-gray-600 mb-2"><strong>Emprendedor: </strong>{{ asesoria.Emprendedor }}</p>
+          <p class="text-gray-600 mb-2"><strong>Fecha: </strong>{{ asesoria.fecha_solicitud }}</p>
+          <p class="text-gray-600" *ngIf="asesoria.Asesor"><strong>Asesor: </strong>{{ asesoria.Asesor }}</p>
+        </div>
+        <!-- Botones de acción -->
+       
+      </div>
+      <div class="hover-buttons " *ngIf="!asesoria.Asesor">
+        <button class="btn btn-aceptar" (click)="openModal(asesoria)">Aceptar</button>
+        <button class="btn btn-rechazar" (click)="rechazarAsesoria(asesoria)">Rechazar</button>
       </div>
     </div>
+    
   </div>
-</div>
-
-</div>
+  
+  
