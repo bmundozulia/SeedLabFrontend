@@ -41,7 +41,7 @@
 
     <!-- Encabezados de la tabla -->
     <div class="max-lg:scale-0 max-lg:mt-0 h-14 w-full bg-white rounded-xl grid items-center px-3"
-      style="grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr 0.5fr;">
+      style="grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr 1.5fr 0.5fr;">
       <h1 class="text-vgraylight font-medium">Nombre</h1>
       <h1 class="text-vgraylight font-medium text-center">Apellido</h1>
       <h1 class="text-vgraylight font-medium text-center">Celular</h1>
@@ -49,12 +49,14 @@
       <h1 class="text-vgraylight font-medium text-center">Estado</h1>
       <div class="flex justify-center items-center"><fa-icon [icon]="faeye" class="text-lg text-transparent"></fa-icon>
       </div>
+      <div class="flex justify-center items-center"><fa-icon [icon]="faeye" class="text-lg text-transparent"></fa-icon>
+      </div>
     </div>
 
     <!-- Lista de orientadores -->
     <div
       class="w-full flex xl:items-center lg:flex-col max-lg:justify-center max-lg:flex-row max-lg:flex-wrap max-lg:-translate-y-16 mb-6">
-      <div *ngFor="let orientador of listaOrientador | paginate: { itemsPerPage: 6, currentPage: page }"
+      <div *ngFor="let orientador of buscarOrientadores() | paginate: { itemsPerPage: 6, currentPage: page }"
         class="bg-gray-200 rounded-lg items-center mt-4 max-lg:max-w-[250px] max-lg:w-[250px] max-lg:p-5 max-lg:rounded-2lg max-lg:mx-2 lg:grid lg:text-center lg:grid-cols-[1.5fr_1.5fr_1.5fr_1.5fr_1.5fr_0.5fr] lg:min-h-14 lg:w-full">
         <h4 class="text-left overflow-wrap-normal break-all lg:mx-3 lg:m-0 my-0">
           <span class="block lg:hidden font-bold">Nombre: </span>{{ orientador.nombre }}
@@ -82,8 +84,15 @@
       </div>
     </div>
 
-    <div class="flex justify-center mt-2 pb-9">
-      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    <!-- Controles de paginación -->
+    <div class="text-center">
+      <div class="md:hidden">
+        <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
+      </div>
+      <div class="hidden md:block">
+        <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+        </pagination-controls>
+      </div>
     </div>
   </div>
 </div>
