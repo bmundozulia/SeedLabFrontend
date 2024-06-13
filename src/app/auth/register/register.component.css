@@ -14,3 +14,5 @@ select {
     background-repeat: no-repeat; /* Evita que el icono se repita */
     padding-right: 1.5em; /* Ajusta el espacio para el icono */
   }
+
+  input[type="password"]::-ms-reveal { display: none; }
