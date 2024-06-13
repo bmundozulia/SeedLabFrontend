@@ -25,6 +25,7 @@ export class ListAliadosComponent implements OnInit {
   token: string | null = null;
   user: User | null = null;
   currentRolId: number;
+  isLoading: boolean = true;
 
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
@@ -75,13 +76,22 @@ export class ListAliadosComponent implements OnInit {
               this.ESTADO_MAP[item.estado_usuario] ?? 'Desconocido'
             )
           );
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 500);
         },
         (err) => {
           console.log(err);
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 500);
         }
       );
     } else {
       console.error('Token is not available');
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 500);
     }
   }
 

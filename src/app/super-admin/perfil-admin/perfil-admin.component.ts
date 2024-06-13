@@ -34,7 +34,7 @@ export class PerfilAdminComponent {
     apellido: ['', Validators.required],
     email: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
-    estado: '1',
+    estado: true,
   });
 
   constructor(
