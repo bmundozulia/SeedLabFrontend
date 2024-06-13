@@ -4,7 +4,7 @@ import { SwitchService } from '../../../servicios/switch.service';
 import { User } from '../../../Modelos/user.model';
 import { Orientador } from '../../../Modelos/orientador.model';
 import { OrientadorService } from '../../../servicios/orientador.service';
-import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SuperadminService } from '../../../servicios/superadmin.service';
 
 @Component({
@@ -47,14 +47,15 @@ export class ModalCrearOrientadorComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateToken();
-    this.verEditar();
     if (this.orientadorId != null) {
       this.isEditing = true;
       this.orientadorForm.get('password')?.setValidators([Validators.minLength(8)]);
+      this.verEditar(); // Llama a verEditar si estás editando un orientador
     } else {
       this.orientadorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
     this.orientadorForm.get('password')?.updateValueAndValidity();
+     
   }
 
   get f() { return this.orientadorForm.controls; } //aquii
@@ -64,8 +65,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
 
   }
 
-
-
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
@@ -73,7 +72,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        //console.log(identity);
         this.user = identity;
         this.currentRolId = this.user.id_rol?.toString();
         this.estado = this.user.estado;
@@ -83,31 +81,36 @@ export class ModalCrearOrientadorComponent implements OnInit {
     }
   }
 
-
   verEditar(): void {
     if (this.orientadorId != null) {
       this.orientadorServices.getinformacionOrientador(this.token, this.orientadorId).subscribe(
         data => {
-          
+
           this.orientadorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
-            celular: data.celular,  
+            celular: data.celular,
             email: data.email,
-            password:'',
-            
-          });
-          console.log("aquii", data);
-        },
+            password: '',
+            estado: data.estado // Esto establece el valor del estado en el formulario
+          }); 
+          this.isActive = data.estado === 'Activo'; // Asegura que el estado booleano es correcto
+          //console.log("Estado inicial:", this.isActive); // Verifica el estado inicial en la consola
+
+          // Forzar cambio de detección de Angular
+          setTimeout(() => {
+            this.orientadorForm.get('estado')?.setValue(this.isActive);
+        });
+       },
         error => {
           console.log(error);
-        }   
+        }
       )
     }
   }
-  
 
-  
+
+
   addOrientador(): void {
     this.submitted = true;
     if (this.orientadorForm.invalid) {
@@ -118,7 +121,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
       apellido: this.orientadorForm.value.apellido,
       celular: this.orientadorForm.value.celular,
       email: this.orientadorForm.value.email,
-      password: this.orientadorForm.value.password?  this.orientadorForm.value.password : null,
+      password: this.orientadorForm.value.password ? this.orientadorForm.value.password : null,
       estado: this.orientadorForm.value.estado,
     };
     if (this.orientadorId != null) {
@@ -146,10 +149,13 @@ export class ModalCrearOrientadorComponent implements OnInit {
   }
 
   toggleActive() {
- 
+
     this.isActive = !this.isActive;
+    //this.orientadorForm.patchValue({ estado: this.isActive });
+    //console.log("Estado después de toggle:", this.isActive); // Verifica el estado después de toggle
+    //this.orientadorForm.patchValue({ estado: this.isActive ? true : false });
     this.orientadorForm.patchValue({ estado: this.isActive ? true : false });
-    //this.orientadorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
+    //console.log("Estado después de toggle:", this.isActive); // Verifica el estado después de toggle
   }
 
 
