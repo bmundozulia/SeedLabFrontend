@@ -1,0 +1,156 @@
+body {
+    overflow: hidden;
+}
+
+.text-with-image {
+    text-transform: uppercase;
+    font-size: 5rem;
+    cursor: pointer;
+    transition: .3s linear;
+    color: transparent;
+    -webkit-text-stroke: 2px #50bcec;
+    background-image: linear-gradient(to left, #50bcec, rgb(80, 188, 236), black, rgb(35, 31, 31));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    animation: move 30s linear infinite;
+    font-size: 15vw;
+
+    margin: 0;
+    /* Cambiado a vw para que sea más adaptable */
+}
+
+@keyframes move {
+    100% {
+        background-position: 2000px 0;
+    }
+}
+
+/* .text-with-image:hover {
+    color: red;
+    text-shadow: 0 0 10px rgba(255, 0, 0, .5),
+        0 0 20px rgba(255, 0, 0, .5),
+        0 0 40px rgba(255, 0, 0, .5),
+        0 0 80px rgba(255, 0, 0, .5),
+        0 0 160px rgba(255, 0, 0, .5),
+        0 0 320px rgba(255, 0, 0, .5);
+} */
+
+.skew-left {
+    transform: skewY(-10deg);
+}
+
+.skew-right {
+    transform: skewY(10deg);
+}
+
+.bg-pos-4 {
+    background-position: left 10px;
+}
+
+.bg-pos-0 {
+    background-position: center 20px;
+}
+
+.bg-pos-4-right {
+    background-position: right 20px;
+}
+
+.orbit {
+    position: absolute;
+    border: 2px dashed #000;
+    border-radius: 50%;
+}
+
+.orbit1 {
+    width: 70vw;
+    height: 70vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.orbit2 {
+    width: 50vw;
+    height: 50vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.orbit3 {
+    width: 30vw;
+    height: 30vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dot-yellow {
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    border: 0.3vw solid #FFC107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot-yellow-inner {
+    background-color: #FFC107;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+}
+
+.dot-gray {
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.3vw solid #a0aec0;
+
+}
+
+.dot-gray-inner {
+
+    background-color: #a0aec0;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+}
+
+.dot-gray-1{
+    position: relative;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.3vw solid #a0aec0;
+}
+.dot-gray-inner-1{
+    background-color: #a0aec0;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+}
+
+
+@media(max-width:30em) {
+    .bg-pos-4 {
+        background-position: left;
+    }
+
+    .bg-pos-0 {
+        background-position: center;
+    }
+
+    .bg-pos-4-right {
+        background-position: right;
+    }
+}

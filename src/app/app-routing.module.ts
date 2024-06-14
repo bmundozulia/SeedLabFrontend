@@ -42,6 +42,7 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { VerificationComponent } from './auth/verification/verification.component';
+import { Error404Component } from './auth/error404/error404.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'verification', component: VerificationComponent },
   { path: 'forgotPassword', component: ForgotpasswordComponent}, //restablecer contraseña
+  {path: 'error404', component:Error404Component},
 
   //Emprendedor
   { path: 'perfil', component: PerfilEmprendedorComponent },
