@@ -47,6 +47,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateToken();
+    this.verEditar();
     if (this.orientadorId != null) {
       this.isEditing = true;
       this.orientadorForm.get('password')?.setValidators([Validators.minLength(8)]);
@@ -85,7 +86,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
     if (this.orientadorId != null) {
       this.orientadorServices.getinformacionOrientador(this.token, this.orientadorId).subscribe(
         data => {
-
           this.orientadorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,

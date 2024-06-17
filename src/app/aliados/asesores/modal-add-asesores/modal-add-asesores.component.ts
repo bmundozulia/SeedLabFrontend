@@ -15,11 +15,12 @@ import { Asesor } from '../../../Modelos/asesor.model';
   styleUrl: './modal-add-asesores.component.css',
   providers: [AsesorService, AliadoService]
 })
+
 export class ModalAddAsesoresComponent implements OnInit {
   @Input() isEditing: boolean;
   hide = true;
   boton = true;
-  isActive: boolean = false;
+  isActive: boolean = true;
   submitted: boolean = false;
   asesorId: any;
   user: User | null = null;
@@ -60,6 +61,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     if (this.asesorId != null) {
       this.isEditing = true;
       this.asesorForm.get('password')?.setValidators([Validators.minLength(8)]);
+      this.verEditar(); // Llama a verEditar si estás editando un asesor
     } else {
       this.asesorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
@@ -105,16 +107,23 @@ export class ModalAddAsesoresComponent implements OnInit {
             nombre: data.nombre,
             apellido: data.apellido,
             celular: data.celular,
-            aliado: data.auth?.id,
-            email: data.auth?.email,
+            aliado: data.id,
+            email: data.email,
             password: '',
-           // estado: data.auth?.estado,
+            //estado: data.auth?.estado,
+            estado : data.estado
           });
           this.isActive = data.estado === 'Activo';
-          //console.log(data);
+          console.log("estado inicial", this.isActive);
+
+          setTimeout(()=>{
+            this.asesorForm.get('estado')?.setValue(this.isActive);
+          });
+
+          console.log("mirar",data);
         },
         error => {
-          console.log(error)
+          console.log(error);
           // console.log(this.asesorId);
         }
       )
@@ -166,6 +175,8 @@ export class ModalAddAsesoresComponent implements OnInit {
   toggleActive() {
     this.isActive = !this.isActive;
     //this.asesorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
+    this.asesorForm.patchValue({estado:this.isActive ? true : false});
+    console.log("Estado después de toggle:", this.isActive);
   }
 
   mostrarToggle(): void {
@@ -174,4 +185,6 @@ export class ModalAddAsesoresComponent implements OnInit {
     }
     this.boton = true;
   }
+
+  
 }
