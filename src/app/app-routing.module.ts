@@ -50,8 +50,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'register', component: RegisterComponent },
   { path: 'verification', component: VerificationComponent },
-  { path: 'forgotPassword', component: ForgotpasswordComponent}, //restablecer contraseña
-  {path: 'error404', component:Error404Component},
+  { path: 'forgotPassword', component: ForgotpasswordComponent }, //restablecer contraseña
+  { path: 'error404', component: Error404Component },
 
   //Emprendedor
   { path: 'perfil', component: PerfilEmprendedorComponent },
@@ -61,12 +61,12 @@ const routes: Routes = [
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
 
   //Empresa
-  { path: 'edit-empresa', component: EditEmpresaComponent},
+  { path: 'edit-empresa', component: EditEmpresaComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-empresa', component: ListEmpresasComponent },
   { path: 'list-rutas', component: ListRutasComponent },
   { path: 'fan-page', component: FanPageComponent },
-  
+
   // SuperAdmin
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
@@ -83,13 +83,13 @@ const routes: Routes = [
   { path: 'rutas', component: RutasComponent },//de rutas
   { path: 'cursoRutas', component: CursorutasComponent },//de curso rutas
   { path: 'ver-asesoria', component: VerAsesoriasComponent }, //de osesoria
-  { path: 'perfil-orientador', component: PerfilOrientadorComponent}, //Perfil Orientador
-  
-  
+  { path: 'perfil-orientador', component: PerfilOrientadorComponent }, //Perfil Orientador
+
+
   //Aliados 
   { path: 'list-asesores', component: ListAsesoresComponent },
   { path: 'asesorias/aliado', component: AsesoriaAliadoComponent }, //de Aliado
-  
+
   //Asesores
   { path: 'perfil-asesores', component: PerfilAsesorComponent },
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor
@@ -97,7 +97,7 @@ const routes: Routes = [
 
 
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
-  { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
+  { path: '**', redirectTo: 'error404', pathMatch: 'full' } // Manejo de rutas no encontradas, redirige a la ruta raíz
 ];
 
 @NgModule({
