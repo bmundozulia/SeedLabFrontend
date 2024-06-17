@@ -149,7 +149,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 16,
+        id: 16,//respuesta24
         nombre: '¿Tiene identificado los gastos y costos de su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
@@ -158,7 +158,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 17,
+        id: 17,//respuesta25
         nombre: 'Si la respuesta anterior fue afirmativa indicar: ¿Cuáles?',
         puntaje: 0,
         id_seccion: 2,
@@ -176,7 +176,7 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 18,
+        id: 18,//respuesta34
         nombre: '¿En su emprendimiento elabora estados financieros?',
         puntaje: 0,
         id_seccion: 2,
@@ -185,7 +185,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 19,
+        id: 19,//respuesta35
         nombre: 'Si la respuesta anterior fue afirmativa indicar: ¿Cuáles?',
         puntaje: 0,
         id_seccion: 2,
@@ -200,7 +200,7 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 20,
+        id: 20,//respuesta41
         nombre: '¿Tiene claridad sobre qué presupuestos debe elaborar para su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
@@ -209,7 +209,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 21,
+        id: 21,//respuesta41
         nombre: 'Si la respuesta anterior fue afirmativa indicar: ¿Cuáles?',
         puntaje: 0,
         id_seccion: 2,
@@ -223,7 +223,7 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 22,
+        id: 22,//respuesta47
         nombre: '¿Los costos de su producto y/o servicio están claramente definidos?',
         puntaje: 0,
         id_seccion: 2,
@@ -232,7 +232,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 23,
+        id: 23,//respuesta48
         nombre: 'Si la anterior respuesta fue afirmativa: ¿Qué factores tiene en cuenta para definir el precio de su producto y/o servicio?',
         puntaje: 0,
         id_seccion: 2,
@@ -246,7 +246,7 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 24,
+        id: 24,//respuesta53
         nombre: '¿Cuáles alternativas de financiamiento usa para apoyar su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
@@ -261,7 +261,7 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 25,
+        id: 25,//respuesta59
         nombre: '¿Su producto y/o servicio presenta en la actualidad ventas?',
         puntaje: 0,
         id_seccion: 2,
@@ -270,21 +270,21 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 26,
+        id: 26,//respuesta60
         nombre: 'Si la anterior respuesta fue afirmativa: ¿Cuál es el valor promedio / estimado de las ventas al año?',
         puntaje: 0,
         id_seccion: 2,
         isAffirmativeQuestion: false,
         isText: false,
         subPreguntas: [
-            { id: 37, texto: 'Ingreso supperior al egreso', puntaje: 0, id_pregunta: 26 },
-            { id: 38, texto: 'Ingreso superior al egreso', puntaje: 0, id_pregunta: 26 },
+            { id: 37, texto: 'Ingreso superior al egreso', puntaje: 0, id_pregunta: 26 },
+            { id: 38, texto: 'Ingreso igual al egreso', puntaje: 0, id_pregunta: 26 },
             { id: 39, texto: 'Ingreso inferior al egreso', puntaje: 0, id_pregunta: 26 },
             { id: 40, texto: 'No sabe', puntaje: 0, id_pregunta: 26 }
         ]
     },
     {
-        id: 27,
+        id: 27,//respuesta65
         nombre: '¿Cuáles canales de ventas usa para comercializar su negocio?',
         puntaje: 0,
         id_seccion: 2,
@@ -299,7 +299,7 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 28,
+        id: 28,//respuesta71
         nombre: '¿Sabe cuáles obligacioness aplican a su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
@@ -308,7 +308,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 29,
+        id: 29,//respuesta72
         nombre: 'Si la anterior respuesta fue afirmativa: ¿Cuáles?',
         puntaje: 0,
         id_seccion: 2,
