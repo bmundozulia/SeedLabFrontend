@@ -29,6 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/list-asesorias/asesoria-aliado.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { BodyComponent } from './inicio/body/body.component';
+import { CargaComponent } from './carga/carga.component';
 import { CrearAsesoriaModalComponent } from './emprendedor/asesorias/crear-asesoria-modal/crear-asesoria-modal.component';
 import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component';
 import { CursorutasComponent } from './cursorutas/cursorutas.component';
@@ -64,7 +65,6 @@ import { RutasComponent } from './rutas/rutas.component';
 import { SafeUrlPipe } from './cursorutas/cursorutas.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
-import { CargaComponent } from './carga/carga.component';
 
 
 @NgModule({
