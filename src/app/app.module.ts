@@ -32,7 +32,7 @@ import { BodyComponent } from './inicio/body/body.component';
 import { CargaComponent } from './carga/carga.component';
 import { CrearAsesoriaModalComponent } from './emprendedor/asesorias/crear-asesoria-modal/crear-asesoria-modal.component';
 import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component';
-import { CursorutasComponent } from './cursorutas/cursorutas.component';
+import { CursorutasComponent } from './ruta/cursorutas/cursorutas.component';
 import { DarAliadoAsesoriaModalComponent } from './orientador/asesorias/dar-aliado-asesoria-modal/dar-aliado-asesoria-modal.component';
 import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-modal/dar-asesor-modal.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
@@ -61,8 +61,8 @@ import { PersonalizacionesComponent } from './super-admin/personalizaciones/pers
 import { RegisterComponent } from './auth/register/register.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component';
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
-import { RutasComponent } from './rutas/rutas.component';
-import { SafeUrlPipe } from './cursorutas/cursorutas.component';
+import { RutasComponent } from './ruta/rutas/rutas.component';
+import { SafeUrlPipe } from './ruta/cursorutas/cursorutas.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 
@@ -134,9 +134,9 @@ import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver
     MatToolbarModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
-    
+
 
   ],
   providers: [

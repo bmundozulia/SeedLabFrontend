@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { SwitchService } from '../../../servicios/switch.service';
 import { User } from '../../../Modelos/user.model';
 import { Orientador } from '../../../Modelos/orientador.model';
 import { OrientadorService } from '../../../servicios/orientador.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SuperadminService } from '../../../servicios/superadmin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-crear-orientador',
@@ -38,6 +38,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private orientadorServices: OrientadorService,
+    private router: Router,
     private superadminService: SuperadminService,
 
   ) {
@@ -55,7 +56,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
       this.orientadorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
     this.orientadorForm.get('password')?.updateValueAndValidity();
-     
+
   }
 
   get f() { return this.orientadorForm.controls; } //aquii
@@ -68,15 +69,9 @@ export class ModalCrearOrientadorComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
-      let identityJSON = localStorage.getItem('identity');
 
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        this.estado = this.user.estado;
-        this.id = this.user.id;
-        console.log("this", identity);
+      if (!this.token) {
+        this.router.navigate(['/inicio/body']);
       }
     }
   }
@@ -93,15 +88,15 @@ export class ModalCrearOrientadorComponent implements OnInit {
             email: data.email,
             password: '',
             estado: data.estado // Esto establece el valor del estado en el formulario
-          }); 
+          });
           this.isActive = data.estado === 'Activo'; // Asegura que el estado booleano es correcto
           console.log("Estado inicial:", this.isActive); // Verifica el estado inicial en la consola
 
           // Forzar cambio de detección de Angular
           setTimeout(() => {
             this.orientadorForm.get('estado')?.setValue(this.isActive);
-        });
-       },
+          });
+        },
         error => {
           console.log(error);
         }

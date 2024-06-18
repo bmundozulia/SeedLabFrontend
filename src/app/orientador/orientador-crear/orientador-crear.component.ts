@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-
 import { faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-
 import { ModalCrearOrientadorComponent } from './modal-crear-orientador/modal-crear-orientador.component';
-
 import { OrientadorService } from '../../servicios/orientador.service';
-import { SwitchService } from '../../servicios/switch.service';
-
 import { Orientador } from '../../Modelos/orientador.model';
 import { User } from '../../Modelos/user.model';
 
@@ -42,7 +37,7 @@ export class OrientadorCrearComponent implements OnInit {
     "true": 'Activo',
     "false": 'Inactivo'
   };
-  
+
 
   constructor(
     private orientadorService: OrientadorService,
@@ -58,16 +53,8 @@ export class OrientadorCrearComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
-      let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        console.log(identity);
-        this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        this.estado = this.user.estado;
-        this.id = this.user.id;
-        console.log(this.id);
+        if (!this.token) {
+        this.router.navigate(['/inicio/body']);
       }
     }
   }
@@ -76,17 +63,15 @@ export class OrientadorCrearComponent implements OnInit {
     if (this.token) {
       this.orientadorService.mostrarOrientador(this.token, estado).subscribe(
         (data: any) => {
-          console.log("data",data); // Debug log
           this.listaOrientador = data;
-        console.log(this.listaOrientador);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  } else {
-    console.error('Token is not available');
-  } 
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } else {
+      console.error('Token is not available');
+    }
   }
 
   onEstadoChange(event: any): void {
@@ -103,14 +88,13 @@ export class OrientadorCrearComponent implements OnInit {
     this.cargarOrientador(1);
   }
 
-  openModal(orientadorId:number | null): void {
-    let dialogRef:MatDialogRef<ModalCrearOrientadorComponent>;
+  openModal(orientadorId: number | null): void {
+    let dialogRef: MatDialogRef<ModalCrearOrientadorComponent>;
 
     dialogRef = this.dialog.open(ModalCrearOrientadorComponent, {
       data: { orientadorId: orientadorId }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('El modal se cerró');
     });
   }
   openModalCrearOrientador(): void {
@@ -125,10 +109,6 @@ export class OrientadorCrearComponent implements OnInit {
   openModalEditarOrientador(orientadorId: number): void {
     this.selectedOrientadorId = orientadorId;
     this.openModal(this.selectedOrientadorId);
-    console.log(`para el modal: ${this.selectedOrientadorId}`);
-
-    // this.isEditing = true;
-    // this.modalCrearOrientador = true;
   }
   buscarOrientadores(): Orientador[] {
     return this.listaOrientador.filter(orientador =>

@@ -8,7 +8,7 @@ import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 import { BodyComponent } from './inicio/body/body.component';
 
-import { CursorutasComponent } from './cursorutas/cursorutas.component';
+import { CursorutasComponent } from './ruta/cursorutas/cursorutas.component';
 import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component'
 
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
@@ -36,7 +36,7 @@ import { PersonalizacionesComponent } from './super-admin/personalizaciones/pers
 
 import { RegisterComponent } from './auth/register/register.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component'
-import { RutasComponent } from './rutas/rutas.component';
+import { RutasComponent } from './ruta/rutas/rutas.component';
 
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 
@@ -49,7 +49,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'register', component: RegisterComponent },
   { path: 'verification', component: VerificationComponent },
-  { path: 'forgotPassword', component: ForgotpasswordComponent}, //restablecer contraseña
+  { path: 'forgotPassword', component: ForgotpasswordComponent }, //restablecer contraseña
 
   //Emprendedor
   { path: 'perfil', component: PerfilEmprendedorComponent },
@@ -59,12 +59,12 @@ const routes: Routes = [
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
 
   //Empresa
-  { path: 'edit-empresa', component: EditEmpresaComponent},
+  { path: 'edit-empresa', component: EditEmpresaComponent },
   { path: 'encuesta', component: EncuestaEmpresaComponent },
   { path: 'list-empresa', component: ListEmpresasComponent },
   { path: 'list-rutas', component: ListRutasComponent },
   { path: 'fan-page', component: FanPageComponent },
-  
+
   // SuperAdmin
   { path: 'add-ruta', component: SuperAdminComponent },
   { path: 'list-aliados', component: ListAliadosComponent },
@@ -81,13 +81,13 @@ const routes: Routes = [
   { path: 'rutas', component: RutasComponent },//de rutas
   { path: 'cursoRutas', component: CursorutasComponent },//de curso rutas
   { path: 'ver-asesoria', component: VerAsesoriasComponent }, //de osesoria
-  { path: 'perfil-orientador', component: PerfilOrientadorComponent}, //Perfil Orientador
-  
-  
+  { path: 'perfil-orientador', component: PerfilOrientadorComponent }, //Perfil Orientador
+
+
   //Aliados 
   { path: 'list-asesores', component: ListAsesoresComponent },
   { path: 'asesorias/aliado', component: AsesoriaAliadoComponent }, //de Aliado
-  
+
   //Asesores
   { path: 'perfil-asesores', component: PerfilAsesorComponent },
   { path: 'asesorias', component: AsesoriasComponent },  //de asesor

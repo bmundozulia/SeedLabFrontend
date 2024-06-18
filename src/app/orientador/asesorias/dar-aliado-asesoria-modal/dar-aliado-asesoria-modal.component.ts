@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { AliadoService } from '../../../servicios/aliado.service';
 
@@ -38,21 +37,10 @@ export class DarAliadoAsesoriaModalComponent {
     this.validateToken();
     this.loadAliados();
   }
+  
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        console.log(identity);
-        this.user = identity;
-
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
-        // Asigna el valor del documento del emprendedor a la variable docEmprendedor
-
-      }
     }
     if (!this.token ) {
       this.router.navigate(['/inicio/body']);
@@ -64,7 +52,6 @@ export class DarAliadoAsesoriaModalComponent {
       const nombreAliado = this.asignarForm.get('nom_aliado')?.value;
       this.asesoriaService.asignarAliado(this.token, this.data.id, nombreAliado).subscribe(
         response => {
-          console.log('Asesoría asignada con éxito:', response);
           this.dialogRef.close(true); // Cerrar el modal y enviar un valor de éxito si lo deseas
         },
         error => {
@@ -82,7 +69,6 @@ export class DarAliadoAsesoriaModalComponent {
     this.aliadoService.mostrarAliado(this.token).subscribe(
       (data: any[]) => {
         this.aliados = data;
-        console.log(this.aliados);
       },
       error => {
         console.error('Error al obtener la lista de aliados:', error);
