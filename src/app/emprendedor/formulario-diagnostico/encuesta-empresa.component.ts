@@ -62,58 +62,59 @@ export class EncuestaEmpresaComponent {
   respuesta23: Respuesta = new Respuesta({});
   //Seccion 2
   respuesta24: Respuesta = new Respuesta({});//pregunta 16
-  respuesta25: Respuesta = new Respuesta({});//pregunta 17
-  respuesta26: Respuesta = new Respuesta({});//Subpregunta 17-11
-  respuesta27: Respuesta = new Respuesta({});//Subpregunta 17-12
-  respuesta28: Respuesta = new Respuesta({});//Subpregunta 17-13
-  respuesta29: Respuesta = new Respuesta({});//Subpregunta 17-14
-  respuesta30: Respuesta = new Respuesta({});//Subpregunta 17-15
-  respuesta31: Respuesta = new Respuesta({});//Subpregunta 17-16
-  respuesta32: Respuesta = new Respuesta({});//Subpregunta 17-17
-  respuesta33: Respuesta = new Respuesta({});//Subpregunta 17-18
-  respuesta34: Respuesta = new Respuesta({});//pregunta 18
-  respuesta35: Respuesta = new Respuesta({});//pregunta 19
-  respuesta36: Respuesta = new Respuesta({});//Subpregunta 19-19
-  respuesta37: Respuesta = new Respuesta({});//Subpregunta 19-20
-  respuesta38: Respuesta = new Respuesta({});//Subpregunta 19-21
-  respuesta39: Respuesta = new Respuesta({});//Subpregunta 19-22
-  respuesta40: Respuesta = new Respuesta({});//Subpregunta 19-23
-  respuesta41: Respuesta = new Respuesta({});//pregunta 20
-  respuesta42: Respuesta = new Respuesta({});//pregunta 21
-  respuesta43: Respuesta = new Respuesta({});//Subpregunta 21-24
-  respuesta44: Respuesta = new Respuesta({});//Subpregunta 21-25
-  respuesta45: Respuesta = new Respuesta({});//Subpregunta 21-26
-  respuesta46: Respuesta = new Respuesta({});//Subpregunta 21-27
-  respuesta47: Respuesta = new Respuesta({});//Pregunta 22
-  respuesta48: Respuesta = new Respuesta({});//pregunta 23
-  respuesta49: Respuesta = new Respuesta({});//Subpregunta 23-28
-  respuesta50: Respuesta = new Respuesta({});//Subpregunta 23-29
-  respuesta51: Respuesta = new Respuesta({});//Subpregunta 23-30
-  respuesta52: Respuesta = new Respuesta({});//Subpregunta 23-31
-  respuesta53: Respuesta = new Respuesta({});//pregunta 24
-  respuesta54: Respuesta = new Respuesta({});//Subpregunta 24-32
-  respuesta55: Respuesta = new Respuesta({});//Subpregunta 24-33
-  respuesta56: Respuesta = new Respuesta({});//Subpregunta 24-34
-  respuesta57: Respuesta = new Respuesta({});//Subpregunta 24-35
-  respuesta58: Respuesta = new Respuesta({});//Subpregunta 24-36
-  respuesta59: Respuesta = new Respuesta({});//pregunta 25
-  respuesta60: Respuesta = new Respuesta({});//pregunta 26
-  respuesta61: Respuesta = new Respuesta({});//Subpregunta 26-37
-  respuesta62: Respuesta = new Respuesta({});//Subpregunta 26-38
-  respuesta63: Respuesta = new Respuesta({});//Subpregunta 26-39
-  respuesta64: Respuesta = new Respuesta({});//Subpregunta 26-40
-  respuesta65: Respuesta = new Respuesta({});//pregunta 27
-  respuesta66: Respuesta = new Respuesta({});//Subpregunta 27-41
-  respuesta67: Respuesta = new Respuesta({});//Subpregunta 27-42
-  respuesta68: Respuesta = new Respuesta({});//Subpregunta 27-43
-  respuesta69: Respuesta = new Respuesta({});//Subpregunta 27-44
-  respuesta70: Respuesta = new Respuesta({});//Subpregunta 27-45
-  respuesta71: Respuesta = new Respuesta({});//pregunta 28
-  respuesta72: Respuesta = new Respuesta({});//pregunta 29
-  respuesta73: Respuesta = new Respuesta({});//Subpregunta 29-46
-  respuesta74: Respuesta = new Respuesta({});//Subpregunta 29-47
-  respuesta75: Respuesta = new Respuesta({});//Subpregunta 29-48
-  respuesta76: Respuesta = new Respuesta({});//Subpregunta 29-49
+  respuesta25: Respuesta = new Respuesta({});//Subpregunta 17-11
+  respuesta26: Respuesta = new Respuesta({});//Subpregunta 17-12
+  respuesta27: Respuesta = new Respuesta({});//Subpregunta 17-13
+  respuesta28: Respuesta = new Respuesta({});//Subpregunta 17-14
+  respuesta29: Respuesta = new Respuesta({});//Subpregunta 17-15
+  respuesta30: Respuesta = new Respuesta({});//Subpregunta 17-16
+  respuesta31: Respuesta = new Respuesta({});//Subpregunta 17-17
+  respuesta32: Respuesta = new Respuesta({});//Subpregunta 17-18
+  respuesta33: Respuesta = new Respuesta({});//pregunta 18
+  respuesta34: Respuesta = new Respuesta({});//Subpregunta 19-19
+  respuesta35: Respuesta = new Respuesta({});//Subpregunta 19-20
+  respuesta36: Respuesta = new Respuesta({});//Subpregunta 19-21
+  respuesta37: Respuesta = new Respuesta({});//Subpregunta 19-22
+  respuesta38: Respuesta = new Respuesta({});//Subpregunta 19-23
+  respuesta39: Respuesta = new Respuesta({});//pregunta 20
+  respuesta40: Respuesta = new Respuesta({});//Subpregunta 21-24
+  respuesta41: Respuesta = new Respuesta({});//Subpregunta 21-25
+  respuesta42: Respuesta = new Respuesta({});//Subpregunta 21-26
+  respuesta43: Respuesta = new Respuesta({});//Subpregunta 21-27
+  respuesta44: Respuesta = new Respuesta({});//Pregunta 22
+  respuesta45: Respuesta = new Respuesta({});//Subpregunta 23-28
+  respuesta46: Respuesta = new Respuesta({});//Subpregunta 23-29
+  respuesta47: Respuesta = new Respuesta({});//Subpregunta 23-30
+  respuesta48: Respuesta = new Respuesta({});//Subpregunta 23-31
+  respuesta49: Respuesta = new Respuesta({});//Subpregunta 24-32
+  respuesta50: Respuesta = new Respuesta({});//Subpregunta 24-33
+  respuesta51: Respuesta = new Respuesta({});//Subpregunta 24-34
+  respuesta52: Respuesta = new Respuesta({});//Subpregunta 24-35
+  respuesta53: Respuesta = new Respuesta({});//Subpregunta 24-36
+  respuesta54: Respuesta = new Respuesta({});//pregunta 25
+  respuesta55: Respuesta = new Respuesta({});//Subpregunta 26-37
+  respuesta56: Respuesta = new Respuesta({});//Subpregunta 26-38
+  respuesta57: Respuesta = new Respuesta({});//Subpregunta 26-39
+  respuesta58: Respuesta = new Respuesta({});//Subpregunta 26-40
+  respuesta59: Respuesta = new Respuesta({});//Subpregunta 27-41
+  respuesta60: Respuesta = new Respuesta({});//Subpregunta 27-42
+  respuesta61: Respuesta = new Respuesta({});//Subpregunta 27-43
+  respuesta62: Respuesta = new Respuesta({});//Subpregunta 27-44
+  respuesta63: Respuesta = new Respuesta({});//Subpregunta 27-45
+  respuesta64: Respuesta = new Respuesta({});//pregunta 28
+  respuesta65: Respuesta = new Respuesta({});//Subpregunta 29-46
+  respuesta66: Respuesta = new Respuesta({});//Subpregunta 29-47
+  respuesta67: Respuesta = new Respuesta({});//Subpregunta 29-48
+  respuesta68: Respuesta = new Respuesta({});//Subpregunta 29-49
+
+  respuesta69: Respuesta = new Respuesta({});
+  respuesta70: Respuesta = new Respuesta({});
+  respuesta71: Respuesta = new Respuesta({});
+  respuesta72: Respuesta = new Respuesta({});
+  respuesta73: Respuesta = new Respuesta({});
+  respuesta74: Respuesta = new Respuesta({});
+  respuesta75: Respuesta = new Respuesta({});
+  respuesta76: Respuesta = new Respuesta({});
   //Seccion 3
   respuesta77: Respuesta = new Respuesta({});//pregunta 30
   respuesta78: Respuesta = new Respuesta({});//Subpregunta
@@ -279,8 +280,8 @@ export class EncuestaEmpresaComponent {
 
     const listaRespuestas: Respuesta[] = [];
     listaRespuestas.push(this.respuesta24);
-    listaRespuestas.push(this.respuesta25);
     if (this.respuesta24.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta25);
       listaRespuestas.push(this.respuesta26);
       listaRespuestas.push(this.respuesta27);
       listaRespuestas.push(this.respuesta28);
@@ -288,69 +289,61 @@ export class EncuestaEmpresaComponent {
       listaRespuestas.push(this.respuesta30);
       listaRespuestas.push(this.respuesta31);
       listaRespuestas.push(this.respuesta32);
-      listaRespuestas.push(this.respuesta33);
     }
     //pregunta 18
-    listaRespuestas.push(this.respuesta34);
-    listaRespuestas.push(this.respuesta35);
-    if (this.respuesta34.opcion === 'Si') {
+    listaRespuestas.push(this.respuesta33);
+    if (this.respuesta33.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta34);
+      listaRespuestas.push(this.respuesta35);
       listaRespuestas.push(this.respuesta36);
       listaRespuestas.push(this.respuesta37);
       listaRespuestas.push(this.respuesta38);
-      listaRespuestas.push(this.respuesta39);
-      listaRespuestas.push(this.respuesta40);
     }
     //pregunta20
-    listaRespuestas.push(this.respuesta41);
-    listaRespuestas.push(this.respuesta42);
-    if (this.respuesta41.opcion === 'Si') {
+    listaRespuestas.push(this.respuesta39);
+    if (this.respuesta39.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta40);
+      listaRespuestas.push(this.respuesta41);
+      listaRespuestas.push(this.respuesta42);
       listaRespuestas.push(this.respuesta43);
-      listaRespuestas.push(this.respuesta44);
-      listaRespuestas.push(this.respuesta45);
-      listaRespuestas.push(this.respuesta46);
     }
     //pregunta22
-    listaRespuestas.push(this.respuesta47);
-    listaRespuestas.push(this.respuesta48);
-    if (this.respuesta47.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta49);
+    listaRespuestas.push(this.respuesta44);
+    if (this.respuesta44.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta45);
+      listaRespuestas.push(this.respuesta46);
+      listaRespuestas.push(this.respuesta47);
+      listaRespuestas.push(this.respuesta48);
+    }
+    //pregunta23
+    listaRespuestas.push(this.respuesta49);
+    if (this.respuesta49.opcion === 'Si') {
       listaRespuestas.push(this.respuesta50);
       listaRespuestas.push(this.respuesta51);
       listaRespuestas.push(this.respuesta52);
-    }
-    //pregunta24
-    if (this.respuesta53.opcion === 'Si') {
       listaRespuestas.push(this.respuesta53);
-      listaRespuestas.push(this.respuesta54);
-      listaRespuestas.push(this.respuesta55);
-      listaRespuestas.push(this.respuesta56);
-      listaRespuestas.push(this.respuesta57);
-      listaRespuestas.push(this.respuesta58);
     }
+    //pregunta25
+    listaRespuestas.push(this.respuesta54);
+    if (this.respuesta54.opcion === 'Si') {
+      listaRespuestas.push(this.respuesta55);
+    }
+    //pregunta27
+    listaRespuestas.push(this.respuesta56);
+    listaRespuestas.push(this.respuesta57);
+    listaRespuestas.push(this.respuesta58);
     listaRespuestas.push(this.respuesta59);
     listaRespuestas.push(this.respuesta60);
+    //pregunta28
+    listaRespuestas.push(this.respuesta61);
     if (this.respuesta59.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta61);
       listaRespuestas.push(this.respuesta62);
       listaRespuestas.push(this.respuesta63);
       listaRespuestas.push(this.respuesta64);
+      listaRespuestas.push(this.respuesta65);
     }
-    //Pregunta 27
-    listaRespuestas.push(this.respuesta65);
-    listaRespuestas.push(this.respuesta66);
-    listaRespuestas.push(this.respuesta67);
-    listaRespuestas.push(this.respuesta68);
-    listaRespuestas.push(this.respuesta69);
-    listaRespuestas.push(this.respuesta70);
-    //fin pregunta 27
-    listaRespuestas.push(this.respuesta71);
-    listaRespuestas.push(this.respuesta72);
-    if (this.respuesta71.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta73);
-      listaRespuestas.push(this.respuesta74);
-      listaRespuestas.push(this.respuesta75);
-      listaRespuestas.push(this.respuesta76);
-    }
+    
+
 
     let isValidForm = true;
     const payload = { respuestas: listaRespuestas, id_empresa: id_empresa };
@@ -415,88 +408,88 @@ export class EncuestaEmpresaComponent {
   }
 
 
-    loadNextSection(): void {
-      this.section++;
-    }
+  loadNextSection(): void {
+    this.section++;
+  }
 
-    next() {
-      if (this.currentIndex < 3) {
-        this.currentIndex++;
-        this.updateAttributes();
+  next() {
+    if (this.currentIndex < 3) {
+      this.currentIndex++;
+      this.updateAttributes();
+    }
+  }
+
+  prev() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.updateAttributes();
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.debouncedProcessAttributes();
+  }
+
+
+
+  ngAfterViewInit() {
+    this.processAttributesBasedOnScreenSize();
+  }
+
+  processAttributesBasedOnScreenSize() {
+    const isMobile = window.innerWidth < 768; // Ancho considerado como pantalla móvil
+
+    // Seleccionar todas las etiquetas <td> con los atributos colspan o rowspan
+    const tdElements = this.elementRef.nativeElement.querySelectorAll('td');
+    tdElements.forEach(tdElement => {
+      const colspan = tdElement.getAttribute('colspan');
+      const rowspan = tdElement.getAttribute('rowspan');
+      if (!this.originalAttributes.has(tdElement)) {
+        // Guardar los valores originales
+        this.originalAttributes.set(tdElement, {
+          colspan: colspan,
+          rowspan: rowspan
+        });
       }
-    }
 
-    prev() {
-      if (this.currentIndex > 0) {
-        this.currentIndex--;
-        this.updateAttributes();
-      }
-    }
-
-    @HostListener('window:resize', ['$event'])
-    onResize() {
-      this.debouncedProcessAttributes();
-    }
-
-
-
-    ngAfterViewInit() {
-      this.processAttributesBasedOnScreenSize();
-    }
-
-    processAttributesBasedOnScreenSize() {
-      const isMobile = window.innerWidth < 768; // Ancho considerado como pantalla móvil
-
-      // Seleccionar todas las etiquetas <td> con los atributos colspan o rowspan
-      const tdElements = this.elementRef.nativeElement.querySelectorAll('td');
-      tdElements.forEach(tdElement => {
-        const colspan = tdElement.getAttribute('colspan');
-        const rowspan = tdElement.getAttribute('rowspan');
-        if (!this.originalAttributes.has(tdElement)) {
-          // Guardar los valores originales
-          this.originalAttributes.set(tdElement, {
-            colspan: colspan,
-            rowspan: rowspan
-          });
-        }
-
-        if (isMobile) {
-          // Eliminar los atributos en pantallas móviles
-          this.renderer.removeAttribute(tdElement, 'colspan');
-          this.renderer.removeAttribute(tdElement, 'rowspan');
-        } else {
-          // Restaurar los atributos en pantallas grandes
-          const original = this.originalAttributes.get(tdElement);
-          if (original) {
-            if (original.colspan !== null) {
-              this.renderer.setAttribute(tdElement, 'colspan', original.colspan);
-            }
-            if (original.rowspan !== null) {
-              this.renderer.setAttribute(tdElement, 'rowspan', original.rowspan);
-            }
+      if (isMobile) {
+        // Eliminar los atributos en pantallas móviles
+        this.renderer.removeAttribute(tdElement, 'colspan');
+        this.renderer.removeAttribute(tdElement, 'rowspan');
+      } else {
+        // Restaurar los atributos en pantallas grandes
+        const original = this.originalAttributes.get(tdElement);
+        if (original) {
+          if (original.colspan !== null) {
+            this.renderer.setAttribute(tdElement, 'colspan', original.colspan);
+          }
+          if (original.rowspan !== null) {
+            this.renderer.setAttribute(tdElement, 'rowspan', original.rowspan);
           }
         }
-      });
+      }
+    });
 
-      // Seleccionar todas las etiquetas <td> con la clase "cell"
-      const cellElements = this.elementRef.nativeElement.querySelectorAll('td.cell');
-      cellElements.forEach(cellElement => {
-        if (isMobile) {
-          this.renderer.setAttribute(cellElement, 'colspan', '2');
-        } else {
-          this.renderer.removeAttribute(cellElement, 'colspan');
-        }
-      });
+    // Seleccionar todas las etiquetas <td> con la clase "cell"
+    const cellElements = this.elementRef.nativeElement.querySelectorAll('td.cell');
+    cellElements.forEach(cellElement => {
+      if (isMobile) {
+        this.renderer.setAttribute(cellElement, 'colspan', '2');
+      } else {
+        this.renderer.removeAttribute(cellElement, 'colspan');
+      }
+    });
 
-      // Forzar detección de cambios
-      this.cdr.detectChanges();
-    }
+    // Forzar detección de cambios
+    this.cdr.detectChanges();
+  }
 
-    updateAttributes() {
-      requestAnimationFrame(() => {
-        this.processAttributesBasedOnScreenSize();
-      });
-    }
+  updateAttributes() {
+    requestAnimationFrame(() => {
+      this.processAttributesBasedOnScreenSize();
+    });
+  }
 
   private debouncedProcessAttributes() {
     clearTimeout(this.debounceTimeout);
