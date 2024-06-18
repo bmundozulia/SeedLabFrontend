@@ -55,14 +55,14 @@
                     <!-- Pregunta 1 -->
                     <table class="min-w-full bg-white my-2">
                         <tbody>
-                            <tr class="">
-                                <td class="py-2 px-4 " colspan="2">
-                                    <div class="flex">
+                            <tr class="grid grid-cols-1 md:grid-cols-12">
+                                <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
+                                    <div class="flex my-1">
                                         <b>{{ preguntas[0].id }}. </b>
                                         <h3> {{ preguntas[0].nombre }}.</h3>
                                     </div>
                                 </td>
-                                <td class="py-2 px-4">
+                                <td class="py-2 px-4 col-span-12 md:col-span-4 lg:col-span-2">
                                     <select :[(ngModel)]="respuesta1.opcion" required
                                         class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                         <option value="" disabled selected hidden>Seleccione</option>
@@ -98,7 +98,8 @@
                                     </h3>
                                 </td>
                                 <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto ">
-                                    <div class="flex sm:flex-row   space-x-4 ">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta2.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Si / No</option>
@@ -126,7 +127,8 @@
                                     <h3>{{ preguntas[1].subPreguntas[1].texto }}</h3>
                                 </td>
                                 <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto">
-                                    <div class="flex sm:flex-row  space-x-4">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="3Select" :[(ngModel)]="respuesta3.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                             <option value="" disabled selected hidden>Si / No</option>
@@ -156,7 +158,8 @@
                                     </h3>
                                 </td>
                                 <td class="block sm:table-cell w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row space-x-4">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta4.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Si / No</option>
@@ -186,7 +189,8 @@
                                     </h3>
                                 </td>
                                 <td class="block sm:table-cell w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row space-x-4">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta5.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                             <option value="" disabled selected hidden>Si / No</option>
@@ -216,7 +220,8 @@
                                     </h3>
                                 </td>
                                 <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row  space-x-4">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta6.opcion"
                                             class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                             <option value="" disabled selected hidden>Si / No</option>
@@ -244,14 +249,14 @@
                 <!-- Pregunta 3 -->
                 <table class="min-w-full bg-white ">
                     <tbody>
-                        <tr class="">
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[2].id}}. </b>
                                     <h3>{{preguntas[2].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 col-span-12 md:col-span-4 lg:col-span-2">
                                 <select :[(ngModel)]="respuesta7.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -261,14 +266,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 4 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[3].id}}. </b>
                                     <h3> {{preguntas[3].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 col-span-12 md:col-span-4 lg:col-span-2">
                                 <select :[(ngModel)]="respuesta8.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -278,14 +283,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 5 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[4].id}}.</b>
                                     <h3>{{preguntas[4].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 col-span-12 md:col-span-4 lg:col-span-2">
                                 <select :[(ngModel)]="respuesta9.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -296,14 +301,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 6 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[5].id}}</b>
                                     <h3>{{ preguntas[5].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 col-span-12 md:col-span-4 lg:col-span-2">
                                 <select :[(ngModel)]="respuesta10.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -314,14 +319,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 7 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[6].id}}</b>
                                     <h3>{{ preguntas[6].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 col-span-12 md:col-span-4 lg:col-span-2">
                                 <select :[(ngModel)]="respuesta11.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -333,14 +338,14 @@
                         </tr>
 
                         <!-- Pregunta 8 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[7].id}}.</b>
                                     <h3>{{preguntas[7].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 col-span-12 md:col-span-4 lg:col-span-2">
                                 <select :[(ngModel)]="respuesta12.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -353,14 +358,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 9 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[8].id}}.</b>
                                     <h3>{{preguntas[8].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 col-span-12 md:col-span-4 lg:col-span-2">
                                 <select :[(ngModel)]="respuesta13.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -370,8 +375,9 @@
                             </td>
                         </tr>
                         <!-- Pregunta 10 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta13.opcion === 'Si'">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="my-2 cell col-span-12 md:col-span-8 lg:col-span-10"
+                                *ngIf="respuesta13.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[9].id}}.</b>
@@ -385,8 +391,9 @@
                             </td>
                         </tr>
                         <!-- Pregunta 11 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta13.opcion === 'Si'">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="my-2 cell col-span-12 md:col-span-8 lg:col-span-10"
+                                *ngIf="respuesta13.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[10].id}}.</b>
@@ -399,8 +406,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 12 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[11].id}}.</b>
                                     <h3>{{preguntas[11].nombre}}</h3>
@@ -416,8 +423,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="col-span-12 md:col-span-10  cell" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[0].texto }}
@@ -430,8 +437,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="cell col-span-12 md:col-span-10" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[1].texto }}</h3>
@@ -443,8 +450,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="cell col-span-12 md:col-span-10 " *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[2].texto }}</h3>
@@ -456,8 +463,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="cell col-span-12 md:col-span-10 " *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[3].texto }}</h3>
@@ -469,8 +476,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 13 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[12].id}}.</b>
                                     <h3>{{preguntas[12].nombre}}</h3>
@@ -487,8 +494,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 14 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[13].id}}.</b>
                                     <h3>{{preguntas[13].nombre}}</h3>
@@ -505,8 +512,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 15 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid grid-cols-1 md:grid-cols-12">
+                            <td class="py-2 px-4 col-span-12 md:col-span-8 lg:col-span-10" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[14].id}}.</b>
                                     <h3>{{preguntas[14].nombre}}</h3>
