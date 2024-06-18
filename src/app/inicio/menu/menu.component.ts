@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User } from '../../Modelos/user.model';
@@ -43,7 +43,7 @@ export class MenuComponent {
 
     if (this.logueado && this.user) {
       this.currentRolId = this.user.id_rol?.toString();
-      console.log(this.currentRolId);
+      //console.log(this.currentRolId);
     } else {
       console.log("No está logueado o no se pudo cargar el usuario.");
     }

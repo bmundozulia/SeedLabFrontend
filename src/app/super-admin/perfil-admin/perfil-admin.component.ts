@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { AlertService } from '../../servicios/alert.service';
 import { SuperadminService } from '../../servicios/superadmin.service';
-
 import { Superadmin } from '../../Modelos/superadmin.model';
 import { User } from '../../Modelos/user.model';
 import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +18,6 @@ export class PerfilAdminComponent {
   faEnvelope = faEnvelope;
   faMobileAlt = faMobileAlt;
   faUser = faUser;
-
   token = '';
   blockedInputs = true;
   user: User | null = null;
@@ -39,32 +36,30 @@ export class PerfilAdminComponent {
 
   constructor(
     private superadminService: SuperadminService,
-    private router: Router,
     private fb: FormBuilder,
     private alertService: AlertService
   ) { }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
     this.verEditar();
   }
 
+  /* Valida el token del login, se usa del localstorage el id del usuario logueado */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
       let identityJSON = localStorage.getItem('identity');
-
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
         this.user = identity;
         this.id = this.user.id;
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
       }
     }
   }
 
+  /* Trae la informacion del admin */
   verEditar(): void {
     if (this.token) {
       this.superadminService.getInfoAdmin(this.token, this.id).subscribe(
@@ -85,6 +80,7 @@ export class PerfilAdminComponent {
     }
   }
 
+  /* Actualiza los datos del super admin */
   updateAdministrador(): void {
     const perfil: Superadmin = {
       nombre: this.perfiladminForm.get('nombre')?.value,
@@ -103,6 +99,7 @@ export class PerfilAdminComponent {
     )
   }
 
+  /* Validaciones la contraseña */
   passwordValidator(control: AbstractControl) {
     const value = control.value;
     const hasUpperCase = /[A-Z]+/.test(value);
@@ -115,6 +112,7 @@ export class PerfilAdminComponent {
     }
   }
 
+  /* Bloqueo de inputs */
   toggleInputsLock(): void {
     this.blockedInputs = !this.blockedInputs;
     const fieldsToToggle = ['nombre', 'apellido', 'email', 'password'];
@@ -128,11 +126,12 @@ export class PerfilAdminComponent {
     })
   }
 
-  // Restaura los datos originales
+  /* Restaura los datos originales */
   onCancel(): void {
     this.verEditar();
   }
 
+  /* Muesta el boton de guardar cambios */
   mostrarGuardarCambios(): void {
     this.boton = false;
   }

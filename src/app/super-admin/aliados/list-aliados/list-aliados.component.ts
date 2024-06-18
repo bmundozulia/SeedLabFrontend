@@ -1,10 +1,6 @@
-
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-
 import { AliadoService } from '../../../servicios/aliado.service';
-
 import { Aliado } from '../../../Modelos/aliado.model';
 import { User } from '../../../Modelos/user.model';
 
@@ -27,6 +23,7 @@ export class ListAliadosComponent implements OnInit {
   currentRolId: number;
   isLoading: boolean = true;
 
+  /* Convierte el estado en string para que se retorne en la vista con esos datos */
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
     0: 'Inactivo'
@@ -34,31 +31,30 @@ export class ListAliadosComponent implements OnInit {
 
   constructor(
     private aliadoService: AliadoService,
-    private router: Router,
-    private aRoute: ActivatedRoute
   ) { }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
-    this.cargarAliados(1); // Cargar inicialmente con estado 'Activo'
+    this.cargarAliados(1); /* Cargar inicialmente con estado 'Activo' */
   }
 
-
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
-      let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        console.log(identity);
-        this.user = identity;
-        this.currentRolId = this.user.id_rol;
-        console.log(this.currentRolId);
-      }
+      // let identityJSON = localStorage.getItem('identity');
+      // if (identityJSON) {
+      //   let identity = JSON.parse(identityJSON);
+      //   console.log(identity);
+      //   this.user = identity;
+      //   this.currentRolId = this.user.id_rol;
+      //   console.log(this.currentRolId);
+      // }
     }
   }
 
+  /* Funcion para mostrar las listas de los aliados y con el estado activo*/
   cargarAliados(estado: number): void {
     if (this.token) {
       this.aliadoService.getinfoAliado(this.token, estado).subscribe(
@@ -95,16 +91,18 @@ export class ListAliadosComponent implements OnInit {
     }
   }
 
+  /* Retorna los aliados dependiendo de su estado, normalmente en activo */
   onEstadoChange(event: any): void {
     var estado = event.target.value;
     if (estado == "Activo") {
       this.cargarAliados(1);
-    } 
-    else{
+    }
+    else {
       this.cargarAliados(0);
     }
   }
 
+  /* Limpia el filtro de busqueda, volviendo a retornar los aliados activos */
   limpiarFiltro(): void {
     this.userFilter = { nombre: '', estado_usuario: 'Activo' };
     this.cargarAliados(1);
