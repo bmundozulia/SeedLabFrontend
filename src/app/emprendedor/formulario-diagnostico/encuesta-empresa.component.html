@@ -1077,7 +1077,7 @@
                                 <h3>{{preguntas[26].subPreguntas[0].texto}} </h3>
                             </td>
                             <td class="py-2 px-4">
-                                <select
+                                <select :[(ngModel)]="respuesta56.opcion"
                                     class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Si</option>
