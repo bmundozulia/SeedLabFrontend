@@ -34,7 +34,7 @@ export class PerfilAdminComponent {
     apellido: ['', Validators.required],
     email: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(10), this.passwordValidator]],
-    estado: '1',
+    estado: true,
   });
 
   constructor(
@@ -72,7 +72,7 @@ export class PerfilAdminComponent {
           this.perfiladminForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
-            email: data.auth.email,
+            email: data.email,
             password: data.password
           });
           console.log(data);

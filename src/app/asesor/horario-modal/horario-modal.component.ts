@@ -11,6 +11,9 @@ import { AsesoriaService } from '../../servicios/asesoria.service';
 })
 export class HorarioModalComponent implements OnInit {
   asignarForm: FormGroup;
+  token: string | null = null;
+  user: any = null;
+  currentRolId: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -25,7 +28,22 @@ export class HorarioModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Puedes inicializar el formulario aquí si es necesario
+    this.validateToken();
+  }
+
+  validateToken(): void {
+    if (!this.token) {
+      this.token = localStorage.getItem('token');
+      let identityJSON = localStorage.getItem('identity');
+
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        console.log(identity);
+        this.user = identity;
+        this.currentRolId = this.user.id_rol?.toString();
+        console.log(this.user);
+      }
+    }
   }
 
   onGuardar(): void {
@@ -39,7 +57,7 @@ export class HorarioModalComponent implements OnInit {
       console.log('Observaciones:', observaciones);
       console.log('ID Asesoria:', idAsesoria);
 
-      this.asesoriaService.agregarHorarioAsesoria(observaciones, idAsesoria, fecha).subscribe(
+      this.asesoriaService.agregarHorarioAsesoria(this.token, observaciones, idAsesoria, fecha).subscribe(
         response => {
           console.log('Horario asignado exitosamente', response);
           this.dialogRef.close(response);

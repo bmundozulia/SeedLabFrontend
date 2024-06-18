@@ -3,10 +3,10 @@ export class Superadmin {
     nombre: string | null;
     apellido: string | null;
     email: string | null;
-    password: string | null;
-    estado: string | null;
+    password?: string | null;
+    estado: boolean | null;
 
-    constructor(id: number, nombre: string, apellido: string, email: string, password: string, estado: string) {
+    constructor(id: number, nombre: string, apellido: string, email: string, estado: boolean, password?: string ) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

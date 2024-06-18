@@ -68,7 +68,6 @@ import { CargaComponent } from './carga/carga.component';
 import { Error404Component } from './auth/error404/error404.component';
 
 
-
 @NgModule({
   declarations: [
     AddAliadosComponent,

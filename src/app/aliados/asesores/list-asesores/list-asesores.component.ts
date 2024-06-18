@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
 import { faEye, faMagnifyingGlass, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
-
 import { ModalAddAsesoresComponent } from '../modal-add-asesores/modal-add-asesores.component';
-
 import { AsesorService } from '../../../servicios/asesor.service';
-
 import { User } from '../../../Modelos/user.model';
 import { Asesor } from '../../../Modelos/asesor.model';
 import { AliadoService } from '../../../servicios/aliado.service';
@@ -69,7 +65,7 @@ export class ListAsesoresComponent implements OnInit {
 
   cargarAsesores() {
     if (this.token) {
-      this.aliadoService.getinfoAsesor(this.token, this.user.id).subscribe(
+      this.aliadoService.getinfoAsesor(this.token, this.user.id, this.userFilter.estado).subscribe(
         (data) => {
           this.listaAsesores = data;
           console.log(this.listaAsesores);
@@ -81,8 +77,7 @@ export class ListAsesoresComponent implements OnInit {
     }
   }
 
-  onEstadoChange(event: any): void {
-    const estado = event.target.value;
+  onEstadoChange(): void {
     this.cargarAsesores();
   }
 
@@ -98,7 +93,7 @@ export class ListAsesoresComponent implements OnInit {
     dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
       data: { asesorId: asesorId }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('El modal se cerró');
     });
@@ -109,23 +104,21 @@ export class ListAsesoresComponent implements OnInit {
     dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
       data: { asesorId: asesorId }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('El modal se cerró');
     });
   }
-  
+
   openModalSINId(): void {
     this.openModalCONId(null); // Llama a openModalCONId con null
   }
-  
+
   editarAsesor(asesorId: number): void {
     this.selectedAsesorId = asesorId;
     this.openModal(this.selectedAsesorId);
     console.log(`para el modal: ${this.selectedAsesorId}`);
   }
-
-  
 
 
 }

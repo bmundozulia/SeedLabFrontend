@@ -5,9 +5,9 @@ export class Orientador {
     celular: string | null;
     email: string | null;
     password?: string | null; // Asegúrate de que 'password' sea opcional si no siempre estará presente.
-    estado: string | null;
+    estado: boolean | null;
 
-    constructor(id: number, nombre: string, apellido: string, celular: string, id_auth: number, email: string, estado: string, password?: string) {
+    constructor(id: number, nombre: string, apellido: string, celular: string, id_auth: number, email: string, estado: boolean, password?: string) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

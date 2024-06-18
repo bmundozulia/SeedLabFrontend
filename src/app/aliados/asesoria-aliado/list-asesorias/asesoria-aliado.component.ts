@@ -1,13 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
 import { DarAsesorModalComponent } from '../dar-asesor-modal/dar-asesor-modal.component';
-
 import { AsesoriaService } from '../../../servicios/asesoria.service';
-
+import { HeaderComponent } from '../../../header/header.component';
 import { Asesoria } from '../../../Modelos/asesoria.model';
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-asesoria-aliado',
@@ -59,7 +58,7 @@ export class AsesoriaAliadoComponent implements OnInit {
   }
 
   loadAsesorias(rol: number, estado: number): void {
-    this.asesoriaService.getAsesoriasPorRolYEstado(rol, estado).subscribe(
+    this.asesoriaService.getAsesoriasPorRolYEstado(this.token, rol, estado).subscribe(
       data => {
         console.log('Respuesta de la API:', data);
         this.asesorias = data;
@@ -107,10 +106,11 @@ export class AsesoriaAliadoComponent implements OnInit {
   rechazarAsesoria(asesoria: Asesoria): void {
     console.log('Asesoría a rechazar:', asesoria);  // <-- Verifica que tienes el objeto correcto
     if (asesoria && asesoria.id_asesoria) {
-      this.asesoriaService.rechazarAsesoria(asesoria.id_asesoria, 'rechazar').subscribe(
+      this.asesoriaService.rechazarAsesoria(this.token, asesoria.id_asesoria, 'rechazar').subscribe(
         response => {
           console.log('Asesoría rechazada con éxito:', response);
           this.loadAsesorias(parseInt(this.currentRolId!), 1);
+          location.reload();
         },
         error => {
           console.error('Error al rechazar asesoría:', error);

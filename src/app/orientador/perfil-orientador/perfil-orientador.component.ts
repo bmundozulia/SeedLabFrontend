@@ -80,8 +80,8 @@ export class PerfilOrientadorComponent {
             nombre: data.nombre,
             apellido: data.apellido,
             celular: data.celular,
-            email: data.auth.email,
-            password: data.auth.password,
+            email: data.email,
+            password: data.password,
           });
           console.log(data);
         },
@@ -98,11 +98,12 @@ export class PerfilOrientadorComponent {
       apellido: this.perfilorientadorForm.get('apellido')?.value,
       celular: this.perfilorientadorForm.get('celular')?.value,
       email: this.perfilorientadorForm.get('email')?.value,
-      password: this.perfilorientadorForm.get('password')?.value,
-      estado: '1',
+      password:this.perfilorientadorForm.get('password')?.value,
+      estado: true,
     }
     this.orientadorService.updateOrientador(this.token, this.id, perfil).subscribe(
-      (data) => {
+      (data)=>{
+        console.log(data);
         location.reload();
       },
       (err) => {

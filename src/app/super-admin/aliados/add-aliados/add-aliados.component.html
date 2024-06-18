@@ -1,15 +1,13 @@
 <app-header [title]="'Bienvenido al panel de Agregar Aliados'"
   [subtitle]="'Aquí puedes crear tus aliados'"></app-header>
-<!-- ---------------------------------------------------------------------------- -->
-<!-- pantalla -->
 <div class="w-full flex items-center justify-center min-h-[calc(100vh-128px)] ">
-  <form (ngSubmit)="onSubmit()" class="flex flex-col items-center justify-center w-full max-w-3xl h-auto">
+
+  <form (ngSubmit)="onSubmit()" class="flex  justify-center w-full">
+    <div class="flex flex-wrap justify-center w-full">
 
 
-    <div class="flex flex-wrap max-lg:">
-
-      <div class="flex flex-col">
-        <label for="nombre" class="block mb-2 text-blue-400">Selecciona tu logo:</label>
+      <div class="mx-10 mb-4 ">
+        <!-- contenedor de columna 1 -->
         <div class="flex items-center flex-wrap justify-center mb-6">
           <div class="relative">
             <div
@@ -20,154 +18,82 @@
                 class="absolute inset-0 opacity-0 cursor-pointer">
             </div>
           </div>
-          <!-- <label for="logoInput" class="bg-sky-400 hover:bg-sky-500 text-white font-bold px-3 py-2 rounded cursor-pointer ml-3 max-md:mt-3">Seleccionar foto</label> -->
         </div>
-
-
-
-
-
-        <div class="pl-0 md:pl-2 max-w-96">
-          <div class="relative w-full min-w-[200px] h-12 flex items-center justify-center">
-            <input
-              class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-blue-500"
-              placeholder=" " />
+        <div class="space-y-8">
+          <div class="relative mt-9 mb-4">
+            <input type="text"
+              class="peer rounded-xl outline-none w-full border py-3 px-4 text-base focus:ring-0 bg-transparent focus:outline focus:border-blue-500 focus:placeholder-transparent"
+              placeholder="Nombre">
             <label
-              class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.25] text-blue-gray-400 peer-focus:text-blue-500 before:border-blue-gray-200 peer-focus:before:!border-blue-500 after:border-blue-gray-200 peer-focus:after:!border-blue-500 text-gray-400 ">
-              Nombre
+              class="absolute top-[-1.2rem] left-3 text-sm text-blue-400 transition-all  peer-placeholder-shown:text-[0px] peer-focus:top-[-1.2rem]   peer-focus:text-sm peer-focus:text-blue-500 peer-focus:text-opacity-100  peer-placeholder:text-[0px]">
+              Nombre:
             </label>
           </div>
-        </div>
-
-        <div class="pl-0 md:pl-2 max-w-96">
-          <div class="relative w-full min-w-[200px] h-12 flex items-center justify-center">
-            <input
-              class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-blue-500"
-              placeholder=" " />
+          <div class="relative mt-9 mb-4">
+            <input type="text"
+              class="peer rounded-xl outline-none w-full border py-3 px-4 text-base focus:ring-0 bg-transparent focus:outline focus:border-blue-500 focus:placeholder-transparent"
+              placeholder="Correo">
             <label
-              class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.25] text-blue-gray-400 peer-focus:text-blue-500 before:border-blue-gray-200 peer-focus:before:!border-blue-500 after:border-blue-gray-200 peer-focus:after:!border-blue-500 text-gray-400 ">
-              Correo
+              class="absolute top-[-1.2rem] left-3 text-sm text-blue-400 transition-all  peer-placeholder-shown:text-[0px] peer-focus:top-[-1.2rem]   peer-focus:text-sm peer-focus:text-blue-500 peer-focus:text-opacity-100  peer-placeholder:text-[0px]">
+              Correo:
             </label>
           </div>
-        </div>
 
-        <div class="pl-0 md:pl-2 max-w-96">
-
-          <div class="relative w-full min-w-[200px] h-12 flex items-center justify-center">
-            <input
-              class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-blue-500"
-              placeholder=" " />
-            <label
-              class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.25] text-blue-gray-400 peer-focus:text-blue-500 before:border-blue-gray-200 peer-focus:before:!border-blue-500 after:border-blue-gray-200 peer-focus:after:!border-blue-500 text-gray-400 ">
+          <div class="relative mt-9 mb-4">
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
+              class="peer rounded-xl outline-none w-full border py-3 px-4 text-base focus:ring-0 bg-transparent focus:outline focus:border-blue-500 focus:placeholder-transparent"
+              placeholder="Contraseña">
+            <label for="password"
+              class="absolute top-[-1.2rem] left-3 text-sm text-blue-400 transition-all peer-placeholder-shown:text-[0px] peer-focus:top-[-1.2rem] peer-focus:text-sm peer-focus:text-blue-500 peer-focus:text-opacity-100 peer-placeholder:text-[0px]">
               Contraseña
             </label>
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide" class="absolute right-3 top-1/2 transform -translate-y-1/2">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </div>
         </div>
 
-
-
-
-
-
-
-
-
-
       </div>
-      <div class="flex flex-col">
-        <div class="w-full pl-0 md:pl-2 max-w-96">
-          <div class="relative w-full min-w-[200px]">
+
+      <!-- contenedor de textarea y descripciones fanpague -->
+
+        <div class="space-y-8 max-lg:w-9/12">
+          <div class="relative w-full">
             <textarea
-              class="peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-blue-500 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
-              placeholder=" "></textarea>
+              class=" h-40  peer rounded-xl outline-none w-full border py-3 px-4 text-base focus:ring-0 bg-transparent focus:outline focus:border-blue-500 focus:placeholder-transparent resize-none"
+              placeholder="Descripcion fanpage"></textarea>
             <label
-              class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-blue-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-blue-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 text-gray-400">
-              Descripcion fanpague
+              class="absolute top-[-1.2rem] left-3 text-sm text-blue-400 transition-all  peer-placeholder-shown:text-[0px] peer-focus:top-[-1.2rem]   peer-focus:text-sm peer-focus:text-blue-500 peer-focus:text-opacity-100  peer-placeholder:text-[0px]">
+              Descripcion fanpage:
             </label>
           </div>
-        </div>
 
-      </div>
+        </div>
+        <h3 class="mx-10">Este es el apartado para agregar aliado,actualmente no esta configurado, se piden los siguientes campos ,nombre,correo,contraseña, descripcion para fan pague,seleccionable de tipo de dato en la ruta multimedia,ruta multimedia que puede corresponnder a imagen o video</h3>
+
+
     </div>
 
 
 
-    <div class="mt-3">
+
+
+    <!-- Boton de crear el aliado -->
+    <!-- <div class="mt-3">
       <button type="submit"
         class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Crear
         Aliado</button>
-    </div>
+    </div> -->
 
-
-    <!-- <div class="flex flex-col items-center">
-          <div class="grid sm:grid-cols-2 gap-8" style="width: 850px;">
-            <div class="flex flex-col items-center sm:items-start">
-              <p class="font-semibold text-sky-400 text-lg">Descripción del Aliado</p>
-              <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                <input [(ngModel)]="descripcion" name="descripcion" class="w-11/12 outline-none" placeholder="Descripción" required />
-              </div>
-            </div>
-            <div class="flex flex-col items-center sm:items-start">
-              <p class="font-semibold text-sky-400 text-lg">Correo del Aliado</p>
-              <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                <input [(ngModel)]="email" name="email" class="w-11/12 outline-none" placeholder="Correo" required />
-              </div>
-            </div>
-            <div class="flex flex-col items-center sm:items-start">
-              <p class="font-semibold text-sky-400 text-lg">Contraseña del Aliado</p>
-              <div class="relative mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                <input [(ngModel)]="password" name="password" [type]="passwordVisible ? 'text' : 'password'" class="w-11/12 outline-none" placeholder="Contraseña" required />
-                <button type="button" mat-icon-button class="absolute inset-y-1 right-1 flex items-center pr-3" (click)="togglePasswordVisibility()">
-                  <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
-                </button>
-              </div>
-            </div>
-
-         
-            <div class="flex flex-col items-center sm:items-start">
-              <p class="font-semibold text-sky-400 text-lg sm:mt-0">Tipo de Ruta</p>
-              <div class="relative mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                <select [(ngModel)]="tipodato" name="TipodeDato" (change)="onRutaChange($event)" class="w-full outline-none">
-                  <option value="" disabled selected>Seleccione una opción</option>
-                  <option value="video">Video</option>
-                  <option value="imagen">Imagen</option>
-                  <option value="pdf">PDF</option>
-                </select>
-              </div>
-            </div>
-
-            <div *ngIf="rutaSeleccionada === 'video'" class="flex flex-col items-center sm:items-start">
-              <p class="font-semibold text-sky-400 text-lg">Ruta del Video</p>
-              <div class="mt-2 rounded-xl border-black py-3 px-4 text-base form-control">
-                <input [(ngModel)]="ruta" name="rutaVideo" class="w-11/12 outline-none" placeholder="Ruta del Video" required />
-              </div>
-            </div>
-
-            <div *ngIf="rutaSeleccionada === 'imagen'" class="flex flex-col items-center sm:items-start sm:mr-8">
-              <div class="w-72 h-28 flex items-center justify-center border overflow-hidden mb-2 border-black">
-                <img *ngIf="ruta" [src]="ruta" alt="Imagen">
-                <span *ngIf="!ruta" class="text-gray-500">Imagen</span>
-              </div>
-              <label for="imagenInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer">Seleccionar Imagen</label>
-              <input id="imagenInput" type="file" (change)="onImageSelected($event)" accept="image/*" class="hidden">
-            </div>
-
-            <div *ngIf="rutaSeleccionada === 'pdf'" class="flex flex-col items-center sm:items-start">
-              <p class="font-semibold text-sky-400 text-lg">Ruta del PDF</p>
-              <div class="flex items-center mt-2 w-full">
-                <label for="rutaPdfInput" class="bg-sky-400 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer flex items-center">
-                  <span class="mr-2">Seleccionar PDF</span>
-                </label>
-                <input id="rutaPdfInput" type="file" (change)="onPdfSelected($event)" accept="application/pdf" class="hidden">
-                <div *ngIf="pdfFileName" class="ml-3 text-gray-600 flex items-center mt-2 rounded-xl border-black py-3 px-4 text-base form-control w-full overflow-hidden">
-                  <img src="//res.cdn.office.net/assets/fluentui-resources/1.0.23/app-min/assets/item-types/20/pdf.svg" alt=".pdf" class="mr-2 w-10 h-10">
-                  <span class="ml-1 truncate">{{ pdfFileName }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
+    <!-- <p class="flex items-center gap-1 mt-2 font-sans text-sm antialiased font-normal leading-normal text-gray-700">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 -mt-px">
+        <path fill-rule="evenodd"
+          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
+          clip-rule="evenodd"></path>
+      </svg>
+      Use at least 8 characters.
+    </p> -->
 
   </form>
 </div>
