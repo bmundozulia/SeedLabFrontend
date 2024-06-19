@@ -97,6 +97,17 @@
 
             </div>
 
+            <!-- Controles de paginación -->
+    <div class="text-center">
+        <div class="md:hidden">
+          <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
+        </div>
+        <div class="hidden md:block">
+          <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+          </pagination-controls>
+        </div>
+      </div>
+
 
         </div>
 
