@@ -168,7 +168,7 @@ export class PerfilEmprendedorComponent implements OnInit {
       (data)=>{
         location.reload();
         this.token = null;
-        this.router.navigate(["./login"]);
+        this.router.navigate(["/login"]);
       },
       (err)=>{
         console.log(err);
