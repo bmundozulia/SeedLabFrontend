@@ -27,6 +27,22 @@ export class AlertService {
   //     }
   //   });
   // }
+  
+
+  alertaActivarDesactivar(text: string, confirmButtonText?: string, cancelButtonText?: string) {
+    return Swal.fire({
+        text: text,
+        showCancelButton: true,
+        cancelButtonColor: "#6b7280",
+        confirmButtonColor: "#38bdf8",
+        confirmButtonText: confirmButtonText || 'Confirmar',
+        cancelButtonText: cancelButtonText || 'Cancelar',
+        reverseButtons: true
+    });
+}
+
+  
+
 
   successAlert(title: string, text: string)  {
     const Toast = Swal.mixin({

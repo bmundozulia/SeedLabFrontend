@@ -9,7 +9,7 @@ export class Emprendedor {
     fecha_nacimiento: Date | null;
     direccion: string | null;
     nombretipodoc: string | null;
-    estado: string | null;
+    estado:boolean;
     municipio: string | null;
 
     constructor(
@@ -23,7 +23,7 @@ export class Emprendedor {
         genero: string | null,
         fecha_nacimiento: Date | null,
         direccion: string | null,
-        estado: string | null,
+        estado:boolean,
         municipio: string | null
     ) {
         this.documento = documento;

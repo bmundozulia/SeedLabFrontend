@@ -31,10 +31,16 @@ export class EmprendedorService {
   updateEmprendedor(emprendedor: PerfilEmprendedor, access_token: any, documento: string): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.put(this.url + "/emprendedor/" + documento, emprendedor, options);
+    
   }
 
   getInfoEmprendedor(access_token: any, documento: string): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.get(`${this.url}/userProfile/${documento}`, options);
+  }
+
+  destroy(access_token: any, documento: string): Observable<any>{  
+    const options = {headers: this.CreacionHeaders(access_token)};
+    return this.http.delete(this.url + "/emprendedor/" + documento, options);
   }
 }

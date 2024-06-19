@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -26,6 +26,8 @@ import { User } from '../../Modelos/user.model';
   styleUrl: './perfil-emprendedor.component.css'
 })
 export class PerfilEmprendedorComponent implements OnInit {
+  @Input() isEditing: boolean = false
+  isActive: boolean = true;
   faVenusMars = faVenusMars;
   faMountainCity = faMountainCity;
   faLandmarkFlag = faLandmarkFlag;
@@ -46,6 +48,11 @@ export class PerfilEmprendedorComponent implements OnInit {
   documento: string;
   user: User | null = null;
   currentRolId: string | null = null;
+  emprendedorId: any;
+  estado: boolean;
+  
+
+
   emprendedorForm = this.fb.group({
     documento: '',
     nombre: ['', Validators.required],
@@ -58,6 +65,7 @@ export class PerfilEmprendedorComponent implements OnInit {
     direccion: ['', Validators.required],
     nombretipodoc: new FormControl({ value: '', disabled: true }, Validators.required), // Aquí se deshabilita el campo
     municipio: ['', Validators.required],
+    estado: true,
   });
   registerForm: FormGroup; //ahorita quitarlo
   listEmprendedor: PerfilEmprendedor[] = [];
@@ -78,6 +86,7 @@ export class PerfilEmprendedorComponent implements OnInit {
     this.validateToken();
     this.verEditar();
     this.cargarDepartamentos();
+    this.isEditing = true;
   }
 
   validateToken(): void {
@@ -89,6 +98,7 @@ export class PerfilEmprendedorComponent implements OnInit {
         let identity = JSON.parse(identityJSON);
         console.log(identity);
         this.user = identity;
+        this.estado = this.user.estado;
         this.documento = this.user.emprendedor.documento;
         this.currentRolId = this.user.id_rol?.toString();
         console.log(this.currentRolId);
@@ -105,14 +115,22 @@ export class PerfilEmprendedorComponent implements OnInit {
             nombre: data.nombre,
             apellido: data.apellido,
             celular: data.celular,
-            email: data.auth ? data.auth.email : '',
+            email: data.email ,
             password: data.password,
             genero: data.genero,
             fecha_nac: data.fecha_nac,
             direccion: data.direccion,
-            nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : ''
+            nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : '',
+            estado: data.estado
           });
+          this.isActive = data.estado === 'Activo'; // Asegura que el estado booleano es correcto
+          console.log("Estado inicial:", this.isActive); // Verifica el estado inicial en la consola
           console.log(data);
+
+          // Forzar cambio de detección de Angular
+          setTimeout(()=>{
+            this.emprendedorForm.get('estado')?.setValue(this.isActive);
+          })
 
         },
         (err) => {
@@ -143,6 +161,16 @@ export class PerfilEmprendedorComponent implements OnInit {
         location.reload();
       },
       (err) => {
+        console.log(err);
+      }
+    )
+    this.emprendedorService.destroy(this.token, this.documento).subscribe(
+      (data)=>{
+        location.reload();
+        this.token = null;
+        this.router.navigate(["./login"]);
+      },
+      (err)=>{
         console.log(err);
       }
     )
@@ -216,6 +244,23 @@ export class PerfilEmprendedorComponent implements OnInit {
 
   mostrarGuardarCambios(): void {
     this.boton = false;
+  }
+
+  toggleActive() {
+
+    this.isActive = !this.isActive;
+    //this.orientadorForm.patchValue({ estado: this.isActive });
+    //console.log("Estado después de toggle:", this.isActive); // Verifica el estado después de toggle
+    //this.orientadorForm.patchValue({ estado: this.isActive ? true : false });
+    this.emprendedorForm.patchValue({ estado: this.isActive ? true : false });
+    //console.log("Estado después de toggle:", this.isActive); // Verifica el estado después de toggle
+  }
+
+  mostrarToggle(): void {
+    if (this.emprendedorId != null) {
+      this.boton = false;
+    }
+    this.boton = true;
   }
 
 }

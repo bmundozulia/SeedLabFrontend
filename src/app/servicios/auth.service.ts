@@ -11,7 +11,7 @@ import { Emprendedor } from '../Modelos/emprendedor.model';
   providedIn: 'root'
 })
 export class AuthService {
-  
+  private email: string; // Variable para guardar el email temporalmente
   url= environment.apiUrl+'auth/';
 
   constructor(private http: HttpClient) { }
@@ -33,5 +33,14 @@ export class AuthService {
     const body = { email, codigo };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(`${this.url}validate_email_em`, body, { headers });
+  }
+
+
+  setEmail(email: string) {
+    this.email = email;
+  }
+
+  getEmail(): string {
+    return this.email;
   }
 }
