@@ -83,7 +83,6 @@ export class PerfilOrientadorComponent {
             email: data.email,
             password: data.password,
           });
-          console.log(data);
         },
         (err) => {
           console.log(err);
@@ -104,7 +103,6 @@ export class PerfilOrientadorComponent {
     }
     this.orientadorService.updateOrientador(this.token, this.id, perfil).subscribe(
       (data) => {
-        console.log(data);
         location.reload();
       },
       (err) => {

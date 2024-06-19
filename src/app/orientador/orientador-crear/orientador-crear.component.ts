@@ -97,6 +97,7 @@ export class OrientadorCrearComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
+
   openModalCrearOrientador(): void {
     this.isEditing = false;
     this.modalCrearOrientador = true;
@@ -110,6 +111,7 @@ export class OrientadorCrearComponent implements OnInit {
     this.selectedOrientadorId = orientadorId;
     this.openModal(this.selectedOrientadorId);
   }
+  
   buscarOrientadores(): Orientador[] {
     return this.listaOrientador.filter(orientador =>
       orientador.nombre.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||

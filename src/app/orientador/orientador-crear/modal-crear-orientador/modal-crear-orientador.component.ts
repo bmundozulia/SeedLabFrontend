@@ -43,7 +43,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
 
   ) {
     this.orientadorId = data.orientadorId;
-    console.log(' en el modal:', this.orientadorId);
   }
 
   ngOnInit(): void {
@@ -90,8 +89,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
             estado: data.estado // Esto establece el valor del estado en el formulario
           });
           this.isActive = data.estado === 'Activo'; // Asegura que el estado booleano es correcto
-          console.log("Estado inicial:", this.isActive); // Verifica el estado inicial en la consola
-
           // Forzar cambio de detección de Angular
           setTimeout(() => {
             this.orientadorForm.get('estado')?.setValue(this.isActive);
@@ -123,7 +120,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
       this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
         data => {
           location.reload();
-          console.log(data);
         },
         error => {
           console.error("Error al actualizar el orientador:", error);

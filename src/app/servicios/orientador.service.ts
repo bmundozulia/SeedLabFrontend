@@ -36,16 +36,13 @@ export class OrientadorService {
   updateOrientador( access_token: any, orientadorId:number, orientador: Orientador):Observable<any>{
     const options={headers: this.CreacionHeaders(access_token)};
     const url = `${environment.apiUrl}orientador/editarOrientador/${orientadorId}`;
-    console.log(url);
-   return this.http.put(url, orientador, options);
-
+    return this.http.put(url, orientador, options);
     }
 
 
   getinformacionOrientador( access_token:any, orientadorId:number):Observable<any> {
     const options={headers: this.CreacionHeaders(access_token)};
     const url = `${environment.apiUrl}orientador/userProfileOrientador/${orientadorId}`;
-    console.log(url);
     return this.http.get(url, options);
   }
 
