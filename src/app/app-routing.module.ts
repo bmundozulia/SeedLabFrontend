@@ -79,7 +79,7 @@ const routes: Routes = [
   { path: 'add-aliados', component: AddAliadosComponent }, //de orientador
   { path: 'reportesOrientador', component: ReportesComponent },
   { path: 'rutas', component: RutasComponent },//de rutas
-  { path: 'cursoRutas', component: CursorutasComponent },//de curso rutas
+  { path: 'cursorutas', component: CursorutasComponent },//de curso rutas
   { path: 'ver-asesoria', component: VerAsesoriasComponent }, //de osesoria
   { path: 'perfil-orientador', component: PerfilOrientadorComponent}, //Perfil Orientador
   
