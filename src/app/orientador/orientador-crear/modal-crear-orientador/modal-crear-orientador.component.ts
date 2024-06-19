@@ -24,6 +24,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
   id: number | null = null;
   currentRolId: string | null = null;
   orientadorId: any;
+  hide = true;
 
   orientadorForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -55,7 +56,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
       this.orientadorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
     this.orientadorForm.get('password')?.updateValueAndValidity();
-     
+
   }
 
   get f() { return this.orientadorForm.controls; } //aquii
@@ -93,15 +94,15 @@ export class ModalCrearOrientadorComponent implements OnInit {
             email: data.email,
             password: '',
             estado: data.estado // Esto establece el valor del estado en el formulario
-          }); 
+          });
           this.isActive = data.estado === 'Activo'; // Asegura que el estado booleano es correcto
           console.log("Estado inicial:", this.isActive); // Verifica el estado inicial en la consola
 
           // Forzar cambio de detección de Angular
           setTimeout(() => {
             this.orientadorForm.get('estado')?.setValue(this.isActive);
-        });
-       },
+          });
+        },
         error => {
           console.log(error);
         }
