@@ -81,22 +81,22 @@
 
 /* Botón Aceptar */
 .btn-aceptar {
-  background-color: #4caf50; /* Verde */
+  background-color: lightskyblue; /* Verde */
   color: #ffffff;
 }
 
 .btn-aceptar:hover {
-  background-color: #45a049;
+  background-color: lightskyblue;
   transform: scale(1.05);
 }
 
 /* Botón Rechazar */
 .btn-rechazar {
-  background-color: #f44336; /* Rojo */
+  background-color: #979797; /* Rojo */
   color: #ffffff;
 }
 
 .btn-rechazar:hover {
-  background-color: #e53935;
+  background-color: #979797;
   transform: scale(1.05);
 }

@@ -5,8 +5,6 @@ import { DarAsesorModalComponent } from '../dar-asesor-modal/dar-asesor-modal.co
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { HeaderComponent } from '../../../header/header.component';
 import { Asesoria } from '../../../Modelos/asesoria.model';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-asesoria-aliado',
@@ -129,5 +127,17 @@ export class AsesoriaAliadoComponent implements OnInit {
   showAsignadas(): void {
     this.asesorias = this.asesoriasConAsesor;
     this.mensaje = this.asesorias.length === 0 ? "Aún no has asignado ninguna asesoría." : null;
+  }
+
+  filtrarAsesorias(): void {
+    const filtro = this.Nombre_sol?.trim().toLowerCase(); // Utiliza Nombre_sol
+    if (filtro) {
+      this.asesorias = this.asesorias.filter(asesoria =>
+        asesoria.nombre_sol.toLowerCase().includes(filtro) // Utiliza Nombre_sol
+      );
+    } else {
+      // Si el filtro está vacío, restaura las asesorías originales
+      this.separarAsesorias();
+    }
   }
 }
