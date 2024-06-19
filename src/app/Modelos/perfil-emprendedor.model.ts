@@ -10,7 +10,7 @@ export class PerfilEmprendedor {
     fecha_nac: string | null;
     direccion: string | null;
     id_tipo_documento: string | null;
-    estado: string | null;
+    estado: boolean;
     id_municipio: string | null;
 
     constructor(
@@ -24,7 +24,7 @@ export class PerfilEmprendedor {
         genero: string | null,
         fecha_nac: string | null,
         direccion: string | null,
-        estado: string | null,
+        estado: boolean,
         id_municipio: string | null,
     ) {
         this.documento = documento;
