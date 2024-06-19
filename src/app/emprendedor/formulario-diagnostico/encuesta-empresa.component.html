@@ -9,7 +9,7 @@
     <div class="flex-1 flex flex-col sm:flex-row justify-around text-center mx-2 sm:mx-4">
         <div *ngFor="let contenedor of [1, 2, 3, 4]; let i = index" class="contenedor mb-2 sm:mb-0"
             [class.active]="i === currentIndex">
-            <div class="step-number flex items-center justify-center w-8 h-8 border rounded-full mx-auto"
+            <div class="step-number flex items-center justify-center w-8 h-8 border rounded-full mx-auto text-base md:text-xl"
                 [ngClass]="{'text-blue-500 border-blue-500': i === currentIndex, 'text-gray-400 border-gray-400': i !== currentIndex}">
                 {{ i + 1 }}
             </div>
@@ -55,7 +55,7 @@
                     <!-- Pregunta 1 -->
                     <table class="min-w-full bg-white my-2">
                         <tbody>
-                            <tr class="grid md:table-row">
+                            <tr class="grid md:table-row  my-2 md:my-0">
                                 <td class="py-2 px-4 md:table-cell" colspan="2">
                                     <div class="flex my-1">
                                         <b>{{ preguntas[0].id }}. </b>
@@ -78,7 +78,7 @@
                         </tbody>
                     </table>
                     <!-- Pregunta 2 -->
-                    <table class="border my-4">
+                    <table class="lg:border my-4">
                         <thead>
                             <tr class="">
                                 <th class="px-4 py-2 xl:relative xl:bottom-6 xl:bg-white">
@@ -91,13 +91,13 @@
                         </thead>
                         <!-- Subpregunta 1 -->
                         <tbody class="">
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2 ">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2 ">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[0].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto ">
+                                <td class="block sm:table-cell my-2 md:my-0  md:py-2 px-4 w-full sm:w-auto ">
                                     <div
                                         class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta2.opcion"
@@ -122,11 +122,11 @@
                                 </td>
                             </tr>
                             <!-- Subpregunta 2 -->
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2">
                                     <h3>{{ preguntas[1].subPreguntas[1].texto }}</h3>
                                 </td>
-                                <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto">
+                                <td class="block sm:table-cell  md:my-0  md:py-2 px-4 w-full sm:w-auto">
                                     <div
                                         class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="3Select" :[(ngModel)]="respuesta3.opcion"
@@ -151,13 +151,13 @@
                                 </td>
                             </tr>
                             <!-- Subpregunta 3 -->
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[2].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell w-full sm:w-auto py-2 px-4">
+                                <td class="block sm:table-cell  md:py-2 w-full sm:w-auto px-4">
                                     <div
                                         class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta4.opcion"
@@ -182,13 +182,13 @@
                                 </td>
                             </tr>
                             <!-- Subpregunta 4 -->
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[3].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell w-full sm:w-auto py-2 px-4">
+                                <td class="block sm:table-cell w-full sm:w-auto md:py-2 px-4">
                                     <div
                                         class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta5.opcion"
@@ -213,13 +213,13 @@
                                 </td>
                             </tr>
                             <!-- Subpregunta 5 -->
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[4].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
+                                <td class="block sm:table-cell   w-full sm:w-auto md:py-2 px-4">
                                     <div
                                         class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta6.opcion"
@@ -249,7 +249,7 @@
                 <!-- Pregunta 3 -->
                 <table class="min-w-full bg-white ">
                     <tbody>
-                        <tr class="grid md:table-row">
+                        <tr class="grid md:table-row  my-2 md:my-0">
                             <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[2].id}}. </b>
@@ -266,14 +266,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 4 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[3].id}}. </b>
                                     <h3> {{preguntas[3].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4 md:table-cell">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta8.opcion"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -283,14 +283,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 5 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell" colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[4].id}}.</b>
                                     <h3>{{preguntas[4].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4 md:table-cell">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta9.opcion"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -301,14 +301,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 6 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell" colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[5].id}}</b>
                                     <h3>{{ preguntas[5].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4 md:table-cell">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta10.opcion"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -319,7 +319,7 @@
                             </td>
                         </tr>
                         <!-- Pregunta 7 -->
-                        <tr class="grid md:table-row">
+                        <tr class="grid md:table-row my-2 md:my-0">
                             <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[6].id}}</b>
@@ -338,14 +338,14 @@
                         </tr>
 
                         <!-- Pregunta 8 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell" colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[7].id}}.</b>
                                     <h3>{{preguntas[7].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4 md:table-cell">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta12.opcion"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -358,14 +358,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 9 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell" colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[8].id}}.</b>
                                     <h3>{{preguntas[8].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4 md:table-cell">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta13.opcion"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -375,8 +375,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 10 -->
-                        <tr class="grid md:table-row">
-                            <td class="my-2 cell md:table-cell" *ngIf="respuesta13.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 cell md:table-cell" *ngIf="respuesta13.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[9].id}}.</b>
@@ -390,8 +390,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 11 -->
-                        <tr class="grid md:table-row">
-                            <td class="my-2 cell md:table-cell" *ngIf="respuesta13.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 md:table-cell" *ngIf="respuesta13.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[10].id}}.</b>
@@ -404,14 +404,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 12 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell" colspan="2">
+                        <tr class="grid md:table-row  md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[11].id}}.</b>
                                     <h3>{{preguntas[11].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4">
                                 <select :[(ngModel)]="respuesta16.opcion"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -421,8 +421,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class="grid md:table-row">
-                            <td class="col-span-12 md:col-span-10  cell" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="col-span-12 md:col-span-10   md:table-cell" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[0].texto }}
@@ -435,8 +435,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="grid md:table-row">
-                            <td class="cell col-span-12 md:col-span-10" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="col-span-12 md:col-span-10   md:table-cell" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[1].texto }}</h3>
@@ -448,8 +448,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="grid md:table-row">
-                            <td class="cell col-span-12 md:col-span-10 " *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="col-span-12 md:col-span-10   md:table-cell" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[2].texto }}</h3>
@@ -461,8 +461,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr class="grid md:table-row">
-                            <td class="cell col-span-12 md:col-span-10 " *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="col-span-12 md:col-span-10   md:table-cell" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[3].texto }}</h3>
@@ -474,14 +474,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 13 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell" colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[12].id}}.</b>
                                     <h3>{{preguntas[12].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4">
                                 <select :[(ngModel)]="respuesta21.opcion"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -492,14 +492,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 14 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell" colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[13].id}}.</b>
                                     <h3>{{preguntas[13].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4">
                                 <select :[(ngModel)]="respuesta22.opcion"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -510,14 +510,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 15 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell" colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[14].id}}.</b>
                                     <h3>{{preguntas[14].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4">
                                 <select :[(ngModel)]="respuesta23.opcion"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -598,7 +598,7 @@
                         </tr>
                         <!-- Subpregunta 3 -->
                         <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[2].texto }}</h3>
                             </td>
                             <td class="py-2 px-4 md:table-cell">
@@ -613,7 +613,7 @@
                         </tr>
                         <!-- Subpregunta 4 -->
                         <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[3].texto }}</h3>
                             </td>
                             <td class="py-2 px-4 md:table-cell">
@@ -1391,21 +1391,21 @@
                 <table class="min-w-full bg-white ">
                     <tbody>
                         <!-- inicio de trl1 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[41].id}}.</b>
                                     <h3>{{preguntas[41].nombre}}</h3>
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>
                                     {{preguntas[41].subPreguntas[0].texto}}
                                 </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1414,13 +1414,13 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>
                                     {{preguntas[41].subPreguntas[1].texto}}
                                 </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1430,11 +1430,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1446,11 +1446,11 @@
                         <!-- fin trl1 -->
 
                         <!-- inicio de trl2 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[3].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1460,11 +1460,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[4].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1473,11 +1473,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[5].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1486,11 +1486,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[6].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1499,13 +1499,13 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>
                                     {{preguntas[41].subPreguntas[7].texto}}
                                 </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1517,12 +1517,12 @@
                         <!-- fin trl2 -->
 
                         <!-- inicio de trl3 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[8].texto}}
                                 </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1532,11 +1532,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[9].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1545,11 +1545,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md_table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[10].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1561,11 +1561,11 @@
                         </tr>
                         <!-- fin trl 3 -->
                         <!-- inicio de trl4 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[11].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1577,11 +1577,11 @@
                         </tr>
                         <!-- fin de trl4 -->
                         <!-- inicio de trl5 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[12].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1591,11 +1591,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[13].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1604,11 +1604,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[14].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1621,11 +1621,11 @@
                         <!-- fin de trl5 -->
 
                         <!-- inicio de trl6 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[15].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1635,11 +1635,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[16].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1649,11 +1649,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[17].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1665,11 +1665,11 @@
                         </tr>
                         <!-- fin de trl 6 -->
                         <!-- inicio de trl 7 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[18].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1678,11 +1678,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[19].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1691,11 +1691,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[20].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1707,11 +1707,11 @@
                         <!-- fin de trl7 -->
 
                         <!-- trl 8 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[21].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1720,11 +1720,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[22].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1733,11 +1733,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[22].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1749,11 +1749,11 @@
                         <!-- fin de trl8 -->
 
                         <!-- trl 9 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[23].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1762,11 +1762,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[24].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1775,11 +1775,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[25].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1788,11 +1788,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[26].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1801,11 +1801,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[27].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1814,11 +1814,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[28].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1827,11 +1827,11 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[29].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1843,14 +1843,14 @@
                         <!-- fin trl 9 -->
 
                         <!-- Pregunta 43  -->
-                        <tr>
-                            <td class="px-4 py-2" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="px-4 py-2 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[42].id}}.</b>
                                     <h3>{{preguntas[42].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="px-4 py-2 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1861,14 +1861,14 @@
                             </td>
                         </tr>
                         <!-- pregunta 44 -->
-                        <tr>
-                            <td class="px-4 py-2" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="px-4 py- md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[43].id}}.</b>
                                     <h3>{{preguntas[43].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="px-4 py-2 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1879,8 +1879,8 @@
                             </td>
                         </tr>
                         <!-- pregunta 45 -->
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 xl:w-96 cell" rowspan="8">
+                        <tr class="bg-gray-50 grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 xl:w-96 md:table-cell" rowspan="8">
                                 <div class="flex">
                                     <b>{{preguntas[44].id}}.</b>
                                     <h3>{{preguntas[44].nombre}}</h3>
@@ -1888,11 +1888,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[0].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1903,11 +1903,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[1].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1918,11 +1918,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1933,7 +1933,7 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr class="">
+                        <tr class="grid md:table-row  my-2 md:my-0">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[3].texto}}</h3>
                             </td>
@@ -1948,8 +1948,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 5 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[4].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
@@ -1963,11 +1963,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 6 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:tbale-cell">
                                 <h3>{{preguntas[44].subPreguntas[5].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1978,11 +1978,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 7 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[6].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4 ">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -1993,14 +1993,14 @@
                             </td>
                         </tr>
                         <!-- Pregunta 46 -->
-                        <tr>
-                            <td class="px-4 py-2" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="px-4 py-2 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[45].id}}.</b>
                                     <h3>{{preguntas[45].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="px-4 py-2 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -2011,8 +2011,8 @@
                         </tr>
 
                         <!-- Pregunta 47 -->
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 xl:w-96 cell" rowspan="10">
+                        <tr class="bg-gray-50 grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 xl:w-96 md:table-cell" rowspan="10">
                                 <div class="flex">
                                     <b>{{preguntas[46].id}}.</b>
                                     <h3>{{preguntas[46].nombre}}</h3>
@@ -2020,11 +2020,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[0].texto}} </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -2035,11 +2035,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[1].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -2050,11 +2050,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -2065,11 +2065,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table-cell">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[3].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4 md:table-cell">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -2080,11 +2080,11 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 5 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[4].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
@@ -2095,8 +2095,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 6 -->
-                        <tr class="grid md:table-row">
-                            <td class="py-2 px-4 md:table cell">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[5].texto}}</h3>
                             </td>
                             <td class="py-2 px-4 md:table-cell">
@@ -2107,10 +2107,10 @@
                                     <option value="tipo2">Medio</option>
                                     <option value="tipo3">No</option>
                                 </select>
-                            </td>no.. se supone
+                            </td> <!-- no.. se supone -->
                         </tr>
                         <!-- Subpregunta 7 -->
-                        <tr class="grid md:table-row">
+                        <tr class="grid md:table-row  my-2 md:my-0">
                             <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[6].texto}}</h3>
                             </td>
@@ -2125,7 +2125,7 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 8 -->
-                        <tr class="grid md:table-row">
+                        <tr class="grid md:table-row  my-2 md:my-0">
                             <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[7].texto}}</h3>
                             </td>
@@ -2140,7 +2140,7 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 9 -->
-                        <tr class="grid md:table-row">
+                        <tr class="grid md:table-row  my-2 md:my-0">
                             <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[8].texto}}</h3>
                             </td>
