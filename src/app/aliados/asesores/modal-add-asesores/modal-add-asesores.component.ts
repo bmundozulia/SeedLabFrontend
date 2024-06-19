@@ -7,6 +7,8 @@ import { AsesorService } from '../../../servicios/asesor.service';
 
 import { User } from '../../../Modelos/user.model';
 import { Asesor } from '../../../Modelos/asesor.model';
+import { AlertService } from '../../../servicios/alert.service';
+
 
 
 @Component({
@@ -15,11 +17,12 @@ import { Asesor } from '../../../Modelos/asesor.model';
   styleUrl: './modal-add-asesores.component.css',
   providers: [AsesorService, AliadoService]
 })
+
 export class ModalAddAsesoresComponent implements OnInit {
   @Input() isEditing: boolean;
   hide = true;
   boton = true;
-  isActive: boolean = false;
+  isActive: boolean = true;
   submitted: boolean = false;
   asesorId: any;
   user: User | null = null;
@@ -30,7 +33,7 @@ export class ModalAddAsesoresComponent implements OnInit {
   token: string | null = null;
   nombre: string | null = null;
   nombreAliado: string | null = null;
-  
+
   asesorForm = this.fb.group({
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
@@ -47,6 +50,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     private fb: FormBuilder,
     private asesorService: AsesorService,
     private aliadoService: AliadoService,
+    private alerService: AlertService,
 
   ) {
     this.asesorId = data.asesorId;
@@ -60,6 +64,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     if (this.asesorId != null) {
       this.isEditing = true;
       this.asesorForm.get('password')?.setValidators([Validators.minLength(8)]);
+      this.verEditar(); // Llama a verEditar si estás editando un asesor
     } else {
       this.asesorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
@@ -105,16 +110,23 @@ export class ModalAddAsesoresComponent implements OnInit {
             nombre: data.nombre,
             apellido: data.apellido,
             celular: data.celular,
-            aliado: data.auth?.id,
-            email: data.auth?.email,
+            aliado: data.id,
+            email: data.email,
             password: '',
-           // estado: data.auth?.estado,
+            //estado: data.auth?.estado,
+            estado: data.estado
           });
           this.isActive = data.estado === 'Activo';
-          //console.log(data);
+          console.log("estado inicial", this.isActive);
+
+          setTimeout(() => {
+            this.asesorForm.get('estado')?.setValue(this.isActive);
+          });
+
+          console.log("mirar", data);
         },
         error => {
-          console.log(error)
+          console.log(error);
           // console.log(this.asesorId);
         }
       )
@@ -136,27 +148,56 @@ export class ModalAddAsesoresComponent implements OnInit {
       estado: this.asesorForm.get('estado')?.value,
     };
     if (this.asesorId != null) {
-      this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
-        data => {
-          //console.log("aquibueno", data);
-          location.reload();
-        },
-        error => {
-          console.error('Error al actualizar el asesor:', error);
-        });
+      let confirmationText = this.isActive
+        ? "¿Estas seguro de guardar los cambios?"
+        : "¿Estas seguro de guardar los cambios?";
 
-    } else {
-      //console.log("asesor:", asesor);
+      this.alerService.alertaActivarDesactivar(confirmationText).then((result) => {
+        if (result.isConfirmed) {
+          this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
+            data => {
+              console.log(data);
+              location.reload();
+            },
+            error => {
+              console.error("Error al actualizar el orientador", error)
+            }
+          );
+        }
+      });
+      
+    }else{
       this.asesorService.createAsesor(this.token, asesor).subscribe(
         data => {
-          //console.log("siuuuuuuuuu");
-          // console.log(data);
           location.reload();
         },
         error => {
           console.error('Error al crear el asesor:', error);
         });
     }
+
+    // if (this.asesorId != null) {
+    //   this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
+    //     data => {
+    //       //console.log("aquibueno", data);
+    //       location.reload();
+    //     },
+    //     error => {
+    //       console.error('Error al actualizar el asesor:', error);
+    //     });
+
+    // } else {
+    //   //console.log("asesor:", asesor);
+    //   this.asesorService.createAsesor(this.token, asesor).subscribe(
+    //     data => {
+    //       //console.log("siuuuuuuuuu");
+    //       // console.log(data);
+    //       location.reload();
+    //     },
+    //     error => {
+    //       console.error('Error al crear el asesor:', error);
+    //     });
+    // }
   }
 
   cancelarModal() {
@@ -166,6 +207,8 @@ export class ModalAddAsesoresComponent implements OnInit {
   toggleActive() {
     this.isActive = !this.isActive;
     //this.asesorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
+    this.asesorForm.patchValue({ estado: this.isActive ? true : false });
+    console.log("Estado después de toggle:", this.isActive);
   }
 
   mostrarToggle(): void {
@@ -174,4 +217,6 @@ export class ModalAddAsesoresComponent implements OnInit {
     }
     this.boton = true;
   }
+
+
 }

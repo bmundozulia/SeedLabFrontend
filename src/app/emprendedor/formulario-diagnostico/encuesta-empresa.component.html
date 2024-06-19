@@ -1,69 +1,70 @@
 <app-header [title]="'Encuesta de maduracion'" [subtitle]="'Empresa blablablablabla'"></app-header>
 
 <!-- transicion basada en el estado -->
-<div class="w-full  flex items-center justify-center px-4">
-    <button class="" (click)="prev()">
+<div class="w-full flex items-center justify-center px-4">
+    <button class="mr-2 sm:mr-4" (click)="prev()">
         <fa-icon [icon]="faArrowLeft"
-            class="border-2 border-sky-500 font-bold text-sky-500 rounded-full px-2 py-1 text-xl right-5 top-1/2 transform -translate-y-1/2"></fa-icon>
+            class="border-2 border-sky-500 font-bold text-sky-500 rounded-full px-2 py-1 text-xl"></fa-icon>
     </button>
-    <div class="flex-1 flex justify-around text-center mx-4">
-        <div *ngFor="let contenedor of [1, 2, 3, 4]; let i = index" class="contenedor"
+    <div class="flex-1 flex flex-col sm:flex-row justify-around text-center mx-2 sm:mx-4">
+        <div *ngFor="let contenedor of [1, 2, 3, 4]; let i = index" class="contenedor mb-2 sm:mb-0"
             [class.active]="i === currentIndex">
-            <div class="step-number flex items-center justify-center w-8 h-8 border rounded-full mx-auto"
+            <div class="step-number flex items-center justify-center w-8 h-8 border rounded-full mx-auto text-base md:text-xl"
                 [ngClass]="{'text-blue-500 border-blue-500': i === currentIndex, 'text-gray-400 border-gray-400': i !== currentIndex}">
                 {{ i + 1 }}
             </div>
             <ng-container *ngIf="i === 0">
                 <h2 [ngClass]="{'text-sky-500': i === currentIndex, 'text-gray-400': i !== currentIndex}"
-                    class="whitespace-nowrap overflow-hidden font-bold mt-2" style="text-overflow: ellipsis;">
-                    Informacion operativa te...
+                    class=" text-base md:text-2xl  whitespace-nowrap  overflow-hidden font-bold mt-2 truncate">
+                    Información operativa te...
                 </h2>
             </ng-container>
             <ng-container *ngIf="i === 1">
                 <h2 [ngClass]="{'text-sky-500': i === currentIndex, 'text-gray-400': i !== currentIndex}"
-                    class="whitespace-nowrap overflow-hidden font-bold mt-2" style="text-overflow: ellipsis;">
-                    Informacion financiera
+                    class="text-base md:text-2xl whitespace-nowrap overflow-hidden font-bold mt-2 truncate">
+                    Información financiera
                 </h2>
             </ng-container>
             <ng-container *ngIf="i === 2">
                 <h2 [ngClass]="{'text-sky-500': i === currentIndex, 'text-gray-400': i !== currentIndex}"
-                    class="whitespace-nowrap overflow-hidden font-bold mt-2" style="text-overflow: ellipsis;">
-                    Informacion del mercado
+                    class=" text-base md:text-2xl whitespace-nowrap overflow-hidden font-bold mt-2 truncate">
+                    Información del mercado
                 </h2>
             </ng-container>
             <ng-container *ngIf="i === 3">
                 <h2 [ngClass]="{'text-sky-500': i === currentIndex, 'text-gray-400': i !== currentIndex}"
-                    class="whitespace-nowrap overflow-hidden font-bold mt-2" style="text-overflow: ellipsis;">
-                    Informacion operativa te...
+                    class="text-base md:text-2xl whitespace-nowrap overflow-hidden font-bold mt-2 truncate">
+                    Información operativa te...
                 </h2>
             </ng-container>
         </div>
     </div>
-    <button class="" (click)="next()">
+    <button class="ml-2 sm:ml-4" (click)="next()">
         <fa-icon [icon]="faArrowRight"
-            class="border-2 border-sky-500 font-bold text-sky-500 rounded-full px-2 py-1 text-xl right-5 top-1/2 transform -translate-y-1/2"></fa-icon>
+            class="border-2 border-sky-500 font-bold text-sky-500 rounded-full px-2 py-1 text-xl"></fa-icon>
     </button>
 </div>
 
+
 <div class="contenido mx-4 xl:mx-20 my-10 ">
     <p>
-        <!------------------------------------------------------------------------- Seccion 1 ------------------------------->
+        <!----------------------------------------------------------Seccion 1 ----------------------------------->
         <ng-container *ngIf="currentIndex === 0" class="">
             <div>
                 <div class="">
                     <!-- Pregunta 1 -->
                     <table class="min-w-full bg-white my-2">
                         <tbody>
-                            <tr class="">
-                                <td class="py-2 px-4 " colspan="2">
-                                    <div class="flex">
+                            <tr class="grid md:table-row  my-2 md:my-0">
+                                <td class="py-2 px-4 md:table-cell" colspan="2">
+                                    <div class="flex my-1">
                                         <b>{{ preguntas[0].id }}. </b>
                                         <h3> {{ preguntas[0].nombre }}.</h3>
                                     </div>
                                 </td>
-                                <td class="py-2 px-4">
+                                <td class="py-2 px-4 md:table-cell">
                                     <select :[(ngModel)]="respuesta1.opcion" required
-                                        class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                        class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                         <option value="" disabled selected hidden>Seleccione</option>
                                         <option value="1"> 1</option>
                                         <option value="2"> 2</option>
@@ -77,7 +78,7 @@
                         </tbody>
                     </table>
                     <!-- Pregunta 2 -->
-                    <table class="border my-4">
+                    <table class="lg:border my-4">
                         <thead>
                             <tr class="">
                                 <th class="px-4 py-2 xl:relative xl:bottom-6 xl:bg-white">
@@ -90,22 +91,23 @@
                         </thead>
                         <!-- Subpregunta 1 -->
                         <tbody class="">
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2 ">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2 ">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[0].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto ">
-                                    <div class="flex sm:flex-row   space-x-4 ">
+                                <td class="block sm:table-cell my-2 md:my-0  md:py-2 px-4 w-full sm:w-auto ">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta2.opcion"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
                                         <select id="2Select" :[(ngModel)]="respuesta2.texto_res"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
                                             *ngIf="respuesta2.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
@@ -120,20 +122,21 @@
                                 </td>
                             </tr>
                             <!-- Subpregunta 2 -->
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2">
                                     <h3>{{ preguntas[1].subPreguntas[1].texto }}</h3>
                                 </td>
-                                <td class="block sm:table-cell  py-2 px-4 w-full sm:w-auto">
-                                    <div class="flex sm:flex-row  space-x-4">
+                                <td class="block sm:table-cell  md:my-0  md:py-2 px-4 w-full sm:w-auto">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="3Select" :[(ngModel)]="respuesta3.opcion"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
                                         <select id="4Select" :[(ngModel)]="respuesta3.texto_res"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
                                             *ngIf="respuesta3.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
@@ -148,22 +151,23 @@
                                 </td>
                             </tr>
                             <!-- Subpregunta 3 -->
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[2].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row space-x-4">
+                                <td class="block sm:table-cell  md:py-2 w-full sm:w-auto px-4">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta4.opcion"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
                                         <select id="2Select" :[(ngModel)]="respuesta4.texto_res"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
                                             *ngIf="respuesta4.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
@@ -178,22 +182,23 @@
                                 </td>
                             </tr>
                             <!-- Subpregunta 4 -->
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[3].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row space-x-4">
+                                <td class="block sm:table-cell w-full sm:w-auto md:py-2 px-4">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta5.opcion"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
                                         <select id="2Select" :[(ngModel)]="respuesta5.texto_res"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
                                             *ngIf="respuesta5.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
@@ -208,22 +213,23 @@
                                 </td>
                             </tr>
                             <!-- Subpregunta 5 -->
-                            <tr class="block sm:table-row">
-                                <td class="block sm:table-cell w-full sm:w-auto px-4 py-2">
+                            <tr class="block sm:table-row my-2  md:my-0">
+                                <td class="block sm:table-cell w-full sm:w-auto px-4 md:py-2">
                                     <h3>
                                         {{ preguntas[1].subPreguntas[4].texto }}
                                     </h3>
                                 </td>
-                                <td class="block sm:table-cell   w-full sm:w-auto py-2 px-4">
-                                    <div class="flex sm:flex-row  space-x-4">
+                                <td class="block sm:table-cell   w-full sm:w-auto md:py-2 px-4">
+                                    <div
+                                        class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
                                         <select id="1Select" :[(ngModel)]="respuesta6.opcion"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                             <option value="" disabled selected hidden>Si / No</option>
                                             <option value="Si">Si</option>
                                             <option value="No">No</option>
                                         </select>
                                         <select id="2Select" :[(ngModel)]="respuesta6.texto_res"
-                                            class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
                                             *ngIf="respuesta6.opcion === 'Si'">
                                             <option value="" disabled selected hidden>¿Cuantos?</option>
                                             <option value="" disabled selected hidden>Seleccione</option>
@@ -243,16 +249,16 @@
                 <!-- Pregunta 3 -->
                 <table class="min-w-full bg-white ">
                     <tbody>
-                        <tr class="">
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[2].id}}. </b>
                                     <h3>{{preguntas[2].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta7.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="No">No</option>
@@ -260,16 +266,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 4 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[3].id}}. </b>
                                     <h3> {{preguntas[3].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta8.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="No">No</option>
@@ -277,16 +283,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 5 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[4].id}}.</b>
                                     <h3>{{preguntas[4].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta9.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="Medio">Medio</option>
@@ -295,16 +301,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 6 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[5].id}}</b>
                                     <h3>{{ preguntas[5].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta10.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="Medio">Medio</option>
@@ -313,16 +319,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 7 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[6].id}}</b>
                                     <h3>{{ preguntas[6].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta11.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="Medio">Medio</option>
@@ -332,16 +338,16 @@
                         </tr>
 
                         <!-- Pregunta 8 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[7].id}}.</b>
                                     <h3>{{preguntas[7].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta12.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="-1">
                                         < 1 año</option>
@@ -352,16 +358,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 9 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[8].id}}.</b>
                                     <h3>{{preguntas[8].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select :[(ngModel)]="respuesta13.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="No">No</option>
@@ -369,8 +375,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 10 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta13.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 cell md:table-cell" *ngIf="respuesta13.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[9].id}}.</b>
@@ -384,8 +390,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 11 -->
-                        <tr>
-                            <td class="cell"  *ngIf="respuesta13.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 md:table-cell" *ngIf="respuesta13.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[10].id}}.</b>
@@ -398,16 +404,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 12 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[11].id}}.</b>
                                     <h3>{{preguntas[11].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4">
                                 <select :[(ngModel)]="respuesta16.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="No">No</option>
@@ -415,8 +421,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="col-span-12 md:col-span-10   md:table-cell" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[0].texto }}
@@ -429,8 +435,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="col-span-12 md:col-span-10   md:table-cell" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[1].texto }}</h3>
@@ -442,8 +448,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="col-span-12 md:col-span-10   md:table-cell" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[2].texto }}</h3>
@@ -455,8 +461,8 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr>
-                            <td class="cell" *ngIf="respuesta16.opcion === 'Si'">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="col-span-12 md:col-span-10   md:table-cell" *ngIf="respuesta16.opcion === 'Si'">
                                 <div class="px-4">
                                     <div class="flex">
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[3].texto }}</h3>
@@ -468,16 +474,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 13 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[12].id}}.</b>
                                     <h3>{{preguntas[12].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4">
                                 <select :[(ngModel)]="respuesta21.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="Medio">Medio</option>
@@ -486,16 +492,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 14 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[13].id}}.</b>
                                     <h3>{{preguntas[13].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4">
                                 <select :[(ngModel)]="respuesta22.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="Medio">Medio</option>
@@ -504,16 +510,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 15 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[14].id}}.</b>
                                     <h3>{{preguntas[14].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4">
                                 <select :[(ngModel)]="respuesta23.opcion"
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
                                     <option value="Medio">Medio</option>
@@ -527,22 +533,22 @@
             </div>
         </ng-container>
 
-        <!--------------------------------------------------------- Seccion 2 -------------------------------------------------------------->
+        <!--------------------------------------------------------- Seccion 2 ------------------------------------------------------------------>
         <ng-container *ngIf="currentIndex === 1">
             <div>
                 <table class="border-collapse min-w-full bg-white my-2">
                     <tbody>
                         <!--Pregunta 16 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[15].id}}.</b>
                                     <h3> {{preguntas[15].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -552,8 +558,8 @@
                         </tr>
 
                         <!--Pregunta 17 -->
-                        <tr class="bg-gray-50  ">
-                            <td class="py-2 px-4 xl:w-96 cell" rowspan="9">
+                        <tr class="bg-gray-50  grid md:table-row">
+                            <td class="py-2 px-4 font-medium text-gray-900 md:table-cell" rowspan="9">
                                 <div class="flex">
                                     <b class=" m-0 p-0"> {{preguntas[16].id}}.</b>
                                     <h3 class=" m-0 p-0">{{preguntas[16].nombre}}</h3>
@@ -561,13 +567,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class=" ">
-                            <td class="px-4 py-2">
+                        <tr class="bg-white grid md:table-row">
+                            <td class="py-2 px-6 text-gray-700 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[0].texto }}</h3>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="py-2 px-6 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -576,13 +582,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class=" grid md:table-row">
+                            <td class="py-2 px-4 text-gray-700 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[1].texto }}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4  md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -591,13 +597,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[2].texto }}</h3>
                             </td>
-                            <td class="py-2 px-4 ">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -606,13 +612,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[3].texto }}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -621,13 +627,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 5 -->
-                        <tr class="">
-                            <td class="px-4 py-2">
+                        <tr class="grid md:table-row">
+                            <td class="px-4 py-2 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[4].texto }}</h3>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="px-4 py-2 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -636,13 +642,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 6 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[5].texto }}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -651,13 +657,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 7 -->
-                        <tr class="">
-                            <td class="px-4 py-2">
+                        <tr class="grid md:table-row">
+                            <td class="px-4 py-2 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[6].texto }}</h3>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="px-4 py-2 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -666,13 +672,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 8 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{ preguntas[16].subPreguntas[7].texto }}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -681,16 +687,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 18 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{ preguntas[17].id }}.</b>
                                     <h3 class="">{{ preguntas[17].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -699,8 +705,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 19 -->
-                        <tr class="bg-gray-50 ">
-                            <td class="py-2 px-4 xl:w-96 cell" rowspan="5">
+                        <tr class="bg-gray-50 grid md:table-row">
+                            <td class="py-2 px-4 xl:w-96 md:table-cell" rowspan="5">
                                 <div class="flex">
                                     <b> {{preguntas[18].id}}.</b>
                                     <h3>
@@ -710,13 +716,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr>
-                            <td class="px-4 py-2">
+                        <tr class="grid md:table-row">
+                            <td class="px-4 py-2 md:table-cell">
                                 <h3>{{ preguntas[18].subPreguntas[0].texto }}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -725,13 +731,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr>
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{ preguntas[18].subPreguntas[1].texto }}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -739,13 +745,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr>
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{ preguntas[18].subPreguntas[2].texto }}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
 
@@ -754,13 +760,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr>
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{ preguntas[18].subPreguntas[3].texto }}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo3">No</option>
@@ -768,8 +774,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 20 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{ preguntas[19].id }}.</b>
                                     <h3>
@@ -777,9 +783,9 @@
                                     </h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -788,8 +794,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 21 -->
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 xl:w-96 cell" rowspan="4">
+                        <tr class="bg-gray-50 grid md:table-row">
+                            <td class="py-2 px-4 xl:w-96 md:table-cell" rowspan="4">
                                 <div class="flex">
                                     <b> {{preguntas[20].id}}.</b>
                                     <h3>
@@ -799,13 +805,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr>
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3> {{preguntas[20].subPreguntas[0].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -814,13 +820,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr>
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[20].subPreguntas[1].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -829,13 +835,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr>
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[20].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -844,17 +850,17 @@
                             </td>
                         </tr>
                         <!-- Pregunta 22  -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[21].id}}.</b>
                                     <h3>{{preguntas[21].nombre}}</h3>
                                 </div>
 
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Tipo 1</option>
                                     <option value="tipo2">Tipo 2</option>
@@ -863,8 +869,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 23 -->
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 cell" rowspan="4">
+                        <tr class="bg-gray-50 grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" rowspan="4">
                                 <div class="flex">
                                     <b>{{preguntas[22].id}}.</b>
                                     <h3>
@@ -874,13 +880,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[22].subPreguntas[0].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -889,13 +895,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[22].subPreguntas[1].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -904,13 +910,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[22].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -919,8 +925,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 24 -->
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 cell" rowspan="5">
+                        <tr class="bg-gray-50 grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" rowspan="5">
                                 <div class="flex">
                                     <b>{{preguntas[23].id}}.</b>
                                     <h3>
@@ -930,13 +936,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[23].subPreguntas[0].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -945,13 +951,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="">
+                        <tr class="grid md:table-row">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[23].subPreguntas[1].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -960,13 +966,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[23].subPreguntas[2].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -975,13 +981,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[23].subPreguntas[3].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -990,16 +996,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 25 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[24].id}}.</b>
                                     <h3>{{preguntas[24].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1007,15 +1013,15 @@
                             </td>
                         </tr>
                         <!-- Pregunta 26 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex"><b>{{preguntas[25].id}}.</b>
                                     <h3>{{preguntas[25].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Ingreso supperior al egreso</option>
                                     <option value="tipo2">Ingreso superior al egreso</option>
@@ -1025,8 +1031,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 27 -->
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4  cell" rowspan="5">
+                        <tr class="bg-gray-50 grid md:table-row">
+                            <td class="py-2 px-4  md:table-cell" rowspan="5">
                                 <div class="flex">
                                     <b>{{preguntas[26].id}}.</b>
                                     <h3>{{preguntas[26].nombre}}</h3>
@@ -1034,13 +1040,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[26].subPreguntas[0].texto}} </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1048,13 +1054,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[26].subPreguntas[1].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo3">No</option>
@@ -1062,13 +1068,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[26].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4  md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo3">No</option>
@@ -1076,13 +1082,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[26].subPreguntas[3].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo3">No</option>
@@ -1090,16 +1096,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 28 -->
-                        <tr class="bg-grya-50">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="bg-grya-50 grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[27].id}}.</b>
                                     <h3>{{preguntas[27].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1107,22 +1113,22 @@
                             </td>
                         </tr>
                         <!-- Pregunta 29 -->
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 cell" rowspan="5">
+                        <tr class="bg-gray-50 grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" rowspan="5">
                                 <div class="flex">
-                                    <b>{{preguntas[28].id}} .</b>
+                                    <b>{{preguntas[28].id}}.</b>
                                     <h3>{{preguntas[28].nombre}}</h3>
                                 </div>
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4  md:table-cell">
                                 <h3>{{preguntas[28].subPreguntas[0].texto}} </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4  md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1130,13 +1136,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[28].subPreguntas[1].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4  md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo3">No</option>
@@ -1144,13 +1150,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[28].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4  md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo3">No</option>
@@ -1158,13 +1164,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[28].subPreguntas[3].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo3">No</option>
@@ -1176,22 +1182,22 @@
             </div>
         </ng-container>
 
-        <!------------------------------------------------------- Seccion 3 ------------------------------------------------------------>
+        <!---------------------------------------------------------Seccion 3 ------------------------------------------------------------------>
         <ng-container *ngIf="currentIndex === 2">
             <div class="">
                 <table class="min-w-full bg-white">
                     <tbody>
                         <!-- Pregunta 30 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[29].id}}. </b>
                                     <h3> {{preguntas[29].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1200,8 +1206,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 31 -->
-                        <tr>
-                            <td class="cell">
+                        <tr class="grid md:table-row">
+                            <td class="md:table-cell">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[30].id}}.</b>
@@ -1213,16 +1219,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 32 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[31].id}}. </b>
                                     <h3> {{preguntas[31].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1231,8 +1237,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 33 -->
-                        <tr>
-                            <td class="cell">
+                        <tr class="grid md:table-row">
+                            <td class="md:table-cell">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[32].id}}.</b>
@@ -1244,17 +1250,17 @@
                             </td>
                         </tr>
                         <!-- Pregunta 34 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[33].id}}.</b>
                                     <h3> {{preguntas[33].nombre}}
                                     </h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1263,8 +1269,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 35 -->
-                        <tr>
-                            <td class="cell">
+                        <tr class="grid md:table-row">
+                            <td class="md:table-cell">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[34].id}}.</b>
@@ -1276,8 +1282,8 @@
                             </td>
                         </tr>
                         <!-- Pregunta 36 -->
-                        <tr>
-                            <td class="cell">
+                        <tr class="grid md:table-row">
+                            <td class="md:table-cell">
                                 <div class="px-4">
                                     <div class="flex">
                                         <b>{{preguntas[35].id}}.</b>
@@ -1289,16 +1295,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 37 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[36].id}}.</b>
                                     <h3>{{preguntas[36].nombre }}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1307,16 +1313,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 38 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[37].id}}.</b>
                                     <h3>{{preguntas[37].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4 ">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo2">Si</option>
                                     <option value="tipo3">No</option>
@@ -1324,16 +1330,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 39 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[38].id}}.</b>
                                     <h3>{{preguntas[38].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo2">Si</option>
                                     <option value="tipo3">No</option>
@@ -1341,16 +1347,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 40 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[39].id}}.</b>
                                     <h3>{{preguntas[39].nombre }}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo2">Si</option>
                                     <option value="tipo3">No</option>
@@ -1358,16 +1364,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 41 -->
-                        <tr>
-                            <td class="py-2 px-4 " colspan="2">
+                        <tr class="grid md:table-row">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[40].id}}.</b>
                                     <h3>{{preguntas[40].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1385,38 +1391,38 @@
                 <table class="min-w-full bg-white ">
                     <tbody>
                         <!-- inicio de trl1 -->
-                        <tr>
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[41].id}}.</b>
                                     <h3>{{preguntas[41].nombre}}</h3>
                                 </div>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>
                                     {{preguntas[41].subPreguntas[0].texto}}
                                 </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>
                                     {{preguntas[41].subPreguntas[1].texto}}
                                 </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1424,13 +1430,13 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1440,13 +1446,13 @@
                         <!-- fin trl1 -->
 
                         <!-- inicio de trl2 -->
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[3].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1454,54 +1460,54 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[4].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[5].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[6].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>
                                     {{preguntas[41].subPreguntas[7].texto}}
                                 </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1511,14 +1517,14 @@
                         <!-- fin trl2 -->
 
                         <!-- inicio de trl3 -->
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[8].texto}}
                                 </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1526,26 +1532,26 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[9].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md_table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[10].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1555,13 +1561,13 @@
                         </tr>
                         <!-- fin trl 3 -->
                         <!-- inicio de trl4 -->
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[11].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1571,13 +1577,13 @@
                         </tr>
                         <!-- fin de trl4 -->
                         <!-- inicio de trl5 -->
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[12].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1585,26 +1591,26 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[13].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[14].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1615,13 +1621,13 @@
                         <!-- fin de trl5 -->
 
                         <!-- inicio de trl6 -->
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[15].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1629,13 +1635,13 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[16].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1643,13 +1649,13 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[17].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1659,39 +1665,39 @@
                         </tr>
                         <!-- fin de trl 6 -->
                         <!-- inicio de trl 7 -->
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[18].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[19].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[20].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1701,39 +1707,39 @@
                         <!-- fin de trl7 -->
 
                         <!-- trl 8 -->
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[21].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[22].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[22].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1743,91 +1749,91 @@
                         <!-- fin de trl8 -->
 
                         <!-- trl 9 -->
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[23].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[24].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[25].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[26].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[27].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[28].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td class="py-2 px-4" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell" colspan="2">
                                 <h3>{{preguntas[41].subPreguntas[29].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1837,16 +1843,16 @@
                         <!-- fin trl 9 -->
 
                         <!-- Pregunta 43  -->
-                        <tr>
-                            <td class="px-4 py-2" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="px-4 py-2 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[42].id}}.</b>
                                     <h3>{{preguntas[42].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="px-4 py-2 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1855,16 +1861,16 @@
                             </td>
                         </tr>
                         <!-- pregunta 44 -->
-                        <tr>
-                            <td class="px-4 py-2" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="px-4 py- md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[43].id}}.</b>
                                     <h3>{{preguntas[43].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="px-4 py-2 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -1873,8 +1879,8 @@
                             </td>
                         </tr>
                         <!-- pregunta 45 -->
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 xl:w-96 cell" rowspan="8">
+                        <tr class="bg-gray-50 grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 xl:w-96 md:table-cell" rowspan="8">
                                 <div class="flex">
                                     <b>{{preguntas[44].id}}.</b>
                                     <h3>{{preguntas[44].nombre}}</h3>
@@ -1882,13 +1888,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[0].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1897,13 +1903,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[1].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1912,13 +1918,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1927,13 +1933,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr class="">
+                        <tr class="grid md:table-row  my-2 md:my-0">
                             <td class="py-2 px-4">
                                 <h3>{{preguntas[44].subPreguntas[3].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1942,13 +1948,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 5 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[4].texto}}</h3>
                             </td>
                             <td class="py-2 px-4">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1957,13 +1963,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 6 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:tbale-cell">
                                 <h3>{{preguntas[44].subPreguntas[5].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1972,13 +1978,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 7 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[44].subPreguntas[6].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4 ">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -1987,16 +1993,16 @@
                             </td>
                         </tr>
                         <!-- Pregunta 46 -->
-                        <tr>
-                            <td class="px-4 py-2" colspan="2">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="px-4 py-2 md:table-cell" colspan="2">
                                 <div class="flex">
                                     <b>{{preguntas[45].id}}.</b>
                                     <h3>{{preguntas[45].nombre}}</h3>
                                 </div>
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="px-4 py-2 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">No</option>
@@ -2005,8 +2011,8 @@
                         </tr>
 
                         <!-- Pregunta 47 -->
-                        <tr class="bg-gray-50">
-                            <td class="py-2 px-4 xl:w-96 cell" rowspan="10">
+                        <tr class="bg-gray-50 grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 xl:w-96 md:table-cell" rowspan="10">
                                 <div class="flex">
                                     <b>{{preguntas[46].id}}.</b>
                                     <h3>{{preguntas[46].nombre}}</h3>
@@ -2014,13 +2020,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 1 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[0].texto}} </h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2029,13 +2035,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 2 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[1].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2044,13 +2050,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 3 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[2].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2059,13 +2065,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 4 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[3].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="md:py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2074,13 +2080,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 5 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[4].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2089,28 +2095,28 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 6 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[5].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
                                     <option value="tipo3">No</option>
                                 </select>
-                            </td>no.. se supone
+                            </td> <!-- no.. se supone -->
                         </tr>
                         <!-- Subpregunta 7 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[6].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2119,13 +2125,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 8 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[7].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
@@ -2134,13 +2140,13 @@
                             </td>
                         </tr>
                         <!-- Subpregunta 9 -->
-                        <tr class="">
-                            <td class="py-2 px-4">
+                        <tr class="grid md:table-row  my-2 md:my-0">
+                            <td class="py-2 px-4 md:table-cell">
                                 <h3>{{preguntas[46].subPreguntas[8].texto}}</h3>
                             </td>
-                            <td class="py-2 px-4">
+                            <td class="py-2 px-4 md:table-cell">
                                 <select
-                                    class="w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                    class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="tipo1">Si</option>
                                     <option value="tipo2">Medio</option>
