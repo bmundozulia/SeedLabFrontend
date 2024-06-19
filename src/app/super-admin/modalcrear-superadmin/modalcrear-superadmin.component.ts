@@ -5,6 +5,7 @@ import { Superadmin } from '../../Modelos/superadmin.model';
 import { User } from '../../Modelos/user.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AlertService } from '../../servicios/alert.service';
 
 @Component({
   selector: 'app-modalcrear-superadmin',
@@ -36,6 +37,7 @@ export class ModalcrearSuperadminComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private router: Router,
+    private alertService: AlertService,
     private superadminService: SuperadminService) {
     this.adminId = data.adminId;
   }
@@ -103,24 +105,53 @@ export class ModalcrearSuperadminComponent implements OnInit {
     };
     /* Actualiza superadmin */
     if (this.adminId != null) {
-      this.superadminService.updateAdmin(superadmin, this.token, this.adminId).subscribe(
-        data => {
-          location.reload();
-        },
-        error => {
-          console.error(error);
+      let confirmationText = this.isActive
+      ? "¿Estas seguro de guardar los cambios"
+      : "¿Estas seguro de guardar los cambios?";
+
+        this.alertService.alertaActivarDesactivar(confirmationText).then((result)=>{
+          if (result.isConfirmed) {
+            this.superadminService.updateAdmin(superadmin,this.token,this.adminId).subscribe(
+              data=> {
+                location.reload();
+                console.log(data);
+              },
+              error => {
+                console.error("Error al actualizar el superadmin",error);
+              }
+            )
+          }
         });
       /* Actualiza superadmin */
     } else {
       this.superadminService.createSuperadmin(this.token, superadmin).subscribe(
         data => {
-          console.log("sin funciona el superadmin");
-          location.reload()
+          location.reload();
         },
         error => {
-          console.error('Error al crear el superadmin:', error);
+          console.error("Error al crear el orientador",error);
         });
     }
+    // if (this.adminId != null) {
+    //   this.superadminService.updateAdmin(superadmin, this.token, this.adminId).subscribe(
+    //     data => {
+    //       //console.log("SIUUUU", data);
+    //       location.reload();
+    //     },
+    //     error => {
+    //       console.error(error);
+    //     });
+    // } else {
+    //   this.superadminService.createSuperadmin(this.token, superadmin).subscribe(
+    //     data => {
+    //       console.log("sin funciona el superadmin");
+    //       location.reload()
+    //     },
+    //     error => {
+    //       console.error('Error al crear el superadmin:', error);
+    //     });
+    // }
+
   }
 
   /* Cambia el estado del toggle*/
