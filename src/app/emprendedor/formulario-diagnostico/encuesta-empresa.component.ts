@@ -349,38 +349,42 @@ export class EncuestaEmpresaComponent {
     const payload = { respuestas: listaRespuestas, id_empresa: id_empresa };
     let respCounter = 0;
 
-    for (let i = 16; i < 14; i++) {
-      listaRespuestas[i].id_pregunta = i + 1;
-      listaRespuestas[i].id_empresa = id_empresa;
+    for (let i = 15; i < 30; i++) {
+      debugger
+      listaRespuestas[respCounter].id_pregunta = i + 1;
+      //listaRespuestas[respCounter].id_empresa = id_empresa;
+      listaRespuestas[respCounter].id_subpregunta = null;
       const currentPregunta = PREGUNTAS[i];
-
-      if (currentPregunta.id === 25) {
-        for (let j = 0; j < currentPregunta.subPreguntas.length - 1; j++) {
-          //debugger;
-          if (listaRespuestas[respCounter + j].opcion !== 'Si') {
-            listaRespuestas[respCounter + j].texto_res = '0';
+      
+      if (currentPregunta.id === 16 || currentPregunta.id === 18) {
+        if(listaRespuestas[respCounter].opcion === 'Si'){
+          const nextPregunta = PREGUNTAS[i + 1];
+          for (let j = 0; j < nextPregunta.subPreguntas.length; j++) {
+            //debugger;
+            listaRespuestas[respCounter + 1 + j].id_pregunta = i;
+            listaRespuestas[respCounter + 1 + j].id_subpregunta = j + 11;
+            //listaRespuestas[respCounter + j].id_empresa = id_empresa;
           }
-          listaRespuestas[respCounter + j].id_pregunta = i + 1;
-          listaRespuestas[respCounter + j].id_subpregunta = j + 1;
-          //listaRespuestas[respCounter + j].id_empresa = id_empresa;
+
+          respCounter += nextPregunta.subPreguntas.length - 1;
         }
-        respCounter += currentPregunta.subPreguntas.length - 1;
+      }
 
         if (currentPregunta.isText) {
-          if (!listaRespuestas[i].texto_res || listaRespuestas[i].texto_res === '') {
+          if (!listaRespuestas[respCounter].texto_res || listaRespuestas[respCounter].texto_res === '') {
             this.alertService.errorAlert('Error', 'Deben llenar los campos');
             isValidForm = false;
             return;
           }
         } else {
-          if (!listaRespuestas[i].opcion || listaRespuestas[i].opcion === '') {
+          if (!listaRespuestas[respCounter].opcion || listaRespuestas[respCounter].opcion === '') {
             this.alertService.errorAlert('Error', 'Deben llenar los campos');
             isValidForm = false;
             return;
           }
         }
         if (currentPregunta.isAffirmativeQuestion) {
-          if (listaRespuestas[i].opcion === 'No') {
+          if (listaRespuestas[respCounter].opcion === 'No') {
             i += currentPregunta.subPreguntas.length;
             continue;
           }
@@ -390,8 +394,8 @@ export class EncuestaEmpresaComponent {
         }
         //listaRespuestas[i].valor = 3;
         console.log(i);
-        console.log('fuera del ciclo', listaRespuestas);
       }
+      console.log('fuera del ciclo', listaRespuestas);
       if (!isValidForm) {
         return
       } this.respuestasService.saveAnswers(this.token, payload).subscribe(
@@ -405,7 +409,11 @@ export class EncuestaEmpresaComponent {
 
     }
 
-  }
+    /*enviarRespuestasJson(){
+      this.onSubmitSeccion1();
+      this.onSubmitSeccion2();
+      const payload = {respuestas:this.listaRespuestas, id_empresa:this.id_empresa}
+    }*/
 
 
   loadNextSection(): void {
