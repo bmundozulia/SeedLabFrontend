@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { faPenToSquare, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';

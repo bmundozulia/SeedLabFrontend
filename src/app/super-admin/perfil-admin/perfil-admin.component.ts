@@ -37,7 +37,8 @@ export class PerfilAdminComponent {
   constructor(
     private superadminService: SuperadminService,
     private fb: FormBuilder,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router,
   ) { }
 
   /* Inicializa con esas funciones al cargar la pagina */
@@ -57,9 +58,12 @@ export class PerfilAdminComponent {
         this.id = this.user.id;
       }
     }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
+    }
   }
 
-  /* Trae la informacion del admin */
+   /* Trae los datos del admin para poder editarlo en el input, de acuerdo al id del usuario logueado */
   verEditar(): void {
     if (this.token) {
       this.superadminService.getInfoAdmin(this.token, this.id).subscribe(

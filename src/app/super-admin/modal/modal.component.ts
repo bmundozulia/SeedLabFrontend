@@ -6,6 +6,7 @@ import { SwitchService } from '../../servicios/switch.service'
 import { Ruta } from '../../Modelos/ruta.modelo';
 import { User } from '../../Modelos/user.model';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -32,6 +33,7 @@ export class ModalComponent implements OnInit {
     private rutaService: RutaService,
     private fb: FormBuilder,
     private datePipe: DatePipe,
+    private router: Router,
   ) {
     this.createRutaForm = this.fb.group({
       nombre: [''],
@@ -49,6 +51,9 @@ export class ModalComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 

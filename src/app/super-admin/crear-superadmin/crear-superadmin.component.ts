@@ -5,7 +5,7 @@ import { SuperadminService } from '../../servicios/superadmin.service';
 import { Superadmin } from '../../Modelos/superadmin.model';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalcrearSuperadminComponent } from '../modalcrear-superadmin/modalcrear-superadmin.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-crear-superadmin',
   templateUrl: './crear-superadmin.component.html',
@@ -30,6 +30,7 @@ export class CrearSuperadminComponent implements OnInit {
 
   constructor(private superAdminService: SuperadminService,
     public dialog: MatDialog,
+    private router: Router,
   ) { }
 
   /* Inicializa con esas funciones al cargar la pagina */
@@ -42,6 +43,9 @@ export class CrearSuperadminComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 

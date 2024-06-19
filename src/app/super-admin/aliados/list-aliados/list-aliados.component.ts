@@ -3,6 +3,7 @@ import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-i
 import { AliadoService } from '../../../servicios/aliado.service';
 import { Aliado } from '../../../Modelos/aliado.model';
 import { User } from '../../../Modelos/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-aliados',
@@ -31,6 +32,7 @@ export class ListAliadosComponent implements OnInit {
 
   constructor(
     private aliadoService: AliadoService,
+    private router: Router,
   ) { }
 
   /* Inicializa con esas funciones al cargar la pagina */
@@ -51,6 +53,9 @@ export class ListAliadosComponent implements OnInit {
       //   this.currentRolId = this.user.id_rol;
       //   console.log(this.currentRolId);
       // }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 

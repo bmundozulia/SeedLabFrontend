@@ -24,6 +24,7 @@ export class ListRutasComponent implements OnInit {
 
   constructor(
     private rutaService: RutaService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +47,9 @@ export class ListRutasComponent implements OnInit {
       //   this.user = identity;
       //   this.currentRolId = this.user.id_rol?.toString();
       // }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 

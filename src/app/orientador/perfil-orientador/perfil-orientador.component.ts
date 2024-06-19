@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { AlertService } from '../../servicios/alert.service';
 import { OrientadorService } from '../../servicios/orientador.service';
-
 import { Orientador } from '../../Modelos/orientador.model';
 import { User } from '../../Modelos/user.model';
-
 // iconos
 import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -51,11 +48,13 @@ export class PerfilOrientadorComponent {
     private alertService: AlertService
   ) { }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
     this.verEditar();
   }
 
+  /* Valida el token del login, se usa del localstorage el id del usuario logueado */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
@@ -63,11 +62,8 @@ export class PerfilOrientadorComponent {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        //console.log(identity);
         this.user = identity;
         this.id = this.user.id;
-        this.currentRolId = this.user.id_rol?.toString();
-        //console.log(this.currentRolId);
       }
     }
     if (!this.token) {
@@ -75,6 +71,7 @@ export class PerfilOrientadorComponent {
     }
   }
 
+  /* Trae los datos del orientador para poder editarlo en le input, de acuerdo al id del usuario logueado */
   verEditar(): void {
     if (this.token) {
       this.orientadorService.getinformacionOrientador(this.token, this.id).subscribe(
@@ -95,6 +92,7 @@ export class PerfilOrientadorComponent {
     }
   }
 
+  /* Actualiza la informacion del orientador */
   updateOrientador(): void {
     const perfil: Orientador = {
       nombre: this.perfilorientadorForm.get('nombre')?.value,
@@ -115,7 +113,7 @@ export class PerfilOrientadorComponent {
     )
   }
 
-
+  /* Validaciones la contraseña */
   passwordValidator(control: AbstractControl) {
     const value = control.value;
     const hasUpperCase = /[A-Z]+/.test(value);
@@ -128,6 +126,7 @@ export class PerfilOrientadorComponent {
     }
   }
 
+  /* Bloqueo de inputs */
   toggleInputsLock(): void {
     this.blockedInputs = !this.blockedInputs;
     const fieldsToToggle = ['nombre', 'apellido', 'celular', 'email', 'email', 'password'];
@@ -141,11 +140,12 @@ export class PerfilOrientadorComponent {
     })
   }
 
-  // Restaura los datos originales
+ /* Restaura los datos originales */
   onCancel(): void {
     this.verEditar();
   }
 
+  /* Muesta el boton de guardar cambios */
   mostrarGuardarCambios(): void {
     this.boton = false;
   }

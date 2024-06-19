@@ -4,7 +4,7 @@ import { SuperadminService } from '../../servicios/superadmin.service';
 import { Superadmin } from '../../Modelos/superadmin.model';
 import { User } from '../../Modelos/user.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modalcrear-superadmin',
@@ -35,6 +35,7 @@ export class ModalcrearSuperadminComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ModalcrearSuperadminComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
+    private router: Router,
     private superadminService: SuperadminService) {
     this.adminId = data.adminId;
   }
@@ -60,6 +61,9 @@ export class ModalcrearSuperadminComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 
