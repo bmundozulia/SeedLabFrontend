@@ -1,9 +1,7 @@
 import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 import { AsesoriaService } from '../../../servicios/asesoria.service';
-
 import { AsesorDisponible } from '../../../Modelos/AsesorDisponible.model';
 
 @Component({
@@ -31,6 +29,8 @@ export class DarAsesorModalComponent implements OnInit {
     });
   }
 
+  
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit() {
     this.validateToken();
     console.log('Datos de la asesoría recibidos en el modal:', this.data.asesoria);
@@ -42,6 +42,9 @@ export class DarAsesorModalComponent implements OnInit {
     }
   }
 
+
+  
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
@@ -49,10 +52,7 @@ export class DarAsesorModalComponent implements OnInit {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
         this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.user);
       }
     }
   }

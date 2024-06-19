@@ -1,10 +1,8 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
 import { AliadoService } from '../../../servicios/aliado.service';
 import { AsesorService } from '../../../servicios/asesor.service';
-
 import { User } from '../../../Modelos/user.model';
 import { Asesor } from '../../../Modelos/asesor.model';
 import { AlertService } from '../../../servicios/alert.service';
@@ -54,17 +52,17 @@ export class ModalAddAsesoresComponent implements OnInit {
 
   ) {
     this.asesorId = data.asesorId;
-    console.log(' en el modal:', this.asesorId);
   }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
     this.verEditar();
-    //para ver si lo estan editando salga la palabra editar
+    /*para ver si lo estan editando salga la palabra editar */
     if (this.asesorId != null) {
       this.isEditing = true;
       this.asesorForm.get('password')?.setValidators([Validators.minLength(8)]);
-      this.verEditar(); // Llama a verEditar si estás editando un asesor
+      this.verEditar(); /* Llama a verEditar si estás editando un asesor */
     } else {
       this.asesorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
@@ -74,21 +72,17 @@ export class ModalAddAsesoresComponent implements OnInit {
 
   get f() { return this.asesorForm.controls; } //aquii
 
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      //console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        //console.log(identity);
         this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        this.estado = this.user.estado;
         this.id = this.user.id;
         this.nombreAliado = this.user.nombre;
-        console.log("this", identity);
 
         if (this.user && this.user.nombre) {
           this.nombreAliado = this.user.nombre;
@@ -102,6 +96,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     }
   }
 
+  /* Trae la informacion del asesor cuando el asesorId no sea nulo */
   verEditar(): void {
     if (this.asesorId != null) {
       this.aliadoService.getAsesorAliado(this.token, this.asesorId).subscribe(
@@ -113,26 +108,22 @@ export class ModalAddAsesoresComponent implements OnInit {
             aliado: data.id,
             email: data.email,
             password: '',
-            //estado: data.auth?.estado,
             estado: data.estado
           });
           this.isActive = data.estado === 'Activo';
-          console.log("estado inicial", this.isActive);
 
           setTimeout(() => {
             this.asesorForm.get('estado')?.setValue(this.isActive);
           });
-
-          console.log("mirar", data);
         },
         error => {
           console.log(error);
-          // console.log(this.asesorId);
         }
       )
     }
   }
 
+  /* Crear asesor o actualiza dependendiendo del asesorId */
   addAsesor(): void {
     this.submitted = true;
     if (this.asesorForm.invalid) {
@@ -147,16 +138,15 @@ export class ModalAddAsesoresComponent implements OnInit {
       password: this.asesorForm.get('password')?.value,
       estado: this.asesorForm.get('estado')?.value,
     };
+    /* Actualiza superadmin */
     if (this.asesorId != null) {
       let confirmationText = this.isActive
         ? "¿Estas seguro de guardar los cambios?"
         : "¿Estas seguro de guardar los cambios?";
-
       this.alerService.alertaActivarDesactivar(confirmationText).then((result) => {
         if (result.isConfirmed) {
           this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
             data => {
-              console.log(data);
               location.reload();
             },
             error => {
@@ -165,7 +155,7 @@ export class ModalAddAsesoresComponent implements OnInit {
           );
         }
       });
-      
+    /* Crea superadmin */
     }else{
       this.asesorService.createAsesor(this.token, asesor).subscribe(
         data => {
@@ -175,42 +165,21 @@ export class ModalAddAsesoresComponent implements OnInit {
           console.error('Error al crear el asesor:', error);
         });
     }
-
-    // if (this.asesorId != null) {
-    //   this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
-    //     data => {
-    //       //console.log("aquibueno", data);
-    //       location.reload();
-    //     },
-    //     error => {
-    //       console.error('Error al actualizar el asesor:', error);
-    //     });
-
-    // } else {
-    //   //console.log("asesor:", asesor);
-    //   this.asesorService.createAsesor(this.token, asesor).subscribe(
-    //     data => {
-    //       //console.log("siuuuuuuuuu");
-    //       // console.log(data);
-    //       location.reload();
-    //     },
-    //     error => {
-    //       console.error('Error al crear el asesor:', error);
-    //     });
-    // }
   }
 
+  /* Cerrar el modal */
   cancelarModal() {
     this.dialogRef.close();
   }
 
+  /* Cambia el estado del toggle*/
   toggleActive() {
     this.isActive = !this.isActive;
     //this.asesorForm.patchValue({ estado: this.isActive ? 'Activo' : 'Inactivo' });
     this.asesorForm.patchValue({ estado: this.isActive ? true : false });
-    console.log("Estado después de toggle:", this.isActive);
   }
 
+  /* Muestra el toggle del estado dependiendo del asesorId que no sea nulo*/
   mostrarToggle(): void {
     if (this.asesorId != null) {
       this.boton = false;

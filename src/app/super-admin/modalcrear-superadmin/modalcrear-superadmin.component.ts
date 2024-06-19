@@ -57,7 +57,7 @@ export class ModalcrearSuperadminComponent implements OnInit {
     this.superadminForm.get('password')?.updateValueAndValidity();
   }
 
-  get f() { return this.superadminForm.controls; } //lo de las validaciones
+  get f() { return this.superadminForm.controls; } /* Validaciones */
 
   /* Valida el token del login */
   validateToken(): void {
@@ -122,36 +122,16 @@ export class ModalcrearSuperadminComponent implements OnInit {
             )
           }
         });
-      /* Actualiza superadmin */
+      /* Crea superadmin */
     } else {
       this.superadminService.createSuperadmin(this.token, superadmin).subscribe(
         data => {
           location.reload();
         },
         error => {
-          console.error("Error al crear el orientador",error);
+          console.error('Error al crear el superadmin:', error);
         });
     }
-    // if (this.adminId != null) {
-    //   this.superadminService.updateAdmin(superadmin, this.token, this.adminId).subscribe(
-    //     data => {
-    //       //console.log("SIUUUU", data);
-    //       location.reload();
-    //     },
-    //     error => {
-    //       console.error(error);
-    //     });
-    // } else {
-    //   this.superadminService.createSuperadmin(this.token, superadmin).subscribe(
-    //     data => {
-    //       console.log("sin funciona el superadmin");
-    //       location.reload()
-    //     },
-    //     error => {
-    //       console.error('Error al crear el superadmin:', error);
-    //     });
-    // }
-
   }
 
   /* Cambia el estado del toggle*/

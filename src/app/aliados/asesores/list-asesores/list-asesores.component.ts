@@ -36,39 +36,39 @@ export class ListAsesoresComponent implements OnInit {
   constructor(
     private asesorService: AsesorService,
     public dialog: MatDialog,
-    private route: Router,
+    private router: Router,
     private aliadoService: AliadoService
   ) { }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
     this.cargarAsesores();
   }
 
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
         this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        this.estado = this.user.estado;
         this.id = this.user.id;
-        console.log(this.id);
       }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 
+  /* Funcion para mostrar las listas de los asesores y con el estado activo*/
   cargarAsesores() {
     if (this.token) {
       this.aliadoService.getinfoAsesor(this.token, this.user.id, this.userFilter.estado).subscribe(
         (data) => {
           this.listaAsesores = data;
-          console.log(this.listaAsesores);
         },
         (err) => {
           console.log(err);
@@ -77,16 +77,19 @@ export class ListAsesoresComponent implements OnInit {
     }
   }
 
+  /* Retorna los asesores dependiendo de su estado, normalmente en activo */
   onEstadoChange(): void {
     this.cargarAsesores();
   }
 
+  /* Limpia el filtro de busqueda, volviendo a retornar los asesores activos */
   limpiarFiltro(): void {
     this.userFilter = { nombre: '', estado: 'Activo' };
-    // Opcional: recargar los aliados con el estado por defecto
+    /* Opcional: recargar los aliados con el estado por defecto */
     this.cargarAsesores();
   }
 
+  /* Abre modal enviando el id recogido del asesor para editar asesor*/
   openModal(asesorId: number | null): void {
     let dialogRef: MatDialogRef<ModalAddAsesoresComponent>;
 
@@ -95,29 +98,12 @@ export class ListAsesoresComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('El modal se cerró');
     });
   }
 
-  openModalCONId(asesorId: number | null): void {
-    let dialogRef: MatDialogRef<ModalAddAsesoresComponent>;
-    dialogRef = this.dialog.open(ModalAddAsesoresComponent, {
-      data: { asesorId: asesorId }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('El modal se cerró');
-    });
-  }
-
+  /* Abre modal enviando el id null para crear asesor */
   openModalSINId(): void {
-    this.openModalCONId(null); // Llama a openModalCONId con null
-  }
-
-  editarAsesor(asesorId: number): void {
-    this.selectedAsesorId = asesorId;
-    this.openModal(this.selectedAsesorId);
-    console.log(`para el modal: ${this.selectedAsesorId}`);
+    this.openModal(null); // Llama a openModalCONId con null
   }
 
 
