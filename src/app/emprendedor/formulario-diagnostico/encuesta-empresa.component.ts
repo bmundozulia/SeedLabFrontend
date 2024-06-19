@@ -35,6 +35,8 @@ export class EncuestaEmpresaComponent {
   currentIndex = 0;
   id_pregunta: number;
   id_subpregunta: number | null = null;
+  listaRespuestas: Respuesta[] = [];
+  id_empresa= 1;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
   respuesta1: Respuesta = new Respuesta({});
@@ -166,67 +168,67 @@ export class EncuestaEmpresaComponent {
 
     let id_empresa = 1;
 
-    const listaRespuestas: Respuesta[] = [];
+    //const listaRespuestas: Respuesta[] = [];
 
-    listaRespuestas.push(this.respuesta1);
+    this.listaRespuestas.push(this.respuesta1);
     //pregunta 2
-    listaRespuestas.push(this.respuesta2);
-    listaRespuestas.push(this.respuesta3);
-    listaRespuestas.push(this.respuesta4);
-    listaRespuestas.push(this.respuesta5);
-    listaRespuestas.push(this.respuesta6);
+    this.listaRespuestas.push(this.respuesta2);
+    this.listaRespuestas.push(this.respuesta3);
+    this.listaRespuestas.push(this.respuesta4);
+    this.listaRespuestas.push(this.respuesta5);
+    this.listaRespuestas.push(this.respuesta6);
     //fin pregunta 2
-    listaRespuestas.push(this.respuesta7);
-    listaRespuestas.push(this.respuesta8);
-    listaRespuestas.push(this.respuesta9);
-    listaRespuestas.push(this.respuesta10);
-    listaRespuestas.push(this.respuesta11);
-    listaRespuestas.push(this.respuesta12);
-    listaRespuestas.push(this.respuesta13);
+    this.listaRespuestas.push(this.respuesta7);
+    this.listaRespuestas.push(this.respuesta8);
+    this.listaRespuestas.push(this.respuesta9);
+    this.listaRespuestas.push(this.respuesta10);
+    this.listaRespuestas.push(this.respuesta11);
+    this.listaRespuestas.push(this.respuesta12);
+    this.listaRespuestas.push(this.respuesta13);
     if (this.respuesta13.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta14);
-      listaRespuestas.push(this.respuesta15);
+      this.listaRespuestas.push(this.respuesta14);
+      this.listaRespuestas.push(this.respuesta15);
     }
-    listaRespuestas.push(this.respuesta16);
+    this.listaRespuestas.push(this.respuesta16);
     if (this.respuesta16.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta17);
-      listaRespuestas.push(this.respuesta18);
-      listaRespuestas.push(this.respuesta19);
-      listaRespuestas.push(this.respuesta20);
+      this.listaRespuestas.push(this.respuesta17);
+      this.listaRespuestas.push(this.respuesta18);
+      this.listaRespuestas.push(this.respuesta19);
+      this.listaRespuestas.push(this.respuesta20);
     }
-    listaRespuestas.push(this.respuesta21);
-    listaRespuestas.push(this.respuesta22);
-    listaRespuestas.push(this.respuesta23);
+    this.listaRespuestas.push(this.respuesta21);
+    this.listaRespuestas.push(this.respuesta22);
+    this.listaRespuestas.push(this.respuesta23);
     let isValidForm = true;
-    const payload = { respuestas: listaRespuestas, id_empresa: id_empresa };
+    const payload = { respuestas: this.listaRespuestas, id_empresa: id_empresa };
     let respCounter = 0;
 
     for (let i = 0; i < 15; i++) {
       const currentPregunta = PREGUNTAS[i];
-      listaRespuestas[respCounter].id_pregunta = i + 1;
-      //listaRespuestas[respCounter].id_empresa = id_empresa;
-      listaRespuestas[respCounter].id_subpregunta = null;
+      this.listaRespuestas[respCounter].id_pregunta = i + 1;
+      //this.listaRespuestas[respCounter].id_empresa = id_empresa;
+      this.listaRespuestas[respCounter].id_subpregunta = null;
 
       if (currentPregunta.id === 2) {
         for (let j = 0; j < currentPregunta.subPreguntas.length - 1; j++) {
           //debugger;
-          if (listaRespuestas[respCounter + j].opcion !== 'Si') {
-            listaRespuestas[respCounter + j].texto_res = '0';
+          if (this.listaRespuestas[respCounter + j].opcion !== 'Si') {
+            this.listaRespuestas[respCounter + j].texto_res = '0';
           }
-          listaRespuestas[respCounter + j].id_pregunta = i + 1;
-          listaRespuestas[respCounter + j].id_subpregunta = j + 1;
-          //listaRespuestas[respCounter + j].id_empresa = id_empresa;
+          this.listaRespuestas[respCounter + j].id_pregunta = i + 1;
+          this.listaRespuestas[respCounter + j].id_subpregunta = j + 1;
+          //this.listaRespuestas[respCounter + j].id_empresa = id_empresa;
 
         }
         respCounter += currentPregunta.subPreguntas.length - 1;
 
       } else if (currentPregunta.id === 12) {
         //debugger
-        if (listaRespuestas[respCounter].opcion === 'Si') {
+        if (this.listaRespuestas[respCounter].opcion === 'Si') {
           for (let k = 0; k < currentPregunta.subPreguntas.length; k++) {
-            listaRespuestas[respCounter + 1 + k].id_pregunta = i;
-            listaRespuestas[respCounter + 1 + k].id_subpregunta = k + 1;
-            //listaRespuestas[respCounter + 1 + k].id_empresa = id_empresa;
+            this.listaRespuestas[respCounter + 1 + k].id_pregunta = i;
+            this.listaRespuestas[respCounter + 1 + k].id_subpregunta = k + 1;
+            //this.listaRespuestas[respCounter + 1 + k].id_empresa = id_empresa;
 
           }
           respCounter += currentPregunta.subPreguntas.length;
@@ -234,20 +236,20 @@ export class EncuestaEmpresaComponent {
         respCounter++;
       } else {
         if (currentPregunta.isText) {
-          if (!listaRespuestas[respCounter].texto_res || listaRespuestas[respCounter].texto_res === '') {
+          if (!this.listaRespuestas[respCounter].texto_res || this.listaRespuestas[respCounter].texto_res === '') {
             this.alertService.errorAlert('Error', 'Deben llenar los campos');
             isValidForm = false;
             return;
           }
         } else {
-          if (!listaRespuestas[respCounter].opcion || listaRespuestas[respCounter].opcion === '') {
+          if (!this.listaRespuestas[respCounter].opcion || this.listaRespuestas[respCounter].opcion === '') {
             this.alertService.errorAlert('Error', 'Deben llenar los campos');
             isValidForm = false;
             return;
           }
         }
         if (currentPregunta.isAffirmativeQuestion) {
-          if (listaRespuestas[respCounter].opcion === 'No') {
+          if (this.listaRespuestas[respCounter].opcion === 'No') {
             i += currentPregunta.subPreguntas.length;
             respCounter += currentPregunta.subPreguntas.length;
             continue;
@@ -255,19 +257,19 @@ export class EncuestaEmpresaComponent {
         }
         respCounter++;
       }
-      //listaRespuestas[i].valor = 3;
+      //this.listaRespuestas[i].valor = 3;
       console.log(i);
       //console.log('fuera del ciclo', listaRespuestas);
     }
     if (!isValidForm) {
       return
-    } this.respuestasService.saveAnswers(this.token, payload).subscribe(
+    } /*this.respuestasService.saveAnswers(this.token, payload).subscribe(
       (data: any) => {
         console.log(data);
       },
       error => {
         console.log(error);
-      });
+      });*/
 
 
   }
@@ -278,92 +280,92 @@ export class EncuestaEmpresaComponent {
     //console.log(this.respuesta1);
     let id_empresa = 1;
 
-    const listaRespuestas: Respuesta[] = [];
-    listaRespuestas.push(this.respuesta24);
+    
+    this.listaRespuestas.push(this.respuesta24);
     if (this.respuesta24.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta25);
-      listaRespuestas.push(this.respuesta26);
-      listaRespuestas.push(this.respuesta27);
-      listaRespuestas.push(this.respuesta28);
-      listaRespuestas.push(this.respuesta29);
-      listaRespuestas.push(this.respuesta30);
-      listaRespuestas.push(this.respuesta31);
-      listaRespuestas.push(this.respuesta32);
+      this.listaRespuestas.push(this.respuesta25);
+      this.listaRespuestas.push(this.respuesta26);
+      this.listaRespuestas.push(this.respuesta27);
+      this.listaRespuestas.push(this.respuesta28);
+      this.listaRespuestas.push(this.respuesta29);
+      this.listaRespuestas.push(this.respuesta30);
+      this.listaRespuestas.push(this.respuesta31);
+      this.listaRespuestas.push(this.respuesta32);
     }
     //pregunta 18
-    listaRespuestas.push(this.respuesta33);
+    this.listaRespuestas.push(this.respuesta33);
     if (this.respuesta33.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta34);
-      listaRespuestas.push(this.respuesta35);
-      listaRespuestas.push(this.respuesta36);
-      listaRespuestas.push(this.respuesta37);
-      listaRespuestas.push(this.respuesta38);
+      this.listaRespuestas.push(this.respuesta34);
+      this.listaRespuestas.push(this.respuesta35);
+      this.listaRespuestas.push(this.respuesta36);
+      this.listaRespuestas.push(this.respuesta37);
+      this.listaRespuestas.push(this.respuesta38);
     }
     //pregunta20
-    listaRespuestas.push(this.respuesta39);
+    this.listaRespuestas.push(this.respuesta39);
     if (this.respuesta39.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta40);
-      listaRespuestas.push(this.respuesta41);
-      listaRespuestas.push(this.respuesta42);
-      listaRespuestas.push(this.respuesta43);
+      this.listaRespuestas.push(this.respuesta40);
+      this.listaRespuestas.push(this.respuesta41);
+      this.listaRespuestas.push(this.respuesta42);
+      this.listaRespuestas.push(this.respuesta43);
     }
     //pregunta22
-    listaRespuestas.push(this.respuesta44);
+    this.listaRespuestas.push(this.respuesta44);
     if (this.respuesta44.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta45);
-      listaRespuestas.push(this.respuesta46);
-      listaRespuestas.push(this.respuesta47);
-      listaRespuestas.push(this.respuesta48);
+      this.listaRespuestas.push(this.respuesta45);
+      this.listaRespuestas.push(this.respuesta46);
+      this.listaRespuestas.push(this.respuesta47);
+      this.listaRespuestas.push(this.respuesta48);
     }
     //pregunta23
-    listaRespuestas.push(this.respuesta49);
+    this.listaRespuestas.push(this.respuesta49);
     if (this.respuesta49.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta50);
-      listaRespuestas.push(this.respuesta51);
-      listaRespuestas.push(this.respuesta52);
-      listaRespuestas.push(this.respuesta53);
+      this.listaRespuestas.push(this.respuesta50);
+      this.listaRespuestas.push(this.respuesta51);
+      this.listaRespuestas.push(this.respuesta52);
+      this.listaRespuestas.push(this.respuesta53);
     }
     //pregunta25
-    listaRespuestas.push(this.respuesta54);
+    this.listaRespuestas.push(this.respuesta54);
     if (this.respuesta54.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta55);
+      this.listaRespuestas.push(this.respuesta55);
     }
     //pregunta27
-    listaRespuestas.push(this.respuesta56);
-    listaRespuestas.push(this.respuesta57);
-    listaRespuestas.push(this.respuesta58);
-    listaRespuestas.push(this.respuesta59);
-    listaRespuestas.push(this.respuesta60);
+    this.listaRespuestas.push(this.respuesta56);
+    this.listaRespuestas.push(this.respuesta57);
+    this.listaRespuestas.push(this.respuesta58);
+    this.listaRespuestas.push(this.respuesta59);
+    this.listaRespuestas.push(this.respuesta60);
     //pregunta28
-    listaRespuestas.push(this.respuesta61);
+    this.listaRespuestas.push(this.respuesta61);
     if (this.respuesta59.opcion === 'Si') {
-      listaRespuestas.push(this.respuesta62);
-      listaRespuestas.push(this.respuesta63);
-      listaRespuestas.push(this.respuesta64);
-      listaRespuestas.push(this.respuesta65);
+      this.listaRespuestas.push(this.respuesta62);
+      this.listaRespuestas.push(this.respuesta63);
+      this.listaRespuestas.push(this.respuesta64);
+      this.listaRespuestas.push(this.respuesta65);
     }
     
 
 
     let isValidForm = true;
-    const payload = { respuestas: listaRespuestas, id_empresa: id_empresa };
+    //const payload = { respuestas: this.listaRespuestas, id_empresa: id_empresa };
     let respCounter = 0;
 
     for (let i = 15; i < 30; i++) {
-      debugger
-      listaRespuestas[respCounter].id_pregunta = i + 1;
-      //listaRespuestas[respCounter].id_empresa = id_empresa;
-      listaRespuestas[respCounter].id_subpregunta = null;
+      //debugger
+      this.listaRespuestas[respCounter].id_pregunta = i + 1;
+      //this.listaRespuestas[respCounter].id_empresa = id_empresa;
+      this.listaRespuestas[respCounter].id_subpregunta = null;
       const currentPregunta = PREGUNTAS[i];
       
       if (currentPregunta.id === 16 || currentPregunta.id === 18) {
-        if(listaRespuestas[respCounter].opcion === 'Si'){
+        if(this.listaRespuestas[respCounter].opcion === 'Si'){
           const nextPregunta = PREGUNTAS[i + 1];
           for (let j = 0; j < nextPregunta.subPreguntas.length; j++) {
             //debugger;
-            listaRespuestas[respCounter + 1 + j].id_pregunta = i;
-            listaRespuestas[respCounter + 1 + j].id_subpregunta = j + 11;
-            //listaRespuestas[respCounter + j].id_empresa = id_empresa;
+            this.listaRespuestas[respCounter + 1 + j].id_pregunta = i;
+            this.listaRespuestas[respCounter + 1 + j].id_subpregunta = j + 11;
+            //this.listaRespuestas[respCounter + j].id_empresa = id_empresa;
           }
 
           respCounter += nextPregunta.subPreguntas.length - 1;
@@ -371,20 +373,20 @@ export class EncuestaEmpresaComponent {
       }
 
         if (currentPregunta.isText) {
-          if (!listaRespuestas[respCounter].texto_res || listaRespuestas[respCounter].texto_res === '') {
+          if (!this.listaRespuestas[respCounter].texto_res || this.listaRespuestas[respCounter].texto_res === '') {
             this.alertService.errorAlert('Error', 'Deben llenar los campos');
             isValidForm = false;
             return;
           }
         } else {
-          if (!listaRespuestas[respCounter].opcion || listaRespuestas[respCounter].opcion === '') {
+          if (!this.listaRespuestas[respCounter].opcion || this.listaRespuestas[respCounter].opcion === '') {
             this.alertService.errorAlert('Error', 'Deben llenar los campos');
             isValidForm = false;
             return;
           }
         }
         if (currentPregunta.isAffirmativeQuestion) {
-          if (listaRespuestas[respCounter].opcion === 'No') {
+          if (this.listaRespuestas[respCounter].opcion === 'No') {
             i += currentPregunta.subPreguntas.length;
             continue;
           }
@@ -392,28 +394,32 @@ export class EncuestaEmpresaComponent {
         if (!isValidForm) {
           return
         }
-        //listaRespuestas[i].valor = 3;
+        //this.listaRespuestas[i].valor = 3;
         console.log(i);
       }
-      console.log('fuera del ciclo', listaRespuestas);
+      console.log('fuera del ciclo', this.listaRespuestas);
       if (!isValidForm) {
         return
-      } this.respuestasService.saveAnswers(this.token, payload).subscribe(
+      } 
+    }
+
+    enviarRespuestasJson(){
+      this.onSubmitSeccion1();
+      this.onSubmitSeccion2();
+      const payload = {
+        respuestas: this.listaRespuestas,
+        id_empresa: this.id_empresa 
+      };
+
+      this.respuestasService.saveAnswers(this.token, payload).subscribe(
         (data: any) => {
           console.log(data);
         },
         error => {
           console.log(error);
-        });
-
-
+        }
+      );
     }
-
-    /*enviarRespuestasJson(){
-      this.onSubmitSeccion1();
-      this.onSubmitSeccion2();
-      const payload = {respuestas:this.listaRespuestas, id_empresa:this.id_empresa}
-    }*/
 
 
   loadNextSection(): void {
