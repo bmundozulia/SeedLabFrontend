@@ -5,8 +5,6 @@ import { DarAsesorModalComponent } from '../dar-asesor-modal/dar-asesor-modal.co
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { HeaderComponent } from '../../../header/header.component';
 import { Asesoria } from '../../../Modelos/asesoria.model';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-asesoria-aliado',
@@ -41,18 +39,9 @@ export class AsesoriaAliadoComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        console.log(identity);
-        this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.user);
-      }
     }
 
-    if (!this.token || !this.currentRolId) {
+    if (!this.token ) {
       this.router.navigate(['/inicio/body']);
     } else {
       this.loadAsesorias(1, 0);
@@ -102,7 +91,6 @@ export class AsesoriaAliadoComponent implements OnInit {
   }
 
   rechazarAsesoria(asesoria: Asesoria): void {
-    console.log('Asesoría a rechazar:', asesoria);  // <-- Verifica que tienes el objeto correcto
     if (asesoria && asesoria.id_asesoria) {
       this.asesoriaService.rechazarAsesoria(this.token, asesoria.id_asesoria, 'rechazar').subscribe(
         response => {

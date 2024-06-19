@@ -63,7 +63,7 @@ export class PerfilAdminComponent {
     }
   }
 
-   /* Trae los datos del admin para poder editarlo en el input, de acuerdo al id del usuario logueado */
+  /* Trae los datos del admin para poder editarlo en el input, de acuerdo al id del usuario logueado */
   verEditar(): void {
     if (this.token) {
       this.superadminService.getInfoAdmin(this.token, this.id).subscribe(

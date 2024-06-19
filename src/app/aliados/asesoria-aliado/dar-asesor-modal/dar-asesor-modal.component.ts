@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { AsesorDisponible } from '../../../Modelos/AsesorDisponible.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dar-asesor-modal',
@@ -22,6 +23,7 @@ export class DarAsesorModalComponent implements OnInit {
     public dialogRef: MatDialogRef<DarAsesorModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
+    private router: Router,
     private asesoriaService: AsesoriaService,
   ) {
     this.asignarForm = this.fb.group({
@@ -29,7 +31,6 @@ export class DarAsesorModalComponent implements OnInit {
     });
   }
 
-  
   /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit() {
     this.validateToken();
@@ -40,21 +41,16 @@ export class DarAsesorModalComponent implements OnInit {
       this.cargarAsesores(idAliado);
     }
   }
-
-
   
   /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        this.user = identity;
-      }
     }
+    if (!this.token ) {
+      this.router.navigate(['/inicio/body']);
   }
+}
 
   onGuardar(): void {
     if (this.asignarForm.valid) {

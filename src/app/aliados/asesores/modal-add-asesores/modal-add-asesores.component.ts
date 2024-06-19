@@ -72,7 +72,7 @@ export class ModalAddAsesoresComponent implements OnInit {
 
   get f() { return this.asesorForm.controls; } //aquii
 
-  /* Valida el token del login */
+  /* Valida el token del login colocando el nombre del aliado para llenarlo automaticamente con el localstorage*/
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
@@ -81,7 +81,6 @@ export class ModalAddAsesoresComponent implements OnInit {
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
-        this.id = this.user.id;
         this.nombreAliado = this.user.nombre;
 
         if (this.user && this.user.nombre) {

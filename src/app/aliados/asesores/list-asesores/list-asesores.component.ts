@@ -63,7 +63,7 @@ export class ListAsesoresComponent implements OnInit {
     }
   }
 
-  /* Funcion para mostrar las listas de los asesores y con el estado activo*/
+  /* Funcion para mostrar las listas de los asesores y con el estado activo */
   cargarAsesores() {
     if (this.token) {
       this.aliadoService.getinfoAsesor(this.token, this.user.id, this.userFilter.estado).subscribe(

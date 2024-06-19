@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { AsesoriaService } from '../../servicios/asesoria.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-horario-modal',
@@ -19,7 +20,8 @@ export class HorarioModalComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<HorarioModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private asesoriaService: AsesoriaService
+    private asesoriaService: AsesoriaService,
+    private router: Router,
   ) {
     this.asignarForm = this.fb.group({
       fecha: ['', Validators.required],
@@ -27,22 +29,18 @@ export class HorarioModalComponent implements OnInit {
     });
   }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
   }
 
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        console.log(identity);
-        this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.user);
-      }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 
@@ -51,15 +49,14 @@ export class HorarioModalComponent implements OnInit {
       const { fecha, observaciones } = this.asignarForm.value;
       const idAsesoria = this.data.asesoria.id;
 
-      // Logs para depuración
-      console.log('Formulario válido:', this.asignarForm.valid);
-      console.log('Fecha:', fecha);
-      console.log('Observaciones:', observaciones);
-      console.log('ID Asesoria:', idAsesoria);
+      // // Logs para depuración
+      // console.log('Formulario válido:', this.asignarForm.valid);
+      // console.log('Fecha:', fecha);
+      // console.log('Observaciones:', observaciones);
+      // console.log('ID Asesoria:', idAsesoria);
 
       this.asesoriaService.agregarHorarioAsesoria(this.token, observaciones, idAsesoria, fecha).subscribe(
         response => {
-          console.log('Horario asignado exitosamente', response);
           this.dialogRef.close(response);
         },
         error => {
