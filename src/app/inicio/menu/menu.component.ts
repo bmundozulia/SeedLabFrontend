@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User } from '../../Modelos/user.model';
@@ -53,7 +53,7 @@ export class MenuComponent {
 
   logout() {
     localStorage.clear();
-    this.router.navigate(['/home/body']);
+    this.router.navigate(['']);
     this.logueado = false;
   }
 }
