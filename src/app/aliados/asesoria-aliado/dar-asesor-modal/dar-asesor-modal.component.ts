@@ -33,7 +33,6 @@ export class DarAsesorModalComponent implements OnInit {
   /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit() {
     this.validateToken();
-    console.log('Datos de la asesoría recibidos en el modal:', this.data.asesoria);
     const identityJSON = localStorage.getItem('identity');
     if (identityJSON) {
       const identity = JSON.parse(identityJSON);
@@ -64,7 +63,6 @@ export class DarAsesorModalComponent implements OnInit {
 
       this.asesoriaService.asignarAsesoria(this.token, idAsesoria, idAsesor).subscribe(
         response => {
-          console.log('Asesoría asignada con éxito:', response);
           this.asesoriaAsignada.emit(); // Emit the event
           this.dialogRef.close(true);
         },
@@ -83,7 +81,6 @@ export class DarAsesorModalComponent implements OnInit {
     this.asesoriaService.listarAsesores(this.token, idaliado).subscribe(
       data => {
         this.asesores = data;
-        console.log('Asesores disponibles:', this.asesores);
       },
       error => {
         console.error('Error al obtener los asesores disponibles:', error);
