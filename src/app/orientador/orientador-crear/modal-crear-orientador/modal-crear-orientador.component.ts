@@ -12,7 +12,7 @@ import { AlertService } from '../../../servicios/alert.service';
   selector: 'app-modal-crear-orientador',
   templateUrl: './modal-crear-orientador.component.html',
   styleUrls: ['./modal-crear-orientador.component.css'],
-  providers: [OrientadorService, AlertService]
+  providers: [OrientadorService]
 })
 export class ModalCrearOrientadorComponent implements OnInit {
   @Input() isEditing: boolean = false;
@@ -25,7 +25,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
   id: number | null = null;
   currentRolId: number;
   orientadorId: any;
-  isSubmitting = false;
 
   orientadorForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -42,7 +41,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
     private orientadorServices: OrientadorService,
     private router: Router,
     private superadminService: SuperadminService,
-    private alertService: AlertService,
 
   ) {
     this.orientadorId = data.orientadorId;
@@ -50,7 +48,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateToken();
-    this.verEditar();
     if (this.orientadorId != null) {
       this.isEditing = true;
       this.orientadorForm.get('password')?.setValidators([Validators.minLength(8)]);
@@ -59,7 +56,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
       this.orientadorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
     this.orientadorForm.get('password')?.updateValueAndValidity();
-
+     
   }
 
   get f() { return this.orientadorForm.controls; } //aquii
@@ -82,6 +79,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
     if (this.orientadorId != null) {
       this.orientadorServices.getinformacionOrientador(this.token, this.orientadorId).subscribe(
         data => {
+
           this.orientadorForm.patchValue({
             nombre: data.nombre,
             apellido: data.apellido,
@@ -89,7 +87,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
             email: data.email,
             password: '',
             estado: data.estado // Esto establece el valor del estado en el formulario
-          });
+          }); 
           this.isActive = data.estado === 'Activo'; // Asegura que el estado booleano es correcto
           // Forzar cambio de detección de Angular
           setTimeout(() => {
@@ -108,15 +106,15 @@ export class ModalCrearOrientadorComponent implements OnInit {
   addOrientador(): void {
     this.submitted = true;
     if (this.orientadorForm.invalid) {
-        return;
+      return;
     }
     const orientador: Orientador = {
-        nombre: this.orientadorForm.value.nombre,
-        apellido: this.orientadorForm.value.apellido,
-        celular: this.orientadorForm.value.celular,
-        email: this.orientadorForm.value.email,
-        password: this.orientadorForm.value.password ? this.orientadorForm.value.password : null,
-        estado: this.orientadorForm.value.estado,
+      nombre: this.orientadorForm.value.nombre,
+      apellido: this.orientadorForm.value.apellido,
+      celular: this.orientadorForm.value.celular,
+      email: this.orientadorForm.value.email,
+      password: this.orientadorForm.value.password ? this.orientadorForm.value.password : null,
+      estado: this.orientadorForm.value.estado,
     };
     if (this.orientadorId != null) {
         // Check if the status is changing and show the confirmation dialog
@@ -137,19 +135,16 @@ export class ModalCrearOrientadorComponent implements OnInit {
                 );
             }
         });
-
     } else {
-        this.orientadorServices.createOrientador(this.token, orientador).subscribe(
-            data => {
-                location.reload();
-            },
-            error => {
-                console.error("Error al crear el orientador:", error);
-            }
-        );
+      this.orientadorServices.createOrientador(this.token, orientador).subscribe(
+        data => {
+          location.reload();
+        },
+        error => {
+          console.error("Error al crear el orientador:", error);
+        });
     }
-}
-
+  }
 
   cancelarModal() {
     this.dialogRef.close();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ import { EmprendedorService } from '../../servicios/emprendedor.service';
 import { MunicipioService } from '../../servicios/municipio.service';
 import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
 import { User } from '../../Modelos/user.model';
+import { AlertService } from '../../servicios/alert.service';
 
 
 @Component({
@@ -23,6 +24,8 @@ import { User } from '../../Modelos/user.model';
   styleUrl: './perfil-emprendedor.component.css'
 })
 export class PerfilEmprendedorComponent implements OnInit {
+  @Input() isEditing: boolean = false
+  isActive: boolean = true;
   faVenusMars = faVenusMars;
   faMountainCity = faMountainCity;
   faLandmarkFlag = faLandmarkFlag;
@@ -43,6 +46,13 @@ export class PerfilEmprendedorComponent implements OnInit {
   documento: string;
   user: User | null = null;
   currentRolId: number;
+  emprendedorId: any;
+  estado: boolean;
+  isAuthenticated: boolean = true;
+
+
+
+
   emprendedorForm = this.fb.group({
     documento: '',
     nombre: ['', Validators.required],
@@ -55,6 +65,7 @@ export class PerfilEmprendedorComponent implements OnInit {
     direccion: ['', Validators.required],
     nombretipodoc: new FormControl({ value: '', disabled: true }, Validators.required), // Aquí se deshabilita el campo
     municipio: ['', Validators.required],
+    estado: true,
   });
   registerForm: FormGroup; //ahorita quitarlo
   listEmprendedor: PerfilEmprendedor[] = [];
@@ -67,14 +78,17 @@ export class PerfilEmprendedorComponent implements OnInit {
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
     private emprendedorService: EmprendedorService,
-    private registroService: AuthService,
+    private authServices: AuthService,
+    private alerService: AlertService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.validateToken();
+    this.isAuthenticated = this.authServices.isAuthenticated();
     this.verEditar();
     this.cargarDepartamentos();
+    this.isEditing = true;
   }
 
   validateToken(): void {
@@ -113,8 +127,18 @@ export class PerfilEmprendedorComponent implements OnInit {
             genero: data.genero,
             fecha_nac: data.fecha_nac,
             direccion: data.direccion,
-            nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : ''
+            nombretipodoc: data.id_tipo_documento ? data.id_tipo_documento.toString() : '',
+            estado: data.estado
           });
+          this.isActive = data.estado === 'Activo'; // Asegura que el estado booleano es correcto
+          console.log("Estado inicial:", this.isActive); // Verifica el estado inicial en la consola
+          console.log(data);
+
+          // Forzar cambio de detección de Angular
+          setTimeout(() => {
+            this.emprendedorForm.get('estado')?.setValue(this.isActive);
+          })
+
         },
         (err) => {
           console.log(err);
@@ -136,7 +160,6 @@ export class PerfilEmprendedorComponent implements OnInit {
       genero: this.emprendedorForm.get('genero')?.value,
       fecha_nac: this.emprendedorForm.get('fecha_nac')?.value,
       direccion: this.emprendedorForm.get('direccion')?.value,
-      estado: this.emprendedorForm.get('estado')?.value,
       id_municipio: this.emprendedorForm.get('municipio')?.value,
     }
     this.emprendedorService.updateEmprendedor(perfil, this.token, this.documento).subscribe(
@@ -146,8 +169,31 @@ export class PerfilEmprendedorComponent implements OnInit {
       (err) => {
         console.log(err);
       }
-    )
+    );
+
   }
+  desactivarEmprendedor(): void {
+    let confirmationText = this.token
+      ? "¿Estás seguro de guardar los cambios?"
+      : "¿Estás seguro de guardar los cambios?";
+    this.alerService.alertaActivarDesactivar(confirmationText).then((result) => {
+        if (result.isConfirmed) {
+            this.emprendedorService.destroy(this.token, this.documento).subscribe(
+                (data) => {
+                    console.log("desactivar", data);
+                    this.isAuthenticated = false;
+                    localStorage.clear();
+                    location.reload();
+                },
+                (err) => {
+                    console.log(err);
+                }
+            );
+        }
+    });
+}
+
+
 
 
   passwordValidator(control: AbstractControl) {
@@ -218,5 +264,7 @@ export class PerfilEmprendedorComponent implements OnInit {
   mostrarGuardarCambios(): void {
     this.boton = false;
   }
+
+  
 
 }

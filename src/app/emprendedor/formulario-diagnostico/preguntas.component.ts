@@ -149,11 +149,11 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 16,
+        id: 16,//respuesta24
         nombre: '¿Tiene identificado los gastos y costos de su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
@@ -165,7 +165,7 @@ export const PREGUNTAS: Preguntas[] = [
         isAffirmativeQuestion: false,
         isText: false,
         subPreguntas: [
-            { id: 11, texto: 'Gastos fijos', puntaje: 0, id_pregunta: 17 },
+            { id: 11, texto: 'Gastos fijos', puntaje: 0, id_pregunta: 17 },//respuesta25
             { id: 12, texto: 'Gastos variables', puntaje: 0, id_pregunta: 17 },
             { id: 13, texto: 'Gastos Operacionales', puntaje: 0, id_pregunta: 17 },
             { id: 14, texto: 'Gastos No Operacionales', puntaje: 0, id_pregunta: 17 },
@@ -176,11 +176,11 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 18,
+        id: 18,//respuesta33
         nombre: '¿En su emprendimiento elabora estados financieros?',
         puntaje: 0,
         id_seccion: 2,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
@@ -192,7 +192,7 @@ export const PREGUNTAS: Preguntas[] = [
         isAffirmativeQuestion: false,
         isText: false,
         subPreguntas: [
-            { id: 19, texto: 'Balance General', puntaje: 0, id_pregunta: 19 },
+            { id: 19, texto: 'Balance General', puntaje: 0, id_pregunta: 19 },//respuesta34
             { id: 20, texto: 'Estado de Flujo', puntaje: 0, id_pregunta: 19 },
             { id: 21, texto: 'Registro de compras', puntaje: 0, id_pregunta: 19 },
             { id: 22, texto: 'Registro de ventas', puntaje: 0, id_pregunta: 19 },
@@ -200,11 +200,11 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 20,
+        id: 20,//respuesta39
         nombre: '¿Tiene claridad sobre qué presupuestos debe elaborar para su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
@@ -216,18 +216,18 @@ export const PREGUNTAS: Preguntas[] = [
         isAffirmativeQuestion: false,
         isText: false,
         subPreguntas: [
-            { id: 24, texto: 'Ingresos', puntaje: 0, id_pregunta: 21 },
+            { id: 24, texto: 'Ingresos', puntaje: 0, id_pregunta: 21 },//respuesta40
             { id: 25, texto: 'Egresos', puntaje: 0, id_pregunta: 21 },
             { id: 26, texto: 'Deudas', puntaje: 0, id_pregunta: 21 },
             { id: 27, texto: 'Otro ¿Cual?', puntaje: 0, id_pregunta: 21 },
         ]
     },
     {
-        id: 22,
+        id: 22,//respuesta44
         nombre: '¿Los costos de su producto y/o servicio están claramente definidos?',
         puntaje: 0,
         id_seccion: 2,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
@@ -239,7 +239,7 @@ export const PREGUNTAS: Preguntas[] = [
         isAffirmativeQuestion: false,
         isText: false,
         subPreguntas: [
-            { id: 28, texto: 'Costos', puntaje: 0, id_pregunta: 23 },
+            { id: 28, texto: 'Costos', puntaje: 0, id_pregunta: 23 },//respuesta45
             { id: 29, texto: 'Demanda', puntaje: 0, id_pregunta: 23 },
             { id: 30, texto: 'Competencia', puntaje: 0, id_pregunta: 23 },
             { id: 31, texto: 'Otro ¿Cual?', puntaje: 0, id_pregunta: 23 },
@@ -253,7 +253,7 @@ export const PREGUNTAS: Preguntas[] = [
         isAffirmativeQuestion: false,
         isText: false,
         subPreguntas: [
-            { id: 32, texto: 'Prestamo Formal', puntaje: 0, id_pregunta: 24 },
+            { id: 32, texto: 'Prestamo Formal', puntaje: 0, id_pregunta: 24 },//respuesta49
             { id: 33, texto: 'Prestamo Informal', puntaje: 0, id_pregunta: 24 },
             { id: 34, texto: 'Disminuyendo Gastos', puntaje: 0, id_pregunta: 24 },
             { id: 35, texto: 'Ahorros/Propios?', puntaje: 0, id_pregunta: 24 },
@@ -261,11 +261,11 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 25,
+        id: 25,//respuesta54
         nombre: '¿Su producto y/o servicio presenta en la actualidad ventas?',
         puntaje: 0,
         id_seccion: 2,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
@@ -277,8 +277,8 @@ export const PREGUNTAS: Preguntas[] = [
         isAffirmativeQuestion: false,
         isText: false,
         subPreguntas: [
-            { id: 37, texto: 'Ingreso supperior al egreso', puntaje: 0, id_pregunta: 26 },
-            { id: 38, texto: 'Ingreso superior al egreso', puntaje: 0, id_pregunta: 26 },
+            { id: 37, texto: 'Ingreso superior al egreso', puntaje: 0, id_pregunta: 26 },//respuesta55
+            { id: 38, texto: 'Ingreso igual al egreso', puntaje: 0, id_pregunta: 26 },
             { id: 39, texto: 'Ingreso inferior al egreso', puntaje: 0, id_pregunta: 26 },
             { id: 40, texto: 'No sabe', puntaje: 0, id_pregunta: 26 }
         ]
@@ -291,7 +291,7 @@ export const PREGUNTAS: Preguntas[] = [
         isAffirmativeQuestion: false,
         isText: false,
         subPreguntas: [
-            { id: 41, texto: 'Punto de venta', puntaje: 0, id_pregunta: 27 },
+            { id: 41, texto: 'Punto de venta', puntaje: 0, id_pregunta: 27 },//respuesta56
             { id: 42, texto: 'Telemarketing', puntaje: 0, id_pregunta: 27 },
             { id: 43, texto: 'Marketplace', puntaje: 0, id_pregunta: 27 },
             { id: 44, texto: 'Ecommerce', puntaje: 0, id_pregunta: 27 },
@@ -299,11 +299,11 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 28,
-        nombre: '¿Sabe cuáles obligacioness aplican a su emprendimiento?',
+        id: 28,//respuesta61
+        nombre: '¿Sabe cuáles obligaciones aplican a su emprendimiento?',
         puntaje: 0,
         id_seccion: 2,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
@@ -315,14 +315,14 @@ export const PREGUNTAS: Preguntas[] = [
         isAffirmativeQuestion: false,
         isText: false,
         subPreguntas: [
-            { id: 46, texto: 'Iva', puntaje: 0, id_pregunta: 29 },
+            { id: 46, texto: 'Iva', puntaje: 0, id_pregunta: 29 },//respuesta62
             { id: 47, texto: 'Ica', puntaje: 0, id_pregunta: 29 },
             { id: 48, texto: 'Retefuente', puntaje: 0, id_pregunta: 29 },
             { id: 49, texto: 'Impuesto a la renta', puntaje: 0, id_pregunta: 29 },
         ]
     },
     {
-        id: 30,
+        id: 30,//respuesta70
         nombre: '¿Tiene claramente definico sus clientes actuales?',
         puntaje: 0,
         id_seccion: 3,

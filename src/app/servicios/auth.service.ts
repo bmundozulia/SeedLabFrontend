@@ -11,7 +11,7 @@ import { Emprendedor } from '../Modelos/emprendedor.model';
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   url= environment.apiUrl+'auth/';
 
   constructor(private http: HttpClient) { }
@@ -34,4 +34,14 @@ export class AuthService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(`${this.url}validate_email_em`, body, { headers });
   }
+
+  logout(token: string) : Observable<any>{
+    return this.http.post(this.url+"logout",{token})
+  }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+  
+  
 }

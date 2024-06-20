@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private fb: FormBuilder,
         private alertService: AlertService
+
     ) { }
 
     ngOnInit(): void {
@@ -123,6 +124,11 @@ export class LoginComponent implements OnInit {
                     this.alertService.errorAlert('Error', err.error.message);
                 } else if (err.status === 404) {
                     this.alertService.errorAlert('Error', err.error.message);
+                }
+                if (err.status === 409) {
+                    //this.loginService.setEmail(email); // Guarda el email temporalmente
+                    this.router.navigate(['/verification'], { queryParams: { email: email } });
+                    //this.alertService.errorAlert('Error', "Por favor verifique su correo electronico");
                 }
                 setTimeout(() => {
                     this.isSubmitting = false;
