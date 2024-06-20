@@ -421,6 +421,13 @@ export class EncuestaEmpresaComponent {
       );
     }
 
+    // respuestasAfirmativas(){
+    //   for(let i = 0; i < this.listaRespuestas.length; i++){ 
+    //     const currentRespuesta = 26;
+    //     if(this.listaRespuestas[i] >= currentRespuesta){
+
+    // }
+
 
   loadNextSection(): void {
     this.section++;
