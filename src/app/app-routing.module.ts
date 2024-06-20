@@ -8,7 +8,7 @@ import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 import { BodyComponent } from './inicio/body/body.component';
 
-import { CursorutasComponent } from './cursorutas/cursorutas.component';
+import { CursorutasComponent } from './ruta/cursorutas/cursorutas.component';
 import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component'
 
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
@@ -36,7 +36,7 @@ import { PersonalizacionesComponent } from './super-admin/personalizaciones/pers
 
 import { RegisterComponent } from './auth/register/register.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component'
-import { RutasComponent } from './rutas/rutas.component';
+import { RutasComponent } from './ruta/rutas/rutas.component';
 
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 
@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'register', component: RegisterComponent },
   { path: 'verification', component: VerificationComponent },
-  { path: 'forgotPassword', component: ForgotpasswordComponent }, //restablecer contraseña
+  { path: 'forgotPassword', component: ForgotpasswordComponent  }, //restablecer contraseña
   { path: 'error404', component: Error404Component },
 
   //Emprendedor
@@ -58,7 +58,7 @@ const routes: Routes = [
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'perfil-emprendedor', component: PerfilEmprendedorComponent },
   { path: 'add-empresa', component: AddEmpresaComponent },
-  { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
+
 
   //Empresa
   { path: 'edit-empresa', component: EditEmpresaComponent },

@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
 import { ColorPickerDirective } from 'ngx-color-picker';
-
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { User } from '../../Modelos/user.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonalizacionesService } from '../../servicios/personalizaciones.service';
 import { Personalizaciones } from '../../Modelos/personalizaciones.model';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-personalizaciones',
   templateUrl: './personalizaciones.component.html',
@@ -25,13 +25,15 @@ export class PersonalizacionesComponent implements OnInit {
   token = '';
   user: User | null = null;
   id: number | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
 
   @ViewChild('colorPickerPrincipal') colorPickerPrincipal: ColorPickerDirective;
   @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
 
 
-  constructor(private fb: FormBuilder, private personalizacionesService: PersonalizacionesService) {
+  constructor(private fb: FormBuilder, 
+    private personalizacionesService: PersonalizacionesService,
+    private router: Router,) {
     this.personalizacionForm = this.fb.group({
       imagen_Logo: [''],
     })
@@ -61,8 +63,14 @@ export class PersonalizacionesComponent implements OnInit {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.id = this.user.id;
-        this.currentRolId = this.user.id_rol?.toString();
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 1) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 

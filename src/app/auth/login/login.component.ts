@@ -46,10 +46,8 @@ export class LoginComponent implements OnInit {
 
             if (identityJSON) {
                 let identity = JSON.parse(identityJSON);
-                console.log(identity);
                 this.user = identity;
                 this.currentRolId = this.user.id_rol?.toString();
-                console.log(this.currentRolId);
             }
         }
         if (!this.token) {
@@ -128,8 +126,8 @@ export class LoginComponent implements OnInit {
                     this.alertService.errorAlert('Error', err.error.message);
                 }
                 if (err.status === 409) {
-                    this.loginService.setEmail(email); // Guarda el email temporalmente
-                    this.router.navigate([`/verification/${email}`]);
+                    //this.loginService.setEmail(email); // Guarda el email temporalmente
+                    this.router.navigate(['/verification'], { queryParams: { email: email } });
                     //this.alertService.errorAlert('Error', "Por favor verifique su correo electronico");
                 }
                 setTimeout(() => {

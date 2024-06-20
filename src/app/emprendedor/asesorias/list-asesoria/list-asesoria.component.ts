@@ -14,33 +14,35 @@ import { Asesoria } from '../../../Modelos/asesoria.model';
 })
 export class ListAsesoriaComponent implements OnInit {
   asesoriasTrue: Asesoria[] = [];
-  asesoriasFalse: Asesoria[] = []; 
+  asesoriasFalse: Asesoria[] = [];
   showTrue: boolean = false; // Set to false by default to show "Sin Asignar"
   showFalse: boolean = true; // Set to true by default to show "Sin Asignar"
-  token: string | null = null;
+  token: string;
   documento: string | null = null;
   user: any = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   sinAsignarCount: number = 0;
   asignadasCount: number = 0;
   busqueda: string = '';
   asesorias: any[] = []; // Tus datos
   resultadosBusqueda: any[] = []; //
-  
-  userFilter: any = { Nombre_sol: ''};
+
+  userFilter: any = { Nombre_sol: '' };
   Nombre_sol: string | null = null;
-  
+
   constructor(
-    private asesoriaService: AsesoriaService, 
+    private asesoriaService: AsesoriaService,
     public dialog: MatDialog,
     private router: Router
   ) { }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit() {
     this.validateToken();
     this.listarAsesorias();
   }
 
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
@@ -49,15 +51,20 @@ export class ListAsesoriaComponent implements OnInit {
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
-        this.documento = this.user.emprendedor.documento;
-        this.currentRolId = this.user.id_rol?.toString();
+        this.currentRolId = this.user.id_rol;
+
+        if (this.currentRolId != 5) {
+          this.router.navigate(['/inicio/body']);
+        } else {
+          this.documento = this.user.emprendedor.documento;
+        }
       }
     }
-
-    if (!this.token || !this.documento) {
+    if (!this.token) {
       this.router.navigate(['/inicio/body']);
     }
   }
+
 
   listarAsesorias() {
     if (this.documento && this.token) {
@@ -100,7 +107,7 @@ export class ListAsesoriaComponent implements OnInit {
       width: '400px',
       data: {}
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Asesoría creada:', result);
@@ -130,5 +137,5 @@ export class ListAsesoriaComponent implements OnInit {
       this.resultadosBusqueda = this.asesorias;
     }
   }
-  
+
 }

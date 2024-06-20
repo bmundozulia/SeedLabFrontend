@@ -50,14 +50,12 @@ export class AliadoService {
   getAsesorAliado(access_token: any, asesorId: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     const url = `${environment.apiUrl}asesor/userProfileAsesor/${asesorId}`;
-    console.log(url);
     return this.http.get(url, options);
   }
 
   updateAsesorAliado(access_token: any, asesorId: number, asesor: Asesor): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     const url = `${environment.apiUrl}aliado/editarAsesorAliado/${asesorId}`;
-    console.log(url);
     return this.http.put(url, asesor, options);
   }
 

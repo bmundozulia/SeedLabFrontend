@@ -1,10 +1,7 @@
-// list-rutas.component.ts
 import { Component, OnInit } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
-
 import { RutaService } from '../../../servicios/rutas.service';
-
 import { Ruta } from '../../../Modelos/ruta.modelo';
 import { User } from '../../../Modelos/user.model';
 import { SwitchService } from '../../../servicios/switch.service';
@@ -24,13 +21,13 @@ export class ListRutasComponent implements OnInit {
   faeye = faEye;
   token: string | null = null;
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   modalSwitch: boolean;
 
   constructor(
     private rutaService: RutaService,
-    private route: Router,
-    private modalSS: SwitchService
+    private router: Router,
+    private modalSS: SwitchService,
   ) { }
 
   ngOnInit(): void {
@@ -49,16 +46,19 @@ export class ListRutasComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      //console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        //console.log(identity);
         this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        //console.log(this.currentRolId);
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 1) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 
@@ -73,7 +73,6 @@ export class ListRutasComponent implements OnInit {
               item.fecha_creacion,
               this.ESTADO_MAP[item.estado] ?? 'Desconocido')
           );
-          console.log(this.listaRutas);
         },
         (err) => {
           console.log(err);

@@ -54,11 +54,8 @@ export class CrearAsesoriaModalComponent {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
         this.user = identity;
         this.documento = this.user.emprendedor.documento;
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
         // Asigna el valor del documento del emprendedor a la variable docEmprendedor
         this.docEmprendedor = this.documento;
       }
@@ -72,7 +69,6 @@ export class CrearAsesoriaModalComponent {
     this.aliadoService.mostrarAliado(this.token).subscribe(
       (data: any[]) => {
         this.aliados = data;
-        console.log(this.aliados);
       },
       error => {
         console.error('Error al obtener la lista de aliados:', error);
@@ -122,7 +118,6 @@ export class CrearAsesoriaModalComponent {
   
       this.asesoriaService.crearAsesoria(this.token, formData).subscribe(
         response => {
-          console.log('Asesoría creada:', response);
           this.dialogRef.close(formData);
         },
         error => {

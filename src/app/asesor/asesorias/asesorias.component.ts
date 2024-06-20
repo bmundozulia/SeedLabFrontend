@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
 import { HorarioModalComponent } from '../horario-modal/horario-modal.component';
-
 import { AsesoriaService } from '../../servicios/asesoria.service';
-
 import { Asesoria } from '../../Modelos/asesoria.model';
 import { AsesorService } from '../../servicios/asesor.service';
 
@@ -24,7 +21,7 @@ export class AsesoriasComponent implements OnInit {
   token: string | null = null;
   user: any = null;
   filteredAsesorias: Asesoria[] = [];
-  currentRolId: string | null = null;
+  currentRolId: number;
 
   userFilter: any = { Nombre_sol: ''};
   Nombre_sol: string | null = null;
@@ -36,12 +33,14 @@ export class AsesoriasComponent implements OnInit {
     private asesorService: AsesorService
   ) { }
  
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit() {
     this.validateToken();
     this.loadAsesoriasFalse();    
     this.loadAsesoriasTrue();
   }
 
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
@@ -49,14 +48,15 @@ export class AsesoriasComponent implements OnInit {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
         this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 4) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
     }
 
-    if (!this.token || !this.currentRolId) {
+    if (!this.token) {
       this.router.navigate(['/inicio/body']);
     } else {
       this.loadAsesoriasFalse();
@@ -82,7 +82,6 @@ export class AsesoriasComponent implements OnInit {
     const horario = false; // Cambia esto según sea necesario
     this.asesorService.mostrarAsesoriasAsesor(this.token, idAsesor, horario).subscribe(
       response => {
-        console.log('Asesorías sin horario cargadas:', response);
         this.asesoriasSinHorario = response;
       },
       error => {
@@ -97,7 +96,6 @@ export class AsesoriasComponent implements OnInit {
     const horario = true; // Cambia esto según sea necesario
     this.asesorService.mostrarAsesoriasAsesor(this.token, idAsesor, horario).subscribe(
       response => {
-        console.log('Asesorías con horario cargadas:', response);
         this.asesoriasConHorario = response;
       },
       error => {
@@ -107,8 +105,6 @@ export class AsesoriasComponent implements OnInit {
   }
 
   openModal(asesoria: any): void {
-    // Logs para depuración
-    console.log('Abriendo modal para asesoria:', asesoria);
     if (!asesoria || !asesoria.id) {
       console.error('ID de asesoria no encontrado');
       return;

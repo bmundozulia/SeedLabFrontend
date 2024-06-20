@@ -1,10 +1,9 @@
 import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 import { AsesoriaService } from '../../../servicios/asesoria.service';
-
 import { AsesorDisponible } from '../../../Modelos/AsesorDisponible.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dar-asesor-modal',
@@ -24,6 +23,7 @@ export class DarAsesorModalComponent implements OnInit {
     public dialogRef: MatDialogRef<DarAsesorModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
+    private router: Router,
     private asesoriaService: AsesoriaService,
   ) {
     this.asignarForm = this.fb.group({
@@ -31,9 +31,9 @@ export class DarAsesorModalComponent implements OnInit {
     });
   }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit() {
     this.validateToken();
-    console.log('Datos de la asesoría recibidos en el modal:', this.data.asesoria);
     const identityJSON = localStorage.getItem('identity');
     if (identityJSON) {
       const identity = JSON.parse(identityJSON);
@@ -41,21 +41,16 @@ export class DarAsesorModalComponent implements OnInit {
       this.cargarAsesores(idAliado);
     }
   }
-
+  
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        console.log(identity);
-        this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.user);
-      }
     }
+    if (!this.token ) {
+      this.router.navigate(['/inicio/body']);
   }
+}
 
   onGuardar(): void {
     if (this.asignarForm.valid) {
@@ -64,7 +59,6 @@ export class DarAsesorModalComponent implements OnInit {
 
       this.asesoriaService.asignarAsesoria(this.token, idAsesoria, idAsesor).subscribe(
         response => {
-          console.log('Asesoría asignada con éxito:', response);
           this.asesoriaAsignada.emit(); // Emit the event
           this.dialogRef.close(true);
         },
@@ -83,7 +77,6 @@ export class DarAsesorModalComponent implements OnInit {
     this.asesoriaService.listarAsesores(this.token, idaliado).subscribe(
       data => {
         this.asesores = data;
-        console.log('Asesores disponibles:', this.asesores);
       },
       error => {
         console.error('Error al obtener los asesores disponibles:', error);

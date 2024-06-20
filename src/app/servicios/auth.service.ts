@@ -11,7 +11,7 @@ import { Emprendedor } from '../Modelos/emprendedor.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private email: string; // Variable para guardar el email temporalmente
+
   url= environment.apiUrl+'auth/';
 
   constructor(private http: HttpClient) { }
@@ -35,12 +35,13 @@ export class AuthService {
     return this.http.post<any>(`${this.url}validate_email_em`, body, { headers });
   }
 
-
-  setEmail(email: string) {
-    this.email = email;
+  logout(token: string) : Observable<any>{
+    return this.http.post(this.url+"logout",{token})
   }
 
-  getEmail(): string {
-    return this.email;
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
   }
+  
+  
 }

@@ -1,74 +1,102 @@
-/* Estilos generales de la tarjeta */
+/* Estilo general de la tarjeta */
 .card {
   position: relative;
+  width: 240px; /* Tarjeta más pequeña */
+  height: 240px; /* Ajustar la altura para hacerlo más compacto */
+  border-radius: 12px; /* Bordes más redondeados */
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+/* Efecto de hover para la tarjeta */
 .card:hover:not(.no-hover) {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
 }
 
-/* Estilos de los botones que aparecen al hacer hover */
+/* Indicador de estado en el lateral de la tarjeta */
+.status-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px; /* Más delgado para una apariencia más limpia */
+}
+
+/* Contenido de la tarjeta */
+.card-content {
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuir el contenido */
+  height: 100%; /* Usar toda la altura */
+}
+
+/* Título de la tarjeta */
+.card-content h2 {
+  font-size: 1.125rem; /* Tamaño de fuente ajustado */
+  color: #333;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+/* Descripción y detalles */
+.card-content p {
+  font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Botones que aparecen en hover */
 .hover-buttons {
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 8px;
   opacity: 0;
-  margin-top: 20px;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
+/* Mostrar botones en hover */
 .card:hover:not(.no-hover) .hover-buttons {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
 
-/* Estilos base de los botones */
+/* Estilo de los botones */
 .btn {
-  padding: 5px 10px;
+  padding: 8px 12px; /* Botones más compactos */
   border: none;
-  border-radius: 4px;
+  border-radius: 8px; /* Bordes redondeados */
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 0.875rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Estilos específicos para el botón aceptar */
+/* Botón Aceptar */
 .btn-aceptar {
-  background-color:   #bcbcbc ; /* Color predeterminado */
-  color: white;
+  background-color: lightskyblue; /* Verde */
+  color: #ffffff;
 }
 
-.btn-aceptar:hover,
-.btn-aceptar:focus,
-.btn-aceptar:active {
-  background-color:   #bcbcbc ; /* Color al hacer hover/click */
-  color: white;
+.btn-aceptar:hover {
+  background-color: lightskyblue;
+  transform: scale(1.05);
 }
 
-/* Estilos específicos para el botón rechazar */
+/* Botón Rechazar */
 .btn-rechazar {
-  background-color:  #0cb4ec; /* Color predeterminado */
-  color: white;
+  background-color: #979797; /* Rojo */
+  color: #ffffff;
 }
 
-.btn-rechazar:hover,
-.btn-rechazar:focus,
-.btn-rechazar:active {
-  background-color: #0cb4ec; /* Color al hacer hover/click */
-  color: white;
-}
-:focus {
-  outline: none;
-}
-
-/* Estilo específico para los botones y campos de entrada */
-.btn:focus,
-input:focus {
-  outline: none;
+.btn-rechazar:hover {
+  background-color: #979797;
+  transform: scale(1.05);
 }

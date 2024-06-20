@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
 import { DarAliadoAsesoriaModalComponent } from '../dar-aliado-asesoria-modal/dar-aliado-asesoria-modal.component';
-
 import { AsesoriaService } from '../../../servicios/asesoria.service';
-
 import { Asesoria } from '../../../Modelos/asesoria.model';
 
 @Component({
@@ -20,7 +17,7 @@ export class VerAsesoriasComponent implements OnInit {
   asesoriasConAsesor: Asesoria[] = [];
   token: string | null = null;
   user: any = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   sinAsignarCount: number = 0;
   asignadasCount: number = 0;
   userFilter: any = { Nombre_sol: '' };
@@ -39,22 +36,23 @@ export class VerAsesoriasComponent implements OnInit {
     this.validateToken();
     this.loadAsignadas();
     this.loadSinAsignar();
-     // Load both on init to ensure counts are accurate
+    // Load both on init to ensure counts are accurate
   }
 
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
       let identityJSON = localStorage.getItem('identity');
-
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 2) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
     }
-
-    if (!this.token || !this.currentRolId) {
+    if (!this.token) {
       this.router.navigate(['/inicio/body']);
     }
   }
