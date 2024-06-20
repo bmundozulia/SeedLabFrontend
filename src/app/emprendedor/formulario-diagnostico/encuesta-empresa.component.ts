@@ -36,7 +36,7 @@ export class EncuestaEmpresaComponent {
   id_pregunta: number;
   id_subpregunta: number | null = null;
   listaRespuestas: Respuesta[] = [];
-  id_empresa= 1;
+  id_empresa = 1;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
   respuesta1: Respuesta = new Respuesta({});
@@ -136,7 +136,7 @@ export class EncuestaEmpresaComponent {
 
 
   ngOnInit() {
-  
+
     this.validateToken();
   }
 
@@ -280,7 +280,7 @@ export class EncuestaEmpresaComponent {
     //console.log(this.respuesta1);
     let id_empresa = 1;
 
-    
+
     this.listaRespuestas.push(this.respuesta24);
     if (this.respuesta24.opcion === 'Si') {
       this.listaRespuestas.push(this.respuesta25);
@@ -344,7 +344,7 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas.push(this.respuesta64);
       this.listaRespuestas.push(this.respuesta65);
     }
-    
+
 
 
     let isValidForm = true;
@@ -353,80 +353,79 @@ export class EncuestaEmpresaComponent {
 
     for (let i = 15; i < 30; i++) {
       //debugger
-      this.listaRespuestas[respCounter].id_pregunta = i + 1;
-      //this.listaRespuestas[respCounter].id_empresa = id_empresa;
-      this.listaRespuestas[respCounter].id_subpregunta = null;
       const currentPregunta = PREGUNTAS[i];
-      
-      if (currentPregunta.id === 16 || currentPregunta.id === 18) {
-        if(this.listaRespuestas[respCounter].opcion === 'Si'){
+      this.listaRespuestas[respCounter].id_pregunta = currentPregunta.id;
+      this.listaRespuestas[respCounter].id_empresa = id_empresa;
+      this.listaRespuestas[respCounter].id_subpregunta = null;
+
+      if (currentPregunta.id === 16 || currentPregunta.id === 18
+        || currentPregunta.id === 20 || currentPregunta.id === 22
+        || currentPregunta.id === 28) {
+        if (this.listaRespuestas[respCounter].opcion === 'Si') {
           const nextPregunta = PREGUNTAS[i + 1];
           for (let j = 0; j < nextPregunta.subPreguntas.length; j++) {
             //debugger;
-            this.listaRespuestas[respCounter + 1 + j].id_pregunta = i;
-            this.listaRespuestas[respCounter + 1 + j].id_subpregunta = j + 11;
-            //this.listaRespuestas[respCounter + j].id_empresa = id_empresa;
+            this.listaRespuestas[respCounter + 1 + j].id_pregunta = nextPregunta.id;
+            this.listaRespuestas[respCounter + 1 + j].id_subpregunta = nextPregunta.subPreguntas[j].id;
+            this.listaRespuestas[respCounter + j].id_empresa = id_empresa;
           }
 
-          respCounter += nextPregunta.subPreguntas.length - 1;
+          respCounter += nextPregunta.subPreguntas.length;
         }
+
       }
 
-        if (currentPregunta.isText) {
-          if (!this.listaRespuestas[respCounter].texto_res || this.listaRespuestas[respCounter].texto_res === '') {
-            this.alertService.errorAlert('Error', 'Deben llenar los campos');
-            isValidForm = false;
-            return;
-          }
-        } else {
-          if (!this.listaRespuestas[respCounter].opcion || this.listaRespuestas[respCounter].opcion === '') {
-            this.alertService.errorAlert('Error', 'Deben llenar los campos');
-            isValidForm = false;
-            return;
-          }
+      if (currentPregunta.isText) {
+        if (!this.listaRespuestas[respCounter].texto_res || this.listaRespuestas[respCounter].texto_res === '') {
+          this.alertService.errorAlert('Error', 'Deben llenar los campos');
+          isValidForm = false;
+          return;
         }
-        if (currentPregunta.isAffirmativeQuestion) {
-          if (this.listaRespuestas[respCounter].opcion === 'No') {
-            i += currentPregunta.subPreguntas.length;
-            continue;
-          }
+      } else {
+        if (!this.listaRespuestas[respCounter].opcion || this.listaRespuestas[respCounter].opcion === '') {
+          this.alertService.errorAlert('Error', 'Deben llenar los campos');
+          isValidForm = false;
+          return;
         }
-        if (!isValidForm) {
-          return
-        }
-        //this.listaRespuestas[i].valor = 3;
-        console.log(i);
       }
-      console.log('fuera del ciclo', this.listaRespuestas);
+      if (currentPregunta.isAffirmativeQuestion) {
+        if (this.listaRespuestas[respCounter].opcion === 'No') {
+          i += currentPregunta.subPreguntas.length;
+          respCounter++;
+          continue;
+        }
+        respCounter++;
+      }
       if (!isValidForm) {
         return
-      } 
+      }
+      //this.listaRespuestas[i].valor = 3;
+      console.log(i);
     }
-
-    enviarRespuestasJson(){
-      this.onSubmitSeccion1();
-      this.onSubmitSeccion2();
-      const payload = {
-        respuestas: this.listaRespuestas,
-        id_empresa: this.id_empresa 
-      };
-
-      this.respuestasService.saveAnswers(this.token, payload).subscribe(
-        (data: any) => {
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    console.log('fuera del ciclo', this.listaRespuestas);
+    if (!isValidForm) {
+      return
     }
+  }
 
-    // respuestasAfirmativas(){
-    //   for(let i = 0; i < this.listaRespuestas.length; i++){ 
-    //     const currentRespuesta = 26;
-    //     if(this.listaRespuestas[i] >= currentRespuesta){
+  enviarRespuestasJson() {
+    this.onSubmitSeccion1();
+    this.onSubmitSeccion2();
+    const payload = {
+      respuestas: this.listaRespuestas,
+      id_empresa: this.id_empresa
+    };
 
-    // }
+    this.respuestasService.saveAnswers(this.token, payload).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 
 
   loadNextSection(): void {
@@ -436,28 +435,28 @@ export class EncuestaEmpresaComponent {
   next() {
     if (this.currentIndex < 3) {
       this.currentIndex++;
-     
+
     }
   }
 
   prev() {
     if (this.currentIndex > 0) {
       this.currentIndex--;
-     
+
     }
   }
 
-  
 
 
 
-  
 
- 
 
- 
 
-  
 
-  
+
+
+
+
+
+
 }
