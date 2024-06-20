@@ -42,6 +42,7 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { VerificationComponent } from './auth/verification/verification.component';
+import { Error404Component } from './auth/error404/error404.component';
 
 
 const routes: Routes = [
@@ -49,7 +50,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
   { path: 'register', component: RegisterComponent },
   { path: 'verification', component: VerificationComponent },
-  { path: 'forgotPassword', component: ForgotpasswordComponent }, //restablecer contraseña
+  { path: 'forgotPassword', component: ForgotpasswordComponent  }, //restablecer contraseña
+  { path: 'error404', component: Error404Component },
 
   //Emprendedor
   { path: 'perfil', component: PerfilEmprendedorComponent },
@@ -95,7 +97,7 @@ const routes: Routes = [
 
 
   { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
-  { path: '**', redirectTo: '' } // Manejo de rutas no encontradas, redirige a la ruta raíz
+  { path: '**', redirectTo: 'error404', pathMatch: 'full' } // Manejo de rutas no encontradas, redirige a la ruta raíz
 ];
 
 @NgModule({

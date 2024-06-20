@@ -28,6 +28,7 @@ export class ModalComponent implements OnInit {
   isVisible = true;
 
 
+
   constructor(
     private modalSS: SwitchService,
     private rutaService: RutaService,
@@ -66,8 +67,8 @@ export class ModalComponent implements OnInit {
     );
     this.rutaService.createRutas(this.token, ruta).subscribe(
       (response: any) => {
-        console.log(response);
-
+       // console.log(response);
+        location.reload()
       },
       (error) => {
         console.error(error);

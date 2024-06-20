@@ -123,4 +123,16 @@ export class AsesoriaAliadoComponent implements OnInit {
     this.asesorias = this.asesoriasConAsesor;
     this.mensaje = this.asesorias.length === 0 ? "Aún no has asignado ninguna asesoría." : null;
   }
+
+  filtrarAsesorias(): void {
+    const filtro = this.Nombre_sol?.trim().toLowerCase(); // Utiliza Nombre_sol
+    if (filtro) {
+      this.asesorias = this.asesorias.filter(asesoria =>
+        asesoria.nombre_sol.toLowerCase().includes(filtro) // Utiliza Nombre_sol
+      );
+    } else {
+      // Si el filtro está vacío, restaura las asesorías originales
+      this.separarAsesorias();
+    }
+  }
 }
