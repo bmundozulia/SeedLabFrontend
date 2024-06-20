@@ -12,7 +12,7 @@ import { AlertService } from '../../../servicios/alert.service';
   selector: 'app-modal-crear-orientador',
   templateUrl: './modal-crear-orientador.component.html',
   styleUrls: ['./modal-crear-orientador.component.css'],
-  providers: [OrientadorService]
+  providers: [OrientadorService, AlertService]
 })
 export class ModalCrearOrientadorComponent implements OnInit {
   @Input() isEditing: boolean = false;
@@ -40,6 +40,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
     private fb: FormBuilder,
     private orientadorServices: OrientadorService,
     private router: Router,
+    private alertService: AlertService,
     private superadminService: SuperadminService,
 
   ) {
