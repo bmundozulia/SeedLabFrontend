@@ -16,6 +16,7 @@ export class PersonalizacionesComponent implements OnInit {
   personalizacionForm: FormGroup;
   selectedColorPrincipal = '#C2FFFB';
   selectedColorSecundario = '#C2FFFB';
+  selectedColorTerciario = '#C2FFFB';
   previewUrl: any = null;
   faImage = faImage;
 
@@ -75,6 +76,10 @@ export class PersonalizacionesComponent implements OnInit {
     this.selectedColorSecundario = color;
   }
 
+  onColorChangeTerciario(color: string): void {
+    this.selectedColorTerciario = color;
+  }
+
   // Resto de tu código...
 
 
@@ -95,7 +100,7 @@ export class PersonalizacionesComponent implements OnInit {
 
 
 
-// metodo agregar personalizacion
+  // metodo agregar personalizacion
   addPersonalizacion(): void {
     try {
       if (this.personalizacionForm.valid) {
