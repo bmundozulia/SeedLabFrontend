@@ -51,7 +51,7 @@ export class PerfilEmprendedorComponent implements OnInit {
   currentRolId: string | null = null;
   emprendedorId: any;
   estado: boolean;
-
+  isAuthenticated: boolean = true;
 
 
 
@@ -81,13 +81,14 @@ export class PerfilEmprendedorComponent implements OnInit {
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
     private emprendedorService: EmprendedorService,
-    private authService: AuthService,
+    private authServices: AuthService,
     private alerService: AlertService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.validateToken();
+    this.isAuthenticated = this.authServices.isAuthenticated();
     this.verEditar();
     this.cargarDepartamentos();
     this.isEditing = true;
@@ -171,39 +172,9 @@ export class PerfilEmprendedorComponent implements OnInit {
       }
     );
 
-    // if (this.emprendedorId != null) {
-    //   let confirmationText = this.isActive
-    //     ? "¿Estas seguro de guardar los cambios?"
-    //     : "¿Estas seguro de guardar los cambios?";
-
-    //   this.alerService.alertaActivarDesactivar(confirmationText).then((result) => {
-    //     if (result.isConfirmed) {
-    //       this.emprendedorService.updateEmprendedor(perfil, this.token, this.emprendedorId).subscribe(
-    //         data => {
-    //           console.log(data);
-    //           location.reload();
-    //         },
-    //         error => {
-    //           console.error("Error al actualizar el emprendedor", error)
-    //         }
-    //       );
-    //     }
-    //   });
-    // } else {
-    //   this.emprendedorService.destroy(this.token, this.documento).subscribe(
-    //     (data) => {
-    //       location.reload();
-    //       this.token = null;
-    //       this.router.navigate(["/login"]);
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //     });
-    // }
-
   }
   desactivarEmprendedor(): void {
-    let confirmationText = this.isActive
+    let confirmationText = this.token
       ? "¿Estás seguro de guardar los cambios?"
       : "¿Estás seguro de guardar los cambios?";
     this.alerService.alertaActivarDesactivar(confirmationText).then((result) => {
@@ -211,19 +182,9 @@ export class PerfilEmprendedorComponent implements OnInit {
             this.emprendedorService.destroy(this.token, this.documento).subscribe(
                 (data) => {
                     console.log("desactivar", data);
-                    // Llama a logout para limpiar el estado de autenticación y redirigir
-                    this.authService.logout(this.token).subscribe(
-                        (response) => {
-                            console.log(response);
-                            localStorage.clear();
-                            this.router.navigate(['/login']);
-                        },
-                        (error) => {
-                            console.error('Error logging out:', error);
-                            localStorage.clear();
-                            this.router.navigate(['/login']);
-                        }
-                    );
+                    this.isAuthenticated = false;
+                    localStorage.clear();
+                    location.reload();
                 },
                 (err) => {
                     console.log(err);
