@@ -11,7 +11,7 @@ import { Emprendedor } from '../Modelos/emprendedor.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private email: string; // Variable para guardar el email temporalmente
+  
   url= environment.apiUrl+'auth/';
 
   constructor(private http: HttpClient) { }
@@ -36,11 +36,4 @@ export class AuthService {
   }
 
 
-  setEmail(email: string) {
-    this.email = email;
-  }
-
-  getEmail(): string {
-    return this.email;
-  }
 }
