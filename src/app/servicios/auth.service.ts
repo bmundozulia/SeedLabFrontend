@@ -35,5 +35,19 @@ export class AuthService {
     return this.http.post<any>(`${this.url}validate_email_em`, body, { headers });
   }
 
+  logout(token: string) : Observable<any>{
+    return this.http.post(this.url+"logout",{token})
+  }
 
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+  
+  setEmail(email: string) {
+    this.email = email;
+  }
+
+  getEmail(): string {
+    return this.email;
+  }
 }
