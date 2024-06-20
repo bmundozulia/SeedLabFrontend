@@ -95,7 +95,7 @@ export class PersonalizacionesComponent implements OnInit {
 
 
 
-
+// metodo agregar personalizacion
   addPersonalizacion(): void {
     try {
       if (this.personalizacionForm.valid) {
