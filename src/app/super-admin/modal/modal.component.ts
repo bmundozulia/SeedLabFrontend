@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -17,8 +17,6 @@ import { Subscription } from 'rxjs';
 
 })
 export class ModalComponent implements OnInit {
-
-  @Output() rutaGuardada = new EventEmitter<boolean>();
 
   createRutaForm: FormGroup;
   token = '';
@@ -73,9 +71,7 @@ export class ModalComponent implements OnInit {
     this.rutaService.createRutas(this.token, ruta).subscribe(
       (response: any) => {
         console.log(response);
-        this.rutaGuardada.emit(true);
-
-
+        location.reload()
       },
       (error) => {
         console.error(error);
