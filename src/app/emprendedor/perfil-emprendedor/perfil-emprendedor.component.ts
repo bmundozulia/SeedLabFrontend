@@ -18,6 +18,7 @@ import { MunicipioService } from '../../servicios/municipio.service';
 
 import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
 import { User } from '../../Modelos/user.model';
+import { AlertService } from '../../servicios/alert.service';
 
 
 @Component({
@@ -50,7 +51,9 @@ export class PerfilEmprendedorComponent implements OnInit {
   currentRolId: string | null = null;
   emprendedorId: any;
   estado: boolean;
-  
+
+
+
 
 
   emprendedorForm = this.fb.group({
@@ -78,7 +81,8 @@ export class PerfilEmprendedorComponent implements OnInit {
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
     private emprendedorService: EmprendedorService,
-    private registroService: AuthService,
+    private authService: AuthService,
+    private alerService: AlertService,
     private router: Router,
   ) { }
 
@@ -101,7 +105,10 @@ export class PerfilEmprendedorComponent implements OnInit {
         this.estado = this.user.estado;
         this.documento = this.user.emprendedor.documento;
         this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.currentRolId);
+        console.log(!this.token);
+      }
+      if (this.token === null) {
+        this.router.navigate(['/inicio/body']);
       }
     }
   }
@@ -115,7 +122,7 @@ export class PerfilEmprendedorComponent implements OnInit {
             nombre: data.nombre,
             apellido: data.apellido,
             celular: data.celular,
-            email: data.email ,
+            email: data.email,
             password: data.password,
             genero: data.genero,
             fecha_nac: data.fecha_nac,
@@ -128,7 +135,7 @@ export class PerfilEmprendedorComponent implements OnInit {
           console.log(data);
 
           // Forzar cambio de detección de Angular
-          setTimeout(()=>{
+          setTimeout(() => {
             this.emprendedorForm.get('estado')?.setValue(this.isActive);
           })
 
@@ -153,7 +160,6 @@ export class PerfilEmprendedorComponent implements OnInit {
       genero: this.emprendedorForm.get('genero')?.value,
       fecha_nac: this.emprendedorForm.get('fecha_nac')?.value,
       direccion: this.emprendedorForm.get('direccion')?.value,
-      estado: this.emprendedorForm.get('estado')?.value,
       id_municipio: this.emprendedorForm.get('municipio')?.value,
     }
     this.emprendedorService.updateEmprendedor(perfil, this.token, this.documento).subscribe(
@@ -163,18 +169,71 @@ export class PerfilEmprendedorComponent implements OnInit {
       (err) => {
         console.log(err);
       }
-    )
-    this.emprendedorService.destroy(this.token, this.documento).subscribe(
-      (data)=>{
-        location.reload();
-        this.token = null;
-        this.router.navigate(["/login"]);
-      },
-      (err)=>{
-        console.log(err);
-      }
-    )
+    );
+
+    // if (this.emprendedorId != null) {
+    //   let confirmationText = this.isActive
+    //     ? "¿Estas seguro de guardar los cambios?"
+    //     : "¿Estas seguro de guardar los cambios?";
+
+    //   this.alerService.alertaActivarDesactivar(confirmationText).then((result) => {
+    //     if (result.isConfirmed) {
+    //       this.emprendedorService.updateEmprendedor(perfil, this.token, this.emprendedorId).subscribe(
+    //         data => {
+    //           console.log(data);
+    //           location.reload();
+    //         },
+    //         error => {
+    //           console.error("Error al actualizar el emprendedor", error)
+    //         }
+    //       );
+    //     }
+    //   });
+    // } else {
+    //   this.emprendedorService.destroy(this.token, this.documento).subscribe(
+    //     (data) => {
+    //       location.reload();
+    //       this.token = null;
+    //       this.router.navigate(["/login"]);
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //     });
+    // }
+
   }
+  desactivarEmprendedor(): void {
+    let confirmationText = this.isActive
+      ? "¿Estás seguro de guardar los cambios?"
+      : "¿Estás seguro de guardar los cambios?";
+    this.alerService.alertaActivarDesactivar(confirmationText).then((result) => {
+        if (result.isConfirmed) {
+            this.emprendedorService.destroy(this.token, this.documento).subscribe(
+                (data) => {
+                    console.log("desactivar", data);
+                    // Llama a logout para limpiar el estado de autenticación y redirigir
+                    this.authService.logout(this.token).subscribe(
+                        (response) => {
+                            console.log(response);
+                            localStorage.clear();
+                            this.router.navigate(['/login']);
+                        },
+                        (error) => {
+                            console.error('Error logging out:', error);
+                            localStorage.clear();
+                            this.router.navigate(['/login']);
+                        }
+                    );
+                },
+                (err) => {
+                    console.log(err);
+                }
+            );
+        }
+    });
+}
+
+
 
 
   passwordValidator(control: AbstractControl) {
@@ -246,21 +305,6 @@ export class PerfilEmprendedorComponent implements OnInit {
     this.boton = false;
   }
 
-  toggleActive() {
-
-    this.isActive = !this.isActive;
-    //this.orientadorForm.patchValue({ estado: this.isActive });
-    //console.log("Estado después de toggle:", this.isActive); // Verifica el estado después de toggle
-    //this.orientadorForm.patchValue({ estado: this.isActive ? true : false });
-    this.emprendedorForm.patchValue({ estado: this.isActive ? true : false });
-    //console.log("Estado después de toggle:", this.isActive); // Verifica el estado después de toggle
-  }
-
-  mostrarToggle(): void {
-    if (this.emprendedorId != null) {
-      this.boton = false;
-    }
-    this.boton = true;
-  }
+  
 
 }

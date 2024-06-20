@@ -10,7 +10,7 @@ export class PerfilEmprendedor {
     fecha_nac: string | null;
     direccion: string | null;
     id_tipo_documento: string | null;
-    estado: boolean;
+    estado?: boolean;
     id_municipio: string | null;
 
     constructor(
