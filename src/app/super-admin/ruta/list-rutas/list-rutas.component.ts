@@ -7,6 +7,7 @@ import { RutaService } from '../../../servicios/rutas.service';
 
 import { Ruta } from '../../../Modelos/ruta.modelo';
 import { User } from '../../../Modelos/user.model';
+import { SwitchService } from '../../../servicios/switch.service';
 
 @Component({
   selector: 'app-list-rutas',
@@ -24,22 +25,27 @@ export class ListRutasComponent implements OnInit {
   token: string | null = null;
   user: User | null = null;
   currentRolId: string | null = null;
+  modalSwitch: boolean;
 
   constructor(
     private rutaService: RutaService,
-    private route: Router
+    private route: Router,
+    private modalSS: SwitchService
   ) { }
 
   ngOnInit(): void {
     this.validateToken();
     this.cargarRutas();
+    this.modalSS.$modal.subscribe((valor) => { this.modalSwitch = valor });
   }
 
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
     0: 'Inactivo'
   };
-
+  openModal() {
+    this.modalSwitch = true;
+  }
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
@@ -55,6 +61,7 @@ export class ListRutasComponent implements OnInit {
       }
     }
   }
+
 
   cargarRutas(): void {
     if (this.token) {

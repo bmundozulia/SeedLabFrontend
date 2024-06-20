@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -18,6 +18,8 @@ import { Subscription } from 'rxjs';
 })
 export class ModalComponent implements OnInit {
 
+  @Output() rutaGuardada = new EventEmitter<boolean>();
+
   createRutaForm: FormGroup;
   token = '';
   user: User | null = null;
@@ -27,7 +29,7 @@ export class ModalComponent implements OnInit {
   submitted: boolean = false;
   private modalSubscription: Subscription;
   isVisible = true;
-  
+
 
   constructor(
     private modalSS: SwitchService,
@@ -46,7 +48,7 @@ export class ModalComponent implements OnInit {
     this.validateToken();
   }
 
-    validateToken(): void {
+  validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
       let identityJSON = localStorage.getItem('identity');
@@ -69,9 +71,11 @@ export class ModalComponent implements OnInit {
       this.createRutaForm.get('estado')?.value
     );
     this.rutaService.createRutas(this.token, ruta).subscribe(
-      (response:any) => {
+      (response: any) => {
         console.log(response);
-        
+        this.rutaGuardada.emit(true);
+
+
       },
       (error) => {
         console.error(error);
@@ -83,8 +87,8 @@ export class ModalComponent implements OnInit {
     this.modalSS.$modal.emit(false);
   }
 
-  
-  
+
+
 
   // isFormValid() {
   //   return this.persona.nombre.trim() !== '';
