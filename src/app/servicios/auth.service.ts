@@ -11,7 +11,7 @@ import { Emprendedor } from '../Modelos/emprendedor.model';
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   url= environment.apiUrl+'auth/';
 
   constructor(private http: HttpClient) { }
@@ -43,11 +43,5 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
   
-  setEmail(email: string) {
-    this.email = email;
-  }
-
-  getEmail(): string {
-    return this.email;
-  }
+  
 }

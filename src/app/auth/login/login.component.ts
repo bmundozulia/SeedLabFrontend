@@ -128,7 +128,7 @@ export class LoginComponent implements OnInit {
                     this.alertService.errorAlert('Error', err.error.message);
                 }
                 if (err.status === 409) {
-                    this.loginService.setEmail(email); // Guarda el email temporalmente
+                    //this.loginService.setEmail(email); // Guarda el email temporalmente
                     this.router.navigate(['/verification'], { queryParams: { email: email } });
                     //this.alertService.errorAlert('Error', "Por favor verifique su correo electronico");
                 }

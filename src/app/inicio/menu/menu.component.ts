@@ -18,7 +18,7 @@ export class MenuComponent {
   currentRolId: string | null = "";
   user: User | null = null;
   currentRolName: string | null = "";
-  isAuthenticated: boolean = false;
+  isAuthenticated: boolean = true;
 
   toggleSlide() {
     this.isLeft = !this.isLeft;
@@ -65,6 +65,7 @@ export class MenuComponent {
           localStorage.clear();
           this.isAuthenticated = false;
           this.router.navigate(['/home/body']);
+          location.reload();
         },
         (err) => {
           console.log(err);

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<nav class="sidebar shadow-xl" [ngClass]="{ 'slide-left': isLeft }" *ngIf="logueado">
+<nav class="sidebar shadow-xl" [ngClass]="{ 'slide-left': isLeft }" *ngIf="isAuthenticated">
     <header class="relative">
         <div class="flex justify-center">
             <span class="p-10 mr-4">
@@ -17,8 +17,8 @@
         </div>
     </header>
 
-    <div class="menu-bar">
-        <div class="menu ">
+    <div class="menu-bar" >
+        <div class="menu " >
 
             <ul class="menu-links mr-9">
                 <!-- Inicio -->
