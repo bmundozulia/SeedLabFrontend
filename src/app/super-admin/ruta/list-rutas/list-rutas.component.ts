@@ -22,10 +22,12 @@ export class ListRutasComponent implements OnInit {
   token: string | null = null;
   user: User | null = null;
   currentRolId: number;
+  modalSwitch: boolean;
 
   constructor(
     private rutaService: RutaService,
     private router: Router,
+    private modalSS: SwitchService,
   ) { }
 
   ngOnInit(): void {
