@@ -24,7 +24,7 @@ export class PerfilOrientadorComponent {
 
   user: User | null = null;
   token = '';
-  currentRolId: string | null = null;
+  currentRolId: number;
   id: number;
   blockedInputs = true;
   boton: boolean
@@ -64,6 +64,10 @@ export class PerfilOrientadorComponent {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.id = this.user.id;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 2) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
     }
     if (!this.token) {

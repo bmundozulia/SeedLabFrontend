@@ -17,7 +17,7 @@ export class VerAsesoriasComponent implements OnInit {
   asesoriasConAsesor: Asesoria[] = [];
   token: string | null = null;
   user: any = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   sinAsignarCount: number = 0;
   asignadasCount: number = 0;
   userFilter: any = { Nombre_sol: '' };
@@ -42,10 +42,18 @@ export class VerAsesoriasComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-
-      if (!this.token) {
-        this.router.navigate(['/inicio/body']);
+      let identityJSON = localStorage.getItem('identity');
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        this.user = identity;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 2) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 

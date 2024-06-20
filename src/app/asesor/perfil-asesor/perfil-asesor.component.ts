@@ -24,7 +24,7 @@ export class PerfilAsesorComponent implements OnInit {
   blockedInputs = true;
   id: number | null = null;
   nombre: string | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   user: User
   boton: boolean;
   hide = true;
@@ -60,6 +60,10 @@ export class PerfilAsesorComponent implements OnInit {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.id = this.user.id;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 4) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
     }
     if (!this.token) {

@@ -21,7 +21,7 @@ export class AsesoriasComponent implements OnInit {
   token: string | null = null;
   user: any = null;
   filteredAsesorias: Asesoria[] = [];
-  currentRolId: string | null = null;
+  currentRolId: number;
 
   userFilter: any = { Nombre_sol: ''};
   Nombre_sol: string | null = null;
@@ -49,6 +49,10 @@ export class AsesoriasComponent implements OnInit {
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 4) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
     }
 

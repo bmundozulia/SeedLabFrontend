@@ -24,7 +24,7 @@ export class OrientadorCrearComponent implements OnInit {
   listaOrientador: Orientador[] = [];
   token: string | null = null;
   user: User | null = null;
-  currentRolId: string | null = null; // Initialize currentRolId
+  currentRolId: number;
   faPen = faPenToSquare;
   faPlus = faPlus;
   modalCrearOrientador: boolean = false;
@@ -52,10 +52,18 @@ export class OrientadorCrearComponent implements OnInit {
 
   validateToken(): void {
     if (!this.token) {
-      this.token = localStorage.getItem("token");
-        if (!this.token) {
-        this.router.navigate(['/inicio/body']);
+      let identityJSON = localStorage.getItem('identity');
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        this.user = identity;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 1) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 

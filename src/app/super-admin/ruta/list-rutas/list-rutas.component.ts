@@ -20,7 +20,7 @@ export class ListRutasComponent implements OnInit {
   faeye = faEye;
   token: string | null = null;
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
 
   constructor(
     private rutaService: RutaService,
@@ -40,13 +40,16 @@ export class ListRutasComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      // let identityJSON = localStorage.getItem('identity');
+      let identityJSON = localStorage.getItem('identity');
 
-      // if (identityJSON) {
-      //   let identity = JSON.parse(identityJSON);
-      //   this.user = identity;
-      //   this.currentRolId = this.user.id_rol?.toString();
-      // }
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        this.user = identity;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 1) {
+          this.router.navigate(['/inicio/body']);
+        }
+      }
     }
     if (!this.token) {
       this.router.navigate(['/inicio/body']);
@@ -63,7 +66,6 @@ export class ListRutasComponent implements OnInit {
               item.fecha_creacion,
               this.ESTADO_MAP[item.estado] ?? 'Desconocido')
           );
-          console.log(this.listaRutas);
         },
         (err) => {
           console.log(err);

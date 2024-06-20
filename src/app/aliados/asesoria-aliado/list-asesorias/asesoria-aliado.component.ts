@@ -18,7 +18,7 @@ export class AsesoriaAliadoComponent implements OnInit {
   asesoriasSinAsesor: Asesoria[] = [];
   token: string | null = null;
   user: any = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   mensaje: string | null = null;
   @ViewChild('sinAsignarButton') sinAsignarButton!: ElementRef;
   userFilter: any = { Nombre_sol: ''};
@@ -39,8 +39,16 @@ export class AsesoriaAliadoComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
+      let identityJSON = localStorage.getItem('identity');
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        this.user = identity;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 3) {
+          this.router.navigate(['/inicio/body']);
+        }
+      }
     }
-
     if (!this.token ) {
       this.router.navigate(['/inicio/body']);
     } else {
@@ -94,7 +102,7 @@ export class AsesoriaAliadoComponent implements OnInit {
     if (asesoria && asesoria.id_asesoria) {
       this.asesoriaService.rechazarAsesoria(this.token, asesoria.id_asesoria, 'rechazar').subscribe(
         response => {
-          this.loadAsesorias(parseInt(this.currentRolId!), 1);
+          this.loadAsesorias((this.currentRolId!), 1);
           location.reload();
         },
         error => {

@@ -15,7 +15,7 @@ export class DarAliadoAsesoriaModalComponent {
   asignarForm: FormGroup;
   aliados: any[] = []; 
   token: string | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   docEmprendedor: string | null = null;
 
   user: any;
@@ -42,7 +42,7 @@ export class DarAliadoAsesoriaModalComponent {
     if (!this.token) {
       this.token = localStorage.getItem('token');
     }
-    if (!this.token ) {
+    if (!this.token) {
       this.router.navigate(['/inicio/body']);
     }
   }

@@ -56,7 +56,7 @@ const routes: Routes = [
   { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
   { path: 'perfil-emprendedor', component: PerfilEmprendedorComponent },
   { path: 'add-empresa', component: AddEmpresaComponent },
-  { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
+
 
   //Empresa
   { path: 'edit-empresa', component: EditEmpresaComponent },

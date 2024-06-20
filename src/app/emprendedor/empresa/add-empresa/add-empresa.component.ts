@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder,  Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
@@ -42,22 +42,22 @@ export class AddEmpresaComponent {
   token = '';
   documento: string;
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   faIdCard = faIdCard;
   faMountainCity = faMountainCity;
   faLandmarkFlag = faLandmarkFlag;
   faLocationDot = faLocationDot;
-  faEnvelope=faEnvelope;
-  faUser=faUser;
-  faPhone=faPhone;
-  faMobileAlt=faMobileAlt;
-  faBriefcase=faBriefcase;
-  faBuilding=faBuilding;
-  faAddressCard=faAddressCard;
-  faUserTie=faUserTie;
-  faLightbulb=faLightbulb;
-  faTasks=faTasks;
-  faRankingStar=faRankingStar;
+  faEnvelope = faEnvelope;
+  faUser = faUser;
+  faPhone = faPhone;
+  faMobileAlt = faMobileAlt;
+  faBriefcase = faBriefcase;
+  faBuilding = faBuilding;
+  faAddressCard = faAddressCard;
+  faUserTie = faUserTie;
+  faLightbulb = faLightbulb;
+  faTasks = faTasks;
+  faRankingStar = faRankingStar;
   buttonText: string = 'Guardar Cambios';
   emprendedorDocumento: string;
 
@@ -73,13 +73,14 @@ export class AddEmpresaComponent {
 
   }
 
- 
+
   ngOnInit(): void {
     this.validateToken();
     this.cargarDepartamentos();
-    
+
   }
 
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
@@ -87,11 +88,18 @@ export class AddEmpresaComponent {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
         this.user = identity;
-        this.documento = this.user.emprendedor.documento;
-        this.currentRolId = this.user.id_rol?.toString();
+        this.currentRolId = this.user.id_rol;
+
+        if (this.currentRolId != 5) {
+          this.router.navigate(['/inicio/body']);
+        } else {
+          this.documento = this.user.emprendedor.documento;
+        }
       }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
   //Funcion para cargar los departamentos
@@ -129,7 +137,7 @@ export class AddEmpresaComponent {
     id_tipo_documento: ['', Validators.required],
     documento: ['', Validators.required],
     razonSocial: ['', Validators.required],
-    id_municipio: ['', Validators.required],     
+    id_municipio: ['', Validators.required],
     telefono: [''],
     celular: ['', Validators.required],
     url_pagina: ['', Validators.required],
@@ -157,14 +165,14 @@ export class AddEmpresaComponent {
   get g() {
     return this.addApoyoEmpresaForm.controls;
   }
- 
+
 
   crearEmpresa(): void {
     this.submitted = true;
-    console.log("Formulario enviado", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
+    //console.log("Formulario enviado", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
 
     if (this.addEmpresaForm.invalid) {
-      console.log("Formulario inválido");
+      //console.log("Formulario inválido");
       return;
     }
 
@@ -197,8 +205,8 @@ export class AddEmpresaComponent {
       id_tipo_documento: this.addApoyoEmpresaForm.get('id_tipo_documento')?.value,
       id_empresa: empresa.documento,
     } : null;
-    
-    const apoyosList: Array<any>= [];
+
+    const apoyosList: Array<any> = [];
     if (apoyos) {
       apoyosList.push(apoyos);
     }
@@ -207,21 +215,21 @@ export class AddEmpresaComponent {
       apoyos: apoyosList
     };
 
-   
-      this.addEmpresaService.addEmpresa(this.token, payload).subscribe(
-        data=> {
-          console.log('Respuesta de la API (empresa creada):', data);
-          this.alertService.successAlert('Éxito', 'Registro exitoso');
-          this.emprendedorDocumento = data.empresa.id_emprendedor;
-          //console.log(`------------------------------------------------ ${this.emprendedorDocumento}`);
-          //debugger;
-          this.router.navigate(['list-empresa']);
-        },
-        error=>{
-          this.alertService.errorAlert('Error', error.message);
-          console.log('Respuesta de la API ERRRRORRRRRR')
-        }
-      );
+
+    this.addEmpresaService.addEmpresa(this.token, payload).subscribe(
+      data => {
+        //console.log('Respuesta de la API (empresa creada):', data);
+        this.alertService.successAlert('Éxito', 'Registro exitoso');
+        this.emprendedorDocumento = data.empresa.id_emprendedor;
+        //console.log(`------------------------------------------------ ${this.emprendedorDocumento}`);
+        //debugger;
+        this.router.navigate(['list-empresa']);
+      },
+      error => {
+        this.alertService.errorAlert('Error', error.message);
+        console.log('Respuesta de la API ERRRRORRRRRR')
+      }
+    );
   }
 
   mostrarOcultarContenido() {

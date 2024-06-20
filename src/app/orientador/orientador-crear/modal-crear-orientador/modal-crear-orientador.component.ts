@@ -23,7 +23,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
   token: string | null = null;
   user: User | null = null;
   id: number | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   orientadorId: any;
   isSubmitting = false;
 
@@ -72,10 +72,9 @@ export class ModalCrearOrientadorComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
-
-      if (!this.token) {
-        this.router.navigate(['/inicio/body']);
-      }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 
@@ -131,7 +130,6 @@ export class ModalCrearOrientadorComponent implements OnInit {
                 this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
                     data => {
                         location.reload();
-                        console.log(data);
                     },
                     error => {
                         console.error("Error al actualizar el orientador:", error);

@@ -4,6 +4,7 @@ import { faEye, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { AliadoService } from '../../servicios/aliado.service';
 import { Aliado } from '../../Modelos/aliado.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../../Modelos/user.model';
 
 @Component({
   selector: 'app-list-aliados',
@@ -18,6 +19,8 @@ export class ListAliadosComponent implements OnInit {
   public page!: number;
   listaAliado: Aliado[] = [];
   token: string | null = null;
+  user: User;
+  currentRolId: number;
 
   private ESTADO_MAP: { [key: number]: string } = {
     1: 'Activo',
@@ -40,6 +43,15 @@ export class ListAliadosComponent implements OnInit {
   validartoken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
+      let identityJSON = localStorage.getItem('identity');
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        this.user = identity;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 3) {
+          this.router.navigate(['/inicio/body']);
+        }
+      }
     }
     if (!this.token) {
       this.router.navigate(['/inicio/body']);

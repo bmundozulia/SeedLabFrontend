@@ -21,7 +21,7 @@ export class PerfilAdminComponent {
   token = '';
   blockedInputs = true;
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   id: number;
   boton: boolean;
   hide = true
@@ -56,6 +56,10 @@ export class PerfilAdminComponent {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.id = this.user.id;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 1) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
     }
     if (!this.token) {

@@ -24,7 +24,7 @@ export class ListAsesoresComponent implements OnInit {
   public page!: number;
   token: string | null = null;
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   estado: boolean | null = null;
   id: number | null = null;
   nombre: string | null = null;
@@ -56,6 +56,10 @@ export class ListAsesoresComponent implements OnInit {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.id = this.user.id;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 3) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
     }
     if (!this.token) {

@@ -20,7 +20,7 @@ export class ModalComponent implements OnInit {
   createRutaForm: FormGroup;
   token = '';
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   now = new Date();
   formattedDate: string = '';
   submitted: boolean = false;

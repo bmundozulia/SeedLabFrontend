@@ -20,7 +20,7 @@ export class CrearSuperadminComponent implements OnInit {
   faPlus = faPlus;
   token: string | null = null;
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   estado: boolean | null = null;
   id: number | null = null;
   listaAdmins: Superadmin[] = [];
@@ -43,6 +43,15 @@ export class CrearSuperadminComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
+      let identityJSON = localStorage.getItem('identity');
+      if (identityJSON) {
+        let identity = JSON.parse(identityJSON);
+        this.user = identity;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 1) {
+          this.router.navigate(['/inicio/body']);
+        }
+      }
     }
     if (!this.token) {
       this.router.navigate(['/inicio/body']);

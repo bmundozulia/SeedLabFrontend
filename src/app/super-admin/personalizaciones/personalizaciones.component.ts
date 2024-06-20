@@ -24,7 +24,7 @@ export class PersonalizacionesComponent implements OnInit {
   token = '';
   user: User | null = null;
   id: number | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
 
   @ViewChild('colorPickerPrincipal') colorPickerPrincipal: ColorPickerDirective;
   @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
@@ -62,7 +62,10 @@ export class PersonalizacionesComponent implements OnInit {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.id = this.user.id;
-        this.currentRolId = this.user.id_rol?.toString();
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 1) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
     }
     if (!this.token) {
