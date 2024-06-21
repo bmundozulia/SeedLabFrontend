@@ -117,7 +117,15 @@ export class ModalcrearSuperadminComponent implements OnInit {
                 console.log(data);
               },
               error => {
-                console.error("Error al actualizar el superadmin",error);
+                console.error(error);
+                // if (error.status === 501) {
+                //   this.alertService.errorAlert('Error',error.error.messaje)
+                // }
+                // console.error(error);
+                // if (error.status === 500) {
+                //   this.alertService.errorAlert('','El correo electrónico ya ha sido registrado anteriormente')
+                // }
+                //console.error("Error al actualizar el superadmin",error);
               }
             )
           }
@@ -126,9 +134,14 @@ export class ModalcrearSuperadminComponent implements OnInit {
     } else {
       this.superadminService.createSuperadmin(this.token, superadmin).subscribe(
         data => {
-          location.reload();
+          //location.reload();
+         console.log(data);
         },
         error => {
+          console.error(error);
+          if (error.status === 400) {
+            this.alertService.errorAlert('Error',error.error.mensaje)
+          }
           console.error('Error al crear el superadmin:', error);
         });
     }
@@ -138,6 +151,7 @@ export class ModalcrearSuperadminComponent implements OnInit {
   toggleActive() {
     this.isActive = !this.isActive;
     this.superadminForm.patchValue({ estado: this.isActive ? true : false });
+   
   }
 
   /* Muestra el toggle del estado dependiendo del adminId que no sea nulo*/
