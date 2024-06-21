@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(['list-empresa/']);
                         break;
                     default:
-                        this.router.navigate(['/home/body']);
+                        this.router.navigate(['home']);
                         break;
                 }
             } else {
