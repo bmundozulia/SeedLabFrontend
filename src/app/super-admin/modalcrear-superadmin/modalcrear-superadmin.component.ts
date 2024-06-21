@@ -109,7 +109,7 @@ export class ModalcrearSuperadminComponent implements OnInit {
       ? "¿Estas seguro de guardar los cambios"
       : "¿Estas seguro de guardar los cambios?";
 
-        this.alertService.alertaActivarDesactivar(confirmationText).then((result)=>{
+        this.alertService.alertaActivarDesactivar(confirmationText,'question').then((result)=>{
           if (result.isConfirmed) {
             this.superadminService.updateAdmin(superadmin,this.token,this.adminId).subscribe(
               data=> {
