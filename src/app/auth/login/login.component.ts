@@ -59,13 +59,13 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(['list-aliados']);
                         break;
                     case '2':
-                        this.router.navigate(['/home/body']);
+                        this.router.navigate(['home']);
                         break;
                     case '3':
                         this.router.navigate(['list-asesores']);
                         break;
                     case '4':
-                        this.router.navigate(['/home/body']);
+                        this.router.navigate(['home']);
                         break;
                     case '5':
                         this.router.navigate(['list-empresa/']);
