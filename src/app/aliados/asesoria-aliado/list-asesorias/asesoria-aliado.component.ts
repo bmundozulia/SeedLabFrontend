@@ -5,12 +5,13 @@ import { DarAsesorModalComponent } from '../dar-asesor-modal/dar-asesor-modal.co
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { HeaderComponent } from '../../../header/header.component';
 import { Asesoria } from '../../../Modelos/asesoria.model';
+import { AlertService } from '../../../servicios/alert.service';
 
 @Component({
   selector: 'app-asesoria-aliado',
   templateUrl: './asesoria-aliado.component.html',
   styleUrls: ['./asesoria-aliado.component.css'],
-  providers: [AsesoriaService]
+  providers: [AsesoriaService, AlertService]
 })
 export class AsesoriaAliadoComponent implements OnInit {
   asesorias: Asesoria[] = [];
@@ -21,18 +22,19 @@ export class AsesoriaAliadoComponent implements OnInit {
   currentRolId: number;
   mensaje: string | null = null;
   @ViewChild('sinAsignarButton') sinAsignarButton!: ElementRef;
-  userFilter: any = { Nombre_sol: ''};
+  userFilter: any = { Nombre_sol: '' };
   Nombre_sol: string | null = null;
 
   constructor(
-    private asesoriaService: AsesoriaService, 
+    private asesoriaService: AsesoriaService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService,
   ) { }
 
   /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit() {
-    this.validateToken();  
+    this.validateToken();
   }
 
   /* Valida el token del login */
@@ -49,7 +51,7 @@ export class AsesoriaAliadoComponent implements OnInit {
         }
       }
     }
-    if (!this.token ) {
+    if (!this.token) {
       this.router.navigate(['/inicio/body']);
     } else {
       this.loadAsesorias(1, 0);
@@ -100,17 +102,20 @@ export class AsesoriaAliadoComponent implements OnInit {
 
   rechazarAsesoria(asesoria: Asesoria): void {
     if (asesoria && asesoria.id_asesoria) {
-      this.asesoriaService.rechazarAsesoria(this.token, asesoria.id_asesoria, 'rechazar').subscribe(
-        response => {
-          this.loadAsesorias((this.currentRolId!), 1);
-          location.reload();
-        },
-        error => {
-          console.error('Error al rechazar asesoría:', error);
+      this.alertService.alertaActivarDesactivar("¿Estas seguro de rechazar la asesoria?", 'question',).then((result) => {
+        if (result.isConfirmed) {
+          this.asesoriaService.rechazarAsesoria(this.token, asesoria.id_asesoria, 'rechazar').subscribe(
+            response => {
+              this.loadAsesorias((this.currentRolId!), 1);
+              location.reload();
+            },
+            error => {
+              console.error('Error al rechazar asesoría:', error);
+            }
+          );
         }
-      );
-    } else {
-      console.error('Asesoría inválida:', asesoria);
+        
+      })
     }
   }
 

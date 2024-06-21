@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { AsesoriaService } from '../../servicios/asesoria.service';
 import { Router } from '@angular/router';
+import { AlertService } from '../../servicios/alert.service';
 
 @Component({
   selector: 'app-horario-modal',
@@ -22,6 +23,7 @@ export class HorarioModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private asesoriaService: AsesoriaService,
     private router: Router,
+    private alertService: AlertService
   ) {
     this.asignarForm = this.fb.group({
       fecha: ['', Validators.required],
@@ -64,7 +66,8 @@ export class HorarioModalComponent implements OnInit {
         }
       );
     } else {
-      console.error('Formulario inválido:', this.asignarForm.value);
+      //console.error('Formulario inválido:', this.asignarForm.value);
+      this.alertService.errorAlert('Error', 'Formulario inválido, debes asignar un horario correcto');
     }
   }
 }

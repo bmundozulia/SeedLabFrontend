@@ -13,7 +13,7 @@ import { AlertService } from '../../../servicios/alert.service';
   selector: 'app-modal-add-asesores',
   templateUrl: './modal-add-asesores.component.html',
   styleUrl: './modal-add-asesores.component.css',
-  providers: [AsesorService, AliadoService]
+  providers: [AsesorService, AliadoService, AlertService]
 })
 
 export class ModalAddAsesoresComponent implements OnInit {
@@ -139,10 +139,7 @@ export class ModalAddAsesoresComponent implements OnInit {
     };
     /* Actualiza superadmin */
     if (this.asesorId != null) {
-      let confirmationText = this.isActive
-        ? "¿Estas seguro de guardar los cambios?"
-        : "¿Estas seguro de guardar los cambios?";
-      this.alerService.alertaActivarDesactivar(confirmationText).then((result) => {
+      this.alerService.alertaActivarDesactivar("¿Estas seguro de guardar los cambios?", 'question').then((result) => {
         if (result.isConfirmed) {
           this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
             data => {
@@ -158,7 +155,8 @@ export class ModalAddAsesoresComponent implements OnInit {
     }else{
       this.asesorService.createAsesor(this.token, asesor).subscribe(
         data => {
-          location.reload();
+          this.alerService.successAlert('Exito', 'Asesor creado con exito')
+          this.dialogRef.close(true);
         },
         error => {
           console.error('Error al crear el asesor:', error);
