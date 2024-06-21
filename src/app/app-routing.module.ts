@@ -96,7 +96,7 @@ const routes: Routes = [
 
 
 
-  { path: '', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
+  { path: 'home', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
   { path: '**', redirectTo: 'error404', pathMatch: 'full' } // Manejo de rutas no encontradas, redirige a la ruta raíz
 ];
 
