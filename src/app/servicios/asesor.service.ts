@@ -41,11 +41,8 @@ export class AsesorService {
   }
 
   mostrarAsesoriasAsesor(access_token: any, idAsesor: number, conHorario: boolean): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ` + access_token,
-      'Content-Type': 'application/json'
-    });
-    return this.http.get<any>(`${this.url}mostrarAsesoriasAsesor/${idAsesor}/${conHorario}`, { headers });
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get<any>(`${this.url}mostrarAsesoriasAsesor/${idAsesor}/${conHorario}`, options);
   }
 }
 

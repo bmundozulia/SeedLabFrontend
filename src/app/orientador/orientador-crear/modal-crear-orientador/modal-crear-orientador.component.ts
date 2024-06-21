@@ -1,17 +1,18 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { SwitchService } from '../../../servicios/switch.service';
 import { User } from '../../../Modelos/user.model';
 import { Orientador } from '../../../Modelos/orientador.model';
 import { OrientadorService } from '../../../servicios/orientador.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SuperadminService } from '../../../servicios/superadmin.service';
+import { Router } from '@angular/router';
+import { AlertService } from '../../../servicios/alert.service';
 
 @Component({
   selector: 'app-modal-crear-orientador',
   templateUrl: './modal-crear-orientador.component.html',
   styleUrls: ['./modal-crear-orientador.component.css'],
-  providers: [OrientadorService]
+  providers: [OrientadorService, AlertService]
 })
 export class ModalCrearOrientadorComponent implements OnInit {
   @Input() isEditing: boolean = false;
@@ -22,8 +23,9 @@ export class ModalCrearOrientadorComponent implements OnInit {
   token: string | null = null;
   user: User | null = null;
   id: number | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   orientadorId: any;
+  hide = true;
 
   orientadorForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -38,11 +40,12 @@ export class ModalCrearOrientadorComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private orientadorServices: OrientadorService,
+    private router: Router,
+    private alertService: AlertService,
     private superadminService: SuperadminService,
 
   ) {
     this.orientadorId = data.orientadorId;
-    console.log(' en el modal:', this.orientadorId);
   }
 
   ngOnInit(): void {
@@ -55,7 +58,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
       this.orientadorForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
     this.orientadorForm.get('password')?.updateValueAndValidity();
-     
+
   }
 
   get f() { return this.orientadorForm.controls; } //aquii
@@ -68,16 +71,9 @@ export class ModalCrearOrientadorComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
-      let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        this.estado = this.user.estado;
-        this.id = this.user.id;
-        console.log("this", identity);
-      }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 
@@ -93,15 +89,13 @@ export class ModalCrearOrientadorComponent implements OnInit {
             email: data.email,
             password: '',
             estado: data.estado // Esto establece el valor del estado en el formulario
-          }); 
+          });
           this.isActive = data.estado === 'Activo'; // Asegura que el estado booleano es correcto
-          console.log("Estado inicial:", this.isActive); // Verifica el estado inicial en la consola
-
           // Forzar cambio de detección de Angular
           setTimeout(() => {
             this.orientadorForm.get('estado')?.setValue(this.isActive);
-        });
-       },
+          });
+        },
         error => {
           console.log(error);
         }
@@ -125,13 +119,23 @@ export class ModalCrearOrientadorComponent implements OnInit {
       estado: this.orientadorForm.value.estado,
     };
     if (this.orientadorId != null) {
-      this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
-        data => {
-          location.reload();
-          console.log(data);
-        },
-        error => {
-          console.error("Error al actualizar el orientador:", error);
+        // Check if the status is changing and show the confirmation dialog
+        let confirmationText = this.isActive 
+            ? "¿Estas seguro de guardar los cambios?" 
+            : "¿Estas seguro de guardar los cambios?";
+
+        this.alertService.alertaActivarDesactivar(confirmationText).then((result) => {
+            if (result.isConfirmed) {
+                // Proceed with the update
+                this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
+                    data => {
+                        location.reload();
+                    },
+                    error => {
+                        console.error("Error al actualizar el orientador:", error);
+                    }
+                );
+            }
         });
     } else {
       this.orientadorServices.createOrientador(this.token, orientador).subscribe(

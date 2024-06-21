@@ -1,12 +1,12 @@
 <div class="p-4 bg-white" [formGroup]="asignarForm">
   <div>
     <h2>Detalles de la Asesoría</h2>
-    <p><strong class="text-gray-800 bottom-5">Nombre:</strong></p>
-    <p>{{ data.asesoria.Nombre_sol }}</p>
+    <p><strong class="text-gray-800 ">Nombre:</strong></p>
+    <p class="-mt-2">{{ data.asesoria.Nombre_sol }}</p>
     <p class="text-gray-800 "><strong>Notas:</strong></p>
-    <p>{{ data.asesoria.notas }}</p>
-    <p><strong class="text-gray-800 ">Fecha de Solicitud:</strong></p>
-    <p>{{ data.asesoria.fecha_solicitud }}</p>
+    <p class="-mt-2">{{ data.asesoria.notas }}</p>
+    <p><strong class="text-gray-800 mt-2">Fecha de Solicitud:</strong></p>
+    <p class="-mt-2">{{ data.asesoria.fecha_solicitud }}</p>
     <!-- Agrega más campos según sea necesario -->
   </div>
   <div class="rounded-xl pb-2 pt-2 w-full justify-start" id="nomAliadoContainer">
@@ -17,7 +17,7 @@
     </select>
   </div>
   <div mat-dialog-actions class="flex justify-end mt-3">
-    <button mat-button mat-dialog-close class="bg-gray-500 text-white">Cancelar</button>
-    <button mat-button class="bg-sky-500 text-white" type="submit" (click)="onGuardar()">Guardar</button>
+    <button mat-button mat-dialog-close class="bg-gray-400 text-white">Cancelar</button>
+    <button mat-button class="bg-sky-400 text-white" type="submit" (click)="onGuardar()">Guardar</button>
   </div>
 </div>

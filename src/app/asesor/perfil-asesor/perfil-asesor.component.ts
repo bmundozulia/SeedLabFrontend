@@ -6,6 +6,7 @@ import { AsesorService } from '../../servicios/asesor.service';
 import { Asesor } from '../../Modelos/asesor.model';
 import { User } from '../../Modelos/user.model';
 import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-asesor',
@@ -14,16 +15,16 @@ import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-ico
   providers: [AsesorService]
 })
 export class PerfilAsesorComponent implements OnInit {
-// iconoes
-faEnvelope = faEnvelope;
-faMobileAlt = faMobileAlt;
-faUser = faUser;
+  // iconoes
+  faEnvelope = faEnvelope;
+  faMobileAlt = faMobileAlt;
+  faUser = faUser;
 
   token: string | null = null;
   blockedInputs = true;
   id: number | null = null;
   nombre: string | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   user: User
   boton: boolean;
   hide = true;
@@ -40,30 +41,37 @@ faUser = faUser;
   });
 
   constructor(private fb: FormBuilder,
+    private router: Router,
     private asesorService: AsesorService) { }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
     this.verEditar();
   }
 
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
-      //console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        //console.log(identity);
         this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
         this.id = this.user.id;
-        console.log("this", identity);
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 4) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 
+  /* Trae los datos del asesor para poder editarlo en el input, de acuerdo al id del usuario logueado */
   verEditar(): void {
     this.asesorService.getAsesorID(this.token, this.id).subscribe(
       data => {
@@ -71,7 +79,7 @@ faUser = faUser;
           nombre: data.nombre,
           apellido: data.apellido,
           celular: data.celular,
-          email: data.auth?.email,
+          email: data.email,
         });
       },
       error => {
@@ -80,6 +88,7 @@ faUser = faUser;
     )
   }
 
+  /* Actualiza los datos del asesor */
   editAsesor(): void {
     const asesor: Asesor = {
       nombre: this.asesorForm.get('nombre')?.value,
@@ -92,7 +101,6 @@ faUser = faUser;
     };
     this.asesorService.updateAsesor(this.token, this.id, asesor).subscribe(
       data => {
-        //console.log("SIUUUUUU", data);
         location.reload();
       },
       error => {
@@ -101,23 +109,26 @@ faUser = faUser;
     )
   }
 
+  /* Bloqueo de inputs */
   toggleInputsLock(): void {
     this.blockedInputs = !this.blockedInputs;
     const fieldsToToggle = ['nombre', 'apellido', 'celular'];
     fieldsToToggle.forEach(field => {
       const control = this.asesorForm.get(field);
-        if (this.blockedInputs) {
-          control.disable();
-        } else {
-          control.enable();
-        }
+      if (this.blockedInputs) {
+        control.disable();
+      } else {
+        control.enable();
+      }
     });
   }
 
+ /* Restaura los datos originales */
   onCancel(): void {
     this.verEditar();
   }
 
+  /* Muesta el boton de guardar cambios */
   mostrarGuardarCambios(): void {
     this.boton = false;
   }

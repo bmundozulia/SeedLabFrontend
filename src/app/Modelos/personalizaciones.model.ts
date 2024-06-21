@@ -13,10 +13,6 @@ export class Personalizaciones {
         this.color_principal = color_principal;
         this.color_secundario = color_secundario;
     }
-
-
-
-
 }
 
 

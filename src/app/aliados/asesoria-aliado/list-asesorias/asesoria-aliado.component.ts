@@ -5,8 +5,6 @@ import { DarAsesorModalComponent } from '../dar-asesor-modal/dar-asesor-modal.co
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { HeaderComponent } from '../../../header/header.component';
 import { Asesoria } from '../../../Modelos/asesoria.model';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-asesoria-aliado',
@@ -20,7 +18,7 @@ export class AsesoriaAliadoComponent implements OnInit {
   asesoriasSinAsesor: Asesoria[] = [];
   token: string | null = null;
   user: any = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   mensaje: string | null = null;
   @ViewChild('sinAsignarButton') sinAsignarButton!: ElementRef;
   userFilter: any = { Nombre_sol: ''};
@@ -32,25 +30,26 @@ export class AsesoriaAliadoComponent implements OnInit {
     private router: Router
   ) { }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit() {
     this.validateToken();  
   }
 
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
       let identityJSON = localStorage.getItem('identity');
-
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
         this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(this.user);
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 3) {
+          this.router.navigate(['/inicio/body']);
+        }
       }
     }
-
-    if (!this.token || !this.currentRolId) {
+    if (!this.token ) {
       this.router.navigate(['/inicio/body']);
     } else {
       this.loadAsesorias(1, 0);
@@ -60,7 +59,6 @@ export class AsesoriaAliadoComponent implements OnInit {
   loadAsesorias(rol: number, estado: number): void {
     this.asesoriaService.getAsesoriasPorRolYEstado(this.token, rol, estado).subscribe(
       data => {
-        console.log('Respuesta de la API:', data);
         this.asesorias = data;
         this.separarAsesorias();
         this.showSinAsignar(); // Show "Sin asignar" asesorias by default
@@ -74,8 +72,6 @@ export class AsesoriaAliadoComponent implements OnInit {
   separarAsesorias(): void {
     this.asesoriasConAsesor = this.asesorias.filter(asesoria => asesoria.Asesor);
     this.asesoriasSinAsesor = this.asesorias.filter(asesoria => !asesoria.Asesor);
-    console.log('Asesorías con asesor:', this.asesoriasConAsesor);
-    console.log('Asesorías sin asesor:', this.asesoriasSinAsesor);
 
     if (this.asesorias.length === 0) {
       this.mensaje = "No hay asesorías disponibles para mostrar.";
@@ -99,17 +95,14 @@ export class AsesoriaAliadoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('El modal se cerró');
     });
   }
 
   rechazarAsesoria(asesoria: Asesoria): void {
-    console.log('Asesoría a rechazar:', asesoria);  // <-- Verifica que tienes el objeto correcto
     if (asesoria && asesoria.id_asesoria) {
       this.asesoriaService.rechazarAsesoria(this.token, asesoria.id_asesoria, 'rechazar').subscribe(
         response => {
-          console.log('Asesoría rechazada con éxito:', response);
-          this.loadAsesorias(parseInt(this.currentRolId!), 1);
+          this.loadAsesorias((this.currentRolId!), 1);
           location.reload();
         },
         error => {
@@ -129,5 +122,17 @@ export class AsesoriaAliadoComponent implements OnInit {
   showAsignadas(): void {
     this.asesorias = this.asesoriasConAsesor;
     this.mensaje = this.asesorias.length === 0 ? "Aún no has asignado ninguna asesoría." : null;
+  }
+
+  filtrarAsesorias(): void {
+    const filtro = this.Nombre_sol?.trim().toLowerCase(); // Utiliza Nombre_sol
+    if (filtro) {
+      this.asesorias = this.asesorias.filter(asesoria =>
+        asesoria.nombre_sol.toLowerCase().includes(filtro) // Utiliza Nombre_sol
+      );
+    } else {
+      // Si el filtro está vacío, restaura las asesorías originales
+      this.separarAsesorias();
+    }
   }
 }

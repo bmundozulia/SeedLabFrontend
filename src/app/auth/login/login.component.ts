@@ -46,10 +46,8 @@ export class LoginComponent implements OnInit {
 
             if (identityJSON) {
                 let identity = JSON.parse(identityJSON);
-                console.log(identity);
                 this.user = identity;
                 this.currentRolId = this.user.id_rol?.toString();
-                console.log(this.currentRolId);
             }
         }
         if (!this.token) {

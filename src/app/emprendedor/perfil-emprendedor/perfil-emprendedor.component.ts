@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
@@ -10,12 +9,10 @@ import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
-
 import { AuthService } from '../../servicios/auth.service';
 import { DepartamentoService } from '../../servicios/departamento.service';
 import { EmprendedorService } from '../../servicios/emprendedor.service';
 import { MunicipioService } from '../../servicios/municipio.service';
-
 import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
 import { User } from '../../Modelos/user.model';
 import { AlertService } from '../../servicios/alert.service';
@@ -48,7 +45,7 @@ export class PerfilEmprendedorComponent implements OnInit {
   bloqueado = true;
   documento: string;
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   emprendedorId: any;
   estado: boolean;
   isAuthenticated: boolean = true;
@@ -101,16 +98,18 @@ export class PerfilEmprendedorComponent implements OnInit {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
         this.user = identity;
-        this.estado = this.user.estado;
-        this.documento = this.user.emprendedor.documento;
-        this.currentRolId = this.user.id_rol?.toString();
-        console.log(!this.token);
+        this.currentRolId = this.user.id_rol;
+
+        if (this.currentRolId != 5) {
+          this.router.navigate(['/inicio/body']);
+        } else {
+          this.documento = this.user.emprendedor.documento;
+        }
       }
-      if (this.token === null) {
-        this.router.navigate(['/inicio/body']);
-      }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 

@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
 import { RutaService } from '../../servicios/rutas.service';
 import { SwitchService } from '../../servicios/switch.service'
-
 import { Ruta } from '../../Modelos/ruta.modelo';
 import { User } from '../../Modelos/user.model';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -21,19 +20,21 @@ export class ModalComponent implements OnInit {
   createRutaForm: FormGroup;
   token = '';
   user: User | null = null;
-  currentRolId: string | null = null;
+  currentRolId: number;
   now = new Date();
   formattedDate: string = '';
   submitted: boolean = false;
   private modalSubscription: Subscription;
   isVisible = true;
-  
+
+
 
   constructor(
     private modalSS: SwitchService,
     private rutaService: RutaService,
     private fb: FormBuilder,
     private datePipe: DatePipe,
+    private router: Router,
   ) {
     this.createRutaForm = this.fb.group({
       nombre: [''],
@@ -42,22 +43,18 @@ export class ModalComponent implements OnInit {
     });
   }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
   }
-
-    validateToken(): void {
+  
+  /* Valida el token del login */
+  validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
-      let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        console.log(identity);
-        this.user = identity;
-        this.currentRolId = this.user.id_rol?.toString();
-        //console.log(this.currentRolId);
-      }
+    }
+    if (!this.token) {
+      this.router.navigate(['/inicio/body']);
     }
   }
 
@@ -69,9 +66,9 @@ export class ModalComponent implements OnInit {
       this.createRutaForm.get('estado')?.value
     );
     this.rutaService.createRutas(this.token, ruta).subscribe(
-      (response:any) => {
-        console.log(response);
-        
+      (response: any) => {
+       // console.log(response);
+        location.reload()
       },
       (error) => {
         console.error(error);
@@ -83,8 +80,8 @@ export class ModalComponent implements OnInit {
     this.modalSS.$modal.emit(false);
   }
 
-  
-  
+
+
 
   // isFormValid() {
   //   return this.persona.nombre.trim() !== '';
