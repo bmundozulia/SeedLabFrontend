@@ -29,9 +29,10 @@ export class AlertService {
   // }
   
 
-  alertaActivarDesactivar(text: string, confirmButtonText?: string, cancelButtonText?: string) {
+  alertaActivarDesactivar(text: string, icon?: 'success' | 'error' | 'warning' | 'info' | 'question',confirmButtonText?: string, cancelButtonText?: string) {
     return Swal.fire({
         text: text,
+        icon: icon,
         showCancelButton: true,
         cancelButtonColor: "#6b7280",
         confirmButtonColor: "#38bdf8",
@@ -40,6 +41,21 @@ export class AlertService {
         reverseButtons: true
     });
 }
+
+DesactivarEmprendedor(title: string,text: string, icon: 'success' | 'error' | 'warning' | 'info' | 'question',confirmButtonText?: string, cancelButtonText?: string) {
+  return Swal.fire({
+      title: title,
+      text: text,
+      icon: icon,
+      showCancelButton: true,
+      cancelButtonColor: "#6b7280",
+      confirmButtonColor: "#38bdf8",
+      confirmButtonText: confirmButtonText || 'Confirmar',
+      cancelButtonText: cancelButtonText || 'Cancelar',
+      reverseButtons: true
+  });
+}
+
 
   
 
