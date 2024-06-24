@@ -155,11 +155,14 @@ export class ModalAddAsesoresComponent implements OnInit {
     }else{
       this.asesorService.createAsesor(this.token, asesor).subscribe(
         data => {
-          this.alerService.successAlert('Exito', 'Asesor creado con exito')
-          this.dialogRef.close(true);
+          console.log(data);
+          this.alerService.successAlert('Exito',data.message);
+          this.dialogRef.close();
+          //location.reload();
         },
         error => {
           console.error('Error al crear el asesor:', error);
+          this.alerService.errorAlert('Error',error.error.message);
         });
     }
   }
