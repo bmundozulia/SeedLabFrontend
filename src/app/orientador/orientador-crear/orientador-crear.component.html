@@ -29,7 +29,7 @@
         </div>
 
 
-        <button (click)="openModalSINId()" type="button"
+        <button (click)="openModalSINId()" *ngIf="currentRolId == 1" type="button" id="boton"
           class="md:w-auto bg-sky-400 hover:bg-sky-500 text-white py-0 px-3 rounded h-12">
           Añadir Orientador
           <fa-icon [icon]="faPlus" class="text-md ml-2"></fa-icon>

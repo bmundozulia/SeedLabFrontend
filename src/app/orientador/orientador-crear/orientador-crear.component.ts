@@ -32,6 +32,7 @@ export class OrientadorCrearComponent implements OnInit {
   estado: boolean | null = null;
   id: number | null = null;
   selectedOrientadorId: number | null = null;
+  boton: boolean;
 
   private ESTADO_MAP: { [key: string]: string } = {
     "true": 'Activo',
@@ -48,16 +49,19 @@ export class OrientadorCrearComponent implements OnInit {
   ngOnInit(): void {
     this.validateToken();
     this.cargarOrientador(1);
+    this.nose();
   }
 
   validateToken(): void {
     if (!this.token) {
+      this.token = localStorage.getItem("token");
       let identityJSON = localStorage.getItem('identity');
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.currentRolId = this.user.id_rol;
-        if (this.currentRolId != 1) {
+        console.log(this.currentRolId);
+        if (this.currentRolId != 1 && this.currentRolId != 2) {
           this.router.navigate(['/inicio/body']);
         }
       }
@@ -77,12 +81,11 @@ export class OrientadorCrearComponent implements OnInit {
           console.log(err);
         }
       );
-    } else {
-      console.error('Token is not available');
     }
   }
 
   onEstadoChange(event: any): void {
+
     const estado = event.target.value;
     if (estado === 'Activo') {
       this.cargarOrientador(1);
@@ -106,20 +109,10 @@ export class OrientadorCrearComponent implements OnInit {
     });
   }
 
-  openModalCrearOrientador(): void {
-    this.isEditing = false;
-    this.modalCrearOrientador = true;
-  }
-
   openModalSINId(): void {
     this.openModal(null); // Llama a openModalCONId con null
   }
 
-  openModalEditarOrientador(orientadorId: number): void {
-    this.selectedOrientadorId = orientadorId;
-    this.openModal(this.selectedOrientadorId);
-  }
-  
   buscarOrientadores(): Orientador[] {
     return this.listaOrientador.filter(orientador =>
       orientador.nombre.toLowerCase().includes(this.userFilter.nombre.toLowerCase()) ||
@@ -127,6 +120,10 @@ export class OrientadorCrearComponent implements OnInit {
       orientador.celular.includes(this.userFilter.nombre) ||
       orientador.email.toLowerCase().includes(this.userFilter.nombre.toLowerCase())
     );
+  }
+
+  nose(): void {
+      this.boton = true;
   }
 }
 
