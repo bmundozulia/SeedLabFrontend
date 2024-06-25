@@ -24,6 +24,7 @@ export class AsesoriaAliadoComponent implements OnInit {
   @ViewChild('sinAsignarButton') sinAsignarButton!: ElementRef;
   userFilter: any = { Nombre_sol: '' };
   Nombre_sol: string | null = null;
+  tiempoEspera = 1800;
 
   constructor(
     private asesoriaService: AsesoriaService,
@@ -105,16 +106,20 @@ export class AsesoriaAliadoComponent implements OnInit {
       this.alertService.alertaActivarDesactivar("¿Estas seguro de rechazar la asesoria?", 'question',).then((result) => {
         if (result.isConfirmed) {
           this.asesoriaService.rechazarAsesoria(this.token, asesoria.id_asesoria, 'rechazar').subscribe(
-            response => {
+            data => {
               this.loadAsesorias((this.currentRolId!), 1);
-              location.reload();
+              this.alertService.successAlert('Exito', data.message);
+              setTimeout(function () {
+                location.reload();
+              }, this.tiempoEspera);
             },
             error => {
+              this.alertService.errorAlert('Error', error.error.message);
               console.error('Error al rechazar asesoría:', error);
             }
           );
         }
-        
+
       })
     }
   }

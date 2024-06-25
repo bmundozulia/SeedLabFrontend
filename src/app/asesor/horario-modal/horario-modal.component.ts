@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
 import { AsesoriaService } from '../../servicios/asesoria.service';
 import { Router } from '@angular/router';
 import { AlertService } from '../../servicios/alert.service';
+
 
 @Component({
   selector: 'app-horario-modal',
@@ -16,6 +16,7 @@ export class HorarioModalComponent implements OnInit {
   token: string | null = null;
   user: any = null;
   currentRolId: string | null = null;
+  minDateTime: string;
 
   constructor(
     private fb: FormBuilder,
@@ -34,6 +35,8 @@ export class HorarioModalComponent implements OnInit {
   /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
+    const today = new Date();
+    this.minDateTime = today.toISOString().slice(0, 16);
   }
 
   /* Valida el token del login */
@@ -48,26 +51,35 @@ export class HorarioModalComponent implements OnInit {
 
   onGuardar(): void {
     if (this.asignarForm.valid) {
-      const { fecha, observaciones } = this.asignarForm.value;
-      const idAsesoria = this.data.asesoria.id;
+      const selectedDateTime = new Date(this.asignarForm.get('fecha')?.value);
+      const now = new Date();
 
-      // // Logs para depuración
-      // console.log('Formulario válido:', this.asignarForm.valid);
-      // console.log('Fecha:', fecha);
-      // console.log('Observaciones:', observaciones);
-      // console.log('ID Asesoria:', idAsesoria);
+      if (selectedDateTime < now) {
+        this.alertService.errorAlert('Error', 'La hora seleccionada no pueden ser anterior a la hora actual.');
+      } else {
+        const { fecha, observaciones } = this.asignarForm.value;
+        const idAsesoria = this.data.asesoria.id;
 
-      this.asesoriaService.agregarHorarioAsesoria(this.token, observaciones, idAsesoria, fecha).subscribe(
-        response => {
-          this.dialogRef.close(response);
-        },
-        error => {
-          console.error('Error al asignar el horario', error);
-        }
-      );
+        // // Logs para depuración
+        // console.log('Formulario válido:', this.asignarForm.valid);
+        // console.log('Fecha:', fecha);
+        // console.log('Observaciones:', observaciones);
+        // console.log('ID Asesoria:', idAsesoria);
+
+        this.asesoriaService.agregarHorarioAsesoria(this.token, observaciones, idAsesoria, fecha).subscribe(
+          response => {
+            this.alertService.successAlert('Exito', response.message);
+            this.dialogRef.close(response);
+          },
+          error => {
+            this.alertService.errorAlert('Error', error.error.message);
+            console.error('Error al asignar el horario', error);
+          }
+        );
+      }
     } else {
       //console.error('Formulario inválido:', this.asignarForm.value);
-      this.alertService.errorAlert('Error', 'Formulario inválido, debes asignar un horario correcto');
+      this.alertService.errorAlert('Error', 'Formulario inválido, debes asignar un horario');
     }
   }
 }
