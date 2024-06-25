@@ -62,7 +62,7 @@ import { RutasComponent } from './ruta/rutas/rutas.component';
 import { SafeUrlPipe } from './ruta/cursorutas/cursorutas.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
-import { AuthhModule } from './auth/authh.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -131,7 +131,7 @@ import { AuthhModule } from './auth/authh.module';
     NgxPaginationModule,
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
-    AuthhModule,
+    AuthModule,
 
   ],
   providers: [

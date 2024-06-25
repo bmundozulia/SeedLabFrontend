@@ -48,7 +48,7 @@ const routes: Routes = [
   //Auth
   {
     path: 'auth',
-    loadChildren: () => import('./auth/authh.module').then(m => m.AuthhModule)
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
 
   //Emprendedor

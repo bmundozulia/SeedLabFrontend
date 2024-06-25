@@ -29,4 +29,4 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     ReactiveFormsModule
   ]
 })
-export class AuthhModule { }
+export class AuthModule { }
