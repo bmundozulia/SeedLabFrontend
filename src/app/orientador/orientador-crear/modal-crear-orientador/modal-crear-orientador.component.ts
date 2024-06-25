@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { User } from '../../../Modelos/user.model';
+import { faMagnifyingGlass, faPenToSquare, faPlus, faXmark, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { Orientador } from '../../../Modelos/orientador.model';
 import { OrientadorService } from '../../../servicios/orientador.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -23,6 +24,7 @@ export class ModalCrearOrientadorComponent implements OnInit {
   token: string | null = null;
   user: User | null = null;
   id: number | null = null;
+  falupa = faCircleQuestion;
   currentRolId: number;
   orientadorId: any;
   hide = true;
@@ -119,31 +121,41 @@ export class ModalCrearOrientadorComponent implements OnInit {
       estado: this.orientadorForm.value.estado,
     };
     if (this.orientadorId != null) {
-        // Check if the status is changing and show the confirmation dialog
-        let confirmationText = this.isActive 
-            ? "¿Estas seguro de guardar los cambios?" 
-            : "¿Estas seguro de guardar los cambios?";
+      // Check if the status is changing and show the confirmation dialog
+      let confirmationText = this.isActive
+        ? "¿Estas seguro de guardar los cambios?"
+        : "¿Estas seguro de guardar los cambios?";
 
-        this.alertService.alertaActivarDesactivar(confirmationText).then((result) => {
-            if (result.isConfirmed) {
-                // Proceed with the update
-                this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
-                    data => {
-                        location.reload();
-                    },
-                    error => {
-                        console.error("Error al actualizar el orientador:", error);
-                    }
-                );
+      this.alertService.alertaActivarDesactivar(confirmationText, 'question').then((result) => {
+        if (result.isConfirmed) {
+          // Proceed with the update
+          this.orientadorServices.updateOrientador(this.token, this.orientadorId, orientador).subscribe(
+            data => {
+              //location.reload();
+              console.log(data);
+              this.alertService.successAlert('Exito','Actualizacion exitosa')
+            },
+            error => {
+              console.error(error);
+                this.alertService.errorAlert('Error', error.error.message);
+              //console.error("Error al actualizar el orientador:", error);
             }
-        });
+          );
+        }
+      });
     } else {
       this.orientadorServices.createOrientador(this.token, orientador).subscribe(
         data => {
           location.reload();
+          console.log(data);
+          this.alertService.successAlert('Exito', data.message);
         },
         error => {
-          console.error("Error al crear el orientador:", error);
+          console.error(error);
+          if (error.status === 400) {
+            this.alertService.errorAlert('Error', error.error.message);
+          }
+          //console.error("Error al crear el orientador:", error);
         });
     }
   }

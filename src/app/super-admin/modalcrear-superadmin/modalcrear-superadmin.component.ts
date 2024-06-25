@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { faMagnifyingGlass, faPenToSquare, faPlus, faXmark, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { SuperadminService } from '../../servicios/superadmin.service';
 import { Superadmin } from '../../Modelos/superadmin.model';
 import { User } from '../../Modelos/user.model';
@@ -21,9 +22,12 @@ export class ModalcrearSuperadminComponent implements OnInit {
   currentRolId: string | null = null;
   adminId: any;
   hide = true;
+  falupa = faCircleQuestion;
   estado: boolean;
   isActive: boolean = true;
   boton = true;
+  
+  
 
   superadminForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -106,44 +110,43 @@ export class ModalcrearSuperadminComponent implements OnInit {
     /* Actualiza superadmin */
     if (this.adminId != null) {
       let confirmationText = this.isActive
-      ? "¿Estas seguro de guardar los cambios"
-      : "¿Estas seguro de guardar los cambios?";
+        ? "¿Estas seguro de guardar los cambios"
+        : "¿Estas seguro de guardar los cambios?";
 
-        this.alertService.alertaActivarDesactivar(confirmationText,'question').then((result)=>{
-          if (result.isConfirmed) {
-            this.superadminService.updateAdmin(superadmin,this.token,this.adminId).subscribe(
-              data=> {
-                location.reload();
-                console.log(data);
-              },
-              error => {
-                console.error(error);
-                // if (error.status === 501) {
-                //   this.alertService.errorAlert('Error',error.error.messaje)
-                // }
-                // console.error(error);
-                // if (error.status === 500) {
-                //   this.alertService.errorAlert('','El correo electrónico ya ha sido registrado anteriormente')
-                // }
-                //console.error("Error al actualizar el superadmin",error);
+      this.alertService.alertaActivarDesactivar(confirmationText, 'question').then((result) => {
+        if (result.isConfirmed) {
+          this.superadminService.updateAdmin(superadmin, this.token, this.adminId).subscribe(
+            data => {
+              location.reload();
+              console.log(data);
+              this.alertService.successAlert('Exito','Actualizacion exitosa')
+            },
+            error => {
+              console.error(error);
+              if (error.status === 400) {
+                this.alertService.errorAlert('Error', error.error.message)
               }
-            )
-          }
-        });
+            }
+          )
+        }
+      });
       /* Crea superadmin */
     } else {
       this.superadminService.createSuperadmin(this.token, superadmin).subscribe(
         data => {
-          //location.reload();
-         console.log(data);
+          location.reload();
+          console.log(data);
+          this.alertService.successAlert('Exito', data.message);
         },
         error => {
           console.error(error);
           if (error.status === 400) {
-            this.alertService.errorAlert('Error',error.error.mensaje)
+            this.alertService.errorAlert('Error', error.error.message)
           }
-          console.error('Error al crear el superadmin:', error);
-        });
+
+        }
+        
+      );
     }
   }
 
@@ -151,7 +154,7 @@ export class ModalcrearSuperadminComponent implements OnInit {
   toggleActive() {
     this.isActive = !this.isActive;
     this.superadminForm.patchValue({ estado: this.isActive ? true : false });
-   
+
   }
 
   /* Muestra el toggle del estado dependiendo del adminId que no sea nulo*/
@@ -166,5 +169,8 @@ export class ModalcrearSuperadminComponent implements OnInit {
   cancelarcrerSuperadmin() {
     this.dialogRef.close();
   }
+
+  
+  
 
 }
