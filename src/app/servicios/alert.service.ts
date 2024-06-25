@@ -27,23 +27,23 @@ export class AlertService {
   //     }
   //   });
   // }
-  
 
-  alertaActivarDesactivar(text: string, icon?: 'success' | 'error' | 'warning' | 'info' | 'question',confirmButtonText?: string, cancelButtonText?: string) {
+
+  alertaActivarDesactivar(text: string, icon?: 'success' | 'error' | 'warning' | 'info' | 'question', confirmButtonText?: string, cancelButtonText?: string) {
     return Swal.fire({
-        text: text,
-        icon: icon,
-        showCancelButton: true,
-        cancelButtonColor: "#6b7280",
-        confirmButtonColor: "#38bdf8",
-        confirmButtonText: confirmButtonText || 'Confirmar',
-        cancelButtonText: cancelButtonText || 'Cancelar',
-        reverseButtons: true
+      text: text,
+      icon: icon,
+      showCancelButton: true,
+      cancelButtonColor: "#6b7280",
+      confirmButtonColor: "#38bdf8",
+      confirmButtonText: confirmButtonText || 'Confirmar',
+      cancelButtonText: cancelButtonText || 'Cancelar',
+      reverseButtons: true
     });
-}
+  }
 
-DesactivarEmprendedor(title: string,text: string, icon: 'success' | 'error' | 'warning' | 'info' | 'question',confirmButtonText?: string, cancelButtonText?: string) {
-  return Swal.fire({
+  DesactivarEmprendedor(title: string, text: string, icon: 'success' | 'error' | 'warning' | 'info' | 'question', confirmButtonText?: string, cancelButtonText?: string) {
+    return Swal.fire({
       title: title,
       text: text,
       icon: icon,
@@ -53,19 +53,19 @@ DesactivarEmprendedor(title: string,text: string, icon: 'success' | 'error' | 'w
       confirmButtonText: confirmButtonText || 'Confirmar',
       cancelButtonText: cancelButtonText || 'Cancelar',
       reverseButtons: true
-  });
-}
+    });
+  }
 
 
-  
 
 
-  successAlert(title: string, text: string)  {
+
+  successAlert(title: string, text: string) {
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
       showConfirmButton: false,
-      timer: 1000,
+      timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
@@ -96,7 +96,7 @@ DesactivarEmprendedor(title: string,text: string, icon: 'success' | 'error' | 'w
       },
       customClass: {
         popup: 'bg-red-100',
-        icon: 'text-red-500', 
+        icon: 'text-red-500',
         title: 'text-red-500'
       }
     });
@@ -124,5 +124,5 @@ DesactivarEmprendedor(title: string,text: string, icon: 'success' | 'error' | 'w
   //     footer: '<a href="#">Why do I have this issue?</a>'
   //   });
   // }
-  
+
 }
