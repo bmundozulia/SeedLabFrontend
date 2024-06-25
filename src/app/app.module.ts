@@ -57,8 +57,10 @@ import { RutasComponent } from './ruta/rutas/rutas.component';
 import { SafeUrlPipe } from './ruta/cursorutas/cursorutas.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
+
 import { AuthModule } from './auth/auth.module';
 import { AliadosModule } from './aliados/aliados.module';
+
 
 
 @NgModule({
@@ -102,8 +104,6 @@ import { AliadosModule } from './aliados/aliados.module';
     AngularMaterialModule,
     AppRoutingModule,
     BrowserModule,
-    BrowserModule,
-    ColorPickerModule,
     ColorPickerModule,
     CommonModule,
     FilterPipeModule,
@@ -112,7 +112,6 @@ import { AliadosModule } from './aliados/aliados.module';
     HttpClientModule,
     MatButtonModule,
     MatDialogModule,
-    MatIconModule,
     MatIconModule,
     MatListModule,
     MatSidenav,
