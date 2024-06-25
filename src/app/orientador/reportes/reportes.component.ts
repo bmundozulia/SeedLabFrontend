@@ -8,8 +8,6 @@ import { HeaderComponent } from '../../header/header.component';
   selector: 'app-reportes',
   templateUrl: './reportes.component.html',
   styleUrl: './reportes.component.css',
-  providers: [HeaderComponent],
-
 })
 export class ReportesComponent {
   faPrint = faPrint;

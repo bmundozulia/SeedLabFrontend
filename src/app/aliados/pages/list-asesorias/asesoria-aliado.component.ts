@@ -1,11 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DarAsesorModalComponent } from '../dar-asesor-modal/dar-asesor-modal.component';
+import { AsignarAsesorModalComponent } from '../asignar-asesor-modal/asignar-asesor-modal.component';
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { HeaderComponent } from '../../../header/header.component';
 import { Asesoria } from '../../../Modelos/asesoria.model';
 import { AlertService } from '../../../servicios/alert.service';
+
 
 @Component({
   selector: 'app-asesoria-aliado',
@@ -87,7 +88,7 @@ export class AsesoriaAliadoComponent implements OnInit {
   }
 
   openModal(asesoria: Asesoria): void {
-    const dialogRef = this.dialog.open(DarAsesorModalComponent, {
+    const dialogRef = this.dialog.open(AsignarAsesorModalComponent, {
       width: '400px',
       data: { asesoria: asesoria }
     });

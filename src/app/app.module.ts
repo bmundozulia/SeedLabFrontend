@@ -26,7 +26,6 @@ import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliad
 import { AddEmpresaComponent } from './emprendedor/empresa/add-empresa/add-empresa.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/list-asesorias/asesoria-aliado.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { BodyComponent } from './inicio/body/body.component';
 import { CargaComponent } from './carga/carga.component';
@@ -34,19 +33,15 @@ import { CrearAsesoriaModalComponent } from './emprendedor/asesorias/crear-aseso
 import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component';
 import { CursorutasComponent } from './ruta/cursorutas/cursorutas.component';
 import { DarAliadoAsesoriaModalComponent } from './orientador/asesorias/dar-aliado-asesoria-modal/dar-aliado-asesoria-modal.component';
-import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-modal/dar-asesor-modal.component';
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { EncuestaEmpresaComponent } from './emprendedor/formulario-diagnostico/encuesta-empresa.component';
-import { FanPageComponent } from './aliados/fan-page/fan-page.component';
-import { HeaderComponent } from './header/header.component';
+//import { HeaderComponent } from './header/header.component';
 import { HorarioModalComponent } from './asesor/horario-modal/horario-modal.component';
 import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
-import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
-import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/list-asesoria.component';
+import { ListAsesoriaEmprendedorComponent } from './emprendedor/asesorias/list-asesoria-emprendedor/list-asesoria-emprendedor.component';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 import { MenuComponent } from './inicio/menu/menu.component';
-import { ModalAddAsesoresComponent } from './aliados/asesores/modal-add-asesores/modal-add-asesores.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
 import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
 import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadmin/modalcrear-superadmin.component';
@@ -63,6 +58,7 @@ import { SafeUrlPipe } from './ruta/cursorutas/cursorutas.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { AuthModule } from './auth/auth.module';
+import { AliadosModule } from './aliados/aliados.module';
 
 
 @NgModule({
@@ -70,26 +66,21 @@ import { AuthModule } from './auth/auth.module';
     AddAliadosComponent,
     AddEmpresaComponent,
     AppComponent,
-    AsesoriaAliadoComponent,
     AsesoriasComponent,
     BodyComponent,
     CrearAsesoriaModalComponent,
     CrearSuperadminComponent,
     CursorutasComponent,
     DarAliadoAsesoriaModalComponent,
-    DarAsesorModalComponent,
     EditEmpresaComponent,
     EncuestaEmpresaComponent,
-    FanPageComponent,
-    HeaderComponent,
+   // HeaderComponent,
     HorarioModalComponent,
+    ListAsesoriaEmprendedorComponent,
     ListAliadosComponent,
-    ListAsesoresComponent,
-    ListAsesoriaComponent,
     ListEmpresasComponent,
     ListRutasComponent,
     MenuComponent,
-    ModalAddAsesoresComponent,
     ModalComponent,
     ModalCrearOrientadorComponent,
     ModalcrearSuperadminComponent,
@@ -109,7 +100,6 @@ import { AuthModule } from './auth/auth.module';
   ],
   imports: [
     AngularMaterialModule,
-    AppRoutingModule,
     AppRoutingModule,
     BrowserModule,
     BrowserModule,
@@ -132,7 +122,7 @@ import { AuthModule } from './auth/auth.module';
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
     AuthModule,
-
+    AliadosModule
   ],
   providers: [
     provideClientHydration(),

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { AddEmpresaComponent } from './emprendedor/empresa/add-empresa/add-empresa.component';
-import { AsesoriaAliadoComponent } from './aliados/asesoria-aliado/list-asesorias/asesoria-aliado.component';
+import { AsesoriaAliadoComponent } from './aliados/pages/list-asesorias/asesoria-aliado.component';
 import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 import { BodyComponent } from './inicio/body/body.component';
@@ -14,12 +14,12 @@ import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-s
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { EncuestaEmpresaComponent } from './emprendedor/formulario-diagnostico/encuesta-empresa.component';
 
-import { FanPageComponent } from './aliados/fan-page/fan-page.component';
+import { FanPageComponent } from './aliados/pages/fan-page/fan-page.component';
 
 
 import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
-import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/list-asesoria.component';
-import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
+import { ListAsesoriaEmprendedorComponent } from './emprendedor/asesorias/list-asesoria-emprendedor/list-asesoria-emprendedor.component';
+import { ListAsesoresComponent } from './aliados/pages/list-asesores/list-asesores.component';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 
@@ -51,9 +51,15 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
 
+  //Aliados
+  {
+    path: 'aliados',
+    loadChildren: () => import('./aliados/aliados.module').then(m => m.AliadosModule)
+  },
+
   //Emprendedor
   { path: 'perfil', component: PerfilEmprendedorComponent },
-  { path: 'list-asesoria', component: ListAsesoriaComponent }, //de emprendedor
+  { path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent }, //de emprendedor
   { path: 'perfil-emprendedor', component: PerfilEmprendedorComponent },
   { path: 'add-empresa', component: AddEmpresaComponent },
 
@@ -84,9 +90,6 @@ const routes: Routes = [
   { path: 'perfil-orientador', component: PerfilOrientadorComponent }, //Perfil Orientador
 
 
-  //Aliados 
-  { path: 'list-asesores', component: ListAsesoresComponent },
-  { path: 'asesorias/aliado', component: AsesoriaAliadoComponent }, //de Aliado
 
   //Asesores
   { path: 'perfil-asesores', component: PerfilAsesorComponent },

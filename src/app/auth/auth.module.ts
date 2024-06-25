@@ -26,7 +26,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     AuthRoutingModule,
     RegistroComponent,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ]
 })
 export class AuthModule { }

@@ -10,7 +10,7 @@ import { User } from '../../../Modelos/user.model';
 
 @Component({
   selector: 'app-list-empresas',
-  providers: [EmprendedorService, HeaderComponent],
+  providers: [EmprendedorService],
   templateUrl: './list-empresas.component.html',
   styleUrls: ['./list-empresas.component.css']
 })
@@ -29,7 +29,8 @@ export class ListEmpresasComponent implements OnInit {
   currentRolId: number;
 
 
-  constructor(private emprendedorService: EmprendedorService,
+  constructor(
+    private emprendedorService: EmprendedorService,
     private router: Router,
     private aRoute: ActivatedRoute,
     private fb: FormBuilder,) {

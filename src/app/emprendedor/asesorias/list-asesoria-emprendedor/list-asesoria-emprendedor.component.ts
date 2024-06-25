@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
+
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { CrearAsesoriaModalComponent } from '../crear-asesoria-modal/crear-asesoria-modal.component';
+import { HeaderComponent } from '../../../header/header.component';
 
 import { Asesoria } from '../../../Modelos/asesoria.model';
 
 @Component({
   selector: 'app-list-asesoria',
-  templateUrl: './list-asesoria.component.html',
-  styleUrls: ['./list-asesoria.component.css']
+  templateUrl: './list-asesoria-emprendedor.component.html',
+  styleUrls: ['./list-asesoria-emprendedor.component.css'],
 })
-export class ListAsesoriaComponent implements OnInit {
+export class ListAsesoriaEmprendedorComponent implements OnInit {
   asesoriasTrue: Asesoria[] = [];
   asesoriasFalse: Asesoria[] = [];
   showTrue: boolean = false; // Set to false by default to show "Sin Asignar"

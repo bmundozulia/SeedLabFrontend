@@ -18,7 +18,6 @@ const routes: Routes = [
       {path: 'registro', component: RegistroComponent},
       {path: 'vetification', component: VerificationComponent},
       {path: 'notFound', component: NotFoundComponent},
-      {path: '**', redirectTo: 'login'}
     ]
   }
 ];

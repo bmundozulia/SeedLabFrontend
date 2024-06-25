@@ -5,6 +5,7 @@ import { Component, Input, ElementRef, ViewChild, AfterViewInit } from '@angular
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements AfterViewInit {
   @ViewChild('headerTitle') headerTitle!: ElementRef;
   @Input() title: string = 'SDSDDS';

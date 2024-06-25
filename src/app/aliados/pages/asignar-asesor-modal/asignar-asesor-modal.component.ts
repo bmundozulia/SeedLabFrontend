@@ -8,11 +8,11 @@ import { AlertService } from '../../../servicios/alert.service';
 
 @Component({
   selector: 'app-dar-asesor-modal',
-  templateUrl: './dar-asesor-modal.component.html',
-  styleUrls: ['./dar-asesor-modal.component.css'],
+  templateUrl: './asignar-asesor-modal.component.html',
+  styleUrls: ['./asignar-asesor-modal.component.css'],
   providers: [AsesoriaService, AlertService]
 })
-export class DarAsesorModalComponent implements OnInit {
+export class AsignarAsesorModalComponent implements OnInit {
   asignarForm: FormGroup;
   asesores: AsesorDisponible[] = [];
   token: string | null = null;
@@ -21,7 +21,7 @@ export class DarAsesorModalComponent implements OnInit {
   @Output() asesoriaAsignada = new EventEmitter<void>();
 
   constructor(
-    public dialogRef: MatDialogRef<DarAsesorModalComponent>,
+    public dialogRef: MatDialogRef<AsignarAsesorModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private router: Router,

@@ -29,7 +29,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-add-empresa',
   templateUrl: './add-empresa.component.html',
   styleUrl: './add-empresa.component.css',
-  providers: [HeaderComponent, EmpresaService, DepartamentoService, MunicipioService, AlertService]
+  providers: [EmpresaService, DepartamentoService, MunicipioService, AlertService]
 })
 
 export class AddEmpresaComponent {
