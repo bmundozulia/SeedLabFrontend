@@ -38,7 +38,6 @@ import { DarAsesorModalComponent } from './aliados/asesoria-aliado/dar-asesor-mo
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { EncuestaEmpresaComponent } from './emprendedor/formulario-diagnostico/encuesta-empresa.component';
 import { FanPageComponent } from './aliados/fan-page/fan-page.component';
-import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 import { HeaderComponent } from './header/header.component';
 import { HorarioModalComponent } from './asesor/horario-modal/horario-modal.component';
 import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
@@ -46,7 +45,6 @@ import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-ase
 import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/list-asesoria.component';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
-import { LoginComponent } from './auth/login/login.component';
 import { MenuComponent } from './inicio/menu/menu.component';
 import { ModalAddAsesoresComponent } from './aliados/asesores/modal-add-asesores/modal-add-asesores.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
@@ -58,14 +56,13 @@ import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.comp
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { ReportesComponent } from './orientador/reportes/reportes.component';
 import { RutaEmprendedorComponent } from './emprendedor/ruta-emprendedor/ruta-emprendedor.component';
 import { RutasComponent } from './ruta/rutas/rutas.component';
 import { SafeUrlPipe } from './ruta/cursorutas/cursorutas.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
-import { Error404Component } from './auth/error404/error404.component';
+import { AuthhModule } from './auth/authh.module';
 
 
 @NgModule({
@@ -84,7 +81,6 @@ import { Error404Component } from './auth/error404/error404.component';
     EditEmpresaComponent,
     EncuestaEmpresaComponent,
     FanPageComponent,
-    ForgotpasswordComponent,
     HeaderComponent,
     HorarioModalComponent,
     ListAliadosComponent,
@@ -92,7 +88,6 @@ import { Error404Component } from './auth/error404/error404.component';
     ListAsesoriaComponent,
     ListEmpresasComponent,
     ListRutasComponent,
-    LoginComponent,
     MenuComponent,
     ModalAddAsesoresComponent,
     ModalComponent,
@@ -111,7 +106,6 @@ import { Error404Component } from './auth/error404/error404.component';
     SuperAdminComponent,
     VerAsesoriasComponent,
     CargaComponent,
-    Error404Component,
   ],
   imports: [
     AngularMaterialModule,
@@ -136,9 +130,8 @@ import { Error404Component } from './auth/error404/error404.component';
     MatToolbarModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
-
+    AuthhModule,
 
   ],
   providers: [

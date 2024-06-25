@@ -15,14 +15,14 @@ import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-em
 import { EncuestaEmpresaComponent } from './emprendedor/formulario-diagnostico/encuesta-empresa.component';
 
 import { FanPageComponent } from './aliados/fan-page/fan-page.component';
-import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
+
 
 import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
 import { ListAsesoriaComponent } from './emprendedor/asesorias/list-asesoria/list-asesoria.component';
 import { ListAsesoresComponent } from './aliados/asesores/list-asesores/list-asesores.component';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
-import { LoginComponent } from './auth/login/login.component';
+
 
 import { ModalComponent } from './super-admin/modal/modal.component';
 
@@ -34,24 +34,22 @@ import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/per
 import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
 
-import { RegisterComponent } from './auth/register/register.component';
+
 import { ReportesComponent } from './orientador/reportes/reportes.component'
 import { RutasComponent } from './ruta/rutas/rutas.component';
 
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
-import { VerificationComponent } from './auth/verification/verification.component';
-import { Error404Component } from './auth/error404/error404.component';
+
 
 
 const routes: Routes = [
   //Auth
-  { path: 'login', component: LoginComponent }, // Ruta para LoginComponent
-  { path: 'register', component: RegisterComponent },
-  { path: 'verification', component: VerificationComponent },
-  { path: 'forgotPassword', component: ForgotpasswordComponent  }, //restablecer contraseña
-  { path: 'error404', component: Error404Component },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/authh.module').then(m => m.AuthhModule)
+  },
 
   //Emprendedor
   { path: 'perfil', component: PerfilEmprendedorComponent },

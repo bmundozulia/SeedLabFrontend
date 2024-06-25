@@ -13,24 +13,25 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { AlertService } from '../../servicios/alert.service';
-import { AuthService } from '../../servicios/auth.service';
-import { DepartamentoService } from '../../servicios/departamento.service';
-import { Emprendedor } from '../../Modelos/emprendedor.model';
-import { MunicipioService } from '../../servicios/municipio.service';
+import { Emprendedor } from '../../../Modelos/emprendedor.model';
+
+import { AlertService } from '../../../servicios/alert.service';
+import { AuthService } from '../../../servicios/auth.service';
+import { DepartamentoService } from '../../../servicios/departamento.service';
+import { MunicipioService } from '../../../servicios/municipio.service';
 
 
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-registro',
   standalone: true,
   imports: [FontAwesomeModule, ReactiveFormsModule, CommonModule],
   providers: [DepartamentoService, MunicipioService, AuthService, AlertService],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  templateUrl: './registro.component.html',
+  styleUrl: './registro.component.css'
 })
 
-export class RegisterComponent implements OnInit {
+export class RegistroComponent implements OnInit {
   faVenusMars = faVenusMars;
   faMountainCity = faMountainCity;
   faLandmarkFlag = faLandmarkFlag;

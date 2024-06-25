@@ -1,28 +1,32 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AlertService } from '../../servicios/alert.service';
-import { AuthService } from '../../servicios/auth.service';
+import { AlertService } from '../../../servicios/alert.service';
+import { AuthService } from '../../../servicios/auth.service';
 
 @Component({
-  selector: 'app-forgotpassword',
-  templateUrl: './forgotpassword.component.html',
-  styleUrl: './forgotpassword.component.css',
+  selector: 'app-forgot',
+  templateUrl: './forgot.component.html',
+  styleUrl: './forgot.component.css',
   providers: [AuthService, AlertService]
 })
-export class ForgotpasswordComponent {
+export class ForgotComponent {
 
-  passwordForm = this.fb.group({
-    email:['']
-  });
+  passwordForm: FormGroup;
 
+  
   constructor(
     private forgotPasswordService: AuthService,
     private router: Router,
     private fb: FormBuilder,
     private alertService: AlertService,
-  ){}
+  ){
+    this.passwordForm = this.fb.group({
+      email:['']
+    });
+  
+  }
 
 
   password():void{

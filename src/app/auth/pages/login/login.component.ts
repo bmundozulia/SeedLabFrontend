@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AlertService } from '../../servicios/alert.service';
-import { AuthService } from '../../servicios/auth.service';
+import { AlertService } from '../../../servicios/alert.service';
+import { AuthService } from '../../../servicios/auth.service';
 
-import { Login } from '../../Modelos/login.modelo';
-import { User } from '../../Modelos/user.model';
+import { Login } from '../../../Modelos/login.modelo';
+import { User } from '../../../Modelos/user.model';
 
 @Component({
     selector: 'app-login',

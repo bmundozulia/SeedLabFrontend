@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AlertService } from '../../servicios/alert.service';
-import { AuthService } from '../../servicios/auth.service';
+import { AlertService } from '../../../servicios/alert.service';
+import { AuthService } from '../../../servicios/auth.service';
 
 @Component({
   selector: 'app-verification',
