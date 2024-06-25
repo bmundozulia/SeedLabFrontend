@@ -64,14 +64,14 @@ export class MenuComponent {
           console.log(data);
           localStorage.clear();
           this.isAuthenticated = false;
-          this.router.navigate(['/home/body']);
+          this.router.navigate(['home']);
           location.reload();
         },
         (err) => {
           console.log(err);
           localStorage.clear();
           this.isAuthenticated = false;
-          this.router.navigate(['/home/body']);
+          this.router.navigate(['home']);
         }
       );
     } else {

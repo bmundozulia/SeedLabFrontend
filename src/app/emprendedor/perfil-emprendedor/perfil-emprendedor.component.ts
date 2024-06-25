@@ -162,39 +162,53 @@ export class PerfilEmprendedorComponent implements OnInit {
       direccion: this.emprendedorForm.get('direccion')?.value,
       id_municipio: this.emprendedorForm.get('municipio')?.value,
     }
-    this.emprendedorService.updateEmprendedor(perfil, this.token, this.documento).subscribe(
-      (data) => {
-        location.reload();
-      },
-      (err) => {
-        console.log(err);
+    // let confirmationText = this.isActive
+    //   ? "¿Estas seguro de guardar los cambios?"
+    //   : "¿Estas seguro de guardar los cambios?";
+
+    this.alerService.alertaActivarDesactivar("¿Estas seguro de guardar los cambios?", 'question',).then((result) => {
+      if (result.isConfirmed) {
+        this.emprendedorService.updateEmprendedor(perfil, this.token, this.documento).subscribe(
+          (data) => {
+            location.reload();
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
       }
-    );
-
+    })
   }
+
+
   desactivarEmprendedor(): void {
-    let confirmationText = this.token
-      ? "¿Estás seguro de guardar los cambios?"
-      : "¿Estás seguro de guardar los cambios?";
-    this.alerService.alertaActivarDesactivar(confirmationText).then((result) => {
+    // let confirmationText = this.token
+    //   ? "¿Estás seguro de desactivar tu cuenta?"
+    //   : "¿Estás seguro de desactivar tu cuenta?";
+    if (this.token) {
+      this.alerService.DesactivarEmprendedor("¿Estás seguro de desactivar tu cuenta?",
+      "¡Ten en cuenta que si desactivas tu cuenta tendras que validarte nuevamente por medio de tu correo electronico al momnento de iniciar sección!", 'warning').then((result) => {
         if (result.isConfirmed) {
-            this.emprendedorService.destroy(this.token, this.documento).subscribe(
-                (data) => {
-                    console.log("desactivar", data);
-                    this.isAuthenticated = false;
-                    localStorage.clear();
-                    location.reload();
-                },
-                (err) => {
-                    console.log(err);
-                }
-            );
+          this.emprendedorService.destroy(this.token, this.documento).subscribe(
+            (data) => {
+              console.log("desactivar", data);
+              this.isAuthenticated = false;
+              localStorage.clear();
+              location.reload();
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
         }
-    });
-}
+      });
+    }
+  }
 
 
 
+
+  // console.log("Texto de confirmación para desactivar:", confirmationText);
 
   passwordValidator(control: AbstractControl) {
     const value = control.value;
@@ -265,6 +279,6 @@ export class PerfilEmprendedorComponent implements OnInit {
     this.boton = false;
   }
 
-  
+
 
 }
