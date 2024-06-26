@@ -7,12 +7,12 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import { PREGUNTAS } from './preguntas.component';
 
-import { AlertService } from '../../servicios/alert.service';
-import { RespuestasService } from '../../servicios/respuestas.service';
+import { AlertService } from '../../../servicios/alert.service';
+import { RespuestasService } from '../../../servicios/respuestas.service';
 
-import { Preguntas } from '../../Modelos/preguntas.model';
-import { Respuesta } from '../../Modelos/respuesta.model';
-import { User } from '../../Modelos/user.model';
+import { Preguntas } from '../../../Modelos/preguntas.model';
+import { Respuesta } from '../../../Modelos/respuesta.model';
+import { User } from '../../../Modelos/user.model';
 
 
 @Component({

@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faMagnifyingGlass, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { HeaderComponent } from '../../../header/header.component';
-import { EmprendedorService } from '../../../servicios/emprendedor.service';
-import { Empresa } from '../../../Modelos/empresa.model';
-import { User } from '../../../Modelos/user.model';
+import { EmprendedorService } from '../../../../servicios/emprendedor.service';
+import { Empresa } from '../../../../Modelos/empresa.model';
+import { User } from '../../../../Modelos/user.model';
 
 @Component({
   selector: 'app-list-empresas',

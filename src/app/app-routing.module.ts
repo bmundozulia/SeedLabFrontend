@@ -2,40 +2,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
-import { AddEmpresaComponent } from './emprendedor/empresa/add-empresa/add-empresa.component';
-
 import { BodyComponent } from './inicio/body/body.component';
-
 import { CursorutasComponent } from './ruta/cursorutas/cursorutas.component';
 import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component'
-
-import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
-import { EncuestaEmpresaComponent } from './emprendedor/formulario-diagnostico/encuesta-empresa.component';
-
-import { FanPageComponent } from './aliados/pages/fan-page/fan-page.component';
-
-
 import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
-import { ListAsesoriaEmprendedorComponent } from './emprendedor/asesorias/list-asesoria-emprendedor/list-asesoria-emprendedor.component';
-import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
-import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
-
-
 import { ModalComponent } from './super-admin/modal/modal.component';
-
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
-
 import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
-import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
-
-
 import { ReportesComponent } from './orientador/reportes/reportes.component'
 import { RutasComponent } from './ruta/rutas/rutas.component';
-
 import { SuperAdminComponent } from './super-admin/super-admin.component';
-
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 
 
@@ -59,19 +37,13 @@ const routes: Routes = [
     loadChildren: () => import('./asesor/asesor.module').then(m => m.AsesorModule)
   },
 
-  //Emprendedor
-  { path: 'perfil', component: PerfilEmprendedorComponent },
-  { path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent }, //de emprendedor
-  { path: 'perfil-emprendedor', component: PerfilEmprendedorComponent },
-  { path: 'add-empresa', component: AddEmpresaComponent },
+  //Emprendedor y empresa
+  {
+    path: 'emprendedor',
+    loadChildren: () => import('./emprendedor/emprendedor.module').then(m => m.EmprendedorModule)
+  },
 
 
-  //Empresa
-  { path: 'edit-empresa', component: EditEmpresaComponent },
-  { path: 'encuesta', component: EncuestaEmpresaComponent },
-  { path: 'list-empresa', component: ListEmpresasComponent },
-  { path: 'list-rutas', component: ListRutasComponent },
-  { path: 'fan-page', component: FanPageComponent },
 
   // SuperAdmin
   { path: 'add-ruta', component: SuperAdminComponent },

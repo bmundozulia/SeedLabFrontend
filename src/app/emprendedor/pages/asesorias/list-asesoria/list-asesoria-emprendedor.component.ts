@@ -3,11 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 
-import { AsesoriaService } from '../../../servicios/asesoria.service';
+import { AsesoriaService } from '../../../../servicios/asesoria.service';
 import { CrearAsesoriaModalComponent } from '../crear-asesoria-modal/crear-asesoria-modal.component';
-import { HeaderComponent } from '../../../header/header.component';
 
-import { Asesoria } from '../../../Modelos/asesoria.model';
+
+import { Asesoria } from '../../../../Modelos/asesoria.model';
 
 @Component({
   selector: 'app-list-asesoria',

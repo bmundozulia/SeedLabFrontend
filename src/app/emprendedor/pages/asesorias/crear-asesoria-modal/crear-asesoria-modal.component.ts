@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-import { AliadoService } from '../../../servicios/aliado.service';
-import { AsesoriaService } from '../../../servicios/asesoria.service';
+import { AliadoService } from '../../../../servicios/aliado.service';
+import { AsesoriaService } from '../../../../servicios/asesoria.service';
 import { FormControl } from '@angular/forms';
 
 @Component({
