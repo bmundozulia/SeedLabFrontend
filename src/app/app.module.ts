@@ -26,7 +26,6 @@ import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliad
 import { AddEmpresaComponent } from './emprendedor/empresa/add-empresa/add-empresa.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 import { BodyComponent } from './inicio/body/body.component';
 import { CargaComponent } from './carga/carga.component';
 import { CrearAsesoriaModalComponent } from './emprendedor/asesorias/crear-asesoria-modal/crear-asesoria-modal.component';
@@ -36,7 +35,6 @@ import { DarAliadoAsesoriaModalComponent } from './orientador/asesorias/dar-alia
 import { EditEmpresaComponent } from './emprendedor/empresa/edit-empresa/edit-empresa.component';
 import { EncuestaEmpresaComponent } from './emprendedor/formulario-diagnostico/encuesta-empresa.component';
 //import { HeaderComponent } from './header/header.component';
-import { HorarioModalComponent } from './asesor/horario-modal/horario-modal.component';
 import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
 import { ListAsesoriaEmprendedorComponent } from './emprendedor/asesorias/list-asesoria-emprendedor/list-asesoria-emprendedor.component';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
@@ -47,7 +45,6 @@ import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/mod
 import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadmin/modalcrear-superadmin.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
-import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
@@ -60,6 +57,7 @@ import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver
 
 import { AuthModule } from './auth/auth.module';
 import { AliadosModule } from './aliados/aliados.module';
+import { AsesorModule } from './asesor/asesor.module';
 
 
 
@@ -68,7 +66,6 @@ import { AliadosModule } from './aliados/aliados.module';
     AddAliadosComponent,
     AddEmpresaComponent,
     AppComponent,
-    AsesoriasComponent,
     BodyComponent,
     CrearAsesoriaModalComponent,
     CrearSuperadminComponent,
@@ -77,7 +74,6 @@ import { AliadosModule } from './aliados/aliados.module';
     EditEmpresaComponent,
     EncuestaEmpresaComponent,
    // HeaderComponent,
-    HorarioModalComponent,
     ListAsesoriaEmprendedorComponent,
     ListAliadosComponent,
     ListEmpresasComponent,
@@ -88,7 +84,6 @@ import { AliadosModule } from './aliados/aliados.module';
     ModalcrearSuperadminComponent,
     OrientadorCrearComponent,
     PerfilAdminComponent,
-    PerfilAsesorComponent,
     PerfilEmprendedorComponent,
     PerfilOrientadorComponent,
     PersonalizacionesComponent,
@@ -121,7 +116,8 @@ import { AliadosModule } from './aliados/aliados.module';
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
     AuthModule,
-    AliadosModule
+    AliadosModule,
+    AsesorModule
   ],
   providers: [
     provideClientHydration(),

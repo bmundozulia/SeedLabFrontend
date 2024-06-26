@@ -2,9 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { AsesoriaService } from '../../servicios/asesoria.service';
+import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { Router } from '@angular/router';
-import { AlertService } from '../../servicios/alert.service';
+import { AlertService } from '../../../servicios/alert.service';
 
 @Component({
   selector: 'app-horario-modal',

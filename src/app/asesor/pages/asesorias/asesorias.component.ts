@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { HorarioModalComponent } from '../horario-modal/horario-modal.component';
-import { AsesoriaService } from '../../servicios/asesoria.service';
-import { Asesoria } from '../../Modelos/asesoria.model';
-import { AsesorService } from '../../servicios/asesor.service';
+import { AsesoriaService } from '../../../servicios/asesoria.service';
+import { Asesoria } from '../../../Modelos/asesoria.model';
+import { AsesorService } from '../../../servicios/asesor.service';
 
 @Component({
   selector: 'app-asesorias',

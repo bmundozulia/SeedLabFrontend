@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { AddEmpresaComponent } from './emprendedor/empresa/add-empresa/add-empresa.component';
-import { AsesoriaAliadoComponent } from './aliados/pages/list-asesorias/asesoria-aliado.component';
-import { AsesoriasComponent } from './asesor/asesorias/asesorias.component';
 
 import { BodyComponent } from './inicio/body/body.component';
 
@@ -19,7 +17,6 @@ import { FanPageComponent } from './aliados/pages/fan-page/fan-page.component';
 
 import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
 import { ListAsesoriaEmprendedorComponent } from './emprendedor/asesorias/list-asesoria-emprendedor/list-asesoria-emprendedor.component';
-import { ListAsesoresComponent } from './aliados/pages/list-asesores/list-asesores.component';
 import { ListEmpresasComponent } from './emprendedor/empresa/list-empresas/list-empresas.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 
@@ -29,7 +26,6 @@ import { ModalComponent } from './super-admin/modal/modal.component';
 import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 
 import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
-import { PerfilAsesorComponent } from './asesor/perfil-asesor/perfil-asesor.component';
 import { PerfilEmprendedorComponent } from './emprendedor/perfil-emprendedor/perfil-emprendedor.component';
 import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
@@ -55,6 +51,12 @@ const routes: Routes = [
   {
     path: 'aliados',
     loadChildren: () => import('./aliados/aliados.module').then(m => m.AliadosModule)
+  },
+
+  //Asesor
+  {
+    path: 'asesor',
+    loadChildren: () => import('./asesor/asesor.module').then(m => m.AsesorModule)
   },
 
   //Emprendedor
@@ -91,9 +93,7 @@ const routes: Routes = [
 
 
 
-  //Asesores
-  { path: 'perfil-asesores', component: PerfilAsesorComponent },
-  { path: 'asesorias', component: AsesoriasComponent },  //de asesor
+ 
 
 
 

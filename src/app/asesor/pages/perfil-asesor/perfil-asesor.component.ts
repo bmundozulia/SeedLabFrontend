@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
-import { AsesorService } from '../../servicios/asesor.service';
-
-import { Asesor } from '../../Modelos/asesor.model';
-import { User } from '../../Modelos/user.model';
-import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+
+import { AsesorService } from '../../../servicios/asesor.service';
+
+import { Asesor } from '../../../Modelos/asesor.model';
+import { User } from '../../../Modelos/user.model';
 
 @Component({
   selector: 'app-perfil-asesor',
