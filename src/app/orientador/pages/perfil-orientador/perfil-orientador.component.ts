@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertService } from '../../servicios/alert.service';
-import { OrientadorService } from '../../servicios/orientador.service';
-import { Orientador } from '../../Modelos/orientador.model';
-import { User } from '../../Modelos/user.model';
+import { AlertService } from '../../../servicios/alert.service';
+import { OrientadorService } from '../../../servicios/orientador.service';
+import { Orientador } from '../../../Modelos/orientador.model';
+import { User } from '../../../Modelos/user.model';
 // iconos
 import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 

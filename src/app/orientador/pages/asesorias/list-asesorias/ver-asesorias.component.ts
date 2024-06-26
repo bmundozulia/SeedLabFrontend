@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DarAliadoAsesoriaModalComponent } from '../dar-aliado-asesoria-modal/dar-aliado-asesoria-modal.component';
-import { AsesoriaService } from '../../../servicios/asesoria.service';
-import { Asesoria } from '../../../Modelos/asesoria.model';
+import { AsesoriaService } from '../../../../servicios/asesoria.service';
+import { Asesoria } from '../../../../Modelos/asesoria.model';
 
 @Component({
   selector: 'app-ver-asesorias',

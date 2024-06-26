@@ -2,9 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AsesoriaService } from '../../../servicios/asesoria.service';
-import { AliadoService } from '../../../servicios/aliado.service';
-
+import { AsesoriaService } from '../../../../servicios/asesoria.service';
+import { AliadoService } from '../../../../servicios/aliado.service';
 @Component({
   selector: 'app-dar-aliado-asesoria-modal',
   templateUrl: './dar-aliado-asesoria-modal.component.html',
