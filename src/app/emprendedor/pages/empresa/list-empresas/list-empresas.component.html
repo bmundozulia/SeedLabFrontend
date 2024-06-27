@@ -23,10 +23,10 @@
             <h2 class="text-vgraylight font-medium text-center">Dirección</h2>
         </div>
 
-        <app-carga [isLoading]="isLoading"></app-carga>
+        <!-- <app-carga [isLoading]="isLoading"></app-carga>
+         <div *ngIf="!isLoading" -->
 
-        <div *ngIf="!isLoading"
-            class="w-full flex xl:items-center lg:flex-col max-lg:justify-center max-lg:flex-row max-lg:flex-wrap max-lg:-translate-y-16 mb-6">
+        <div class="w-full flex xl:items-center lg:flex-col max-lg:justify-center max-lg:flex-row max-lg:flex-wrap max-lg:-translate-y-16 mb-6">
             <div *ngFor="let empresa of listaEmpresas |filterBy:userFilter| paginate: { itemsPerPage: 5, currentPage: page }"
                 class="bg-gray-200 rounded-lg items-center mt-4 max-lg:max-w-[250px] max-lg:w-[250px] max-lg:p-5 max-lg:rounded-2lg max-lg:mx-2 lg:grid lg:text-center lg:grid-cols-[1.5fr_1.5fr_1.5fr_0.5fr] lg:min-h-14 lg:w-full">
                 <h4 class="text-left overflow-wrap-normal break-all lg:mx-3 lg:m-0 my-0">

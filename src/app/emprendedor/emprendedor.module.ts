@@ -8,9 +8,16 @@ import { ListEmpresasComponent } from './pages/empresa/list-empresas/list-empres
 import { EncuestaEmpresaComponent } from './pages/formulario-diagnostico/encuesta-empresa.component';
 import { RutaEmprendedorComponent } from './pages/ruta-emprendedor/ruta-emprendedor.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PerfilEmprendedorComponent } from './pages/perfil-emprendedor/perfil-emprendedor.component';
 import { EmprendedorRoutingModule } from './emprendedor-routing.module';
 import { SharedModule } from '../shared.module';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
+
+
 
 
 
@@ -25,7 +32,8 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
     EditEmpresaComponent,
     ListEmpresasComponent,
     EncuestaEmpresaComponent,
-    RutaEmprendedorComponent
+    RutaEmprendedorComponent,
+    PerfilEmprendedorComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +42,8 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
+    FilterPipeModule,
+    NgxPaginationModule
 
   ]
 })

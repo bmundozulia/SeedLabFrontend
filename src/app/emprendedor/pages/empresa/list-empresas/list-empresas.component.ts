@@ -9,9 +9,9 @@ import { User } from '../../../../Modelos/user.model';
 
 @Component({
   selector: 'app-list-empresas',
-  providers: [EmprendedorService],
   templateUrl: './list-empresas.component.html',
-  styleUrls: ['./list-empresas.component.css']
+  styleUrls: ['./list-empresas.component.css'],
+  providers: [EmprendedorService],
 })
 
 export class ListEmpresasComponent implements OnInit {
