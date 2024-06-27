@@ -1,18 +1,18 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SuperadminService } from '../../servicios/superadmin.service';
-import { Superadmin } from '../../Modelos/superadmin.model';
-import { User } from '../../Modelos/user.model';
+import { SuperadminService } from '../../../servicios/superadmin.service';
+import { Superadmin } from '../../../Modelos/superadmin.model';
+import { User } from '../../../Modelos/user.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AlertService } from '../../servicios/alert.service';
+import { AlertService } from '../../../servicios/alert.service';
 
 @Component({
-  selector: 'app-modalcrear-superadmin',
-  templateUrl: './modalcrear-superadmin.component.html',
-  styleUrl: './modalcrear-superadmin.component.css'
+  selector: 'app-modal-crear-superadmin',
+  templateUrl: './modal-crear-superadmin.component.html',
+  styleUrl: './modal-crear-superadmin.component.css'
 })
-export class ModalcrearSuperadminComponent implements OnInit {
+export class ModalCrearSuperadminComponent implements OnInit {
   @Input() isEditing: boolean = false
   submitted: boolean = false;
   token: string | null = null;
@@ -33,7 +33,7 @@ export class ModalcrearSuperadminComponent implements OnInit {
     estado: true,
   })
 
-  constructor(public dialogRef: MatDialogRef<ModalcrearSuperadminComponent>,
+  constructor(public dialogRef: MatDialogRef<ModalCrearSuperadminComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private router: Router,

@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { faMagnifyingGlass, faPenToSquare, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { User } from '../../Modelos/user.model';
-import { SuperadminService } from '../../servicios/superadmin.service';
-import { Superadmin } from '../../Modelos/superadmin.model';
+import { User } from '../../../Modelos/user.model';
+import { SuperadminService } from '../../../servicios/superadmin.service';
+import { Superadmin } from '../../../Modelos/superadmin.model';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ModalcrearSuperadminComponent } from '../modalcrear-superadmin/modalcrear-superadmin.component';
+import { ModalcrearSuperadminComponent } from '../modal-crear-superadmin/modal-crear-superadmin.component';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-crear-superadmin',
-  templateUrl: './crear-superadmin.component.html',
-  styleUrl: './crear-superadmin.component.css',
+  templateUrl: './list-superadmin.component.html',
+  styleUrl: './list-superadmin.component.css',
   providers: [SuperadminService]
 })
-export class CrearSuperadminComponent implements OnInit {
+export class ListSuperadminComponent implements OnInit {
   faPen = faPenToSquare;
   fax = faXmark;
   falupa = faMagnifyingGlass;

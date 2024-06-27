@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { RutaService } from '../../servicios/rutas.service';
-import { SwitchService } from '../../servicios/switch.service'
-import { Ruta } from '../../Modelos/ruta.modelo';
-import { User } from '../../Modelos/user.model';
+import { RutaService } from '../../../../servicios/rutas.service';
+import { SwitchService } from '../../../../servicios/switch.service';
+import { Ruta } from '../../../../Modelos/ruta.modelo';
+import { User } from '../../../../Modelos/user.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css',
+  selector: 'app-modal-add-ruta',
+  templateUrl: './modal-add-ruta.component.html',
+  styleUrl: './modal-add-ruta.component.css',
   providers: [RutaService, DatePipe]
 
 })
-export class ModalComponent implements OnInit {
+export class ModalAddRutaComponent implements OnInit {
 
   createRutaForm: FormGroup;
   token = '';

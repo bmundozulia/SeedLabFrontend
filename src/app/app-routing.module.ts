@@ -1,17 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AddAliadosComponent } from './super-admin/aliados/add-aliados/add-aliados.component';
 import { BodyComponent } from './inicio/body/body.component';
 import { CursorutasComponent } from './ruta/cursorutas/cursorutas.component';
-import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component'
-import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
-import { ModalComponent } from './super-admin/modal/modal.component';
 //import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
-import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
-import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
-import { RutasComponent } from './ruta/rutas/rutas.component';
-import { SuperAdminComponent } from './super-admin/super-admin.component';
 
 
 
@@ -45,14 +37,10 @@ const routes: Routes = [
     loadChildren: () => import('./orientador/orientador.module').then(m => m.OrientadorModule)
   },
 
-  // SuperAdmin
-  { path: 'add-ruta', component: SuperAdminComponent },
-  { path: 'list-aliados', component: ListAliadosComponent },
-  //{ path: 'list-orientador', component: OrientadorCrearComponent },
-  { path: 'crear-superadmin', component: CrearSuperadminComponent },
-  { path: 'modal-superadmin', component: ModalComponent },
-  { path: 'perfil-admin', component: PerfilAdminComponent },
-  { path: 'personalizaciones', component: PersonalizacionesComponent },
+  {
+    path:'superadmin',
+    loadChildren: () => import('./superadmin/superadmin.module').then(m => m.SuperadminModule)
+  },
 
 
 

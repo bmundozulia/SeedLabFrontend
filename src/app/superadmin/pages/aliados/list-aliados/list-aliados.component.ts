@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { AliadoService } from '../../../servicios/aliado.service';
-import { Aliado } from '../../../Modelos/aliado.model';
-import { User } from '../../../Modelos/user.model';
+import { AliadoService } from '../../../../servicios/aliado.service';
+import { Aliado } from '../../../../Modelos/aliado.model';
+import { User } from '../../../../Modelos/user.model';
 import { Router } from '@angular/router';
 
 @Component({

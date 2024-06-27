@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ColorPickerDirective } from 'ngx-color-picker';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
-import { User } from '../../Modelos/user.model';
+import { User } from '../../../Modelos/user.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PersonalizacionesService } from '../../servicios/personalizaciones.service';
-import { Personalizaciones } from '../../Modelos/personalizaciones.model';
+import { PersonalizacionesService } from '../../../servicios/personalizaciones.service';
+import { Personalizaciones } from '../../../Modelos/personalizaciones.model';
 import { Router } from '@angular/router';
 
 @Component({

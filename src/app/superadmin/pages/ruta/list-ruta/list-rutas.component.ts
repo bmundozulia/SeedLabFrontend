@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
-import { RutaService } from '../../../servicios/rutas.service';
-import { Ruta } from '../../../Modelos/ruta.modelo';
-import { User } from '../../../Modelos/user.model';
-import { SwitchService } from '../../../servicios/switch.service';
+import { RutaService } from '../../../../servicios/rutas.service';
+import { Ruta } from '../../../../Modelos/ruta.modelo';
+import { User } from '../../../../Modelos/user.model';
+import { SwitchService } from '../../../../servicios/switch.service';
 
 @Component({
   selector: 'app-list-rutas',

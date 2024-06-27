@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertService } from '../../servicios/alert.service';
-import { SuperadminService } from '../../servicios/superadmin.service';
-import { Superadmin } from '../../Modelos/superadmin.model';
-import { User } from '../../Modelos/user.model';
+import { AlertService } from '../../../servicios/alert.service';
+import { SuperadminService } from '../../../servicios/superadmin.service';
+import { Superadmin } from '../../../Modelos/superadmin.model';
+import { User } from '../../../Modelos/user.model';
 import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
-  selector: 'app-perfil-admin',
-  templateUrl: './perfil-admin.component.html',
-  styleUrl: './perfil-admin.component.css'
+  selector: 'app-perfil-superadmin',
+  templateUrl: './perfil-superadmin.component.html',
+  styleUrl: './perfil-superadmin.component.css'
 })
-export class PerfilAdminComponent {
+export class PerfilSuperadminComponent {
   // iconos
   faEnvelope = faEnvelope;
   faMobileAlt = faMobileAlt;

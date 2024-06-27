@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SwitchService } from '../servicios/switch.service';
-
+import { SwitchService } from '../../../../servicios/switch.service';
 
 
 @Component({
-  selector: 'app-super-admin',
-  templateUrl: './super-admin.component.html',
-  styleUrl: './super-admin.component.css'
+  selector: 'app-add-actividad',
+  templateUrl: './add-actividad.component.html',
+  styleUrl: './add-actividad.component.css'
 })
-export class SuperAdminComponent implements OnInit {
+export class AddActividadComponent implements OnInit {
 
   modalSwitch: boolean;
 
