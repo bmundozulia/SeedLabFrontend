@@ -23,7 +23,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot( routes )
+    RouterModule.forChild( routes)
   ]
 })
 export class SuperadminRoutingModule { }
