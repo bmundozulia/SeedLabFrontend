@@ -1,4 +1,4 @@
-import { Preguntas, SubPreguntas, OpcionesRespuesta } from "../../Modelos/preguntas.model";
+import { Preguntas, OpcionesRespuesta } from "../../../Modelos/preguntas.model";
 
 export const PREGUNTAS: Preguntas[] = [
     {

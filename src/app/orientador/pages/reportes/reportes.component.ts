@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
-import { HeaderComponent } from '../../header/header.component';
 
 
 @Component({

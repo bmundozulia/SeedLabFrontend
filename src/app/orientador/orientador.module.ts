@@ -7,6 +7,13 @@ import { PerfilOrientadorComponent } from './pages/perfil-orientador/perfil-orie
 import { ReportesComponent } from './pages/reportes/reportes.component';
 import { OrientadorRoutingModule } from './orientador-routing.module';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '../shared.module';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+
+
+
+
 
 
 @NgModule({
@@ -18,7 +25,11 @@ import { OrientadorRoutingModule } from './orientador-routing.module';
   ],
   imports: [
     CommonModule,
-    OrientadorRoutingModule
+    OrientadorRoutingModule,
+    FontAwesomeModule,
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class OrientadorModule { }

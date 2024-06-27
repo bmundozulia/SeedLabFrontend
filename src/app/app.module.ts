@@ -29,23 +29,19 @@ import { BodyComponent } from './inicio/body/body.component';
 import { CargaComponent } from './carga/carga.component';
 import { CrearSuperadminComponent } from './super-admin/crear-superadmin/crear-superadmin.component';
 import { CursorutasComponent } from './ruta/cursorutas/cursorutas.component';
-import { DarAliadoAsesoriaModalComponent } from './orientador/asesorias/dar-aliado-asesoria-modal/dar-aliado-asesoria-modal.component';
 //import { HeaderComponent } from './header/header.component';
 import { ListAliadosComponent } from './super-admin/aliados/list-aliados/list-aliados.component';
 import { ListRutasComponent } from './super-admin/ruta/list-rutas/list-rutas.component';
 import { MenuComponent } from './inicio/menu/menu.component';
 import { ModalComponent } from './super-admin/modal/modal.component';
-import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
+//import { ModalCrearOrientadorComponent } from './orientador/orientador-crear/modal-crear-orientador/modal-crear-orientador.component';
 import { ModalcrearSuperadminComponent } from './super-admin/modalcrear-superadmin/modalcrear-superadmin.component';
-import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
+//import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 import { PerfilAdminComponent } from './super-admin/perfil-admin/perfil-admin.component';
-import { PerfilOrientadorComponent } from './orientador/perfil-orientador/perfil-orientador.component';
 import { PersonalizacionesComponent } from './super-admin/personalizaciones/personalizaciones.component';
-import { ReportesComponent } from './orientador/reportes/reportes.component';
 import { RutasComponent } from './ruta/rutas/rutas.component';
 import { SafeUrlPipe } from './ruta/cursorutas/cursorutas.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
-import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 
 import { AuthModule } from './auth/auth.module';
 import { AliadosModule } from './aliados/aliados.module';
@@ -62,23 +58,19 @@ import { EmprendedorModule } from './emprendedor/emprendedor.module';
     BodyComponent,
     CrearSuperadminComponent,
     CursorutasComponent,
-    DarAliadoAsesoriaModalComponent,
    // HeaderComponent,
     ListAliadosComponent,
     ListRutasComponent,
     MenuComponent,
     ModalComponent,
-    ModalCrearOrientadorComponent,
+    //ModalCrearOrientadorComponent,
     ModalcrearSuperadminComponent,
-    OrientadorCrearComponent,
+    //OrientadorCrearComponent,
     PerfilAdminComponent,
-    PerfilOrientadorComponent,
     PersonalizacionesComponent,
-    ReportesComponent,
     RutasComponent,
     SafeUrlPipe,
     SuperAdminComponent,
-    VerAsesoriasComponent,
     CargaComponent,
   ],
   imports: [

@@ -7,6 +7,13 @@ import { EditEmpresaComponent } from './pages/empresa/edit-empresa/edit-empresa.
 import { ListEmpresasComponent } from './pages/empresa/list-empresas/list-empresas.component';
 import { EncuestaEmpresaComponent } from './pages/formulario-diagnostico/encuesta-empresa.component';
 import { RutaEmprendedorComponent } from './pages/ruta-emprendedor/ruta-emprendedor.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EmprendedorRoutingModule } from './emprendedor-routing.module';
+import { SharedModule } from '../shared.module';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+
+
+
 
 
 
@@ -21,7 +28,13 @@ import { RutaEmprendedorComponent } from './pages/ruta-emprendedor/ruta-emprende
     RutaEmprendedorComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    EmprendedorRoutingModule,
+    FontAwesomeModule,
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
+
   ]
 })
 export class EmprendedorModule { }

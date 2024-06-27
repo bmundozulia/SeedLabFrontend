@@ -9,13 +9,13 @@ import { faLandmarkFlag } from '@fortawesome/free-solid-svg-icons';
 import { faMountainCity } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faVenusMars } from '@fortawesome/free-solid-svg-icons';
-import { AuthService } from '../../servicios/auth.service';
-import { DepartamentoService } from '../../servicios/departamento.service';
-import { EmprendedorService } from '../../servicios/emprendedor.service';
-import { MunicipioService } from '../../servicios/municipio.service';
-import { PerfilEmprendedor } from '../../Modelos/perfil-emprendedor.model';
-import { User } from '../../Modelos/user.model';
-import { AlertService } from '../../servicios/alert.service';
+import { AuthService } from '../../../servicios/auth.service';
+import { DepartamentoService } from '../../../servicios/departamento.service';
+import { EmprendedorService } from '../../../servicios/emprendedor.service';
+import { MunicipioService } from '../../../servicios/municipio.service';
+import { PerfilEmprendedor } from '../../../Modelos/perfil-emprendedor.model';
+import { User } from '../../../Modelos/user.model';
+import { AlertService } from '../../../servicios/alert.service';
 
 
 @Component({
@@ -67,6 +67,7 @@ export class PerfilEmprendedorComponent implements OnInit {
     municipio: ['', Validators.required],
     estado: true,
   });
+  
   registerForm: FormGroup; //ahorita quitarlo
   listEmprendedor: PerfilEmprendedor[] = [];
   originalData: any;
