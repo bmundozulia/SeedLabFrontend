@@ -48,9 +48,10 @@
 
         </div>
 
-        <app-carga [isLoading]="isLoading"></app-carga>
+        <!-- <app-carga [isLoading]="isLoading"></app-carga> 
+         *ngIf="!isLoading" dentro del div siguiente-->
 
-        <div *ngIf="!isLoading">
+        <div >
             <div class="max-xl:scale-0 max-xl:mt-0  h-14 w-full bg-white rounded-xl  grid items-center px-3  "
                 style="grid-template-columns: 1.5fr 1.5fr 1.5fr 0.5fr;">
                 <h1 class=" text-vgraylight font-medium ">Nombre</h1>

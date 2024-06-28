@@ -4,7 +4,7 @@ import { User } from '../../../Modelos/user.model';
 import { SuperadminService } from '../../../servicios/superadmin.service';
 import { Superadmin } from '../../../Modelos/superadmin.model';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ModalcrearSuperadminComponent } from '../modal-crear-superadmin/modal-crear-superadmin.component';
+import { ModalCrearSuperadminComponent } from '../modal-crear-superadmin/modal-crear-superadmin.component';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-crear-superadmin',
@@ -60,8 +60,8 @@ export class ListSuperadminComponent implements OnInit {
 
   /* Abre modal enviando el id del admin para editarlo */
   openModal(adminId: number | null): void {
-    let dialogRef: MatDialogRef<ModalcrearSuperadminComponent>;
-    dialogRef = this.dialog.open(ModalcrearSuperadminComponent, {
+    let dialogRef: MatDialogRef<ModalCrearSuperadminComponent>;
+    dialogRef = this.dialog.open(ModalCrearSuperadminComponent, {
       data: { adminId: adminId }
     });
     dialogRef.afterClosed().subscribe(result => {

@@ -15,6 +15,18 @@ import { SuperadminRoutingModule } from './superadmin-routing.module';
 import { ModalCrearOrientadorComponent } from './pages/orientador/modal-crear-orientador/modal-crear-orientador.component';
 
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '../shared.module';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { MatIconModule } from '@angular/material/icon';
+
+
+
+
+
+
 
 
 
@@ -38,6 +50,12 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
     SuperadminRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule,
+    FilterPipeModule,
+    FontAwesomeModule,
+    SharedModule,
+    ColorPickerModule,
+    MatIconModule
   ]
 })
 export class SuperadminModule { }
