@@ -4,9 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -16,10 +14,10 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ReactiveFormsModule, FormBuilder, FormsModule, FormGroup } from '@angular/forms';
 
-import { ColorPickerModule } from 'ngx-color-picker';
-import { FilterPipeModule } from 'ngx-filter-pipe';
+//import { ColorPickerModule } from 'ngx-color-picker';
+//import { FilterPipeModule } from 'ngx-filter-pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgxPaginationModule } from 'ngx-pagination';
+//import { NgxPaginationModule } from 'ngx-pagination';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
@@ -59,9 +57,9 @@ import { SuperadminModule } from './superadmin/superadmin.module';
     AngularMaterialModule,
     AppRoutingModule,
     BrowserModule,
-    ColorPickerModule,
+    //ColorPickerModule,
     CommonModule,
-    FilterPipeModule,
+    //FilterPipeModule,
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
@@ -72,7 +70,7 @@ import { SuperadminModule } from './superadmin/superadmin.module';
     MatSidenav,
     MatSidenavModule,
     MatToolbarModule,
-    NgxPaginationModule,
+    //NgxPaginationModule,
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
     AuthModule,

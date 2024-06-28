@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { BodyComponent } from './inicio/body/body.component';
-import { CursorutasComponent } from './ruta/cursorutas/cursorutas.component';
 //import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
 
 
