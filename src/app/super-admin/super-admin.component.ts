@@ -137,9 +137,9 @@ export class SuperAdminComponent implements OnInit {
 
 
 
-  // openModal() {
-  //   this.modalSwitch = true;
-  // }
+  openModal() {
+    this.modalSwitch = true;
+  }
 
 
   persona = {
