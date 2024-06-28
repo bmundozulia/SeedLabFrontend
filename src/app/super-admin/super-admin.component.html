@@ -1,93 +1,123 @@
-<div class=" pt-4 divide-y divide-light-blue-400 ml-12 mr-4">
-    <h1 class="text-xl font-bold mb-4">Bienvenido al panel Editar Ruta</h1>
-    <div class="grid sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-12 xl:gap-6  mb-2">
-        <form [formGroup]="actividadForm" (ngSubmit)="addActividad">
-            <div class="contenido">
-                <h3> Rutas</h3>
-                <div *ngFor="let ruta of listRuta">
-                   <h3>{{ruta.nombre}}</h3>
-                </div>
-            </div>
-        </form>
+<div class="pt-4 divide-y divide-light-blue-400 ml-12 mr-4">
+  <h1 class="text-xl font-bold mb-4">Bienvenido al panel Editar Ruta</h1>
+  <div class="grid sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-12 xl:gap-6 mb-2">
 
+    <div class="col-span-4">
 
-        <!-- Contenido principal -->
-        <div class=" col-span-8 ">
-            <h2 class="text-center my-8">Crear Actividad</h2>
-            <form (ngSubmit)="onSubmit()">
-                <div class="xl:bg-gray-100 rounded xl:p-4">
-                    <div class="bg-gray-50 rounded-xl border border-black-50 p-4">
-                        <div class="py-2">
-                            <h3 class="font-bold ">Actividad</h3>
-                            <p class="text-base">Nombre</p>
-                            <input type="text" name="titulo" required [(ngModel)]="persona.titulo" #titulo="ngModel"
-                                class="border border-gray-700 h-10 rounded-xl w-full p-4 bg-white-50 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 ">
-                            <div *ngIf="submitted && titulo.invalid"
-                                class="inline-block p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 "
-                                role="alert">
-                                <span class="font-medium">Este campo es requerido *</span>
-                            </div>
-                        </div>
-
-                        <div class="py-2">
-                            <h3>Descripcion</h3>
-                            <textarea name="cuerpo" required [(ngModel)]="persona" #cuerpo="ngModel"
-                                class="h-14 border border-gray-700 rounded-xl w-full resize-none p-2 bg-white-50 focus:outline-none focus:ring-2 focus:ring-blue-200 "></textarea>
-                            <div *ngIf="submitted && cuerpo.invalid"
-                                class="p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 inline-block"
-                                role="alert">
-                                <span class="font-medium">Este campo es requerido *</span>
-                            </div>
-                        </div>
-                        <div class="py-2">
-                            <h3>ruta_multi</h3>
-                            <textarea name="cuerpo" required [(ngModel)]="persona.cuerpo" #cuerpo="ngModel"
-                                class="h-14 border border-gray-700 rounded-xl w-full resize-none p-2 bg-white-50 focus:outline-none focus:ring-2 focus:ring-blue-200 "></textarea>
-                            <div *ngIf="submitted && cuerpo.invalid"
-                                class="p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 inline-block"
-                                role="alert">
-                                <span class="font-medium">Este campo es requerido *</span>
-                            </div>
-                        </div>
-                        <div class="py-2">
-                            <h3>Tipo de dato</h3>
-                            <div class="relative">
-                                <select id="tipoDato" name="tipoDato" required [(ngModel)]="persona.tipoDocumento"
-                                    #tipoDocumento="ngModel"
-                                    class="p-2 w-full h-10 border border-gray-700 rounded-xl bg-white-50 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 ">
-                                    <option value="" disabled selected>Seleccione el tipo de formato</option>
-                                    <option value="Video">Video</option>
-                                    <option value="Multimedia">Multimedia</option>
-                                    <option value="Imagen">Imagen</option>
-                                    <option value="Pdf">Pdf</option>
-                                    <option value="Texto">Texto</option>
-                                </select>
-                                <div *ngIf="submitted && tipoDocumento.invalid"
-                                    class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50 "
-                                    role="alert">
-                                    <span class="font-medium">Este campo es requerido *</span>
-                                </div>
-                            </div>
-
-
-                            <hr class="divide-y divide-light-blue-400 ">
-                            <div class="flex justify-center">
-
-                                <button type="submit" class=" bg-sky-400 text-white px-4 py-2 rounded mt-2 text-md">
-                                    Agregar otra actividad
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex justify-end">
-                        <button type="submit"
-                            class="bg-sky-400 text-white px-4 py-2 rounded mt-4 text-md">Guardar</button>
-                    </div>
-                </div>
-            </form>
+      <div class="flex justify-between my-8 relative">
+        <p class="text-lg font-bold mb-1">Ruta</p>
+        <button (click)="openModal()" class="bg-sky-400 rounded text-white px-6 inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" viewBox="0 0 448 512">
+            <path
+              d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+          </svg>
+        </button>
+        <div class="absolute top-0 right-0" *ngIf="modalSwitch == true">
+          <app-modal></app-modal>
         </div>
-        
+      </div>
+      <div class="overflow-y-auto max-h-72">
+        <ul class="sidebar p-0 m-06">
+          <hr class="divide m-0">
+          <li class="hover:bg-sky-100 h-10">
+            <a href="" class="flex justify-between no-underline text-black">
+              <p class="m-2 text-base">
+                1. Convocatoria y selección
+              </p>
+              <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
+                viewBox="0 0 448 512">
+                <path
+                  d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+              </svg>
+            </a>
+          </li>
+          <hr class="divide m-0">
+          <li class="hover:bg-sky-100 h-10">
+            <a href="" class="flex justify-between no-underline text-black">
+              <p class="m-2 text-base">
+                2. Kickoff (evento IMPRENDE)
+              </p>
+              <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
+                viewBox="0 0 448 512">
+                <path
+                  d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+              </svg>
+            </a>
+          </li>
+          <hr class="divide m-0">
+        </ul>
+      </div>
     </div>
 
+    <!-- Contenido principal -->
+    <div class="col-span-8">
+      <h2 class="text-center my-8">2 Kickoff (evento imprende)</h2>
+      <div>
+        <!-- Lista de rutas -->
+        <h2>Rutas</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div *ngFor="let ruta of rutas" (click)="selectRuta(ruta)"
+            style="cursor: pointer; border: 1px solid #ccc; padding: 10px;">
+            {{ ruta }}
+          </div>
+        </div>
+
+        <!-- Formulario de Actividad, Nivel y Lección -->
+        <div *ngIf="selectedRuta">
+          <h3>Formulario para {{ selectedRuta }}</h3>
+
+          <!-- Paso 1: Crear Actividad -->
+          <div *ngIf="currentStep >= 1" style="margin-bottom: 20px;">
+            <h4>Crear Actividad</h4>
+            <input type="text" placeholder="Nombre de la Actividad" [(ngModel)]="actividad.nombre">
+            <button *ngIf="currentStep === 1" (click)="nextStep()">Siguiente</button>
+          </div>
+
+          <!-- Paso 2: Crear Nivel -->
+          <div *ngIf="currentStep >= 2" style="margin-bottom: 20px;">
+            <h4>Crear Nivel</h4>
+            <input type="text" placeholder="Nombre del Nivel" [(ngModel)]="nivel.nombre">
+            <input type="text" placeholder="Descripción del Nivel" [(ngModel)]="nivel.descripcion">
+            <button *ngIf="currentStep === 2" (click)="nextStep()">Siguiente</button>
+          </div>
+
+          <!-- Paso 3: Crear Lección -->
+          <div *ngIf="currentStep >= 3" style="margin-bottom: 20px;">
+            <h4>Crear Lección</h4>
+            <div *ngFor="let leccion of lecciones; let i = index">
+              <input type="text" placeholder="Nombre de la Lección" [(ngModel)]="leccion.nombre">
+              <input type="text" placeholder="URL" [(ngModel)]="leccion.url">
+              <input type="text" placeholder="Descripción" [(ngModel)]="leccion.descripcion">
+              <input type="file" (change)="onFileSelected($event, i)">
+            </div>
+            <button (click)="addLeccion()">Añadir Otra Lección</button>
+          </div>
+        </div>
+
+        <!-- Añadir Otro Nivel -->
+        <div *ngIf="addingOtroNivel" style="margin-top: 20px;">
+          <div style="margin-bottom: 20px;">
+            <h4>Crear Otro Nivel</h4>
+            <input type="text" placeholder="Nombre del Nivel" [(ngModel)]="otroNivel.nombre">
+            <input type="text" placeholder="Descripción del Nivel" [(ngModel)]="otroNivel.descripcion">
+            <button (click)="addOtroNivel()">Siguiente</button>
+          </div>
+          <div *ngIf="otroNivelAgregado" style="margin-bottom: 20px;">
+            <h4>Crear Lección para {{ otroNivel.nombre }}</h4>
+            <div *ngFor="let leccion of otroNivelLecciones; let i = index">
+              <input type="text" placeholder="Nombre de la Lección" [(ngModel)]="leccion.nombre">
+              <input type="text" placeholder="URL" [(ngModel)]="leccion.url">
+              <input type="text" placeholder="Descripción" [(ngModel)]="leccion.descripcion">
+              <input type="file" (change)="onOtroNivelFileSelected($event, i)">
+            </div>
+            <button (click)="addOtroNivelLeccion()">Añadir Otra Lección</button>
+          </div>
+        </div>
+        <div *ngIf="currentStep >= 3" style="margin-top: 20px;">
+          <button (click)="finalizar()">Finalizar</button>
+          <button (click)="startAddingOtroNivel()">Añadir Otro Nivel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
