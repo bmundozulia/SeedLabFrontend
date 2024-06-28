@@ -62,5 +62,16 @@ export class AliadoService {
   getaliados(): Observable<any>{
     return this.http.get(this.url+"/"+1);
   }
+/////////////////////////////////////////////////////////////
+  crearActividad(access_token:any, aliado: any): Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.post(this.url+"actividad",aliado,options)
+  }
+  
+
+  // mostrarRutas(access_token: any, id: number): Observable<any> {
+  //   const options = { headers: this.CreacionHeaders(access_token)};
+  //   return this.http.get<any>(this.url+"ruta"+id, options)
+  // }
 
 }
