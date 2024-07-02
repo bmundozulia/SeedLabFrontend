@@ -21,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared.module';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MatIconModule } from '@angular/material/icon';
+import { ModalAddNivelComponent } from './pages/ruta/modal-add-nivel/modal-add-nivel.component';
 
 
 
@@ -43,7 +44,8 @@ import { MatIconModule } from '@angular/material/icon';
     ListRutasComponent,
     ModalAddRutaComponent,
     AddActividadComponent,
-    ModalCrearOrientadorComponent
+    ModalCrearOrientadorComponent,
+    ModalAddNivelComponent
   ],
   imports: [
     CommonModule,

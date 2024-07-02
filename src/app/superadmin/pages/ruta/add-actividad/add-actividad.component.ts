@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MatDialog } from '@angular/material/dialog';
+
 import { SwitchService } from '../../../../servicios/switch.service';
+import { ModalAddNivelComponent } from '../modal-add-nivel/modal-add-nivel.component';
 
 
 @Component({
@@ -10,41 +13,48 @@ import { SwitchService } from '../../../../servicios/switch.service';
 })
 export class AddActividadComponent implements OnInit {
 
-  modalSwitch: boolean;
 
-  constructor(private modalSS: SwitchService) {
-
-  }
 
   ngOnInit() {
 
-    this.modalSS.$modal.subscribe((valor) => { this.modalSwitch = valor })
 
-  }
-  openModal() {
-    this.modalSwitch = true;
+
   }
 
 
-  persona = {
-    tipoDocumento: '',
-    descripcion: '',
-    titulo: '',
-    cuerpo: '',
-    links: ''
-  };
+  constructor
+    (public dialog: MatDialog) {
 
-  submitted = false;
-
-  onSubmit() {
-    this.submitted = true;
-    if (this.isFormValid()) {
-      console.log('Form data:', this.persona);
-      // Realizar acción de guardar
-    }
   }
 
-  isFormValid() {
-    return this.persona.tipoDocumento && this.persona.descripcion && this.persona.titulo && this.persona.cuerpo && this.persona.links;
+
+  addActivityModal() {
+    const dialogRef = this.dialog.open(ModalAddNivelComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El modal se cerro y se devolvio', result);
+    });
+
   }
+  activityName: string = ''; // Nombre de la actividad
+  levels: any[] = []; // Lista de niveles
+  showAddLevelButton: boolean = false; // Control para mostrar el botón "Añadir Nivel"
+
+  // Método para agregar un nuevo nivel
+  addLevel() {
+    this.levels.push({}); // Puedes definir la estructura del nivel según tus necesidades
+  }
+
+  // Método para avanzar al siguiente paso
+  goToNext() {
+    // Aquí puedes implementar la lógica para avanzar al siguiente paso
+    console.log('Nombre de la actividad:', this.activityName);
+    console.log('Niveles:', this.levels);
+
+    // Mostrar el botón "Añadir Nivel" después de dar clic en "Siguiente"
+    this.showAddLevelButton = true;
+  }
+
+
+
 }
