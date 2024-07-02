@@ -29,6 +29,12 @@ export class AddActividadComponent implements OnInit {
 
 
   addActivityModal() {
+
+    if (this.activityName.trim() === '') {
+      // Mostrar algún mensaje de error o manejar la situación según tu requerimiento
+      console.log('Nombre de actividad no puede estar vacío.');
+      return; // Salir del método si el nombre de actividad está vacío
+    }
     const dialogRef = this.dialog.open(ModalAddNivelComponent);
 
     dialogRef.afterClosed().subscribe(result => {

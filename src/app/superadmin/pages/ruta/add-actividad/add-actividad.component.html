@@ -1,59 +1,22 @@
 <div class=" pt-4 divide-y divide-light-blue-400 ml-12 mr-4">
     <h1 class="text-xl font-bold mb-4">Bienvenido al panel Editar Ruta</h1>
-    <div class="grid sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-12 xl:gap-6  mb-2">
+    <div class="grid grid-cols-1 mb-2">
 
-        <div class="col-span-4">
 
-            <div class=" flex justify-between my-8 relative ">
-                <p class="text-lg font-bold mb-1 ">Ruta</p>
-
-            </div>
-            <div class=" overflow-y-auto max-h-72">
-                <ul class="sidebar p-0 m-06">
-                    <hr class="divide m-0">
-                    <li class="    hover:bg-sky-100 h-10">
-                        <a href="
-                        " class="flex justify-between no-underline text-black">
-                            <p class="m-2 text-base">
-                                1. Convocatoria y selección
-                            </p>
-                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
-                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path
-                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                            </svg>
-                        </a>
-                    </li>
-                    <hr class="divide m-0">
-                    <li class=" ">
-                        <a href="" class="flex justify-between no-underline text-black   hover:bg-sky-100 h-10">
-                            <p class="m-2 text-base">2. Kickoff (evento IMPRENDE)</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
-                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path
-                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                            </svg>
-                        </a>
-
-                    </li>
-                    <hr class="divide m-0">
-
-                </ul>
-            </div>
-        </div>
 
         <!-- Contenido principal -->
-        <div class=" col-span-8 ">
+        <div class="grid grid-cols-1 space-y-4">
             <!-- activity.component.html -->
 
             <div>
                 <label for="activityName">Nombre de la Actividad:</label>
-                <input type="text" id="activityName" [(ngModel)]="activityName" class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
-
+                <input type="text" id="activityName" [(ngModel)]="activityName"
+                    class="block flex-1 border-0 bg-gray-200 py-1.5 pl-1 text-gray-900 placeholder:text-black ">
+                <!-- block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 -->
             </div>
 
             <!-- Mostrar botón "Añadir Nivel" solo después de dar clic en "Siguiente" -->
-            <div>
+            <div class="">
                 <button (click)="addActivityModal()"
                     class="bg-sky-400 hover:bg-sky-500 text-white font-bold px-3 py-0 rounded h-12">Añadir
                     Nivel</button>

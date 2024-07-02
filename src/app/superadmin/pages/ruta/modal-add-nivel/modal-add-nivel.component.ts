@@ -13,7 +13,9 @@ export class ModalAddNivelComponent{
 
   constructor(private fb: FormBuilder,
       public dialogRef:MatDialogRef<ModalAddNivelComponent>
-  ) {}
+  ) {
+    
+  }
 
 
   cancelModalAddNivel(){
