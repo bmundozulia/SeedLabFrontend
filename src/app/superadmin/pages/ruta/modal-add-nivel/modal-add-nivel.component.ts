@@ -1,28 +1,21 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal-add-nivel',
   templateUrl: './modal-add-nivel.component.html',
-  styleUrl: './modal-add-nivel.component.css'
+  styleUrls: ['./modal-add-nivel.component.css']
 })
-export class ModalAddNivelComponent{
+export class ModalAddNivelComponent implements OnInit {
   form: FormGroup;
+  submitted = false;
 
   constructor(private fb: FormBuilder,
-      public dialogRef:MatDialogRef<ModalAddNivelComponent>
-  ) {
-    
-  }
+    public dialogRef: MatDialogRef<ModalAddNivelComponent>
+  ) { }
 
-
-  cancelModalAddNivel(){
-    this.dialogRef.close();
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this.fb.group({
       levels: this.fb.array([this.createLevel()])
     });
@@ -44,8 +37,8 @@ export class ModalAddNivelComponent{
     return this.fb.group({
       lessonName: ['', Validators.required],
       url: [''],
-      description: [''],
-      file: [null]
+      description: ['', Validators.required],
+      file: [null, Validators.required]
     });
   }
 
@@ -58,7 +51,23 @@ export class ModalAddNivelComponent{
     lessons.push(this.createLesson());
   }
 
+  cancelLesson(level: FormGroup, index: number) {
+    const lessons = level.get('lessons') as FormArray;
+    if (lessons.length > 1) {
+      lessons.removeAt(index);
+    }
+  }
+  
+
+  cancelModalAddNivel() {
+    this.dialogRef.close();
+  }
+
   onSubmit() {
-    console.log(this.form.value);
+    this.submitted = true;
+    if (this.form.valid) {
+      console.log(this.form.value);
+      // Aquí podrías enviar el formulario o realizar otra acción
+    }
   }
 }
