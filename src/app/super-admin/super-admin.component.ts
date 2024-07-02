@@ -47,7 +47,6 @@ export class SuperAdminComponent implements OnInit {
 
   }
 
-  
 
   ngOnInit(): void {
     this.validateToken();
