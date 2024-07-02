@@ -6,9 +6,10 @@ import { RutaService } from '../servicios/rutas.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Actividad } from '../Modelos/actividad.model';
-import { MAT_DIALOG_DATA, MatDialogRef,MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Ruta } from '../Modelos/ruta.modelo';
-
+import { AddLevelComponent } from './ruta/add-level/add-level.component';
+import { AlertService } from '../servicios/alert.service';
 
 
 @Component({
@@ -22,8 +23,10 @@ export class SuperAdminComponent implements OnInit {
   actividadId: any;
   token: string | null = null;
   aliadoId: any;
-
-  listRuta: Ruta[] = [];
+  submitted: boolean = false;
+  rutaSeleccionada: any | null ;
+  activityName: any;
+  listRuta: Ruta[] = []
 
   actividadForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -34,7 +37,7 @@ export class SuperAdminComponent implements OnInit {
     id_ruta: ['', Validators.required]
   })
 
-  
+
   constructor(
     // public dialogRef: MatDialogRef<SuperAdminComponent>,
     // @Inject(MAT_DIALOG_DATA) public data: any,
@@ -43,7 +46,9 @@ export class SuperAdminComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private aliadoService: AliadoService,
-    private rutaService: RutaService) {
+    private rutaService: RutaService,
+    private alertService: AlertService
+  ) {
 
   }
 
@@ -55,13 +60,13 @@ export class SuperAdminComponent implements OnInit {
     //this.modalSS.$modal.subscribe((valor) => { this.modalSwitch = valor })
     if (this.actividadId) {
       this.actividadForm.get('password')?.setValidators([Validators.minLength(8)]);
-    }else{
+    } else {
       this.actividadForm.get('password')?.setValidators([Validators.required, Validators.minLength(8)]);
     }
     this.actividadForm.get('password')?.updateValueAndValidity();
   }
 
-  validateToken():void{
+  validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
     }
@@ -70,8 +75,15 @@ export class SuperAdminComponent implements OnInit {
     }
   }
 
-
-  addActividad():void{
+  selectRuta(ruta: any): void{
+    this.rutaSeleccionada = ruta;
+      console.log("la ruta seleccionada fue: ",this.rutaSeleccionada)
+  }
+  addActividad(): void {
+    if (!this.rutaSeleccionada) {
+      console.log("debes seleccionar una ruta para poder crear la actividad")
+      return;
+    }
     this.submitted = true;
     const actividad: Actividad = {
       nombre: this.actividadForm.value.nombre,
@@ -86,176 +98,68 @@ export class SuperAdminComponent implements OnInit {
         location.reload();
         console.log(data);
       },
-      error =>{
+      error => {
         console.log(error);
       }
     )
   }
 
-  verRuta():void{
+  verRuta(): void {
     if (this.token) {
       this.rutaService.getAllRutas(this.token).subscribe(
-      data=>{
-        this.listRuta = data;
-        console.log(data);
-      },
-      error=>{
-        console.log(error);
-      }
-    )
-    }
-    
-  }
-
-  // cancelarcrearActividad() {
-  //   this.dialogRef.close();
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  openModal() {
-    this.modalSwitch = true;
-  }
-
-
-  persona = {
-    tipoDocumento: '',
-    descripcion: '',
-    titulo: '',
-    cuerpo: '',
-    links: ''
-  };
-
-  submitted = false;
-
-  onSubmit() {
-    this.submitted = true;
-    if (this.isFormValid()) {
-      console.log('Form data:', this.persona);
-      // Realizar acción de guardar
+        data => {
+          this.listRuta = data;
+          //console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      )
     }
   }
 
-  isFormValid() {
-    return this.persona.tipoDocumento && this.persona.descripcion && this.persona.titulo && this.persona.cuerpo && this.persona.links;
-  }
+ 
 
-  rutas: string[] = ['Ruta 1', 'Ruta 2'];
-  selectedRuta: string | null = null;
-  currentStep: number = 1;
+  addActivityModal() {
 
-  actividad = { nombre: '' };
-  nivel = { nombre: '', descripcion: '' };
-  lecciones: any[] = [{ nombre: '', archivo: null, url: '', descripcion: '' }];
-  crearOtroNivel: boolean = false;
-  otroNivel = { nombre: '', descripcion: '' };
-  niveles: any[] = [];
-
-  addingOtroNivel: boolean = false;
-  otroNivelAgregado: boolean = false;
-  otroNivelLecciones: any[] = [{ nombre: '', archivo: null, url: '', descripcion: '' }];
-
-  selectRuta(ruta: string) {
-    this.selectedRuta = ruta;
-    this.currentStep = 1;
-    this.actividad = { nombre: '' };
-    this.nivel = { nombre: '', descripcion: '' };
-    this.lecciones = [{ nombre: '', archivo: null, url: '', descripcion: '' }];
-    this.crearOtroNivel = false;
-    this.otroNivel = { nombre: '', descripcion: '' };
-    this.niveles = [];
-    this.addingOtroNivel = false;
-    this.otroNivelAgregado = false;
-    this.otroNivelLecciones = [{ nombre: '', archivo: null, url: '', descripcion: '' }];
-  }
-
-  nextStep() {
-    if (this.validateCurrentStep()) {
-      this.currentStep++;
-    } else {
-      alert('Por favor, complete todos los campos.');
+    if (this.activityName.trim() === '') {
+      // Mostrar algún mensaje de error o manejar la situación según tu requerimiento
+      //console.log('Nombre de actividad no puede estar vacío.');
+      this.alertService.errorAlert('Error', 'No le has asignado nombre a la actividad')
+      return; // Salir del método si el nombre de actividad está vacío
     }
+    const dialogRef = this.dialog.open(AddLevelComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El modal se cerro y se devolvio', result);
+    });
+
+  }
+ // activityName: string = ''; // Nombre de la actividad
+  levels: any[] = []; // Lista de niveles
+  showAddLevelButton: boolean = false; // Control para mostrar el botón "Añadir Nivel"
+
+  // Método para agregar un nuevo nivel
+  addLevel() {
+    this.levels.push({}); // Puedes definir la estructura del nivel según tus necesidades
   }
 
-  validateCurrentStep() {
-    switch (this.currentStep) {
-      case 1:
-        return this.actividad.nombre !== '';
-      case 2:
-        return this.nivel.nombre !== '' && this.nivel.descripcion !== '';
-      case 3:
-        return this.lecciones.every(leccion => leccion.nombre !== '' && leccion.archivo !== null && leccion.url !== '' && leccion.descripcion !== '');
-      default:
-        return false;
-    }
+  // Método para avanzar al siguiente paso
+  goToNext() {
+    // Aquí puedes implementar la lógica para avanzar al siguiente paso
+    console.log('Nombre de la actividad:', this.activityName);
+    console.log('Niveles:', this.levels);
+
+    // Mostrar el botón "Añadir Nivel" después de dar clic en "Siguiente"
+    this.showAddLevelButton = true;
   }
 
-  onFileSelected(event: any, index: number) {
-    this.lecciones[index].archivo = event.target.files[0];
-  }
+  
 
-  addLeccion() {
-    this.lecciones.push({ nombre: '', archivo: null, url: '', descripcion: '' });
-  }
 
-  finalizar() {
-    alert('Formulario completado.');
-    this.crearOtroNivel = true;
-  }
+  cancelarcrearActividad():void {
+   this.rutaSeleccionada = null;
+   this.activityName = null;
 
-  startAddingOtroNivel() {
-    this.addingOtroNivel = true;
   }
-
-  addOtroNivel() {
-    if (this.otroNivel.nombre !== '' && this.otroNivel.descripcion !== '') {
-      this.otroNivelAgregado = true;
-    } else {
-      alert('Por favor, complete todos los campos del nivel.');
-    }
-  }
-
-  onOtroNivelFileSelected(event: any, index: number) {
-    this.otroNivelLecciones[index].archivo = event.target.files[0];
-  }
-
-  addOtroNivelLeccion() {
-    this.otroNivelLecciones.push({ nombre: '', archivo: null, url: '', descripcion: '' });
-  }
-
-  addOtroNivelToList() {
-    if (this.otroNivelLecciones.every(leccion => leccion.nombre !== '' && leccion.archivo !== null && leccion.url !== '' && leccion.descripcion !== '')) {
-      this.niveles.push({ ...this.otroNivel, lecciones: [...this.otroNivelLecciones] });
-      this.otroNivel = { nombre: '', descripcion: '' };
-      this.otroNivelLecciones = [{ nombre: '', archivo: null, url: '', descripcion: '' }];
-      this.otroNivelAgregado = false;
-      this.addingOtroNivel = false;
-    } else {
-      alert('Por favor, complete todos los campos de las lecciones.');
-    }
-  }
-
 }
