@@ -3,6 +3,7 @@
     margin-left: -250px;
 
 }
+
 .sidebar {
     position: sticky;
     top: 0;
@@ -22,173 +23,31 @@
     width: 88px;
 }
 
-.sidebar .icon,
-.sidebar .text {
-    color: #000;
-    transition: all 0.2 eases;
-}
 
-.sidebar header .toggle {
-    position: absolute;
-    top: 15%;
-    left: 238px;
-    transform: translateY(-50%);
-    height: 40px;
-    width: 40px;
-    background: #0fb5eb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0px 40px 40px 0px; 
-    color: #fff;
-    font-size: 22px;
-    transition: all 0.3 eases;
-}
+
+
 
 .sidebar.close header .toggle {
     transform: translateY(-50%) rotate(180deg);
 }
 
-.sidebar li a {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.4 eases;
 
+
+/* Estilos personalizados para ocultar la barra de desplazamiento */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
-.sidebar li a:hover {
-    background: #0fb5eb;
-}
-
-
-.sidebar li a:hover .icon,
-.sidebar li a:hover .text {
-    color: #fff;
-}
-
-
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text {
-    color: #707070;
-}
-li a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: gray; /* Color inicial del icono y el texto */
-}
-
-/* Estilos para el hover */
-li a:hover svg {
-    fill: #FFFFFF; 
-    color: blue; 
-}
-
-
-.sidebar .menu-bar {
-    height: calc(85% - 50px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-}
-
-.menu-bar .mode {
-    position: relative;
-    border-radius: 6px;
-    background: var(--primary-color-light);
-}
-
-
-.menu-bar .mode .moon-sun {
-    height: 50px;
-    width: 60px;
-    display: flex;
-    align-items: center;
-
-}
-
-.menu-bar .mode i {
-    position: absolute;
-    transition: all 0.3 eases;
-}
-
-.menu-bar .mode i.sun {
-    opacity: 0;
-}
-
-body.dark .menu-bar .mode i.sun {
-    opacity: 1;
-}
-
-body.dark .menu-bar .mode i.moon {
-    opacity: 0;
-}
-
-.menu-bar .mode .toggle-switch {
-    position: absolute;
-    right: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    min-width: 60px;
-    cursor: pointer;
-    border-radius: 6px;
-    background: #F6F5FF;
-}
-
-.toggle-switch .switch {
-    position: relative;
-    height: 22px;
-    width: 44px;
-    border-radius: 25px;
-    background: #0fb5eb;
-}
-
-
-.switch::before {
-    content: '';
-    height: 15px;
-    width: 15px;
-    position: absolute;
-    border-radius: 50%;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    background: #fff;
-    transition: all 0.3 eases;
-
+.custom-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 
 
-  
-body.dark .switch::before {
-    left: 24px;
-}
-
-
-/* .home {
-    position: relative;
-    width: 100%-255px;
-    transition: var(--tran-05);
-}*/
-
-/* .home .text {
-font-size: 16px;
-font-weight: 500;
-color: var(--text-color);
-padding: 8px 40px;
-} */
-
-/* .sidebar.close~.home {
-    width: calc(100%);
-} */
 
 
 @media(max-width:100em) {
@@ -218,41 +77,7 @@ padding: 8px 40px;
         top: -148px;
         left: 238px;
     }
-/* Para todos los dispositivos */
-   
 
-/* Específico para dispositivos de escritorio */
-.logout-button {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #4A90E2;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.logout-button:hover {
-    background-color: #357ABD;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.logout-icon {
-    width: 10px;
-    height: 10px;
-    margin-right: 8px;
-    fill: #fff;
-    transition: fill 0.3s;
-}
-
-.logout-button:hover .logout-icon {
-    fill: #dcdcdc;
-}
-
-.nav-text {
-    font-size: 10px;
-    font-weight: 200;
-}
+    /* Para todos los dispositivos */
 
 }
