@@ -3,73 +3,50 @@
     <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-56 h-auto ml-52">
     <span class="nav-tool-items flex max-xl:flex-col items-center space-x-4 md:space-x-8 mt-4 md:mt-0 mr-52">
   <a href="login" mat-button routerLinkActive="active"
-     class="text-xs md:text-sm bg-[#373435] text-white rounded-full font-poppins font-bold py-1 px-3">Iniciar sesión</a>
+     class="text-xs md:text-sm bg-[#373435] text-white rounded-full font-poppins font-bold py-2 px-[18px]">Iniciar sesión</a>
   <a href="register" mat-button routerLinkActive="active"
-     class="text-xs md:text-sm bg-[#00B3ED] text-white rounded-full font-poppins font-bold py-1 px-3">Registrarse</a>
+     class="text-xs md:text-sm bg-[#00B3ED] text-white rounded-full font-poppins font-bold py-2 px-[13px]">Registrarse</a>
 </span>   
   </mat-toolbar>
 </div>
-<hr class="text-gray-400">
-<div class="w-11/12 mx-auto h-52 relative px-12">
-
-  <!-- Botón de flecha izquierda -->
-  <button (click)="prevSlide()"
-    class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 text-black font-bold p-3 rounded-full  focus:ring-gray-500 border-2 "
-    alt="Atras">
-    &larr;
-  </button>
-
-  <!-- Carrusel -->
-  <div class="relative overflow-hidden w-full h-full">
-    <div class="flex transition-transform duration-500 ease-in-out space-x-0"
-      [ngStyle]="{'transform': 'translateX(' + currentTransform + '%)'}">
-      <div *ngFor="let card of cards; let i = index"
-        class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 flex-shrink-0 flex justify-center items-center h-52"
-        (click)="mostrarCard(i)">
-        <!-- Aca salen las imagenes del carrusel -->
-        <img [src]="card.logo" class="h-full object-contain" loading="lazy">
-      </div>
-    </div>
-  </div>
-
-  <!-- Botón de flecha derecha -->
-  <button (click)="nextSlide()"
-    class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 text-black font-bold p-3 rounded-full  focus:ring-gray-500 border-2 "
-    alt="Adelante">
-    &rarr;
-
-
-  </button>
-</div>
-
-<hr class="text-gray-400">
-<div *ngIf="cardSeleccionada" class="max-w-screen-2xl mx-auto h-3/4 xl:h-[500px] flex ml-6 ">
-  <div class="w-full rounded-lg overflow-hidden flex flex-col lg:flex-row">
-    <div class="w-full lg:w-3/4 flex flex-col items-center">
-      <div class="w-full flex justify-center lg:justify-start mt-4 ">
-        <!-- Aca sale el logo pequeño dentro de la card -->
-        <img [src]="resizedCardImage" alt="ImagenArriba" width="250" height="150" class="max-h-[150px] stroke-current">
-      </div>
-      <div class="w-full p-4 mt-4">
-        <p class="text-base leading-normal lg:text-left ">
-          <!-- Aca sale el logo pequeño dentro de la card -->
-          {{ cardSeleccionada.descripcion }}
-        </p>
-      </div>
-    </div>
-
-    <!-- Aca sale el contenido multimedia que tiene ese aliado, dependiendo si es video o imagen -->
-    <div class="w-full lg:w-2/4 lg:mt-4 flex items-center justify-center order-last lg:order-none p-4 ">
-      <ng-container *ngIf="cardSeleccionada.tipo_dato === 'Video'">
-        <iframe [src]="videoUrl" width="100%" height="100%" title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </ng-container>
-      <ng-container *ngIf="cardSeleccionada.tipo_dato !== 'Video'">
-        <div class="w-full lg:mt-4 flex items-center justify-center order-last lg:order-none ">
-          <img [src]="dir" alt="Actualiza_imagen_en_bd">
+<div class="banner-swiper-container w-full h-screen relative overflow-hidden">
+  <div class="swiper-wrapper">
+    <ng-container *ngFor="let aliado of listAliados">
+      <div *ngIf="aliado.banner" class="swiper-slide relative">
+        <img [src]="aliado.banner" class="w-full h-[720px] object-fill">
+        <div class="absolute bottom-0 right-0 text-black p-16 max-w-2xl -mt-12">
+          <h2 class="text-4xl font-bold mb-4 -mt-12 ">hola</h2>
+          <p class="text-xl mb-8 -mt-12">{{aliado.descripcion}}</p>
+          <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full text-lg -mt-32">
+            Registrarse
+          </button>
         </div>
-      </ng-container>
+      </div>
+    </ng-container>
+  </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+<div class="flex flex-col md:flex-row bg-white">
+  <div class="w-full md:w-1/3 bg-cyan-500 p-8 text-white">
+    <h2 class="text-2xl font-bold mb-4">Nuestros Aliados</h2>
+    <p class="mb-4">Conozca las entidades que forman parte de la <span class="text-orange-400 font-bold">incubadora</span> de emprendimientos</p>
+  </div>
+  
+  <div class="w-full md:w-2/3 p-8 relative">
+    <div class="banner-swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let aliado of listAliados">
+          <img [src]="aliado.logo" [alt]="aliado.nombre" class="h-96 mb-4">
+          <p class="mb-4">{{ aliado.descripcion }}</p>
+        </div>
+      </div>
+      <div class="flex justify-center items-center mt-4">
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <div class="mt-4 text-right">
+      <button class="bg-orange-400 text-white px-4 py-2 rounded">Todos los aliados</button>
     </div>
   </div>
 </div>

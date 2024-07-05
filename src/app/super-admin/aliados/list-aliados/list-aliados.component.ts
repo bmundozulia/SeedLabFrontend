@@ -76,6 +76,7 @@ export class ListAliadosComponent implements OnInit {
               item.id_autenticacion,
               item.id_tipo_dato,
               item.email,
+              item.banner,
               this.ESTADO_MAP[item.estado_usuario] ?? 'Desconocido'
             )
           );
