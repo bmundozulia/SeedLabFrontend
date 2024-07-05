@@ -1,19 +1,135 @@
-.carousel-btn {
-  @apply absolute top-1/2 transform -translate-y-1/2 bg-blue-50 text-black border-none w-12 h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg z-10;
+/* Incluir la fuente en el body para aplicarla globalmente */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0; /* Eliminar el margen predeterminado del body */
+  padding: 0; /* Eliminar el padding predeterminado del body */
 }
 
-.carousel-btn.left-0 {
-  @apply left-36; /* Incrementa el margen izquierdo */
+.banner-swiper-container {
+  width: 100%;
+  height: calc(100vh - 80px); /* Ajusta según la altura de tu barra de navegación */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.carousel-btn.right-0 {
-  @apply right-36; /* Incrementa el margen derecho */
+.swiper-slide {
+  display:flex;
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  position: relative;
+  margin-top: -180px;
 }
 
-.carousel-btn:hover {
-  @apply bg-gray-200;
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* Ejemplo de otros ajustes posibles */
+.container {
+  overflow: hidden;
 }
 
-.carousel-btn:focus {
-  @apply outline-none;
+.section {
+  height: 100%;
+  overflow: hidden;
+}
+html, body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: black;
+  background-color:white; /* Fondo semi-transparente */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center; /* Centra verticalmente el icono dentro del botón */
+  justify-content: center; /* Centra horizontalmente el icono dentro del botón */
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 10; /* Asegura que las flechas estén por encima del contenido */
+}
+
+.swiper-button-prev {
+  left: 6%; /* Ajusta el porcentaje para mover la flecha más hacia el centro */
+}
+
+.swiper-button-next {
+  right: 6%; /* Ajusta el porcentaje para mover la flecha más hacia el centro */
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 24px;
+}
+
+.absolute {
+  .absolute {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    text-align: right;
+    color: white;
+    max-width: 600px;
+    margin-top: -50%; /* Ajusta este valor para mover el contenido más arriba */
+  }
+  
+}
+.absolute h2 {
+  font-size: 2.5rem; /* Tamaño del texto para el título */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.absolute p {
+  font-size: 1.25rem; /* Tamaño del texto para la descripción */
+  margin-bottom: 2rem;
+}
+
+.absolute button {
+  background-color: #f97316; /* Color del botón */
+  color: white;
+  /* font-weight: bold;
+  padding: 0.75rem 1.5rem; */
+  border-radius: 9999px; /* Borde redondeado completo */
+  font-size: 1.25rem;
+  font-family: 'Poppins', sans-serif; /* Asegúrate de que el botón también use la fuente Poppins */
+}
+
+.absolute button:hover {
+  background-color: #ea580c; /* Color del botón al pasar el ratón */
+}
+:host ::ng-deep .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #D1D5DB; /* gray-300 */
+  opacity: 1;
+  margin: 0 5px;
+}
+
+:host ::ng-deep .swiper-pagination-bullet-active {
+  background: #6B7280; /* gray-500 */
+}
+
+.banner-swiper-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.swiper-slide {
+  height: auto;
+  padding: 20px;
 }

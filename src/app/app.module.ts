@@ -68,6 +68,7 @@ import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver
 import { Error404Component } from './auth/error404/error404.component';
 
 
+
 @NgModule({
   declarations: [
     AddAliadosComponent,
@@ -137,7 +138,6 @@ import { Error404Component } from './auth/error404/error404.component';
     NgxPaginationModule,
     ReactiveFormsModule,
     ReactiveFormsModule,
-    SweetAlert2Module.forRoot(),
 
 
   ],

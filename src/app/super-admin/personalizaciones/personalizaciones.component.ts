@@ -31,7 +31,7 @@ export class PersonalizacionesComponent implements OnInit {
   @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
 
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     private personalizacionesService: PersonalizacionesService,
     private router: Router,) {
     this.personalizacionForm = this.fb.group({
@@ -50,6 +50,7 @@ export class PersonalizacionesComponent implements OnInit {
       imagen_Logo: ['', Validators.required],
       color_principal: ['#C2FFFB', Validators.required],
       color_secundario: ['#C2FFFB', Validators.required],
+      color_terciario: ['#C2FFFB', Validators.required],
     })
 
   }
@@ -125,6 +126,7 @@ export class PersonalizacionesComponent implements OnInit {
           imagen_Logo: this.personalizacionForm.value.imagen_Logo,
           color_principal: this.selectedColorPrincipal,
           color_secundario: this.selectedColorSecundario,
+          color_terciario: this.selectedColorTerciario,
           id_superadmin: id_temp
         };
 
