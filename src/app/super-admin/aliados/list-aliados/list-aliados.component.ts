@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 })
 export class ListAliadosComponent implements OnInit {
-  userFilter: any = { nombre: '', estado_usuario: 'Activo' };
+  userFilter: any = { nombre: '' };
   faeye = faEye;
   falupa = faMagnifyingGlass;
   fax = faXmark;
@@ -72,11 +72,12 @@ export class ListAliadosComponent implements OnInit {
               item.nombre,
               item.descripcion,
               item.logo,
+              item.banner,
               item.ruta_multi,
-              item.id_autenticacion,
               item.id_tipo_dato,
               item.email,
-              this.ESTADO_MAP[item.estado_usuario] ?? 'Desconocido'
+              item.password,
+              item.estado
             )
           );
           setTimeout(() => {
@@ -111,7 +112,7 @@ export class ListAliadosComponent implements OnInit {
 
   /* Limpia el filtro de busqueda, volviendo a retornar los aliados activos */
   limpiarFiltro(): void {
-    this.userFilter = { nombre: '', estado_usuario: 'Activo' };
+    this.userFilter = { nombre: '', estado: 'Activo' };
     this.cargarAliados(1);
   }
 }
