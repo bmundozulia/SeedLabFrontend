@@ -3,22 +3,32 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* Evita el doble scroll */
 }
 
 .banner-swiper-container {
   width: 100%;
-  height: calc(100vh - 80px);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 50%;
+ 
+}
+banner-swiper-container{
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
 }
 
 .swiper-wrapper {
   display: flex;
   height: 100%;
+  margin-block-end: 20px;
 }
 
 .swiper-slide {
@@ -28,10 +38,17 @@ body, html {
   height: 100%;
 }
 
+.banner-swiper-slide {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 .swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: "";
   object-position: center;
 }
 
@@ -46,7 +63,7 @@ body, html {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   z-index: 10;
 }
@@ -65,13 +82,12 @@ body, html {
 }
 
 .absolute {
-  position: absolute;
   bottom: 10%;
   right: 5%;
   text-align: right;
   color: white;
   max-width: 600px;
-  margin-top: -50%;
+  margin-top: -100%;
 }
 
 .absolute h2 {
@@ -89,7 +105,7 @@ body, html {
   background-color: #f97316;
   color: white;
   border-radius: 9999px;
-  font-size: 1.25rem;
+  font-size: 16px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -98,13 +114,59 @@ body, html {
 }
 
 :host ::ng-deep .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background: #D1D5DB;
   opacity: 1;
-  margin: 0 5px;
 }
 
 :host ::ng-deep .swiper-pagination-bullet-active {
   background: #6B7280;
+}
+
+.bg-cyan-500 {
+  background-color: #00aeef;
+}
+
+.bg-orange-400 {
+  background-color: #ff6900;
+}
+
+h2 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.bg-gray-800 {
+  background-color: #333333;
+}
+
+.text-orange-400 {
+  color: #ff6900;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.mt-12 {
+  margin-top: 3rem; /* Agrega suficiente espacio entre el contenido y el footer */
+}
+.custom-text {
+  letter-spacing: 0.05em; /* Ajusta el espaciado entre letras */
+  line-height: 1.1; /* Ajusta el espaciado entre líneas */
 }
