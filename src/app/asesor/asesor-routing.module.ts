@@ -8,8 +8,8 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'perfil-asesores', component: PerfilAsesorComponent},
-      {path: 'asesorias', component: AsesoriasComponent}
+      {path: 'perfil-asesores', component: PerfilAsesorComponent, data:{title: 'Perfil'}},
+      {path: 'asesorias', component: AsesoriasComponent, data:{title: 'Asesorias'}}
 
     ]
   }
@@ -23,4 +23,8 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class AsesorRoutingModule { }
+export class AsesorRoutingModule {
+  static getRoutes(): Routes{
+    return routes;
+  }
+ }

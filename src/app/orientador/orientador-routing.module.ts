@@ -8,9 +8,9 @@ const routes: Routes = [
   {
     path:'',
     children:[
-      {path: 'list-asesorias', component: VerAsesoriasComponent},
-      {path: 'perfil-orientador', component: PerfilOrientadorComponent},
-      {path: 'reportes', component: ReportesComponent}
+      {path: 'list-asesorias', component: VerAsesoriasComponent, data:{title: 'Asesorias' }},
+      {path: 'perfil-orientador', component: PerfilOrientadorComponent, data: { title: 'Perfil'}},
+      {path: 'reportes', component: ReportesComponent, data:{title: 'Reportes'}}
     ]
   }
 ];
@@ -22,4 +22,8 @@ const routes: Routes = [
     RouterModule.forChild( routes )
   ]
 })
-export class OrientadorRoutingModule { }
+export class OrientadorRoutingModule {
+  static getRoutes(): Routes{
+    return routes;
+  }
+ }

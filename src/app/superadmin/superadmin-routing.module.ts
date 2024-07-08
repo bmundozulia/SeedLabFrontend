@@ -11,12 +11,12 @@ const routes: Routes = [
   {
     path:'',
     children:[
-      {path: 'list-superadmin', component: ListSuperadminComponent},
-      {path: 'perfil-admin', component: PerfilSuperadminComponent},
-      {path: 'personalizaciones', component: PersonalizacionesComponent},
-      {path: 'list-ruta', component: ListRutasComponent},
-      {path: 'list-orientador', component: ListOrientadorComponent},
-      {path: 'add-actividad', component: AddActividadComponent},
+      {path: 'list-superadmin', component: ListSuperadminComponent,data: { title: 'Super Admin'}},
+      {path: 'perfil-admin', component: PerfilSuperadminComponent, data: { title: 'Perfil'}},
+      {path: 'personalizaciones', component: PersonalizacionesComponent, data: { title: 'Personalizacion Sistema'}},
+      {path: 'list-ruta', component: ListRutasComponent, data: {title: 'Rutas'}},
+      {path: 'list-orientador', component: ListOrientadorComponent, data:{title: 'Orientador'}},
+      {path: 'add-actividad', component: AddActividadComponent, data: {title: 'Actividad'}},
     ]
   }
  ];
@@ -28,4 +28,8 @@ const routes: Routes = [
     RouterModule.forChild( routes)
   ]
 })
-export class SuperadminRoutingModule { }
+export class SuperadminRoutingModule {
+  static getRoutes(): Routes {
+    return routes;
+  }
+ }

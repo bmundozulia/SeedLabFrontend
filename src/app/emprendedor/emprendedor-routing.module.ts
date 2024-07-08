@@ -13,14 +13,11 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'perfil', component: PerfilEmprendedorComponent},
-      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent},
-      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent},
-      {path: 'add-empresa', component: AddEmpresaComponent},
-      {path: 'edit-empresa', component: EditEmpresaComponent},
-      {path: 'list-empresa', component: ListEmpresasComponent},
-      {path: 'encuesta', component: EncuestaEmpresaComponent},
-      {path: 'ruta', component: RutaEmprendedorComponent}
+      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias'}},
+      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil'}},
+      {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa'}},
+      {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta'}},
+      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta'}}
     ]
   }
 ];
@@ -32,4 +29,8 @@ const routes: Routes = [
     RouterModule.forChild( routes )
   ]
 })
-export class EmprendedorRoutingModule { }
+export class EmprendedorRoutingModule {
+  static getRoutes(): Routes{
+    return routes;
+  }
+ }

@@ -9,9 +9,9 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'list-asesores', component:ListAsesoresComponent},
-      {path: 'list-asesorias', component: AsesoriaAliadoComponent},
-      {path: 'fan-page', component: FanPageComponent},
+      {path: 'list-asesores', component:ListAsesoresComponent, data: {title: 'Asesores'}},
+      {path: 'list-asesorias', component: AsesoriaAliadoComponent, data: {title: 'Asesorias'}},
+      {path: 'fan-page', component: FanPageComponent, data: {title: 'FanPage'}},
     ]
   }
 ];  
@@ -22,4 +22,8 @@ const routes: Routes = [
     RouterModule.forRoot( routes)
   ]
 })
-export class AliadosRoutingModule { }
+export class AliadosRoutingModule {
+  static getRoutes(): Routes{
+    return routes;
+  }
+ }

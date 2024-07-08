@@ -140,7 +140,7 @@ export class LoginComponent implements OnInit {
     getRoleName(rolId: number | undefined | null): string {
         switch (rolId) {
             case 1:
-                return 'Super Administrador';
+                return 'SuperAdministrador';
             case 2:
                 return 'Orientador';
             case 3:
