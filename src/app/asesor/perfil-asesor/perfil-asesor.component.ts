@@ -7,12 +7,14 @@ import { Asesor } from '../../Modelos/asesor.model';
 import { User } from '../../Modelos/user.model';
 import { faEnvelope, faMobileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { AlertService } from '../../servicios/alert.service';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-perfil-asesor',
   templateUrl: './perfil-asesor.component.html',
   styleUrl: './perfil-asesor.component.css',
-  providers: [AsesorService]
+  providers: [AsesorService, AlertService]
 })
 export class PerfilAsesorComponent implements OnInit {
   // iconoes
@@ -22,13 +24,14 @@ export class PerfilAsesorComponent implements OnInit {
 
   token: string | null = null;
   blockedInputs = true;
-  id: number | null = null;
+  asesorId: number | null = null;
   nombre: string | null = null;
   currentRolId: number;
   user: User
   boton: boolean;
   hide = true;
   bloqueado = true;
+  tiempoEspera = 1800;
 
   asesorForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -42,12 +45,14 @@ export class PerfilAsesorComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private router: Router,
+    private alertService: AlertService,
     private asesorService: AsesorService) { }
 
   /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
     this.verEditar();
+    
   }
 
   /* Valida el token del login */
@@ -59,7 +64,7 @@ export class PerfilAsesorComponent implements OnInit {
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
-        this.id = this.user.id;
+        this.asesorId = this.user.id;
         this.currentRolId = this.user.id_rol;
         if (this.currentRolId != 4) {
           this.router.navigate(['/inicio/body']);
@@ -73,7 +78,7 @@ export class PerfilAsesorComponent implements OnInit {
 
   /* Trae los datos del asesor para poder editarlo en el input, de acuerdo al id del usuario logueado */
   verEditar(): void {
-    this.asesorService.getAsesorID(this.token, this.id).subscribe(
+    this.asesorService.getAsesorID(this.token, this.asesorId).subscribe(
       data => {
         this.asesorForm.patchValue({
           nombre: data.nombre,
@@ -99,12 +104,17 @@ export class PerfilAsesorComponent implements OnInit {
       password: this.asesorForm.get('password')?.value,
       estado: this.asesorForm.get('estado')?.value,
     };
-    this.asesorService.updateAsesor(this.token, this.id, asesor).subscribe(
+    this.asesorService.updateAsesor(this.token, this.asesorId, asesor).subscribe(
       data => {
-        location.reload();
+        this.alertService.successAlert('Exito', data.message);
+        setTimeout(function () {
+          location.reload();
+        }, this.tiempoEspera);
       },
       error => {
+        this.alertService.errorAlert('Error', error.error.message);
         console.error(error);
+
       }
     )
   }
@@ -123,7 +133,7 @@ export class PerfilAsesorComponent implements OnInit {
     });
   }
 
- /* Restaura los datos originales */
+  /* Restaura los datos originales */
   onCancel(): void {
     this.verEditar();
   }

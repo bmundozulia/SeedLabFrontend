@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environment/env'
 
 import { Asesor } from '../Modelos/asesor.model';
+import { Aliado } from '../Modelos/aliado.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class AliadoService {
     return this.http.get<any>(`${this.url}/mostrarAsesorAliado/${id}`, options);
   }
 
-  crearAliado(aliado: any, access_token: string): Observable<any> {
+  crearAliado(access_token: any, aliado: Aliado): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.post(`${this.url}/create_aliado`, aliado, options);
   }

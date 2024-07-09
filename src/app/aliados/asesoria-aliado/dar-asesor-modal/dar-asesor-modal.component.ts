@@ -4,12 +4,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AsesoriaService } from '../../../servicios/asesoria.service';
 import { AsesorDisponible } from '../../../Modelos/AsesorDisponible.model';
 import { Router } from '@angular/router';
+import { AlertService } from '../../../servicios/alert.service';
 
 @Component({
   selector: 'app-dar-asesor-modal',
   templateUrl: './dar-asesor-modal.component.html',
   styleUrls: ['./dar-asesor-modal.component.css'],
-  providers: [AsesoriaService]
+  providers: [AsesoriaService, AlertService]
 })
 export class DarAsesorModalComponent implements OnInit {
   asignarForm: FormGroup;
@@ -24,6 +25,7 @@ export class DarAsesorModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private router: Router,
+    private alertService: AlertService,
     private asesoriaService: AsesoriaService,
   ) {
     this.asignarForm = this.fb.group({
@@ -34,18 +36,17 @@ export class DarAsesorModalComponent implements OnInit {
   /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit() {
     this.validateToken();
-    const identityJSON = localStorage.getItem('identity');
-    if (identityJSON) {
-      const identity = JSON.parse(identityJSON);
-      const idAliado = identity.id;
-      this.cargarAsesores(idAliado);
-    }
   }
   
   /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
+      const identityJSON = localStorage.getItem('identity');
+    
+      const identity = JSON.parse(identityJSON);
+      const idAliado = identity.id;
+      this.cargarAsesores(idAliado);
     }
     if (!this.token ) {
       this.router.navigate(['/inicio/body']);
@@ -58,12 +59,14 @@ export class DarAsesorModalComponent implements OnInit {
       const idAsesoria = this.data.asesoria.id_asesoria;
 
       this.asesoriaService.asignarAsesoria(this.token, idAsesoria, idAsesor).subscribe(
-        response => {
+        data => {
           this.asesoriaAsignada.emit(); // Emit the event
           this.dialogRef.close(true);
+          this.alertService.successAlert('Exito',data.message);
         },
         error => {
           console.error('Error al asignar asesoría:', error);
+          this.alertService.errorAlert('Error',error.error.message);
         }
       );
     }
