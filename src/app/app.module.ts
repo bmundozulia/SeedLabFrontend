@@ -66,6 +66,7 @@ import { SafeUrlPipe } from './ruta/cursorutas/cursorutas.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { Error404Component } from './auth/error404/error404.component';
+import { WordWrapPipe } from './word-wrap.pipe';
 
 
 
@@ -113,6 +114,7 @@ import { Error404Component } from './auth/error404/error404.component';
     VerAsesoriasComponent,
     CargaComponent,
     Error404Component,
+    WordWrapPipe,
   ],
   imports: [
     AngularMaterialModule,

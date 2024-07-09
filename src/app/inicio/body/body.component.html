@@ -10,11 +10,11 @@
   </mat-toolbar>
 </div>
 <div class="banner-swiper-container w-full h-screen relative overflow-hidden">
-  <div class="swiper-wrapper">
+  <div class="swiper-wrapper ">
     <ng-container *ngFor="let aliado of listAliados">
       <div *ngIf="aliado.banner" class="swiper-slide banner-swiper-slide relative">
-        <!-- <img [src]="aliado.banner" class="w-full h-[720px] object-fill"> -->
-        <img src="/assets/images/1_1@300x-100.jpg" alt="Logo" class="w-full h-[720px] object-cover">
+        <!-- <img [src]="aliado.banner" class="w-full h-[720px] object-fill -mt-40"> -->
+        <img src="/assets/images/logo_bonito.jpg" alt="Logo" class="w-full h-[720px] object-cover">
         <!-- <div class="absolute bottom-0 right-0 text-black p-16 max-w-2xl -mt-12">
           <h2 class="text-4xl font-bold mb-4 -mt-12 ">hola</h2>
           <p class="text-xl mb-8 -mt-12">{{aliado.descripcion}}</p>
@@ -29,37 +29,39 @@
   <div class="swiper-button-next"></div>
 </div>
 <div class="flex flex-col md:flex-row bg-white ">
-  <div class="w-[23%] h-[43vh] bg-[#00B3ED] p-8 text-white ml-28 -mt-32">
+  <div class="w-[28%] h-[46vh] bg-[#00B3ED] p-8 text-white ml-28 -mt-12">
     <div class="text-3xl font-bold mb-4 mt-10 ml-6">
-      <span class="font-thin ">Nuestros</span>
-  </div>
-  <div class="text-4xl font-bold -mt-6 ml-6">
+      <span class="font-thin">Nuestros</span>
+    </div>
+    <div class="text-4xl font-bold -mt-6 ml-6">
       <span class="font-bold font-poppins"><em>Aliados</em></span>
+    </div>
+    <p class="mb-4 mt-32 text-[19px] font-extralight ml-4 custom-text font-poppins">
+      Conozca las entidades que forman parte de la <span class="bg-[#FA7D00] font-bold rounded-full px-1 -py-1">incubadora</span> de emprendimientos
+    </p>
   </div>
-  
-  <p class="mb-4 mt-28 text-[19px] font-extralight ml-4 custom-text font-poppins">
-    Conozca las entidades que forman parte de la <span class="bg-[#FA7D00] font-bold rounded-full px-1 -py-1">incubadora</span> de emprendimientos
-  </p>
-  </div>
-  
-  <div class="w-full md:w-2/3  relative">
+  <div class="w-full md:w-2/3 relative">
     <div class="banner-swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide  " *ngFor="let aliado of listAliados">
-                <img [src]="aliado.logo" [alt]="aliado.nombre" class="relative top-[-100px] left-0 m-14 object-cover w-full h-full ">
-                <p class="mb-4  relative top-[-100px] left-0 m-14">{{ aliado.descripcion }}</p>
-            </div>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let aliado of listAliados">
+          <img [src]="aliado.logo" [alt]="aliado.nombre" class="img-responsive relative  object-cover -mt-52">
+          <div class="relative top-[-100px] left-0 m-14">
+            <p *ngFor="let line of aliado.descripcion" class="mb-4">{{ line }}</p>
+          </div>
         </div>
-        <div class="flex justify-center items-center">
-            <div class="swiper-pagination"></div>
-        </div>
+      </div>
+      <div class="flex justify-center items-center">
+        <div class="swiper-pagination"></div>
+      </div>
     </div>
     <div class="mt-4 text-right">
-        <button class="bg-[#FA7D00] text-white px-6 py-2 rounded-full -mt-20 mr-[40%] text-2xl">Todos los aliados</button>
+      <button class="bg-[#FA7D00] text-white px-6 py-2 rounded-full -mt-20 mr-[40%] text-2xl">Todos los aliados</button>
     </div>
+  </div>
 </div>
 
-</div>
+
+
 <footer class="bg-gray-800 text-white py-6  mt-6">
   <div class="container mx-auto px-4 flex justify-between items-center">
     <div class="flex items-center">

@@ -26,7 +26,10 @@ export class BodyComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.aliadoService.getaliados().subscribe(
       data => {
-        this.listAliados = data;
+        this.listAliados = data.map(aliado => ({
+          ...aliado,
+          descripcion: this.splitDescription(aliado.descripcion, 8)
+        }));
         this.cdr.detectChanges(); // Fuerza la detección de cambios después de recibir los datos
         if (isPlatformBrowser(this.platformId)) {
           this.initSwipers(); // Inicializa Swiper después de la detección de cambios
@@ -91,5 +94,14 @@ export class BodyComponent implements OnInit, AfterViewInit {
         bulletActiveClass: 'swiper-pagination-bullet-active',
       },
     });
+  }
+
+  private splitDescription(description: string, wordsPerLine: number): string[] {
+    const words = description.split(' ');
+    const lines = [];
+    for (let i = 0; i < words.length; i += wordsPerLine) {
+      lines.push(words.slice(i, i + wordsPerLine).join(' '));
+    }
+    return lines;
   }
 }

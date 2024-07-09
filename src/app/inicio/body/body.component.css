@@ -13,16 +13,6 @@ body, html {
   align-items: center;
   justify-content: center;
   height: 50%;
- 
-}
-banner-swiper-container{
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50%;
 }
 
 .swiper-wrapper {
@@ -38,17 +28,11 @@ banner-swiper-container{
   height: 100%;
 }
 
-.banner-swiper-slide {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: "";
+.img-responsive {
+  width: 80%;
+  height: auto;
+  max-width: 400px; /* Ajusta este valor según tus necesidades */
+  object-fit: inherit; /* Ajusta para mantener la proporción */
   object-position: center;
 }
 
@@ -164,9 +148,10 @@ h2 {
 }
 
 .mt-12 {
-  margin-top: 3rem; /* Agrega suficiente espacio entre el contenido y el footer */
+  margin-top: 3rem;
 }
+
 .custom-text {
-  letter-spacing: 0.05em; /* Ajusta el espaciado entre letras */
-  line-height: 1.1; /* Ajusta el espaciado entre líneas */
+  letter-spacing: 0.05em;
+  line-height: 1.1;
 }
