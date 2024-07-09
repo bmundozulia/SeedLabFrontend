@@ -1,209 +1,259 @@
-<form [formGroup]="registerForm" (ngSubmit)="registro()">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <div class="container -mx-auto px-4 py-6 md:py-12">
-        <div class="grid grid-cols-12 gap-4 mb-6">
-            <div class="col-span-12 bg-white rounded-lg p-4 md:p-8 shadow">
-                <div class="text-3xl md:text-9xl ">
-                    <h5 class="text-xl md:text-2xl md:pl-20 font-bold mb-2 md:mb-4  text-sky-600">
-                        Información Personal
-                    </h5>
-                </div>
-                <div class="flex flex-wrap mt-12">
-                    <div class="w-full md:w-1/3 pr-6">
-                        <img src="assets/images/logo-seed.jpg" alt="Imagen"
-                            class="mx-auto max-w-xs md:max-w-full md:max-h-64 md:mt-16" loading="lazy" />
-                    </div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2 md:-mt-12 lg:-mt-6">
-                        <label for="nombre" class="block mb-2 text-blue-400">Nombre:</label>
-                        <input type="text" id="nombre" formControlName="nombre"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                        <div *ngIf="submitted && f.nombre.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.nombre.errors.required">Este campo es requerido *</div>
-                        </div>
-                    </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<div
+    class="absolute top-0 left-0 w-full  min-h-screen bg-cover bg-right md:bg-center bg-no-repeat bg-[url('./assets/images/fondoRegister.jpeg')] md:text-[.9vw] text-[1.9]">
 
-                    <div class="w-full md:w-1/3 pl-0 md:pl-2  md:-mt-12 lg:-mt-6">
-                        <label for="apellido" class="block mb-2 text-blue-400">Apellido:</label>
-                        <input type="text" id="apellido" formControlName="apellido"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                        <div *ngIf="submitted && f.apellido.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.apellido.errors.required">Este campo es requerido *</div>
-                        </div>
+    <div class="grid justify-center content-center min-h-screen ">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 justify-center content-center">
+            <!-- columna 1 -->
+            <div class="col-span-1 md:content-center  ">
+                <div class="flex items-center justify-center">
+                    <div class="w-[250px] h-[180px]">
+                        <img src="../../../assets/images/logoSeed_blanco.png" class="w-[100%] h-[100%]  md:mt-14"
+                            alt="">
                     </div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2"></div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2 md:-mt-32 lg:-mt-32 relative">
-                        <label for="tipodocumento" class="block mb-2 text-blue-400">Tipo de Documento:</label>
-                        <select id="tipodocumento" formControlName="nombretipodoc"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
-                            <option value="" disabled selected>
-                                Seleccionar tipo de documento...
-                            </option>
-                            <option value="Cedula de ciudadania">Cédula ciudadanía</option>
-                            <option value="Cedula de extranjeria">Pasaporte</option>
-                            <option value="Permiso especial de permanencia">Carnet de Extranjería</option>
-                        </select>
-                        <div *ngIf="submitted && f.nombretipodoc.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.nombretipodoc.errors.required">Este campo es requerido *</div>
-                        </div>
-                        <fa-icon [icon]="faIdCard" class="absolute right-5 top-4 mt-7 text-cyan-500  z-0  text-lg "
-                            styles=" pointer-events: auto;"></fa-icon>
-                    </div>
-                    <div class="w-full md:w-1/3 pl-0 md:pl-2 md:-mt-32">
-                        <label for="documento" class="block mb-2 text-blue-400">Número de Documento:</label>
-                        <input type="number" id="documento" formControlName="documento"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                        <div *ngIf="submitted && f.documento.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.documento.errors.required">Este campo es requerido *</div>
-                            <div *ngIf="f.documento.errors.numberRange">El número de documento debe tener entre 5 y 12
-                                dígitos</div>
-                        </div>
-                    </div>
-
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2"></div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2 md:-mt-1 relative">
-                        <label for="fechaNacimiento" class="block mb-2 text-blue-400">Fecha de Nacimiento:</label>
-
-                        <input type="date" id="fechaNacimiento" formControlName="fecha_nacimiento"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none"
-                            style="background-image: none;" />
-                        <div class="absolute top-0 right-0 h-full flex items-center pr-2 mt-2 pointer-events-none">
-                            <i class="fas fa-calendar-alt text-cyan-500 cursor-pointer md:-mt-1 pr-3  text-lg"
-                                onclick="document.getElementById('fechaNacimiento').focus();"></i>
-                        </div>
-                        <div *ngIf="submitted && f.fecha_nacimiento.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.fecha_nacimiento.errors.required">Este campo es requerido *</div>
-                        </div>
-
-                    </div>
-                    <div class="w-full md:w-1/3 pl-0 md:pl-2 md:-mt-1 relative">
-                        <label for="genero" class="block mb-2 text-blue-400">Género:</label>
-                        <select id="genero" formControlName="genero"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
-                            <option value="" disabled selected>Seleccionar Género...</option>
-                            <option value="masculino">Masculino</option>
-                            <option value="femenino">Femenino</option>
-                            <option value="otro">Otro</option>
-                        </select>
-                        <div *ngIf="submitted && f.genero.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.genero.errors.required">Este campo es requerido *</div>
-                        </div>
-                        <fa-icon [icon]="faVenusMars" class="absolute right-3 top-4 mt-7 text-cyan-500  z-0  text-lg"
-                            styles=" pointer-events: auto;"></fa-icon>
-                    </div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2 "></div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2 md:-mt-1">
-                        <label for="password" class="block mb-2 mt-3 text-blue-400">Contraseña:</label>
-                        <div class="relative">
-                            <input [type]="hide ? 'password' : 'text'" id="contrasena" formControlName="password"
-                                class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                            <button type="button"
-                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-gray-500"
-                                (click)="hide = !hide">
-                                <i *ngIf="hide" class="fa fa-eye-slash text-cyan-500  -mt-1 text-lg"></i>
-                                <i *ngIf="!hide" class="fa fa-eye text-cyan-500 -mt-1 text-lg"></i>
-                            </button>
-                        </div>
-                        <div *ngIf="submitted && f.password.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.password.errors.required">Este campo es requerido *</div>
-                            <div *ngIf="f.password.errors.minlength">La contraseña debe tener al menos 8 caracteres *
-                            </div>
-                            <div *ngIf="f.password.errors.passwordStrength">{{ f.password.errors.passwordStrength }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2"></div>
-                    <hr class="w-full border-t-2 border-gray-400 " />
-                    <div class="w-full md:w-1/3 pl-0 md:pl-2">
-                        <h5 class="text-xl md:text-2xl font-bold mb-2  md:-mx-5 md:pl-24 md:mb-4 text-sky-600 md:mt-5">
-                            Contacto
-                        </h5>
-                    </div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2 relative ">
-                        <label for="nombre" class="block mb-2 text-blue-400">Correo Electronico:</label>
-                        <input type="text" id="correo" formControlName="email"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                        <div *ngIf="submitted && f.email.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.email.errors.required">Este campo es requerido *</div>
-                        </div>
-                        <!-- <fa-icon [icon]="faEnvelope" class="absolute right-4 top-5 mt-6 text-cyan-500  z-0  " styles=" pointer-events: auto;"></fa-icon> -->
-                    </div>
-                    <div class="w-full md:w-1/3 pl-0 md:pl-2 relative">
-                        <label for="celular" class="block mb-2 text-blue-400">Celular:</label>
-                        <input type="number" id="celular" formControlName="celular"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                        <div *ngIf="submitted && f.celular.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block mt-2">
-                            <div *ngIf="f.celular.errors.required">Este campo es requerido *</div>
-                            <div *ngIf="f.celular.errors.maxlength">El número de celular no debe tener más de 10 dígitos
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="w-full border-t-2 border-gray-400 my-6 md:mt-10" />
-                    <div class="w-full md:w-1/3 pl-0 md:pl-2">
-                        <h5 class="text-xl md:text-2xl font-bold mb-2  md:-mx-5 md:mt-16 md:mb-4 md:pl-24 text-sky-600">
-                            Direccion
-                        </h5>
-                    </div>
-
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2 relative">
-                        <label for="departamento" class="block mb-2 text-blue-400">Departamento:</label>
-                        <select id="departamento" name="departamento"
-                            (change)="onDepartamentoSeleccionado($event.target.value)"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none ">
-                            <option value="departamento" disabled selected>
-                                Seleccionar Departamento...
-                            </option>
-                            <option *ngFor="let nameDepartamento of listDepartamentos" [value]="nameDepartamento">
-                                {{nameDepartamento}}</option>
-                        </select>
-                        <!-- <div *ngIf="submitted && f.nameDepartamento.errors" class="text-red-500 pl-2">
-                            <div *ngIf="f.nameDepartamento.errors.required">Este campo es requerido</div>
-                        </div> -->
-                        <fa-icon [icon]="faLandmarkFlag" class="absolute right-5 top-5 mt-6 text-cyan-500  z-0 text-lg"
-                            styles=" pointer-events: auto;"></fa-icon>
-                    </div>
-                    <div class="w-full md:w-1/3 pl-0 md:pl-2 relative">
-                        <label for="municipio" class="block mb-2 text-blue-400">Municipio:</label>
-                        <select id="municipio" name="municipio" formControlName="municipio"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200  focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 appearance-none ">
-                            <option value="" disabled selected>Seleccionar Municipio...</option>
-                            <option *ngFor="let municipio of listMunicipios" value="{{municipio}}">{{municipio}}
-                            </option>
-                        </select>
-                        <div *ngIf="submitted && f.municipio.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.municipio.errors.required">Este campo es requerido *</div>
-                        </div>
-                        <fa-icon [icon]="faMountainCity" class="absolute right-3 top-11  text-cyan-500 z-0  text-lg"
-                            styles=" pointer-events: auto;"></fa-icon>
-                    </div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2"></div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2 md:-mt-1">
-                        <label for="direccion" class="block mb-2 mt-3 text-blue-400">Direccion:</label>
-                        <input type="text" id="direccion" formControlName="direccion"
-                            class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100" />
-                        <div *ngIf="submitted && f.direccion.errors"
-                            class="text-red-500 bg-red-50 pl-2 rounded-lg inline-block">
-                            <div *ngIf="f.direccion.errors.required">Este campo es requerido *</div>
-                        </div>
-                    </div>
-                    <div class="w-full md:w-1/3 pr-0 md:pr-2"></div>
-                </div>
-                <div class="flex justify-end">
-                    <button type="submit"
-                        class="bg-sky-400 hover:bg-cyan-400 text-white font-bold py-2 px-4 md:-mt-4 rounded -pl-12">
-                        REGISTRAR
-                    </button>
                 </div>
             </div>
+            <div class="col-span-2">
+                <h2 class="text-[#fff] text-center mt-4 md:font-[500]">¿Ya tienes una cuenta ? <span
+                        class="text-[#00B3ED]">Iniciar
+                        Sesión</span></h2>
+                <div class="flex justify-center space-x-4 mt-8 ">
+                    <!-- Barra de progreso -->
+                    <div class="relative w-full flex items-center  max-w-[25rem] m-2">
+                        <div class="absolute left-0 right-0 h-1 bg-[#fcb404]"></div>
+                        <div class="absolute left-0 h-1 bg-[#fa7d00] transition-all duration-300 ease-in-out"
+                            [style.width.%]="progressWidth"></div>
+                        <!-- Apartados del progreso -->
+                        <div class="flex justify-between absolute w-full">
+                            <div [ngClass]="{'bg-[#fa7d00]': progressWidth >= 1, 'bg-[#fcb404]': progressWidth < 1}"
+                                class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold transition-all duration-300 ease-in-out">
+                                1
+                            </div>
+                            <div [ngClass]="{'bg-[#fa7d00]': progressWidth >= 50, 'bg-[#fcb404]': progressWidth < 50}"
+                                class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold transition-all duration-300 ease-in-out">
+                                2
+                            </div>
+                            <div [ngClass]="{'bg-[#fa7d00]': progressWidth >= 100, 'bg-[#fcb404]': progressWidth < 100}"
+                                class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold transition-all duration-300 ease-in-out">
+                                3
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <form [formGroup]="registerForm" (ngSubmit)="registro()"
+                    class="backdrop-brightness-50 bg-[#fff] bg-opacity-55 backdrop-filter backdrop-opacity-50 rounded-3xl p-4 md:p-8 grid w-full max-w-[18rem]  md:max-w-[25rem] mx-auto mt-10">
+
+                    <div *ngIf="currentIndex === 0" class="grid gap-y-4">
+                        <!-- pregunta 1 -->
+                        <div>
+                            <label for="nombre" class="block text-[#000] truncate">Nombre:</label>
+                            <div class="mt-2">
+                                <input type="text" id="nombre" formControlName="nombre" (input)="updateProgress()"
+                                    class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
+                            </div>
+                            <div *ngIf="submitted && f.nombre.errors" class="max-w-[19rem] overflow-hidden mt-1">
+                                <span *ngIf="f.nombre.errors.required">Este campo es requerido *</span>
+                            </div>
+                        </div>
+
+                        <!-- pregunta 2 -->
+                        <div>
+                            <label for="apellido" class="block truncate">Apellido:</label>
+                            <div class="mt-2">
+                                <input type="text" id="apellido" formControlName="apellido" (input)="updateProgress()"
+                                    class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
+                            </div>
+                            <div *ngIf="submitted && f.apellido.errors" class="max-w-[19rem] overflow-hidden mt-1">
+                                <div *ngIf="f.apellido.errors.required">Este campo es requerido *</div>
+                            </div>
+                        </div>
+
+                        <!-- pregunta 3 -->
+                        <div class="relative">
+                            <label for="tipodocumento" class="block truncate">Tipo de Documento:</label>
+                            <select id="tipodocumento" formControlName="nombretipodoc" (change)="updateProgress()"
+                                class="mt-2 p-2 block w-full rounded-md border-0 py-1.5 text-[#000] shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] focus:outline-none sm:text-sm sm:leading-6">
+                                <option value="" disabled selected>Seleccionar tipo de documento...</option>
+                                <option value="Cedula de ciudadania">Cédula ciudadanía</option>
+                                <option value="Cedula de extranjeria">Pasaporte</option>
+                                <option value="Permiso especial de permanencia">Carnet de Extranjería</option>
+                            </select>
+                            <div *ngIf="submitted && f.nombretipodoc.errors" class="max-w-[19rem] overflow-hidden mt-1">
+                                <div *ngIf="f.nombretipodoc.errors.required">Este campo es requerido *</div>
+                            </div>
+                            <fa-icon [icon]="faIdCard" class="absolute right-3 top-[38.5px] text-md"
+                                styles="pointer-events: auto;"></fa-icon>
+                        </div>
+
+                        <!-- pregunta 4 -->
+                        <div>
+                            <label for="documento" class="block truncate">Número de Documento:</label>
+                            <div class="mt-2">
+                                <input type="number" id="documento" formControlName="documento"
+                                    (input)="updateProgress()"
+                                    class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
+                            </div>
+                            <div *ngIf="submitted && f.documento.errors" class="max-w-[19rem] overflow-hidden mt-1">
+                                <div *ngIf="f.documento.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.documento.errors.numberRange">El número de documento debe tener entre 5 y
+                                    12 dígitos</div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center">
+                            <button (click)="next()"
+                                class="mt-4 bg-[#fcb404] text-white py-2 px-4 rounded-full">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="currentIndex === 1" class="grid gap-y-4">
+                        <!-- pregunta 5 -->
+                        <div class="relative">
+                            <label for="fechaNacimiento" class="block truncate">Fecha de Nacimiento:</label>
+                            <div class="mt-2">
+                                <input type="date" id="fechaNacimiento" formControlName="fecha_nacimiento"
+                                    (input)="updateProgress()"
+                                    class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6 appearance-none" />
+                            </div>
+                            <div class="absolute right-1 top-[39.5px] pointer-events-none">
+                                <i class="fas fa-calendar-alt text-[#000] cursor-pointer md:-mt-1 pr-3 text-md"
+                                    onclick="document.getElementById('fechaNacimiento').focus();"></i>
+                            </div>
+                            <div *ngIf="submitted && f.fecha_nacimiento.errors"
+                                class="max-w-[19rem] overflow-hidden mt-1">
+                                <div *ngIf="f.fecha_nacimiento.errors.required">Este campo es requerido *</div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- pregunta 6 -->
+                        <div class="relative">
+                            <label for="genero" class="block truncate">Género:</label>
+                            <select id="genero" formControlName="genero" (change)="updateProgress()"
+                                class="mt-2 p-2 block w-full rounded-md border-0 py-1.5 text-[#000] shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] focus:outline-none sm:text-sm sm:leading-6">
+                                <option value="" disabled selected>Seleccionar Género...</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <div class="absolute right-3 top-[38.5px] text-md">
+                                <fa-icon [icon]="faVenusMars"></fa-icon>
+                            </div>
+                            <div *ngIf="submitted && f.genero.errors" class="max-w-[19rem] overflow-hidden mt-1 ">
+                                <div *ngIf="f.genero.errors.required">Este campo es requerido *</div>
+                            </div>
+                        </div>
+
+                        <!-- pregunta 7 -->
+                        <div class="relative">
+                            <label for="password" class="block truncate">Contraseña:</label>
+                            <div class="mt-2">
+                                <input [type]="hide ? 'password' : 'text'" id="contrasena" formControlName="password"
+                                    (input)="updateProgress()"
+                                    class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
+                                <button type="button" class="absolute right-3 top-[38.5px]" (click)="hide = !hide">
+                                    <i *ngIf="hide" class="fa fa-eye-slash text-[#000] -mt-1 text-md"></i>
+                                    <i *ngIf="!hide" class="fa fa-eye text-cyan-500 -mt-1 text-md"></i>
+                                </button>
+                            </div>
+                            <div *ngIf="submitted && f.password.errors" class="max-w-[19rem] overflow-hidden mt-1">
+                                <div *ngIf="f.password.errors.required" class="inline-block">Este campo es requerido *
+                                </div>
+                                <div *ngIf="f.password.errors.minlength" class="inline-flex">La contraseña debe tener al
+                                    menos 8 caracteres *</div>
+                                <div *ngIf="f.password.errors.passwordStrength">{{ f.password.errors.passwordStrength }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- pregunta 8 -->
+                        <div>
+                            <label for="correo" class="block truncate">Correo Electrónico:</label>
+                            <div class="mt-2">
+                                <input type="text" id="correo" formControlName="email" (input)="updateProgress()"
+                                    class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
+                            </div>
+                            <div *ngIf="submitted && f.email.errors" class="max-w-[19rem] overflow-hidden mt-1">
+                                <div *ngIf="f.email.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.email.errors.pattern">Formato de correo incorrecto *</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center space-x-2">
+                            <button (click)="prev()"
+                                class="mt-4 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-full">Anterior</button>
+                            <button (click)="next()"
+                                class="mt-4 bg-[#fcb404] text-white py-2 px-4 rounded-full">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="currentIndex === 2" class="grid gap-y-4">
+                        <!-- pregunta 9 -->
+                        <div>
+                            <label for="celular" class="block truncate">Celular:</label>
+                            <div class="mt-2">
+                                <input type="number" id="celular" formControlName="celular" (input)="updateProgress()"
+                                    class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
+                            </div>
+                            <div *ngIf="submitted && f.celular.errors" class="max-w-[19rem] overflow-hidden mt-1">
+                                <div *ngIf="f.celular.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.celular.errors.maxlength">El número de celular no debe tener más de 10
+                                    dígitos</div>
+                            </div>
+                        </div>
+
+                        <!-- pregunta 10 -->
+                        <div class="relative">
+                            <label for="departamento" class="block truncate">Departamento:</label>
+                            <select id="departamento" name="departamento" (change)="updateProgress()"
+                                (change)="onDepartamentoSeleccionado($event.target.value)"
+                                class="mt-2 p-2 block w-full rounded-md border-0 py-1.5 text-[#000] shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] focus:outline-none sm:text-sm sm:leading-6">
+                                <option value="departamento" disabled selected>Seleccionar Departamento...</option>
+                                <option *ngFor="let nameDepartamento of listDepartamentos" [value]="nameDepartamento">
+                                    {{nameDepartamento}}</option>
+                            </select>
+                            <fa-icon [icon]="faLandmarkFlag" class="absolute right-4 top-[38.5px]"></fa-icon>
+                        </div>
+
+                        <!-- pregunta 11 -->
+                        <div class="relative">
+                            <label for="municipio" class="block truncate">Municipio:</label>
+                            <select id="municipio" name="municipio" formControlName="municipio"
+                                (change)="updateProgress()"
+                                class="mt-2 p-2 block w-full rounded-md border-0 py-1.5 text-[#000] shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] focus:outline-none sm:text-sm sm:leading-6">
+                                <option value="" disabled selected>Seleccionar Municipio...</option>
+                                <option *ngFor="let municipio of listMunicipios" value="{{municipio}}">{{municipio}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.municipio.errors" class="max-w-[19rem] overflow-hidden mt-1">
+                                <div *ngIf="f.municipio.errors.required">Este campo es requerido *</div>
+                            </div>
+                            <fa-icon [icon]="faMountainCity" class="absolute right-4 top-[39.5px]"></fa-icon>
+                        </div>
+
+                        <!-- pregunta 12 -->
+                        <div>
+                            <label for="direccion" class="block truncate">Dirección:</label>
+                            <div class="mt-2">
+                                <input type="text" id="direccion" formControlName="direccion" (input)="updateProgress()"
+                                    class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
+                            </div>
+                            <div *ngIf="submitted && f.direccion.errors" class="max-w-[19rem] overflow-hidden mt-1">
+                                <div *ngIf="f.direccion.errors.required">Este campo es requerido *</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center space-x-2">
+                            <button (click)="prev()"
+                                class="mt-4 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-full">Anterior</button>
+                            <button type="submit"
+                                class="mt-4 bg-[#fcb404] hover:bg-[#fcb404] text-white py-2 px-4 rounded-full">Registrar</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- columna 2 -->
         </div>
     </div>
-</form>

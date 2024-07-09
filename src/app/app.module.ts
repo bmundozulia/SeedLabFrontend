@@ -66,6 +66,7 @@ import { SafeUrlPipe } from './ruta/cursorutas/cursorutas.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver-asesorias.component';
 import { Error404Component } from './auth/error404/error404.component';
+import { AddLevelComponent } from './super-admin/ruta/add-level/add-level.component';
 
 
 @NgModule({
@@ -112,6 +113,7 @@ import { Error404Component } from './auth/error404/error404.component';
     VerAsesoriasComponent,
     CargaComponent,
     Error404Component,
+    AddLevelComponent,
   ],
   imports: [
     AngularMaterialModule,

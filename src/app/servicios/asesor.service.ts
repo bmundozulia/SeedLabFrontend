@@ -30,14 +30,14 @@ export class AsesorService {
     return this.http.post(`${this.url}asesor`, asesor, options);
   }
 
-  getAsesorID(access_token: any, id: number): Observable<any> {
+  getAsesorID(access_token: any, asesorId: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.get(`${this.url}userProfileAsesor/${id}`, options);
+    return this.http.get(`${this.url}userProfileAsesor/${asesorId}`, options);
   }
 
-  updateAsesor(access_token: any, id: number, asesor: Asesor): Observable<any> {
+  updateAsesor(access_token: any, asesorId: number, asesor: Asesor): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.put(`${this.url}asesor/${id}`, asesor, options);
+    return this.http.put(`${this.url}asesor/${asesorId}`, asesor, options);
   }
 
   mostrarAsesoriasAsesor(access_token: any, idAsesor: number, conHorario: boolean): Observable<any> {

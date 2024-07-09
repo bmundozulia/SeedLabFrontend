@@ -107,6 +107,8 @@ export class CursorutasComponent implements OnInit {
       });
     }
   }
+
+ 
 }
 
 
