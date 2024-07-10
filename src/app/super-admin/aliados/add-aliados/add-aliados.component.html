@@ -87,14 +87,15 @@
         </div>
         <!-- <div
           class="w-52 h-52 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-x-gray-900 cursor-pointer"> -->
-          <!-- <img *ngIf="banner" [src]="banner" alt="banner" class="object-cover"> -->
-          <!-- <span *ngIf="!banner" class="text-gray-500">Click aca!</span> -->
-          <input type="file" formControlName="banner" (change)="onFileChange($event)" accept="image/*" class="form-control">
-  
-          <!-- Mostrar la imagen seleccionada -->
-          <div *ngIf="compressedImage">
-            <img [src]="compressedImage" alt="Imagen Comprimida" style="max-width: 100%;">
-          </div>
+        <!-- <img *ngIf="banner" [src]="banner" alt="banner" class="object-cover"> -->
+        <!-- <span *ngIf="!banner" class="text-gray-500">Click aca!</span> -->
+        <input type="file" formControlName="banner" required accept="image/*" (change)="onFileSelecteds($event, 'banner')"
+          class="form-control">
+
+        <!-- Mostrar la imagen seleccionada -->
+        <div *ngIf="compressedImage">
+          <img [src]="compressedImage" alt="Imagen Comprimida" style="max-width: 100%;">
+        </div>
         <!-- </div> -->
 
         <!-- <div>

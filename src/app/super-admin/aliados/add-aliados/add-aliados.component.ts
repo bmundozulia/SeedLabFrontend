@@ -7,6 +7,8 @@ import { User } from '../../../Modelos/user.model';
 import { Aliado } from '../../../Modelos/aliado.model';
 import Pica from 'pica';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { ChangeDetectorRef } from '@angular/core';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-add-aliados',
   templateUrl: './add-aliados.component.html',
@@ -32,26 +34,31 @@ export class AddAliadosComponent {
   currentRolId: number;
   id: number | null = null;
   compressedImage: string;
+  bannerFile: File | null = null;
+  selectedBanner: File | null = null;
 
-  aliadoForm = this.fb.group({
-    nombre: ['', Validators.required],
-    descripcion: ['', Validators.required],
-    logo: ['', Validators.required],
-    banner: [''],
-    ruta: ['', Validators.required],
-    tipodato: [Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    estado: true,
-  })
-
+  aliadoForm: FormGroup;
   constructor(private aliadoService: AliadoService,
     private router: Router,
-    private fb: FormBuilder,
-    private imageCompress: NgxImageCompressService) { }
+    private formBuilder: FormBuilder,
+    private imageCompress: NgxImageCompressService,
+    private cdRef: ChangeDetectorRef) {
+    this.aliadoForm = this.formBuilder.group({
+      nombre: [''],
+      descripcion: [''],
+      logo: [''], // Puedes incluir el campo de logo si lo necesitas
+      banner: [''],
+      ruta: [''],
+      tipodato: [''],
+      email: [''],
+      password: [''],
+      estado: [1]
+    });
+  }
 
   ngOnInit(): void {
     this.validateToken();
+
   }
 
   validateToken(): void {
@@ -74,6 +81,14 @@ export class AddAliadosComponent {
     }
   }
 
+  onBannerSelected(event: Event): void {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+      this.selectedBanner = file;
+      this.aliadoForm.patchValue({ banner: file.name });
+    }
+  }
+
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
@@ -83,8 +98,8 @@ export class AddAliadosComponent {
         img.src = e.target.result;
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          canvas.width = 300; // Nueva anchura
-          canvas.height = 300; // Nueva altura
+          canvas.width = 800; // Nueva anchura
+          canvas.height = 800; // Nueva altura
           const pica = Pica();
           pica.resize(img, canvas)
             .then((result) => pica.toBlob(result, 'image/jpeg', 0.90))
@@ -102,58 +117,48 @@ export class AddAliadosComponent {
     }
   }
 
-  compressFile(image: File) {
-    const reader = new FileReader();
-    reader.readAsDataURL(image);
-    reader.onload = () => {
-      this.imageCompress.compressFile(reader.result as string, -1, 50, 50).then(
-        result => {
-          this.compressedImage = result;
-          this.aliadoForm.patchValue({ banner: this.compressedImage });
-        }
-      );
-    };
-  }
-
-  onFileChange(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.compressFile(file);
+  onFileChange(event: any): void {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.aliadoForm.patchValue({ banner: file });
     }
   }
 
-  addAliado(): void {
-    const aliado: Aliado = {
-      nombre: this.aliadoForm.get('nombre')?.value,
-      descripcion: this.aliadoForm.get('descripcion')?.value,
-      logo: this.aliadoForm.get('logo')?.value,
-      banner: this.aliadoForm.get('banner')?.value,
-      ruta: this.aliadoForm.get('ruta')?.value,
-      tipodato: this.aliadoForm.get('tipodato')?.value,
-      email: this.aliadoForm.get('email')?.value,
-      password: this.aliadoForm.get('password')?.value,
-      estado: this.aliadoForm.get('estado')?.value,
-    };
-    this.aliadoService.crearAliado(this.token, aliado).subscribe(
-      data => {
-        console.log('aaa', aliado);
-      },
-      err => {
-        console.log('Error al crear aliado', err);
-      });
+    addAliado(): void {
+      const aliado: Aliado = {
+          nombre: this.aliadoForm.get('nombre')?.value,
+          descripcion: this.aliadoForm.get('descripcion')?.value,
+          logo: this.aliadoForm.get('logo')?.value,
+          banner: this.aliadoForm.get('banner')?.value,
+          ruta: this.aliadoForm.get('ruta')?.value,
+          tipodato: this.aliadoForm.get('tipodato')?.value,
+          email: this.aliadoForm.get('email')?.value,
+          password: this.aliadoForm.get('password')?.value,
+          estado: this.aliadoForm.get('estado')?.value,
+      };
+
+      console.log('Datos de aliado:', aliado);
+
+      this.aliadoService.crearAliado(this.token, aliado).subscribe(
+          data => {
+              console.log('Aliado creado', data);
+          },
+          err => {
+              console.log('Error al crear aliado', err);
+          }
+      );
   }
 
-  // async onFileSelected(event: any): Promise<void> {
-  //   const file = event.target.files[0];
-  //   const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
 
-  //   if (file && allowedExtensions.exec(file.name)) {
-  //     const resizedImage = await this.resizeAndCompressImage(file, 280, 280, 20 * 1024);
-  //     this.logo = resizedImage;
-  //   } else {
-  //     alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif).');
-  //   }
-  // }
+  onFileSelecteds(event: any, field: string) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.aliadoForm.patchValue({
+        [field]: file
+      });
+    }
+  }
+
   resizeAndCompressImage(file: File, width: number, height: number, maxSize: number): Promise<string> {
     return new Promise((resolve, reject) => {
       const img = new Image();
