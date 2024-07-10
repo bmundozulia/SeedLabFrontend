@@ -2,6 +2,7 @@
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Pica from 'pica';
 import { AliadoService } from '../../../servicios/aliado.service';
 import { User } from '../../../Modelos/user.model';
 import { Aliado } from '../../../Modelos/aliado.model';
@@ -69,9 +70,40 @@ export class AddAliadosComponent {
         }
       }
     }
-    if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+    if (!this.email || !this.email.includes('@')) {
+      alert('Por favor, ingrese un correo válido con @.');
+      return;
     }
+    if (!this.descripcion.trim()) {
+      alert('Por favor, ingrese una descripción.');
+      return;
+    }
+    if (!this.password || this.password.length < 8) {
+      alert('Por favor, ingrese una contraseña válida de mínimo 8 caracteres.');
+      return;
+    }
+
+    const aliado = {
+      nombre: this.nombre.trim(),
+      descripcion: this.descripcion.trim(),
+      logo: this.logo,
+      ruta: this.tipodato === 'pdf' ? this.generateUniqueFileName(this.pdfFileName) : this.ruta, // Guardar solo el nombre del PDF
+      tipodato: this.tipodato,
+      email: this.email.trim(),
+      password: this.password,
+      estado: this.estado
+    };
+
+    this.aliadoService.crearAliado(aliado, this.token).subscribe({
+      next: (response) => {
+        alert('Creación exitosa');
+        this.router.navigate(['list-aliados']);
+      },
+      error: (error) => {
+        console.error('Error en la creación del aliado:', error);
+        alert(`Error: ${error.message}`);
+      }
+    });
   }
 
   onFileSelected(event: any): void {
@@ -83,8 +115,8 @@ export class AddAliadosComponent {
         img.src = e.target.result;
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          canvas.width = 600; // Nueva anchura
-          canvas.height = 600; // Nueva altura
+          canvas.width = 300; // Nueva anchura
+          canvas.height = 300; // Nueva altura
           const pica = Pica();
           pica.resize(img, canvas)
             .then((result) => pica.toBlob(result, 'image/jpeg', 0.90))
@@ -92,7 +124,7 @@ export class AddAliadosComponent {
               const reader2 = new FileReader();
               reader2.onload = (e2: any) => {
                 this.logo = e2.target.result;
-                this.aliadoForm.patchValue({ logo: this.logo });
+               //this.aliadoForm.patchValue({ logo: this.logo });
               };
               reader2.readAsDataURL(blob);
             });
@@ -102,50 +134,9 @@ export class AddAliadosComponent {
     }
   }
 
-  compressFile(image: File) {
-    const reader = new FileReader();
-    reader.readAsDataURL(image);
-    reader.onload = () => {
-      this.imageCompress.compressFile(reader.result as string, -1, 50, 50).then(
-        result => {
-          this.compressedImage = result;
-          this.aliadoForm.patchValue({ banner: this.compressedImage });
-        }
-      );
-    };
-  }
-
-  onFileChange(event: any) {
+  async onImageSelected(event: any): Promise<void> {
     const file = event.target.files[0];
-    if (file) {
-      this.compressFile(file);
-    }
-  }
-
-  addAliado(): void {
-    const aliado: Aliado = {
-      nombre: this.aliadoForm.get('nombre')?.value,
-      descripcion: this.aliadoForm.get('descripcion')?.value,
-      logo: this.aliadoForm.get('logo')?.value,
-      banner: this.aliadoForm.get('banner')?.value,
-      ruta: this.aliadoForm.get('ruta')?.value,
-      tipodato: this.aliadoForm.get('tipodato')?.value,
-      email: this.aliadoForm.get('email')?.value,
-      password: this.aliadoForm.get('password')?.value,
-      estado: this.aliadoForm.get('estado')?.value,
-    };
-    this.aliadoService.crearAliado(this.token, aliado).subscribe(
-      data => {
-        console.log('aaa', aliado);
-      },
-      err => {
-        console.log('Error al crear aliado', err);
-      });
-  }
-
-  // async onFileSelected(event: any): Promise<void> {
-  //   const file = event.target.files[0];
-  //   const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
   //   if (file && allowedExtensions.exec(file.name)) {
   //     const resizedImage = await this.resizeAndCompressImage(file, 280, 280, 20 * 1024);
