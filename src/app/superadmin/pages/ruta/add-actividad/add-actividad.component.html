@@ -1,150 +1,94 @@
-<div class=" pt-4 divide-y divide-light-blue-400 ml-12 mr-4">
+<div class="pt-4 divide-y divide-light-blue-400 ml-12 mr-4">
     <h1 class="text-xl font-bold mb-4">Bienvenido al panel Editar Ruta</h1>
-    <div class="grid sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-12 xl:gap-6  mb-2">
-
-        <div class="col-span-4">
-
-            <div class=" flex justify-between my-8 relative ">
-                <p class="text-lg font-bold mb-1 ">Ruta</p>
-                <button (click)="openModal()" class="bg-sky-400 rounded text-white px-6 inline-block ">
-                    <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class=""
-                        viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path
-                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                    </svg>
-                </button>
-                <div class="absolute top-0 right-0" *ngIf="modalSwitch == true">
-                    <app-modal></app-modal>
-
-                </div>
-            </div>
-            <div class=" overflow-y-auto max-h-72">
-                <ul class="sidebar p-0 m-06">
-                    <hr class="divide m-0">
-                    <li class="    hover:bg-sky-100 h-10">
-                        <a href="
-                        " class="flex justify-between no-underline text-black">
-                            <p class="m-2 text-base">
-                                1. Convocatoria y selección
-                            </p>
-                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
-                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path
-                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                            </svg>
-                        </a>
-                    </li>
-                    <hr class="divide m-0">
-                    <li class=" ">
-                        <a href="" class="flex justify-between no-underline text-black   hover:bg-sky-100 h-10">
-                            <p class="m-2 text-base">2. Kickoff (evento IMPRENDE)</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px;height: 20px;" class="m-2"
-                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path
-                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                            </svg>
-                        </a>
-
-                    </li>
-                    <hr class="divide m-0">
-
-                </ul>
-            </div>
-        </div>
-
+    <div class="grid sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-12 xl:gap-6 mb-2">
         <!-- Contenido principal -->
-        <div class=" col-span-8 ">
+        <div class="col-span-8">
             <h2 class="text-center my-8">2 Kickoff (evento imprende)</h2>
-            <form (ngSubmit)="onSubmit()">
-                <div class="xl:bg-gray-100 rounded xl:p-4">
-                    <div class="flex flex-wrap  contetnt-center">
-                        <h2 class="mr-4">Responsable</h2>
-                        <div class="relative">
-                            <select id="tipoDocumento" name="tipoDocumento" required [(ngModel)]="persona.tipoDocumento"
-                                #tipoDocumento="ngModel"
-                                class="p-2 w-full h-10 border border-gray-700 rounded-xl bg-white-50 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 ">
-                                <option value="" disabled selected>Seleccionar Aliado...</option>
-                                <option value="Cedula">xxxx</option>
-                                <option value="pasaporte">xxxx</option>
-                                <option value="carnetExtranjeria">xxxx</option>
-                            </select>
-                            <div *ngIf="submitted && tipoDocumento.invalid"
-                                class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50 "
-                                role="alert">
-                                <span class="font-medium">Este campo es requerido *</span>
-                            </div>
-                        </div>
+            <div>
+                <!-- Lista de rutas -->
+                <h2>Rutas</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div *ngFor="let ruta of listRuta" (click)="selectRuta(ruta)"
+                        [style.border]="ruta === rutaSeleccionada ? '2px solid blue' : '1px solid #ccc'"
+                        style="cursor: pointer; padding: 10px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 100px; height: 100px;">
+                        {{ ruta.nombre }}
                     </div>
+                </div>
 
-                    <div class="mb-2 mt-2">
-                        <h3>Descripcion Corta</h3>
-                        <textarea name="descripcion" required [(ngModel)]="persona.descripcion" #descripcion="ngModel"
-                            class="border h-14 border-gray-700 rounded-xl w-full resize-none p-2 bg-white-50 focus:outline-none focus:ring-2 focus:ring-blue-200 "></textarea>
-                        <div *ngIf="submitted && descripcion.invalid"
-                            class="inline-block  p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 " role="alert">
-                            <span class="font-medium">Este campo es requerido *</span>
-                        </div>
-                    </div>
 
-                    <div class="bg-gray-50 rounded-xl border border-black-50 p-4">
-                        <div class="py-2">
-                            <h3 class="font-bold ">Actividades</h3>
-                            <p class="text-base">Titulo</p>
-                            <input type="text" name="titulo" required [(ngModel)]="persona.titulo" #titulo="ngModel"
-                                class="border border-gray-700 h-10 rounded-xl w-full p-4 bg-white-50 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 ">
-                            <div *ngIf="submitted && titulo.invalid"
-                                class="inline-block p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 "
-                                role="alert">
-                                <span class="font-medium">Este campo es requerido *</span>
+
+                <div class="grid grid-cols-1">
+                    <div *ngIf="rutaSeleccionada">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <div *ngFor="let ruta  of listRuta" (click)="verRuta(ruta)">
+                                <div *ngFor="let actividad of ruta.actividades">
+                                    {{actividad.nombre}}
+                                    {{actividad.descripcion}}
+                                </div>
                             </div>
                         </div>
-
-                        <div class="py-2">
-                            <h3>Cuerpo</h3>
-                            <textarea name="cuerpo" required [(ngModel)]="persona.cuerpo" #cuerpo="ngModel"
-                                class="h-14 border border-gray-700 rounded-xl w-full resize-none p-2 bg-white-50 focus:outline-none focus:ring-2 focus:ring-blue-200 "></textarea>
-                            <div *ngIf="submitted && cuerpo.invalid"
-                                class="p-1 mt-2 mb-4 text-sm text-red-500 rounded-lg bg-red-50 inline-block"
-                                role="alert">
-                                <span class="font-medium">Este campo es requerido *</span>
+                        <!-- activity.component.html -->
+                        <form [formGroup]="actividadForm" (ngSubmit)="addActividad">
+                            <div>
+                                <label for="nombre">Nombre de la Actividad:</label>
+                                <input type="text" id="nombre" formControlName="nombre"
+                                    class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                             </div>
-                        </div>
-
-                        <div class="py-2">
-                            <h3>Links</h3>
-                            <input name="links" type="url" required pattern="https://.*" size="30"
-                                placeholder="https://example.com" [(ngModel)]="persona.links" #links="ngModel"
-                                class="px-2 w-full border border-gray-700 h-10 rounded-xl bg-white-50 focus:outline-none focus:ring-2 focus:ring-blue-200 ">
-                            <div *ngIf="submitted && links.invalid"
-                                class="p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50 inline-block"
-                                role="alert">
-                                <span class="font-medium" *ngIf="links.errors?.required">Este campo es requerido
-                                    *</span>
-                                <span class="font-medium" *ngIf="links.errors?.pattern">El enlace debe comenzar con
-                                    "https://"</span>
+                            <div>
+                                <label for="descripcion">Descripcion Actividad:</label>
+                                <input type="text" id="descripcion" formControlName="descripcion"
+                                    class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                            </div>
+                            <div>
+                                <label for="ruta_multi">Ruta Multi:</label>
+                                <input type="text" id="ruta_multi" formControlName="ruta_multi"
+                                    class="p-2 w-full h-14 mb-2 border-blue-300 rounded-lg bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                             </div>
 
+                            <div>
+                                <select id="id_tipo_dato" formControlName="id_tipo_dato"
+                                    class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 appearance-none ">
+                                    <option value="" disabled selected>
+                                        Seleccione el tipo de dato...
+                                    <option *ngFor="let tipodato of tipoDeDato" (click)="tipoDato(tipodato)"
+                                        [value]="tipodato.id">
+                                        {{tipodato.nombre}}</option>
+                                </select>
+                            </div>
 
-                            <hr class="divide-y divide-light-blue-400 ">
-                            <div class="flex justify-center">
+                            <div>
+                                <select id="id_asesor" formControlName="id_asesor"
+                                    class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 appearance-none ">
+                                    <option value="" disabled selected>
+                                        Seleccione el tipo de dato...
+                                    <option *ngFor="let mostrarasesores of listAsesor"
+                                        (click)="verAsesor(mostrarasesores)" [value]="mostrarasesores.id">
+                                        {{mostrarasesores.nombre}}
+                                        {{mostrarasesores.apellido}}
+                                    </option>
+                                </select>
+                            </div>
 
-                                <button type="submit" class=" bg-sky-400 text-white px-4 py-2 rounded mt-2 text-md">
-                                    Agregar otra actividad
+
+
+
+
+                            <!-- Mostrar botón "Añadir Nivel" solo después de dar clic en "Siguiente" -->
+                            <div>
+                                <button (click)="addActividad()"
+                                    class="bg-sky-400 hover:bg-sky-500 text-white font-bold px-3 py-0 rounded h-12">Añadir
+                                    Nivel</button>
+                            </div>
+                            <div>
+                                <button type="button" (click)="cancelarcrearActividad()"
+                                    class="w-full md:w-auto bg-gray-500 text-white py-2 px-4 rounded">
+                                    Cancelar
                                 </button>
                             </div>
-
-                        </div>
-                    </div>
-
-
-
-                    <div class="flex justify-end">
-                        <button type="submit"
-                            class="bg-sky-400 text-white px-4 py-2 rounded mt-4 text-md">Guardar</button>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-
 </div>

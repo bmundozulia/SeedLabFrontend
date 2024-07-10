@@ -2,24 +2,26 @@ import { User } from "./user.model";
 
 export class Aliado {
     id?: number;
-    nombre: string | null;
-    descripcion: string | null;
-    logo: string | null;
-    ruta_multi: string | null;
-    id_autenticacion: number | null;
-    id_tipo_dato: number | null;
-    email: string | null;
-    estado_usuario: string | null;
+    nombre: string;
+    descripcion: string;
+    logo: string; // Asegúrate de que logo sea un campo necesario en tu caso
+    banner: File | null;
+    ruta: string | null;
+    tipodato: string | null;
+    email: string;
+    password: string;
+    estado: boolean;
 
-    constructor(id: number, nombre: string, descripcion: string, logo: string, ruta_multi: string, id_autenticacion: number, id_tipo_dato: number, email: string, estado_usuario: string) {
-        this.id = id;
+    constructor(id: number, nombre: string, descripcion: string, logo: string, banner: File | null, ruta: string | null, tipodato: string | null, email: string, password: string, estado: boolean) {
+        this.id = id,
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.logo = logo;
-        this.ruta_multi = ruta_multi;
-        this.id_autenticacion = id_autenticacion;
-        this.id_tipo_dato = id_tipo_dato;
+        this.banner = banner;
+        this.ruta = ruta;
+        this.tipodato = tipodato;
         this.email = email;
-        this.estado_usuario = estado_usuario;
+        this.password = password;
+        this.estado = estado;
     }
 }

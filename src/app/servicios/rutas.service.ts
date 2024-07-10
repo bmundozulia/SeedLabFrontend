@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -23,14 +23,32 @@ export class RutaService {
     });
   }
 
-  getAllRutas(access_token:any): Observable<any>{
+  getAllRutas(access_token:any, estado: boolean): Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token),
+      params: new HttpParams().set('estado', estado) };
+    return this.http.get(this.url+'/ruta', options);
+  }
+
+  rutasActivas(access_token:any): Observable<any>{
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.get(this.url, options);
+    return this.http.get(this.url+'/rutasActivas',options)
   }
 
   createRutas(access_token:any, ruta:Ruta): Observable<any>{
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.post(this.url, ruta,options);
+    return this.http.post(this.url+'/ruta', ruta,options);
   }
+
+  updateRutas(access_token:any, ruta:Ruta):Observable<any>{
+    const options= { headers: this.CreacionHeaders(access_token)};
+    return this.http.put(this.url+'/ruta'+ ruta,options);
+  }
+
+  rutaXid(access_token:any, ruta:Ruta):Observable<any>{
+    const options= { headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+'/rutaXid/'+ruta, options);
+  }
+  
+
 
 }

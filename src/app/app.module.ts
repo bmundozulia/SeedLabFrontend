@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
+//import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -38,6 +38,7 @@ import { EmprendedorModule } from './emprendedor/emprendedor.module';
 import { SuperadminModule } from './superadmin/superadmin.module';
 
 
+import { AddLevelComponent } from './superadmin/pages/ruta/add-level/add-level.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { SuperadminModule } from './superadmin/superadmin.module';
     RutasComponent,
     SafeUrlPipe,
     CargaComponent,
+    AddLevelComponent,
   ],
   imports: [
     AngularMaterialModule,
@@ -65,7 +67,7 @@ import { SuperadminModule } from './superadmin/superadmin.module';
     HttpClientModule,
     MatButtonModule,
     MatDialogModule,
-    MatIconModule,
+    //MatIconModule,
     MatListModule,
     MatSidenav,
     MatSidenavModule,
@@ -77,7 +79,8 @@ import { SuperadminModule } from './superadmin/superadmin.module';
     AliadosModule,
     AsesorModule,
     EmprendedorModule,
-    SuperadminModule
+    SuperadminModule,
+  
   ],
   providers: [
     provideClientHydration(),

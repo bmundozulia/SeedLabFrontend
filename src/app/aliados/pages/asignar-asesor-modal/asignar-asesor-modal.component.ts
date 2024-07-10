@@ -59,14 +59,14 @@ export class AsignarAsesorModalComponent implements OnInit {
       const idAsesoria = this.data.asesoria.id_asesoria;
 
       this.asesoriaService.asignarAsesoria(this.token, idAsesoria, idAsesor).subscribe(
-        response => {
+        data => {
           this.asesoriaAsignada.emit(); // Emit the event
           this.dialogRef.close(true);
-          this.alertService.successAlert('Exito','Asesor asignado con exito');
+          this.alertService.successAlert('Exito',data.message);
         },
         error => {
           console.error('Error al asignar asesoría:', error);
-          this.alertService.errorAlert('Error','No se pudo asignar el asesor');
+          this.alertService.errorAlert('Error',error.error.message);
         }
       );
     }

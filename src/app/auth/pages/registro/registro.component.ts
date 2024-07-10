@@ -50,6 +50,45 @@ export class RegistroComponent implements OnInit {
   email: string;
 
 
+  currentIndex = 0;
+  progressWidth = 0; // Añadido para el progreso
+  totalFields = 12; // Número total de campos
+
+  
+  updateProgress() {
+  let filledFields = 0;
+  for (const controlName in this.registerForm.controls) {
+    if (this.registerForm.controls.hasOwnProperty(controlName)) {
+      const control = this.registerForm.get(controlName);
+      if (control && control.value) {
+        filledFields++;
+      }
+    }
+  }
+  this.progressWidth = (filledFields / this.totalFields) * 100;
+}
+
+
+  sections = [
+    { title: 'Información Personal', fieldNames: ['nombre', 'apellido', 'nombretipodoc', 'documento'] },
+    { title: 'Información Adicional', fieldNames: ['fecha_nacimiento', 'genero', 'password', 'email'] },
+    { title: 'Ubicación', fieldNames: ['celular', 'departamento', 'municipio', 'direccion'] }
+  ];
+
+  prev() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.updateProgress();
+    }
+  }
+
+  next() {
+    if (this.currentIndex < this.sections.length - 1) {
+      this.currentIndex++;
+      this.updateProgress();
+    }
+  }
+
 
 
   constructor(
@@ -79,6 +118,8 @@ export class RegistroComponent implements OnInit {
       estado: '1'
     });
   }
+
+  
 
   //Funcion validar password
   passwordValidator(control: AbstractControl) {

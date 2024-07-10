@@ -1,6 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { faMagnifyingGlass, faPenToSquare, faPlus, faXmark, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { AliadoService } from '../../../servicios/aliado.service';
 import { AsesorService } from '../../../servicios/asesor.service';
 import { User } from '../../../Modelos/user.model';
@@ -32,6 +33,8 @@ export class ModalAddAsesoresComponent implements OnInit {
   token: string | null = null;
   nombre: string | null = null;
   nombreAliado: string | null = null;
+  tiempoEspera = 1800;
+  falupa = faCircleQuestion;
 
   asesorForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -138,32 +141,36 @@ export class ModalAddAsesoresComponent implements OnInit {
       password: this.asesorForm.get('password')?.value,
       estado: this.asesorForm.get('estado')?.value,
     };
-    /* Actualiza superadmin */
+    /* Actualiza asesor */
     if (this.asesorId != null) {
       this.alerService.alertaActivarDesactivar("¿Estas seguro de guardar los cambios?", 'question').then((result) => {
         if (result.isConfirmed) {
-          this.aliadoService.updateAsesorAliado(this.token, this.asesorId, asesor).subscribe(
+          this.asesorService.updateAsesor(this.token, this.asesorId, asesor).subscribe(
             data => {
-              location.reload();
+              setTimeout(function () {
+                location.reload();
+              }, this.tiempoEspera);
+              this.alerService.successAlert('Exito', data.message);
             },
             error => {
-              console.error("Error al actualizar el orientador", error)
+              this.alerService.errorAlert('Error', error.error.message);
+              console.error('Error', error.error.message);
             }
           );
         }
       });
-    /* Crea superadmin */
-    }else{
+      /* Crea asesor */
+    } else {
       this.asesorService.createAsesor(this.token, asesor).subscribe(
         data => {
-          console.log(data);
-          this.alerService.successAlert('Exito',data.message);
-          this.dialogRef.close();
-          //location.reload();
+          setTimeout(function () {
+            location.reload();
+          }, this.tiempoEspera);
+          this.alerService.successAlert('Exito', data.message);
         },
         error => {
-          console.error('Error al crear el asesor:', error);
-          this.alerService.errorAlert('Error',error.error.message);
+          //console.error('Error al crear el asesor:', error);
+          this.alerService.errorAlert('Error', error.error.message);
         });
     }
   }

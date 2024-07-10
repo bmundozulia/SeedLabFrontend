@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { AsesorRoutingModule } from './asesor-routing.module';
 
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 
 
@@ -24,7 +25,8 @@ import { AsesorRoutingModule } from './asesor-routing.module';
     SharedModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FilterPipeModule
   ]
 })
 export class AsesorModule { }

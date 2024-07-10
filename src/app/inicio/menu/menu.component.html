@@ -1,12 +1,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<nav class="sidebar shadow-xl" [ngClass]="{ 'slide-left': isLeft }" *ngIf="isAuthenticated">
-    <header class="relative">
-        <div class="flex justify-center">
-        </div>
 
-        <div class="bx bx-chevron-right toggle " (click)="toggleSlide()">
-            <svg xmlns="http://www.w3.org/2000/svg" style="width: 15px; height: 15px;"fill="#FFFFFF" 
+<nav class="sidebar shadow-xl  p-4" [ngClass]="{ 'slide-left': isLeft }" *ngIf="isAuthenticated"> 
+    <header class="relative">
+
+
+        <div class="bx bx-chevron-right toggle absolute top-[20px] left-[226px] transform -translate-y-1/2 h-[40px] w-[40px] bg-sky-500 flex items-center justify-center rounded-r-xl text-white text-xl"
+            (click)="toggleSlide()">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 15px; height: 15px;" fill="#FFFFFF"
                 viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path
                     d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
@@ -14,20 +15,33 @@
         </div>
     </header>
 
-    <div class="menu-bar">
-        <div class="menu max-sm:-mt-8 lg:mt-4">
+    <div class="flex flex-col justify-between h-[calc(100%-50px)] mt-4">
+        <div class="menu max-sm:-mt-8 lg:mt-4 space-y-10">
+            <div class="flex justify-center items-center ">
+                <span class="md:shrink-0 mr-4">
+                    <img src="../assets/images/ERROR404.webp" alt="logo"
+                        class="h-auto w-full object-cover md:h-full md:w-48" />
+                </span>
+            </div>
 
-            <ul class="menu-links mr-9 max-sm:-mt-4 lg:-mt-2">
-                <!-- Inicio -->
-                <li class="h-14 flex items-center ">
-                    <a href="home" class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;" viewBox="0 0 576 512"
-                            class="text-center text-xl min-w-14 text-gray-700 transition duration-200">
-                            <path fill="#ffffff" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/>
-                        </svg>
-                        <span class="mt-1 text nav-text text-base">Inicio</span>
-                    </a>
-                </li>
+
+            <div class="relative overflow-auto  max-h-[245.9px] md:max-h-full custom-scrollbar">
+
+                <ul class="p-0 space-y-2 overflow-auto">
+                    <!-- Inicio -->
+                    <li class="group h-12 flex items-center">
+                        <a href="home"
+                            class="appearance-none no-underline flex items-center w-full h-full p-2 rounded-md transition-all duration-400 text-gray-700 group-hover:bg-sky-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;"
+                                class="text-gray-700 group-hover:text-white text-xl min-w-[60px] transition duration-200"
+                                fill="currentColor"
+                                viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+                            </svg>
+                            <span class="text nav-text text-base font-medium group-hover:text-white ">Inicio</span>
+                        </a>
+                    </li>
 
                 <div *ngFor="let item of menuItems">
                     <li class="h-14 flex items-center ">
@@ -53,6 +67,7 @@
                 </a>
             </li>
         </div>
-        
+
     </div>
+
 </nav>

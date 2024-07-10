@@ -16,3 +16,8 @@ select {
   }
 
   input[type="password"]::-ms-reveal { display: none; }
+
+h1{
+    background-position: 150px;
+}
+  

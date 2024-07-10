@@ -1,19 +1,175 @@
-.carousel-btn {
-  @apply absolute top-1/2 transform -translate-y-1/2 bg-blue-50 text-black border-none w-12 h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg z-10;
+
+body, html {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-.carousel-btn.left-0 {
-  @apply left-36; /* Incrementa el margen izquierdo */
+.banner-swiper-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
 }
 
-.carousel-btn.right-0 {
-  @apply right-36; /* Incrementa el margen derecho */
+.swiper-wrapper {
+  display: flex;
+  height: 100%;
+  margin-block-end: 20px;
 }
 
-.carousel-btn:hover {
-  @apply bg-gray-200;
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
-.carousel-btn:focus {
-  @apply outline-none;
+.swiper-slide .relative {
+  margin-top: -10rem; 
+}
+
+.logo-img {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  max-width: 350px; /* Opcional: puedes establecer un ancho máximo */
+  height: auto;
+  margin: 5%;
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
+  object-position: center;
+  margin-left: 50px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: black;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.swiper-button-prev {
+  left: 6%;
+}
+
+.swiper-button-next {
+  right: 6%;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 24px;
+}
+
+.absolute {
+  bottom: 10%;
+  right: 5%;
+  text-align: right;
+  color: white;
+  max-width: 600px;
+  margin-top: -100%;
+}
+
+.absolute h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.absolute p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.absolute button {
+  background-color: #f97316;
+  color: white;
+  border-radius: 9999px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.absolute button:hover {
+  background-color: #ea580c;
+}
+
+.w-\[28\%\] {
+  margin-right: 3cm;
+}
+
+.relative.top-\[-100px\] {
+  margin-left: 3cm;
+}
+
+.mt-4.text-right button {
+  margin-right: calc(40% + 3cm);
+}
+
+/* Ajusta la descripción */
+.description-line {
+  line-height: 20px;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-size: 22px;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+/* Espacio entre la imagen y la descripción */
+.swiper-slide .relative {
+  margin-top: 0.5rem;
+}
+
+.swiper-pagination {
+  bottom: 30px !important; /* Ajusta la posición vertical */
+}
+
+.swiper-pagination-bullet {
+  background: #FA7D00 !important; /* Color de los bullets */
+  width: 12px !important; /* Tamaño del bullet */
+  height: 12px !important; /* Tamaño del bullet */
+}
+
+.swiper-pagination-bullet-active {
+  background: #00B3ED !important; /* Color del bullet activo */
+  width: 16px !important; /* Tamaño del bullet activo */
+  height: 16px !important; /* Tamaño del bullet activo */
+}
+
+/* CSS global */
+@media (max-width: 640px) {
+  .app-header img {
+    margin-left: 0 !important; /* Elimina el margen izquierdo para pantallas pequeñas */
+    display: block;
+    margin: 0 auto; /* Centra el logo */
+  }
+
+  .nav-tool-items {
+    margin-right: 0 !important;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna en vista móvil */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .app-header img {
+    margin-left: 0 !important; /* Elimina el margen izquierdo para pantallas de tamaño medio */
+    display: block;
+    margin: 0 auto; /* Centra el logo */
+  }
+
+  .nav-tool-items {
+    margin-right: 0 !important;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna en vista de tamaño medio */
+  }
 }
