@@ -15,48 +15,48 @@
             <div class="col-span-2">
                 <h2 class="text-[#fff] text-center mt-4 md:font-[500]">¿Aún no estás registrado en SeedLab? <span
                         class="text-[#00B3ED]">Registrate</span></h2>
-                
+
 
                 <form [formGroup]="loginForm" (ngSubmit)="login()"
-      class="backdrop-brightness-50 bg-[#fff] bg-opacity-55 backdrop-filter backdrop-opacity-50 rounded-3xl p-4 md:p-8 grid w-full max-w-[18rem]  md:max-w-[25rem] mx-auto mt-10">
+                    class="backdrop-brightness-50 bg-[#fff] bg-opacity-55 backdrop-filter backdrop-opacity-50 rounded-3xl p-4 md:p-8 grid w-full max-w-[18rem]  md:max-w-[25rem] mx-auto mt-10">
 
-    <!-- Email input -->
-    <div class="mb-2">
-        <label for="email" class="block truncate text-base">Correo electronico:</label>
-        <div class="mt-2">
-            <input type="email" id="email" name="email" formControlName="email"
-                   class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
-        </div>
-        
-    </div>
+                    <!-- Email input -->
+                    <div class="mb-2">
+                        <label for="email" class="block truncate text-base">Correo electronico:</label>
+                        <div class="mt-2">
+                            <input type="email" id="email" name="email" formControlName="email"
+                                class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
+                        </div>
 
-    <!-- Password input -->
-    <div class="relative">
-        <label for="password" class="block truncate text-base">Contraseña:</label>
-        <div class="mt-2">
-            <input [type]="hide ? 'password' : 'text'" id="password" formControlName="password"
-                   placeholder="Contraseña"
-                   class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
-            <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
-                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
-                    class="absolute right-3 top-1/2 transform -translate-y-1/2">
-                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-            </button>
-        </div>
-    </div>
-    
-    <div class="flex justify-center mt-3">
-        <h2><span class="text-[#00B3ED]">¿Olvidaste tu contraseña?</span></h2>
-    </div>
-    
-    <div class="flex justify-center space-x-2">
-        <button type="submit"
-                class="bg-[#fcb404] hover:bg-[#fcb404] text-white py-2 px-4 rounded-full">Iniciar sesión</button>
-    </div>
-    
+                    </div>
 
-</form>
-    
+                    <!-- Password input -->
+                    <div class="relative">
+                        <label for="password" class="block truncate text-base">Contraseña:</label>
+                        <div class="rounded-xl bg-gray-200 border-0 text-base form-control flex h-14">
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
+                                class="rounded-xl bg-gray-200 w-5/6 border-0 h-12 text-base form-control  focus:border-transparent focus:ring-0"
+                                placeholder="Contraseña">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center mt-3">
+                        <h2><span class="text-[#00B3ED]">¿Olvidaste tu contraseña?</span></h2>
+                    </div>
+
+                    <div class="flex justify-center space-x-2">
+                        <button type="submit"
+                            class="bg-[#fcb404] hover:bg-[#fcb404] text-white py-2 px-4 rounded-full">Iniciar
+                            sesión</button>
+                    </div>
+
+
+                </form>
+
 
             </div>
             <!-- columna 2 -->
