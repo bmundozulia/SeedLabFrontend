@@ -123,6 +123,9 @@ export class ModalComponent implements OnInit {
           setTimeout(() => {
             this.rutaForm.get('estado')?.setValue(this.isActive);
           })
+        },
+        error => {
+          console.log(error);
         }
       )
     }
