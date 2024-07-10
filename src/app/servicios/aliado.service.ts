@@ -63,4 +63,9 @@ export class AliadoService {
     return this.http.get(this.url+"/"+1);
   }
 
+  getDashboard(access_token: any, idAsesor: number): Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.get<any>(`${this.url}/dashboardAliado/${idAsesor}`, options);
+  }
+
 }

@@ -40,6 +40,7 @@ import { SuperadminModule } from './superadmin/superadmin.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +78,8 @@ import { SuperadminModule } from './superadmin/superadmin.module';
     AliadosModule,
     AsesorModule,
     EmprendedorModule,
-    SuperadminModule
+    SuperadminModule,
+  
   ],
   providers: [
     provideClientHydration(),
