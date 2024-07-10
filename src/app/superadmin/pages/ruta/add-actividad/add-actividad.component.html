@@ -54,35 +54,35 @@
       <h2 class="text-center my-8">2 Kickoff (evento imprende)</h2>
       <div>
         <!-- Lista de rutas -->
-        <h2>Rutas</h2>
+        <!-- <h2>Rutas</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
           <div *ngFor="let ruta of rutas" (click)="selectRuta(ruta)"
             style="cursor: pointer; border: 1px solid #ccc; padding: 10px;">
             {{ ruta }}
           </div>
-        </div>
+        </div> -->
 
         <!-- Formulario de Actividad, Nivel y Lección -->
-        <div *ngIf="selectedRuta">
-          <h3>Formulario para {{ selectedRuta }}</h3>
+        <!-- <div *ngIf="selectedRuta">
+          <h3>Formulario para {{ selectedRuta }}</h3> -->
 
           <!-- Paso 1: Crear Actividad -->
-          <div *ngIf="currentStep >= 1" style="margin-bottom: 20px;">
+          <!-- <div *ngIf="currentStep >= 1" style="margin-bottom: 20px;">
             <h4>Crear Actividad</h4>
             <input type="text" placeholder="Nombre de la Actividad" [(ngModel)]="actividad.nombre">
             <button *ngIf="currentStep === 1" (click)="nextStep()">Siguiente</button>
-          </div>
+          </div> -->
 
           <!-- Paso 2: Crear Nivel -->
-          <div *ngIf="currentStep >= 2" style="margin-bottom: 20px;">
+          <!-- <div *ngIf="currentStep >= 2" style="margin-bottom: 20px;">
             <h4>Crear Nivel</h4>
             <input type="text" placeholder="Nombre del Nivel" [(ngModel)]="nivel.nombre">
             <input type="text" placeholder="Descripción del Nivel" [(ngModel)]="nivel.descripcion">
             <button *ngIf="currentStep === 2" (click)="nextStep()">Siguiente</button>
-          </div>
+          </div> -->
 
           <!-- Paso 3: Crear Lección -->
-          <div *ngIf="currentStep >= 3" style="margin-bottom: 20px;">
+          <!-- <div *ngIf="currentStep >= 3" style="margin-bottom: 20px;">
             <h4>Crear Lección</h4>
             <div *ngFor="let leccion of lecciones; let i = index">
               <input type="text" placeholder="Nombre de la Lección" [(ngModel)]="leccion.nombre">
@@ -92,10 +92,10 @@
             </div>
             <button (click)="addLeccion()">Añadir Otra Lección</button>
           </div>
-        </div>
+        </div> -->
 
         <!-- Añadir Otro Nivel -->
-        <div *ngIf="addingOtroNivel" style="margin-top: 20px;">
+        <!-- <div *ngIf="addingOtroNivel" style="margin-top: 20px;">
           <div style="margin-bottom: 20px;">
             <h4>Crear Otro Nivel</h4>
             <input type="text" placeholder="Nombre del Nivel" [(ngModel)]="otroNivel.nombre">
@@ -120,4 +120,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
