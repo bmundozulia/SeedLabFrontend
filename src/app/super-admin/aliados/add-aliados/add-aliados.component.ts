@@ -98,8 +98,8 @@ export class AddAliadosComponent {
         img.src = e.target.result;
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          canvas.width = 800; // Nueva anchura
-          canvas.height = 800; // Nueva altura
+          canvas.width = 600; // Nueva anchura
+          canvas.height = 600; // Nueva altura
           const pica = Pica();
           pica.resize(img, canvas)
             .then((result) => pica.toBlob(result, 'image/jpeg', 0.90))

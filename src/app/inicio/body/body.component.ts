@@ -5,6 +5,7 @@ import Swiper from 'swiper';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { Aliado } from '../../Modelos/aliado.model';
 import { MatToolbar } from '@angular/material/toolbar';
+
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
@@ -13,6 +14,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 })
 export class BodyComponent implements OnInit, AfterViewInit {
   bannerSwiper: Swiper | undefined;
+  alliesSwiper: Swiper | undefined;
   listAliados: Aliado[] = [];
 
   constructor(
@@ -25,10 +27,13 @@ export class BodyComponent implements OnInit, AfterViewInit {
     this.aliadoService.getaliados().subscribe(
       data => {
         console.log('Aliados:', data);
-        this.listAliados = data;
+        this.listAliados = data.map(aliado => ({
+          ...aliado,
+          descripcion: this.splitDescription(aliado.descripcion, 8)
+        }));
         this.cdr.detectChanges(); // Fuerza la detección de cambios después de recibir los datos
         if (isPlatformBrowser(this.platformId)) {
-          this.initBannerSwiper(); // Inicializa Swiper después de la detección de cambios
+          this.initSwipers(); // Inicializa Swiper después de la detección de cambios
         }
       },
       error => {
@@ -43,8 +48,13 @@ export class BodyComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId) && this.listAliados.length > 0) {
-      this.initBannerSwiper();
+      this.initSwipers();
     }
+  }
+
+  private initSwipers(): void {
+    this.initBannerSwiper();
+    this.initAlliesSwiper();
   }
 
   private initBannerSwiper(): void {
@@ -73,4 +83,30 @@ export class BodyComponent implements OnInit, AfterViewInit {
     });
   }
 
+  private initAlliesSwiper(): void {
+    if (this.alliesSwiper) {
+      this.alliesSwiper.destroy(true, true);
+    }
+
+    this.alliesSwiper = new Swiper('.allies-swiper-container', {
+      modules: [Pagination],
+      slidesPerView: 'auto', // Mostrar todas las diapositivas sin límite
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        bulletClass: 'swiper-pagination-bullet',
+        bulletActiveClass: 'swiper-pagination-bullet-active',
+      },
+    });
+  }
+
+  private splitDescription(description: string, wordsPerLine: number): string[] {
+    const words = description.split(' ');
+    const lines = [];
+    for (let i = 0; i < words.length; i += wordsPerLine) {
+      lines.push(words.slice(i, i + wordsPerLine).join(' '));
+    }
+    return lines;
+  }
 }
