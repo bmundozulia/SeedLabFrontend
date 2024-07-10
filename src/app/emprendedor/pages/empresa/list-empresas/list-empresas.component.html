@@ -1,0 +1,58 @@
+<app-header [title]="'Bienvenido al panel de empresas'"
+    [subtitle]="'Aqui podras ver y gestionar tus empresas'"></app-header>
+
+<div class="flex justify-center items-center h-full md:w-full md:pt-8">
+    <div class="justify-center items-center w-4/6 max-md:w-72">
+        <div class="max-md:pb-6 md:pb-9 md:flex hd:w-full max-lg:flex max-lg:flex-wrap">
+            <div class="absolute flex items-center ps-3 pointer-events-none ">
+                <fa-icon [icon]="falupa" class="text-xl right-2 transform mt-2" style="color: #adb7c7;"></fa-icon>
+            </div>
+            <input type="text" id="search" [(ngModel)]="userFilter.nombre"
+                class="w-[500px] h-12 ps-5 text-sm border border-gray-300 rounded-lg max-lg:w-full outline-none appearance-none max-lg:mb-5"
+                placeholder="Buscar..." required />
+            <div class="flex md:justify-end justify-center w-full space-x-4">
+                <a href="add-empresa"><button type="submit"
+                        class="bg-sky-400 hover:bg-sky-500 text-white font-bold py-2 px-4 border border-blue-700 rounded">Añadir
+                        Empresa</button></a>
+            </div>
+        </div>
+        <div class="max-lg:scale-0 max-lg:mt-0  h-14 w-full bg-white rounded-xl  grid items-center px-3"
+            style="grid-template-columns: 1.5fr 1.5fr 1.5fr 0.5fr;">
+            <h2 class="text-vgraylight font-medium">Empresas</h2>
+            <h2 class="text-vgraylight font-medium text-center">Telefono</h2>
+            <h2 class="text-vgraylight font-medium text-center">Dirección</h2>
+        </div>
+
+        <!-- <app-carga [isLoading]="isLoading"></app-carga>
+         <div *ngIf="!isLoading" -->
+
+        <div class="w-full flex xl:items-center lg:flex-col max-lg:justify-center max-lg:flex-row max-lg:flex-wrap max-lg:-translate-y-16 mb-6">
+            <div *ngFor="let empresa of listaEmpresas |filterBy:userFilter| paginate: { itemsPerPage: 5, currentPage: page }"
+                class="bg-gray-200 rounded-lg items-center mt-4 max-lg:max-w-[250px] max-lg:w-[250px] max-lg:p-5 max-lg:rounded-2lg max-lg:mx-2 lg:grid lg:text-center lg:grid-cols-[1.5fr_1.5fr_1.5fr_0.5fr] lg:min-h-14 lg:w-full">
+                <h4 class="text-left overflow-wrap-normal break-all lg:mx-3 lg:m-0 my-0">
+                    <span class="block lg:hidden font-bold">Nombre: </span>{{empresa.nombre}}
+                </h4>
+                <h4 class="overflow-wrap-normal break-all m-0">
+                    <span class="block lg:hidden font-bold">Telefono: </span>{{empresa.telefono}}
+                </h4>
+                <h4 class="overflow-wrap-normal break-all m-0">
+                    <span class="block lg:hidden font-bold">Dirección: </span>{{empresa.direccion}}
+                </h4>
+                <div class="flex max-lg:mt-2 justify-end items-end lg:justify-center lg:items-center lg:mt-0">
+                    <fa-icon [icon]="faPen" class="text-xl text-sky-500"></fa-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="!isLoading" class="text-center max-md:pr-10">
+            <div class="md:hidden">
+                <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel="">
+                </pagination-controls>
+            </div>
+            <div class="hidden md:block">
+                <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

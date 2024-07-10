@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 
 import { User } from '../../Modelos/user.model';
 import { AuthService } from '../../servicios/auth.service';
+import { SuperadminRoutingModule } from '../../superadmin/superadmin-routing.module';
+import { MenuService } from '../../servicios/menu.service';
 
 @Component({
   selector: 'app-menu',
@@ -19,13 +21,15 @@ export class MenuComponent {
   user: User | null = null;
   currentRolName: string | null = "";
   isAuthenticated: boolean = true;
+  menuItems: any[] = [];
 
   toggleSlide() {
     this.isLeft = !this.isLeft;
   }
 
   constructor(private router: Router,
-    private authservices: AuthService
+    private authservices: AuthService,
+    private menuService: MenuService
   ) {
     
    }
@@ -39,6 +43,7 @@ export class MenuComponent {
         this.user = JSON.parse(identityJSON);
         this.currentRolName = localStorage.getItem('currentRolName');
         this.currentRolId = this.user.id_rol?.toString();
+        console.log(this.currentRolName);
       }
     }
   }
@@ -54,7 +59,9 @@ export class MenuComponent {
     } else {
       console.log("No está logueado o no se pudo cargar el usuario.");
     }
+    this.menuItems = this.menuService.getRoutesByRole(this.currentRolName); 
   }
+
 
 
   logout() {
