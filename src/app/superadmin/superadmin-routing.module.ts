@@ -6,6 +6,7 @@ import { PersonalizacionesComponent } from './pages/personalizaciones/personaliz
 import { ListRutasComponent } from './pages/ruta/list-ruta/list-rutas.component';
 import { ListOrientadorComponent } from './pages/orientador/list-orientador/list-orientador.component';
 import { AddActividadComponent } from './pages/ruta/add-actividad/add-actividad.component';
+import { ListAliadosComponent } from './pages/aliados/list-aliados/list-aliados.component';
 
 const routes: Routes = [ 
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       {path: 'list-ruta', component: ListRutasComponent, data: {title: 'Rutas'}},
       {path: 'list-orientador', component: ListOrientadorComponent, data:{title: 'Orientador'}},
       {path: 'add-actividad', component: AddActividadComponent, data: {title: 'Actividad'}},
+      {path: 'list-aliados', component: ListAliadosComponent, data: {title: 'Aliados'}},
     ]
   }
  ];
