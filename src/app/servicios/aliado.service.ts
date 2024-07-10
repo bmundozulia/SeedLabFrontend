@@ -65,7 +65,7 @@ export class AliadoService {
 /////////////////////////////////////////////////////////////
   crearActividad(access_token:any, aliado: any): Observable<any>{
     const options = { headers: this.CreacionHeaders(access_token)};
-    return this.http.post(this.url+"actividad",aliado,options)
+    return this.http.post(environment.apiUrl+"actividad/actividad",aliado,options)
   }
 
   crearNivel(access_token:any,aliado:any):Observable<any>{

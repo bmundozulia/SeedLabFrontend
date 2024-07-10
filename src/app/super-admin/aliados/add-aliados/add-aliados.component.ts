@@ -2,7 +2,7 @@
 
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import Pica from 'pica';
 import { AliadoService } from '../../../servicios/aliado.service';
 
 @Component({
@@ -82,15 +82,31 @@ export class AddAliadosComponent {
     });
   }
 
-  async onFileSelected(event: any): Promise<void> {
-    const file = event.target.files[0];
-    const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-
-    if (file && allowedExtensions.exec(file.name)) {
-      const resizedImage = await this.resizeAndCompressImage(file, 280, 280, 20 * 1024);
-      this.logo = resizedImage;
-    } else {
-      alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif).');
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = 300; // Nueva anchura
+          canvas.height = 300; // Nueva altura
+          const pica = Pica();
+          pica.resize(img, canvas)
+            .then((result) => pica.toBlob(result, 'image/jpeg', 0.90))
+            .then((blob) => {
+              const reader2 = new FileReader();
+              reader2.onload = (e2: any) => {
+                this.logo = e2.target.result;
+               //this.aliadoForm.patchValue({ logo: this.logo });
+              };
+              reader2.readAsDataURL(blob);
+            });
+        };
+      };
+      reader.readAsDataURL(file);
     }
   }
 
