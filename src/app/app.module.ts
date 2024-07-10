@@ -68,6 +68,7 @@ import { VerAsesoriasComponent } from './orientador/asesorias/list-asesorias/ver
 import { Error404Component } from './auth/error404/error404.component';
 import { WordWrapPipe } from './word-wrap.pipe';
 
+import { AddLevelComponent } from './super-admin/ruta/add-level/add-level.component';
 
 
 @NgModule({
@@ -115,6 +116,7 @@ import { WordWrapPipe } from './word-wrap.pipe';
     CargaComponent,
     Error404Component,
     WordWrapPipe,
+    AddLevelComponent,
   ],
   imports: [
     AngularMaterialModule,
