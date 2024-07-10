@@ -8,7 +8,7 @@ import { User } from '../../../../Modelos/user.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import Pica from 'pica';
-import { AlertService } from '../../servicios/alert.service';
+import { AlertService } from '../../../../servicios/alert.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -43,7 +43,7 @@ export class ModalAddRutaComponent implements OnInit {
     imagen_ruta: [null]
   });
 
-  constructor(public dialogRef: MatDialogRef<ModalComponent>,
+  constructor(public dialogRef: MatDialogRef<ModalAddRutaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private modalSS: SwitchService,
     private rutaService: RutaService,

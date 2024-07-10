@@ -6,8 +6,8 @@ import { Ruta } from '../../../../Modelos/ruta.modelo';
 import { User } from '../../../../Modelos/user.model';
 import { SwitchService } from '../../../../servicios/switch.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ModalcrearSuperadminComponent } from '../../modalcrear-superadmin/modalcrear-superadmin.component';
-import { ModalComponent } from '../../modal/modal.component';
+import { ModalCrearSuperadminComponent } from '../../modal-crear-superadmin/modal-crear-superadmin.component';
+import { ModalAddRutaComponent } from '../modal-add-ruta/modal-add-ruta.component';
 
 @Component({
   selector: 'app-list-rutas',
@@ -45,8 +45,8 @@ export class ListRutasComponent implements OnInit {
 
 
   openModal(rutaId: number | null): void {
-    let dialogRef: MatDialogRef<ModalComponent>;
-    dialogRef = this.dialog.open(ModalComponent, {
+    let dialogRef: MatDialogRef<ModalAddRutaComponent>;
+    dialogRef = this.dialog.open(ModalAddRutaComponent, {
       data: { rutaId: rutaId }
     });
     dialogRef.afterClosed().subscribe(result => {

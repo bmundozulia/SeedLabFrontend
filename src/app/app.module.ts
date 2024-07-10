@@ -38,7 +38,6 @@ import { EmprendedorModule } from './emprendedor/emprendedor.module';
 import { SuperadminModule } from './superadmin/superadmin.module';
 
 
-
 import { AddLevelComponent } from './super-admin/ruta/add-level/add-level.component';
 
 
@@ -54,7 +53,6 @@ import { AddLevelComponent } from './super-admin/ruta/add-level/add-level.compon
     RutasComponent,
     SafeUrlPipe,
     CargaComponent,
-    Error404Component,
     AddLevelComponent,
   ],
   imports: [
