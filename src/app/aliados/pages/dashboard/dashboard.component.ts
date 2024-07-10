@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AliadoService } from '../../../servicios/aliado.service';
 import { User } from '../../../Modelos/user.model';
 import { Router } from '@angular/router';
-import { ChartType, ChartOptions, ChartDataset, registerables, ChartData } from 'chart.js';
+import { ChartType, ChartOptions, ChartDataset,  ChartData } from 'chart.js';
 
 
 
@@ -17,27 +17,33 @@ export class DashboardComponent {
   id: number;
   currentRolId: number;
 
-  public pieChartOptions: ChartOptions<'pie'> = {
+  public pieChartOptions: ChartOptions<'doughnut'> = {
     responsive: true,
+    maintainAspectRatio: false,
   };
 
   public pendientesFinalizadasLabels: string[] = ['Pendientes', 'Finalizadas', 'Sin asignar', 'Asignadas'];
-  public pendientesFinalizadasData: ChartData<'pie'> = {
-    labels: this.pendientesFinalizadasLabels,
-    datasets: [
-      { data: [0, 0], label: 'Asesorías' } 
-    ]
-  };
+  public pendientesFinalizadasData:ChartDataset[] = [
+    {
+      label: 'Asesorías',
+      data: [0, 0], // Estos valores serán actualizados después de cargar los datos
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)'
+      ],
+    }
+  ];
 
- 
+
   public pieChartLegend = true;
-  public pieChartType: ChartType = 'pie';
+  public pieChartType: ChartType = 'doughnut';
+  public barChartType: ChartType = 'bar';
 
   public asesoresLabels: string[] = ['Asesores'];
-  public asesoresData: ChartData<'pie'> = {
+  public asesoresData: ChartData<'bar'> = {
     labels: this.asesoresLabels,
     datasets: [
-      { data: [0], label: 'Asesores' } 
+      { data: [0], label: 'Asesores' }
     ]
   };
 
@@ -78,19 +84,13 @@ export class DashboardComponent {
     this.aliadoService.getDashboard(this.token, this.id).subscribe(
       data => {
         console.log(data);
-        this.pendientesFinalizadasData = {
-          labels: this.pendientesFinalizadasLabels,
-          datasets: [
-            { data: [data['Asesorias Pendientes'], data['Asesorias Finalizadas'], data['Asesorias Sin Asignar'], data['Asesorias Asignadas']], label: 'Asesorías' }
-          ]
-        };
-        this.asesoresData = {
-          labels: this.asesoresLabels,
-          datasets: [
-            { data: [data['Mis Asesores']], label: 'Asesores' }
-          ]
-        };
-      },
+          this.pendientesFinalizadasData[0].data = [
+            data['Asesorias Pendientes'],
+            data['Asesorias Finalizadas'],
+            data['Asesorias Sin Asignar'], 
+            data['Asesorias Asignadas']
+          ];
+        },
       (error) => {
         console.error(error);
       }
