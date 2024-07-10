@@ -97,5 +97,33 @@ export class AliadoService {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.get<any>(`${this.url}/dashboardAliado/${idAsesor}`, options);
   }
+/////////////////////////////////////////////////////////////
+  crearActividad(access_token:any, aliado: any): Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.post(environment.apiUrl+"actividad/actividad",aliado,options)
+  }
+
+  crearNivel(access_token:any,aliado:any):Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.post(this.url+"nivel",aliado,options) 
+  }
+
+  crearLeccion(access_token:any,aliado:any):Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.post(this.url+"leccion",aliado,options)
+  }
+
+  crearContenicoLeccion(access_token:string, aliado:any):Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.post(this.url+"contenido_por_leccion",aliado,options)
+  }
+
+
+  
+
+  // mostrarRutas(access_token: any, id: number): Observable<any> {
+  //   const options = { headers: this.CreacionHeaders(access_token)};
+  //   return this.http.get<any>(this.url+"ruta"+id, options)
+  // }
 
 }

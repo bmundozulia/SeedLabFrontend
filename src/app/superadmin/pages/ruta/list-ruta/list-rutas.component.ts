@@ -5,6 +5,9 @@ import { RutaService } from '../../../../servicios/rutas.service';
 import { Ruta } from '../../../../Modelos/ruta.modelo';
 import { User } from '../../../../Modelos/user.model';
 import { SwitchService } from '../../../../servicios/switch.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ModalcrearSuperadminComponent } from '../../modalcrear-superadmin/modalcrear-superadmin.component';
+import { ModalComponent } from '../../modal/modal.component';
 
 @Component({
   selector: 'app-list-rutas',
@@ -14,6 +17,8 @@ import { SwitchService } from '../../../../servicios/switch.service';
 })
 export class ListRutasComponent implements OnInit {
   userFilter: any = { nombre: '', estado: 'Activo', fecha_creacion: '' };
+
+
   public page: number = 1;
   listaRutas: Ruta[] = [];
   fax = faXmark;
@@ -23,11 +28,13 @@ export class ListRutasComponent implements OnInit {
   user: User | null = null;
   currentRolId: number;
   modalSwitch: boolean;
+  listaRutasFiltrada: Ruta[] = [];
 
   constructor(
     private rutaService: RutaService,
     private router: Router,
     private modalSS: SwitchService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -36,13 +43,17 @@ export class ListRutasComponent implements OnInit {
     this.modalSS.$modal.subscribe((valor) => { this.modalSwitch = valor });
   }
 
-  private ESTADO_MAP: { [key: number]: string } = {
-    1: 'Activo',
-    0: 'Inactivo'
-  };
-  openModal() {
-    this.modalSwitch = true;
+
+  openModal(rutaId: number | null): void {
+    let dialogRef: MatDialogRef<ModalComponent>;
+    dialogRef = this.dialog.open(ModalComponent, {
+      data: { rutaId: rutaId }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
+
+
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
@@ -65,14 +76,10 @@ export class ListRutasComponent implements OnInit {
 
   cargarRutas(): void {
     if (this.token) {
-      this.rutaService.getAllRutas(this.token).subscribe(
-        (data: Ruta[]) => {
-          this.listaRutas = data.filter(item => this.ESTADO_MAP[item.estado] === this.userFilter.estado).map((item: any) =>
-            new Ruta(
-              item.nombre,
-              item.fecha_creacion,
-              this.ESTADO_MAP[item.estado] ?? 'Desconocido')
-          );
+      this.rutaService.getAllRutas(this.token, this.userFilter.estado).subscribe(
+        (data) => {
+          this.listaRutas = data;
+          console.log('listaRutas filtrada:', this.listaRutas);
         },
         (err) => {
           console.log(err);
@@ -93,4 +100,9 @@ export class ListRutasComponent implements OnInit {
     this.userFilter = { nombre: '', estado: 'Activo', fecha_creacion: '' };
     this.cargarRutas();
   }
+  
+  openModalSINId(): void {
+    this.openModal(null);
+  }
+
 }

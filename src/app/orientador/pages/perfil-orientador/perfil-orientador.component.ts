@@ -109,8 +109,11 @@ export class PerfilOrientadorComponent {
       (data) => {
         location.reload();
       },
-      (err) => {
-        console.log(err);
+      error => { 
+        console.error(error);
+        if (error.status === 402) {
+          this.alertService.errorAlert('Error',error.error.message);
+        }
       }
     )
   }

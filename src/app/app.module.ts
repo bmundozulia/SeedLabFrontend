@@ -39,6 +39,7 @@ import { SuperadminModule } from './superadmin/superadmin.module';
 
 
 
+import { AddLevelComponent } from './super-admin/ruta/add-level/add-level.component';
 
 
 @NgModule({
@@ -53,6 +54,8 @@ import { SuperadminModule } from './superadmin/superadmin.module';
     RutasComponent,
     SafeUrlPipe,
     CargaComponent,
+    Error404Component,
+    AddLevelComponent,
   ],
   imports: [
     AngularMaterialModule,

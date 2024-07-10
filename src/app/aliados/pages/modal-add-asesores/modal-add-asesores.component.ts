@@ -1,6 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { faMagnifyingGlass, faPenToSquare, faPlus, faXmark, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { AliadoService } from '../../../servicios/aliado.service';
 import { AsesorService } from '../../../servicios/asesor.service';
 import { User } from '../../../Modelos/user.model';
@@ -33,6 +34,7 @@ export class ModalAddAsesoresComponent implements OnInit {
   nombre: string | null = null;
   nombreAliado: string | null = null;
   tiempoEspera = 1800;
+  falupa = faCircleQuestion;
 
   asesorForm = this.fb.group({
     nombre: ['', Validators.required],
