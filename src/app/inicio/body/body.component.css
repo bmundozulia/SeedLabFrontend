@@ -1,3 +1,4 @@
+
 body, html {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -28,12 +29,18 @@ body, html {
   height: 100%;
 }
 
-.img-responsive {
-  width: 80%;
+.swiper-slide .relative {
+  margin-top: -10rem; 
+}
+
+.logo-img {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  max-width: 350px; /* Opcional: puedes establecer un ancho máximo */
   height: auto;
-  max-width: 400px;
-  object-fit: inherit;
+  margin: 5%;
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
   object-position: center;
+  margin-left: 50px;
 }
 
 .swiper-button-prev,
@@ -97,75 +104,6 @@ body, html {
   background-color: #ea580c;
 }
 
-.swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background: #D1D5DB;
-  opacity: 1;
-}
-
-.swiper-pagination-bullet-active {
-  background: #6B7280;
-}
-
-.bg-cyan-500 {
-  background-color: #00aeef;
-}
-
-.bg-orange-400 {
-  background-color: #ff6900;
-}
-
-h2 {
-  font-size: 2.5rem;
-  line-height: 1.2;
-}
-
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.bg-gray-800 {
-  background-color: #333333;
-}
-
-.text-orange-400 {
-  color: #ff6900;
-}
-
-.container {
-  max-width: 1200px;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.mt-12 {
-  margin-top: 3rem;
-}
-
-.custom-text {
-  letter-spacing: 0.05em;
-  line-height: 1.1;
-}
-
-.description-line {
-  line-height: 1.2;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  padding: 0;
-  font-size: 22px;
-  letter-spacing: normal;
-  margin-bottom: 1rem;
-}
-
 .w-\[28\%\] {
   margin-right: 3cm;
 }
@@ -178,10 +116,60 @@ h2 {
   margin-right: calc(40% + 3cm);
 }
 
-.img-responsive {
-  width: 80%;  /* Asegura que la imagen ocupe el 100% del contenedor */
-  height: auto; /* Mantiene la proporción de la imagen */
-  max-width: 400px;  /* Limita el ancho máximo de la imagen */
-  object-fit: cover;  /* Asegura que la imagen cubra el área */
-  object-position: center;  /* Centra la imagen */
+/* Ajusta la descripción */
+.description-line {
+  line-height: 20px;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-size: 22px;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+/* Espacio entre la imagen y la descripción */
+.swiper-slide .relative {
+  margin-top: 0.5rem;
+}
+
+.swiper-pagination {
+  bottom: 30px !important; /* Ajusta la posición vertical */
+}
+
+.swiper-pagination-bullet {
+  background: #FA7D00 !important; /* Color de los bullets */
+  width: 12px !important; /* Tamaño del bullet */
+  height: 12px !important; /* Tamaño del bullet */
+}
+
+.swiper-pagination-bullet-active {
+  background: #00B3ED !important; /* Color del bullet activo */
+  width: 16px !important; /* Tamaño del bullet activo */
+  height: 16px !important; /* Tamaño del bullet activo */
+}
+
+/* CSS global */
+@media (max-width: 640px) {
+  .app-header img {
+    margin-left: 0 !important; /* Elimina el margen izquierdo para pantallas pequeñas */
+    display: block;
+    margin: 0 auto; /* Centra el logo */
+  }
+
+  .nav-tool-items {
+    margin-right: 0 !important;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna en vista móvil */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .app-header img {
+    margin-left: 0 !important; /* Elimina el margen izquierdo para pantallas de tamaño medio */
+    display: block;
+    margin: 0 auto; /* Centra el logo */
+  }
+
+  .nav-tool-items {
+    margin-right: 0 !important;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna en vista de tamaño medio */
+  }
 }

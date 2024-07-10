@@ -21,11 +21,12 @@ export class BodyComponent implements OnInit, AfterViewInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private aliadoService: AliadoService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.aliadoService.getaliados().subscribe(
       data => {
+        console.log('Aliados:', data);
         this.listAliados = data.map(aliado => ({
           ...aliado,
           descripcion: this.splitDescription(aliado.descripcion, 8)
@@ -39,6 +40,10 @@ export class BodyComponent implements OnInit, AfterViewInit {
         console.log(error);
       }
     );
+  }
+
+  handleImageError(event: any) {
+    event.target.src = 'assets/images/default-image.jpg'; // Ajusta esto a tu imagen por defecto
   }
 
   ngAfterViewInit(): void {
@@ -56,7 +61,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
     if (this.bannerSwiper) {
       this.bannerSwiper.destroy(true, true);
     }
-
+  
     this.bannerSwiper = new Swiper('.banner-swiper-container', {
       modules: [Navigation, Autoplay, Pagination],
       slidesPerView: 1,
@@ -77,6 +82,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
       },
     });
   }
+  
 
   private initAlliesSwiper(): void {
     if (this.alliesSwiper) {
@@ -104,4 +110,5 @@ export class BodyComponent implements OnInit, AfterViewInit {
     }
     return lines;
   }
+  
 }
