@@ -38,7 +38,7 @@ import { EmprendedorModule } from './emprendedor/emprendedor.module';
 import { SuperadminModule } from './superadmin/superadmin.module';
 
 
-import { AddLevelComponent } from './super-admin/ruta/add-level/add-level.component';
+import { AddLevelComponent } from './superadmin/pages/ruta/add-level/add-level.component';
 
 
 @NgModule({

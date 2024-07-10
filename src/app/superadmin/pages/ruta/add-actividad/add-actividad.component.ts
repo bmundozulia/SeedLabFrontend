@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { Actividad } from '../../../../Modelos/actividad.model';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Ruta } from '../../../../Modelos/ruta.modelo';
-import { AddLevelComponent } from '../../../../super-admin/ruta/add-level/add-level.component';
+import { AddLevelComponent } from '../add-level/add-level.component';
 import { AlertService } from '../../../../servicios/alert.service';
 import { ActividadService } from '../../../../servicios/actividad.service';
 import { User } from '../../../../Modelos/user.model';

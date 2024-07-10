@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ActividadService } from '../../../servicios/actividad.service';
-import { AliadoService } from '../../../servicios/aliado.service';
-import { User } from '../../../Modelos/user.model';
+import { ActividadService } from '../../../../servicios/actividad.service';
+import { AliadoService } from '../../../../servicios/aliado.service';
+import { User } from '../../../../Modelos/user.model';
 import { Router } from '@angular/router';
-import { Nivel } from '../../../Modelos/nivel.model';
+import { Nivel } from '../../../../Modelos/nivel.model';
 
 @Component({
   selector: 'app-add-level',
