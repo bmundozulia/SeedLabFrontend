@@ -1,14 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  important:true,
+  important: true,
   content: [
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-pattern': "url('./assets/images/fondoRegister.jpeg')"
+
+      },
+      colors: {
+        'custom-gray': 'rgba(188, 188, 188, 0.5)'
+      }
+    },
   },
   plugins: [],
-  
+
   "styles": [
     "src/styles.css"
   ],
@@ -18,5 +26,5 @@ module.exports = {
       require('autoprefixer')
     ]
   }
-  
+
 }
