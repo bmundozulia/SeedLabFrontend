@@ -1,77 +1,69 @@
 <div class="flex justify-end w-full">
   <mat-toolbar class="app-header bg-white flex items-center py-14 px-8 justify-between w-full">
     <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-56 h-auto ml-52">
-    <span class="nav-tool-items flex max-xl:flex-col items-center space-x-4 md:space-x-8 mt-4 md:mt-0 mr-52">
-      <a routerLink= "/auth/login" mat-button routerLinkActive="active"
-        class="text-xs md:text-sm bg-[#373435] text-white rounded-full font-poppins font-bold py-2 px-[18px]">Iniciar
-        sesión</a>
-      <a routerLink="/auth/registro" mat-button routerLinkActive="active"
-        class="text-xs md:text-sm bg-[#00B3ED] text-white rounded-full font-poppins font-bold py-2 px-[13px]">Registrarse</a>
-    </span>
+    <span class="nav-tool-items flex items-center space-x-8 mt-0 mr-52 max-lg:flex-col max-lg:mr-0 max-lg:space-x-0 max-lg:space-y-2">
+  <a routerLink= "/auth/login" mat-button routerLinkActive="active"
+     class="text-xs md:text-sm bg-[#373435] text-white rounded-full font-poppins font-bold py-2 px-[18px]">Iniciar sesión</a>
+  <a routerLink="/auth/registro" mat-button routerLinkActive="active"
+     class="text-xs md:text-sm bg-[#00B3ED] text-white rounded-full font-poppins font-bold py-2 px-[13px]">Registrarse</a>
+</span>   
   </mat-toolbar>
 </div>
 
-
 <div class="banner-swiper-container w-full h-screen relative overflow-hidden">
-  <div class="swiper-wrapper ">
+  <div class="swiper-wrapper">
     <ng-container *ngFor="let aliado of listAliados">
       <div *ngIf="aliado.banner" class="swiper-slide banner-swiper-slide relative">
-        <img [src]="aliado.banner" class="w-full h-[720px] object-fill -mt-40">
-        <!-- <img src="/assets/images/logo_bonito.jpg" alt="Logo" class="w-full h-[720px] object-cover"> -->
-        <!-- <div class="absolute bottom-0 right-0 text-black p-16 max-w-2xl -mt-12">
-          <h2 class="text-4xl font-bold mb-4 -mt-12 ">hola</h2>
-          <p class="text-xl mb-8 -mt-12">{{aliado.descripcion}}</p>
-          <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full text-lg -mt-32">
-            Registrarse
-          </button>
-        </div> -->
+        <img [src]="aliado.banner" class="w-full h-[720px] object-fill -mt-40 max-lg:mt-0 max-lg:h-full max-lg:object-cover">
       </div>
     </ng-container>
   </div>
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
+
 </div>
-<div class="flex flex-col md:flex-row bg-white m-6">
-  <div class="w-[28%] h-[50vh] bg-[#00B3ED] p-8 text-white ml-28 -mt-16">
-    <div class="text-3xl font-bold mb-4 mt-10 ml-6">
+
+<div class="flex flex-col lg:flex-row bg-white m-6 max-lg:flex-col">
+  <div class="w-[28%] h-[50vh] bg-[#00B3ED] p-8 text-white ml-28 -mt-16 max-lg:w-full max-lg:ml-0 max-lg:mt-0">
+    <div class="text-4xl font-bold mb-4 mt-10 ml-6">
       <span class="font-thin">Nuestros</span>
     </div>
     <div class="text-4xl font-bold -mt-6 ml-6">
       <span class="font-bold font-poppins"><em>Aliados</em></span>
     </div>
-    <p class="mb-4 mt-44 text-[22px] font-extralight ml-4 custom-text font-poppins">
-      Conozca las entidades que forman parte de la <span class="bg-[#FA7D00] font-bold rounded-full px-1 -py-1">incubadora</span> de emprendimientos
+    <p class="mb-4 mt-44 text-[23px] font-extralight ml-4 custom-text font-poppins max-lg:mt-4">
+      Conozca las entidades que forman parte de la <span class="bg-[#FA7D00] font-bold rounded-full px-1">incubadora</span> de emprendimientos
     </p>
   </div>
-  <div class="w-full md:w-2/3 relative">
+  <div class="w-full lg:w-2/3 relative">
     <div class="banner-swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide p-10" *ngFor="let aliado of listAliados">
-          <img [src]="aliado.logo" [alt]="aliado.nombre" class="logo-img">
-          <div class="relative p-10">
+        <div class="swiper-slide p-10 max-lg:flex max-lg:flex-col max-lg:items-center" *ngFor="let aliado of listAliados">
+          <img [src]="aliado.logo" [alt]="aliado.nombre" class="logo-img max-lg:mb-4">
+          <div class="relative p-10 max-lg:p-4 max-lg:text-center">
             <p *ngFor="let line of aliado.descripcion" class="description-line mb-1">{{ line }}</p>
           </div>
         </div>
       </div>
-      <div class="flex justify-center items-center">
-        <div class="swiper-pagination"></div>
+      <div class="flex justify-center items-center lg:mt-20 sm:-mt-2">
+        <div class="swiper-pagination" style="bottom: 20px !important;"></div>
       </div>
     </div>
-    <div class="mt-4 text-right">
-      <button class="bg-[#FA7D00] text-white px-6 py-2 rounded-full -mt-20 mr-[40%] text-2xl">Todos los aliados</button>
+    <div class="mt-10 text-right max-lg:text-center ">
+      <button class="bg-[#FA7D00] text-white px-6 py-2 rounded-full -mt-16 mr-[35%] lg:text-4xl sm:text-2xl max-lg:mr-0 max-lg:mt-4 font-bold font-poppins">Todos los aliados</button>
     </div>
   </div>
 </div>
 
-<footer class="bg-gray-800 text-white py-6 ">
-  <div class="container mx-auto px-4 flex justify-between items-center">
-    <div class="flex items-center">
-      <img src="/assets/images/logoSeed blanco.png" alt="Seed Lab" class="h-20 ">
-      <p class="text-sm max-w-md">
+<footer class="bg-[#373435] text-white py-6">
+  <div class="container mx-auto px-4 flex justify-between items-center max-lg:flex-col max-lg:text-center">
+    <div class="flex items-center max-lg:flex-col">
+      <img src="/assets/images/logoSeed blanco.png" alt="Seed Lab" class="h-20 max-lg:mb-4">
+      <p class="text-sm max-w-md ml-3">
         Este programa estará enfocado en emprendimientos de base tecnológica, para ideas validadas, que cuenten con un codesarrollo, prototipado y pruebas de concepto. Se va a abordar en temas como Big Data, ciberseguridad e IA, herramientas de hardware y software, inteligencia competitiva, vigilancia tecnológica y propiedad intelectual.
       </p>
     </div>
-    <div class="text-right">
+    <div class="text-right max-lg:text-center max-lg:mt-4">
       <p class="mb-2">Más información sobre Seed Lab</p>
       <p class="text-orange-400 mb-4">xxxxxxxxxxx.com</p>
       <h3 class="text-2xl font-bold mb-2">Atención al cliente</h3>
