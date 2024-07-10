@@ -32,14 +32,14 @@
   <div class="swiper-button-next"></div>
 </div>
 <div class="flex flex-col md:flex-row bg-white m-6">
-  <div class="w-[28%] h-[46vh] bg-[#00B3ED] p-8 text-white ml-28 -mt-16">
+  <div class="w-[28%] h-[50vh] bg-[#00B3ED] p-8 text-white ml-28 -mt-16">
     <div class="text-3xl font-bold mb-4 mt-10 ml-6">
       <span class="font-thin">Nuestros</span>
     </div>
     <div class="text-4xl font-bold -mt-6 ml-6">
       <span class="font-bold font-poppins"><em>Aliados</em></span>
     </div>
-    <p class="mb-4 mt-32 text-[19px] font-extralight ml-4 custom-text font-poppins">
+    <p class="mb-4 mt-44 text-[22px] font-extralight ml-4 custom-text font-poppins">
       Conozca las entidades que forman parte de la <span class="bg-[#FA7D00] font-bold rounded-full px-1 -py-1">incubadora</span> de emprendimientos
     </p>
   </div>
@@ -47,10 +47,10 @@
     <div class="banner-swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide p-10" *ngFor="let aliado of listAliados">
-          <img [src]="aliado.logo" [alt]="aliado.nombre" class="img-responsive relative  object-cover -mt-20">
+          <img [src]="aliado.logo" [alt]="aliado.nombre" class="logo-img">
           <div class="relative p-10">
             <p *ngFor="let line of aliado.descripcion" class="description-line mb-1">{{ line }}</p>
-        </div>        
+          </div>
         </div>
       </div>
       <div class="flex justify-center items-center">

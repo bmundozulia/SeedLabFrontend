@@ -109,4 +109,5 @@ export class BodyComponent implements OnInit, AfterViewInit {
     }
     return lines;
   }
+  
 }
