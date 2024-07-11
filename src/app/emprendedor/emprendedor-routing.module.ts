@@ -13,11 +13,13 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias'}},
-      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil'}},
-      {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa'}},
-      {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta'}},
-      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta'}}
+      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', showInMenu: true}},
+      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', showInMenu: true}},
+      {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa', showInMenu: true}},
+      {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta', showInMenu: true}},
+      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta', showInMenu: true}},
+      {path: 'add-empresa', component: AddEmpresaComponent, data:{showInMenu: false}},
+      {path: 'edit-empresa', component:EditEmpresaComponent, data:{showInMenu: false}}
     ]
   }
 ];

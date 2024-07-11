@@ -10,10 +10,10 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'list-asesores', component:ListAsesoresComponent, data: {title: 'Asesores'}},
-      {path: 'list-asesorias', component: AsesoriaAliadoComponent, data: {title: 'Asesorias'}},
-      {path: 'fan-page', component: FanPageComponent, data: {title: 'FanPage'}},
-      {path: 'dashboard', component: DashboardComponent, data: {title: 'Dashboard'}},
+      {path: 'list-asesores', component:ListAsesoresComponent, data: {title: 'Asesores', showInMenu: true}},
+      {path: 'list-asesorias', component: AsesoriaAliadoComponent, data: {title: 'Asesorias', showInMenu: true}},
+      {path: 'fan-page', component: FanPageComponent, data: {title: 'FanPage', showInMenu: true}},
+      {path: 'dashboard', component: DashboardComponent, data: {title: 'Dashboard', showInMenu: true}},
     ]
   }
 ];  
