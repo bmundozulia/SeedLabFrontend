@@ -13,11 +13,11 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', icon:''}},
+      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', icon:'fa-solid fa-comments'}},
       {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', icon:'fa-solid fa-circle-user'}},
-      {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa'}},
-      {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta'}},
-      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta'}}
+      {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa', icon:'fa-solid fa-building'}},
+      {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta', icon:'fa-solid fa-square-poll-vertical'}},
+      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta', icon:'fa-solid fa-location-arrow'}}
     ]
   }
 ];
