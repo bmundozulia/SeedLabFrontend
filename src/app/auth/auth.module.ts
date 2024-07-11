@@ -12,6 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ForgotComponent } from './pages/forgot/forgot.component';
 import { VerificationComponent } from './pages/verification/verification.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -29,7 +30,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    
+    RouterModule
   ]
 })
 export class AuthModule { }
