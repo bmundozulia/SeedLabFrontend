@@ -23,7 +23,7 @@ export class MenuService {
 
   getRoutesByRole(role: string): any[] {
     const routes = this.roleRoutes[role] || [];
-    return this.flattenRoutes(routes).map(route => ({
+    return this.flattenRoutes(routes).filter(route => route.data?.showInMenu).map(route => ({
       name: route.data?.title,
       route: `/${route.path}`,
     }));

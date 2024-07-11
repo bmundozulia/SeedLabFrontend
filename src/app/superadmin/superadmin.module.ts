@@ -21,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared.module';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -55,7 +56,8 @@ import { MatIconModule } from '@angular/material/icon';
     FontAwesomeModule,
     SharedModule,
     ColorPickerModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule
   ]
 })
 export class SuperadminModule { }
