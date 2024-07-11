@@ -79,12 +79,13 @@ export class MenuComponent {
           localStorage.clear();
           this.isAuthenticated = false;
           this.router.navigate(['home']);
+          location.reload();
         }
       );
     } else {
       localStorage.clear();
       this.isAuthenticated = false;
-      this.router.navigate(['/home/body']);
+      this.router.navigate(['home']);
     }
   }
 

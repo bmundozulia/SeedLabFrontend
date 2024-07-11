@@ -5,25 +5,29 @@ import Swiper from 'swiper';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { Aliado } from '../../Modelos/aliado.model';
 import { MatToolbar } from '@angular/material/toolbar';
+import { AuthService } from '../../servicios/auth.service';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css'],
-  providers: [AliadoService, MatToolbar]
+  providers: [AliadoService, MatToolbar, AuthService]
 })
 export class BodyComponent implements OnInit, AfterViewInit {
   bannerSwiper: Swiper | undefined;
   alliesSwiper: Swiper | undefined;
   listAliados: Aliado[] = [];
+  isLoggedIn: boolean = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private aliadoService: AliadoService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.authService.isAuthenticated();
     this.aliadoService.getaliados().subscribe(
       data => {
         console.log('Aliados:', data);
@@ -61,7 +65,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
     if (this.bannerSwiper) {
       this.bannerSwiper.destroy(true, true);
     }
-  
+
     this.bannerSwiper = new Swiper('.banner-swiper-container', {
       modules: [Navigation, Autoplay, Pagination],
       slidesPerView: 1,
@@ -82,7 +86,6 @@ export class BodyComponent implements OnInit, AfterViewInit {
       },
     });
   }
-  
 
   private initAlliesSwiper(): void {
     if (this.alliesSwiper) {
@@ -110,5 +113,4 @@ export class BodyComponent implements OnInit, AfterViewInit {
     }
     return lines;
   }
-  
 }

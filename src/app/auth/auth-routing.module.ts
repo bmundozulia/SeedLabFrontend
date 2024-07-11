@@ -10,13 +10,20 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
 
+
+
+
+  
+
+
+
   {
     path: '',
     children: [
       {path: 'forgot', component: ForgotComponent},
       {path: 'login', component: LoginComponent},
       {path: 'registro', component: RegistroComponent},
-      {path: 'vetification', component: VerificationComponent},
+      {path: 'verification', component: VerificationComponent},
       {path: 'notFound', component: NotFoundComponent},
     ]
   }
