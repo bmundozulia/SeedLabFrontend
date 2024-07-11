@@ -171,4 +171,7 @@ body, html {
   line-height: 1.1;
   font-size: 28px;  
 }
-
+.swiper-pagination {
+  
+  margin-top: 56px !important;
+}
