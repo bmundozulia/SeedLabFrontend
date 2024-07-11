@@ -32,7 +32,7 @@ export class EncuestaEmpresaComponent {
   token = '';
   documento: string;
   currentRolId: string | null = null;
-  currentIndex = 0;
+
   id_pregunta: number;
   id_subpregunta: number | null = null;
   listaRespuestas1: Respuesta[] = [];
@@ -202,9 +202,9 @@ export class EncuestaEmpresaComponent {
     this.listaRespuestas1.push(this.respuesta21);
     this.listaRespuestas1.push(this.respuesta22);
     this.listaRespuestas1.push(this.respuesta23);
-   
+
     const payload = { respuestas: this.listaRespuestas1, id_empresa: id_empresa };
-    
+
 
     for (let i = 0; i < 15; i++) {
       const currentPregunta = PREGUNTAS[i];
@@ -219,11 +219,11 @@ export class EncuestaEmpresaComponent {
             this.listaRespuestas1[respCounter + j].texto_res = '0';
           }
           this.listaRespuestas1[respCounter + j].id_pregunta = currentPregunta.id;
-          this.listaRespuestas1[respCounter + j].id_subpregunta =currentPregunta.subPreguntas[j].id;
+          this.listaRespuestas1[respCounter + j].id_subpregunta = currentPregunta.subPreguntas[j].id;
           this.listaRespuestas1[respCounter + j].id_empresa = id_empresa;
 
         }
-        respCounter += currentPregunta.subPreguntas.length-1;
+        respCounter += currentPregunta.subPreguntas.length - 1;
 
       } else if (currentPregunta.id === 12) {
         //debugger
@@ -234,7 +234,7 @@ export class EncuestaEmpresaComponent {
             //this.listaRespuestas1[respCounter + 1 + k].id_empresa = id_empresa;
 
           }
-          respCounter += currentPregunta.subPreguntas.length-1;
+          respCounter += currentPregunta.subPreguntas.length - 1;
         }
         respCounter++;
       } else {
@@ -284,7 +284,7 @@ export class EncuestaEmpresaComponent {
     let respCounter = 0;
     let isValidForm = true;
     let id_empresa = 1;
-    
+
 
     this.listaRespuestas2.push(this.respuesta24);
     if (this.respuesta24.opcion === 'Si') {
@@ -352,9 +352,9 @@ export class EncuestaEmpresaComponent {
 
 
 
-    
+
     const payload = { respuestas: this.listaRespuestas2, id_empresa: id_empresa };
-   
+
 
     for (let i = 15; i < 30; i++) {
       //debugger
@@ -363,7 +363,7 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2[respCounter].id_empresa = id_empresa;
       this.listaRespuestas2[respCounter].id_subpregunta = null;
 
-      if ([16, 18, 20, 22, 28].includes(currentPregunta.id)){
+      if ([16, 18, 20, 22, 28].includes(currentPregunta.id)) {
         if (this.listaRespuestas2[respCounter].opcion === 'Si') {
           const nextPregunta = PREGUNTAS[i + 1];
           for (let j = 0; j < nextPregunta.subPreguntas.length; j++) {
@@ -374,16 +374,16 @@ export class EncuestaEmpresaComponent {
           }
 
           respCounter += nextPregunta.subPreguntas.length;
-        }else{
+        } else {
           continue;
         }
 
-        
+
 
       }
 
-      if(currentPregunta.id === 24 || currentPregunta.id === 27){
-        for(let i = 0; i < currentPregunta.subPreguntas.length; i++){
+      if (currentPregunta.id === 24 || currentPregunta.id === 27) {
+        for (let i = 0; i < currentPregunta.subPreguntas.length; i++) {
           //debugger
           this.listaRespuestas2[respCounter + i].id_pregunta = currentPregunta.id;
           this.listaRespuestas2[respCounter + i].id_subpregunta = currentPregunta.subPreguntas[i].id;
@@ -453,23 +453,33 @@ export class EncuestaEmpresaComponent {
     );
   }
 
-
+  currentSubSectionIndex: number = 0;
+  currentIndex: number = 0;
+  subSectionPerSection: number[] = [3, 3, 2, 9];
 
   loadNextSection(): void {
     this.section++;
   }
 
   next() {
-    if (this.currentIndex < 3) {
-      this.currentIndex++;
-
+    if (this.currentSubSectionIndex < this.subSectionPerSection[this.currentIndex] - 1) {
+      this.currentSubSectionIndex++
+    } else {
+      if (this.currentIndex < this.subSectionPerSection.length - 1) {
+        this.currentIndex++;
+        this.currentSubSectionIndex = 0;
+      }
     }
   }
 
-  prev() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-
+  previous(): void {
+    if (this.currentSubSectionIndex > 0) {
+      this.currentSubSectionIndex--;
+    } else {
+      if (this.currentIndex > 0) {
+        this.currentIndex--;
+        this.currentSubSectionIndex = this.subSectionPerSection[this.currentIndex] - 1;
+      }
     }
   }
 

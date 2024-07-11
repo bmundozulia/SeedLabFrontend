@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <div
-    class="absolute top-0 left-0 w-full  min-h-screen bg-cover bg-center md:bg-center bg-no-repeat bg-[url('./assets/images/fondoLogin.jpg')] md:text-[.9vw] text-[1.9]">
+    class="absolute top-0 left-0 w-full  min-h-screen bg-cover bg-center md:bg-center bg-no-repeat bg-[url('./assets/images/fondoLogin.jpg')] text-[16px]">
 
     <div class="grid justify-center content-center min-h-screen ">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-2 justify-center content-center">
@@ -13,8 +13,10 @@
                 </div>
             </div>
             <div class="col-span-2">
-                <h2 class="text-[#fff] text-center mt-4 md:font-[500]">¿Aún no estás registrado en SeedLab? <span
-                        class="text-[#00B3ED]">Registrate</span></h2>
+                <h2 class="text-[#fff] text-center mt-4 md:font-[500]">¿Aún no estás registrado en SeedLab? <a href="" class="no-underline cursor-pointer">
+                    <span
+                        class="text-[#00B3ED]">Registrate</span>
+                </a></h2>
 
 
                 <form [formGroup]="loginForm" (ngSubmit)="login()"
@@ -35,11 +37,11 @@
                         <label for="password" class="block truncate text-base">Contraseña:</label>
                         <div class="mt-2">
                             <input [type]="hide ? 'password' : 'text'" id="password" formControlName="password"
-                                   placeholder="Contraseña"
-                                   class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
+                                placeholder="Contraseña"
+                                class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
                             <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
-                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
-                                    class="absolute right-3 top-[52.5px] transform -translate-y-1/2">
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+                                class="absolute right-3 top-[52.5px] transform -translate-y-1/2">
                                 <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
                             </button>
                         </div>

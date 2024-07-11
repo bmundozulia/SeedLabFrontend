@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-pattern': "url('./assets/images/fondoRegister.jpeg')",
+        'hero-pattern': "url('./assets/images/fondoRegister.jpg')",
         'fondo-login': "url('./assets/images/fondoLogin.jpg')"
 
       },
