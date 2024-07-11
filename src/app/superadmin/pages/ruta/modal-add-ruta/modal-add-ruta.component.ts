@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import Pica from 'pica';
 import { AlertService } from '../../../../servicios/alert.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class ModalAddRutaComponent implements OnInit {
   isEditing: boolean = false
   ruta: any;
   rutaId: any;
+  listRuta : Ruta [] = [];
   //createRutaForm: FormGroup;
   token = '';
   user: User | null = null;
@@ -34,7 +36,8 @@ export class ModalAddRutaComponent implements OnInit {
   private modalSubscription: Subscription;
   isVisible = true;
   imagen_ruta: string = '';
-  isActive: boolean = true;
+  isActive: boolean = true; 
+  imagenUrl: SafeUrl | null = null;
 
   rutaForm = this.fb.group({
     nombre: [''],
@@ -51,6 +54,7 @@ export class ModalAddRutaComponent implements OnInit {
     private datePipe: DatePipe,
     private router: Router,
     private alertService: AlertService,
+    private sanitizer: DomSanitizer
   ) {
 
     this.rutaId = data.rutaId;
@@ -110,10 +114,23 @@ export class ModalAddRutaComponent implements OnInit {
     }
   }
 
+  // onFileSelecteds(event: Event): void {
+  //   const input = event.target as HTMLInputElement;
+  //   if (input.files && input.files.length > 0) {
+  //     const file = input.files[0];
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       this.imagenUrl = this.sanitizer.bypassSecurityTrustUrl(reader.result as string);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
+
   verEditar(): void {
     if (this.rutaId != null) {
-      this.rutaService.getAllRutas(this.token, this.userFilter.estado).subscribe(
+      this.rutaService.rutaXid(this.token, this.rutaId).subscribe(
         data => {
+          console.log('Datos recibidos:', data);
           this.rutaForm.patchValue({
             nombre: data.nombre,
             //fecha_creacion: new Date(data.fecha_creacion),
@@ -121,8 +138,8 @@ export class ModalAddRutaComponent implements OnInit {
             estado: data.estado,
             imagen_ruta: data.imagen_ruta,
           });
-          this.isActive = data.estado === 'Activo';
 
+          this.isActive = data.estado === 'Activo';
           setTimeout(() => {
             this.rutaForm.get('estado')?.setValue(this.isActive);
           })
