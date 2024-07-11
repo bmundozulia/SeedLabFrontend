@@ -26,6 +26,7 @@ export class MenuService {
     return this.flattenRoutes(routes).filter(route => route.data?.showInMenu).map(route => ({
       name: route.data?.title,
       route: `/${route.path}`,
+      //icon: route.data?.icon,
     }));
   }
 
