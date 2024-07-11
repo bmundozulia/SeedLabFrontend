@@ -31,6 +31,7 @@ import { RouterModule } from '@angular/router';
 
 
 
+
 @NgModule({
   declarations: [
     AddAliadosComponent,
@@ -57,7 +58,7 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     ColorPickerModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class SuperadminModule { }
