@@ -11,6 +11,7 @@ import Pica from 'pica';
 import { AlertService } from '../../../../servicios/alert.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { faMagnifyingGlass, faPenToSquare, faPlus, faXmark, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -23,6 +24,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class ModalAddRutaComponent implements OnInit {
   userFilter: any = { estado: 'Activo'};
   isEditing: boolean = false
+  falupa = faCircleQuestion;
   ruta: any;
   rutaId: any;
   listRuta : Ruta [] = [];
@@ -38,6 +40,7 @@ export class ModalAddRutaComponent implements OnInit {
   imagen_ruta: string = '';
   isActive: boolean = true; 
   imagenUrl: SafeUrl | null = null;
+  boton = true;
 
   rutaForm = this.fb.group({
     nombre: [''],
@@ -169,7 +172,7 @@ export class ModalAddRutaComponent implements OnInit {
         if (result.isConfirmed) {
           this.rutaService.updateRutas(this.token,ruta, this.rutaId).subscribe(
             data =>{
-              //location.reload();
+              location.reload();
               console.log(data);
               //this.alertService.successAlert('Exito', data.message);
             },
@@ -194,7 +197,32 @@ export class ModalAddRutaComponent implements OnInit {
     }
   }
 
-  // createRuta() {
+  
+
+
+
+  toggleActive() {
+    this.isActive = !this.isActive;
+    this.rutaForm.patchValue({ estado: this.isActive ? true : false });
+
+  }
+
+  /* Muestra el toggle del estado dependiendo del adminId que no sea nulo*/
+  mostrarToggle(): void {
+    if (this.rutaId != null) {
+      this.boton = false;
+    }
+    this.boton = true;
+  }
+
+  closeModal() {
+    this.dialogRef.close();
+  }
+
+
+
+
+// createRuta() {
   //   const ruta = new Ruta(
   //     this.createRutaForm.get('nombre')?.value,
   //     new Date(this.createRutaForm.get('fecha_creacion')?.value),
@@ -322,12 +350,6 @@ export class ModalAddRutaComponent implements OnInit {
   //     }
   //   )
   // }
-
-  closeModal() {
-    this.dialogRef.close();
-  }
-
-
   // isFormValid() {
   //   return this.persona.nombre.trim() !== '';
   // }
