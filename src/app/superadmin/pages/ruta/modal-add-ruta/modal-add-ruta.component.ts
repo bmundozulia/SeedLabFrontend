@@ -60,6 +60,9 @@ export class ModalAddRutaComponent implements OnInit {
   /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
+    if (this.rutaId != null) {
+      this.isEditing = true;
+    }
     //this.isEditing = true;
     //this.mostrarRutas();
     this.verEditar();
@@ -147,10 +150,11 @@ export class ModalAddRutaComponent implements OnInit {
     if (this.rutaId != null) {
       this.alertService.alertaActivarDesactivar("¿Estas seguro de guardar los cambios?", 'question').then((result)=>{
         if (result.isConfirmed) {
-          this.rutaService.updateRutas(this.token, this.rutaId).subscribe(
+          this.rutaService.updateRutas(this.token,ruta, this.rutaId).subscribe(
             data =>{
-              location.reload();
-              this.alertService.successAlert('Exito', data.message);
+              //location.reload();
+              console.log(data);
+              //this.alertService.successAlert('Exito', data.message);
             },
             error => {
               this.alertService.errorAlert('Error', error.error.message);
@@ -172,8 +176,6 @@ export class ModalAddRutaComponent implements OnInit {
       )
     }
   }
-
-
 
   // createRuta() {
   //   const ruta = new Ruta(
@@ -303,7 +305,6 @@ export class ModalAddRutaComponent implements OnInit {
   //     }
   //   )
   // }
-
 
   closeModal() {
     this.dialogRef.close();
