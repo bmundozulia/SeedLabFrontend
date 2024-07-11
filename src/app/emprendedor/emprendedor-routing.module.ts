@@ -7,6 +7,7 @@ import { ListEmpresasComponent } from './pages/empresa/list-empresas/list-empres
 import { EncuestaEmpresaComponent } from './pages/formulario-diagnostico/encuesta-empresa.component';
 import { RutaEmprendedorComponent } from './pages/ruta-emprendedor/ruta-emprendedor.component';
 import { EditEmpresaComponent } from './pages/empresa/edit-empresa/edit-empresa.component';
+import { CursorutasComponent } from '../ruta/cursorutas/cursorutas.component';
 
 const routes: Routes = [
 
@@ -17,7 +18,7 @@ const routes: Routes = [
       {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', showInMenu: true}},
       {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa', showInMenu: true}},
       {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta', showInMenu: true}},
-      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta', showInMenu: true}},
+      {path: 'ruta', component: CursorutasComponent, data:{title: 'Ruta', showInMenu: true}},
       {path: 'add-empresa', component: AddEmpresaComponent, data:{showInMenu: false}},
       {path: 'edit-empresa', component:EditEmpresaComponent, data:{showInMenu: false}}
     ]
