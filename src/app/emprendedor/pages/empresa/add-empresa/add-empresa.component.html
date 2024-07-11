@@ -97,8 +97,7 @@
                 <option value="" disabled selected>
                   Seleccionar Municipio...
                 </option>
-                <option *ngFor="let municipio of listMunicipios" [value]="municipio">
-                  {{ municipio }}
+                <option *ngFor="let municipio of listMunicipios" value="{{municipio.id}}">{{municipio.nombre}}
                 </option>
               </select>
               <div *ngIf="submitted && f.id_municipio.errors"
