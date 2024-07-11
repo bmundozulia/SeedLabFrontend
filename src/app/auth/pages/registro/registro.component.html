@@ -224,7 +224,7 @@
                                 (change)="updateProgress()"
                                 class="mt-2 p-2 block w-full rounded-md border-0 py-1.5 text-[#000] shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] focus:outline-none sm:text-sm sm:leading-6">
                                 <option value="" disabled selected>Seleccionar Municipio...</option>
-                                <option *ngFor="let municipio of listMunicipios" value="{{municipio}}">{{municipio}}
+                                <option *ngFor="let municipio of listMunicipios" value="{{municipio.nombre}}">{{municipio.nombre}}
                                 </option>
                             </select>
                             <div *ngIf="submitted && f.municipio.errors" class="max-w-[19rem] overflow-hidden mt-1">
