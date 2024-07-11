@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <div
-    class="absolute top-0 left-0 w-full  min-h-screen bg-cover bg-custom-150px md:bg-center bg-no-repeat bg-[url('./assets/images/fondoRegister.jpeg')] md:text-[.9vw] text-[1.9]">
+    class="absolute top-0 left-0 w-full  min-h-screen bg-cover bg-custom-150px md:bg-center bg-no-repeat bg-[url('./assets/images/fondoRegister.jpeg')] md:text-[16px]">
 
     <div class="grid justify-center content-center min-h-screen ">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-2 justify-center content-center">
@@ -226,7 +226,8 @@
                                 (change)="updateProgress()"
                                 class="mt-2 p-2 block w-full rounded-md border-0 py-1.5 text-[#000] shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] focus:outline-none sm:text-sm sm:leading-6">
                                 <option value="" disabled selected>Seleccionar Municipio...</option>
-                                <option *ngFor="let municipio of listMunicipios" value="{{municipio.nombre}}">{{municipio.nombre}}
+                                <option *ngFor="let municipio of listMunicipios" value="{{municipio.nombre}}">
+                                    {{municipio.nombre}}
                                 </option>
                             </select>
                             <div *ngIf="submitted && f.municipio.errors" class="max-w-[19rem] overflow-hidden mt-1">
