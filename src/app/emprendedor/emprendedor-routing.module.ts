@@ -14,11 +14,11 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', showInMenu: true, icon:''}},
-      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', showInMenu: true, icon:'fa-solid fa-circle-user'}},
-      {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa', showInMenu: true}},
-      {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta', showInMenu: true}},
-      {path: 'ruta', component: CursorutasComponent, data:{title: 'Ruta', showInMenu: true}},
+      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', icon:'fa-solid fa-comments'}},
+      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', icon:'fa-solid fa-circle-user'}},
+      {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa', icon:'fa-solid fa-building'}},
+      {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta', icon:'fa-solid fa-square-poll-vertical'}},
+      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta', icon:'fa-solid fa-location-arrow'}}
       {path: 'add-empresa', component: AddEmpresaComponent, data:{showInMenu: false}},
       {path: 'edit-empresa', component:EditEmpresaComponent, data:{showInMenu: false}}
     ]
