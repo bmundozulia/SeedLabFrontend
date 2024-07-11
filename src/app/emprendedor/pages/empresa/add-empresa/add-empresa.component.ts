@@ -168,7 +168,7 @@ export class AddEmpresaComponent {
 
   crearEmpresa(): void {
     this.submitted = true;
-    //console.log("Formulario enviado", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
+    console.log("Formulario enviado", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
 
     if (this.addEmpresaForm.invalid) {
       //console.log("Formulario inválido");
@@ -222,6 +222,7 @@ export class AddEmpresaComponent {
         this.emprendedorDocumento = data.empresa.id_emprendedor;
         //console.log(`------------------------------------------------ ${this.emprendedorDocumento}`);
         //debugger;
+        location.reload();
         this.router.navigate(['list-empresa']);
       },
       error => {

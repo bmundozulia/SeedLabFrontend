@@ -54,19 +54,19 @@ export class RegistroComponent implements OnInit {
   progressWidth = 0; // Añadido para el progreso
   totalFields = 12; // Número total de campos
 
-  
+
   updateProgress() {
-  let filledFields = 0;
-  for (const controlName in this.registerForm.controls) {
-    if (this.registerForm.controls.hasOwnProperty(controlName)) {
-      const control = this.registerForm.get(controlName);
-      if (control && control.value) {
-        filledFields++;
+    let filledFields = 0;
+    for (const controlName in this.registerForm.controls) {
+      if (this.registerForm.controls.hasOwnProperty(controlName)) {
+        const control = this.registerForm.get(controlName);
+        if (control && control.value) {
+          filledFields++;
+        }
       }
     }
+    this.progressWidth = (filledFields / this.totalFields) * 100;
   }
-  this.progressWidth = (filledFields / this.totalFields) * 100;
-}
 
 
   sections = [
@@ -119,7 +119,7 @@ export class RegistroComponent implements OnInit {
     });
   }
 
-  
+
 
   //Funcion validar password
   passwordValidator(control: AbstractControl) {
@@ -159,6 +159,7 @@ export class RegistroComponent implements OnInit {
     this.municipioService.getMunicipios(nombreDepartamento).subscribe(
       data => {
         this.listMunicipios = data;
+        console.log('Municipios cargados:', JSON.stringify(data));
       },
       err => {
         console.log('Error al cargar los municipios:', err);
@@ -170,6 +171,9 @@ export class RegistroComponent implements OnInit {
   registro(): void {
     this.submitted = true;
     console.log('Formulario enviado', this.registerForm.value);
+    console.log('Errores del formulario:', this.registerForm.errors);
+    console.log('Controles del formulario:', this.registerForm.controls);
+
     if (this.registerForm.invalid) {
       console.log('Formulario inválido');
       return;

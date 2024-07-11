@@ -37,10 +37,12 @@
 
 
 
-                <a href="add-aliados" class="max-sm:w-full ">
+                <a [routerLink]="['/add-aliados']" class="max-sm:w-full ">
                     <button
                         class="bg-sky-400 hover:bg-sky-500 text-white font-bold px-3 py-0 rounded h-12 w-full">Agregar
-                        aliado</button></a>
+                        aliado
+                    </button>
+                </a>
             </div>
 
 
@@ -51,7 +53,7 @@
         <!-- <app-carga [isLoading]="isLoading"></app-carga> 
          *ngIf="!isLoading" dentro del div siguiente-->
 
-        <div >
+        <div>
             <div class="max-xl:scale-0 max-xl:mt-0  h-14 w-full bg-white rounded-xl  grid items-center px-3  "
                 style="grid-template-columns: 1.5fr 1.5fr 1.5fr 0.5fr;">
                 <h1 class=" text-vgraylight font-medium ">Nombre</h1>
@@ -73,14 +75,15 @@
                     </h4>
 
                     <h4 class="overflow-wrap-normal break-all m-0">
-                        <span class="block xl:hidden font-bold">Estado: </span>{{aliados.estado ? 'Activo' : 'Inactivo' }}
+                        <span class="block xl:hidden font-bold">Estado: </span>{{aliados.estado ? 'Activo' : 'Inactivo'
+                        }}
                     </h4>
 
                     <div class="flex max-xl:mt-2 justify-end items-end xl:justify-center xl:items-center xl:mt-0">
                         <fa-icon [icon]="faeye" class="text-xl text-sky-500"></fa-icon>
                     </div>
 
-                    <img [src]="aliados.logo " alt="">
+                    <!-- <img [src]="aliados.logo " alt=""> -->
 
                 </div>
             </div>

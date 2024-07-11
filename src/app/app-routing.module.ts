@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { BodyComponent } from './inicio/body/body.component';
-//import { OrientadorCrearComponent } from './orientador/orientador-crear/orientador-crear.component';
-
-
 
 const routes: Routes = [
   //Auth
@@ -41,16 +38,9 @@ const routes: Routes = [
     loadChildren: () => import('./superadmin/superadmin.module').then(m => m.SuperadminModule)
   },
 
-
-
-
-
- 
-
-
-
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: BodyComponent }, // Ruta raíz que muestra BodyComponent
-  { path: '**', redirectTo: 'error404', pathMatch: 'full' } // Manejo de rutas no encontradas, redirige a la ruta raíz
+  { path: '**', redirectTo: 'error404', pathMatch: 'full' } // Manejo de rutas no encontradas, redirige a la ruta Not found
 ];
 
 @NgModule({
