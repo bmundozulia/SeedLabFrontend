@@ -43,7 +43,7 @@
     border-radius: 0px 40px 40px 0px; 
     color: #fff;
     font-size: 22px;
-    transition: all 0.3 eases; 
+    transition: all 0.3 eases;
 }
 
 .sidebar.close header .toggle {
@@ -84,9 +84,9 @@ li a {
 }
 
 /* Estilos para el hover */
-li a:hover svg {
+li a:hover svg:hover {
     fill: #FFFFFF; 
-    color: blue; 
+    color: blue;
 }
 
 

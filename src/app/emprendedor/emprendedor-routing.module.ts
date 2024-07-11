@@ -13,8 +13,8 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias'}},
-      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil'}},
+      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', icon:''}},
+      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', icon:'fa-solid fa-circle-user'}},
       {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa'}},
       {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta'}},
       {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta'}}

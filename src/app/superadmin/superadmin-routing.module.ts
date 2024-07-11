@@ -12,13 +12,13 @@ const routes: Routes = [
   {
     path:'',
     children:[
-      {path: 'list-superadmin', component: ListSuperadminComponent,data: { title: 'Super Admin'}},
-      {path: 'perfil-admin', component: PerfilSuperadminComponent, data: { title: 'Perfil'}},
-      {path: 'personalizaciones', component: PersonalizacionesComponent, data: { title: 'Personalizacion Sistema'}},
-      {path: 'list-ruta', component: ListRutasComponent, data: {title: 'Rutas'}},
-      {path: 'list-orientador', component: ListOrientadorComponent, data:{title: 'Orientador'}},
-      {path: 'add-actividad', component: AddActividadComponent, data: {title: 'Actividad'}},
-      {path: 'list-aliados', component: ListAliadosComponent, data: {title: 'Aliados'}},
+      {path: 'list-superadmin', component: ListSuperadminComponent,data: { title: 'Super Admin', icon:'fa-solid fa-user'}},
+      {path: 'perfil-admin', component: PerfilSuperadminComponent, data: { title: 'Perfil', icon:'fa-solid fa-circle-user'}},
+      {path: 'personalizaciones', component: PersonalizacionesComponent, data: { title: 'Personalización Sistema', icon:'fa-solid fa-paintbrush'}},
+      {path: 'list-ruta', component: ListRutasComponent, data: {title: 'Rutas', icon: 'fa-solid fa-location-arrow'}},
+      {path: 'list-orientador', component: ListOrientadorComponent, data:{title: 'Orientador', icon:'fa-solid fa-chalkboard-user'}},
+      {path: 'add-actividad', component: AddActividadComponent, data: {title: 'Actividad', icon:'fa-solid fa-table-list'}},
+      {path: 'list-aliados', component: ListAliadosComponent, data: {title: 'Aliados', icon: 'fa-solid fa-users-line'}},
     ]
   }
  ];
