@@ -15,6 +15,14 @@ body, html {
   justify-content: center;
   height: 60%;
 }
+.allies-swiper-container{
+  overflow: hidden;
+  display: flex;
+  margin-right: 210px;
+
+  
+
+}
 
 .swiper-wrapper {
   display: flex;
@@ -35,12 +43,11 @@ body, html {
 
 .logo-img {
   width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-  max-width: 350px; /* Opcional: puedes establecer un ancho máximo */
+  max-width: 450px; /* Opcional: puedes establecer un ancho máximo */
   height: auto;
-  margin: 5%;
   object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
   object-position: center;
-  margin-left: 50px;
+
 }
 
 .swiper-button-prev,
@@ -131,21 +138,6 @@ body, html {
   margin-top: 0.5rem;
 }
 
-.swiper-pagination {
-  bottom: 30px !important; /* Ajusta la posición vertical */
-}
-
-.swiper-pagination-bullet {
-  background: #FA7D00 !important; /* Color de los bullets */
-  width: 12px !important; /* Tamaño del bullet */
-  height: 12px !important; /* Tamaño del bullet */
-}
-
-.swiper-pagination-bullet-active {
-  background: #00B3ED !important; /* Color del bullet activo */
-  width: 16px !important; /* Tamaño del bullet activo */
-  height: 16px !important; /* Tamaño del bullet activo */
-}
 
 /* CSS global */
 @media (max-width: 640px) {
@@ -173,3 +165,10 @@ body, html {
     flex-direction: column; /* Cambia la dirección de los elementos a columna en vista de tamaño medio */
   }
 }
+.custom-text {
+  margin-top: 40px; /* Ajusta el valor según lo que necesites */
+  margin-bottom: 10px; /* Ajusta el valor según lo que necesites */
+  line-height: 1.1;
+  font-size: 28px;  
+}
+

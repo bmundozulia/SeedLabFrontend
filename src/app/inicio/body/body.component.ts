@@ -61,7 +61,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
     if (this.bannerSwiper) {
       this.bannerSwiper.destroy(true, true);
     }
-  
+
     this.bannerSwiper = new Swiper('.banner-swiper-container', {
       modules: [Navigation, Autoplay, Pagination],
       slidesPerView: 1,
@@ -82,7 +82,6 @@ export class BodyComponent implements OnInit, AfterViewInit {
       },
     });
   }
-  
 
   private initAlliesSwiper(): void {
     if (this.alliesSwiper) {
@@ -110,5 +109,4 @@ export class BodyComponent implements OnInit, AfterViewInit {
     }
     return lines;
   }
-  
 }
