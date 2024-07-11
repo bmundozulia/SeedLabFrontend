@@ -18,7 +18,7 @@ const routes: Routes = [
       {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', icon:'fa-solid fa-circle-user'}},
       {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa', icon:'fa-solid fa-building'}},
       {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta', icon:'fa-solid fa-square-poll-vertical'}},
-      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta', icon:'fa-solid fa-location-arrow'}}
+      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta', icon:'fa-solid fa-location-arrow'}},
       {path: 'add-empresa', component: AddEmpresaComponent, data:{showInMenu: false}},
       {path: 'edit-empresa', component:EditEmpresaComponent, data:{showInMenu: false}}
     ]
