@@ -63,30 +63,27 @@ export class MenuComponent {
   }
 
 
-
   logout() {
     if (this.token) {
       this.authservices.logout(this.token).subscribe(
         (data) => {
           console.log(data);
-          localStorage.clear();
-          this.isAuthenticated = false;
-          this.router.navigate(['home']);
-          location.reload();
+          this.handleLogout();
         },
         (err) => {
           console.log(err);
-          localStorage.clear();
-          this.isAuthenticated = false;
-          this.router.navigate(['home']);
-          location.reload();
+          this.handleLogout();
         }
       );
     } else {
-      localStorage.clear();
-      this.isAuthenticated = false;
-      this.router.navigate(['home']);
+      this.handleLogout();
     }
+  }
+
+  private handleLogout() {
+    localStorage.clear();
+    this.isAuthenticated = false;
+    this.router.navigate(['/home']);
   }
 
   
