@@ -435,7 +435,7 @@ export class EncuestaEmpresaComponent {
   enviarRespuestasJson() {
     this.onSubmitSeccion1();
     this.onSubmitSeccion2();
-
+    this.updateProgress(); // Actualizar progreso después de la segunda sección
     const totalRespuestas = this.listaRespuestas1.concat(this.listaRespuestas2);
     const payload = {
       respuestas: totalRespuestas,
@@ -456,20 +456,38 @@ export class EncuestaEmpresaComponent {
   currentSubSectionIndex: number = 0;
   currentIndex: number = 0;
   subSectionPerSection: number[] = [3, 3, 2, 9];
+  progressWidth = 0; // Ancho de la barra de progreso
 
   loadNextSection(): void {
     this.section++;
   }
 
+
+  updateProgress() {
+    let filledFields = 0;
+
+    // Sumar todas las respuestas completadas en la primera sección
+    filledFields += this.listaRespuestas1.filter(respuesta => respuesta.opcion || respuesta.texto_res).length;
+
+    // Sumar todas las respuestas completadas en la segunda sección
+    filledFields += this.listaRespuestas2.filter(respuesta => respuesta.opcion || respuesta.texto_res).length;
+
+    // Calcular el progreso total
+    let totalFields = this.preguntas.length; // Número total de preguntas
+    let completedFields = filledFields;
+    this.progressWidth = (completedFields / totalFields) * 100;
+  }
+
   next() {
     if (this.currentSubSectionIndex < this.subSectionPerSection[this.currentIndex] - 1) {
-      this.currentSubSectionIndex++
+      this.currentSubSectionIndex++;
     } else {
       if (this.currentIndex < this.subSectionPerSection.length - 1) {
         this.currentIndex++;
         this.currentSubSectionIndex = 0;
       }
     }
+    this.updateProgress(); // Actualizar el progreso después de avanzar
   }
 
   previous(): void {
@@ -481,6 +499,7 @@ export class EncuestaEmpresaComponent {
         this.currentSubSectionIndex = this.subSectionPerSection[this.currentIndex] - 1;
       }
     }
+    this.updateProgress(); // Actualizar el progreso después de retroceder
   }
 
 
