@@ -6,6 +6,7 @@ import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { Aliado } from '../../Modelos/aliado.model';
 import { MatToolbar } from '@angular/material/toolbar';
 import { AuthService } from '../../servicios/auth.service';
+import { SuperadminService } from '../../servicios/superadmin.service';
 
 @Component({
   selector: 'app-body',
@@ -18,16 +19,20 @@ export class BodyComponent implements OnInit, AfterViewInit {
   alliesSwiper: Swiper | undefined;
   listAliados: Aliado[] = [];
   isLoggedIn: boolean = false;
+  logoUrl: string = '';
+  sidebarColor:string = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private aliadoService: AliadoService,
     private cdr: ChangeDetectorRef,
-    private authService: AuthService
+    private authService: AuthService,
+    private personalizacionesService: SuperadminService,
   ) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isAuthenticated();
+    this.getPersonalizacion();
     this.aliadoService.getaliados().subscribe(
       data => {
         console.log('Aliados:', data);
@@ -59,6 +64,20 @@ export class BodyComponent implements OnInit, AfterViewInit {
   private initSwipers(): void {
     this.initBannerSwiper();
     this.initAlliesSwiper();
+  }
+
+  getPersonalizacion(){
+    this.personalizacionesService.getPersonalizacion().subscribe(
+      data => {
+        this.logoUrl = data.imagen_Logo;
+        this.sidebarColor = data.color_primary;
+        console.log('logoUrl', this.logoUrl);
+        console.log("personalizaciones obtenidas", data);
+      },
+      error => {
+        console.error("no funciona", error);
+      }
+    );
   }
 
   private initBannerSwiper(): void {
