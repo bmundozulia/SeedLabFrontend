@@ -20,6 +20,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
   listAliados: Aliado[] = [];
   isLoggedIn: boolean = false;
   logoUrl: string = '';
+  sidebarColor:string = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -69,6 +70,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
     this.personalizacionesService.getPersonalizacion().subscribe(
       data => {
         this.logoUrl = data.imagen_Logo;
+        this.sidebarColor = data.color_primary;
         console.log('logoUrl', this.logoUrl);
         console.log("personalizaciones obtenidas", data);
       },

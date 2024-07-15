@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
-<nav class="sidebar shadow-xl  p-4" [ngClass]="{ 'slide-left': isLeft }" *ngIf="isAuthenticated">
+<nav class="sidebar shadow-xl  p-4" [ngClass]="{ 'slide-left': isLeft }" *ngIf="isAuthenticated" [style.backgroundColor]="colorPrincipal">
     <header class="relative">
         <div class="bx bx-chevron-right toggle absolute top-[20px] left-[226px] transform -translate-y-1/2 h-[40px] w-[40px] bg-sky-500 flex items-center justify-center rounded-r-xl text-white text-xl"
             (click)="toggleSlide()">
@@ -46,10 +46,10 @@
                 </ul>
             </div>
             <div class="w-44 h-[2px] ml-6 mt-[65px] bg-[#ffb000] rounded-1xl from-yellow-200 rounded ">
-            </div>
-            <!-- Boton de Cerrar sesion -->
+        </div>
+        <!-- Boton de Cerrar sesion -->
             <div class=" mr-2 ml-6">
-                <li class="h-14 flex items-center lg:mt-20 max-sm:-mt-32 min-sm:-mt-28 xl:mt-12 md:-mt-32 ml-8 "
+                <li class="h-14 flex items-center lg:mt-20 max-sm:-mt-32 min-sm:-mt-28 xl:mt-12 md:-mt-62 ml-8 "
                     *ngIf="logueado">
                     <a *ngIf="token != null" (click)="logout()">
                         <span class="text nav-text text-base font-medium cursor-pointer mt-[-90px]"> Cerrar sesión </span>
