@@ -1,6 +1,7 @@
 <div class="flex justify-end w-full">
   <mat-toolbar class="app-header bg-white flex items-center py-20 px-8 justify-between w-full">
-    <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-64 h-auto ml-60 max-lg:ml-0 max-lg:w-32">
+    <!-- <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-64 h-auto ml-60 max-lg:ml-0 max-lg:w-32"> -->
+    <img [src]="logoUrl" alt="Logo" class="w-64 h-auto ml-60 max-lg:ml-0 max-lg:w-32">
     <span class="nav-tool-items flex items-center space-x-8 mt-0 mr-60 max-lg:flex-col max-lg:mr-0 max-lg:space-x-0 max-lg:space-y-2">
       <a routerLink="/auth/login" mat-button routerLinkActive="active"
          class="text-1xl md:text-sm bg-[#373435] text-white rounded-full font-poppins font-bold py-2 px-[20px]">Iniciar sesión</a>

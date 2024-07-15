@@ -3,7 +3,7 @@ import { ColorPickerDirective } from 'ngx-color-picker';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { User } from '../../../Modelos/user.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PersonalizacionesService } from '../../../servicios/personalizaciones.service';
+import { SuperadminService } from '../../../servicios/superadmin.service';
 import { Personalizaciones } from '../../../Modelos/personalizaciones.model';
 import { Router } from '@angular/router';
 
@@ -19,6 +19,7 @@ export class PersonalizacionesComponent implements OnInit {
   selectedColorTerciario = '#C2FFFB';
   previewUrl: any = null;
   faImage = faImage;
+ 
 
 
   // crear personalización
@@ -32,7 +33,7 @@ export class PersonalizacionesComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder,
-    private personalizacionesService: PersonalizacionesService,
+    private personalizacionesService: SuperadminService,
     private router: Router,) {
     this.personalizacionForm = this.fb.group({
       imagen_Logo: [''],
@@ -52,7 +53,6 @@ export class PersonalizacionesComponent implements OnInit {
       color_secundario: ['#C2FFFB', Validators.required],
       color_terciario: ['#C2FFFB', Validators.required],
     })
-
   }
 
   validateToken(): void {
@@ -123,7 +123,7 @@ export class PersonalizacionesComponent implements OnInit {
 
         const personalizaciones: Personalizaciones = {
           nombre_sistema: this.personalizacionForm.value.nombre_sistema,
-          imagen_Logo: this.personalizacionForm.value.imagen_Logo,
+          imagen_logo: this.personalizacionForm.value.imagen_Logo,
           color_principal: this.selectedColorPrincipal,
           color_secundario: this.selectedColorSecundario,
           color_terciario: this.selectedColorTerciario,
@@ -154,6 +154,8 @@ export class PersonalizacionesComponent implements OnInit {
       console.error("Ocurrió un error:", error);
     }
   }
+
+
 
 
   logFormErrors(): void {

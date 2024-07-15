@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environment/env';
 
 import { Superadmin } from '../Modelos/superadmin.model';
+import { Personalizaciones } from '../Modelos/personalizaciones.model';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,14 @@ export class SuperadminService {
   getInfoAdminxlista(access_token: any, adminId: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.get<any>(this.url + "perfilAdmin/" + adminId, options);
+  }
+
+  createPersonalizacion(access_token: any, personalizaciones: Personalizaciones): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.post(this.url + "personalizacion", personalizaciones, options);
+  }
+
+  getPersonalizacion(): Observable<any> {
+    return this.http.get(environment.apiUrl + "traerPersonalizacion");
   }
 }
