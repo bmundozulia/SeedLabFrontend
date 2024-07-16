@@ -2,11 +2,12 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <div class="flex justify-end w-full m-10">
   <mat-toolbar class="app-header bg-white flex flex-col lg:flex-row items-center py-4 lg:py-20 px-4 lg:px-8 justify-between w-full">
-    <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-32 lg:w-64 h-auto mb-4 lg:mb-0 lg:ml-60 max-lg:ml-0 max-lg:w-32">
+    <!-- <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-32 lg:w-64 h-auto mb-4 lg:mb-0 lg:ml-60 max-lg:ml-0 max-lg:w-32"> -->
+    <img [src]="logoUrl" alt="Logo" class="w-64 h-auto ml-60 max-lg:ml-0 max-lg:w-32">
     <span class="nav-tool-items flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-8 mt-4 lg:mt-0 mr-0 lg:mr-60 max-lg:flex-col max-lg:mr-0 max-lg:space-x-0 max-lg:space-y-2">
-      <a routerLink="/auth/login" mat-button routerLinkActive="active"
+      <a *ngIf="!isLoggedIn" routerLink="/auth/login" mat-button routerLinkActive="active"
          class="text-1xl md:text-sm bg-[#373435] text-white rounded-full font-poppins font-bold py-2 px-[20px]">Iniciar sesión</a>
-      <a routerLink="/auth/registro" mat-button routerLinkActive="active"
+      <a *ngIf="!isLoggedIn" routerLink="/auth/registro" mat-button routerLinkActive="active"
          class="text-xs md:text-sm bg-[#00B3ED] text-white rounded-full font-poppins font-bold py-2 px-[14px]">Registrarse</a>
     </span>
   <a *ngIf="!isLoggedIn" routerLink= "/auth/login" mat-button routerLinkActive="active"
