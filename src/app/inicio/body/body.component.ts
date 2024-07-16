@@ -38,7 +38,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
         console.log('Aliados:', data);
         this.listAliados = data.map(aliado => ({
           ...aliado,
-          descripcion: this.splitDescription(aliado.descripcion, 8)
+          descripcion: this.splitDescription(aliado.descripcion, 50)
         }));
         this.cdr.detectChanges(); // Fuerza la detección de cambios después de recibir los datos
         if (isPlatformBrowser(this.platformId)) {

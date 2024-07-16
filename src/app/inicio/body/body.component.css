@@ -42,7 +42,7 @@ body, html {
 
 .logo-img {
   width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-  max-width: 400px; /* Opcional: puedes establecer un ancho máximo */
+  max-width: 450px; /* Opcional: puedes establecer un ancho máximo */
   object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
   object-position: center;
   
@@ -124,12 +124,12 @@ body, html {
 
 /* Ajusta la descripción */
 .description-line {
-  line-height: 20px;
   margin-bottom: 0.5rem;
   padding: 0;
   font-size: 22px;
   letter-spacing: normal;
   text-align: left;
+  line-height: 1.2;
 }
 
 /* Espacio entre la imagen y la descripción */
