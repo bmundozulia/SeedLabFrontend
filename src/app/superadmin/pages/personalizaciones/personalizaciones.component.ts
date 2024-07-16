@@ -60,6 +60,7 @@ export class PersonalizacionesComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
+      console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
@@ -157,6 +158,24 @@ export class PersonalizacionesComponent implements OnInit {
     }
   }
 
+  restorePersonalizacion():void{
+    this.personalizacionesService.restorePersonalization(this.token, this.idPersonalizacion).subscribe(
+      data => {
+        console.log("Personalización restaurada", data);
+        // this.personalizacionForm.patchValue({
+        //   nombre_sistema: data.nombre_sistema,
+        //   color_principal: data.color_principal,
+        //   color_secundario: data.color_secundario,
+        //   color_terciario: data.color_terciario,
+        //   imagen_Logo: '' // Limpiar o actualizar según necesites
+        // });
+        location.reload();
+      },
+      error => {
+        console.error("No funciona", error);
+      }
+    );
+  }
 
 
 

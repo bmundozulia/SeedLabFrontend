@@ -63,4 +63,9 @@ export class SuperadminService {
   getPersonalizacion(): Observable<any> {
     return this.http.get(environment.apiUrl + "traerPersonalizacion");
   }
+
+  restorePersonalization(access_token: any, id):Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.post(this.url + "restaurarPersonalizacion/"+ id,{}, options);
+  }
 }
