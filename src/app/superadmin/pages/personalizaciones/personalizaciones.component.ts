@@ -19,7 +19,8 @@ export class PersonalizacionesComponent implements OnInit {
   selectedColorTerciario = '#C2FFFB';
   previewUrl: any = null;
   faImage = faImage;
- 
+  idPersonalizacion:number = 1;
+
 
 
   // crear personalización
@@ -27,6 +28,7 @@ export class PersonalizacionesComponent implements OnInit {
   user: User | null = null;
   id: number | null = null;
   currentRolId: number;
+  selectedFile: File;
 
   @ViewChild('colorPickerPrincipal') colorPickerPrincipal: ColorPickerDirective;
   @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
@@ -132,7 +134,7 @@ export class PersonalizacionesComponent implements OnInit {
 
         console.log("Datos a enviar:", personalizaciones);
 
-        this.personalizacionesService.createPersonalizacion(this.token, personalizaciones).subscribe(
+        this.personalizacionesService.createPersonalizacion(this.token, personalizaciones, this.idPersonalizacion).subscribe(
           data => {
             console.log("personalizacion creada", data);
             // console.log("Imagen en base64:", this.personalizacionForm.value.imagen_Logo);

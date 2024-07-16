@@ -55,9 +55,9 @@ export class SuperadminService {
     return this.http.get<any>(this.url + "perfilAdmin/" + adminId, options);
   }
 
-  createPersonalizacion(access_token: any, personalizaciones: Personalizaciones): Observable<any> {
+  createPersonalizacion(access_token: any, personalizaciones: any, id): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
-    return this.http.post(this.url + "personalizacion", personalizaciones, options);
+    return this.http.put(this.url + "personalizacion/"+ id, personalizaciones, options);
   }
 
   getPersonalizacion(): Observable<any> {
