@@ -5,6 +5,7 @@ import { User } from '../../Modelos/user.model';
 import { AuthService } from '../../servicios/auth.service';
 import { SuperadminRoutingModule } from '../../superadmin/superadmin-routing.module';
 import { MenuService } from '../../servicios/menu.service';
+import { SuperadminService } from '../../servicios/superadmin.service';
 
 @Component({
   selector: 'app-menu',
@@ -22,6 +23,9 @@ export class MenuComponent {
   currentRolName: string | null = "";
   isAuthenticated: boolean = true;
   menuItems: any[] = [];
+  colorPrincipal: string = '';
+  colorSecundaria: string = '';
+  
 
   toggleSlide() {
     this.isLeft = !this.isLeft;
@@ -29,7 +33,8 @@ export class MenuComponent {
 
   constructor(private router: Router,
     private authservices: AuthService,
-    private menuService: MenuService
+    private menuService: MenuService,
+    private personalizacionService: SuperadminService
   ) {
     
    }
@@ -60,8 +65,17 @@ export class MenuComponent {
       console.log("No está logueado o no se pudo cargar el usuario.");
     }
     this.menuItems = this.menuService.getRoutesByRole(this.currentRolName); 
-  }
+    this.personalizacionService.getPersonalizacion().subscribe(
+      data=>{
+       this.colorPrincipal = data.color_principal;
+       this.colorSecundaria = data.color_secundario;
+        console.log(this.colorPrincipal, this.colorSecundaria);
+      },
+      err => console.log(err)
+      );
+    
 
+  }
 
 
   logout() {
@@ -69,24 +83,22 @@ export class MenuComponent {
       this.authservices.logout(this.token).subscribe(
         (data) => {
           console.log(data);
-          localStorage.clear();
-          this.isAuthenticated = false;
-          this.router.navigate(['home']);
-          location.reload();
+          this.handleLogout();
         },
         (err) => {
           console.log(err);
-          localStorage.clear();
-          this.isAuthenticated = false;
-          this.router.navigate(['home']);
-          location.reload();
+          this.handleLogout();
         }
       );
     } else {
-      localStorage.clear();
-      this.isAuthenticated = false;
-      this.router.navigate(['home']);
+      this.handleLogout();
     }
+  }
+
+  private handleLogout() {
+    localStorage.clear();
+    this.isAuthenticated = false;
+    this.router.navigate(['/home']);
   }
 
   
