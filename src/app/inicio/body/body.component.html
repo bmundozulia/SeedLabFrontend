@@ -1,7 +1,9 @@
-<div class="flex justify-end w-full">
-  <mat-toolbar class="app-header bg-white flex items-center py-20 px-8 justify-between w-full">
-    <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-64 h-auto ml-60 max-lg:ml-0 max-lg:w-32">
-    <span class="nav-tool-items flex items-center space-x-8 mt-0 mr-60 max-lg:flex-col max-lg:mr-0 max-lg:space-x-0 max-lg:space-y-2">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<div class="flex justify-end w-full m-10">
+  <mat-toolbar class="app-header bg-white flex flex-col lg:flex-row items-center py-4 lg:py-20 px-4 lg:px-8 justify-between w-full">
+    <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-32 lg:w-64 h-auto mb-4 lg:mb-0 lg:ml-60 max-lg:ml-0 max-lg:w-32">
+    <span class="nav-tool-items flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-8 mt-4 lg:mt-0 mr-0 lg:mr-60 max-lg:flex-col max-lg:mr-0 max-lg:space-x-0 max-lg:space-y-2">
       <a routerLink="/auth/login" mat-button routerLinkActive="active"
          class="text-1xl md:text-sm bg-[#373435] text-white rounded-full font-poppins font-bold py-2 px-[20px]">Iniciar sesión</a>
       <a routerLink="/auth/registro" mat-button routerLinkActive="active"
@@ -26,37 +28,36 @@
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
 </div>
-
-<div class="flex flex-col lg:flex-row bg-white max-lg:flex-col p-24">
-  <div class="w-[28%] bg-[#00B3ED] p-6 text-white ml-28 -mt-16 max-lg:w-full max-lg:ml-0 max-lg:mt-0  h-[calc(100%-18px)]">
+<div class="flex flex-col lg:flex-row bg-white max-lg:flex-col items-center m-14 -mt-6">
+  <div class="w-[28%] bg-[#00B3ED] text-white ml-28 -mt-28 max-lg:w-full max-lg:ml-0 max-lg:mt-0 h-[calc(100%-18px)] p-4 mb-24">
     <div class="flex flex-col text-4xl font-bold mb-4 mt-10 ml-10 max-lg:text-2xl">
       <span class="font-thin">Nuestros</span>
       <span class="font-bold font-poppins"><em>Aliados</em></span>
     </div>
-    <p class="mb-4 mt-44 text-[26px] font-extralight ml-4 custom-text font-poppins max-lg:mt-4 max-lg:text-lg">
-      Conozca las entidades que forman parte de la <span class="bg-[#FA7D00] font-bold rounded-full px-1">incubadora</span> de emprendimientos
+    <p class="mb-16 mt-44 text-[26px] font-extralight ml-4 custom-text font-poppins max-lg:mt-4 max-lg:text-lg">
+      Conozca las entidades que<br> forman parte de la <span class="bg-[#FA7D00] font-bold rounded-full px-1">incubadora<br></span> de emprendimientos
     </p>
   </div>
   <div class="w-full lg:w-2/3 relative">
-    <div class="banner-swiper-container">
+    <div class="banner-swiper-container lg:flex lg:flex-row lg:items-center" style="margin-top: -200px; margin-left: 30px;">
       <div class="swiper-wrapper">
-        <div class="swiper-slide p-10 max-lg:flex max-lg:flex-col max-lg:items-center" *ngFor="let aliado of listAliados">
+        <div class="swiper-slide lg:flex lg:flex-row lg:items-center p-10 max-lg:flex max-lg:flex-col max-lg:items-center" *ngFor="let aliado of listAliados">
           <img [src]="aliado.logo" [alt]="aliado.nombre" class="logo-img max-lg:mb-4">
-          <div class="relative p-10 max-lg:p-4 max-lg:text-center">
+          <div class="relative lg:ml-10 lg:pl-10 p-10 max-lg:p-4 max-lg:text-center">
             <p *ngFor="let line of aliado.descripcion" class="description-line mb-1">{{ line }}</p>
           </div>
         </div>
       </div>
-      <div class="flex justify-center items-center">
-        <div class="swiper-pagination" style="bottom: 20px !important; margin-top: 56px;"></div>
-      </div>
     </div>
-    <div class="lg:mt-20 sm-mt:24 text-right max-lg:text-center sm:text-center lg:mr-44">
-      <button class="bg-[#FA7D00] text-white px-14 py-2 rounded-full -mt-16 mr-[35%] lg:text-4xl sm:text-2xl max-lg:mr-0 max-lg:mt-4 font-bold italic text-2xl">Todos los aliados</button>
+    <!-- Pagination and Button container -->
+    <div class="relative flex flex-col items-center">
+      <div class="swiper-pagination custom-swiper-pagination absolute -top-20 left-80 transform -translate-x-1/2 -translate-y-1/2"></div>
+      <p class="bg-[#FA7D00] inline-block text-white text-center text-3xl italic px-14 py-2 rounded-full font-bold -mt-6 mr-20">
+        Todos los aliados
+      </p>
     </div>
   </div>
 </div>
-
 <footer class="bg-[#373435] text-white py-8">
   <div class="container mx-auto px-4 flex justify-between items-center max-lg:flex-col max-lg:text-center mt-4">
     <div class="flex items-center max-lg:flex-col">
