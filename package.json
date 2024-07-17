@@ -48,7 +48,7 @@
     "slick-carousel": "^1.8.1",
     "spectrum-colorpicker2": "^2.0.10",
     "sweetalert2": "^11.11.0",
-    "swiper": "^11.1.4",
+    "swiper": "^11.1.5",
     "tslib": "^2.6.3"
   },
   "devDependencies": {
