@@ -8,6 +8,8 @@ import { ListOrientadorComponent } from './pages/orientador/list-orientador/list
 import { AddActividadComponent } from './pages/ruta/add-actividad/add-actividad.component';
 import { ListAliadosComponent } from './pages/aliados/list-aliados/list-aliados.component';
 import { AddAliadosComponent } from './pages/aliados/add-aliados/add-aliados.component';
+import { ActnivlecComponent } from './pages/ruta/actnivlec/actnivlec.component';
+import { title } from 'process';
 
 const routes: Routes = [
   {
@@ -21,6 +23,7 @@ const routes: Routes = [
       { path: 'add-actividad', component: AddActividadComponent, data: { title: 'Actividad', showInMenu: false } },
       { path: 'list-aliados', component: ListAliadosComponent, data: { title: 'Aliados', showInMenu: true } },
       { path: 'add-aliados', component: AddAliadosComponent, data: { showInMenu: false } },
+      { path: 'actnivlec', component: ActnivlecComponent, data: {title: 'Act-Niv-Lec', showInMenu: false}}
     ]
   }
 ];

@@ -60,7 +60,7 @@
         </div> -->
         <div class="contenido flex flex-row">
             <div *ngFor="let rutas of listaRutas     | paginate: { itemsPerPage: 8, currentPage: page }"
-                class="info-empresa flex flex-row">
+                class="info-empresa flex flex-row bg-red-700">
                 <!-- <div class="flex max-md:pt-3 px-2 max-md:h-10 md:w-auto">
                     <div class="max-md:flex">
                         <h3 class="block md:hidden mr-1 font-bold ">Nombre: </h3>
@@ -86,15 +86,16 @@
                 <div class="flex flex-row ">
                     <div class="flex flex-col  ">
                         <h3 class="block md:hidden mr-1 font-bold ">Logo: </h3>
-                        <button class="flex flex-col items-center" (click)="openModal(rutas.id)">
-                        <img [src]="rutas.imagen_ruta"
-                            class="w-45 h-50 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-x-gray-900 cursor-pointer"
-                            alt="Ruta Imagen">    
-                            <h3 class="md:w-32 max-md:w-32 whitespace-nowrap overflow-hidden max-md:h-6 md:pl-4 text-center"
-                                style="text-overflow: ellipsis;">
-                                {{rutas.nombre }}</h3>
-                        </button>
-                        
+                        <div class="flex flex-col items-center ">
+                                <img [src]="rutas.imagen_ruta" (click)="openModal(rutas.id)"
+                                    class="w-52 h-52 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-x-gray-900 cursor-pointer"
+                                    alt="Ruta Imagen">
+                                <h3 class="md:w-32 max-md:w-32 whitespace-nowrap overflow-hidden max-md:h-6 md:pl-4 text-center"
+                                    style="text-overflow: ellipsis;">
+                                    {{rutas.nombre }}</h3>
+                        </div>
+
+
                     </div>
                 </div>
 

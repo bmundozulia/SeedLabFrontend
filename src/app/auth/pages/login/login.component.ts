@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
                 }
             } else {
                 console.error('Id de rol no está definido.');
-                this.router.navigate(['/home/body']);
+                this.router.navigate(['/home']);
             }
         }
     }
