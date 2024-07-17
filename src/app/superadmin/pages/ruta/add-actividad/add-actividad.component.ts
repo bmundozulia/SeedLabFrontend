@@ -62,7 +62,7 @@ export class AddActividadComponent implements OnInit {
     private aliadoService: AliadoService,
     private rutaService: RutaService,
     private actividadService: ActividadService,
-    private alertService: AlertService
+    private alertService: AlertService,
   ) {
 
   }
@@ -98,12 +98,12 @@ export class AddActividadComponent implements OnInit {
         this.currentRolId = this.user.id_rol;
         //console.log('ererer',this.id)
         if (this.currentRolId != 3) {
-          this.router.navigate(['/inicio/body']);
+          this.router.navigate(['/home']);
         }
       }
     }
     if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['/home']);
     }
   }
 
