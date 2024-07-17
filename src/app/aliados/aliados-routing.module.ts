@@ -14,6 +14,7 @@ const routes: Routes = [
       {path: 'list-asesorias', component: AsesoriaAliadoComponent, data: {title: 'Asesorias', showInMenu: true, icon: 'fa-solid fa-users-gear'}},
       {path: 'fan-page', component: FanPageComponent, data: {title: 'FanPage', showInMenu: true, icon: 'fa-solid fa-palette'}},
       {path: 'dashboard', component: DashboardComponent, data: {title: 'Dashboard', showInMenu: true, icon: 'fa-solid fa-chart-pie'}},
+      //{path: 'ruta-aliado', component: }
     ]
   }
 ];  
