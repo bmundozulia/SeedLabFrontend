@@ -37,13 +37,7 @@ export class PersonalizacionesComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private personalizacionesService: SuperadminService,
     private router: Router,) {
-    this.personalizacionForm = this.fb.group({
-      imagen_Logo: [''],
-    })
   }
-
-
-
 
 
   ngOnInit(): void {
@@ -60,7 +54,7 @@ export class PersonalizacionesComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
-      console.log(this.token);
+      //console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {

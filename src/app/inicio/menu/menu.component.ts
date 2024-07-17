@@ -25,6 +25,7 @@ export class MenuComponent {
   menuItems: any[] = [];
   colorPrincipal: string = '';
   colorSecundaria: string = '';
+
   
 
   toggleSlide() {
@@ -65,6 +66,7 @@ export class MenuComponent {
       console.log("No está logueado o no se pudo cargar el usuario.");
     }
     this.menuItems = this.menuService.getRoutesByRole(this.currentRolName); 
+    console.log(this.menuItems);
     this.personalizacionService.getPersonalizacion().subscribe(
       data=>{
        this.colorPrincipal = data.color_principal;
