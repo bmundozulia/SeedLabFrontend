@@ -15,11 +15,11 @@
 
     <hr style="color: #fad700;">
         <!-- DIV GENERAL 1 (Items - contenedores) -->
-        <div style="display: flex; flex-direction: row;">
-                <div style="width: 50%; ">
-
-                        <!-- DIV CONTENEDOR 1 (Item 1 y 2) -->
+        <div class="divGrande1">
+                <div class="divGrande1-1">
+                        <!-- DIV CONTENEDOR 1 (Items 1, 2, 3 y 4) -->
                         <div class="grid-container1">
+
                                 <div class="grid-item1-c1">
                                     <div style="display: flex; justify-content: center;">
                                         <img src="../assets/images/logo-item.png" alt="Ícono item">
@@ -27,6 +27,7 @@
                                     <h2>Item 1</h2>
                                     <p class="big-number">120</p>
                                 </div>
+
                                 <div class="grid-item2-c1">
                                     <div style="display: flex; justify-content: center;">
                                         <img src="../assets/images/logo-item.png" alt="Ícono item">
@@ -34,18 +35,16 @@
                                     <h2>Item 2</h2>
                                     <p class="big-number">20</p>
                                 </div>
-                        </div>
 
-                        <!-- DIV CONTENEDOR 2 (Item 3 y 4) -->
-                        <div class="grid-container2">
-                                <div class="grid-item1-c2">
+                                <div class="grid-item3-c1">
                                     <div style="display: flex; justify-content: center;">
                                         <img src="../assets/images/logo-item.png" alt="Ícono item">
                                     </div>
                                     <h2>Item 3</h2>
                                     <p class="big-number">120</p>
                                 </div>
-                                <div class="grid-item2-c2">
+
+                                <div class="grid-item4-c1">
                                     <div style="display: flex; justify-content: center;">
                                         <img src="../assets/images/logo-item.png" alt="Ícono item">
                                     </div>
@@ -54,33 +53,33 @@
                                 </div>
                         </div>
                 </div>
-
-                <!-- DIV GENERAL 2 (Gráfica 1) -->
-                <div class="divGrandeGraficas">
-                        <div class="divGrafica">
-                            <div style="text-align: left; margin-left: 20px;">
-                                <h2 style="font-weight: bold;">Solicitudes por género</h2>
-                            </div>
-                            <div style="margin-left: 20px; text-align: center;">
-                                <div style="display: block;">
-                                    <canvas baseChart
-                                            [data]="pendientesFinalizadasData"
-                                            [options]="pieChartOptions"
-                                            [type]="pieChartType"
-                                            [legend]="pieChartLegend">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                </div>
         </div>
 
-        <!-- DIV GENERAL 3 (Gráfica 2) -->
-        <div style="display: flex; flex-direction: row; text-align: center;">
-            <div class="divGrandeGraficas">
-                <div class="divGrafica" style="margin-top: 40px; margin-bottom: 30px;">
+        <!-- DIV GENERAL 2 (Gráfica 1) -->
+        <div class="divGrande3">
+            <div class="divGrande3-1">
+                <div class="divGrafica">
                     <div style="text-align: left; margin-left: 20px;">
-                        <h2 style="font-weight: bold;">Gráfica de TRL</h2>
+                        <h2 style="font-weight: bold;" class="titCard">Gráfica de TRL</h2>
+                    </div>
+                    <div style="margin-left: 20px; text-align: center;">
+                        <div style="display: block; margin-bottom: 20px; margin-right: 20px;">
+                            <canvas baseChart
+                                    [data]="asesoresData"
+                                    [options]="pieChartOptions"
+                                    [type]="barChartType"
+                                    [legend]="pieChartLegend">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIV GENERAL 3 (Gráfica 2) -->
+            <div class="divGrande4">
+                <div class="divGrafica">
+                    <div style="text-align: left; margin-left: 20px;">
+                        <h2 style="font-weight: bold;" class="titCard">Solicitudes</h2>
                     </div>
                     <div style="margin-left: 20px; text-align: center;">
                         <div style="display: block; margin-bottom: 20px; margin-right: 20px;">
@@ -96,23 +95,23 @@
             </div>
 
             <!-- DIV GENERAL 4 (Gráfica 3) -->
-            <div class="divGrandeGraficas">
-                <div class="divGrafica">
-                    <div style="text-align: left; margin-left: 20px;">
-                        <h2 style="font-weight: bold;">Solicitudes</h2>
-                    </div>
-                    <div style="margin-left: 20px; text-align: center;">
-                        <div style="display: block; margin-bottom: 20px; margin-right: 20px;">
-                            <canvas baseChart
-                                    [data]="asesoresData"
-                                    [options]="pieChartOptions"
-                                    [type]="barChartType"
-                                    [legend]="pieChartLegend">
-                            </canvas>
+                <div class="divGrande2">
+                        <div class="divGrafica">
+                            <div style="text-align: left; margin-left: 20px;">
+                                <h2 style="font-weight: bold;" class="titCard">Solicitudes por género</h2>
+                            </div>
+                            <div style="margin-left: 20px; text-align: center;">
+                                <div style="display: block;">
+                                    <canvas baseChart
+                                            [data]="pendientesFinalizadasData"
+                                            [options]="pieChartOptions"
+                                            [type]="pieChartType"
+                                            [legend]="pieChartLegend">
+                                    </canvas>
+                                </div>
+                            </div>
                         </div>
-                    </div>
                 </div>
-            </div>
     </div>
 
 </body>
