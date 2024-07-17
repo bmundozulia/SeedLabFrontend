@@ -71,7 +71,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
       data => {
         this.logoUrl = data.imagen_Logo;
         this.sidebarColor = data.color_primary;
-        console.log('logoUrl', this.logoUrl);
+        //console.log('logoUrl', this.logoUrl);
         console.log("personalizaciones obtenidas", data);
       },
       error => {
