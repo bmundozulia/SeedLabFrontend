@@ -50,19 +50,16 @@
 
 
 
-.sidebar li a {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.4 eases;
 
-}
 
 .sidebar li a:hover {
-    background: #525455;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+.btn-logout li a:hover{
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /*  */

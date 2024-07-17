@@ -49,12 +49,12 @@
         
     </div>
     <!-- Boton de Cerrar sesion -->
-        <div class="flex flex-col items-center">
+        <div class="">
             <div class="w-44 h-[2px] ml-6 bg-[#ffb000] rounded-1xl from-yellow-200 rounded "> </div>
-            <li class="group h-12 flex items-center " *ngIf="logueado">
+            <li class="h-14 mt-2 flex items-center " *ngIf="logueado">
                 <a *ngIf="token != null" (click)="logout()"
-                    class="appearance-none no-underline flex items-center w-full h-full p-2 rounded-md transition-all duration-400 text-gray-700 group-hover:bg-sky-500">
-                    <span class="text nav-text text-base font-medium group-hover:text-white cursor-pointer "> Cerrar Sesión</span>
+                    class="appearance-none no-underline flex justify-center items-center w-full h-full p-2 rounded-md transition-all duration-400 text-gray-700 group-hover:bg-[#ffb000]">
+                    <span class="text nav-text text-base "> Cerrar Sesión</span>
                 </a>
             </li>
         </div>
