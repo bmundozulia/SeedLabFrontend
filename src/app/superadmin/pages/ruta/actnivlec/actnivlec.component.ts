@@ -120,7 +120,7 @@ export class ActnivlecComponent implements OnInit {
       )
     }
   }
- 
+
   //agregar una actividad
   addActividadSuperAdmin():void{
     const actividad: Actividad = {
