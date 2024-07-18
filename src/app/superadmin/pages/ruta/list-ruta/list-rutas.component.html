@@ -9,7 +9,7 @@
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <fa-icon [icon]="falupa" class="text-xl right-2 transform" style="color: #adb7c7;"></fa-icon>
                     </div>
-                    <input type="search" id="search"  [(ngModel)]="userFilter.nombre"
+                    <input type="search" id="search" [(ngModel)]="userFilter.nombre"
                         class="w-60 h-12 ps-5 text-sm border border-gray-300 rounded-lg max-md:w-full max-[1024px]:w-full max-[600px]:w-full md:mr-4 focus:outline-none"
                         placeholder="Buscar..." required />
                 </div>
@@ -34,7 +34,7 @@
                         (click)="limpiarFiltro()">Limpiar</button>
                 </div>
                 <button class="bg-sky-400 hover:bg-sky-500 text-white font-bold px-3 py-0 rounded h-12"
-                (click)="openModalSINId()">Agregar
+                    (click)="openModalSINId()">Agregar
                     Ruta</button>
                 <div class="absolute top-0 right-0" *ngIf="modalSwitch == true">
                     <app-modal></app-modal>
@@ -59,8 +59,8 @@
 
         </div> -->
         <div class="contenido flex flex-row">
-            <div *ngFor="let rutas of listaRutas     | paginate: { itemsPerPage: 5, currentPage: page }"
-                class="info-empresa flex flex-row">
+            <div *ngFor="let rutas of listaRutas     | paginate: { itemsPerPage: 8, currentPage: page }"
+                class="info-empresa flex flex-row bg-red-700">
                 <!-- <div class="flex max-md:pt-3 px-2 max-md:h-10 md:w-auto">
                     <div class="max-md:flex">
                         <h3 class="block md:hidden mr-1 font-bold ">Nombre: </h3>
@@ -86,15 +86,16 @@
                 <div class="flex flex-row ">
                     <div class="flex flex-col  ">
                         <h3 class="block md:hidden mr-1 font-bold ">Logo: </h3>
-                        <button class="flex flex-col items-center" (click)="openModal(rutas.id)">
-                        <img [src]="rutas.imagen_ruta"
-                            class="w-45 h-50 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-x-gray-900 cursor-pointer"
-                            alt="Ruta Imagen">    
-                            <h3 class="md:w-32 max-md:w-32 whitespace-nowrap overflow-hidden max-md:h-6 md:pl-4 text-center"
-                                style="text-overflow: ellipsis;">
-                                {{rutas.nombre }}</h3>
-                        </button>
-                        
+                        <div class="flex flex-col items-center ">
+                                <img [src]="rutas.imagen_ruta" (click)="openModal(rutas.id)"
+                                    class="w-52 h-52 flex items-center justify-center border overflow-hidden mb-2 rounded-full border-x-gray-900 cursor-pointer"
+                                    alt="Ruta Imagen">
+                                <h3 class="md:w-32 max-md:w-32 whitespace-nowrap overflow-hidden max-md:h-6 md:pl-4 text-center"
+                                    style="text-overflow: ellipsis;">
+                                    {{rutas.nombre }}</h3>
+                        </div>
+
+
                     </div>
                 </div>
 

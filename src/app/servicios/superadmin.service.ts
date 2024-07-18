@@ -55,6 +55,21 @@ export class SuperadminService {
     return this.http.get<any>(this.url + "perfilAdmin/" + adminId, options);
   }
 
+  asesorConAliado(access_token:any):Observable<any>{
+    const options = {headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+"asesor-aliado",options)
+  }
+
+  listarAliado(access_token:any):Observable<any>{
+    const options = {headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+"listAliado",options)
+  }
+
+  crearActividadSuperAdmin(access_token: any,id: number):Observable<any>{
+    const options = {headers: this.CreacionHeaders(access_token)};
+    return this.http.post(this.url+"actividad/actividad/"+id,options)
+  }
+
   createPersonalizacion(access_token: any, personalizaciones: any, id): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.put(this.url + "personalizacion/"+ id, personalizaciones, options);
