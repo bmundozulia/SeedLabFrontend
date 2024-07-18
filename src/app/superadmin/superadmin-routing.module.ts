@@ -10,11 +10,13 @@ import { ListAliadosComponent } from './pages/aliados/list-aliados/list-aliados.
 import { AddAliadosComponent } from './pages/aliados/add-aliados/add-aliados.component';
 import { ActnivlecComponent } from './pages/ruta/actnivlec/actnivlec.component';
 import { title } from 'process';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
+      {path: 'dashboard-superadmin', component: DashboardComponent, data:{title: 'Dashboard', icon: 'fa-solid fa-chart-pie', showInMenu: true}},
       { path: 'list-superadmin', component: ListSuperadminComponent, data: { title: 'Super Admin', icon:'fa-solid fa-user', showInMenu: true } },
       { path: 'perfil-admin', component: PerfilSuperadminComponent, data: { title: 'Perfil', icon:'fa-solid fa-circle-user', showInMenu: true } },
       { path: 'personalizaciones', component: PersonalizacionesComponent, data: { title: 'Personalización Sistema', icon:'fa-solid fa-paintbrush', showInMenu: true } },

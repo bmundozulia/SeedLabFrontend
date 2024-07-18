@@ -24,6 +24,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 
@@ -47,7 +48,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
     ModalAddRutaComponent,
     AddActividadComponent,
     ModalCrearOrientadorComponent,
-    ActnivlecComponent
+    ActnivlecComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
