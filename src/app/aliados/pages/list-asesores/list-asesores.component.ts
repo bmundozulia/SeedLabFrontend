@@ -8,25 +8,6 @@ import { User } from '../../../Modelos/user.model';
 import { Asesor } from '../../../Modelos/asesor.model';
 import { AliadoService } from '../../../servicios/aliado.service';
 
-@Pipe({
-  name: 'filter'
-})
-export class FilterPipe implements PipeTransform {
-  transform(items: any[], filter: any): any[] {
-    if (!items || !filter) {
-      return items;
-    }
-    return items.filter(item => {
-      for (let key in filter) {
-        if (filter[key] && item[key].toLowerCase().indexOf(filter[key].toLowerCase()) === -1) {
-          return false;
-        }
-      }
-      return true;
-    });
-  }
-}
-
 @Component({
   selector: 'app-list-asesores',
   templateUrl: './list-asesores.component.html',
@@ -119,10 +100,6 @@ export class ListAsesoresComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.cargarAsesores();
     });
-  }
-
-  openModalSINId(): void {
-    this.openModal(null);
   }
 
   getPages(): number[] {
