@@ -34,8 +34,8 @@ export class MenuComponent {
               private personalizacionService: SuperadminService) { }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkIfMobile();
+  onResize(event: Event) {
+    this.isMobile = window.innerWidth < 768;
   }
 
   toggleSidebar() {
@@ -81,17 +81,18 @@ export class MenuComponent {
   }
 
   checkIfMobile() {
-    this.isMobile = window.innerWidth <= 768; // Ajusta este valor según tus necesidades
+   this.isMobile = window.innerWidth < 768;
   }
 
   // getBackgroundColor(): string {
   //   return this.isMobile ? 'white' : this.colorPrincipal;
   // }
 
+ 
   getIconColor(): string {
-    return this.isMobile ? '#00B3ED' : this.colorPrincipal;
+    console.log('isMobile:', this.isMobile);
+    return this.isMobile ? '#00B3ED' : '#FFFFFF'; // Color blanco en pantallas grandes
   }
-
   logout() {
     if (this.token) {
       this.authservices.logout(this.token).subscribe(

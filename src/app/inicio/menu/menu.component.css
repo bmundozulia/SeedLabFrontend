@@ -10,6 +10,7 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     transition: width 0.3s ease; /* Ajuste de transición */
     z-index: 40;
+    margin: 6px;
 }
 
 /* Estilo cuando el menú está expandido */
@@ -70,6 +71,9 @@
   
   .transition-all {
     transition: all 0.3s ease;
+  }
+  .icon {
+    fill: #FFFFFF; /* Color blanco para pantallas grandes */
   }
 
 /* Estilos responsivos */
