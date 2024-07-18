@@ -13,7 +13,7 @@ import { SuperadminService } from '../../servicios/superadmin.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  isLeft = true;
+  isExpanded = false;
   logueado = false;
   flag = false;
   token: string | null = null;
@@ -26,19 +26,14 @@ export class MenuComponent {
   colorPrincipal: string = '';
   colorSecundaria: string = '';
 
-  
-
-  toggleSlide() {
-    this.isLeft = !this.isLeft;
-  }
-
   constructor(private router: Router,
-    private authservices: AuthService,
-    private menuService: MenuService,
-    private personalizacionService: SuperadminService
-  ) {
-    
-   }
+              private authservices: AuthService,
+              private menuService: MenuService,
+              private personalizacionService: SuperadminService) { }
+
+  toggleSidebar() {
+    this.isExpanded = !this.isExpanded;
+  }
 
   validateToken(): void {
     this.token = localStorage.getItem("token");
@@ -74,11 +69,8 @@ export class MenuComponent {
         console.log(this.colorPrincipal, this.colorSecundaria);
       },
       err => console.log(err)
-      );
-    
-
+    );
   }
-
 
   logout() {
     if (this.token) {
@@ -102,7 +94,5 @@ export class MenuComponent {
     this.isAuthenticated = false;
     this.router.navigate(['/home']);
   }
-
   
 }
-

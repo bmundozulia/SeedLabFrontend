@@ -1,77 +1,50 @@
-/*Apertura del menu*/
-.slide-left {
-    /* transform: translateX(-100%); */
-    margin-left: -250px;
-
-}
-
-/*ALtura menu lateral*/
+/* Estilo base del menú lateral */
 .sidebar {
     position: sticky;
     top: 0;
     left: 0;
     height: 100vh;
-    width: 250px;
+    width: 80px;
     padding: 10px 14px;
     background: #00B3ED;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    /* transition: all 0.5 eases; */
-    transform: margin-left;
+    transition: width 0.3s ease; /* Ajuste de transición */
     z-index: 40;
 }
 
-/* .sidebar.close {
-    left: 0;
-    width: 88px;
-} */
-
-.sidebar .icon,
-.sidebar .text {
-    color: #fff;
-    transition: all 0.2 eases;
+/* Estilo cuando el menú está expandido */
+.sidebar.expand {
+    width: 260px;
+    min-width: 260px;
 }
 
-/* .sidebar header .toggle {
-    position: absolute;
-    top: 15%;
-    left: 238px;
-    transform: translateY(-50%);
-    height: 40px;
-    width: 40px;
-    background: #0fb5eb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0px 40px 40px 0px; 
+/* Ocultar texto cuando el menú no está expandido */
+.sidebar:not(.expand) .text {
+    display: none;
+}
+
+/* Mostrar iconos y texto cuando el menú está expandido */
+.sidebar.expand .text {
+    display: block;
+}
+
+/* Transición para iconos */
+.sidebar .icon {
     color: #fff;
-    font-size: 22px;
-    transition: all 0.3 eases;
-} */
+    transition: color 0.2s ease; /* Ajuste de transición */
+}
 
-
-
-
-
+/* Efecto hover en enlaces del menú */
 .sidebar li a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(45, 148, 216);
 }
 
-
-
-.btn-logout li a:hover{
-    background: rgba(255, 255, 255, 0.2);
+/* Estilo para el botón de logout */
+.btn-logout li a:hover {
+    background: rgb(72, 176, 245);
 }
 
-/*  */
-
-/* Estilos para el hover */
-/* li a:hover svg:hover {
-    fill: #FFFFFF; 
-    color: blue;
-} */
-
-
-
+/* Transición del toggle switch */
 .toggle-switch .switch {
     position: relative;
     height: 22px;
@@ -79,43 +52,57 @@
     border-radius: 25px;
     background: #0fb5eb;
 }
+.expand-line {
+    width: 11rem; /* 44 * 0.25rem = 11rem */
+    height: 0.125rem; /* 2 * 0.125rem = 0.125rem */
+    margin-left: 1.5rem; /* 6 * 0.25rem = 1.5rem */
+    background-color: #ffb000;
+    border-radius: 1rem;
+  }
+  
+  .collapse-line {
+    width: 0;
+    height: 0;
+    margin-left: 0;
+    background-color: transparent;
+    border-radius: 0;
+  }
+  
+  .transition-all {
+    transition: all 0.3s ease;
+  }
 
-
-/* .home {
-    position: relative;
-    width: 100%-255px;
-    transition: var(--tran-05);
-}*/
-
-/* .home .text {
-font-size: 16px;
-font-weight: 500;
-color: var(--text-color);
-padding: 8px 40px;
-} */
-
-/* .sidebar.close~.home {
-    width: calc(100%);
-} */
-
-
-@media(max-width:100em) {
-
-
+/* Estilos responsivos */
+@media (max-width: 30em) {
     .sidebar {
         position: fixed;
         top: 0;
         left: 0;
-        height: 100%;
-        width: 250px;
-        padding: 10px 12px;
+        height: 40px;
+        width: 50px;
+        padding: 10px 14px;
         background: #00B3ED;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-        overflow: visible;
-        transform: margin-left;
+        transition: width 0.3s ease; /* Ajuste de transición */
         z-index: 40;
     }
-
+    .sidebar.expand {
+        height: 100vh;
+      
+    }
+    
+    /* Ocultar texto cuando el menú no está expandido */
+    .sidebar:not(.expand) .containerLogout,
+    .sidebar:not(.expand) .menu {
+        display: none;
+    }
+    
+    /* Mostrar iconos y texto cuando el menú está expandido */
+    .sidebar.expand .text {
+        display: block;
+    }
+    
+    }
 
     .nav-text {
         font-size: 10px;
@@ -123,4 +110,12 @@ padding: 8px 40px;
     }
 
 
+/* Estilo para el botón de alternar (toggle) */
+.toggle {
+    transition: left 0.3s ease; /* Ajuste de transición */
+}
+
+/* Estilo cuando el menú no está expandido */
+.sidebar:not(.expand) .toggle {
+    left: 10px; /* Ajustar la posición cuando el menú está colapsado */
 }
