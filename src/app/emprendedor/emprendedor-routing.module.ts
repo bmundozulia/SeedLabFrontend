@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', showInMenu:true, icon:'fa-solid fa-comments'}},
+      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', showInMenu:true, icon:'fa-solid fa-comments', isLeft:true}},
       {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', showInMenu:true, icon:'fa-solid fa-circle-user'}},
       {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa', showInMenu:true, icon:'fa-solid fa-building'}},
       {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta', showInMenu:true, icon:'fa-solid fa-square-poll-vertical'}},

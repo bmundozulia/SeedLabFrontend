@@ -13,9 +13,9 @@
         </div>
     </header>
 
-    <div class="flex flex-col justify-between h-[calc(90%-50px)] mt-4">
-        <div class="menu  space-y-10">
-            <div  class="relative overflow-auto  max-h-[245.9px] md:max-h-full custom-scrollbar">
+    <div class="flex flex-col md:justify-around justify-around h-[calc(90%-50px)] mt-0 md:mt-24">
+        <div class="menu">
+            <div  class="relative overflow-auto  max-h-[245.9px] md:max-h-full custom-scrollbar xl:mt-12">
 
                 <ul class="p-0 space-y-2 overflow-auto ">
                     <!-- Inicio -->
@@ -45,18 +45,18 @@
 
                 </ul>
             </div>
-            <div class="w-44 h-[2px] ml-6 mt-[65px] bg-[#ffb000] rounded-1xl from-yellow-200 rounded ">
-        </div>
-        <!-- Boton de Cerrar sesion -->
-            <div class=" mr-2 ml-6">
-                <li class="h-14 flex items-center lg:mt-20 max-sm:-mt-32 min-sm:-mt-28 xl:mt-12 md:-mt-62 ml-8 "
-                    *ngIf="logueado">
-                    <a *ngIf="token != null" (click)="logout()">
-                        <span class="text nav-text text-base font-medium cursor-pointer mt-[-90px]"> Cerrar sesión </span>
-                    </a>
-                </li>
-            </div>
-
+            
+        
+    </div>
+    <!-- Boton de Cerrar sesion -->
+        <div class="">
+            <div class="w-44 h-[2px] ml-6 bg-[#ffb000] rounded-1xl from-yellow-200 rounded "> </div>
+            <li class="h-14 mt-2 flex items-center " *ngIf="logueado">
+                <a *ngIf="token != null" (click)="logout()"
+                    class="appearance-none no-underline flex justify-center items-center w-full h-full p-2 rounded-md transition-all duration-400 text-gray-700 group-hover:bg-[#ffb000]">
+                    <span class="text nav-text text-base "> Cerrar Sesión</span>
+                </a>
+            </li>
         </div>
     </div>
 </nav>
