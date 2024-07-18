@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Route, Router } from '@angular/router';
 
 import { User } from '../../Modelos/user.model';
@@ -25,11 +25,18 @@ export class MenuComponent {
   menuItems: any[] = [];
   colorPrincipal: string = '';
   colorSecundaria: string = '';
+  isMobile: boolean = false;
+  iconColor: string = '#00B3ED';
 
   constructor(private router: Router,
               private authservices: AuthService,
               private menuService: MenuService,
               private personalizacionService: SuperadminService) { }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkIfMobile();
+  }
 
   toggleSidebar() {
     this.isExpanded = !this.isExpanded;
@@ -56,20 +63,33 @@ export class MenuComponent {
 
     if (this.logueado && this.user) {
       this.currentRolId = this.user.id_rol?.toString();
-      //console.log(this.currentRolId);
     } else {
       console.log("No está logueado o no se pudo cargar el usuario.");
     }
     this.menuItems = this.menuService.getRoutesByRole(this.currentRolName); 
     console.log(this.menuItems);
     this.personalizacionService.getPersonalizacion().subscribe(
-      data=>{
-       this.colorPrincipal = data.color_principal;
-       this.colorSecundaria = data.color_secundario;
+      data => {
+        this.colorPrincipal = data.color_principal;
+        this.colorSecundaria = data.color_secundario;
         console.log(this.colorPrincipal, this.colorSecundaria);
       },
       err => console.log(err)
     );
+    
+    this.checkIfMobile();
+  }
+
+  checkIfMobile() {
+    this.isMobile = window.innerWidth <= 768; // Ajusta este valor según tus necesidades
+  }
+
+  // getBackgroundColor(): string {
+  //   return this.isMobile ? 'white' : this.colorPrincipal;
+  // }
+
+  getIconColor(): string {
+    return this.isMobile ? '#00B3ED' : this.colorPrincipal;
   }
 
   logout() {
@@ -88,11 +108,13 @@ export class MenuComponent {
       this.handleLogout();
     }
   }
+  
 
   private handleLogout() {
     localStorage.clear();
     this.isAuthenticated = false;
     this.router.navigate(['/home']);
   }
+  
   
 }

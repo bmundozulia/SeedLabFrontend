@@ -50,7 +50,7 @@
     height: 22px;
     width: 44px;
     border-radius: 25px;
-    background: #0fb5eb;
+   
 }
 .expand-line {
     width: 11rem; /* 44 * 0.25rem = 11rem */
@@ -81,15 +81,12 @@
         height: 40px;
         width: 50px;
         padding: 10px 14px;
-        background: #00B3ED;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-        transition: width 0.3s ease; /* Ajuste de transición */
         z-index: 40;
     }
     .sidebar.expand {
-        height: 100vh;
-      
+        height: 100vh; 
     }
+
     
     /* Ocultar texto cuando el menú no está expandido */
     .sidebar:not(.expand) .containerLogout,
@@ -103,7 +100,9 @@
     }
     
     }
-
+    .toggle {
+        display: none; /* Oculta el icono de burger en pantallas más grandes */
+    }
     .nav-text {
         font-size: 10px;
         font-weight: 200;
@@ -112,7 +111,7 @@
 
 /* Estilo para el botón de alternar (toggle) */
 .toggle {
-    transition: left 0.3s ease; /* Ajuste de transición */
+    transition:none; /* Ajuste de transición */
 }
 
 /* Estilo cuando el menú no está expandido */
