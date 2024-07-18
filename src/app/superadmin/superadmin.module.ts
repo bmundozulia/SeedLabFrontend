@@ -27,7 +27,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
-
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -63,6 +63,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ColorPickerModule,
     MatIconModule,
     RouterModule,
+    NgChartsModule
   ]
 })
 export class SuperadminModule { }

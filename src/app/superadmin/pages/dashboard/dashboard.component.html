@@ -21,12 +21,12 @@
         <div class="flex justify-between text-center">
           <div class="w-1/2 pr-1">
             <p class="text-md font-semibold">Activos</p>
-            <p class="text-lg font-bold text-green-600">45</p>
+            <p class="text-lg font-bold text-green-600">{{ totalSuperAdmin['activos'] }}</p>
           </div>
           <div class="w-px bg-gray-200 self-stretch"></div>
           <div class="w-1/2 pl-1">
             <p class="text-md font-semibold">Inactivos</p>
-            <p class="text-lg font-bold text-red-600">5</p>
+            <p class="text-lg font-bold text-red-600">{{totalSuperAdmin['inactivos']}}</p>
           </div>
         </div>
       </div>
@@ -53,12 +53,12 @@
         <div class="flex justify-between text-center">
           <div class="w-1/2 pr-1">
             <p class="text-md font-semibold">Activos</p>
-            <p class="text-lg font-bold text-green-600">45</p>
+            <p class="text-lg font-bold text-green-600">{{ totalOrientador['activos'] }}</p>
           </div>
           <div class="w-px bg-gray-200 self-stretch"></div>
           <div class="w-1/2 pl-1">
             <p class="text-md font-semibold">Inactivos</p>
-            <p class="text-lg font-bold text-red-600">5</p>
+            <p class="text-lg font-bold text-red-600">{{totalOrientador['inactivos']}}</p>
           </div>
         </div>
       </div>
@@ -83,12 +83,12 @@
         <div class="flex justify-between text-center">
           <div class="w-1/2 pr-1">
             <p class="text-md font-semibold">Activos</p>
-            <p class="text-lg font-bold text-green-600">45</p>
+            <p class="text-lg font-bold text-green-600">{{totalAliados['activos']}}</p>
           </div>
           <div class="w-px bg-gray-200 self-stretch"></div>
           <div class="w-1/2 pl-1">
             <p class="text-md font-semibold">Inactivos</p>
-            <p class="text-lg font-bold text-red-600">5</p>
+            <p class="text-lg font-bold text-red-600">{{totalAliados['inactivos']}}</p>
           </div>
         </div>
       </div>
@@ -113,19 +113,19 @@
         <div class="flex justify-between text-center">
           <div class="w-1/2 pr-1">
             <p class="text-md font-semibold">Activos</p>
-            <p class="text-lg font-bold text-green-600">45</p>
+            <p class="text-lg font-bold text-green-600">{{totalAsesores['activos']}}</p>
           </div>
           <div class="w-px bg-gray-200 self-stretch"></div>
           <div class="w-1/2 pl-1">
             <p class="text-md font-semibold">Inactivos</p>
-            <p class="text-lg font-bold text-red-600">5</p>
+            <p class="text-lg font-bold text-red-600">{{totalAsesores['inactivos']}}</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Emprendedores -->
-    <div class="bg-white rounded-lg shadow-lg p-4 relative w-64 h-40">
+    <div class="bg-white rounded-lg shadow-lg p-3 relative w-64 h-40">
       <div class="absolute -top-5 left-4">
         <div class="bg-purple-500 rounded-lg p-3 shadow-md">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -143,12 +143,12 @@
         <div class="flex justify-between text-center">
           <div class="w-1/2 pr-1">
             <p class="text-md font-semibold">Activos</p>
-            <p class="text-lg font-bold text-green-600">45</p>
+            <p class="text-lg font-bold text-green-600">{{totalEmprendedores['activos']}}</p>
           </div>
           <div class="w-px bg-gray-200 self-stretch"></div>
           <div class="w-1/2 pl-1">
             <p class="text-md font-semibold">Inactivos</p>
-            <p class="text-lg font-bold text-red-600">5</p>
+            <p class="text-lg font-bold text-red-600">{{totalEmprendedores['inactivos']}}</p>
           </div>
         </div>
       </div>
@@ -158,12 +158,16 @@
 
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <!-- Daily Sales -->
+    <!-- Top Aliados -->
     <div class="bg-white rounded-lg shadow p-4">
-      <h2 class="text-lg font-semibold mb-4">Daily Sales</h2>
+      <h2 class="text-lg font-semibold mb-4">Top Aliados</h2>
       <!-- Chart placeholder -->
-      <p class="text-green-500 mt-2">55% increase in today sales</p>
-      <p class="text-sm text-gray-500 mt-1">updated 4 minutes ago</p>
+      <canvas baseChart 
+      [datasets]="topAliadosData" 
+      [labels]="topAliadosLabels" 
+      [options]="barChartOptions"
+      [type]="barChartType">
+      </canvas>
     </div>
 
     <!-- Email Subscriptions -->
