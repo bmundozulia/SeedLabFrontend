@@ -21,8 +21,8 @@
   
     <div class="flex justify-end items-center mb-4">
       <span class="mr-3 text-amber-500 text-[20px] italic mb-1" style="font-weight: 900;">Agregar</span>
-      <button class="bg-amber-400 text-white w-12 h-6 rounded-lg flex items-center justify-center">
-        <span class="text-3xl font-medium leading-none">+</span>
+      <button [routerLink]="'/add-empresa'" class="bg-amber-500 text-white w-16 h-8 rounded-lg flex items-center justify-center">
+        <span class="text-3xl font-semibold leading-none ">+</span>
       </button>
     </div>
   
@@ -44,9 +44,9 @@
                 <td class="p-2">{{ empresa.telefono }}</td>
                 <td class="p-2 hidden sm:table-cell">{{ empresa.direccion }}</td>
                 <td class="p-2 rounded-e-lg text-center">
-                  <button class="text-blue-500" (click)="editEmpresa(empresa.id)">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                  <button [routerLink]="'/edit-empresa'" class="text-blue-500" (click)="editEmpresa(empresa.id)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-4 w-4" fill="currentColor">
+                      <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/>
                     </svg>
                   </button>
                 </td>
@@ -69,9 +69,9 @@
         <ul class="inline-flex space-x-2 text-sm">
           <li>
             <a href="javascript:void(0)" class="inline-flex items-center justify-center w-6 h-6 bg-gray-500 rounded-md hover:bg-gray-300 focus:outline-none"(click)="changePage('previous')"[class.opacity-50]="!canGoPrevious()"[class.cursor-not-allowed]="!canGoPrevious()">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M12.707 16.707a1 1 0 01-1.414 0l-8-8a1 1 0 010-1.414l8-8a1 1 0 111.414 1.414L5.414 8H18a1 1 0 010 2H5.414l7.293 7.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-3 w-3 text-white mr-1 ml-2"  fill="currentColor">
+                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
+              </svg>  
             </a>
           </li>
           <ng-container *ngFor="let pageNumber of getPages()">
@@ -82,8 +82,8 @@
           
           <li>
             <a href="javascript:void(0)" class="inline-flex items-center justify-center w-6 h-6 bg-gray-500 rounded-md hover:bg-gray-300 focus:outline-none" (click)="changePage('next')" [class.opacity-50]="!canGoNext()" [class.cursor-not-allowed]="!canGoNext()">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M7.293 16.707a1 1 0 001.414 0l8-8a1 1 0 000-1.414l-8-8a1 1 0 10-1.414 1.414L14.586 8H2a1 1 0 100 2h12.586l-7.293 7.293a1 1 0 000 1.414z" clip-rule="evenodd" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-3 w-3 text-white ml-1 p-0 "  fill="currentColor">
+                <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
               </svg>
             </a>
           </li>
