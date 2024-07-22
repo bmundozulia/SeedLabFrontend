@@ -63,9 +63,9 @@ export class AliadoService {
     formData.append('password', aliado.password || '');
     formData.append('estado', aliado.estado.toString()); // Convertir boolean a string
 
-    if (aliado.banner) {
-        formData.append('banner', aliado.banner, aliado.banner.name); // Asegúrate de pasar el nombre del archivo como tercer parámetro
-    }
+    // if (aliado.banner) {
+    //     formData.append('banner', aliado.banner, aliado.banner.name); // Asegúrate de pasar el nombre del archivo como tercer parámetro
+    // }
 
     const options = { headers: this.CreacionHeaderss(access_token) };
 

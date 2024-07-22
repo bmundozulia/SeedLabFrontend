@@ -135,7 +135,7 @@ export class AddAliadosComponent {
           nombre: this.aliadoForm.get('nombre')?.value,
           descripcion: this.aliadoForm.get('descripcion')?.value,
           logo: this.aliadoForm.get('logo')?.value,
-          banner: this.aliadoForm.get('banner')?.value,
+         // banner: this.aliadoForm.get('banner')?.value,
           ruta: this.aliadoForm.get('ruta')?.value,
           tipodato: this.aliadoForm.get('tipodato')?.value,
           email: this.aliadoForm.get('email')?.value,
