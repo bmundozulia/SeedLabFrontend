@@ -56,7 +56,17 @@ export class ActnivlecComponent implements OnInit {
 
   ngOnInit(): void{
     this.route.queryParams.subscribe(params =>{
-      this.rutaId = +params['id_ruta'];
+      this.rutaId = +params['id_ruta'];     
+      console.log('la ruta es: ',this.rutaId);
+      // this.token = params['token'];
+      // console.log('la token es: ',this.token);
+      this.token = params['token'];
+      if (!this.token) {
+        this.token = localStorage.getItem('token');
+      }
+      console.log('El token es: ', this.token);
+      
+
       this.actividadForm.patchValue({ id_ruta: this.rutaId.toString()});
     });
 
@@ -160,6 +170,10 @@ export class ActnivlecComponent implements OnInit {
 
   //agregar una actividad
   addActividadSuperAdmin():void{
+    if (!this.token) {
+      console.error('No token found');
+      return;
+    }
     const actividad: Actividad = {
       nombre: this.actividadForm.value.nombre,
       descripcion: this.actividadForm.value.descripcion,
@@ -168,11 +182,12 @@ export class ActnivlecComponent implements OnInit {
       id_asesor: parseInt(this.actividadForm.value.id_asesor),
       id_ruta: this.rutaId,
       //id_ruta: parseInt(this.actividadForm.value.id_ruta),
-      id_aliado: this.user.id
+      id_aliado: parseInt(this.actividadForm.value.id_aliado)
     }
+    console.log('usuario',this.actividadForm.value.id_aliado)
     this.superAdminService.crearActividadSuperAdmin(this.token).subscribe(
       data => {
-        console.log(data);
+        console.log('datos recibidos',data);
       },
       error => {
         console.log(error);

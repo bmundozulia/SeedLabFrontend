@@ -288,7 +288,12 @@ export class ModalAddRutaComponent implements OnInit {
   }
 
   addActividad():void{
-    this.router.navigate(['/actnivlec'],{ queryParams: { id_ruta: this.rutaId } });
+
+    // En la vista inicial, obtén el token del almacenamiento local
+    const token = localStorage.getItem('token');
+    this.router.navigate(['/actnivlec'], { queryParams: { id_ruta: this.rutaId, token: token } });
+
+    //this.router.navigate(['/actnivlec'],{ queryParams: { id_ruta: this.rutaId, toke: this.token } });
     this.dialogRef.close();
     //location.reload();
   }
