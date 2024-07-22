@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RutaService } from '../../../../servicios/rutas.service';
 import { SwitchService } from '../../../../servicios/switch.service';
 import { Ruta } from '../../../../Modelos/ruta.modelo';
@@ -10,6 +10,14 @@ import { Router } from '@angular/router';
 import Pica from 'pica';
 import { AlertService } from '../../../../servicios/alert.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { faMagnifyingGlass, faPenToSquare, faPlus, faXmark, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
+import { Actividad } from '../../../../Modelos/actividad.model';
+import { AliadoService } from '../../../../servicios/aliado.service';
+import { SuperadminService } from '../../../../servicios/superadmin.service';
+import { Superadmin } from '../../../../Modelos/superadmin.model';
+import { ActividadService } from '../../../../servicios/actividad.service';
+
 
 
 @Component({
@@ -20,10 +28,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 })
 export class ModalAddRutaComponent implements OnInit {
-  userFilter: any = { estado: 'Activo'};
+  userFilter: any = { estado: 'Activo' };
   isEditing: boolean = false
+  falupa = faCircleQuestion;
   ruta: any;
   rutaId: any;
+  listRuta: Ruta[] = [];
+  listAsesorConAliado: Superadmin[] = [];
   //createRutaForm: FormGroup;
   token = '';
   user: User | null = null;
@@ -35,6 +46,11 @@ export class ModalAddRutaComponent implements OnInit {
   isVisible = true;
   imagen_ruta: string = '';
   isActive: boolean = true;
+  imagenUrl: SafeUrl | null = null;
+  boton = true;
+  rutaSeleccionada: any | null;
+  tipoDeDato: Actividad[] = [];
+  showActividadForm: boolean = false;
 
   rutaForm = this.fb.group({
     nombre: [''],
@@ -42,6 +58,8 @@ export class ModalAddRutaComponent implements OnInit {
     estado: [true],
     imagen_ruta: [null]
   });
+
+ 
 
   constructor(public dialogRef: MatDialogRef<ModalAddRutaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -51,6 +69,10 @@ export class ModalAddRutaComponent implements OnInit {
     private datePipe: DatePipe,
     private router: Router,
     private alertService: AlertService,
+    private sanitizer: DomSanitizer,
+    private aliadoService: AliadoService,
+    private superAdminService: SuperadminService,
+    private actividadService: ActividadService,
   ) {
 
     this.rutaId = data.rutaId;
@@ -60,6 +82,9 @@ export class ModalAddRutaComponent implements OnInit {
   /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
+    if (this.rutaId != null) {
+      this.isEditing = true;
+    }
     //this.isEditing = true;
     //this.mostrarRutas();
     this.verEditar();
@@ -107,10 +132,23 @@ export class ModalAddRutaComponent implements OnInit {
     }
   }
 
+  // onFileSelecteds(event: Event): void {
+  //   const input = event.target as HTMLInputElement;
+  //   if (input.files && input.files.length > 0) {
+  //     const file = input.files[0];
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       this.imagenUrl = this.sanitizer.bypassSecurityTrustUrl(reader.result as string);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
+
   verEditar(): void {
     if (this.rutaId != null) {
-      this.rutaService.getAllRutas(this.token, this.userFilter.estado).subscribe(
+      this.rutaService.rutaXid(this.token, this.rutaId).subscribe(
         data => {
+          console.log('Datos recibidos:', data);
           this.rutaForm.patchValue({
             nombre: data.nombre,
             //fecha_creacion: new Date(data.fecha_creacion),
@@ -118,8 +156,8 @@ export class ModalAddRutaComponent implements OnInit {
             estado: data.estado,
             imagen_ruta: data.imagen_ruta,
           });
-          this.isActive = data.estado === 'Activo';
 
+          this.isActive = data.estado === 'Activo';
           setTimeout(() => {
             this.rutaForm.get('estado')?.setValue(this.isActive);
           })
@@ -131,7 +169,7 @@ export class ModalAddRutaComponent implements OnInit {
     }
   }
 
-  addRuta():void{
+  addRuta(): void {
     this.submitted = true;
     if (this.rutaForm.invalid) {
       return;
@@ -145,12 +183,13 @@ export class ModalAddRutaComponent implements OnInit {
       //this.rutaForm.get('imagen_ruta')?.value
     };
     if (this.rutaId != null) {
-      this.alertService.alertaActivarDesactivar("¿Estas seguro de guardar los cambios?", 'question').then((result)=>{
+      this.alertService.alertaActivarDesactivar("¿Estas seguro de guardar los cambios?", 'question').then((result) => {
         if (result.isConfirmed) {
-          this.rutaService.updateRutas(this.token, this.rutaId).subscribe(
-            data =>{
+          this.rutaService.updateRutas(this.token, ruta, this.rutaId).subscribe(
+            data => {
               location.reload();
-              this.alertService.successAlert('Exito', data.message);
+              console.log('erererer',data);
+              //this.alertService.successAlert('Exito', data.message);
             },
             error => {
               this.alertService.errorAlert('Error', error.error.message);
@@ -159,9 +198,9 @@ export class ModalAddRutaComponent implements OnInit {
           );
         }
       });
-    }else{
+    } else {
       this.rutaService.createRutas(this.token, ruta).subscribe(
-        data=>{
+        data => {
           location.reload();
           this.alertService.successAlert('Exito', data.message);
         },
@@ -173,144 +212,89 @@ export class ModalAddRutaComponent implements OnInit {
     }
   }
 
+  // addActividad(): void {
+  //   // if (!this.rutaSeleccionada) {
+  //   //   console.log("debes seleccionar una ruta para poder crear la actividad")
+  //   //   return;
+  //   // }
+  //   this.submitted = true;
+  //   const actividad: Actividad = {
+  //     nombre: this.actividadForm.value.nombre,
+  //     descripcion: this.actividadForm.value.descripcion,
+  //     ruta_multi: this.actividadForm.value.ruta_multi,
+  //     id_tipo_dato: parseInt(this.actividadForm.value.id_tipo_dato),
+  //     id_asesor: parseInt(this.actividadForm.value.id_asesor),
+  //     id_ruta: this.rutaSeleccionada.id,
+  //     id_aliado: this.user.id
+  //   }
+  //   this.aliadoService.crearActividad(this.token, actividad).subscribe(
+  //     data => {
+  //       location.reload();
+  //       console.log(data);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   )
+  // }
 
 
-  // createRuta() {
-  //   const ruta = new Ruta(
-  //     this.createRutaForm.get('nombre')?.value,
-  //     new Date(this.createRutaForm.get('fecha_creacion')?.value),
-  //     //this.createRutaForm.get('fecha_creacion')?.value,
-  //     this.createRutaForm.get('estado')?.value?.toString(),
-  //     this.createRutaForm.get('imagen_ruta')?.value
-  //   );
-  //   if (this.isEditing && this.rutaId) {
-  //     this.alertService.alertaActivarDesactivar("¿Estas seguro de guardar los cambios?", 'question').then((result) => {
-  //       if (result.isConfirmed) {
-  //         this.rutaService.updateRutas(this.token,ruta).subscribe(
-  //           (response: any) => {
-  //             console.log(response);
-  //             location.reload();
-  //           },
-  //           (error) => {
-  //             console.error(error);
-  //           }
-  //         );
+  // asesorConAliado():void{
+  //   if (this.token) {
+  //     this.superAdminService.asesorConAliado(this.token).subscribe(
+  //       data => {
+  //         this.listAsesorConAliado = data;
+  //         //console.log("info del asesor: ", data);
+  //       },
+  //       error => {
+  //         console.log(error);
   //       }
-  //     });
-  //   } else{
-  //     this.rutaService.createRutas(this.token, ruta).subscribe(
-  //     (response: any) => {
-  //      console.log(response);
-  //       location.reload()
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   )
+  //     )
   //   }
-  // };
+  // }
 
-  // mostrarRutas():void{
-  //   if (this.rutaId != null) {
-  //   this.rutaService.rutaXid(this.token, this.rutaId).subscribe(
-  //     data=>{
-  //       this.createRutaForm.patchValue({
-  //         nombre: data.nombre,
-  //        // fecha_creacion: new Date(data.fecha_creacion),
-  //         fecha_creacion: data.fecha_creacion,
-  //         estado: data.estado,
-  //         imagen_ruta: data.imagen_ruta
-  //       });
-  //       console.log('popopop',data)
-  //       //this.imagen_ruta= ruta.imagen_ruta;
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   )
+  // tipoDato(): void {
+  //   if (this.token) {
+  //     this.actividadService.getTipoDato(this.token).subscribe(
+  //       data => {
+  //         this.tipoDeDato = data;
+  //         console.log(data);
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       }
+  //     )
   //   }
   // }
 
 
-  // async onFileSelecteds(event: any): Promise<void> {
-  //   const file = event.target.files[0];
-  //   const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
 
-  //   if (file && allowedExtensions.exec(file.name)) {
-  //     const resizedImage = await this.resizeAndCompressImage(file, 280, 280, 20 * 1024);
-  //     this.imagen_ruta = resizedImage;
-  //   } else {
-  //     alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif).');
-  //   }
-  // }
+  toggleActive() {
+    this.isActive = !this.isActive;
+    this.rutaForm.patchValue({ estado: this.isActive ? true : false });
 
-  // resizeAndCompressImage(file: File, width: number, height: number, maxSize: number): Promise<string> {
-  //   return new Promise((resolve, reject) => {
-  //     const img = new Image();
-  //     const canvas = document.createElement('canvas');
-  //     const ctx = canvas.getContext('2d');
-  //     const reader = new FileReader();
+  }
 
-  //     reader.onload = (event) => {
-  //       img.src = event.target?.result as string;
-  //     };
-
-  //     img.onload = () => {
-  //       canvas.width = width;
-  //       canvas.height = height;
-  //       ctx?.drawImage(img, 0, 0, width, height);
-
-  //       const compressImage = (quality: number) => {
-  //         canvas.toBlob((blob) => {
-  //           if (blob) {
-  //             if (blob.size <= maxSize || quality < 0.1) {
-  //               const reader = new FileReader();
-  //               reader.onload = () => {
-  //                 resolve(reader.result as string);
-  //               };
-  //               reader.readAsDataURL(blob);
-  //             } else {
-  //               compressImage(quality - 0.1);
-  //             }
-  //           } else {
-  //             reject(new Error('Error al crear el Blob de la imagen'));
-  //           }
-  //         }, 'image/jpeg', quality);
-  //       };
-
-  //       compressImage(0.9);
-  //     };
-
-  //     reader.onerror = (error) => reject(error);
-  //     reader.readAsDataURL(file);
-  //   });
-  // }
-  // updateRuta(){
-  //   this.modalSS.$modal.emit(false);
-  //   const ruta = new Ruta(
-  //     this.createRutaForm.get('nombre')?.value,
-  //     this.createRutaForm.get('fecha_creacion')?.value,
-  //     this.createRutaForm.get('estado')?.value,
-  //     this.createRutaForm.get('imagen_ruta')?.value
-  //   );
-  //   this.rutaService.updateRutas(this.token, ruta).subscribe(
-  //     (response: any) => {
-  //      console.log(response);
-  //       location.reload()
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   )
-  // }
-
+  /* Muestra el toggle del estado dependiendo del adminId que no sea nulo*/
+  mostrarToggle(): void {
+    if (this.rutaId != null) {
+      this.boton = false;
+    }
+    this.boton = true;
+  }
 
   closeModal() {
     this.dialogRef.close();
   }
 
+  addActividad():void{
+    this.router.navigate(['/actnivlec']);
+    this.dialogRef.close();
+    //location.reload();
+  }
 
-  // isFormValid() {
-  //   return this.persona.nombre.trim() !== '';
+  // agregarActividad(): void {
+  //   this.showActividadForm = true;
   // }
+
 }

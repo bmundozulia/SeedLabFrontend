@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
                 }
             } else {
                 console.error('Id de rol no está definido.');
-                this.router.navigate(['/home/body']);
+                this.router.navigate(['/home']);
             }
         }
     }
@@ -87,8 +87,9 @@ export class LoginComponent implements OnInit {
         }
         this.isSubmitting = true;
 
-        const email = this.loginForm.get('email')?.value;
+        const email = this.loginForm.get('email').value;
         const password = this.loginForm.get('password')?.value;
+
         if (!email) {
             this.alertService.errorAlert('Error', "El campo de usuario es requerido");
             this.isSubmitting = false;
@@ -126,9 +127,7 @@ export class LoginComponent implements OnInit {
                     this.alertService.errorAlert('Error', err.error.message);
                 }
                 if (err.status === 409) {
-                    //this.loginService.setEmail(email); // Guarda el email temporalmente
                     this.router.navigate(['/verification'], { queryParams: { email: email } });
-                    //this.alertService.errorAlert('Error', "Por favor verifique su correo electronico");
                 }
                 setTimeout(() => {
                     this.isSubmitting = false;

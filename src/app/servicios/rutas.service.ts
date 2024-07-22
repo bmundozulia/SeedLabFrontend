@@ -39,14 +39,14 @@ export class RutaService {
     return this.http.post(this.url+'/ruta', ruta,options);
   }
 
-  updateRutas(access_token:any, ruta:Ruta):Observable<any>{
+  updateRutas(access_token:any, ruta:Ruta,id:number):Observable<any>{
     const options= { headers: this.CreacionHeaders(access_token)};
-    return this.http.put(this.url+'/ruta'+ ruta,options);
+    return this.http.put(this.url+'/ruta/'+id,ruta,options);
   }
 
-  rutaXid(access_token:any, ruta:Ruta):Observable<any>{
+  rutaXid(access_token:any, rutaId: number):Observable<any>{
     const options= { headers: this.CreacionHeaders(access_token)};
-    return this.http.get(this.url+'/rutaXid/'+ruta, options);
+    return this.http.get(this.url+'/rutaXid/'+rutaId, options);
   }
   
 

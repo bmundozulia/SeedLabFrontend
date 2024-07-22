@@ -37,9 +37,15 @@
         </div>
     </div>
 
+
+
 </div>
-
-
+<div class="w-full h-5 bg-gray-200 rounded-full mb-2.5 relative">
+    <div class="h-full bg-[#FA7D00] rounded-full transition-all duration-500 ease-in-out flex items-center justify-center text-white text-xs font-bold"
+        [style.width.%]="progressPercentage">
+        {{progressPercentage}}%
+    </div>
+</div>
 
 <div class="contenido mx-4 xl:mx-20 my-10 ">
     <p>
@@ -58,7 +64,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4 md:table-cell">
-                                <select :[(ngModel)]="respuesta1.opcion" required
+                                <select :[(ngModel)]="respuesta1.opcion" required (change)="updateProgress()"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="1"> 1</option>
@@ -94,13 +100,13 @@
                             </td>
                             <td class="block sm:table-cell   md:py-2 px-4 w-full sm:w-auto ">
                                 <div class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                                    <select id="1Select" :[(ngModel)]="respuesta2.opcion"
+                                    <select id="1Select" :[(ngModel)]="respuesta2.opcion" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                         <option value="" disabled selected hidden>Si / No</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
                                     </select>
-                                    <select id="2Select" :[(ngModel)]="respuesta2.texto_res"
+                                    <select id="2Select" :[(ngModel)]="respuesta2.texto_res" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
                                         *ngIf="respuesta2.opcion === 'Si'">
                                         <option value="" disabled selected hidden>¿Cuantos?</option>
@@ -122,13 +128,13 @@
                             </td>
                             <td class="block sm:table-cell  md:my-0  md:py-2 px-4 w-full sm:w-auto">
                                 <div class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                                    <select id="3Select" :[(ngModel)]="respuesta3.opcion"
+                                    <select id="3Select" :[(ngModel)]="respuesta3.opcion" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                         <option value="" disabled selected hidden>Si / No</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
                                     </select>
-                                    <select id="4Select" :[(ngModel)]="respuesta3.texto_res"
+                                    <select id="4Select" :[(ngModel)]="respuesta3.texto_res" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
                                         *ngIf="respuesta3.opcion === 'Si'">
                                         <option value="" disabled selected hidden>¿Cuantos?</option>
@@ -152,7 +158,7 @@
                             </td>
                             <td class="block sm:table-cell  md:py-2 w-full sm:w-auto px-4">
                                 <div class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                                    <select id="1Select" :[(ngModel)]="respuesta4.opcion"
+                                    <select id="1Select" :[(ngModel)]="respuesta4.opcion" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                         <option value="" disabled selected hidden>Si / No</option>
                                         <option value="Si">Si</option>
@@ -182,13 +188,13 @@
                             </td>
                             <td class="block sm:table-cell w-full sm:w-auto md:py-2 px-4">
                                 <div class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                                    <select id="1Select" :[(ngModel)]="respuesta5.opcion"
+                                    <select id="1Select" :[(ngModel)]="respuesta5.opcion" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                         <option value="" disabled selected hidden>Si / No</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
                                     </select>
-                                    <select id="2Select" :[(ngModel)]="respuesta5.texto_res"
+                                    <select id="2Select" :[(ngModel)]="respuesta5.texto_res" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 "
                                         *ngIf="respuesta5.opcion === 'Si'">
                                         <option value="" disabled selected hidden>¿Cuantos?</option>
@@ -212,13 +218,13 @@
                             </td>
                             <td class="block sm:table-cell   w-full sm:w-auto md:py-2 px-4">
                                 <div class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                                    <select id="1Select" :[(ngModel)]="respuesta6.opcion"
+                                    <select id="1Select" :[(ngModel)]="respuesta6.opcion" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                         <option value="" disabled selected hidden>Si / No</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
                                     </select>
-                                    <select id="2Select" :[(ngModel)]="respuesta6.texto_res"
+                                    <select id="2Select" :[(ngModel)]="respuesta6.texto_res" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  "
                                         *ngIf="respuesta6.opcion === 'Si'">
                                         <option value="" disabled selected hidden>¿Cuantos?</option>
@@ -244,7 +250,7 @@
                             </div>
                         </td>
                         <td class="md:py-2 px-4 md:table-cell">
-                            <select :[(ngModel)]="respuesta7.opcion"
+                            <select :[(ngModel)]="respuesta7.opcion" (change)="updateProgress()"
                                 class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                 <option value="" disabled selected hidden>Seleccione</option>
                                 <option value="Si">Sí</option>
@@ -261,7 +267,7 @@
                             </div>
                         </td>
                         <td class="md:py-2 px-4 md:table-cell">
-                            <select :[(ngModel)]="respuesta8.opcion"
+                            <select :[(ngModel)]="respuesta8.opcion" (change)="updateProgress()"
                                 class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                 <option value="" disabled selected hidden>Seleccione</option>
                                 <option value="Si">Sí</option>
@@ -278,7 +284,7 @@
                             </div>
                         </td>
                         <td class="md:py-2 px-4 md:table-cell">
-                            <select :[(ngModel)]="respuesta9.opcion"
+                            <select :[(ngModel)]="respuesta9.opcion" (change)="updateProgress()"
                                 class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100   ">
                                 <option value="" disabled selected hidden>Seleccione</option>
                                 <option value="Si">Sí</option>
@@ -296,8 +302,8 @@
                     </button>
                 </div>
             </div>
-            <div *ngIf="currentSubSectionIndex === 1">
-                <table class="min-w-full">
+            <div *ngIf="currentSubSectionIndex === 1" class="">
+                <table class="min-w-full ">
                     <tbody>
                         <!-- Pregunta 6 -->
                         <tr class="grid md:table-row mt-4 md:my-0">
@@ -308,7 +314,7 @@
                                 </div>
                             </td>
                             <td class="md:py-2 px-4 md:table-cell">
-                                <select :[(ngModel)]="respuesta10.opcion"
+                                <select :[(ngModel)]="respuesta10.opcion" (change)="updateProgress()"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -326,7 +332,7 @@
                                 </div>
                             </td>
                             <td class="md:py-2 px-4 md:table-cell">
-                                <select :[(ngModel)]="respuesta11.opcion"
+                                <select :[(ngModel)]="respuesta11.opcion" (change)="updateProgress()"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -345,7 +351,7 @@
                                 </div>
                             </td>
                             <td class="md:py-2 px-4 md:table-cell">
-                                <select :[(ngModel)]="respuesta12.opcion"
+                                <select :[(ngModel)]="respuesta12.opcion" (change)="updateProgress()"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100 ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="-1">
@@ -365,7 +371,7 @@
                                 </div>
                             </td>
                             <td class="md:py-2 px-4 md:table-cell">
-                                <select :[(ngModel)]="respuesta13.opcion"
+                                <select :[(ngModel)]="respuesta13.opcion" (change)="updateProgress()"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -383,7 +389,7 @@
                                         </h3>
                                     </div>
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
-                                        :[(ngModel)]="respuesta14.texto_res"
+                                        :[(ngModel)]="respuesta14.texto_res" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -413,7 +419,7 @@
                                         <h3>{{preguntas[10].nombre}}</h3>
                                     </div>
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
-                                        :[(ngModel)]="respuesta15.texto_res"
+                                        :[(ngModel)]="respuesta15.texto_res" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -427,7 +433,7 @@
                                 </div>
                             </td>
                             <td class="md:py-2 px-4">
-                                <select :[(ngModel)]="respuesta16.opcion"
+                                <select :[(ngModel)]="respuesta16.opcion" (change)="updateProgress()"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -444,7 +450,7 @@
                                         </h3>
                                     </div>
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
-                                        :[(ngModel)]="respuesta17.texto_res"
+                                        :[(ngModel)]="respuesta17.texto_res" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -457,7 +463,7 @@
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[1].texto }}</h3>
                                     </div>
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
-                                        :[(ngModel)]="respuesta18.texto_res"
+                                        :[(ngModel)]="respuesta18.texto_res" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -470,7 +476,7 @@
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[2].texto }}</h3>
                                     </div>
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
-                                        :[(ngModel)]="respuesta19.texto_res"
+                                        :[(ngModel)]="respuesta19.texto_res" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -483,7 +489,7 @@
                                         <h3 class="ml-2">{{preguntas[11].subPreguntas[3].texto }}</h3>
                                     </div>
                                     <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
-                                        :[(ngModel)]="respuesta20.texto_res"
+                                        :[(ngModel)]="respuesta20.texto_res" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -497,7 +503,7 @@
                                 </div>
                             </td>
                             <td class="md:py-2 px-4">
-                                <select :[(ngModel)]="respuesta21.opcion"
+                                <select :[(ngModel)]="respuesta21.opcion" (change)="updateProgress()"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -515,7 +521,7 @@
                                 </div>
                             </td>
                             <td class="md:py-2 px-4">
-                                <select :[(ngModel)]="respuesta22.opcion"
+                                <select :[(ngModel)]="respuesta22.opcion" (change)="updateProgress()"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -533,7 +539,7 @@
                                 </div>
                             </td>
                             <td class="md:py-2 px-4">
-                                <select :[(ngModel)]="respuesta23.opcion"
+                                <select :[(ngModel)]="respuesta23.opcion" (change)="updateProgress()"
                                     class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition dngItion-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                     <option value="" disabled selected hidden>Seleccione</option>
                                     <option value="Si">Sí</option>
@@ -565,353 +571,357 @@
             <div>
 
                 <div class="" *ngIf="currentSubSectionIndex === 0">
-                    <table class="min-w-full">
-                        <tbody>
-                            <!--Pregunta 16 -->
-                            <tr class="grid md:table-row mt-4 md:my-0">
-                                <td class="md:py-2 px-4 md:table-cell" colspan="2">
-                                    <div class="flex">
-                                        <b>{{preguntas[15].id}}.</b>
-                                        <h3> {{preguntas[15].nombre}}</h3>
-                                    </div>
-                                </td>
-                                <td class="md:py-2 px-4 md:table-cell">
-                                    <select :[(ngModel)]="respuesta24.opcion"
-                                        class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                        <option value="" disabled selected hidden>Seleccione</option>
-                                        <option value="Si">Si</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <!--Pregunta 17 -->
-                            <div *ngIf="respuesta24.opcion === 'Si'">
-                                <tr class="bg-gray-50  grid md:table-row mt-4 md:my-0">
-                                    <td class="py-2 px-4 font-medium text-gray-900 md:table-cell" rowspan="9">
+                    <div class=" bg-[#e6e6e6] rounded ">
+                        <table class="min-w-full ">
+                            <tbody>
+                                <!--Pregunta 16 -->
+                                <tr class="grid md:table-row mt-4 md:my-0">
+                                    <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                         <div class="flex">
-                                            <b class=" m-0 p-0"> {{preguntas[16].id}}.</b>
-                                            <h3 class=" m-0 p-0">{{preguntas[16].nombre}}</h3>
+                                            <b>{{preguntas[15].id}}.</b>
+                                            <h3> {{preguntas[15].nombre}}</h3>
                                         </div>
                                     </td>
-                                </tr>
-                                <!-- Subpregunta 1 -->
-                                <tr class="bg-white grid md:table-row mt-4 md:my-0" *ngIf="respuesta24.opcion === 'Si'">
-                                    <td class="md:py-2 px-6 text-gray-700 md:table-cell">
-                                        <h3>{{ preguntas[16].subPreguntas[0].texto }}</h3>
-                                    </td>
-                                    <td class="py-2 px-6 md:table-cell">
-                                        <select :[(ngModel)]="respuesta25.opcion"
+                                    <td class="md:py-2 px-4 md:table-cell">
+                                        <select :[(ngModel)]="respuesta24.opcion" (change)="updateProgress()"
                                             class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Seleccione</option>
                                             <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
                                             <option value="No">No</option>
                                         </select>
                                     </td>
                                 </tr>
-                                <!-- Subpregunta 2 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 text-gray-700 md:table-cell">
-                                        <h3>{{ preguntas[16].subPreguntas[1].texto }}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4  md:table-cell">
-                                        <select :[(ngModel)]="respuesta26.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 3 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3>{{ preguntas[16].subPreguntas[2].texto }}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta27.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 4 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3>{{ preguntas[16].subPreguntas[3].texto }}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta28.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 5 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="px-4 md:py-2 md:table-cell">
-                                        <h3>{{ preguntas[16].subPreguntas[4].texto }}</h3>
-                                    </td>
-                                    <td class="px-4 md:py-2 md:table-cell">
-                                        <select :[(ngModel)]="respuesta29.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 6 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3>{{ preguntas[16].subPreguntas[5].texto }}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta30.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 7 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="px-4 md:py-2 md:table-cell">
-                                        <h3>{{ preguntas[16].subPreguntas[6].texto }}</h3>
-                                    </td>
-                                    <td class="px-4 md:py-2 md:table-cell">
-                                        <select :[(ngModel)]="respuesta31.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 8 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3>{{ preguntas[16].subPreguntas[7].texto }}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta32.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </div>
 
-                            <!-- Pregunta 18 -->
-                            <tr class="grid md:table-row mt-4 md:my-0">
-                                <td class="md:py-2 px-4 md:table-cell" colspan="2">
-                                    <div class="flex">
-                                        <b>{{ preguntas[17].id }}.</b>
-                                        <h3 class="">{{ preguntas[17].nombre}}</h3>
-                                    </div>
-                                </td>
-                                <td class="md:py-2 px-4 md:table-cell">
-                                    <select :[(ngModel)]="respuesta33.opcion"
-                                        class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                        <option value="" disabled selected hidden>Seleccione</option>
-                                        <option value="Si">Si</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <!-- Pregunta 19 -->
-                            <div *ngIf="respuesta33.opcion === 'Si'">
-                                <tr class="bg-gray-50 grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 xl:w-96 md:table-cell" rowspan="5">
+                                <!--Pregunta 17 -->
+                                <div *ngIf="respuesta24.opcion === 'Si'" class=" min-w-full">
+                                    <tr class="
+                                    grid md:table-row mt-4 md:my-0">
+                                        <td class="py-2 px-4 font-medium text-gray-900 md:table-cell col-span-1"
+                                            rowspan="9">
+                                            <div class="flex">
+                                                <b class=" m-0 p-0"> {{preguntas[16].id}}.</b>
+                                                <h3 class=" m-0 p-0">{{preguntas[16].nombre}}</h3>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 1 -->
+                                    <tr class=" grid md:table-row mt-4 md:my-0" *ngIf="respuesta24.opcion === 'Si'">
+                                        <td class="md:py-2 px-6 text-gray-700 md:table-cell">
+                                            <h3>{{ preguntas[16].subPreguntas[0].texto }}</h3>
+                                        </td>
+                                        <td class="py-2 px-6 md:table-cell">
+                                            <select :[(ngModel)]="respuesta25.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 2 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 text-gray-700 md:table-cell">
+                                            <h3>{{ preguntas[16].subPreguntas[1].texto }}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4  md:table-cell">
+                                            <select :[(ngModel)]="respuesta26.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 3 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3>{{ preguntas[16].subPreguntas[2].texto }}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta27.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 4 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3>{{ preguntas[16].subPreguntas[3].texto }}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta28.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 5 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="px-4 md:py-2 md:table-cell">
+                                            <h3>{{ preguntas[16].subPreguntas[4].texto }}</h3>
+                                        </td>
+                                        <td class="px-4 md:py-2 md:table-cell">
+                                            <select :[(ngModel)]="respuesta29.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 6 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3>{{ preguntas[16].subPreguntas[5].texto }}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta30.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 7 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="px-4 md:py-2 md:table-cell">
+                                            <h3>{{ preguntas[16].subPreguntas[6].texto }}</h3>
+                                        </td>
+                                        <td class="px-4 md:py-2 md:table-cell">
+                                            <select :[(ngModel)]="respuesta31.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 8 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3>{{ preguntas[16].subPreguntas[7].texto }}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta32.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </div>
+
+                                <!-- Pregunta 18 -->
+                                <tr class="grid md:table-row mt-4 md:my-0">
+                                    <td class="md:py-2 px-4 md:table-cell" colspan="2">
                                         <div class="flex">
-                                            <b> {{preguntas[18].id}}.</b>
+                                            <b>{{ preguntas[17].id }}.</b>
+                                            <h3 class="">{{ preguntas[17].nombre}}</h3>
+                                        </div>
+                                    </td>
+                                    <td class="md:py-2 px-4 md:table-cell">
+                                        <select :[(ngModel)]="respuesta33.opcion" (change)="updateProgress()"
+                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                            <option value="" disabled selected hidden>Seleccione</option>
+                                            <option value="Si">Si</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <!-- Pregunta 19 -->
+                                <div *ngIf="respuesta33.opcion === 'Si'">
+                                    <tr class="bg-gray-50 grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 xl:w-96 md:table-cell" rowspan="5">
+                                            <div class="flex">
+                                                <b> {{preguntas[18].id}}.</b>
+                                                <h3>
+                                                    {{preguntas[18].nombre}}
+                                                </h3>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 1 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="px-4 md:py-2 md:table-cell">
+                                            <h3>{{ preguntas[18].subPreguntas[0].texto }}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta34.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="tipo1">Si</option>
+                                                <option value="tipo2">Medio</option>
+                                                <option value="tipo3">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 2 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3>{{ preguntas[18].subPreguntas[1].texto }}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta35.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 3 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3>{{ preguntas[18].subPreguntas[2].texto }}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta36.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 4 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3>{{ preguntas[18].subPreguntas[3].texto }}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta37.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 5 -->
+                                    <tr>
+                                        <td class="py-2 px-4">
+                                            <h3>{{ preguntas[18].subPreguntas[4].texto }}</h3>
+                                        </td>
+                                        <td class="py-2 px-4">
+                                            <input type="text" id="respuesta-otro" name="respuesta-otro"
+                                                :[(ngModel)]="respuesta38.texto_res" (input)="updateProgress()"
+                                                class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                        </td>
+                                    </tr>
+                                </div>
+
+                                <!-- Pregunta 20 -->
+                                <tr class="grid md:table-row mt-4 md:my-0">
+                                    <td class="md:py-2 px-4 md:table-cell" colspan="2">
+                                        <div class="flex">
+                                            <b>{{ preguntas[19].id }}.</b>
                                             <h3>
-                                                {{preguntas[18].nombre}}
+                                                {{ preguntas[19].nombre }}
                                             </h3>
                                         </div>
                                     </td>
-                                </tr>
-                                <!-- Subpregunta 1 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="px-4 md:py-2 md:table-cell">
-                                        <h3>{{ preguntas[18].subPreguntas[0].texto }}</h3>
-                                    </td>
                                     <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta34.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="tipo1">Si</option>
-                                            <option value="tipo2">Medio</option>
-                                            <option value="tipo3">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 2 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3>{{ preguntas[18].subPreguntas[1].texto }}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta35.opcion"
+                                        <select :[(ngModel)]="respuesta39.opcion" (change)="updateProgress()"
                                             class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Seleccione</option>
                                             <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
                                             <option value="No">No</option>
                                         </select>
                                     </td>
                                 </tr>
-                                <!-- Subpregunta 3 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3>{{ preguntas[18].subPreguntas[2].texto }}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta36.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 4 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3>{{ preguntas[18].subPreguntas[3].texto }}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta37.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 5 -->
-                                <tr>
-                                    <td class="py-2 px-4">
-                                        <h3>{{ preguntas[18].subPreguntas[4].texto }}</h3>
-                                    </td>
-                                    <td class="py-2 px-4">
-                                        <input type="text" id="respuesta-otro" name="respuesta-otro"
-                                            :[(ngModel)]="respuesta38.texto_res"
-                                            class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
-                                    </td>
-                                </tr>
-                            </div>
+                                <!-- Pregunta 21 -->
+                                <div *ngIf="respuesta39.opcion === 'Si'">
+                                    <tr class="bg-gray-50 grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 xl:w-96 md:table-cell" rowspan="4">
+                                            <div class="flex">
+                                                <b> {{preguntas[20].id}}.</b>
+                                                <h3>
+                                                    {{preguntas[20].nombre}}
+                                                </h3>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 1 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3> {{preguntas[20].subPreguntas[0].texto}}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta40.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 2 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3>{{preguntas[20].subPreguntas[1].texto}}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta41.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 3 -->
+                                    <tr class="grid md:table-row mt-4 md:my-0">
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <h3>{{preguntas[20].subPreguntas[2].texto}}</h3>
+                                        </td>
+                                        <td class="md:py-2 px-4 md:table-cell">
+                                            <select :[(ngModel)]="respuesta42.opcion" (change)="updateProgress()"
+                                                class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
+                                                <option value="" disabled selected hidden>Seleccione</option>
+                                                <option value="Si">Si</option>
+                                                <option value="Medio">Medio</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Subpregunta 4 -->
+                                    <tr>
+                                        <td class="py-2 px-4">
+                                            <h3>{{preguntas[20].subPreguntas[2].texto}}</h3>
+                                        </td>
+                                        <td class="py-2 px-4">
+                                            <input type="text" id="respuesta-otro" name="respuesta-otro"
+                                                :[(ngModel)]="respuesta43.texto_res" (input)="updateProgress()"
+                                                class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                                        </td>
+                                    </tr>
+                                </div>
 
-                            <!-- Pregunta 20 -->
-                            <tr class="grid md:table-row mt-4 md:my-0">
-                                <td class="md:py-2 px-4 md:table-cell" colspan="2">
-                                    <div class="flex">
-                                        <b>{{ preguntas[19].id }}.</b>
-                                        <h3>
-                                            {{ preguntas[19].nombre }}
-                                        </h3>
-                                    </div>
-                                </td>
-                                <td class="md:py-2 px-4 md:table-cell">
-                                    <select :[(ngModel)]="respuesta39.opcion"
-                                        class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                        <option value="" disabled selected hidden>Seleccione</option>
-                                        <option value="Si">Si</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <!-- Pregunta 21 -->
-                            <div *ngIf="respuesta39.opcion === 'Si'">
-                                <tr class="bg-gray-50 grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 xl:w-96 md:table-cell" rowspan="4">
-                                        <div class="flex">
-                                            <b> {{preguntas[20].id}}.</b>
-                                            <h3>
-                                                {{preguntas[20].nombre}}
-                                            </h3>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 1 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3> {{preguntas[20].subPreguntas[0].texto}}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta40.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 2 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3>{{preguntas[20].subPreguntas[1].texto}}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta41.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 3 -->
-                                <tr class="grid md:table-row mt-4 md:my-0">
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <h3>{{preguntas[20].subPreguntas[2].texto}}</h3>
-                                    </td>
-                                    <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta42.opcion"
-                                            class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
-                                            <option value="" disabled selected hidden>Seleccione</option>
-                                            <option value="Si">Si</option>
-                                            <option value="Medio">Medio</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Subpregunta 4 -->
-                                <tr>
-                                    <td class="py-2 px-4">
-                                        <h3>{{preguntas[20].subPreguntas[2].texto}}</h3>
-                                    </td>
-                                    <td class="py-2 px-4">
-                                        <input type="text" id="respuesta-otro" name="respuesta-otro"
-                                            :[(ngModel)]="respuesta43.texto_res"
-                                            class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
-                                    </td>
-                                </tr>
-                            </div>
+                            </tbody>
+                        </table>
+                    </div>
 
-                        </tbody>
-                    </table>
-
-                    <div class="flex justify-center h-12 space-x-4">
+                    <div class="flex justify-end h-12 space-x-4 mt-2">
                         <button class="inline-block py-2 px-4 bg-[#373435] text-white rounded-full"
                             (click)="previous()">
                             anterior
@@ -922,7 +932,7 @@
                     </div>
                 </div>
                 <div *ngIf="currentSubSectionIndex === 1">
-                    <table class="border-collapse min-w-full bg-white mt-4">
+                    <table class=" min-w-full bg-white mt-4">
                         <tbody>
                             <!-- Pregunta 22  -->
                             <tr class="grid md:table-row mt-4 md:my-0">
@@ -934,7 +944,7 @@
 
                                 </td>
                                 <td class="md:py-2 px-4 md:table-cell">
-                                    <select :[(ngModel)]="respuesta44.opcion"
+                                    <select :[(ngModel)]="respuesta44.opcion" (change)="updateProgress()"
                                         class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                         <option value="" disabled selected hidden>Seleccione</option>
                                         <option value="Si">Si</option>
@@ -961,7 +971,7 @@
                                         <h3>{{preguntas[22].subPreguntas[0].texto}}</h3>
                                     </td>
                                     <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta45.opcion"
+                                        <select :[(ngModel)]="respuesta45.opcion" (change)="updateProgress()"
                                             class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Seleccione</option>
                                             <option value="Si">Si</option>
@@ -976,7 +986,7 @@
                                         <h3>{{preguntas[22].subPreguntas[1].texto}}</h3>
                                     </td>
                                     <td class="md:py-2 px-4 md:table-cell">
-                                        <select :[(ngModel)]="respuesta46.opcion"
+                                        <select :[(ngModel)]="respuesta46.opcion" (change)="updateProgress()"
                                             class="w-full md:w-36 px-2 py-1 border border-gray-300 rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100  ">
                                             <option value="" disabled selected hidden>Seleccione</option>
                                             <option value="Si">Si</option>
@@ -1007,7 +1017,7 @@
                                     </td>
                                     <td class="py-2 px-4">
                                         <input type="text" id="respuesta-otro" name="respuesta-otro"
-                                            :[(ngModel)]="respuesta48.texto_res"
+                                            :[(ngModel)]="respuesta48.texto_res" (input)="updateProgress()"
                                             class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                     </td>
                                 </tr>
@@ -1087,7 +1097,7 @@
                                 </td>
                                 <td class="py-2 px-4">
                                     <input type="text" id="respuesta-otro" name="respuesta-otro"
-                                        :[(ngModel)]="respuesta53.texto_res"
+                                        :[(ngModel)]="respuesta53.texto_res" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </td>
                             </tr>
@@ -1220,7 +1230,7 @@
                                 </td>
                                 <td class="py-2 px-4">
                                     <input type="text" id="respuesta-otro" name="respuesta-otro"
-                                        :[(ngModel)]="respuesta60.texto_res"
+                                        :[(ngModel)]="respuesta60.texto_res" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </td>
                             </tr>
@@ -1358,7 +1368,7 @@
                                         <b>{{preguntas[30].id}}.</b>
                                         <h3 class="ml-2">{{preguntas[30].nombre}}</h3>
                                     </div>
-                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border  rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -1389,7 +1399,7 @@
                                         <b>{{preguntas[32].id}}.</b>
                                         <h3 class="ml-2">{{preguntas[32].nombre}}</h3>
                                     </div>
-                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -1421,7 +1431,7 @@
                                         <b>{{preguntas[34].id}}.</b>
                                         <h3 class="ml-2">{{preguntas[34].nombre}}</h3>
                                     </div>
-                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -1449,7 +1459,7 @@
                                         <b>{{preguntas[35].id}}.</b>
                                         <h3 class="ml-2">{{preguntas[35].nombre }}</h3>
                                     </div>
-                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos"
+                                    <input type="text" id="respuesta-presupuestos" name="respuesta-presupuestos" (input)="updateProgress()"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 border rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                                 </div>
                             </td>
@@ -2450,9 +2460,12 @@
                         <!-- fin de pregunta 47 -->
                     </tbody>
                 </table>
-                <div class="flex justify-center">
+                <div class="flex justify-end">
+                    <button class="inline-block py-2 px-4 bg-[#373435] text-white rounded-full" (click)="previous()">
+                        anterior
+                    </button>
                     <button type="button" (click)="next()"
-                        class="inline-block bg-[#FA7D00] rounded-full px-4 py-2 text-white">Siguiente
+                        class="inline-block bg-[#FA7D00] rounded-full px-4 py-2 text-white">finalizar
                     </button>
                 </div>
             </div>
