@@ -1,7 +1,7 @@
 <div class="p-4">
   <div class="m-10">
     <h5 class="text-center text-2xl font-bold mb-4">
-      PERSONALIZACION DEL SISTEMA
+      PERSONALIZACIÓN DEL SISTEMA
     </h5>
   </div>
 
@@ -38,23 +38,23 @@
               <div class="">
                 <label for="nombre" class="block text-black font-bold mb-2">Nombre de la empresa</label>
                 <input type="text" id="nombre_sistema" name="nombre_sistema" formControlName="nombre_sistema"
-                  class=" h-16 mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                  class=" h-12 mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
                 <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
 
                 </div>
               </div>
               <!-- Color Principal -->
               <div class="">
-                <label class="block text-black font-bold mb-2">Color Principal</label>
+                <label class="block text-black font-bold mb-2">Color Principal (Fondo del menú)</label>
                 <div class="flex flex-col  items-center ">
                   <div class="flex content-center mb-2 md:mb-0 w-full">
-                    <div class="w-24 h-16 rounded-l" [style.background]="selectedColorPrincipal"
+                    <div class="w-24 h-12 rounded-l" [style.background]="selectedColorPrincipal"
                       [(colorPicker)]="selectedColorPrincipal" [cpOKButton]="true"
                       [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
                       [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
                       [cpCancelButtonText]="'Cancelar'"></div>
                     <input type="text"
-                      class="bg-gray-200 text-black h-16 py-3 px-4 rounded-r flex-grow flex items-center"
+                      class="bg-gray-200 text-black h-12 py-3 px-4 rounded-r flex-grow flex items-center"
                       id="color_principal" name="color_principal" formControlName="color_principal"
                       [value]="selectedColorPrincipal" readonly>
                   </div>
@@ -64,16 +64,16 @@
 
               <!-- Color Secundario -->
               <div class="">
-                <label class="block text-black font-bold mb-2 ">Color Secundario</label>
+                <label class="block text-black font-bold mb-2 ">Color Secundario (Iconos y el texto del menú)</label>
                 <div class="flex flex-col  ">
                   <div class="flex content-center mb-2 md:mb-0 w-full">
-                    <div class="w-24 h-16 rounded-l" [style.background]="selectedColorSecundario"
+                    <div class="w-24 h-12 rounded-l" [style.background]="selectedColorSecundario"
                       [(colorPicker)]="selectedColorSecundario" [cpOKButton]="true"
                       [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
                       [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
                       [cpCancelButtonText]="'Cancelar'"></div>
                     <input type="text"
-                      class="bg-gray-200 text-black h-16 py-3 px-4 rounded-r flex-grow flex items-center"
+                      class="bg-gray-200 text-black h-12 py-3 px-4 rounded-r flex-grow flex items-center"
                       id="color_secundario" formControlName="color_secundario" name="color_secundario"
                       [value]="selectedColorSecundario" readonly>
                   </div>
@@ -81,17 +81,17 @@
               </div>
               <!-- Color terciario -->
               <div class="space-x-0">
-                <label class="block text-black font-bold mb-2">Color Secundario</label>
+                <label class="block text-black font-bold mb-2">Color Terciario (Botones)</label>
                 <div class="flex flex-col  ">
                   <div class="flex content-center mb-2 md:mb-0 w-full">
-                    <div class="w-24 h-16 rounded-l" [style.background]="selectedColorTerciario"
+                    <div class="w-24 h-12 rounded-l" [style.background]="selectedColorTerciario"
                       [(colorPicker)]="selectedColorTerciario" [cpOKButton]="true"
                       [cpOKButtonClass]="'bg-green-500 rounded-lg text-sm'" [cpOKButtonText]="'Elegir'"
                       [cpCancelButton]="true" [cpCancelButtonClass]="'bg-red-500 rounded-lg text-sm'"
                       [cpCancelButtonText]="'Cancelar'"></div>
                     <input type="text"
-                      class="bg-gray-200 text-black h-16 py-3 px-4 rounded-r flex-grow flex items-center"
-                      id="color_secundario" formControlName="color_secundario" name="color_secundario"
+                      class="bg-gray-200 text-black h-12 py-3 px-4 rounded-r flex-grow flex items-center"
+                      id="color_terciario" formControlName="color_terciario" name="color_terciario"
                       [value]="selectedColorTerciario" readonly>
                   </div>
                 </div>

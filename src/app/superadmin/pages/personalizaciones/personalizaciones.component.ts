@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit,  Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { ColorPickerDirective } from 'ngx-color-picker';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { User } from '../../../Modelos/user.model';
@@ -14,9 +14,9 @@ import { Router } from '@angular/router';
 })
 export class PersonalizacionesComponent implements OnInit {
   personalizacionForm: FormGroup;
-  selectedColorPrincipal = '#C2FFFB';
-  selectedColorSecundario = '#C2FFFB';
-  selectedColorTerciario = '#C2FFFB';
+  selectedColorPrincipal = '#00B3ED';
+  selectedColorSecundario = '#ffffff';
+  selectedColorTerciario = '#38bdf8';
   previewUrl: any = null;
   faImage = faImage;
 
@@ -29,11 +29,14 @@ export class PersonalizacionesComponent implements OnInit {
 
   @ViewChild('colorPickerPrincipal') colorPickerPrincipal: ColorPickerDirective;
   @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
+  @ViewChild('colorPickerTerciario') colorPickerTerciario: ColorPickerDirective;
 
 
   constructor(private fb: FormBuilder,
     private personalizacionesService: PersonalizacionesService,
-    private router: Router,) {
+    private router: Router,
+    private renderer: Renderer2,
+    private el: ElementRef) {
     this.personalizacionForm = this.fb.group({
       imagen_Logo: [''],
     })
@@ -48,11 +51,11 @@ export class PersonalizacionesComponent implements OnInit {
     this.personalizacionForm = this.fb.group({
       nombre_sistema: ['', Validators.required],
       imagen_Logo: ['', Validators.required],
-      color_principal: ['#C2FFFB', Validators.required],
-      color_secundario: ['#C2FFFB', Validators.required],
-      color_terciario: ['#C2FFFB', Validators.required],
+      color_principal: [this.selectedColorPrincipal, Validators.required],
+      color_secundario: [this.selectedColorSecundario, Validators.required],
+      color_terciario: [this.selectedColorTerciario, Validators.required],
     })
-
+    this.applyCustomizations();
   }
 
   validateToken(): void {
@@ -77,20 +80,49 @@ export class PersonalizacionesComponent implements OnInit {
 
   onColorChangePrincipal(color: string): void {
     this.selectedColorPrincipal = color;
+    this.applyCustomizations(); 
   }
 
 
 
   onColorChangeSecundario(color: string): void {
     this.selectedColorSecundario = color;
+    this.applyCustomizations(); 
   }
 
   onColorChangeTerciario(color: string): void {
     this.selectedColorTerciario = color;
+    this.applyCustomizations(); 
   }
 
   // Resto de tu código...
 
+  updateMenuBackgroundColor(): void { //Agregado
+    const menu = this.el.nativeElement.querySelector('.sidebar');
+    if (menu) {
+      this.renderer.setStyle(menu, 'backgroundColor', this.selectedColorPrincipal);
+    }
+  }
+
+  updateMenuIconColors(): void {
+    const menuIcons = this.el.nativeElement.querySelectorAll('.menu-icon');
+    const menuIconTexts = this.el.nativeElement.querySelectorAll('.menu-icon-text');
+
+    menuIcons.forEach((icon: HTMLElement) => {
+      this.renderer.setStyle(icon, 'color', this.selectedColorSecundario);
+    });
+
+    menuIconTexts.forEach((text: HTMLElement) => {
+      this.renderer.setStyle(text, 'color', this.selectedColorSecundario);
+    });
+  }
+
+  updateButtonColors(): void {
+    const buttons = this.el.nativeElement.querySelectorAll('.button-custom');
+    buttons.forEach((button: HTMLElement) => {
+      this.renderer.setStyle(button, 'backgroundColor', this.selectedColorTerciario);
+    });
+  } //Agregado
 
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -165,7 +197,11 @@ export class PersonalizacionesComponent implements OnInit {
     });
   }
 
-
+  applyCustomizations(): void {
+    this.updateMenuBackgroundColor();
+    this.updateMenuIconColors();
+    this.updateButtonColors();
+  }
 
 
 }
