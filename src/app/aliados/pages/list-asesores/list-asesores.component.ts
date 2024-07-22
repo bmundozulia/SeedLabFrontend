@@ -3,7 +3,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { faEye, faMagnifyingGlass, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { ModalAddAsesoresComponent } from '../modal-add-asesores/modal-add-asesores.component';
-import { AsesorService } from '../../../servicios/asesor.service';
 import { User } from '../../../Modelos/user.model';
 import { Asesor } from '../../../Modelos/asesor.model';
 import { AliadoService } from '../../../servicios/aliado.service';
@@ -12,7 +11,7 @@ import { AliadoService } from '../../../servicios/aliado.service';
   selector: 'app-list-asesores',
   templateUrl: './list-asesores.component.html',
   styleUrls: ['./list-asesores.component.css'],
-  providers: [AsesorService, AliadoService]
+  providers: [AliadoService]
 })
 export class ListAsesoresComponent implements OnInit {
   asesor: Asesor[] = [];
@@ -34,7 +33,6 @@ export class ListAsesoresComponent implements OnInit {
   userFilter: any = { nombre: '', estado: 'Activo' };
 
   constructor(
-    private asesorService: AsesorService,
     public dialog: MatDialog,
     private router: Router,
     private aliadoService: AliadoService

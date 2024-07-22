@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { AliadoService } from '../../../../servicios/aliado.service';
 import { Aliado } from '../../../../Modelos/aliado.model';
@@ -10,34 +10,32 @@ import { Router } from '@angular/router';
   templateUrl: './list-aliados.component.html',
   styleUrls: ['./list-aliados.component.css'],
   providers: [AliadoService],
-
 })
 export class ListAliadosComponent implements OnInit {
-  userFilter: any = { nombre: '', estadoString: 'Activo' };
+  userFilter: any = { nombre: '', estado: 'Activo' };
   faeye = faEye;
   falupa = faMagnifyingGlass;
   fax = faXmark;
-  public page!: number;
+  public page: number = 1; // Inicializa la página en 1
+  public itemsPerPage: number = 5; // Cambia según tus necesidades
+  public totalAliados: number = 0; // Número total de aliados, inicializado en 0
   listaAliado: Aliado[] = [];
   token: string | null = null;
   user: User | null = null;
   currentRolId: number;
   isLoading: boolean = true;
-
-
+  nombre: string | null = null;
 
   constructor(
     private aliadoService: AliadoService,
     private router: Router,
   ) { }
 
-  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
-    this.cargarAliados(1); /* Cargar inicialmente con estado 'Activo' */
+    this.cargarAliados(); // Cargar inicialmente con estado 'Activo'
   }
 
-  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
@@ -46,7 +44,6 @@ export class ListAliadosComponent implements OnInit {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.currentRolId = this.user.id_rol;
-        console.log(this.currentRolId);
         if (this.currentRolId != 1 && this.currentRolId != 2) {
           this.router.navigate(['/inicio/body']);
         }
@@ -57,13 +54,9 @@ export class ListAliadosComponent implements OnInit {
     }
   }
 
-  private mapEstado(estado: boolean): string {
-    return estado ? 'Activo' : 'Inactivo';
-  }
-
-  /* Funcion para mostrar las listas de los aliados y con el estado activo*/
-  cargarAliados(estado: number): void {
+  cargarAliados(): void {
     if (this.token) {
+      const estado = this.userFilter.estado === 'Activo' ? 1 : 0;
       this.aliadoService.getinfoAliado(this.token, estado).subscribe(
         (data: Aliado[]) => {
           this.listaAliado = data.map((item: any) => {
@@ -82,7 +75,7 @@ export class ListAliadosComponent implements OnInit {
             aliado['estadoString'] = this.mapEstado(item.estado);
             return aliado;
           });
-          console.log(data);
+          this.totalAliados = data.length;
           setTimeout(() => {
             this.isLoading = false;
           }, 500);
@@ -102,22 +95,50 @@ export class ListAliadosComponent implements OnInit {
     }
   }
 
-
-
-  /* Retorna los aliados dependiendo de su estado, normalmente en activo */
   onEstadoChange(event: any): void {
-    var estado = event.target.value;
-    if (estado == "Activo") {
-      this.cargarAliados(1);
-    }
-    else {
-      this.cargarAliados(0);
-    }
+    this.page = 1; // Reinicia la página al cambiar el estado
+    this.cargarAliados();
   }
-
-  /* Limpia el filtro de busqueda, volviendo a retornar los aliados activos */
+  
   limpiarFiltro(): void {
     this.userFilter = { nombre: '', estado: 'Activo' };
-    this.cargarAliados(1);
+    this.page = 1; 
+    this.cargarAliados();
+  }
+
+  changePage(pageNumber: number | string): void {
+    if (pageNumber === 'previous') {
+      if (this.page > 1) {
+        this.page--;
+      }
+    } else if (pageNumber === 'next') {
+      if (this.page < this.getTotalPages()) {
+        this.page++;
+      }
+    } else {
+      this.page = pageNumber as number;
+    }
+    this.cargarAliados(); // Carga los aliados de la página seleccionada
+  }
+
+  getTotalPages(): number {
+    return Math.ceil(this.totalAliados / this.itemsPerPage);
+  }
+
+  getPages(): number[] {
+    const totalPages = this.getTotalPages();
+    return Array(totalPages).fill(0).map((x, i) => i + 1);
+  }
+
+  canGoPrevious(): boolean {
+    return this.page > 1;
+  }
+
+  canGoNext(): boolean {
+    return this.page < this.getTotalPages();
+  }
+
+  mapEstado(estado: number): string {
+    return estado === 1 ? 'Activo' : 'Inactivo';
   }
 }
