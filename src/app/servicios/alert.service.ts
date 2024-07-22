@@ -105,6 +105,17 @@ export class AlertService {
       text: text,
     });
 
+
+  }
+
+  validationAlert(title: string, text: string) {
+    Swal.fire({
+      icon: 'warning',
+      title: title,
+      text: text,
+      confirmButtonText: 'OK',
+      confirmButtonColor: "#3085d6",
+    });
   }
 
   // infoAlert(title: string, text: string) {
