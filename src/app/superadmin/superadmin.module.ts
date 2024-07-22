@@ -24,9 +24,10 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
-
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -47,7 +48,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
     ModalAddRutaComponent,
     AddActividadComponent,
     ModalCrearOrientadorComponent,
-    ActnivlecComponent
+    ActnivlecComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
@@ -61,6 +63,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
     ColorPickerModule,
     MatIconModule,
     RouterModule,
+    NgChartsModule
   ]
 })
 export class SuperadminModule { }

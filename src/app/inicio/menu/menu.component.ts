@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Route, Router } from '@angular/router';
 
 import { User } from '../../Modelos/user.model';
@@ -13,7 +13,7 @@ import { SuperadminService } from '../../servicios/superadmin.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  isLeft = true;
+  isExpanded = false;
   logueado = false;
   flag = false;
   token: string | null = null;
@@ -25,20 +25,22 @@ export class MenuComponent {
   menuItems: any[] = [];
   colorPrincipal: string = '';
   colorSecundaria: string = '';
-
-  
-
-  toggleSlide() {
-    this.isLeft = !this.isLeft;
-  }
+  isMobile: boolean = false;
+  iconColor: string = '#00B3ED';
 
   constructor(private router: Router,
-    private authservices: AuthService,
-    private menuService: MenuService,
-    private personalizacionService: SuperadminService
-  ) {
-    
-   }
+              private authservices: AuthService,
+              private menuService: MenuService,
+              private personalizacionService: SuperadminService) { }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.isMobile = window.innerWidth < 768;
+  }
+
+  toggleSidebar() {
+    this.isExpanded = !this.isExpanded;
+  }
 
   validateToken(): void {
     this.token = localStorage.getItem("token");
@@ -61,25 +63,36 @@ export class MenuComponent {
 
     if (this.logueado && this.user) {
       this.currentRolId = this.user.id_rol?.toString();
-      //console.log(this.currentRolId);
     } else {
       console.log("No está logueado o no se pudo cargar el usuario.");
     }
     this.menuItems = this.menuService.getRoutesByRole(this.currentRolName); 
     console.log(this.menuItems);
     this.personalizacionService.getPersonalizacion().subscribe(
-      data=>{
-       this.colorPrincipal = data.color_principal;
-       this.colorSecundaria = data.color_secundario;
+      data => {
+        this.colorPrincipal = data.color_principal;
+        this.colorSecundaria = data.color_secundario;
         console.log(this.colorPrincipal, this.colorSecundaria);
       },
       err => console.log(err)
-      );
+    );
     
-
+    this.checkIfMobile();
   }
 
+  checkIfMobile() {
+   this.isMobile = window.innerWidth < 768;
+  }
 
+  // getBackgroundColor(): string {
+  //   return this.isMobile ? 'white' : this.colorPrincipal;
+  // }
+
+ 
+  getIconColor(): string {
+    console.log('isMobile:', this.isMobile);
+    return this.isMobile ? '#00B3ED' : '#FFFFFF'; // Color blanco en pantallas grandes
+  }
   logout() {
     if (this.token) {
       this.authservices.logout(this.token).subscribe(
@@ -96,13 +109,13 @@ export class MenuComponent {
       this.handleLogout();
     }
   }
+  
 
   private handleLogout() {
     localStorage.clear();
     this.isAuthenticated = false;
     this.router.navigate(['/home']);
   }
-
+  
   
 }
-
