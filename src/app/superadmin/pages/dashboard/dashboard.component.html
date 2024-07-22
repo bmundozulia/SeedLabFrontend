@@ -1,9 +1,9 @@
-<div class=" p-20">
-  <h1 class="text-2xl font-bold mb-6">Dashboard</h1>
+<div class=" p-4 sm:p-6 md:p-8 lg:p-12 xl:p-20">
+  <h1 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Dashboard</h1>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
     <!-- Super Admins -->
-    <div class="bg-white rounded-lg shadow-lg p-3 relative w-64 h-40">
+    <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
       <div class="absolute -top-5 left-4">
         <div class="bg-orange-500 rounded-lg p-3 shadow-md">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Orientadores -->
-    <div class="bg-white rounded-lg shadow-lg p-3 relative w-64 h-40">
+    <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
       <div class="absolute -top-5 left-4">
         <div class="bg-green-500 rounded-lg p-3 shadow-md">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -65,7 +65,7 @@
     </div>
 
     <!-- Aliados -->
-    <div class="bg-white rounded-lg shadow-lg p-3 relative w-64 h-40">
+    <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
       <div class="absolute -top-5 left-4">
         <div class="bg-red-500 rounded-lg p-3 shadow-md">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -95,7 +95,7 @@
     </div>
 
     <!-- Asesores -->
-    <div class="bg-white rounded-lg shadow-lg p-3 relative w-64 h-40">
+    <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
       <div class="absolute -top-5 left-4">
         <div class="bg-blue-500 rounded-lg p-3 shadow-md">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -125,7 +125,7 @@
     </div>
 
     <!-- Emprendedores -->
-    <div class="bg-white rounded-lg shadow-lg p-3 relative w-64 h-40">
+    <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
       <div class="absolute -top-5 left-4">
         <div class="bg-purple-500 rounded-lg p-3 shadow-md">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -157,10 +157,10 @@
 
 
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <!-- Top Aliados -->
+  <!-- Top Aliados -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
     <div class="bg-white rounded-lg shadow p-4">
-      <h2 class="text-lg font-semibold mb-4">Top Aliados</h2>
+      <h2 class="text-lg font-semibold mb-4">Top Aliados - Asesorias</h2>
       <!-- Chart placeholder -->
       <canvas baseChart 
       [datasets]="topAliadosData" 
@@ -170,15 +170,15 @@
       </canvas>
     </div>
 
-    <!-- Email Subscriptions -->
+    <!-- Asesorias asignas y sin asignar -->
     <div class="bg-white rounded-lg shadow p-4">
-      <h2 class="text-lg font-semibold mb-4">Email Subscriptions</h2>
+      <h2 class="text-lg font-semibold mb-4">Asesorias</h2>
       <!-- Chart placeholder -->
       <p class="text-sm text-gray-500 mt-2">Last Campaign Performance</p>
       <p class="text-sm text-gray-500 mt-1">campaign sent 2 days ago</p>
     </div>
 
-    <!-- Completed Tasks -->
+    <!-- Asesorias por mes -->
     <div class="bg-white rounded-lg shadow p-4">
       <h2 class="text-lg font-semibold mb-4">Completed Tasks</h2>
       <!-- Chart placeholder -->
