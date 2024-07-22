@@ -90,9 +90,10 @@ export class MenuComponent {
 
  
   getIconColor(): string {
-    console.log('isMobile:', this.isMobile);
+    //console.log('isMobile:', this.isMobile);
     return this.isMobile ? '#00B3ED' : '#FFFFFF'; // Color blanco en pantallas grandes
   }
+  
   logout() {
     if (this.token) {
       this.authservices.logout(this.token).subscribe(

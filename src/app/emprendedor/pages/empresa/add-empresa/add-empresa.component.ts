@@ -171,7 +171,7 @@ export class AddEmpresaComponent {
     console.log("Formulario enviado", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
 
     if (this.addEmpresaForm.invalid) {
-      //console.log("Formulario inválido");
+      console.log("Formulario inválido", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
       return;
     }
 
@@ -217,7 +217,7 @@ export class AddEmpresaComponent {
 
     this.addEmpresaService.addEmpresa(this.token, payload).subscribe(
       data => {
-        //console.log('Respuesta de la API (empresa creada):', data);
+        console.log('Respuesta de la API (empresa creada):', data);
         this.alertService.successAlert('Éxito', 'Registro exitoso');
         this.emprendedorDocumento = data.empresa.id_emprendedor;
         //console.log(`------------------------------------------------ ${this.emprendedorDocumento}`);
