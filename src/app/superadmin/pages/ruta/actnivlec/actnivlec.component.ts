@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../../../Modelos/user.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SuperadminService } from '../../../../servicios/superadmin.service';
 import { Asesor } from '../../../../Modelos/asesor.model';
 import { ActividadService } from '../../../../servicios/actividad.service';
 import { Actividad } from '../../../../Modelos/actividad.model';
 import { Aliado } from '../../../../Modelos/aliado.model';
+import { Superadmin } from '../../../../Modelos/superadmin.model';
+import { AliadoService } from '../../../../servicios/aliado.service';
 
 @Component({
   selector: 'app-actnivlec',
@@ -21,7 +23,12 @@ export class ActnivlecComponent implements OnInit {
   currentRolId: number;
   listaAsesorAliado: Asesor [] = [];
   listarTipoDato: Actividad  [] = [];
-  listarAliado: Aliado [] = [];
+  listarAliadoo: Aliado [] = [];
+  ///
+  listarAsesores: any[] = [];
+  userFilter: any = { nombre: '', estado: 'Activo' };
+  aliadoSeleccionado: any | null;
+  rutaId: number | null = null;
 
 
   ////
@@ -42,14 +49,24 @@ export class ActnivlecComponent implements OnInit {
     private router: Router,
     private superAdminService: SuperadminService,
     private actividadService: ActividadService,
+    private aliadoService: AliadoService,
+    private route: ActivatedRoute,
 
   ){}
 
   ngOnInit(): void{
+    this.route.queryParams.subscribe(params =>{
+      this.rutaId = +params['id_ruta'];
+      this.actividadForm.patchValue({ id_ruta: this.rutaId.toString()});
+    });
+
     this.validateToken();
-    this.AsesorConAliado();
+    //this.AsesorConAliado();
     this.tipoDato();
-    this.addActividadSuperAdmin();
+    //this.addActividadSuperAdmin();
+    this.listaAliado();
+    this.onAliadoChange();
+    
   }
 
 
@@ -76,20 +93,7 @@ export class ActnivlecComponent implements OnInit {
     }
   }
 
-//traer el asesor con el aliado
-  AsesorConAliado():void{
-    if (this.token) {
-      this.superAdminService.asesorConAliado(this.token).subscribe(
-        data => {
-          this.listaAsesorAliado = data;
-          console.log("info del asesor: ", data);
-        },
-        error =>{
-          console.log(error);
-        }
-      )
-    }
-  }
+
 
   //me trae el tipo de dato que requiere la actividad
   tipoDato():void{
@@ -111,8 +115,8 @@ export class ActnivlecComponent implements OnInit {
     if (this.token) {
       this.superAdminService.listarAliado(this.token).subscribe(
         data => {
-          this.listarAliado = data;
-          console.log('listaAliado',data)
+          this.listarAliadoo = data;
+          console.log('Aliado: ',data)
         },
         error => {
           console.log(error);
@@ -120,6 +124,39 @@ export class ActnivlecComponent implements OnInit {
       )
     }
   }
+  selectAliado(aliado: any):void{
+    this.aliadoSeleccionado = aliado;
+    console.log("el aliado seleccionado fue: ",this.aliadoSeleccionado)
+  }
+
+  onAliadoChange(event?: any): void {
+    const aliadoId = event.target.value;
+    const aliadoSeleccionado = this.listarAliadoo.find(aliado => aliado.id == aliadoId);
+    
+    if (aliadoSeleccionado) {
+      console.log("El aliado seleccionado fue: ", {
+        id: aliadoSeleccionado.id,
+        nombre: aliadoSeleccionado.nombre
+      });
+      
+      // Aquí puedes hacer lo que necesites con el aliado seleccionado
+      this.aliadoSeleccionado = aliadoSeleccionado;
+  
+      if (this.token) {
+        this.aliadoService.getinfoAsesor(this.token, this.aliadoSeleccionado.id, this.userFilter.estado).subscribe(
+          data => {
+            this.listarAsesores = data;
+            console.log('Asesores: ', data);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    }
+  }
+
+
 
   //agregar una actividad
   addActividadSuperAdmin():void{
@@ -129,10 +166,11 @@ export class ActnivlecComponent implements OnInit {
       ruta_multi: this.actividadForm.value.ruta_multi,
       id_tipo_dato: parseInt(this.actividadForm.value.id_tipo_dato),
       id_asesor: parseInt(this.actividadForm.value.id_asesor),
-      //id_ruta: this.rutaSeleccionada.id,
+      id_ruta: this.rutaId,
+      //id_ruta: parseInt(this.actividadForm.value.id_ruta),
       id_aliado: this.user.id
     }
-    this.superAdminService.crearActividadSuperAdmin(this.token, this.id).subscribe(
+    this.superAdminService.crearActividadSuperAdmin(this.token).subscribe(
       data => {
         console.log(data);
       },
@@ -145,13 +183,30 @@ export class ActnivlecComponent implements OnInit {
   cancelarcrearActividad(): void {
     //this.rutaSeleccionada = null;
     //this.activityName = null;
+    //this.addActividadSuperAdmin = null;
+    //this.onAliadoChange
     this.actividadForm.patchValue({
       nombre: '',
       descripcion: '',
       ruta_multi: '',
       id_tipo_dato: '',
-      id_asesor: ''
+      id_asesor: '',
+      id_aliado: '',
     });
   }
 
 }
+//traer el asesor con el aliado
+  // AsesorConAliado():void{
+  //   if (this.token) {
+  //     this.superAdminService.asesorConAliado(this.token).subscribe(
+  //       data => {
+  //         this.listaAsesorAliado = data;
+  //         console.log("info del asesor: ", data);
+  //       },
+  //       error =>{
+  //         console.log(error);
+  //       }
+  //     )
+  //   }
+  // }

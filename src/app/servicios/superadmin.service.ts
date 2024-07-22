@@ -65,9 +65,9 @@ export class SuperadminService {
     return this.http.get(this.url+"listAliado",options)
   }
 
-  crearActividadSuperAdmin(access_token: any,id: number):Observable<any>{
+  crearActividadSuperAdmin(access_token: any,):Observable<any>{
     const options = {headers: this.CreacionHeaders(access_token)};
-    return this.http.post(this.url+"actividad/actividad/"+id,options)
+    return this.http.post(environment.apiUrl+"actividad/crearActividad",options)
   }
 
   createPersonalizacion(access_token: any, personalizaciones: any, id): Observable<any> {
@@ -83,4 +83,13 @@ export class SuperadminService {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.post(this.url + "restaurarPersonalizacion/"+ id,{}, options);
   }
+
+  //////////////
+  // getinfoAsesor(access_token: any, id: number, estado: boolean): Observable<any> {
+  //   const options = {
+  //     headers: this.CreacionHeaders(access_token),
+  //     params: new HttpParams().set('estado', estado ? 'Activo' : 'Inactivo')
+  //   };
+  //   return this.http.get<any>(`${this.url}mostrarAsesorAliado/${id}`, options);
+  // }
 }

@@ -34,19 +34,28 @@
                         </div>
 
                         <div>
-                            <select id="id_tipo_dato" formControlName="id_aliado"
-                                class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 appearance-none ">
-                                <option value="" disabled selected>
-                                    Seleccione el Aliado...
-                                <option *ngFor="let  of " (click)="()"
-                                    [value]="">
-                                    {{}}</option>
+                            <select id="id_tipo_dato" formControlName="id_aliado" (change)="onAliadoChange($event)"
+                              class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 appearance-none">
+                              <option value="" disabled selected>Seleccione el Aliado...</option>
+                              <option *ngFor="let aliado of listarAliadoo" [value]="aliado.id">
+                                {{aliado.nombre}}
+                              </option>
                             </select>
-                        </div>
-
+                          </div>
 
 
                         <div>
+                            <select id="id_asesor" formControlName="id_asesor"
+                                class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 appearance-none">
+                              <option value="" disabled selected>Seleccione el Asesor...</option>
+                              <option value="0">Ninguno</option>
+                              <option *ngFor="let asesor of listarAsesores" [value]="asesor.id">
+                                {{ asesor.nombre }} {{ asesor.apellido }}
+                              </option>
+                            </select>
+                          </div>
+
+                        <!-- <div>
                             <select id="id_asesor" formControlName="id_asesor"
                                 class="p-2 h-14 w-full mb-2 border rounded-md bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 appearance-none ">
                                 <option value="" disabled selected>
@@ -58,7 +67,7 @@
                                     {{mostrarasesores.nombre_aliado}}
                                 </option>
                             </select>
-                        </div>
+                        </div> -->
 
 
 
