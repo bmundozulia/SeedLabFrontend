@@ -27,7 +27,7 @@
     <!-- Botón para agregar -->
     <div class="flex justify-end items-center mb-4">
         <span class="mr-3 text-amber-500 text-[20px] italic mb-1" style="font-weight: 900;">Agregar</span>
-        <button [routerLink]="'/add-empresa'" class="bg-amber-500 text-white w-16 h-8 rounded-lg flex items-center justify-center">
+        <button [routerLink]="'/add-aliados'" class="bg-amber-500 text-white w-16 h-8 rounded-lg flex items-center justify-center">
             <span class="text-3xl font-semibold leading-none ">+</span>
         </button>
     </div>
@@ -46,7 +46,7 @@
                 </thead>
                 <tbody class="space-y-6">
                     <ng-container *ngIf="listaAliado.length > 0">
-                        <ng-container *ngFor="let aliado of listaAliado | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
+                        <ng-container *ngFor="let aliado of listaAliado | filterBy:userFilter | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
                         <tr class="bg-gray-300 my-5 rounded-xl">
                           <td class="p-2 rounded-s-lg">{{ aliado.nombre }}</td>
                           <td class="p-2">{{ aliado.email }}</td>
@@ -72,8 +72,6 @@
                     </tr>
                   </tbody>
                   
-                  
-                  
             </table>
         </div>
     </div>
@@ -91,9 +89,11 @@
                         </a>
                     </li>
                     <ng-container *ngFor="let pageNumber of getPages()">
-                        <li class="items-center justify-center w-6 h-6 bg-amber-500 rounded-md hover:bg-gray-300 focus:outline-none mx-2">
-                            <a class="no-underline text-white" href="javascript:void(0)" (click)="changePage(pageNumber)" [class.active]="page === pageNumber">{{ pageNumber }}</a>
-                        </li>
+                        <a class="no-underline text-white" href="javascript:void(0)" (click)="changePage(pageNumber)" [class.active]="page === pageNumber">
+                            <li class="items-center justify-center w-6 h-6 bg-amber-500 rounded-md hover:bg-gray-300 focus:outline-none mx-1">
+                                {{ pageNumber }}
+                            </li>
+                        </a>
                     </ng-container>
                     <li>
                         <a href="javascript:void(0)" class="inline-flex items-center justify-center w-6 h-6 bg-gray-500 rounded-md hover:bg-gray-300 focus:outline-none" (click)="changePage('next')" [class.opacity-50]="!canGoNext()" [class.cursor-not-allowed]="!canGoNext()">

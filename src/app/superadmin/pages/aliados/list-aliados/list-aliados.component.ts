@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { AliadoService } from '../../../../servicios/aliado.service';
@@ -23,11 +21,13 @@ export class ListAliadosComponent implements OnInit {
   public itemsPerPage: number = 5; // Cambia según tus necesidades
   public totalAliados: number = 0; // Número total de aliados, inicializado en 0
   listaAliado: Aliado[] = [];
+  paginatedAliados: Aliado[] = []; // Agrega esta propiedad para la paginación
   token: string | null = null;
   user: User | null = null;
   currentRolId: number;
   isLoading: boolean = true;
   nombre: string | null = null;
+
 
 
   constructor(
@@ -40,32 +40,7 @@ export class ListAliadosComponent implements OnInit {
     this.validateToken();
     this.cargarAliados(1); /* Cargar inicialmente con estado 'Activo' */
   }
-
-  /* Valida el token del login */
-  validateToken(): void {
-    if (!this.token) {
-      this.token = localStorage.getItem("token");
-      let identityJSON = localStorage.getItem('identity');
-      if (identityJSON) {
-        let identity = JSON.parse(identityJSON);
-        this.user = identity;
-        this.currentRolId = this.user.id_rol;
-        console.log(this.currentRolId);
-        if (this.currentRolId != 1 && this.currentRolId != 2) {
-          this.router.navigate(['/inicio/body']);
-        }
-      }
-    }
-    if (!this.token) {
-      this.router.navigate(['/inicio/body']);
-    }
-  }
-
-  private mapEstado(estado: boolean): string {
-    return estado ? 'Activo' : 'Inactivo';
-  }
-
-  /* Funcion para mostrar las listas de los aliados y con el estado activo*/
+  
   cargarAliados(estado: number): void {
     if (this.token) {
       this.aliadoService.getinfoAliado(this.token, estado).subscribe(
@@ -87,6 +62,7 @@ export class ListAliadosComponent implements OnInit {
             return aliado;
           });
           console.log(data);
+          this.updatePaginatedData(); // Inicializa los datos paginados
           setTimeout(() => {
             this.isLoading = false;
           }, 500);
@@ -105,7 +81,30 @@ export class ListAliadosComponent implements OnInit {
       }, 500);
     }
   }
+  
+ /* Valida el token del login */
+ validateToken(): void {
+  if (!this.token) {
+    this.token = localStorage.getItem("token");
+    let identityJSON = localStorage.getItem('identity');
+    if (identityJSON) {
+      let identity = JSON.parse(identityJSON);
+      this.user = identity;
+      this.currentRolId = this.user.id_rol;
+      console.log(this.currentRolId);
+      if (this.currentRolId != 1 && this.currentRolId != 2) {
+        this.router.navigate(['/inicio/body']);
+      }
+    }
+  }
+  if (!this.token) {
+    this.router.navigate(['/inicio/body']);
+  }
+}
 
+private mapEstado(estado: boolean): string {
+  return estado ? 'Activo' : 'Inactivo';
+}
 
 
   /* Retorna los aliados dependiendo de su estado, normalmente en activo */
@@ -137,17 +136,25 @@ export class ListAliadosComponent implements OnInit {
     } else {
       this.page = pageNumber as number;
     }
-    this.cargarAliados(1); // Carga los aliados de la página seleccionada
+    // Actualiza el array con los ítems que se deben mostrar en la página actual
+    this.updatePaginatedData();
   }
-
+  
+  updatePaginatedData(): void {
+    const startIndex = (this.page - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedAliados = this.listaAliado.slice(startIndex, endIndex);
+  }
+  
   getTotalPages(): number {
-    return Math.ceil(this.totalAliados / this.itemsPerPage);
+    return Math.ceil(this.listaAliado.length / this.itemsPerPage);
   }
-
+  
   getPages(): number[] {
     const totalPages = this.getTotalPages();
     return Array(totalPages).fill(0).map((x, i) => i + 1);
   }
+  
 
   canGoPrevious(): boolean {
     return this.page > 1;

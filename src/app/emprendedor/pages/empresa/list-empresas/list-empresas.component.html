@@ -75,9 +75,11 @@
             </a>
           </li>
           <ng-container *ngFor="let pageNumber of getPages()">
-            <li class="items-center justify-center w-6 h-6 bg-amber-500 rounded-md hover:bg-gray-300 focus:outline-none mx-2">
-              <a class="no-underline text-white" href="javascript:void(0)" (click)="changePage(pageNumber)" [class.active]="page === pageNumber">{{ pageNumber }}</a>
-            </li>
+            <a class="no-underline text-white" href="javascript:void(0)" (click)="changePage(pageNumber)" [class.active]="page === pageNumber">
+              <li class="items-center justify-center w-6 h-6 bg-amber-500 rounded-md hover:bg-gray-300 focus:outline-none mx-1">
+                  {{ pageNumber }}
+              </li>
+          </a>
           </ng-container>
           
           <li>
