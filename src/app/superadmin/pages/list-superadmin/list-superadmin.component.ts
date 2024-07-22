@@ -95,7 +95,7 @@ export class ListSuperadminComponent implements OnInit {
       );
     }
   }
-  
+
   limpiarFiltro(): void {
     this.userFilter = { nombre: '', estadoString: 'Activo' };
     this.cargarSuperAdmin();
@@ -108,15 +108,17 @@ export class ListSuperadminComponent implements OnInit {
   updatePaginatedAdmins(): void {
     const start = (this.page - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-  
+
+    const filterText = this.userFilter.nombre.toLowerCase(); // Convierte el texto del filtro a minúsculas
+
     this.paginatedAdmins = this.listaAdmins
-      .filter(admin => 
-        admin.nombre.includes(this.userFilter.nombre) &&
-        admin.estado.toString() === this.userFilter.estadoString // Ajuste aquí
-      )
+      .filter(admin => {
+        const nombreLower = admin.nombre.toLowerCase(); // Convierte el nombre del admin a minúsculas
+        return nombreLower.includes(filterText) &&
+          admin.estado.toString() === this.userFilter.estadoString; // Ajuste aquí
+      })
       .slice(start, end);
   }
-  
 
   changePage(page: number | string): void {
     if (page === 'previous') {
@@ -138,11 +140,11 @@ export class ListSuperadminComponent implements OnInit {
   canGoPrevious(): boolean {
     return this.page > 1;
   }
-  
+
   canGoNext(): boolean {
     return this.page < Math.ceil(this.totalItems / this.itemsPerPage);
   }
-  
+
   getPages(): number[] {
     const totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
     return Array.from({ length: totalPages }, (_, i) => i + 1);
