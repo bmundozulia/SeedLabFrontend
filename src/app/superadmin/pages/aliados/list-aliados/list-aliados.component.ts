@@ -1,4 +1,6 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+
+
+import { Component, OnInit } from '@angular/core';
 import { faEye, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { AliadoService } from '../../../../servicios/aliado.service';
 import { Aliado } from '../../../../Modelos/aliado.model';
@@ -10,9 +12,10 @@ import { Router } from '@angular/router';
   templateUrl: './list-aliados.component.html',
   styleUrls: ['./list-aliados.component.css'],
   providers: [AliadoService],
+
 })
 export class ListAliadosComponent implements OnInit {
-  userFilter: any = { nombre: '', estado: 'Activo' };
+  userFilter: any = { nombre: '', estadoString: 'Activo' };
   faeye = faEye;
   falupa = faMagnifyingGlass;
   fax = faXmark;
@@ -26,16 +29,19 @@ export class ListAliadosComponent implements OnInit {
   isLoading: boolean = true;
   nombre: string | null = null;
 
+
   constructor(
     private aliadoService: AliadoService,
     private router: Router,
   ) { }
 
+  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
-    this.cargarAliados(); // Cargar inicialmente con estado 'Activo'
+    this.cargarAliados(1); /* Cargar inicialmente con estado 'Activo' */
   }
 
+  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
@@ -44,6 +50,7 @@ export class ListAliadosComponent implements OnInit {
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.currentRolId = this.user.id_rol;
+        console.log(this.currentRolId);
         if (this.currentRolId != 1 && this.currentRolId != 2) {
           this.router.navigate(['/inicio/body']);
         }
@@ -54,9 +61,13 @@ export class ListAliadosComponent implements OnInit {
     }
   }
 
-  cargarAliados(): void {
+  private mapEstado(estado: boolean): string {
+    return estado ? 'Activo' : 'Inactivo';
+  }
+
+  /* Funcion para mostrar las listas de los aliados y con el estado activo*/
+  cargarAliados(estado: number): void {
     if (this.token) {
-      const estado = this.userFilter.estado === 'Activo' ? 1 : 0;
       this.aliadoService.getinfoAliado(this.token, estado).subscribe(
         (data: Aliado[]) => {
           this.listaAliado = data.map((item: any) => {
@@ -75,7 +86,7 @@ export class ListAliadosComponent implements OnInit {
             aliado['estadoString'] = this.mapEstado(item.estado);
             return aliado;
           });
-          this.totalAliados = data.length;
+          console.log(data);
           setTimeout(() => {
             this.isLoading = false;
           }, 500);
@@ -95,15 +106,23 @@ export class ListAliadosComponent implements OnInit {
     }
   }
 
+
+
+  /* Retorna los aliados dependiendo de su estado, normalmente en activo */
   onEstadoChange(event: any): void {
-    this.page = 1; // Reinicia la página al cambiar el estado
-    this.cargarAliados();
+    var estado = event.target.value;
+    if (estado == "Activo") {
+      this.cargarAliados(1);
+    }
+    else {
+      this.cargarAliados(0);
+    }
   }
-  
+
+  /* Limpia el filtro de busqueda, volviendo a retornar los aliados activos */
   limpiarFiltro(): void {
-    this.userFilter = { nombre: '', estado: 'Activo' };
-    this.page = 1; 
-    this.cargarAliados();
+    this.userFilter = { nombre: '', estadoString: 'Activo' };
+    this.cargarAliados(1);
   }
 
   changePage(pageNumber: number | string): void {
@@ -118,7 +137,7 @@ export class ListAliadosComponent implements OnInit {
     } else {
       this.page = pageNumber as number;
     }
-    this.cargarAliados(); // Carga los aliados de la página seleccionada
+    this.cargarAliados(1); // Carga los aliados de la página seleccionada
   }
 
   getTotalPages(): number {
@@ -138,7 +157,4 @@ export class ListAliadosComponent implements OnInit {
     return this.page < this.getTotalPages();
   }
 
-  mapEstado(estado: number): string {
-    return estado === 1 ? 'Activo' : 'Inactivo';
-  }
 }
