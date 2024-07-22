@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { environment } from '../../environment/env';
 
@@ -14,10 +14,10 @@ export class MunicipioService {
 
   constructor(private http: HttpClient) { }
 
-    getMunicipios(nombreDepartamento: string): Observable<any>{
-      const url = nombreDepartamento ? `${this.url}?dep_name=${nombreDepartamento}` : this.url;
+  getMunicipios(nombreDepartamento: string): Observable<any> {
+    const url = nombreDepartamento ? `${this.url}?dep_name=${nombreDepartamento}` : this.url;
     return this.http.get(url);
-    }
+  }
 
-  
+
 }

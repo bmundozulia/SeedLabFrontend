@@ -5,35 +5,54 @@ import Swiper from 'swiper';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { Aliado } from '../../Modelos/aliado.model';
 import { MatToolbar } from '@angular/material/toolbar';
+import { AuthService } from '../../servicios/auth.service';
+import { SuperadminService } from '../../servicios/superadmin.service';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css'],
-  providers: [AliadoService, MatToolbar]
+  providers: [AliadoService, MatToolbar, AuthService]
 })
 export class BodyComponent implements OnInit, AfterViewInit {
   bannerSwiper: Swiper | undefined;
   alliesSwiper: Swiper | undefined;
   listAliados: Aliado[] = [];
+  isLoggedIn: boolean = false;
+  logoUrl: string = '';
+  sidebarColor: string = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private aliadoService: AliadoService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService,
+    private personalizacionesService: SuperadminService,
   ) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.authService.isAuthenticated();
+    this.getPersonalizacion();
+    this.loadAliados();
+  }
+
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId) && this.listAliados.length > 0) {
+      this.initSwipers();
+    }
+  }
+
+  private loadAliados(): void {
     this.aliadoService.getaliados().subscribe(
       data => {
         console.log('Aliados:', data);
         this.listAliados = data.map(aliado => ({
           ...aliado,
-          descripcion: this.splitDescription(aliado.descripcion, 8)
+          descripcion: this.splitDescription(aliado.descripcion, 50)
         }));
-        this.cdr.detectChanges(); // Fuerza la detección de cambios después de recibir los datos
+        this.cdr.detectChanges();
         if (isPlatformBrowser(this.platformId)) {
-          this.initSwipers(); // Inicializa Swiper después de la detección de cambios
+          this.initSwipers();
         }
       },
       error => {
@@ -43,25 +62,35 @@ export class BodyComponent implements OnInit, AfterViewInit {
   }
 
   handleImageError(event: any) {
-    event.target.src = 'assets/images/default-image.jpg'; // Ajusta esto a tu imagen por defecto
-  }
-
-  ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId) && this.listAliados.length > 0) {
-      this.initSwipers();
-    }
+    event.target.src = 'assets/images/default-image.jpg';
   }
 
   private initSwipers(): void {
-    this.initBannerSwiper();
-    this.initAlliesSwiper();
+    setTimeout(() => {
+      this.initBannerSwiper();
+      this.initAlliesSwiper();
+    }, 0);
+  }
+
+  getPersonalizacion() {
+    this.personalizacionesService.getPersonalizacion().subscribe(
+      data => {
+        this.logoUrl = data.imagen_Logo;
+        this.sidebarColor = data.color_primary;
+        //console.log('logoUrl', this.logoUrl);
+        console.log("personalizaciones obtenidas", data);
+      },
+      error => {
+        console.error("no funciona", error);
+      }
+    );
   }
 
   private initBannerSwiper(): void {
     if (this.bannerSwiper) {
       this.bannerSwiper.destroy(true, true);
     }
-  
+
     this.bannerSwiper = new Swiper('.banner-swiper-container', {
       modules: [Navigation, Autoplay, Pagination],
       slidesPerView: 1,
@@ -82,7 +111,6 @@ export class BodyComponent implements OnInit, AfterViewInit {
       },
     });
   }
-  
 
   private initAlliesSwiper(): void {
     if (this.alliesSwiper) {
@@ -91,15 +119,18 @@ export class BodyComponent implements OnInit, AfterViewInit {
 
     this.alliesSwiper = new Swiper('.allies-swiper-container', {
       modules: [Pagination],
-      slidesPerView: 'auto', // Mostrar todas las diapositivas sin límite
+      slidesPerView: 'auto',
       spaceBetween: 30,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
         bulletClass: 'swiper-pagination-bullet',
         bulletActiveClass: 'swiper-pagination-bullet-active',
+        dynamicBullets: true,
+        dynamicMainBullets: 3,
       },
     });
+    
   }
 
   private splitDescription(description: string, wordsPerLine: number): string[] {
@@ -110,5 +141,4 @@ export class BodyComponent implements OnInit, AfterViewInit {
     }
     return lines;
   }
-  
 }

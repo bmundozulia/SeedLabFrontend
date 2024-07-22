@@ -7,17 +7,20 @@ import { ListEmpresasComponent } from './pages/empresa/list-empresas/list-empres
 import { EncuestaEmpresaComponent } from './pages/formulario-diagnostico/encuesta-empresa.component';
 import { RutaEmprendedorComponent } from './pages/ruta-emprendedor/ruta-emprendedor.component';
 import { EditEmpresaComponent } from './pages/empresa/edit-empresa/edit-empresa.component';
+import { CursorutasComponent } from '../ruta/cursorutas/cursorutas.component';
 
 const routes: Routes = [
 
   {
     path: '',
     children: [
-      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', icon:'fa-solid fa-comments'}},
-      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', icon:'fa-solid fa-circle-user'}},
-      {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa', icon:'fa-solid fa-building'}},
-      {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta', icon:'fa-solid fa-square-poll-vertical'}},
-      {path: 'ruta', component: RutaEmprendedorComponent, data:{title: 'Ruta', icon:'fa-solid fa-location-arrow'}}
+      {path: 'list-asesoria', component: ListAsesoriaEmprendedorComponent, data: {title: 'Asesorias', showInMenu:true, icon:'fa-solid fa-comments', isLeft:true}},
+      {path: 'perfil-emprendedor', component: PerfilEmprendedorComponent, data:{title: 'Perfil', showInMenu:true, icon:'fa-solid fa-circle-user'}},
+      {path: 'list-empresa', component: ListEmpresasComponent, data:{title: 'Empresa', showInMenu:true, icon:'fa-solid fa-building'}},
+      {path: 'encuesta', component: EncuestaEmpresaComponent, data:{title: 'Encuesta', showInMenu:true, icon:'fa-solid fa-square-poll-vertical'}},
+      {path: 'ruta', component: CursorutasComponent, data:{title: 'Ruta', showInMenu:true, icon:'fa-solid fa-location-arrow'}},
+      {path: 'add-empresa', component: AddEmpresaComponent, data:{showInMenu: false}},
+      {path: 'edit-empresa', component:EditEmpresaComponent, data:{showInMenu: false}}
     ]
   }
 ];

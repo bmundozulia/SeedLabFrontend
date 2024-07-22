@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { faEye, faMagnifyingGlass, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +8,10 @@ import { User } from '../../../Modelos/user.model';
 import { Asesor } from '../../../Modelos/asesor.model';
 import { AliadoService } from '../../../servicios/aliado.service';
 
-
 @Component({
   selector: 'app-list-asesores',
   templateUrl: './list-asesores.component.html',
-  styleUrl: './list-asesores.component.css',
+  styleUrls: ['./list-asesores.component.css'],
   providers: [AsesorService, AliadoService]
 })
 export class ListAsesoresComponent implements OnInit {
@@ -21,7 +20,7 @@ export class ListAsesoresComponent implements OnInit {
   faeye = faEye;
   fax = faXmark;
   falupa = faMagnifyingGlass;
-  public page!: number;
+  public page: number = 1;
   token: string | null = null;
   user: User | null = null;
   currentRolId: number;
@@ -30,6 +29,7 @@ export class ListAsesoresComponent implements OnInit {
   nombre: string | null = null;
   listaAsesores: Asesor[] = [];
   selectedAsesorId: number | null = null;
+  isLoading: boolean = false;
 
   userFilter: any = { nombre: '', estado: 'Activo' };
 
@@ -40,13 +40,11 @@ export class ListAsesoresComponent implements OnInit {
     private aliadoService: AliadoService
   ) { }
 
-  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
     this.cargarAsesores();
   }
 
-  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
@@ -67,33 +65,31 @@ export class ListAsesoresComponent implements OnInit {
     }
   }
 
-  /* Funcion para mostrar las listas de los asesores y con el estado activo */
   cargarAsesores() {
     if (this.token) {
+      this.isLoading = true;
       this.aliadoService.getinfoAsesor(this.token, this.user.id, this.userFilter.estado).subscribe(
         (data) => {
           this.listaAsesores = data;
+          this.isLoading = false;
         },
         (err) => {
           console.log(err);
+          this.isLoading = false;
         }
       );
     }
   }
 
-  /* Retorna los asesores dependiendo de su estado, normalmente en activo */
   onEstadoChange(): void {
     this.cargarAsesores();
   }
 
-  /* Limpia el filtro de busqueda, volviendo a retornar los asesores activos */
   limpiarFiltro(): void {
     this.userFilter = { nombre: '', estado: 'Activo' };
-    /* Opcional: recargar los aliados con el estado por defecto */
     this.cargarAsesores();
   }
 
-  /* Abre modal enviando el id recogido del asesor para editar asesor*/
   openModal(asesorId: number | null): void {
     let dialogRef: MatDialogRef<ModalAddAsesoresComponent>;
 
@@ -102,13 +98,35 @@ export class ListAsesoresComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.cargarAsesores();
     });
   }
 
-  /* Abre modal enviando el id null para crear asesor */
-  openModalSINId(): void {
-    this.openModal(null); // Llama a openModalCONId con null
+  getPages(): number[] {
+    const totalItems = this.listaAsesores.length;
+    const itemsPerPage = 5;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
+  canGoPrevious(): boolean {
+    return this.page > 1;
+  }
 
+  canGoNext(): boolean {
+    const totalItems = this.listaAsesores.length;
+    const itemsPerPage = 5;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    return this.page < totalPages;
+  }
+
+  changePage(page: number | 'previous' | 'next'): void {
+    if (page === 'previous' && this.canGoPrevious()) {
+      this.page--;
+    } else if (page === 'next' && this.canGoNext()) {
+      this.page++;
+    } else if (typeof page === 'number') {
+      this.page = page;
+    }
+  }
 }

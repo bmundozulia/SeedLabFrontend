@@ -3,7 +3,7 @@ import { ColorPickerDirective } from 'ngx-color-picker';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { User } from '../../../Modelos/user.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PersonalizacionesService } from '../../../servicios/personalizaciones.service';
+import { SuperadminService } from '../../../servicios/superadmin.service';
 import { Personalizaciones } from '../../../Modelos/personalizaciones.model';
 import { Router } from '@angular/router';
 
@@ -19,6 +19,8 @@ export class PersonalizacionesComponent implements OnInit {
   selectedColorTerciario = '#38bdf8';
   previewUrl: any = null;
   faImage = faImage;
+  idPersonalizacion:number = 1;
+
 
 
   // crear personalización
@@ -26,6 +28,7 @@ export class PersonalizacionesComponent implements OnInit {
   user: User | null = null;
   id: number | null = null;
   currentRolId: number;
+  selectedFile: File;
 
   @ViewChild('colorPickerPrincipal') colorPickerPrincipal: ColorPickerDirective;
   @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
@@ -33,17 +36,11 @@ export class PersonalizacionesComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder,
-    private personalizacionesService: PersonalizacionesService,
+    private personalizacionesService: SuperadminService,
     private router: Router,
     private renderer: Renderer2,
     private el: ElementRef) {
-    this.personalizacionForm = this.fb.group({
-      imagen_Logo: [''],
-    })
   }
-
-
-
 
 
   ngOnInit(): void {
@@ -61,6 +58,7 @@ export class PersonalizacionesComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
+      //console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
@@ -155,7 +153,7 @@ export class PersonalizacionesComponent implements OnInit {
 
         const personalizaciones: Personalizaciones = {
           nombre_sistema: this.personalizacionForm.value.nombre_sistema,
-          imagen_Logo: this.personalizacionForm.value.imagen_Logo,
+          imagen_logo: this.personalizacionForm.value.imagen_Logo,
           color_principal: this.selectedColorPrincipal,
           color_secundario: this.selectedColorSecundario,
           color_terciario: this.selectedColorTerciario,
@@ -164,7 +162,7 @@ export class PersonalizacionesComponent implements OnInit {
 
         console.log("Datos a enviar:", personalizaciones);
 
-        this.personalizacionesService.createPersonalizacion(this.token, personalizaciones).subscribe(
+        this.personalizacionesService.createPersonalizacion(this.token, personalizaciones, this.idPersonalizacion).subscribe(
           data => {
             console.log("personalizacion creada", data);
             // console.log("Imagen en base64:", this.personalizacionForm.value.imagen_Logo);
@@ -186,6 +184,26 @@ export class PersonalizacionesComponent implements OnInit {
       console.error("Ocurrió un error:", error);
     }
   }
+
+  restorePersonalizacion():void{
+    this.personalizacionesService.restorePersonalization(this.token, this.idPersonalizacion).subscribe(
+      data => {
+        console.log("Personalización restaurada", data);
+        // this.personalizacionForm.patchValue({
+        //   nombre_sistema: data.nombre_sistema,
+        //   color_principal: data.color_principal,
+        //   color_secundario: data.color_secundario,
+        //   color_terciario: data.color_terciario,
+        //   imagen_Logo: '' // Limpiar o actualizar según necesites
+        // });
+        location.reload();
+      },
+      error => {
+        console.error("No funciona", error);
+      }
+    );
+  }
+
 
 
   logFormErrors(): void {

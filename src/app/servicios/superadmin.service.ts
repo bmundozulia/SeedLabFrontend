@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environment/env';
 
 import { Superadmin } from '../Modelos/superadmin.model';
+import { Personalizaciones } from '../Modelos/personalizaciones.model';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,39 @@ export class SuperadminService {
   getInfoAdminxlista(access_token: any, adminId: number): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.get<any>(this.url + "perfilAdmin/" + adminId, options);
+  }
+
+  asesorConAliado(access_token:any):Observable<any>{
+    const options = {headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+"asesor-aliado",options)
+  }
+
+  listarAliado(access_token:any):Observable<any>{
+    const options = {headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+"listAliado",options)
+  }
+
+  crearActividadSuperAdmin(access_token: any,id: number):Observable<any>{
+    const options = {headers: this.CreacionHeaders(access_token)};
+    return this.http.post(this.url+"actividad/actividad/"+id,options)
+  }
+
+  createPersonalizacion(access_token: any, personalizaciones: any, id): Observable<any> {
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.put(this.url + "personalizacion/"+ id, personalizaciones, options);
+  }
+
+  getPersonalizacion(): Observable<any> {
+    return this.http.get(environment.apiUrl + "traerPersonalizacion");
+  }
+
+  restorePersonalization(access_token: any, id):Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token) };
+    return this.http.post(this.url + "restaurarPersonalizacion/"+ id,{}, options);
+  }
+
+  dashboardAdmin(access_token:string):Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+"contar-usuarios",options)
   }
 }

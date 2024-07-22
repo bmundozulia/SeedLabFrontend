@@ -8,9 +8,9 @@ const routes: Routes = [
   {
     path:'',
     children:[
-      {path: 'list-asesorias', component: VerAsesoriasComponent, data:{title: 'Asesorias' }},
-      {path: 'perfil-orientador', component: PerfilOrientadorComponent, data: { title: 'Perfil'}},
-      {path: 'reportes', component: ReportesComponent, data:{title: 'Reportes'}}
+      {path: 'list-asesorias', component: VerAsesoriasComponent, data:{title: 'Asesorias', showInMenu: true, icon:'fa-solid fa-users-gear'}},
+      {path: 'perfil-orientador', component: PerfilOrientadorComponent, data: { title: 'Perfil', showInMenu: true, icon:'fa-solid fa-circle-user'}},
+      {path: 'reportes', component: ReportesComponent, data:{title: 'Reportes', showInMenu: true, icon:'fa-regular fa-file-lines'}}, 
     ]
   }
 ];
@@ -18,9 +18,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forChild( routes )
-  ]
+  imports: [RouterModule.forChild( routes )]
 })
 export class OrientadorRoutingModule {
   static getRoutes(): Routes{
