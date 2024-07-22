@@ -56,7 +56,7 @@
                                     class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
                             </div>
                             <div *ngIf="submitted && f.nombre.errors" class="max-w-[19rem] overflow-hidden mt-1">
-                                <span *ngIf="f.nombre.errors.required">Este campo es requerido *</span>
+                                <span *ngIf="f.nombre.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</span>
                             </div>
                         </div>
 
@@ -64,14 +64,11 @@
                         <div>
                             <label for="apellido" class="block truncate">Apellido:</label>
                             <div class="mt-2">
-                                <input type="text" id="apellido" form
-                                
-                                
-                                ControlName="apellido" (input)="updateProgress()"
+                                <input type="text" id="apellido" formControlName="apellido" (input)="updateProgress()"
                                     class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
                             </div>
                             <div *ngIf="submitted && f.apellido.errors" class="max-w-[19rem] overflow-hidden mt-1">
-                                <div *ngIf="f.apellido.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.apellido.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
                             </div>
                         </div>
 
@@ -86,7 +83,7 @@
                                 <option value="Permiso especial de permanencia">Carnet de Extranjería</option>
                             </select>
                             <div *ngIf="submitted && f.nombretipodoc.errors" class="max-w-[19rem] overflow-hidden mt-1">
-                                <div *ngIf="f.nombretipodoc.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.nombretipodoc.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
                             </div>
                             <fa-icon [icon]="faIdCard" class="absolute right-3 top-[38.5px] text-md"
                                 styles="pointer-events: auto;"></fa-icon>
@@ -101,8 +98,8 @@
                                     class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
                             </div>
                             <div *ngIf="submitted && f.documento.errors" class="max-w-[19rem] overflow-hidden mt-1">
-                                <div *ngIf="f.documento.errors.required">Este campo es requerido *</div>
-                                <div *ngIf="f.documento.errors.numberRange">El número de documento debe tener entre 5 y
+                                <div *ngIf="f.documento.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
+                                <div *ngIf="f.documento.errors.numberRange" >El número de documento debe tener entre 5 y
                                     12 dígitos</div>
                             </div>
                         </div>
@@ -128,7 +125,7 @@
                             </div>
                             <div *ngIf="submitted && f.fecha_nacimiento.errors"
                                 class="max-w-[19rem] overflow-hidden mt-1">
-                                <div *ngIf="f.fecha_nacimiento.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.fecha_nacimiento.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
                             </div>
                         </div>
 
@@ -148,7 +145,7 @@
                                 <fa-icon [icon]="faVenusMars"></fa-icon>
                             </div>
                             <div *ngIf="submitted && f.genero.errors" class="max-w-[19rem] overflow-hidden mt-1 ">
-                                <div *ngIf="f.genero.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.genero.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
                             </div>
                         </div>
 
@@ -165,11 +162,11 @@
                                 </button>
                             </div>
                             <div *ngIf="submitted && f.password.errors" class="max-w-[19rem] overflow-hidden mt-1">
-                                <div *ngIf="f.password.errors.required" class="inline-block">Este campo es requerido *
+                                <div *ngIf="f.password.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *
                                 </div>
-                                <div *ngIf="f.password.errors.minlength" class="inline-flex">La contraseña debe tener al
+                                <div *ngIf="f.password.errors.minlength" class="text-red-700 pl-2 rounded-lg inline-flex">La contraseña debe tener al
                                     menos 8 caracteres *</div>
-                                <div *ngIf="f.password.errors.passwordStrength">{{ f.password.errors.passwordStrength }}
+                                <div *ngIf="f.password.errors.passwordStrength" class="text-red-700">{{ f.password.errors.passwordStrength }}
                                 </div>
                             </div>
                         </div>
@@ -182,7 +179,7 @@
                                     class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
                             </div>
                             <div *ngIf="submitted && f.email.errors" class="max-w-[19rem] overflow-hidden mt-1">
-                                <div *ngIf="f.email.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.email.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
                                 <div *ngIf="f.email.errors.pattern">Formato de correo incorrecto *</div>
                             </div>
                         </div>
@@ -203,7 +200,7 @@
                                     class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
                             </div>
                             <div *ngIf="submitted && f.celular.errors" class="max-w-[19rem] overflow-hidden mt-1">
-                                <div *ngIf="f.celular.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.celular.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
                                 <div *ngIf="f.celular.errors.maxlength">El número de celular no debe tener más de 10
                                     dígitos</div>
                             </div>
@@ -234,7 +231,7 @@
                                 </option>
                             </select>
                             <div *ngIf="submitted && f.municipio.errors" class="max-w-[19rem] overflow-hidden mt-1">
-                                <div *ngIf="f.municipio.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.municipio.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
                             </div>
                             <fa-icon [icon]="faMountainCity" class="absolute right-4 top-[39.5px]"></fa-icon>
                         </div>
@@ -247,7 +244,7 @@
                                     class="block w-full rounded-md border-0 p-2 text-[#000] shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#00B3ED] sm:text-sm sm:leading-6" />
                             </div>
                             <div *ngIf="submitted && f.direccion.errors" class="max-w-[19rem] overflow-hidden mt-1">
-                                <div *ngIf="f.direccion.errors.required">Este campo es requerido *</div>
+                                <div *ngIf="f.direccion.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
                             </div>
                         </div>
                         <div class="flex justify-center space-x-2">
