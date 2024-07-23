@@ -63,16 +63,16 @@ export class ModalAddRutaComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ModalAddRutaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private modalSS: SwitchService,
+    // private modalSS: SwitchService,
     private rutaService: RutaService,
     private fb: FormBuilder,
-    private datePipe: DatePipe,
+    // private datePipe: DatePipe,
     private router: Router,
     private alertService: AlertService,
-    private sanitizer: DomSanitizer,
-    private aliadoService: AliadoService,
-    private superAdminService: SuperadminService,
-    private actividadService: ActividadService,
+    // private sanitizer: DomSanitizer,
+    // private aliadoService: AliadoService,
+    // private superAdminService: SuperadminService,
+    // private actividadService: ActividadService,
   ) {
 
     this.rutaId = data.rutaId;
@@ -151,7 +151,6 @@ export class ModalAddRutaComponent implements OnInit {
           console.log('Datos recibidos:', data);
           this.rutaForm.patchValue({
             nombre: data.nombre,
-            //fecha_creacion: new Date(data.fecha_creacion),
             fecha_creacion: data.fecha_creacion,
             estado: data.estado,
             imagen_ruta: data.imagen_ruta,
@@ -179,8 +178,6 @@ export class ModalAddRutaComponent implements OnInit {
       fecha_creacion: this.rutaForm.get('fecha_creacion')?.value,
       estado: this.rutaForm.get('estado')?.value,
       imagen_ruta: this.rutaForm.get('imagen_ruta')?.value,
-      //imagen_ruta: this.imagen_ruta.get('imagen_ruta')?.value,
-      //this.rutaForm.get('imagen_ruta')?.value
     };
     if (this.rutaId != null) {
       this.alertService.alertaActivarDesactivar("¿Estas seguro de guardar los cambios?", 'question').then((result) => {
@@ -288,7 +285,12 @@ export class ModalAddRutaComponent implements OnInit {
   }
 
   addActividad():void{
-    this.router.navigate(['/actnivlec']);
+
+    // En la vista inicial, obtén el token del almacenamiento local
+    const token = localStorage.getItem('token');
+    //this.router.navigate(['/actnivlec'], { queryParams: { id_ruta: this.rutaId, token: token } });
+
+    this.router.navigate(['/actnivlec'],{ queryParams: { id_ruta: this.rutaId } });
     this.dialogRef.close();
     //location.reload();
   }

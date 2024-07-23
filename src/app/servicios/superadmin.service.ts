@@ -10,6 +10,10 @@ import { environment } from '../../environment/env';
 
 import { Superadmin } from '../Modelos/superadmin.model';
 import { Personalizaciones } from '../Modelos/personalizaciones.model';
+import { Actividad } from '../Modelos/actividad.model';
+import { Nivel } from '../Modelos/nivel.model';
+import { Leccion } from '../Modelos/leccion.model';
+import { Contenido_Leccion } from '../Modelos/contenido-leccion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -65,11 +69,7 @@ export class SuperadminService {
     return this.http.get(this.url+"listAliado",options)
   }
 
-  crearActividadSuperAdmin(access_token: any,id: number):Observable<any>{
-    const options = {headers: this.CreacionHeaders(access_token)};
-    return this.http.post(this.url+"actividad/actividad/"+id,options)
-  }
-
+  
   createPersonalizacion(access_token: any, personalizaciones: any, id): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.put(this.url + "personalizacion/"+ id, personalizaciones, options);
