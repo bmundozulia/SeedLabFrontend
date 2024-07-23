@@ -72,13 +72,13 @@ export class AlertService {
         toast.onmouseleave = Swal.resumeTimer;
       },
       customClass: {
-        popup: 'bg-green-100', // Establecer el color de fondo verde claro
-        icon: 'text-green-700', // Establecer el color del icono
-        title: 'text-green-700' // Establecer el color del texto del título
+        popup: 'bg-blue-100', // Establecer el color de fondo verde claro
+        title: 'text-sky-500' // Establecer el color del texto del título
       }
     });
     Toast.fire({
       icon: "success",
+      iconColor: "#00B3ED",
       title: text
     });
   }
@@ -95,14 +95,15 @@ export class AlertService {
         toast.onmouseleave = Swal.resumeTimer;
       },
       customClass: {
-        popup: 'bg-red-100',
-        icon: 'text-red-500',
-        title: 'text-red-500'
+        popup: 'bg-orange-50',
+        title: 'text-orange-700'
       }
     });
     Toast.fire({
       icon: "error",
       text: text,
+      iconColor: "#FA7D00"
+
     });
 
   }
