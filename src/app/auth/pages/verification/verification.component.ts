@@ -63,7 +63,7 @@ verificarEmail():void{
     err => {
       console.log('Error al verificar el correo electrónico:',err);
       if(err.status === 400){
-        this.alertService.errorAlert('Error',err.message);
+        this.alertService.errorAlert('Error', 'Tu codigo es incorrecto, intenta nuevamente');
       }else if(err.status === 409){
         this.alertService.errorAlert('Error',err.message);
       }
