@@ -214,6 +214,7 @@ export class AddEmpresaComponent {
       apoyos: apoyosList
     };
 
+    console.log('Payload para la API:', payload);
 
     this.addEmpresaService.addEmpresa(this.token, payload).subscribe(
       data => {
