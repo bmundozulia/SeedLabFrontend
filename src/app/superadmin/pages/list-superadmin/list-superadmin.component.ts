@@ -6,17 +6,17 @@ import { Superadmin } from '../../../Modelos/superadmin.model';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalCrearSuperadminComponent } from '../modal-crear-superadmin/modal-crear-superadmin.component';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-crear-superadmin',
   templateUrl: './list-superadmin.component.html',
-  styleUrl: './list-superadmin.component.css',
+  styleUrls: ['./list-superadmin.component.css'],
   providers: [SuperadminService]
 })
 export class ListSuperadminComponent implements OnInit {
   faPen = faPenToSquare;
   fax = faXmark;
   falupa = faMagnifyingGlass;
-  public page!: number;
   faPlus = faPlus;
   token: string | null = null;
   user: User | null = null;
@@ -26,20 +26,24 @@ export class ListSuperadminComponent implements OnInit {
   listaAdmins: Superadmin[] = [];
   modalCrearSuperadmin: boolean;
   isEditing: boolean;
-  userFilter: any = { nombre: '', estado: 'Activo' };
+  userFilter: any = { nombre: '', estadoString: 'Activo' }; // Ajuste aquí
+  public page: number = 1;
+  public itemsPerPage: number = 5;
+  public totalItems: number = 0;
+  public paginatedAdmins: Superadmin[] = [];
+  public isLoading: boolean = false;
 
-  constructor(private superAdminService: SuperadminService,
+  constructor(
+    private superAdminService: SuperadminService,
     public dialog: MatDialog,
-    private router: Router,
+    private router: Router
   ) { }
 
-  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
     this.validateToken();
     this.cargarSuperAdmin();
   }
 
-  /* Valida el token del login */
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
@@ -58,45 +62,91 @@ export class ListSuperadminComponent implements OnInit {
     }
   }
 
-  /* Abre modal enviando el id del admin para editarlo */
   openModal(adminId: number | null): void {
     let dialogRef: MatDialogRef<ModalCrearSuperadminComponent>;
     dialogRef = this.dialog.open(ModalCrearSuperadminComponent, {
       data: { adminId: adminId }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
       this.cargarSuperAdmin();
     });
   }
 
-  /* Abre el modal con el id nulo */
   openModalSINId(): void {
     this.openModal(null);
   }
 
-  /* Funcion para mostrar las listas de los super admins y con el estado activo*/
-  cargarSuperAdmin() {
+  cargarSuperAdmin(): void {
+    this.isLoading = true;
     if (this.token) {
-      this.superAdminService.getAdmins(this.token, this.userFilter.estado).subscribe(
+      this.superAdminService.getAdmins(this.token, this.userFilter.estadoString).subscribe(
         (data) => {
           this.listaAdmins = data;
+          this.totalItems = data.length; // Actualiza el total de items
+          this.page = 1; // Reinicia la página a 1
+          this.updatePaginatedAdmins(); // Actualiza los datos paginados
+          this.isLoading = false;
+          console.log(this.listaAdmins);
         },
         (error) => {
           console.log(error);
+          this.isLoading = false;
         }
-      )
+      );
     }
   }
 
-  /* Limpia el filtro de busqueda, volviendo a retornar los aliados activos */
   limpiarFiltro(): void {
-    this.userFilter = { nombre: '', estado: 'Activo' };
+    this.userFilter = { nombre: '', estadoString: 'Activo' };
     this.cargarSuperAdmin();
   }
 
-  /* Retorna los super admins dependiendo del esyado */
   onEstadoChange(): void {
     this.cargarSuperAdmin();
   }
 
+  updatePaginatedAdmins(): void {
+    const start = (this.page - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+
+    const filterText = this.userFilter.nombre.toLowerCase(); // Convierte el texto del filtro a minúsculas
+
+    this.paginatedAdmins = this.listaAdmins
+      .filter(admin => {
+        const nombreLower = admin.nombre.toLowerCase(); // Convierte el nombre del admin a minúsculas
+        return nombreLower.includes(filterText) &&
+          admin.estado.toString() === this.userFilter.estadoString; // Ajuste aquí
+      })
+      .slice(start, end);
+  }
+
+  changePage(page: number | string): void {
+    if (page === 'previous') {
+      if (this.canGoPrevious()) {
+        this.page--;
+        this.updatePaginatedAdmins();
+      }
+    } else if (page === 'next') {
+      if (this.canGoNext()) {
+        this.page++;
+        this.updatePaginatedAdmins();
+      }
+    } else {
+      this.page = page as number;
+      this.updatePaginatedAdmins();
+    }
+  }
+
+  canGoPrevious(): boolean {
+    return this.page > 1;
+  }
+
+  canGoNext(): boolean {
+    return this.page < Math.ceil(this.totalItems / this.itemsPerPage);
+  }
+
+  getPages(): number[] {
+    const totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
 }

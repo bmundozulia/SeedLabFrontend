@@ -98,6 +98,7 @@ export class AliadoService {
     return this.http.get<any>(`${this.url}/dashboardAliado/${idAsesor}`, options);
   }
 /////////////////////////////////////////////////////////////
+
   crearActividad(access_token:any, aliado: any): Observable<any>{
     const options = { headers: this.CreacionHeaders(access_token)};
     return this.http.post(environment.apiUrl+"actividad/actividad",aliado,options)

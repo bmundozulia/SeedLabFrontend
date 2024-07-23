@@ -1,0 +1,122 @@
+<app-header [title]="'Bienvenido al panel de asesores'"
+    [subtitle]="'Aqui podras ver y gestionar tus asesores'"></app-header>
+<div class="flex justify-center items-center h-full md:w-full pt-5">
+    <div class="max-lg:w-10/12 w-9/12 ">
+        <div class="max-md:pb-6 md:pb-9 md:flex hd:w-full max-lg:flex max-lg:flex-wrap">
+
+
+            <div class="absolute flex items-center ps-3 pointer-events-none ">
+                <fa-icon [icon]="falupa" class="text-xl right-2 transform mt-2" style="color: #adb7c7;"></fa-icon>
+            </div>
+            <input type="text" id="search" [(ngModel)]="userFilter.nombre"
+                class="w-[500px] h-12 ps-5 text-sm border border-gray-300 rounded-lg max-lg:w-full outline-none appearance-none max-lg:mb-5"
+                placeholder="Buscar..." required />
+
+            <div class="flex justify-end w-full space-x-4">
+                <select [(ngModel)]="userFilter.estado" (change)="onEstadoChange()"
+                    class="border rounded-lg text-gray-400 md:w-24 h-12 ml-3 focus:outline-none text-center ">
+                    <option value="Activo" class="text-gray-600">Activo</option>
+                    <option value="Inactivo" class="text-gray-600">Inactivo</option>
+                </select>
+                <div class="relative max-md:mb-5">
+                    <div class="absolute inset-y-0 end-2 flex items-center">
+                        <fa-icon [icon]="fax" class="text-xl transform" style="color: #4fbbff;"></fa-icon>
+                    </div>
+                    <button class="border-1 border-sky-300 text-sky-400 rounded h-12 font-bold pl-3 pr-6"
+                        (click)="limpiarFiltro()">Limpiar</button>
+                </div>
+                <button class="bg-sky-400 hover:bg-sky-500 text-white font-bold px-3 py-0 rounded h-12"
+                    (click)="openModalSINId()">Agregar
+                    Asesor</button>
+            </div>
+        </div>
+
+
+        <div class="max-lg:scale-0 max-lg:mt-0  h-14 w-full bg-white rounded-xl  grid items-center px-3  "
+            style="grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr 0.5fr;">
+            <h2 class=" text-vgraylight font-medium ">Nombre</h2>
+            <h2 class=" text-vgraylight font-medium text-center">Apellido</h2>
+            <h2 class=" text-vgraylight font-medium text-center">Numero</h2>
+            <h2 class=" text-vgraylight font-medium text-center">Estado</h2>
+
+        </div>
+        <div
+            class="w-full flex xl:items-center lg:flex-col max-lg:justify-center max-lg:flex-row max-lg:flex-wrap max-lg:-translate-y-16 mb-6">
+            <div *ngFor="let asesor of listaAsesores |filterBy:userFilter| paginate: { itemsPerPage: 5, currentPage: page }"
+                class="bg-gray-200 rounded-lg items-center mt-4 max-lg:max-w-[250px] max-lg:w-[250px] max-lg:p-5 max-lg:rounded-2lg max-lg:mx-2 lg:grid lg:text-center lg:grid-cols-[1.5fr_1.5fr_1.5fr_1.5fr_0.5fr] lg:min-h-14 lg:w-full">
+
+                <h4 class="text-left overflow-wrap-normal break-all lg:mx-3 lg:m-0 my-0">
+                    <span class="block lg:hidden font-bold">Nombre: </span>{{asesor.nombre }}
+                </h4>
+                <!-- <div class="flex max-md:pt-3 px-2 max-md:h-10 md:w-auto">
+                    <div class="max-md:flex">
+                        <h3 class="block md:hidden mr-1 font-bold ">Nombre: </h3>
+                        <h3 class="md:w-24 max-md:w-32 whitespace-nowrap overflow-hidden max-md:h-6 text-start md:pl-4 md:pt-2"
+                            style="text-overflow: ellipsis;">
+                            {{asesor.nombre }}</h3>
+                        <fa-icon [icon]="faPen"
+                            class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:h-5 md:hidden pl-8 pt-2"
+                            (click)="openModal()"></fa-icon>
+                
+                    </div>
+                </div> -->
+                <h4 class="overflow-wrap-normal break-all m-0">
+                    <span class="block lg:hidden font-bold">Apellido: </span>{{asesor.apellido}}
+                </h4>
+                <!-- <div class="flex px-2 max-md:h-7">
+                    <h3 class="block md:hidden mr-1 font-bold ">Apellido: </h3>
+                    <h3 class="md:w-24 whitespace-nowrap overflow-hidden max-md:h-6  md:pt-2"
+                        style="text-overflow: ellipsis;">
+                        {{asesor.apellido}}</h3>
+                </div> -->
+                <h4 class="overflow-wrap-normal break-all m-0">
+                    <span class="block lg:hidden font-bold">celular: </span>{{ asesor.celular }}
+                </h4>
+
+                <!-- <div class="flex  px-2 max-md:h-7">
+                    <h3 class="block md:hidden mr-1 font-bold">Estado: </h3>
+                    <h3 class="md:w-26 whitespace-nowrap overflow-hidden max-md:h-6 md:pt-2"
+                        style="text-overflow: ellipsis;">
+                        {{ asesor.celular }}</h3>
+                </div> -->
+                <h4 class="overflow-wrap-normal break-all m-0">
+                    <span class="block lg:hidden font-bold">Estado: </span>{{ asesor.estado }}
+                </h4>
+
+                <!-- <div class="flex  px-2 max-md:h-10">
+                    <h3 class="block md:hidden mr-1 font-bold ">Numero: </h3>
+                    <h3 class="md:w-28 whitespace-nowrap overflow-hidden max-md:h-6 md:pt-2"
+                        style="text-overflow: ellipsis;">
+                        {{ asesor.estado }} </h3>
+                </div> -->
+
+                <div class="flex max-lg:mt-2 justify-end items-end lg:justify-center lg:items-center lg:mt-0">
+                    <fa-icon [icon]="faPen" (click)="openModal(asesor.id)" class="text-xl text-sky-500">
+                    </fa-icon>
+                </div>
+
+                <!-- <div class="flex justify-center px- -mt-3 max-md:hidden">
+                    <h3 class="block "></h3>
+                    <button class="md:mr-9 md:pr-14">
+                        <fa-icon [icon]="faPen" (click)="editarAsesor(asesor.id)"
+                            class=" text-xl right-5 top-1/2 transform -translate-y-1/2 max-md:h-5 max-md:hidden">
+                        </fa-icon>
+                    </button>
+                </div> -->
+
+            </div>
+
+            <div class="text-center max-md:pr-10 md:mt-3">
+                <div class="md:hidden">
+                    <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel="">
+                    </pagination-controls>
+                </div>
+
+                <div class="hidden md:block">
+                    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+                    </pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

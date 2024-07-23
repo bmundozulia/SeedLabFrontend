@@ -49,7 +49,7 @@ export class AsignarAsesorModalComponent implements OnInit {
       this.cargarAsesores(idAliado);
     }
     if (!this.token ) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['/home']);
   }
 }
 
