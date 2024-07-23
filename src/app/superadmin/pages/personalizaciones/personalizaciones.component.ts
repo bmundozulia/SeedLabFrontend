@@ -3,23 +3,24 @@ import { ColorPickerDirective } from 'ngx-color-picker';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { User } from '../../../Modelos/user.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SuperadminService } from '../../../servicios/superadmin.service';
 import { Personalizaciones } from '../../../Modelos/personalizaciones.model';
 import { Router } from '@angular/router';
+import { SuperadminService } from '../../../servicios/superadmin.service';
 
 @Component({
   selector: 'app-personalizaciones',
-  templateUrl: './personalizaciones.component.html',
+  templateUrl: 'personalizaciones.component.html',
   styleUrls: ['./personalizaciones.component.css'], // Cambiado a plural
 })
 export class PersonalizacionesComponent implements OnInit {
   personalizacionForm: FormGroup;
   selectedColorPrincipal = '#00B3ED';
   selectedColorSecundario = '#ffffff';
-  selectedColorTerciario = '#38bdf8';
+  //selectedColorTerciario = '#38bdf8';
   previewUrl: any = null;
   faImage = faImage;
   idPersonalizacion:number = 1;
+
 
 
 
@@ -29,6 +30,7 @@ export class PersonalizacionesComponent implements OnInit {
   id: number | null = null;
   currentRolId: number;
   selectedFile: File;
+
 
   @ViewChild('colorPickerPrincipal') colorPickerPrincipal: ColorPickerDirective;
   @ViewChild('colorPickerSecundario') colorPickerSecundario: ColorPickerDirective;
@@ -40,7 +42,13 @@ export class PersonalizacionesComponent implements OnInit {
     private router: Router,
     private renderer: Renderer2,
     private el: ElementRef) {
+    this.personalizacionForm = this.fb.group({
+      imagen_Logo: [''],
+    })
   }
+
+
+
 
 
   ngOnInit(): void {
@@ -49,8 +57,7 @@ export class PersonalizacionesComponent implements OnInit {
       nombre_sistema: ['', Validators.required],
       imagen_Logo: ['', Validators.required],
       color_principal: [this.selectedColorPrincipal, Validators.required],
-      color_secundario: [this.selectedColorSecundario, Validators.required],
-      color_terciario: [this.selectedColorTerciario, Validators.required],
+      color_secundario: [this.selectedColorSecundario, Validators.required]
     })
     this.applyCustomizations();
   }
@@ -58,7 +65,7 @@ export class PersonalizacionesComponent implements OnInit {
   validateToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem("token");
-      //console.log(this.token);
+            //console.log(this.token);
       let identityJSON = localStorage.getItem('identity');
 
       if (identityJSON) {
@@ -88,10 +95,10 @@ export class PersonalizacionesComponent implements OnInit {
     this.applyCustomizations(); 
   }
 
-  onColorChangeTerciario(color: string): void {
-    this.selectedColorTerciario = color;
-    this.applyCustomizations(); 
-  }
+  // onColorChangeTerciario(color: string): void {
+  //   this.selectedColorTerciario = color;
+  //   this.applyCustomizations(); 
+  // }
 
   // Resto de tu código...
 
@@ -115,12 +122,12 @@ export class PersonalizacionesComponent implements OnInit {
     });
   }
 
-  updateButtonColors(): void {
-    const buttons = this.el.nativeElement.querySelectorAll('.button-custom');
-    buttons.forEach((button: HTMLElement) => {
-      this.renderer.setStyle(button, 'backgroundColor', this.selectedColorTerciario);
-    });
-  } //Agregado
+  // updateButtonColors(): void {
+  //   const buttons = this.el.nativeElement.querySelectorAll('.button-custom');
+  //   buttons.forEach((button: HTMLElement) => {
+  //     this.renderer.setStyle(button, 'backgroundColor', this.selectedColorSecundario);
+  //   });
+  // } //Agregado
 
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -156,7 +163,6 @@ export class PersonalizacionesComponent implements OnInit {
           imagen_logo: this.personalizacionForm.value.imagen_Logo,
           color_principal: this.selectedColorPrincipal,
           color_secundario: this.selectedColorSecundario,
-          color_terciario: this.selectedColorTerciario,
           id_superadmin: id_temp
         };
 
@@ -198,11 +204,13 @@ export class PersonalizacionesComponent implements OnInit {
         // });
         location.reload();
       },
-      error => {
+      error => { 
         console.error("No funciona", error);
+        
       }
     );
   }
+
 
 
 
@@ -218,7 +226,7 @@ export class PersonalizacionesComponent implements OnInit {
   applyCustomizations(): void {
     this.updateMenuBackgroundColor();
     this.updateMenuIconColors();
-    this.updateButtonColors();
+    //this.updateButtonColors();
   }
 
 

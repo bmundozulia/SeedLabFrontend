@@ -29,9 +29,9 @@ export class MenuComponent {
   iconColor: string = '#00B3ED';
 
   constructor(private router: Router,
-              private authservices: AuthService,
-              private menuService: MenuService,
-              private personalizacionService: SuperadminService) { }
+    private authservices: AuthService,
+    private menuService: MenuService,
+    private personalizacionService: SuperadminService) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -66,31 +66,31 @@ export class MenuComponent {
     } else {
       console.log("No está logueado o no se pudo cargar el usuario.");
     }
-    this.menuItems = this.menuService.getRoutesByRole(this.currentRolName); 
+    this.menuItems = this.menuService.getRoutesByRole(this.currentRolName);
     console.log(this.menuItems);
     this.personalizacionService.getPersonalizacion().subscribe(
       data => {
         this.colorPrincipal = data.color_principal;
-        this.colorSecundaria = data.color_secundario;
+        this.colorSecundaria = data.color_secundaria;
         console.log(this.colorPrincipal, this.colorSecundaria);
       },
       err => console.log(err)
     );
-    
+
     this.checkIfMobile();
   }
 
   checkIfMobile() {
-   this.isMobile = window.innerWidth < 768;
+    this.isMobile = window.innerWidth < 768;
   }
 
   // getBackgroundColor(): string {
   //   return this.isMobile ? 'white' : this.colorPrincipal;
   // }
 
- 
+
   getIconColor(): string {
-    console.log('isMobile:', this.isMobile);
+    //console.log('isMobile:', this.isMobile);
     return this.isMobile ? '#00B3ED' : '#FFFFFF'; // Color blanco en pantallas grandes
   }
   logout() {
@@ -109,13 +109,13 @@ export class MenuComponent {
       this.handleLogout();
     }
   }
-  
+
 
   private handleLogout() {
     localStorage.clear();
     this.isAuthenticated = false;
     this.router.navigate(['/home']);
   }
-  
-  
+
+
 }
