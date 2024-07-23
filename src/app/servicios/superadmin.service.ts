@@ -84,7 +84,7 @@ export class SuperadminService {
     return this.http.post(this.url + "restaurarPersonalizacion/"+ id,{}, options);
   }
 
-  dashboardAdmin(access_token:string):Observable<any>{
+  dashboardAdmin(access_token:any):Observable<any>{
     const options = { headers: this.CreacionHeaders(access_token)};
     return this.http.get(this.url+"contar-usuarios",options)
   }
