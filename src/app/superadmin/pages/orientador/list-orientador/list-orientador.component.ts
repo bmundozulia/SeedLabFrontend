@@ -13,7 +13,6 @@ import { User } from '../../../../Modelos/user.model';
   templateUrl: './list-orientador.component.html',
   styleUrls: ['./list-orientador.component.css'],
   providers: [OrientadorService]
-
 })
 export class ListOrientadorComponent implements OnInit {
   userFilter: any = { nombre: '', estado_usuario: 'Activo' };
@@ -21,6 +20,7 @@ export class ListOrientadorComponent implements OnInit {
   falupa = faMagnifyingGlass;
   fax = faXmark;
   public page: number = 1; // Initialize page number
+  public itemsPerPage: number = 5; // Define how many items per page
   listaOrientador: Orientador[] = [];
   token: string | null = null;
   user: User | null = null;
@@ -33,12 +33,12 @@ export class ListOrientadorComponent implements OnInit {
   id: number | null = null;
   selectedOrientadorId: number | null = null;
   boton: boolean;
+  isLoading: boolean = true; // Define the property isLoading
 
   private ESTADO_MAP: { [key: string]: string } = {
     "true": 'Activo',
     "false": 'Inactivo'
   };
-
 
   constructor(
     private orientadorService: OrientadorService,
@@ -72,21 +72,24 @@ export class ListOrientadorComponent implements OnInit {
   }
 
   cargarOrientador(estado: number): void {
+    this.isLoading = true; // Set isLoading to true when starting to load
     if (this.token) {
       this.orientadorService.mostrarOrientador(this.token, estado).subscribe(
         (data: any) => {
           this.listaOrientador = data;
+          this.isLoading = false; // Set isLoading to false when loading is complete
         },
         (err) => {
           console.log(err);
+          this.isLoading = false; // Set isLoading to false even if there is an error
         }
       );
     }
   }
 
   onEstadoChange(event: any): void {
-
     const estado = event.target.value;
+    this.isLoading = true; // Set isLoading to true when starting to change state
     if (estado === 'Activo') {
       this.cargarOrientador(1);
     } else {
@@ -101,16 +104,16 @@ export class ListOrientadorComponent implements OnInit {
 
   openModal(orientadorId: number | null): void {
     let dialogRef: MatDialogRef<ModalCrearOrientadorComponent>;
-
     dialogRef = this.dialog.open(ModalCrearOrientadorComponent, {
       data: { orientadorId: orientadorId }
     });
     dialogRef.afterClosed().subscribe(result => {
+      // Handle the result if needed
     });
   }
 
   openModalSINId(): void {
-    this.openModal(null); // Llama a openModalCONId con null
+    this.openModal(null);
   }
 
   buscarOrientadores(): Orientador[] {
@@ -123,7 +126,41 @@ export class ListOrientadorComponent implements OnInit {
   }
 
   nose(): void {
-      this.boton = true;
+    this.boton = true;
+  }
+
+  // Pagination logic
+  getPages(): number[] {
+    const totalItems = this.buscarOrientadores().length;
+    const totalPages = Math.ceil(totalItems / this.itemsPerPage);
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  canGoPrevious(): boolean {
+    return this.page > 1;
+  }
+
+  canGoNext(): boolean {
+    return this.page < this.getPages().length;
+  }
+
+  changePage(direction: 'previous' | 'next' | number): void {
+    if (direction === 'previous' && this.canGoPrevious()) {
+      this.page--;
+    } else if (direction === 'next' && this.canGoNext()) {
+      this.page++;
+    } else if (typeof direction === 'number') {
+      this.page = direction;
+    }
+  }
+
+  updatePaginatedAdmins(): void {
+    this.page = 1; // Reset to first page on search or filter change
+  }
+
+  getPaginatedOrientadores(): Orientador[] {
+    const startIndex = (this.page - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.buscarOrientadores().slice(startIndex, endIndex);
   }
 }
-
