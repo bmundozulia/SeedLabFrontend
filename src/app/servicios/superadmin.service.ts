@@ -10,6 +10,10 @@ import { environment } from '../../environment/env';
 
 import { Superadmin } from '../Modelos/superadmin.model';
 import { Personalizaciones } from '../Modelos/personalizaciones.model';
+import { Actividad } from '../Modelos/actividad.model';
+import { Nivel } from '../Modelos/nivel.model';
+import { Leccion } from '../Modelos/leccion.model';
+import { Contenido_Leccion } from '../Modelos/contenido-leccion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -65,11 +69,7 @@ export class SuperadminService {
     return this.http.get(this.url+"listAliado",options)
   }
 
-  crearActividadSuperAdmin(access_token: any,):Observable<any>{
-    const options = {headers: this.CreacionHeaders(access_token)};
-    return this.http.post(environment.apiUrl+"actividad/crearActividad",options)
-  }
-
+  
   createPersonalizacion(access_token: any, personalizaciones: any, id): Observable<any> {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.put(this.url + "personalizacion/"+ id, personalizaciones, options);
@@ -83,13 +83,34 @@ export class SuperadminService {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.post(this.url + "restaurarPersonalizacion/"+ id,{}, options);
   }
-
+  
   //////////////
   // getinfoAsesor(access_token: any, id: number, estado: boolean): Observable<any> {
-  //   const options = {
-  //     headers: this.CreacionHeaders(access_token),
-  //     params: new HttpParams().set('estado', estado ? 'Activo' : 'Inactivo')
-  //   };
-  //   return this.http.get<any>(`${this.url}mostrarAsesorAliado/${id}`, options);
-  // }
-}
+    //   const options = {
+      //     headers: this.CreacionHeaders(access_token),
+      //     params: new HttpParams().set('estado', estado ? 'Activo' : 'Inactivo')
+      //   };
+      //   return this.http.get<any>(`${this.url}mostrarAsesorAliado/${id}`, options);
+      // }
+      crearActividadSuperAdmin(access_token: any, actividad: Actividad):Observable<any>{
+        const options = {headers: this.CreacionHeaders(access_token)};
+        return this.http.post(environment.apiUrl+"actividad/crearActividad",actividad,options)
+      }
+      crearNivelSuperAdmin(access_token:any,nivel: Nivel):Observable<any>{
+        const options = { headers: this.CreacionHeaders(access_token)};
+        return this.http.post(environment.apiUrl+"nivel/crearNivel",nivel,options)
+        //return this.http.post(this.url+"nivel",nivel,options) 
+      }
+      
+      crearLeccionSuperAdmin(access_token:any,leccion:Leccion):Observable<any>{
+        const options = { headers: this.CreacionHeaders(access_token)};
+        return this.http.post(environment.apiUrl+"leccion/crearLeccion",leccion,options)
+      }
+
+      crearContenicoLeccionSuperAdmin(access_token:string, contenido_leccion:Contenido_Leccion):Observable<any>{
+        const options = { headers: this.CreacionHeaders(access_token)};
+        return this.http.post(this.url+"contenido_por_leccion",contenido_leccion,options)
+      }
+
+
+    }

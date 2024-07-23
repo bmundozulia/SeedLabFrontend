@@ -30,9 +30,11 @@ export class ActnivlecComponent implements OnInit {
   aliadoSeleccionado: any | null;
   rutaId: number | null = null;
 
-
   ////
 
+  
+
+////añadir actividad
 
   actividadForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -43,6 +45,35 @@ export class ActnivlecComponent implements OnInit {
     id_ruta: ['', Validators.required],
     id_aliado: ['', Validators.required]
   })
+////anadir nivel
+
+  nivelForm = this.fb.group({
+    nombre: ['', Validators.required],
+    descripcion: ['', Validators.required],
+    id_actividad: ['', Validators.required]
+  })
+  mostrarNivelForm: boolean = false;
+
+  ///// añadir leccion
+  leccionForm = this.fb.group({
+    nombre: ['', Validators.required],
+    id_nivel:['', Validators.required]
+  })
+  mostrarLeccionForm: boolean = false;
+
+  ///añadir contenido por leccion
+
+  contenidoLeccionForm = this.fb.group({
+    titulo: ['', Validators.required],
+    descripcion: ['', Validators.required],
+    fuente:['', Validators.required],
+    id_tipo_dato: ['', Validators.required],
+    id_leccion: ['', Validators.required]
+  })
+  mostrarContenidoLeccionForm: boolean = false;
+
+
+
 
   constructor (
     private fb: FormBuilder,
@@ -57,23 +88,20 @@ export class ActnivlecComponent implements OnInit {
   ngOnInit(): void{
     this.route.queryParams.subscribe(params =>{
       this.rutaId = +params['id_ruta'];     
-      console.log('la ruta es: ',this.rutaId);
-      // this.token = params['token'];
+    
       // console.log('la token es: ',this.token);
-      this.token = params['token'];
-      if (!this.token) {
-        this.token = localStorage.getItem('token');
-      }
-      console.log('El token es: ', this.token);
+      // this.token = params['token'];
+      // if (!this.token) {
+      //   this.token = localStorage.getItem('token');
+      // }
+      // console.log('El token es: ', this.token);
       
 
       this.actividadForm.patchValue({ id_ruta: this.rutaId.toString()});
     });
 
     this.validateToken();
-    //this.AsesorConAliado();
     this.tipoDato();
-    //this.addActividadSuperAdmin();
     this.listaAliado();
     this.onAliadoChange();
     
@@ -170,10 +198,6 @@ export class ActnivlecComponent implements OnInit {
 
   //agregar una actividad
   addActividadSuperAdmin():void{
-    if (!this.token) {
-      console.error('No token found');
-      return;
-    }
     const actividad: Actividad = {
       nombre: this.actividadForm.value.nombre,
       descripcion: this.actividadForm.value.descripcion,
@@ -181,13 +205,15 @@ export class ActnivlecComponent implements OnInit {
       id_tipo_dato: parseInt(this.actividadForm.value.id_tipo_dato),
       id_asesor: parseInt(this.actividadForm.value.id_asesor),
       id_ruta: this.rutaId,
-      //id_ruta: parseInt(this.actividadForm.value.id_ruta),
       id_aliado: parseInt(this.actividadForm.value.id_aliado)
     }
-    console.log('usuario',this.actividadForm.value.id_aliado)
-    this.superAdminService.crearActividadSuperAdmin(this.token).subscribe(
-      data => {
-        console.log('datos recibidos',data);
+    console.log('usuario',actividad);
+    this.superAdminService.crearActividadSuperAdmin(this.token,actividad).subscribe(
+      (data:any) => {
+        const actividadCreada = data[0];
+        this.nivelForm.patchValue({ id_actividad: actividadCreada.id });
+        this.mostrarNivelForm = true;
+        console.log('id actividad: ', actividadCreada.id); 
       },
       error => {
         console.log(error);
@@ -195,11 +221,94 @@ export class ActnivlecComponent implements OnInit {
     )
   }
 
+
+  addNivelSuperAdmin():void{
+    const nivel: any = {
+      nombre: this.nivelForm.value.nombre,
+      descripcion: this.nivelForm.value.descripcion,
+      id_actividad: this.nivelForm.value.id_actividad
+    }
+    console.log('nivel data', nivel);
+    this.superAdminService.crearNivelSuperAdmin(this.token,nivel).subscribe(
+      (data:any) => {
+        console.log('datos recibidos',data);
+        this.leccionForm.patchValue({ id_nivel: data.id})
+        this.mostrarLeccionForm = true;
+        console.log('id nivel: ', data.id);
+        
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  addLeccionSuperAdmin():void{
+    const leccion: any = {
+      nombre: this.leccionForm.value.nombre,
+      id_nivel: this.leccionForm.value.id_nivel
+    }
+    console.log('leccion data', leccion);
+    this.superAdminService.crearLeccionSuperAdmin(this.token, leccion).subscribe(
+      (data: any)=>{
+        console.log('datos recibidos',data);
+        this.contenidoLeccionForm.patchValue({ id_leccion: data.id})
+        this.mostrarContenidoLeccionForm = true;
+        console.log('id leccion: ', data.id);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+   addContenidoLeccionSuperAdmin():void{
+    const contLeccion: any= {
+      titulo: this.contenidoLeccionForm.value.titulo,
+      descripcion: this.contenidoLeccionForm.value.descripcion,
+      fuente: this.contenidoLeccionForm.value.fuente,
+      id_tipo_dato: parseInt(this.actividadForm.value.id_tipo_dato),
+      id_leccion: this.contenidoLeccionForm.value.id_leccion
+    }
+    this.superAdminService.crearContenicoLeccionSuperAdmin(this.token, contLeccion).subscribe(
+      (data:any)=>{
+        console.log('datos recibidos: ',data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  onTipoDatoChange(): void {
+    const tipoDatoId = this.contenidoLeccionForm.get('id_tipo_dato').value;
+
+    switch (tipoDatoId) {
+      case '1': // Video
+        this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
+        break;
+      case '2': // Multimedia
+        this.contenidoLeccionForm.get('fuente').setValidators([Validators.required,]);
+        break;
+      case '3': // Imagen
+      case '4': // PDF
+      case '5': // Texto
+        this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
+        break;
+      default:
+        this.contenidoLeccionForm.get('fuente').clearValidators();
+        break;
+    }
+
+    this.contenidoLeccionForm.get('fuente').updateValueAndValidity();
+  }
+
+
+
+
+
+
   cancelarcrearActividad(): void {
-    //this.rutaSeleccionada = null;
-    //this.activityName = null;
-    //this.addActividadSuperAdmin = null;
-    //this.onAliadoChange
+    this.router.navigate(['/list-ruta'])
     this.actividadForm.patchValue({
       nombre: '',
       descripcion: '',
@@ -209,19 +318,4 @@ export class ActnivlecComponent implements OnInit {
       id_aliado: '',
     });
   }
-
 }
-//traer el asesor con el aliado
-  // AsesorConAliado():void{
-  //   if (this.token) {
-  //     this.superAdminService.asesorConAliado(this.token).subscribe(
-  //       data => {
-  //         this.listaAsesorAliado = data;
-  //         console.log("info del asesor: ", data);
-  //       },
-  //       error =>{
-  //         console.log(error);
-  //       }
-  //     )
-  //   }
-  // }

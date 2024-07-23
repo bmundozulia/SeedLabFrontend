@@ -227,7 +227,7 @@ export class AddEmpresaComponent {
       },
       error => {
         this.alertService.errorAlert('Error', error.message);
-        console.log('Respuesta de la API ERRRRORRRRRR')
+       console.log('Respuesta de la API ERRRRORRRRRR')
       }
     );
   }
