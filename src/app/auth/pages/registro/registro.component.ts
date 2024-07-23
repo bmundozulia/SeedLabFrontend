@@ -70,10 +70,10 @@ export class RegistroComponent implements OnInit {
       direccion: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordValidator]],
-      estado: '1'
+      estado: '1',
+      departamento: ['', Validators.required] // Añadir el campo departamento al formulario
     });
   }
-
   updateProgress() {
     let filledFields = 0;
     for (const controlName in this.registerForm.controls) {
@@ -134,8 +134,15 @@ export class RegistroComponent implements OnInit {
     );
   }
 
-  onDepartamentoSeleccionado(nombreDepartamento: string): void {
-    this.cargarMunicipios(nombreDepartamento);
+  onDepartamentoSeleccionado(event: Event): void {
+    const target = event.target as HTMLSelectElement; // Cast a HTMLSelectElement
+    const selectedDepartamento = target.value;
+    
+    // Guarda el departamento seleccionado en el localStorage
+    localStorage.setItem('departamento', selectedDepartamento);
+
+    // Llama a cargarMunicipios si es necesario
+    this.cargarMunicipios(selectedDepartamento);
   }
 
   cargarMunicipios(nombreDepartamento: string): void {
