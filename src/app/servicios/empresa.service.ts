@@ -33,7 +33,7 @@ export class EmpresaService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + access_token
     });
-    return this.http.post(this.url, payload, { headers });
+    return this.http.post(this.url+"createEmpresa", payload, { headers });
   }
 
   

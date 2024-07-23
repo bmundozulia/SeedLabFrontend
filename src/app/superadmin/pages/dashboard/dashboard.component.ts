@@ -41,12 +41,18 @@ public topAliadosData:ChartDataset[] = [
   }
 ];
 
+//Pie-Asesorias
+public pieChartOptions: ChartOptions<'pie'> = {
+  responsive: true,
+  maintainAspectRatio: true
+}
+public pieChartLabels: string[] =['Asesorias asignadas', 'Asesorias sin asignar'];
+public pieChartData:ChartDataset[] = [];
+
 
 constructor(
   private superAdminService:SuperadminService
-) {
-  
- }
+) {}
 
 ngOnInit() {
   this.validateToken();
@@ -81,9 +87,12 @@ getDatosDashboard():void{
       this.totalAliados = data.aliado;
       this.totalAsesores = data.asesor;
       this.totalEmprendedores = data.emprendedor;
+      this.topAliados = data.topAliados;
       this.topAliadosLabels = this.topAliados.map(aliado => aliado.nombre);
-      this.topAliadosData[0].data = this.topAliados.map(aliado => aliado.total);
+      this.topAliadosData[0].data = this.topAliados.map(aliado => aliado.asesorias);
+      this.pieChartData = data.conteoAsesorias;
       console.log(data);
+      console.log('pie data',this.pieChartData);
     },
     error => {
       console.log(error);
