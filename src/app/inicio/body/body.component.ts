@@ -4,6 +4,7 @@ import { AliadoService } from '../../servicios/aliado.service';
 import Swiper from 'swiper';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { Aliado } from '../../Modelos/aliado.model';
+import { Banner } from '../../Modelos/banner.model';
 import { MatToolbar } from '@angular/material/toolbar';
 import { AuthService } from '../../servicios/auth.service';
 import { SuperadminService } from '../../servicios/superadmin.service';
@@ -18,6 +19,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
   bannerSwiper: Swiper | undefined;
   alliesSwiper: Swiper | undefined;
   listAliados: Aliado[] = [];
+  listBanner: Banner [] = [];
   isLoggedIn: boolean = false;
   logoUrl: string = '';
   sidebarColor: string = '';
@@ -31,9 +33,10 @@ export class BodyComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isAuthenticated();
+  this.isLoggedIn = this.authService.isAuthenticated();
     this.getPersonalizacion();
-    this.loadAliados();
+    this.mostrarAliados();
+    this.mostrarBanners();
   }
 
   ngAfterViewInit(): void {
@@ -42,7 +45,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
     }
   }
 
-  loadAliados(): void {
+  mostrarAliados(): void {
     this.aliadoService.getaliados().subscribe(
       data => {
         console.log('Aliados:', data);
@@ -54,6 +57,18 @@ export class BodyComponent implements OnInit, AfterViewInit {
         if (isPlatformBrowser(this.platformId)) {
           this.initSwipers();
         }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  mostrarBanners(): void {
+    this.aliadoService.getbanner().subscribe(
+      data => {
+        this.listBanner = data;
+       // console.log('Banner:', data);
       },
       error => {
         console.log(error);
