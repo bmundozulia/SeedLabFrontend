@@ -137,7 +137,7 @@ export class EncuestaEmpresaComponent {
 
 
   ngOnInit() {
-
+    this.updateProgress();
     this.validateToken();
   }
 
@@ -456,20 +456,39 @@ export class EncuestaEmpresaComponent {
   currentSubSectionIndex: number = 0;
   currentIndex: number = 0;
   subSectionPerSection: number[] = [3, 3, 2, 9];
+  progressPercentage: number = 0;
 
+  updateProgress() {
+    let answeredQuestions = 0;
+    const totalQuestions = 78; // Ajuste este número al total real de preguntas
+
+    // Verifique cada respuesta
+    for (let i = 1; i <= 78; i++) {
+      const respuesta = this['respuesta' + i] as Respuesta;
+      if (respuesta && (respuesta.opcion || respuesta.texto_res)) {
+        answeredQuestions++;
+      }
+    }
+
+    this.progressPercentage = Math.round((answeredQuestions / totalQuestions) * 100);
+  }
   loadNextSection(): void {
     this.section++;
   }
 
+
+
   next() {
     if (this.currentSubSectionIndex < this.subSectionPerSection[this.currentIndex] - 1) {
-      this.currentSubSectionIndex++
+      this.currentSubSectionIndex++;
     } else {
       if (this.currentIndex < this.subSectionPerSection.length - 1) {
         this.currentIndex++;
         this.currentSubSectionIndex = 0;
       }
     }
+    this.updateProgress();
+
   }
 
   previous(): void {
@@ -481,6 +500,8 @@ export class EncuestaEmpresaComponent {
         this.currentSubSectionIndex = this.subSectionPerSection[this.currentIndex] - 1;
       }
     }
+    this.updateProgress();
+
   }
 
 

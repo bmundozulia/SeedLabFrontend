@@ -1,20 +1,27 @@
-<div class="flex justify-end w-full">
-  <mat-toolbar class="app-header bg-white flex items-center py-20 px-8 justify-between w-full">
-    <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-64 h-auto ml-60 max-lg:ml-0 max-lg:w-32">
-    <span class="nav-tool-items flex items-center space-x-8 mt-0 mr-60 max-lg:flex-col max-lg:mr-0 max-lg:space-x-0 max-lg:space-y-2">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="flex flex-col lg:flex-row md:flex-row justify-between w-full m-10">
+  <mat-toolbar class="app-header bg-white flex flex-col lg:flex-row md:flex-row items-center md:items-center py-2 lg:py-20 md:py-20 px-4 lg:px-8 md:px-8 justify-between w-full">
+    <!-- Imagen -->
+    <img src="/assets/images/logoSeed (1).png" alt="Logo" class="w-64 h-auto mb-4 lg:mb-0 md:mb-0 lg:ml-60 md:ml-4 max-sm:w-36 max-sm:ml-4 max-sm:mb-0">
+    <!-- Contenedor de los botones -->
+    <div class="flex flex-col lg:flex-row md:flex-col lg:items-center items-center lg:space-x-8 md:space-x-4 space-y-4 lg:space-y-0 md:space-y-3 lg:mt-0 md:mt-0 mt-4 lg:mr-60 md:mr-24 max-sm:ml-28 max-sm:space-y-3 max-sm:space-x-0">
       <a routerLink="/auth/login" mat-button routerLinkActive="active"
-         class="text-1xl md:text-sm bg-[#373435] text-white rounded-full font-poppins font-bold py-2 px-[20px]">Iniciar sesión</a>
+         class="lg:text-base  max-sm:text-[12px] bg-[#373435] md:text-lg text-white rounded-full font-poppins font-bold lg:py-2 md:py-6 lg:px-[24px] md:px-[26px] max-sm:text-sm max-sm:py-1 max-sm:px-[10px] max-sm:-mt-28">Iniciar sesión</a>
       <a routerLink="/auth/registro" mat-button routerLinkActive="active"
-         class="text-xs md:text-sm bg-[#00B3ED] text-white rounded-full font-poppins font-bold py-2 px-[14px]">Registrarse</a>
-    </span>
+         class="lg:text-base md:text-lg max-sm:text-[12px] bg-[#00B3ED] text-white rounded-full font-poppins font-bold lg:py-2 md:py-6 lg:px-[28px] md:px-[30px]  max-sm:text-sm max-sm:py-1 max-sm:px-[10px]">Registrarse</a>
+    </div>
+    
   </mat-toolbar>
 </div>
+
 
 <div class="banner-swiper-container w-full h-screen relative overflow-hidden">
   <div class="swiper-wrapper">
     <ng-container *ngFor="let banner of listBanner">
       <div *ngIf="banner.urlImagen" class="swiper-slide banner-swiper-slide relative">
-        <img [src]="banner.urlImagen" class="w-full h-[720px] object-fill -mt-80 max-lg:mt-0 max-lg:h-full max-lg:object-cover">
+        <img [src]="banner.urlImagen" class="w-full max-lg:h-[720px] max-sm:h-[420px] h-[550] object-cover -mt-80  max-lg-mt-0 lg:-mt-80 max-lg:object-cover">
         <!-- <p>fffffff</p> -->
       </div>
     </ng-container>
@@ -22,51 +29,54 @@
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
 </div>
-
-<div class="flex flex-col lg:flex-row bg-white max-lg:flex-col p-24">
-  <div class="w-[28%] bg-[#00B3ED] p-6 text-white ml-28 -mt-16 max-lg:w-full max-lg:ml-0 max-lg:mt-0  h-[calc(100%-18px)]">
-    <div class="flex flex-col text-4xl font-bold mb-4 mt-10 ml-10 max-lg:text-2xl">
+<div class="flex flex-col lg:flex-row bg-white max-lg:flex-col items-center max-lg:m-20 m-4 -mt-6 ">
+  <div class="lg:w-[28%] bg-[#00B3ED]   text-white lg:ml-28 max-sm:m-6 lg:-mt-44 max-sm:-mt-64 md:-mt-44 max-lg:w-full max-lg:ml-0 max-lg:mt-0 h-[calc(100%-18px)] p-4 mb-24">
+    <div class="flex flex-col items-center lg:items-start text-5xl md:text-[26px]  font-bold mb-4 lg:mt-10 ml-10 max-lg:text-2xl">
       <span class="font-thin">Nuestros</span>
       <span class="font-bold font-poppins"><em>Aliados</em></span>
     </div>
-    <p class="mb-4 mt-44 text-[26px] font-extralight ml-4 custom-text font-poppins max-lg:mt-4 max-lg:text-lg">
-      Conozca las entidades que forman parte de la <span class="bg-[#FA7D00] font-bold rounded-full px-1">incubadora</span> de emprendimientos
+    
+    <p class="mb-16 mt-44 md:text-[24px] text-[26px] font-extralight ml-4 custom-text font-poppins max-lg:mt-4 max-lg:text-lg md:text-center lg:text-left">
+      Conozca las entidades que<br> forman parte de la <span class="bg-[#FA7D00] font-bold rounded-full px-1">incubadora<br></span> de emprendimientos
     </p>
+    
   </div>
   <div class="w-full lg:w-2/3 relative">
-    <div class="banner-swiper-container">
+    <div class="banner-swiper-container lg:flex lg:flex-row lg:items-center" style="margin-top: -200px;">
       <div class="swiper-wrapper">
-        <div class="swiper-slide p-10 max-lg:flex max-lg:flex-col max-lg:items-center" *ngFor="let aliado of listAliados">
-          <img [src]="aliado.logo" [alt]="aliado.nombre" class="logo-img max-lg:mb-4">
-          <div class="relative p-10 max-lg:p-4 max-lg:text-center">
-            <p *ngFor="let line of aliado.descripcion" class="description-line mb-1">{{ line }}</p>
+        <div class="swiper-slide lg:flex lg:flex-row lg:items-center p-10 max-lg:flex max-lg:flex-col max-lg:items-center max-sm:mt-40 " *ngFor="let aliado of listAliados">
+          <img [src]="aliado.logo" [alt]="aliado.nombre" class="logo-img max-lg:mb-4 md:mt-16">
+          <div class="relative lg:ml-10 lg:pl-10 lg:p-10 max-lg:p-4 max-lg:text-center w-full max-sm:-mt-20 mb-4">
+            <p *ngFor="let line of aliado.descripcion" class="description-line mb-1 max-sm:text-[14px]">{{ line }}</p>
           </div>
         </div>
       </div>
-      <div class="flex justify-center items-center">
-        <div class="swiper-pagination" style="bottom: 20px !important; margin-top: 56px;"></div>
-      </div>
     </div>
-    <div class="lg:mt-20 sm-mt:24 text-right max-lg:text-center sm:text-center lg:mr-44">
-      <button class="bg-[#FA7D00] text-white px-14 py-2 rounded-full -mt-16 mr-[35%] lg:text-4xl sm:text-2xl max-lg:mr-0 max-lg:mt-4 font-bold italic text-2xl">Todos los aliados</button>
-    </div>
+    <!-- Pagination and Button container -->
+    <div class="relative flex flex-col items-center  lg:-mt-20 -mt-20 lg:mb-20 space-x-2">
+  <div class="swiper-pagination custom-swiper-pagination absolute -top-4 lg:-top-2 left-1/2 transform -translate-x-1/2 -translate-y-full"></div>
+  <p class="bg-[#FA7D00] inline-block text-white text-center lg:text-3xl italic px-14 py-2 rounded-full font-bold mt-10 lg:mt-12">
+    Todos los aliados
+  </p>
+</div>
   </div>
 </div>
-
-<footer class="bg-[#373435] text-white py-8">
-  <div class="container mx-auto px-4 flex justify-between items-center max-lg:flex-col max-lg:text-center mt-4">
+<footer class="bg-[#373435] text-white lg:py-8 max-sm:py-3">
+  <div class="container mx-auto lg:px-4 px-2 flex justify-between items-center max-lg:flex-col max-lg:text-center mt-4">
     <div class="flex items-center max-lg:flex-col">
-      <img src="/assets/images/logoSeed blanco.png" alt="Seed Lab" class="h-20 max-lg:mb-4">
-      <p class="text-sm max-w-md ml-3 max-lg:ml-0">
+      <img src="/assets/images/logoSeed blanco.png" alt="Seed Lab" class="lg:h-20 h-14 max-lg:mb-4 mt-2">
+      <p class="lg:text-sm max-w-md ml-3 max-lg:ml-0 max-sm:text-[12px]">
         Este programa estará enfocado en emprendimientos de base tecnológica, para ideas validadas, que cuenten con un codesarrollo, prototipado y pruebas de concepto. Se va a abordar en temas como Big Data, ciberseguridad e IA, herramientas de hardware y software, inteligencia competitiva, vigilancia tecnológica y propiedad intelectual.
       </p>
     </div>
-    <div class="text-right max-lg:text-center max-lg:mt-4">
-      <p class="mb-2 text-2xl">Más información sobre Seed Lab</p>
-      <p class="text-orange-400 mb-4 text-xl">xxxxxxxxxxx.com</p>
-      <h3 class="text-2xl font-bold mb-2">Atención al cliente</h3>
-      <p>Calle 48 # 28 - 40</p>
-      <p>Bucaramanga, Santander, Colombia</p>
+    <div class="text-center lg:text-right mt-4 lg:mt-0">
+      <p class="mb-1 lg:mb-2 text-lg lg:text-2xl">Más información sobre Seed Lab</p>
+      <p class="text-orange-400 mb-2 lg:mb-4 text-[12px] lg:text-xl">xxxxxxxxxxx.com</p>
+      <h3 class="text-[12px] lg:text-2xl font-bold mb-1 lg:mb-2">Atención al cliente</h3>
+      <div class="flex flex-wrap justify-center lg:block">
+        <p class="text-[12px] lg:text-xl w-1/2 lg:w-full">Calle 48 # 28 - 40</p>
+        <p class="text-[12px] lg:text-xl w-1/2 lg:w-full">Bucaramanga, Santander, Colombia</p>
+      </div>
     </div>
   </div>
 </footer>

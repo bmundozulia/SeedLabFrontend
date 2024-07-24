@@ -171,7 +171,7 @@ export class AddEmpresaComponent {
     console.log("Formulario enviado", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
 
     if (this.addEmpresaForm.invalid) {
-      //console.log("Formulario inválido");
+      console.log("Formulario inválido", this.addEmpresaForm.value, this.addApoyoEmpresaForm.value);
       return;
     }
 
@@ -214,10 +214,11 @@ export class AddEmpresaComponent {
       apoyos: apoyosList
     };
 
+    console.log('Payload para la API:', payload);
 
     this.addEmpresaService.addEmpresa(this.token, payload).subscribe(
       data => {
-        //console.log('Respuesta de la API (empresa creada):', data);
+        console.log('Respuesta de la API (empresa creada):', data);
         this.alertService.successAlert('Éxito', 'Registro exitoso');
         this.emprendedorDocumento = data.empresa.id_emprendedor;
         //console.log(`------------------------------------------------ ${this.emprendedorDocumento}`);
@@ -227,7 +228,7 @@ export class AddEmpresaComponent {
       },
       error => {
         this.alertService.errorAlert('Error', error.message);
-        console.log('Respuesta de la API ERRRRORRRRRR')
+       console.log('Respuesta de la API ERRRRORRRRRR')
       }
     );
   }

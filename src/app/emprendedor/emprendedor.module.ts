@@ -14,6 +14,7 @@ import { SharedModule } from '../shared.module';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -43,7 +44,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     FormsModule,
     FilterPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    RouterModule
 
   ]
 })

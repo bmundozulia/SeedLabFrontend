@@ -27,6 +27,7 @@ export class MenuService {
       name: route.data?.title,
       route: `/${route.path}`,
       icon: route.data?.icon,
+    
     }));
   }
 

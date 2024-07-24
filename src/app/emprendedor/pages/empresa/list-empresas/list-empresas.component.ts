@@ -13,37 +13,36 @@ import { User } from '../../../../Modelos/user.model';
   styleUrls: ['./list-empresas.component.css'],
   providers: [EmprendedorService],
 })
-
 export class ListEmpresasComponent implements OnInit {
   faPen = faPenToSquare;
   listaEmpresas: Empresa[] = [];
   listaUser: User[] = [];
   documento: string | null;
-  public page!: number;
+  page: number = 1; // Inicializa la página actual
   token: string | null = null;
   isLoading: boolean = true; // Variable para gestionar el estado de carga
   userFilter: any = { nombre: '' };
   falupa = faMagnifyingGlass;
   user: any = null;
   currentRolId: number;
-
+  totalEmpresas: number = 0; // Variable para almacenar el total de empresas
+  itemsPerPage: number = 5; // Número de empresas por página
 
   constructor(
     private emprendedorService: EmprendedorService,
     private router: Router,
     private aRoute: ActivatedRoute,
-    private fb: FormBuilder,) {
+    private fb: FormBuilder
+  ) {
     this.documento = this.aRoute.snapshot.paramMap.get('id');
   }
 
-  /* Inicializa con esas funciones al cargar la pagina */
   ngOnInit(): void {
-    this.validartoken();
+    this.validarToken();
     this.cargarEmpresas();
   }
 
-  /* Valida el token del login */
-  validartoken(): void {
+  validarToken(): void {
     if (!this.token) {
       this.token = localStorage.getItem('token');
       let identityJSON = localStorage.getItem('identity');
@@ -71,6 +70,7 @@ export class ListEmpresasComponent implements OnInit {
         (data) => {
           setTimeout(() => {
             this.listaEmpresas = data;
+            this.totalEmpresas = data.length; // Actualiza el total de empresas
             this.isLoading = false;
           }, 500);
         },
@@ -82,5 +82,44 @@ export class ListEmpresasComponent implements OnInit {
         }
       );
     }
+  }
+
+  changePage(pageNumber: number | string): void {
+    if (pageNumber === 'previous') {
+      if (this.page > 1) {
+        this.page--;
+        this.cargarEmpresas(); // Carga las empresas de la página anterior
+      }
+    } else if (pageNumber === 'next') {
+      if (this.page < this.getTotalPages()) {
+        this.page++;
+        this.cargarEmpresas(); // Carga las empresas de la página siguiente
+      }
+    } else {
+      this.page = pageNumber as number;
+      this.cargarEmpresas(); // Carga las empresas de la página seleccionada
+    }
+  }
+
+  getTotalPages(): number {
+    return Math.ceil(this.totalEmpresas / this.itemsPerPage);
+  }
+
+  getPages(): number[] {
+    const totalPages = this.getTotalPages();
+    return Array(totalPages).fill(0).map((x, i) => i + 1);
+  }
+
+  canGoPrevious(): boolean {
+    return this.page > 1;
+  }
+
+  canGoNext(): boolean {
+    return this.page < this.getTotalPages();
+  }
+
+  editEmpresa(id: number): void {
+    // Implementa la lógica para editar una empresa
+    console.log('Editar empresa con ID:', id);
   }
 }

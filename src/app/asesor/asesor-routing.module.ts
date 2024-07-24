@@ -8,8 +8,8 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'perfil-asesores', component: PerfilAsesorComponent, data:{title: 'Perfil'}},
-      {path: 'asesorias', component: AsesoriasComponent, data:{title: 'Asesorias'}}
+      {path: 'perfil-asesores', component: PerfilAsesorComponent, data:{title: 'Perfil', icon:'fa-solid fa-circle-user', showInMenu: true}},
+      {path: 'asesorias', component: AsesoriasComponent, data:{title: 'Asesorias', icon:'fa-solid fa-users-gear', showInMenu: true}},
 
     ]
   }

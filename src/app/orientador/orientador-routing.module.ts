@@ -8,9 +8,9 @@ const routes: Routes = [
   {
     path:'',
     children:[
-      {path: 'list-asesorias', component: VerAsesoriasComponent, data:{title: 'Asesorias', showInMenu: true}},
-      {path: 'perfil-orientador', component: PerfilOrientadorComponent, data: { title: 'Perfil', showInMenu: true }},
-      {path: 'reportes', component: ReportesComponent, data:{title: 'Reportes', showInMenu: true}}, 
+      {path: 'list-asesorias', component: VerAsesoriasComponent, data:{title: 'Asesorias', showInMenu: true, icon:'fa-solid fa-users-gear'}},
+      {path: 'perfil-orientador', component: PerfilOrientadorComponent, data: { title: 'Perfil', showInMenu: true, icon:'fa-solid fa-circle-user'}},
+      {path: 'reportes', component: ReportesComponent, data:{title: 'Reportes', showInMenu: true, icon:'fa-regular fa-file-lines'}}, 
     ]
   }
 ];
