@@ -127,9 +127,9 @@
                             </div>
                             <div *ngIf="submitted && f.fecha_nacimiento.errors" class="max-w-[19rem] overflow-hidden mt-1">
                                 <div *ngIf="f.fecha_nacimiento.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
-                                <div *ngIf="f.fecha_nacimiento.errors.futureDate" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no puede ser una fecha futura*</div>
-                                <div *ngIf="f.fecha_nacimiento.errors.tooOld" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no puede ser mayor a 100 años*</div>
-                                <div *ngIf="f.fecha_nacimiento.errors.tooRecent" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no puede ser menor a 10 años*</div>
+                                <div *ngIf="f.fecha_nacimiento.errors.futureDate" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no es válida*</div>
+                                <div *ngIf="f.fecha_nacimiento.errors.tooOld" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no es válida*</div>
+                                <div *ngIf="f.fecha_nacimiento.errors.tooRecent" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no es válida*</div>
                             </div>
                         </div>
 

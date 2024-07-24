@@ -155,15 +155,15 @@ export class RegistroComponent implements OnInit {
     const today = new Date();
     const hundredYearsAgo = new Date();
     hundredYearsAgo.setFullYear(today.getFullYear() - 100);
-    const tenYearsAgo = new Date();
-    tenYearsAgo.setFullYear(today.getFullYear() - 10);
+    const eighteenYearsAgo = new Date();
+eighteenYearsAgo.setFullYear(today.getFullYear() - 10);
 
     if (selectedDate > today) {
-      return { futureDate: 'La fecha no puede ser una fecha futura *' };
+      return { futureDate: 'La fecha no es válida *' };
     } else if (selectedDate < hundredYearsAgo) {
-      return { tooOld: 'La fecha no puede ser mayor a 100 años *' };
-    } else if (selectedDate > tenYearsAgo) {
-      return { tooRecent: 'La fecha no puede ser menor a 10 años *' };
+      return { tooOld: 'La fecha no es válida *' };
+    } else if (selectedDate < eighteenYearsAgo) {
+      return { tooRecent: 'La fecha no es válida *' };
     } else {
       return null;
     }
