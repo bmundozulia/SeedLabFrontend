@@ -38,6 +38,11 @@ export class AliadoService {
     return this.http.get(url, options);
   }
 
+  getbanner(): Observable<any> {
+    const url = `${environment.apiUrl}banner/activo`;
+    return this.http.get(url);
+  }
+
   //Listar asesores por aliados
   getinfoAsesor(access_token: any, id: number, estado: boolean): Observable<any> {
     const options = {
@@ -63,14 +68,17 @@ export class AliadoService {
     formData.append('password', aliado.password || '');
     formData.append('estado', aliado.estado.toString()); // Convertir boolean a string
 
-    if (aliado.banner) {
-        formData.append('banner', aliado.banner, aliado.banner.name); // Asegúrate de pasar el nombre del archivo como tercer parámetro
-    }
+    // if (aliado.banner) {
+    //     formData.append('banner', aliado.banner, aliado.banner.name); // Asegúrate de pasar el nombre del archivo como tercer parámetro
+    // }
 
     const options = { headers: this.CreacionHeaderss(access_token) };
 
     return this.http.post(`${this.url}/create_aliado`, formData, options);
 }
+
+  //crearBanner()
+
 
   mostrarAliado(access_token: any) {
     const options = { headers: this.CreacionHeaders(access_token) };

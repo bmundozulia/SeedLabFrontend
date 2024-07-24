@@ -5,7 +5,7 @@ export class Aliado {
     nombre: string;
     descripcion: string;
     logo: string; // Asegúrate de que logo sea un campo necesario en tu caso
-    banner: File | null;
+    //banner: File | null;
     ruta: string | null;
     tipodato: string | null;
     email: string;
@@ -17,7 +17,7 @@ export class Aliado {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.logo = logo;
-        this.banner = banner;
+       // this.banner = banner;
         this.ruta = ruta;
         this.tipodato = tipodato;
         this.email = email;
