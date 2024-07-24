@@ -43,6 +43,8 @@ export class AddAliadosComponent {
   faFileLines = faFileLines;
   imagePreview: string | ArrayBuffer | null = null;
 
+
+
   aliadoForm: FormGroup;
   constructor(private aliadoService: AliadoService,
     private router: Router,
@@ -64,7 +66,7 @@ export class AddAliadosComponent {
 
   ngOnInit(): void {
     this.validateToken();
-
+    this.mostrarOcultarContenido();
   }
 
   validateToken(): void {
@@ -221,6 +223,16 @@ export class AddAliadosComponent {
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
+  }
+
+  mostrarOcultarContenido() {
+    const checkbox = document.getElementById("mostrarContenido") as HTMLInputElement;
+    const contenidoDiv = document.getElementById("contenido");
+    const guardar = document.getElementById("guardar");
+    if (contenidoDiv && guardar) {
+      contenidoDiv.style.display = checkbox.checked ? "block" : "none";
+      guardar.style.display = checkbox.checked ? "none" : "block";
+    }
   }
 
 }

@@ -12,9 +12,10 @@
 
 <div class="banner-swiper-container w-full h-screen relative overflow-hidden">
   <div class="swiper-wrapper">
-    <ng-container *ngFor="let aliado of listAliados">
-      <div *ngIf="aliado.banner" class="swiper-slide banner-swiper-slide relative">
-        <img [src]="aliado.banner" class="w-full h-[720px] object-fill -mt-80 max-lg:mt-0 max-lg:h-full max-lg:object-cover">
+    <ng-container *ngFor="let banner of listBanner">
+      <div *ngIf="banner.urlImagen" class="swiper-slide banner-swiper-slide relative">
+        <img [src]="banner.urlImagen" class="w-full h-[720px] object-fill -mt-80 max-lg:mt-0 max-lg:h-full max-lg:object-cover">
+        <!-- <p>fffffff</p> -->
       </div>
     </ng-container>
   </div>
