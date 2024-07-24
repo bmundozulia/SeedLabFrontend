@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
             if (this.currentRolId) {
                 switch (this.currentRolId) {
                     case '1':
-                        this.router.navigate(['list-aliados']);
+                        this.router.navigate(['dashboard-superadmin']);
                         break;
                     case '2':
                         this.router.navigate(['home']);

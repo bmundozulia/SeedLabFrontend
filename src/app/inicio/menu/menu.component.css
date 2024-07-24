@@ -37,13 +37,14 @@
 
 /* Efecto hover en enlaces del menú */
 .sidebar li a:hover {
-    background: rgb(45, 148, 216);
+    background: rgba(255, 255, 255, 0.3);
+    /*background: rgb(45, 148, 216);*/
 }
 
 /* Estilo para el botón de logout */
-.btn-logout li a:hover {
+/* .btn-logout li a:hover {
     background: rgb(72, 176, 245);
-}
+} */
 
 /* Transición del toggle switch */
 .toggle-switch .switch {
