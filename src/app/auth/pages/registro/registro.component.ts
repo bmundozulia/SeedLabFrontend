@@ -57,7 +57,7 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
     this.cargarDepartamentos();
     this.registerForm = this.fb.group({
-      documento: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+      documento: ['', [Validators.required, this.documentoValidator]],
       nombretipodoc: ['', Validators.required],
       nombre: ['', [Validators.required, this.noNumbersValidator]],
       apellido: ['', [Validators.required, this.noNumbersValidator]],
@@ -71,6 +71,14 @@ export class RegistroComponent implements OnInit {
       estado: '1',
       departamento: ['', Validators.required] // Añadir el campo departamento al formulario
     });
+  }
+
+  documentoValidator(control: AbstractControl): ValidationErrors | null {
+    const value = control.value ? control.value.toString() : '';
+    if (value.length < 5 || value.length > 13) {
+      return { lengthError: 'El número de documento debe tener entre 5 y 13 dígitos *' };
+    }
+    return null;
   }
 
   updateProgress() {
@@ -100,12 +108,12 @@ export class RegistroComponent implements OnInit {
         const control = this.registerForm.get(field);
         return control && control.value && !control.errors;
       });
-  
+
       if (!allFilled) {
         this.alertService.errorAlert('Campos Vacíos', 'Por favor, complete todos los campos antes de avanzar.');
         return;
       }
-  
+
       this.currentIndex++;
       this.updateProgress();
     }
@@ -137,7 +145,7 @@ export class RegistroComponent implements OnInit {
   emailValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
     const hasAtSymbol = /@/.test(value);
-  
+
     if (!hasAtSymbol) {
       return { emailInvalid: 'El correo debe ser válido *' };
     } else {
@@ -150,20 +158,20 @@ export class RegistroComponent implements OnInit {
     if (!value) {
       return null; // Si no hay valor, no se valida
     }
-
+  
     const selectedDate = new Date(value);
     const today = new Date();
     const hundredYearsAgo = new Date();
     hundredYearsAgo.setFullYear(today.getFullYear() - 100);
-    const tenYearsAgo = new Date();
-    tenYearsAgo.setFullYear(today.getFullYear() - 10);
-
+    const eighteenYearsAgo = new Date();
+    eighteenYearsAgo.setFullYear(today.getFullYear() - 18);
+  
     if (selectedDate > today) {
-      return { futureDate: 'La fecha no puede ser una fecha futura *' };
+      return { futureDate: 'La fecha no es válida *' };
     } else if (selectedDate < hundredYearsAgo) {
-      return { tooOld: 'La fecha no puede ser mayor a 100 años *' };
-    } else if (selectedDate > tenYearsAgo) {
-      return { tooRecent: 'La fecha no puede ser menor a 10 años *' };
+      return { tooOld: 'La fecha no es válida *' };
+    } else if (selectedDate > eighteenYearsAgo) {
+      return { tooRecent: 'Debe tener al menos 18 años *' };
     } else {
       return null;
     }
@@ -185,7 +193,7 @@ export class RegistroComponent implements OnInit {
   onDepartamentoSeleccionado(event: Event): void {
     const target = event.target as HTMLSelectElement; // Cast a HTMLSelectElement
     const selectedDepartamento = target.value;
-    
+
     // Guarda el departamento seleccionado en el localStorage
     localStorage.setItem('departamento', selectedDepartamento);
 
@@ -205,54 +213,54 @@ export class RegistroComponent implements OnInit {
     );
   }
 
- registro(): void {
-  this.submitted = true;
+  registro(): void {
+    this.submitted = true;
 
-  if (this.registerForm.invalid) {
-    this.alertService.errorAlert('Error en el Formulario', 'Por favor, complete todos los campos requeridos.');
-    return;
-  }
-
-  const emprendedor = new Emprendedor(
-    this.f.documento.value,
-    this.f.nombretipodoc.value,
-    this.f.nombre.value,
-    this.f.apellido.value,
-    this.f.celular.value,
-    this.f.email.value,
-    this.f.password.value,
-    this.f.genero.value,
-    this.f.fecha_nacimiento.value,
-    this.f.direccion.value,
-    this.f.estado.value,
-    this.f.municipio.value
-  );
-
-  this.registroService.registrar(emprendedor).subscribe(
-    (response: any) => {
-      this.alertService.successAlert('Registro exitoso', response.message);
-      this.email = response.email;
-      this.router.navigate(['/verification'], { queryParams: { email: this.email } });
-    },
-    (error) => {
-      if (error.status === 400) {
-        const errorMessage = error.error.message;
-
-        if (errorMessage.includes('documento')) {
-          this.currentIndex = 0; // Redirige a la sección del documento
-          this.f.documento.setErrors({ exists: true });
-          this.alertService.errorAlert('Error', 'El número de documento ya existe. Por favor, corrígelo.');
-        } else if (errorMessage.includes('correo')) {
-          this.currentIndex = 1; // Redirige a la sección del correo
-          this.f.email.setErrors({ exists: true });
-          this.alertService.errorAlert('Error', 'El correo electrónico ya existe. Por favor, corrígelo.');
-        } else {
-          this.alertService.errorAlert('Error', errorMessage);
-        }
-      } else {
-        this.alertService.errorAlert('Error', error.message);
-      }
+    if (this.registerForm.invalid) {
+      this.alertService.errorAlert('Error en el Formulario', 'Por favor, complete todos los campos requeridos.');
+      return;
     }
-  );
-}
+
+    const emprendedor = new Emprendedor(
+      this.f.documento.value,
+      this.f.nombretipodoc.value,
+      this.f.nombre.value,
+      this.f.apellido.value,
+      this.f.celular.value,
+      this.f.email.value,
+      this.f.password.value,
+      this.f.genero.value,
+      this.f.fecha_nacimiento.value,
+      this.f.direccion.value,
+      this.f.estado.value,
+      this.f.municipio.value
+    );
+
+    this.registroService.registrar(emprendedor).subscribe(
+      (response: any) => {
+        this.alertService.successAlert('Registro exitoso', response.message);
+        this.email = response.email;
+        this.router.navigate(['/verification'], { queryParams: { email: this.email } });
+      },
+      (error) => {
+        if (error.status === 400) {
+          const errorMessage = error.error.message;
+
+          if (errorMessage.includes('documento')) {
+            this.currentIndex = 0; // Redirige a la sección del documento
+            this.f.documento.setErrors({ exists: true });
+            this.alertService.errorAlert('Error', 'El número de documento ya existe. Por favor, corrígelo.');
+          } else if (errorMessage.includes('correo')) {
+            this.currentIndex = 1; // Redirige a la sección del correo
+            this.f.email.setErrors({ exists: true });
+            this.alertService.errorAlert('Error', 'El correo electrónico ya existe. Por favor, corrígelo.');
+          } else {
+            this.alertService.errorAlert('Error', errorMessage);
+          }
+        } else {
+          this.alertService.errorAlert('Error', error.message);
+        }
+      }
+    );
+  }
 }
