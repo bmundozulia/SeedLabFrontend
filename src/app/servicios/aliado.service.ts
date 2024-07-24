@@ -120,7 +120,10 @@ export class AliadoService {
   }
 
 
-  
+  graficaDatosGeneros(access_token:string):Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.get<any>(this.url+"/generoAliado", options)
+  }
 
   // mostrarRutas(access_token: any, id: number): Observable<any> {
   //   const options = { headers: this.CreacionHeaders(access_token)};

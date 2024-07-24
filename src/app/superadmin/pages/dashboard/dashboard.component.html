@@ -178,17 +178,22 @@
        [type]="'pie'"
        [datasets]="pieChartData"
        [labels]="pieChartLabels"
-       ></canvas>
-      <p class="text-sm text-gray-500 mt-2">Last Campaign Performance</p>
-      <p class="text-sm text-gray-500 mt-1">campaign sent 2 days ago</p>
+       [options]="pieChartOptions"
+       [plugins]="pieChartPlugins"
+       [legend]="pieChartLegend">
+      </canvas>
     </div>
 
     <!-- Asesorias por mes -->
     <div class="bg-white rounded-lg shadow p-4">
-      <h2 class="text-lg font-semibold mb-4">Completed Tasks</h2>
+      <h2 class="text-lg font-semibold mb-4">Generos Emprendedores</h2>
       <!-- Chart placeholder -->
-      <p class="text-sm text-gray-500 mt-2">Last Campaign Performance</p>
-      <p class="text-sm text-gray-500 mt-1">campaign sent 2 days ago</p>
+      <canvas baseChart
+      [type]="'doughnut'"
+      [datasets]="doughnutChartData"
+      [labels]="doughnutChartLabels"
+      [options]="doughnutChartOptions">
+     </canvas>
     </div>
   </div>
 </div>
