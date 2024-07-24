@@ -93,7 +93,6 @@
                                 styles="pointer-events: auto;"></fa-icon>
                         </div>
 
-                        <!-- pregunta 4 -->
                         <div>
                             <label for="documento" class="block truncate">Número de Documento:</label>
                             <div class="mt-2">
@@ -102,9 +101,9 @@
                             </div>
                             <div *ngIf="submitted && f.documento.errors" class="max-w-[19rem] overflow-hidden mt-1">
                               <div *ngIf="f.documento.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
-                              <div *ngIf="f.documento.errors.numberRange">El número de documento debe tener entre 5 y 12 dígitos</div>
+                              <div *ngIf="f.documento.errors.lengthError" class="text-red-700 pl-2 rounded-lg inline-block">{{ f.documento.errors.lengthError }}</div>
                               <div *ngIf="f.documento.errors.exists" class="text-red-700 pl-2 rounded-lg inline-block">El número de documento ya existe. Por favor, corrígelo.</div>
-                            </div>
+                            </div>                       
                           </div>
                         <div class="flex justify-center">
                             <button (click)="next()"
