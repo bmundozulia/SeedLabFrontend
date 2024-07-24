@@ -1,7 +1,12 @@
-<header class="h-auto w-full">
-    <div class="md:pl-14 max-md:pl-14 pt-3 max-sm:pl-14 max-sm:pr-5">
-        <h1 class="font-bold h-6 text-4xl max-md:text-3xl max-sm:text-xl max-sm:mt-6">{{ title }}</h1>
-        <h2 class="text-gray-400 text-sm max-sm:pt-0.5 md:pt-3  md:text-xl max-sm:mt-8 ">{{ subtitle }}</h2>
+<header class="flex flex-col md:flex-row justify-between items-center mb-6">
+    <div class="flex flex-col items-center max-md:mx-auto max-md:w-auto md:mr-4 w-full md:w-auto mb-4 md:mb-0">
+      <div class="border-b-2 border-sky-500 flex items-center justify-center w-full md:w-auto">
+        <img src="../../../../assets/images/logo_sinFondo.png" class="h-auto w-24 md:w-28 lg:w-36 xl:w-40" alt="">
+        <h1 #headerTitle class="leading-none text-black font-bold md:text-[8px] max-md:text-[5px]"></h1>
+      </div>
+      <div class="text-center text-sky-500 font-bold">
+        {{ subtitle }}
+      </div>
     </div>
-    <hr>
-</header>
+  </header>
+  
