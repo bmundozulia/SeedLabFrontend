@@ -28,7 +28,7 @@ topAliados:any = {};
 //Barras top_aliados
 public barChartOptions: ChartOptions<'bar'> ={
   responsive:true,
-  maintainAspectRatio:true 
+  maintainAspectRatio:false 
 };
 
 public barChartType: ChartType = 'bar';
@@ -49,6 +49,7 @@ public topAliadosData:ChartDataset[] = [
 //Pie-Asesorias
 public pieChartOptions: ChartOptions<'pie'> = {
   responsive: true,
+  maintainAspectRatio:false
 }
 public pieChartLabels: string[] =['Asesorias asignadas', 'Asesorias sin asignar'];
 
@@ -58,7 +59,8 @@ public pieChartPlugins = [];
 
 //Grafica generos
 public doughnutChartOptions: ChartOptions<'doughnut'> = {
-  responsive:true
+  responsive:true,
+  maintainAspectRatio:false
 }
 
 public doughnutChartLabels: string[] = ['Femenino', 'Masculino', 'Otros'];

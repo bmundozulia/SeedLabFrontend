@@ -10,8 +10,9 @@ import { OrientadorRoutingModule } from './orientador-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared.module';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
-
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
     VerAsesoriasComponent,
     DarAliadoAsesoriaModalComponent,
     PerfilOrientadorComponent,
-    ReportesComponent
+    ReportesComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
+    NgChartsModule
   ]
 })
 export class OrientadorModule { }
