@@ -1,119 +1,201 @@
-<!-- DASHBOARD -->
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="dashboard.component.css">
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <h1 style="margin-bottom: 40px; margin-left: 50px; margin-top: 9px;">Dashboard</h1>
-
-    <hr style="color: #fad700;">
-        <!-- DIV GENERAL 1 (Items - contenedores) -->
-        <div class="divGrande1">
-                <div class="divGrande1-1">
-                        <!-- DIV CONTENEDOR 1 (Items 1, 2, 3 y 4) -->
-                        <div class="grid-container1">
-
-                                <div class="grid-item1-c1">
-                                    <div style="display: flex; justify-content: center;">
-                                        <img src="../assets/images/logo-item.png" alt="Ícono item">
-                                    </div>
-                                    <h2>Item 1</h2>
-                                    <p class="big-number">120</p>
-                                </div>
-
-                                <div class="grid-item2-c1">
-                                    <div style="display: flex; justify-content: center;">
-                                        <img src="../assets/images/logo-item.png" alt="Ícono item">
-                                    </div>
-                                    <h2>Item 2</h2>
-                                    <p class="big-number">20</p>
-                                </div>
-
-                                <div class="grid-item3-c1">
-                                    <div style="display: flex; justify-content: center;">
-                                        <img src="../assets/images/logo-item.png" alt="Ícono item">
-                                    </div>
-                                    <h2>Item 3</h2>
-                                    <p class="big-number">120</p>
-                                </div>
-
-                                <div class="grid-item4-c1">
-                                    <div style="display: flex; justify-content: center;">
-                                        <img src="../assets/images/logo-item.png" alt="Ícono item">
-                                    </div>
-                                    <h2>Item 4</h2>
-                                    <p class="big-number">4</p>
-                                </div>
-                        </div>
-                </div>
-        </div>
-
-        <!-- DIV GENERAL 2 (Gráfica 1) -->
-        <div class="divGrande3">
-            <div class="divGrande3-1">
-                <div class="divGrafica">
-                    <div style="text-align: left; margin-left: 20px;">
-                        <h2 style="font-weight: bold;" class="titCard">Gráfica de TRL</h2>
-                    </div>
-                    <div style="margin-left: 20px; text-align: center;">
-                        <div style="display: block; margin-bottom: 20px; margin-right: 20px;">
-                            <canvas baseChart
-                                    [data]="asesoresData"
-                                    [options]="pieChartOptions"
-                                    [type]="barChartType"
-                                    [legend]="pieChartLegend">
-                            </canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DIV GENERAL 3 (Gráfica 2) -->
-            <div class="divGrande4">
-                <div class="divGrafica">
-                    <div style="text-align: left; margin-left: 20px;">
-                        <h2 style="font-weight: bold;" class="titCard">Solicitudes</h2>
-                    </div>
-                    <div style="margin-left: 20px; text-align: center;">
-                        <div style="display: block; margin-bottom: 20px; margin-right: 20px;">
-                            <canvas baseChart
-                                    [data]="asesoresData"
-                                    [options]="pieChartOptions"
-                                    [type]="barChartType"
-                                    [legend]="pieChartLegend">
-                            </canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DIV GENERAL 4 (Gráfica 3) -->
-                <div class="divGrande2">
-                        <div class="divGrafica">
-                            <div style="text-align: left; margin-left: 20px;">
-                                <h2 style="font-weight: bold;" class="titCard">Solicitudes por género</h2>
-                            </div>
-                            <div style="margin-left: 20px; text-align: center;">
-                                <div style="display: block;">
-                                    <canvas baseChart
-                                            [data]="pendientesFinalizadasData"
-                                            [options]="pieChartOptions"
-                                            [type]="pieChartType"
-                                            [legend]="pieChartLegend">
-                                    </canvas>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-    </div>
-
-</body>
-</html>
+<div class=" p-4 sm:p-6 md:p-8 lg:p-12 xl:p-20">
+    <h1 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Dashboard</h1>
   
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
+      <!-- Super Admins -->
+      <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
+        <div class="absolute -top-5 left-4">
+          <div class="bg-orange-500 rounded-lg p-3 shadow-md">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <div class="pt-8 pb-0">
+          <p class="text-xl text-gray-500">Super Admins</p>
+        </div>
+        <div class="border-t border-gray-200 pt-1">
+          <div class="flex justify-between text-center">
+            <div class="w-1/2 pr-1">
+              <p class="text-md font-semibold">Activos</p>
+              <p class="text-lg font-bold text-green-600">{{ totalSuperAdmin['activos'] }}</p>
+            </div>
+            <div class="w-px bg-gray-200 self-stretch"></div>
+            <div class="w-1/2 pl-1">
+              <p class="text-md font-semibold">Inactivos</p>
+              <p class="text-lg font-bold text-red-600">{{totalSuperAdmin['inactivos']}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Orientadores -->
+      <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
+        <div class="absolute -top-5 left-4">
+          <div class="bg-green-500 rounded-lg p-3 shadow-md">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+              </path>
+            </svg>
+          </div>
+        </div>
+  
+        <div class="pt-8 pb-0">
+          <p class="text-xl text-gray-500">Orientadores</p>
+        </div>
+  
+        <div class="border-t border-gray-200 pt-1">
+          <div class="flex justify-between text-center">
+            <div class="w-1/2 pr-1">
+              <p class="text-md font-semibold">Activos</p>
+              <p class="text-lg font-bold text-green-600">{{ totalOrientador['activos'] }}</p>
+            </div>
+            <div class="w-px bg-gray-200 self-stretch"></div>
+            <div class="w-1/2 pl-1">
+              <p class="text-md font-semibold">Inactivos</p>
+              <p class="text-lg font-bold text-red-600">{{totalOrientador['inactivos']}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Aliados -->
+      <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
+        <div class="absolute -top-5 left-4">
+          <div class="bg-red-500 rounded-lg p-3 shadow-md">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <div class="pt-8 pb-0">
+          <p class="text-xl text-gray-500">Aliados</p>
+        </div>
+        <div class="border-t border-gray-200 pt-1">
+          <div class="flex justify-between text-center">
+            <div class="w-1/2 pr-1">
+              <p class="text-md font-semibold">Activos</p>
+              <p class="text-lg font-bold text-green-600">{{totalAliados['activos']}}</p>
+            </div>
+            <div class="w-px bg-gray-200 self-stretch"></div>
+            <div class="w-1/2 pl-1">
+              <p class="text-md font-semibold">Inactivos</p>
+              <p class="text-lg font-bold text-red-600">{{totalAliados['inactivos']}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Asesores -->
+      <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
+        <div class="absolute -top-5 left-4">
+          <div class="bg-blue-500 rounded-lg p-3 shadow-md">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <div class="pt-8 pb-0">
+          <p class="text-xl text-gray-500">Asesores</p>
+        </div>
+        <div class="border-t border-gray-200 pt-1">
+          <div class="flex justify-between text-center">
+            <div class="w-1/2 pr-1">
+              <p class="text-md font-semibold">Activos</p>
+              <p class="text-lg font-bold text-green-600">{{totalAsesores['activos']}}</p>
+            </div>
+            <div class="w-px bg-gray-200 self-stretch"></div>
+            <div class="w-1/2 pl-1">
+              <p class="text-md font-semibold">Inactivos</p>
+              <p class="text-lg font-bold text-red-600">{{totalAsesores['inactivos']}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Emprendedores -->
+      <div class="bg-white rounded-lg shadow-lg p-3 relative h-40 w-full">
+        <div class="absolute -top-5 left-4">
+          <div class="bg-purple-500 rounded-lg p-3 shadow-md">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <div class="pt-8 pb-0">
+          <p class="text-xl text-gray-500">Emprendedores</p>
+        </div>
+        <div class="border-t border-gray-200 pt-1">
+          <div class="flex justify-between text-center">
+            <div class="w-1/2 pr-1">
+              <p class="text-md font-semibold">Activos</p>
+              <p class="text-lg font-bold text-green-600">{{totalEmprendedores['activos']}}</p>
+            </div>
+            <div class="w-px bg-gray-200 self-stretch"></div>
+            <div class="w-1/2 pl-1">
+              <p class="text-md font-semibold">Inactivos</p>
+              <p class="text-lg font-bold text-red-600">{{totalEmprendedores['inactivos']}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- Top Aliados -->
+      <div class="bg-white rounded-lg shadow p-2 h-48 md:h-56 lg:h-64 w-full">
+        <h2 class="text-lg font-semibold mb-4">Top Aliados - Asesorias</h2>
+        <!-- Chart placeholder -->
+         <div class="flex items-center" style="width: 600px; height: 200px;">
+             <canvas baseChart 
+             [datasets]="topAliadosData" 
+             [labels]="topAliadosLabels" 
+             [options]="barChartOptions"
+             [type]="barChartType">
+             </canvas>
+         </div>
+      </div>
+  
+      <!-- Asesorias asignas y sin asignar -->
+      <div class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-lg font-semibold mb-4">Asesorias</h2>
+        <!-- Chart placeholder -->
+         <canvas baseChart
+         [type]="'pie'"
+         [datasets]="pendientesFinalizadasData"
+         [labels]="pendientesFinalizadasLabels"
+         [options]="pieChartOptions"
+         [plugins]="pieChartPlugins"
+         [legend]="pieChartLegend">
+        </canvas>
+      </div>
+  
+      <!-- Asesorias por mes -->
+      <div class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-lg font-semibold mb-4">Generos Emprendedores</h2>
+        <!-- Chart placeholder -->
+        <canvas baseChart
+        [type]="'doughnut'"
+        [datasets]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [options]="doughnutChartOptions">
+       </canvas>
+      </div>
+    </div>
+  </div>

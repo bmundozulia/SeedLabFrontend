@@ -42,7 +42,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private loadAliados(): void {
+  loadAliados(): void {
     this.aliadoService.getaliados().subscribe(
       data => {
         console.log('Aliados:', data);
