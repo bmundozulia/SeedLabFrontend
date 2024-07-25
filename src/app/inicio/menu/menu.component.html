@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<nav class="sidebar shadow-xl p-1 mt-0 ml-0 mr-0" [ngClass]="{ 'expand': isExpanded }" *ngIf="isAuthenticated"
+<nav class="sidebar shadow-xl p-1 m-0" [ngClass]="{ 'expand': isExpanded }" *ngIf="isAuthenticated"
     [style.backgroundColor]="(!isMobile || isExpanded) ? colorPrincipal : 'white'">
     <header class="relative">
         <div class="toggle absolute top-[20px] lg:left-[calc(100%-50px)] left-[calc(100%-40px)] transform -translate-y-1/2 h-[40px] w-[40px] flex items-center justify-center rounded-r-xl text-white text-xl transition-all duration-300"
@@ -16,7 +16,7 @@
 
         <ng-template #burgerIcon>
             <svg xmlns="http://www.w3.org/2000/svg"
-                style="width: 25px; height: 25px; display: flex; justify-content: center;" [attr.fill]="getIconColor()"
+                style="width: 25px; height: 25px; display: flex; justify-content: center; margin-right: 10;" [attr.fill]="getIconColor()"
                 viewBox="0 0 448 512">
                 <path
                     d="M16 132h416c8.8 0 16-7.2 16-16V116c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v4c0 8.8 7.2 16 16 16zm0 128h416c8.8 0 16-7.2 16-16v-4c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v4c0 8.8 7.2 16 16 16zm416 112H16c-8.8 0-16 7.2-16 16v4c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-4c0-8.8-7.2-16-16-16z" />

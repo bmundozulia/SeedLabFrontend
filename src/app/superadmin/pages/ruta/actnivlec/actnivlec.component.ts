@@ -9,6 +9,7 @@ import { Actividad } from '../../../../Modelos/actividad.model';
 import { Aliado } from '../../../../Modelos/aliado.model';
 import { Superadmin } from '../../../../Modelos/superadmin.model';
 import { AliadoService } from '../../../../servicios/aliado.service';
+import Pica from 'pica';
 
 @Component({
   selector: 'app-actnivlec',
@@ -31,6 +32,7 @@ export class ActnivlecComponent implements OnInit {
   rutaId: number | null = null;
 
   ////
+  fuente: string = '';
 
   
 
@@ -88,16 +90,19 @@ export class ActnivlecComponent implements OnInit {
   ngOnInit(): void{
     this.route.queryParams.subscribe(params =>{
       this.rutaId = +params['id_ruta'];     
-    
-      // console.log('la token es: ',this.token);
-      // this.token = params['token'];
-      // if (!this.token) {
-      //   this.token = localStorage.getItem('token');
-      // }
-      // console.log('El token es: ', this.token);
-      
-
       this.actividadForm.patchValue({ id_ruta: this.rutaId.toString()});
+      
+    });
+    this.contenidoLeccionForm.get('id_tipo_dato').valueChanges.subscribe(() => {
+      this.onTipoDatoChange();
+    });
+    this.contenidoLeccionForm.get('fuente').valueChanges.subscribe(() => {
+      if (this.contenidoLeccionForm.get('id_tipo_dato').value === '3') {
+        // if (this.contenidoLeccionForm.get('id_tipo_dato').value === '1'){
+
+        // }
+        
+      }
     });
 
     this.validateToken();
@@ -130,8 +135,6 @@ export class ActnivlecComponent implements OnInit {
       this.router.navigate(['/home']);
     }
   }
-
-
 
   //me trae el tipo de dato que requiere la actividad
   tipoDato():void{
@@ -213,6 +216,7 @@ export class ActnivlecComponent implements OnInit {
         const actividadCreada = data[0];
         this.nivelForm.patchValue({ id_actividad: actividadCreada.id });
         this.mostrarNivelForm = true;
+        
         console.log('id actividad: ', actividadCreada.id); 
       },
       error => {
@@ -279,28 +283,74 @@ export class ActnivlecComponent implements OnInit {
     )
   }
 
+  // onTipoDatoChange(): void {
+  //   const tipoDatoId = this.contenidoLeccionForm.get('id_tipo_dato').value;
+
+  //   switch (tipoDatoId) {
+  //     case '1': // Video
+  //       this.contenidoLeccionForm.get('Video').setValidators([Validators.required]);
+  //       break;
+  //     case '2': // Multimedia
+  //       this.contenidoLeccionForm.get('Multimedia').setValidators([Validators.required,]);
+  //       break;
+  //     case '3': // Imagen
+  //     this.contenidoLeccionForm.get('Imagen').setValidators([Validators.required,]);
+  //     break;
+  //     case '4': // PDF
+  //     this.contenidoLeccionForm.get('PDF').setValidators([Validators.required,]);
+  //     break;
+  //     case '5': // Texto
+  //       this.contenidoLeccionForm.get('Texto').setValidators([Validators.required]);
+  //       break;
+  //     default:
+  //       this.contenidoLeccionForm.get('fuente').clearValidators();
+  //       break;
+  //   }
+
+  //   this.contenidoLeccionForm.get('fuente').updateValueAndValidity();
+  // }
+
+
   onTipoDatoChange(): void {
     const tipoDatoId = this.contenidoLeccionForm.get('id_tipo_dato').value;
-
-    switch (tipoDatoId) {
-      case '1': // Video
-        this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
-        break;
-      case '2': // Multimedia
-        this.contenidoLeccionForm.get('fuente').setValidators([Validators.required,]);
-        break;
-      case '3': // Imagen
-      case '4': // PDF
-      case '5': // Texto
-        this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
-        break;
-      default:
-        this.contenidoLeccionForm.get('fuente').clearValidators();
-        break;
+  
+    if (tipoDatoId === '3') { // Imagen
+      this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
+    } else {
+      this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
     }
-
+  
     this.contenidoLeccionForm.get('fuente').updateValueAndValidity();
   }
+
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = 300; // Nueva anchura
+          canvas.height = 300; // Nueva altura
+          const pica = Pica();
+          pica.resize(img, canvas)
+            .then((result) => pica.toBlob(result, 'image/jpeg', 0.90))
+            .then((blob) => {
+              const reader2 = new FileReader();
+              reader2.onload = (e2: any) => {
+                this.contenidoLeccionForm.patchValue({ fuente: e2.target.result });
+              };
+              reader2.readAsDataURL(blob);
+            });
+        };
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
 
 
 
@@ -317,5 +367,22 @@ export class ActnivlecComponent implements OnInit {
       id_asesor: '',
       id_aliado: '',
     });
+  }
+
+  cancelarGlobal():void{
+    this.nivelForm.patchValue({
+      nombre: '',
+      descripcion: '',
+    });
+    this.leccionForm.patchValue({
+      nombre: '',
+      
+    });
+    this.contenidoLeccionForm.patchValue({
+      titulo: '',
+      descripcion: '',
+      fuente: '',
+      id_tipo_dato: '',
+    }) 
   }
 }
