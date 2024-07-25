@@ -98,6 +98,9 @@ export class ActnivlecComponent implements OnInit {
     });
     this.contenidoLeccionForm.get('fuente').valueChanges.subscribe(() => {
       if (this.contenidoLeccionForm.get('id_tipo_dato').value === '3') {
+        // if (this.contenidoLeccionForm.get('id_tipo_dato').value === '1'){
+
+        // }
         
       }
     });
@@ -213,6 +216,7 @@ export class ActnivlecComponent implements OnInit {
         const actividadCreada = data[0];
         this.nivelForm.patchValue({ id_actividad: actividadCreada.id });
         this.mostrarNivelForm = true;
+        
         console.log('id actividad: ', actividadCreada.id); 
       },
       error => {
@@ -279,32 +283,46 @@ export class ActnivlecComponent implements OnInit {
     )
   }
 
+  // onTipoDatoChange(): void {
+  //   const tipoDatoId = this.contenidoLeccionForm.get('id_tipo_dato').value;
+
+  //   switch (tipoDatoId) {
+  //     case '1': // Video
+  //       this.contenidoLeccionForm.get('Video').setValidators([Validators.required]);
+  //       break;
+  //     case '2': // Multimedia
+  //       this.contenidoLeccionForm.get('Multimedia').setValidators([Validators.required,]);
+  //       break;
+  //     case '3': // Imagen
+  //     this.contenidoLeccionForm.get('Imagen').setValidators([Validators.required,]);
+  //     break;
+  //     case '4': // PDF
+  //     this.contenidoLeccionForm.get('PDF').setValidators([Validators.required,]);
+  //     break;
+  //     case '5': // Texto
+  //       this.contenidoLeccionForm.get('Texto').setValidators([Validators.required]);
+  //       break;
+  //     default:
+  //       this.contenidoLeccionForm.get('fuente').clearValidators();
+  //       break;
+  //   }
+
+  //   this.contenidoLeccionForm.get('fuente').updateValueAndValidity();
+  // }
+
+
   onTipoDatoChange(): void {
     const tipoDatoId = this.contenidoLeccionForm.get('id_tipo_dato').value;
-
-    switch (tipoDatoId) {
-      case '1': // Video
-        this.contenidoLeccionForm.get('Video').setValidators([Validators.required]);
-        break;
-      case '2': // Multimedia
-        this.contenidoLeccionForm.get('Multimedia').setValidators([Validators.required,]);
-        break;
-      case '3': // Imagen
-      this.contenidoLeccionForm.get('Imagen').setValidators([Validators.required,]);
-      break;
-      case '4': // PDF
-      this.contenidoLeccionForm.get('PDF').setValidators([Validators.required,]);
-      break;
-      case '5': // Texto
-        this.contenidoLeccionForm.get('Texto').setValidators([Validators.required]);
-        break;
-      default:
-        this.contenidoLeccionForm.get('fuente').clearValidators();
-        break;
+  
+    if (tipoDatoId === '3') { // Imagen
+      this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
+    } else {
+      this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
     }
-
+  
     this.contenidoLeccionForm.get('fuente').updateValueAndValidity();
   }
+
 
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
