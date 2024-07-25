@@ -1,5 +1,5 @@
 
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AliadoService } from '../../../../servicios/aliado.service';;
@@ -42,26 +42,35 @@ export class AddAliadosComponent {
   faFileUpload = faFileUpload;
   faFileLines = faFileLines;
   imagePreview: string | ArrayBuffer | null = null;
+  aliadoid: string;
 
-
-
+  bannerForm: FormGroup;
   aliadoForm: FormGroup;
+
   constructor(private aliadoService: AliadoService,
     private router: Router,
     private formBuilder: FormBuilder,
     private imageCompress: NgxImageCompressService,
     private cdRef: ChangeDetectorRef) {
+
     this.aliadoForm = this.formBuilder.group({
-      nombre: ['',Validators.required],
+      nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
       logo: ['', Validators.required], // Puedes incluir el campo de logo si lo necesitas
-      banner: [''],
-      ruta: ['', Validators.required],
-      tipodato: ['', Validators.required],
+      ruta: [''],
+      tipodato: [''],
       email: ['', Validators.required],
       password: ['', Validators.required],
       estado: [1]
     });
+
+    this.bannerForm = this.formBuilder.group({
+      urlImagen: [''],
+      descripcion: ['', Validators.required],
+      estadobanner: ['Activo'],
+      color: ['', Validators.required]
+    });
+
   }
 
   ngOnInit(): void {
@@ -93,7 +102,98 @@ export class AddAliadosComponent {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       this.selectedBanner = file;
-      this.aliadoForm.patchValue({ banner: file.name });
+      this.bannerForm.patchValue({ urlImagen: file });
+    }
+  }
+
+  addAliado(): void {
+    if (this.aliadoForm.invalid || this.bannerForm.invalid) {
+      console.error('Formulario inválido');
+      console.log('Errores aliadoForm:', this.getFormValidationErrors(this.aliadoForm));
+      console.log('Errores bannerForm:', this.getFormValidationErrors(this.bannerForm));
+      return;
+    }
+
+    const formData = new FormData();
+
+    const aliado: Aliado = {
+      nombre: this.aliadoForm.get('nombre')?.value,
+      descripcion: this.aliadoForm.get('descripcion')?.value,
+      logo: this.aliadoForm.get('logo')?.value,
+      ruta: this.aliadoForm.get('ruta')?.value,
+      tipodato: this.aliadoForm.get('tipodato')?.value,
+      email: this.aliadoForm.get('email')?.value,
+      password: this.aliadoForm.get('password')?.value,
+      estado: this.aliadoForm.get('estado')?.value ?? 1,
+    };
+
+    Object.keys(this.aliadoForm.value).forEach(key => {
+      formData.append(key, this.aliadoForm.get(key)?.value);
+    });
+
+    const banner = this.bannerForm.valid ? {
+      urlImagen: this.selectedBanner,
+      descripcion: this.bannerForm.get('descripcion')?.value,
+      estadobanner: this.bannerForm.get('estadobanner')?.value,
+      color: this.bannerForm.get('color')?.value,
+      id_aliado: aliado.id,
+    } : null;
+
+    Object.keys(this.bannerForm.value).forEach(key => {
+      if (key === 'urlImagen' && this.selectedBanner) {
+        formData.append(`banner[${key}]`, this.selectedBanner, this.selectedBanner.name);
+      } else {
+        formData.append(`banner[${key}]`, this.bannerForm.get(key)?.value);
+      }
+    });
+
+    console.log('Payload para la API:', formData);
+
+    this.aliadoService.crearAliado(this.token, formData).subscribe(
+      data => {
+        console.log('Aliado creado', data);
+        this.aliadoid = data.banner.id_aliado;
+        console.log('Banner creado', this.aliadoid);
+      },
+      err => {
+        console.error('Error al crear aliado', err);
+        if (err.error && err.error.message) {
+          alert(err.error.message);
+        } else {
+          alert('Ocurrió un error al crear el aliado');
+        }
+      }
+    );
+  }
+
+  getFormValidationErrors(form: FormGroup) {
+    const result: any = {};
+    Object.keys(form.controls).forEach(key => {
+      const controlErrors: ValidationErrors | null = form.get(key)?.errors;
+      if (controlErrors) {
+        result[key] = controlErrors;
+      }
+    });
+    return result;
+  }
+
+  onFileSelecteds(event: any, field: string) {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      if (field === 'urlImagen') {
+        this.selectedBanner = file;
+        this.bannerForm.patchValue({ urlImagen: file });
+      } else {
+        this.aliadoForm.patchValue({ [field]: file });
+      }
+      this.generateImagePreview(file);
+    }
+  }
+
+  onFileChange(event: any): void {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.bannerForm.patchValue({ urlImagen: file });
     }
   }
 
@@ -114,7 +214,7 @@ export class AddAliadosComponent {
             .then((blob) => {
               const reader2 = new FileReader();
               reader2.onload = (e2: any) => {
-                this.logo = e2.target.result;
+                this.logo = e2.target.result; // Base64 string
                 this.aliadoForm.patchValue({ logo: this.logo });
               };
               reader2.readAsDataURL(blob);
@@ -125,46 +225,28 @@ export class AddAliadosComponent {
     }
   }
 
-  onFileChange(event: any): void {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.aliadoForm.patchValue({ banner: file });
-    }
-  }
-
-    addAliado(): void {
-      const aliado: Aliado = {
-          nombre: this.aliadoForm.get('nombre')?.value,
-          descripcion: this.aliadoForm.get('descripcion')?.value,
-          logo: this.aliadoForm.get('logo')?.value,
-         // banner: this.aliadoForm.get('banner')?.value,
-          ruta: this.aliadoForm.get('ruta')?.value,
-          tipodato: this.aliadoForm.get('tipodato')?.value,
-          email: this.aliadoForm.get('email')?.value,
-          password: this.aliadoForm.get('password')?.value,
-          estado: this.aliadoForm.get('estado')?.value,
-      };
-
-      console.log('Datos de aliado:', aliado);
-
-      this.aliadoService.crearAliado(this.token, aliado).subscribe(
-          data => {
-              console.log('Aliado creado', data);
-          },
-          err => {
-              console.log('Error al crear aliado', err);
-          }
-      );
-  }
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
 
 
-  onFileSelecteds(event: any, field: string) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.aliadoForm.patchValue({
-        [field]: file
-      });
-    }
+
+
+
+  generateImagePreview(file: File) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imagePreview = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
 
   resizeAndCompressImage(file: File, width: number, height: number, maxSize: number): Promise<string> {
