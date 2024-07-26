@@ -39,6 +39,7 @@ import { SuperadminModule } from './superadmin/superadmin.module';
 
 
 import { AddLevelComponent } from './superadmin/pages/ruta/add-level/add-level.component';
+import { OrientadorModule } from './orientador/orientador.module';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { AddLevelComponent } from './superadmin/pages/ruta/add-level/add-level.c
     AsesorModule,
     EmprendedorModule,
     SuperadminModule,
+    OrientadorModule
   
   ],
   providers: [

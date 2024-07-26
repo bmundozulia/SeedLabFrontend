@@ -59,10 +59,10 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(['dashboard-superadmin']);
                         break;
                     case '2':
-                        this.router.navigate(['home']);
+                        this.router.navigate(['dashboard-orientador']);
                         break;
                     case '3':
-                        this.router.navigate(['list-asesores']);
+                        this.router.navigate(['dashboard-aliado']);
                         break;
                     case '4':
                         this.router.navigate(['home']);

@@ -157,18 +157,18 @@
   
   
   
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-14">
-        <!-- Top Aliados -->
+    <!-- Top Aliados -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-14 ">
       <div class="bg-white rounded-lg shadow p-4 sm:p-3 md:p-4 max-w-sm sm:max-w-md md:max-w-lg my-auto">
         <h2 class="text-lg font-semibold mb-4">Top Aliados - Asesorias</h2>
         <!-- Chart placeholder -->
-         <div class="h-48 sm:h-56 md:h-64 lg:h-72 w-full" >
-             <canvas baseChart 
-             [datasets]="topAliadosData" 
-             [labels]="topAliadosLabels" 
-             [options]="barChartOptions"
-             [type]="barChartType">
-             </canvas>
+         <div class="h-48 sm:h-56 md:h-64 lg:h-72 w-full">
+           <canvas baseChart 
+           [datasets]="topAliadosData" 
+           [labels]="topAliadosLabels" 
+           [options]="barChartOptions"
+           [type]="barChartType">
+           </canvas>
          </div>
       </div>
   
@@ -179,8 +179,8 @@
          <div class="h-48 sm:h-56 md:h-64 lg:h-72 w-full">
            <canvas baseChart
            [type]="'pie'"
-           [datasets]="pendientesFinalizadasData"
-           [labels]="pendientesFinalizadasLabels"
+           [datasets]="pieChartData"
+           [labels]="pieChartLabels"
            [options]="pieChartOptions"
            [plugins]="pieChartPlugins"
            [legend]="pieChartLegend">
