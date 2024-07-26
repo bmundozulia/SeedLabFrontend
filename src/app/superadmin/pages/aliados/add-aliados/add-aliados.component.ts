@@ -75,7 +75,6 @@ export class AddAliadosComponent {
 
   ngOnInit(): void {
     this.validateToken();
-    this.mostrarOcultarContenido();
   }
 
   validateToken(): void {
@@ -224,23 +223,7 @@ export class AddAliadosComponent {
       reader.readAsDataURL(file);
     }
   }
-
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
+  
   generateImagePreview(file: File) {
     const reader = new FileReader();
     reader.onload = (e: any) => {
@@ -249,72 +232,8 @@ export class AddAliadosComponent {
     reader.readAsDataURL(file);
   }
 
-  resizeAndCompressImage(file: File, width: number, height: number, maxSize: number): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const reader = new FileReader();
-
-      reader.onload = (event) => {
-        img.src = event.target?.result as string;
-      };
-
-      img.onload = () => {
-        canvas.width = width;
-        canvas.height = height;
-        ctx?.drawImage(img, 0, 0, width, height);
-
-        const compressImage = (quality: number) => {
-          canvas.toBlob((blob) => {
-            if (blob) {
-              if (blob.size <= maxSize || quality < 0.1) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                  resolve(reader.result as string);
-                };
-                reader.readAsDataURL(blob);
-              } else {
-                compressImage(quality - 0.1);
-              }
-            } else {
-              reject(new Error('Error al crear el Blob de la imagen'));
-            }
-          }, 'image/jpeg', quality);
-        };
-
-        compressImage(0.9);
-      };
-
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(file);
-    });
-  }
-
-  async onImageSelected(event: any): Promise<void> {
-    const file = event.target.files[0];
-    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-    if (file && allowedExtensions.exec(file.name)) {
-      const resizedImage = await this.resizeAndCompressImage(file, 280, 280, 20 * 1024);
-      this.ruta = resizedImage;
-    } else {
-      alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
-    }
-  }
-
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
-  }
-
-  mostrarOcultarContenido() {
-    const checkbox = document.getElementById("mostrarContenido") as HTMLInputElement;
-    const contenidoDiv = document.getElementById("contenido");
-    const guardar = document.getElementById("guardar");
-    if (contenidoDiv && guardar) {
-      contenidoDiv.style.display = checkbox.checked ? "block" : "none";
-      guardar.style.display = checkbox.checked ? "none" : "block";
-    }
   }
 
 }
