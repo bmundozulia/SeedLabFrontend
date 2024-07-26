@@ -12,7 +12,7 @@ export class Aliado {
     password: string;
     estado: boolean;
 
-    constructor(id: number, nombre: string, descripcion: string, logo: string, banner: File | null, ruta: string | null, tipodato: string | null, email: string, password: string, estado: boolean) {
+    constructor(id: number, nombre: string, descripcion: string, logo: string, ruta: string | null, tipodato: string | null, email: string, password: string, estado: boolean) {
         this.id = id,
         this.nombre = nombre;
         this.descripcion = descripcion;
