@@ -131,19 +131,7 @@ export class ModalAddRutaComponent implements OnInit {
       reader.readAsDataURL(file);
     }
   }
-
-  // onFileSelecteds(event: Event): void {
-  //   const input = event.target as HTMLInputElement;
-  //   if (input.files && input.files.length > 0) {
-  //     const file = input.files[0];
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       this.imagenUrl = this.sanitizer.bypassSecurityTrustUrl(reader.result as string);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
-
+  
   verEditar(): void {
     if (this.rutaId != null) {
       this.rutaService.rutaXid(this.token, this.rutaId).subscribe(

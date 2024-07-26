@@ -1,1 +1,59 @@
-hola
+<div class="pt-4 divide-y divide-light-blue-400 ml-12 mr-4">
+    <h1 class="text-center text-sky-500 font-bold bg-gray-100 rounded-lg shadow-md p-4 mb-6">Vista general de la Ruta
+    </h1>
+
+
+    <div class="col-span-8">
+        <div>
+            <h2>Rutas =D </h2>
+            <div class="flex flex-col">
+                <div *ngFor="let ruta of rutaList" (click)="selectRuta(ruta)" class="flex flex-col items-center "
+                    [style.border]="ruta === rutaSeleccionada ? '2px solid blue' : '1px solid #ccc'">
+                    <img *ngIf="ruta.imagen_ruta" [src]="ruta.imagen_ruta" alt="{{ruta.nombre}}"
+                        style=" max-width: 100%; max-height: 100px; border-radius: 50%;"
+                        class=" cursor-pointer transform transition duration-300 hover:scale-110">
+                    <h3 class="md:w-32 max-md:w-32 whitespace-nowrap overflow-hidden max-md:h-6 md:pl-4 text-center"
+                        style="text-overflow: ellipsis;">
+                        {{ ruta.nombre }}
+                    </h3>
+
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1">
+                <div *ngIf="rutaSeleccionada">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div *ngFor="let ruta of rutaList" (click)="listarRuta(ruta)">
+                            <div *ngFor="let actividad of ruta.actividades">
+                                <div>
+                                    <span style="display: inline-block; 
+                                    width: 35%; 
+                                    height: 65%; 
+                                    border-radius: 100%; 
+                                    background-color: #fa0000; 
+                                    text-align: center; 
+                                    line-height: 40px; 
+                                    font-size: 20px; 
+                                    font-weight: bold; 
+                                    color: #1c9e10;">
+                                        {{actividad.nombre}}
+                                    </span>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+</div>
