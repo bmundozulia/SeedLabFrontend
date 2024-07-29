@@ -17,7 +17,10 @@ export class RutaEmprendedorComponent implements OnInit {
   rutaContenidoList: Ruta []=[];
   rutaList: Ruta []=[];
 /////////
-rutaSeleccionada: any | null;
+  rutaSeleccionada: any | null;
+  actividadSeleccionada: any | null; 
+  nivelSeleccionado: any | null;
+  leccionSeleccionada: any | null;
 
 
   constructor(
@@ -86,7 +89,31 @@ rutaSeleccionada: any | null;
 
   selectRuta(ruta: any): void {
     this.rutaSeleccionada = ruta;
+    this.actividadSeleccionada = null;
+    this.nivelSeleccionado = null;
+    this.leccionSeleccionada = null;
     console.log("la ruta seleccionada fue: ",this.rutaSeleccionada)
   }
 
+  selectActividad(actividad: any): void {
+    this.actividadSeleccionada = actividad;
+    this.nivelSeleccionado = null;
+    this.leccionSeleccionada = null;
+    console.log("la actividad seleccionada fue: ", this.actividadSeleccionada);
+  }
+
+  selectNivel(nivel: any): void {
+    this.nivelSeleccionado = nivel;
+    this.leccionSeleccionada = null;
+    console.log("el nivel seleccionado fue: ", this.nivelSeleccionado);
+  }
+
+  selectLeccion(leccion: any): void {
+    this.leccionSeleccionada = leccion;
+    console.log("la lección seleccionada fue: ", this.leccionSeleccionada);
+  }
+
+  
+
+  
 }
