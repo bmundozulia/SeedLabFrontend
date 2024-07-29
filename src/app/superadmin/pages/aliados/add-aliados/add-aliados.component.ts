@@ -98,22 +98,6 @@ export class AddAliadosComponent {
     }
   }
 
-  // onBannerSelected(event: Event): void {
-  //   const file = (event.target as HTMLInputElement).files?.[0];
-  //   if (file) {
-  //     this.selectedBanner = file;
-  //     this.bannerForm.patchValue({ urlImagen: file });
-  //   }
-  // }
-
-  // onLogoSelected(event: Event): void {
-  //   const file = (event.target as HTMLInputElement).files?.[0];
-  //   if (file) {
-  //     this.selectedLogo = file;
-  //     this.aliadoForm.patchValue({ logo: file });
-  //   }
-  // }
-
   addAliado(): void {
     if (this.aliadoForm.invalid || this.bannerForm.invalid) {
       console.error('Formulario inválido');
@@ -175,17 +159,6 @@ export class AddAliadosComponent {
     );
   }
 
-  getFormValidationErrors(form: FormGroup) {
-    const result: any = {};
-    Object.keys(form.controls).forEach(key => {
-      const controlErrors: ValidationErrors | null = form.get(key)?.errors;
-      if (controlErrors) {
-        result[key] = controlErrors;
-      }
-    });
-    return result;
-  }
-
   onFileSelecteds(event: any, field: string) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -199,14 +172,6 @@ export class AddAliadosComponent {
     }
   }
 
-  onFileChange(event: any): void {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.bannerForm.patchValue({ urlImagen: file });
-    }
-  }
-
-  
   generateImagePreview(file: File) {
     const reader = new FileReader();
     reader.onload = (e: any) => {
@@ -215,8 +180,30 @@ export class AddAliadosComponent {
     reader.readAsDataURL(file);
   }
 
+  getFormValidationErrors(form: FormGroup) {
+    const result: any = {};
+    Object.keys(form.controls).forEach(key => {
+      const controlErrors: ValidationErrors | null = form.get(key)?.errors;
+      if (controlErrors) {
+        result[key] = controlErrors;
+      }
+    });
+    return result;
+  }
+
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
+  }
+
+  private getDimensiones(file: File): Promise<{ width: number, height: number }> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        resolve({ width: img.width, height: img.height });
+      };
+      img.onerror = reject;
+      img.src = URL.createObjectURL(file);
+    });
   }
 
 }
