@@ -68,7 +68,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
     this.aliadoService.getbanner().subscribe(
       data => {
         this.listBanner = data;
-       // console.log('Banner:', data);
+       console.log('Banner:', data);
       },
       error => {
         console.log(error);
