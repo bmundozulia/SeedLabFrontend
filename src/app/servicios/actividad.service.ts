@@ -28,4 +28,6 @@ export class ActividadService {
     const options = { headers: this.CreacionHeaders(access_token)};
     return this.http.get(this.url+'/verActividadAliado/'+id,options)
   }
+
+ 
 }
