@@ -21,7 +21,9 @@ export class RutaEmprendedorComponent implements OnInit {
   actividadSeleccionada: any | null; 
   nivelSeleccionado: any | null;
   leccionSeleccionada: any | null;
-
+  actividadExpandida: number | null = null;
+  nivelExpandido: number | null = null;
+  
 
   constructor(
     private rutaService: RutaService,
@@ -108,11 +110,24 @@ export class RutaEmprendedorComponent implements OnInit {
     console.log("el nivel seleccionado fue: ", this.nivelSeleccionado);
   }
 
-  selectLeccion(leccion: any): void {
-    this.leccionSeleccionada = leccion;
-    console.log("la lección seleccionada fue: ", this.leccionSeleccionada);
+  // selectLeccion(leccion: any): void {
+  //   this.leccionSeleccionada = leccion;
+  //   console.log("la lección seleccionada fue: ", this.leccionSeleccionada);
+  // }
+
+  
+  toggleActividad(index: number) {
+    this.actividadExpandida = this.actividadExpandida === index ? null : index;
+    this.nivelExpandido = null;
   }
 
+  toggleNivel(index: number) {
+    this.nivelExpandido = this.nivelExpandido === index ? null : index;
+  }
+
+  selectLeccion(leccion: any): void {
+    this.leccionSeleccionada = leccion;
+  }
   
 
   
