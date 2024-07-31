@@ -3,6 +3,7 @@ import { User } from '../../../Modelos/user.model';
 import { SuperadminService } from '../../../servicios/superadmin.service';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { AliadoService } from '../../../servicios/aliado.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -71,7 +72,9 @@ public doughnutChartData: ChartDataset<'doughnut'>[] = [];
 
 constructor(
   private superAdminService:SuperadminService,
-  private aliadoService:AliadoService
+  private aliadoService:AliadoService,
+  private router: Router,
+
 ) {}
 
 ngOnInit() {
@@ -93,11 +96,14 @@ validateToken():void{
       this.currentRolId = this.user.id_rol;
       console.log(this.currentRolId);
       if(this.currentRolId != 1){
-        
+        this.router.navigate(['home']);
+        }
       }
     }
+    if (!this.token) {
+      this.router.navigate(['home']);
+    }
   }
-}
 
 getDatosDashboard():void{
   this.superAdminService.dashboardAdmin(this.token).subscribe(
