@@ -3,6 +3,7 @@ import { User } from '../../../Modelos/user.model';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { SuperadminService } from '../../../servicios/superadmin.service';
 import { AliadoService } from '../../../servicios/aliado.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -67,7 +68,8 @@ export class DashboardComponent {
 
   constructor(
     private superAdminService:SuperadminService,
-    private aliadoService:AliadoService
+    private aliadoService:AliadoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -87,10 +89,13 @@ export class DashboardComponent {
         this.id = this.user.id;
         this.currentRolId = this.user.id_rol;
         console.log(this.currentRolId);
-        if(this.currentRolId != 1){
-          
+        if(this.currentRolId != 2){
+          this.router.navigate(['home']);
         }
       }
+    }
+    if (!this.token) {
+      this.router.navigate(['home']);
     }
   }
 

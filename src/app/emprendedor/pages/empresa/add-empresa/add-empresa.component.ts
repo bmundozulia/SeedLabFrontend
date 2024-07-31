@@ -91,14 +91,14 @@ export class AddEmpresaComponent {
         this.currentRolId = this.user.id_rol;
 
         if (this.currentRolId != 5) {
-          this.router.navigate(['/inicio/body']);
+          this.router.navigate(['home']);
         } else {
           this.documento = this.user.emprendedor.documento;
         }
       }
     }
     if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['home']);
     }
   }
   //Funcion para cargar los departamentos
