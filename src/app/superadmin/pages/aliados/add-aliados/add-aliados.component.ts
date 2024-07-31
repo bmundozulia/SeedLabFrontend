@@ -98,6 +98,25 @@ export class AddAliadosComponent {
     }
   }
 
+  validateImageDimensions(file: File, minWidth: number, minHeight: number, maxWidth: number, maxHeight: number): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const width = img.width;
+        const height = img.height;
+        if (width >= minWidth && width <= maxWidth && height >= minHeight && height <= maxHeight) {
+          resolve(true);
+        } else {
+          reject(`La imagen debe tener dimensiones entre ${minWidth}x${minHeight} y ${maxWidth}x${maxHeight} píxeles.`);
+        }
+      };
+      img.onerror = () => {
+        reject('Error al cargar la imagen.');
+      };
+      img.src = URL.createObjectURL(file);
+    });
+  }
+
   addAliado(): void {
     if (this.aliadoForm.invalid || this.bannerForm.invalid) {
       console.error('Formulario inválido');
@@ -159,16 +178,33 @@ export class AddAliadosComponent {
     );
   }
 
-  onFileSelecteds(event: any, field: string) {
+  async onFileSelecteds(event: any, field: string) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
-      if (field === 'urlImagen') {
-        this.selectedBanner = file;
-        this.bannerForm.patchValue({ urlImagen: file });
-      } else {
-        this.aliadoForm.patchValue({ logo: file });
+      
+      try {
+        if (field === 'urlImagen') {
+          await this.validateImageDimensions(file, 800, 300, 8100, 3100); // Validar dimensiones para el banner
+          this.selectedBanner = file;
+          this.bannerForm.patchValue({ urlImagen: file });
+        } else {
+          await this.validateImageDimensions(file, 100, 100, 600, 600); // Validar dimensiones para el logo
+          this.selectedLogo = file;
+          this.aliadoForm.patchValue({ logo: file });
+        }
+        this.generateImagePreview(file);
+      } catch (error) {
+        console.error(error);
+        alert(error);
+  
+        // Limpiar el input file directamente en el DOM
+        if (field === 'urlImagen') {
+          this.selectedBanner = null;
+        } else {
+          this.selectedLogo = null;
+        }
+        event.target.value = ''; // Esta línea limpia el input de tipo file
       }
-      this.generateImagePreview(file);
     }
   }
 
