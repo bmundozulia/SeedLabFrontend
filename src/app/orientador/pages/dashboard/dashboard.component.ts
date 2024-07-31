@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { AliadoService } from '../../../servicios/aliado.service';
 import { User } from '../../../Modelos/user.model';
-import { Router } from '@angular/router';
-import { ChartType, ChartOptions, ChartDataset, ChartData } from 'chart.js';
+import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { SuperadminService } from '../../../servicios/superadmin.service';
-
-
+import { AliadoService } from '../../../servicios/aliado.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +11,7 @@ import { SuperadminService } from '../../../servicios/superadmin.service';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+
   token: string | null = null;
   user: User = null;
   id: number;
@@ -61,60 +60,36 @@ export class DashboardComponent {
   public doughnutChartOptions: ChartOptions<'doughnut'> = {
     responsive: true,
     maintainAspectRatio: false
-  
   }
+
   public doughnutChartLabels: string[] = ['Femenino', 'Masculino', 'Otros'];
+
   public doughnutChartData: ChartDataset<'doughnut'>[] = [];
 
-  //grafica asesorias aliados
-  public pendientesFinalizadasLabels: string[] = ['Pendientes', 'Finalizadas', 'Sin asignar', 'Asignadas'];
-  public pendientesFinalizadasData: ChartDataset[] = [
-    {
-      label: 'Asesorías',
-      data: [0, 0, 0, 0], // Estos valores serán actualizados después de cargar los datos
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 206, 86)',
-        'rgb(75, 192, 192)'
-      ],
-    }
-  ];
-
-  //conteo asesores
-  public asesoresLabels: string[] = ['Asesores'];
-  public asesoresData: ChartData<'bar'> = {
-    labels: this.asesoresLabels,
-    datasets: [
-      { data: [0], label: 'Asesores' }
-    ]
-  };
-
   constructor(
-    private superAdminService: SuperadminService,
-    private aliadoService: AliadoService,
-    private router: Router,
-  ) { }
+    private superAdminService:SuperadminService,
+    private aliadoService:AliadoService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.validateToken();
     this.getDatosDashboard();
     this.getDatosGenerosGrafica();
-    this.loadChartData();
-  };
+  }
 
-  /* Valida el token del login */
-  validateToken(): void {
-    if (!this.token) {
+  validateToken():void{
+    if(!this.token){
       this.token = localStorage.getItem('token');
       let identityJSON = localStorage.getItem('identity');
-
-      if (identityJSON) {
+  
+      if(identityJSON){
         let identity = JSON.parse(identityJSON);
         this.user = identity;
         this.id = this.user.id;
         this.currentRolId = this.user.id_rol;
-        if (this.currentRolId != 3) {
+        console.log(this.currentRolId);
+        if(this.currentRolId != 2){
           this.router.navigate(['home']);
         }
       }
@@ -124,8 +99,7 @@ export class DashboardComponent {
     }
   }
 
-
-  getDatosDashboard(): void {
+  getDatosDashboard():void{
     this.superAdminService.dashboardAdmin(this.token).subscribe(
       data => {
         this.totalUsuarios = data;
@@ -137,14 +111,14 @@ export class DashboardComponent {
         this.topAliados = data.topAliados;
         this.topAliadosLabels = this.topAliados.map(aliado => aliado.nombre);
         this.topAliadosData[0].data = this.topAliados.map(aliado => aliado.asesorias);
-        // this.pieChartData = [{
-        //   label: 'Asesorias',
-        //   data: [data.conteoAsesorias.asesoriasAsignadas, data.conteoAsesorias.asesoriasSinAsignar],
-        //   backgroundColor: [
-        //     'rgb(255, 99, 132)',
-        //     'rgb(54, 162, 235)'
-        //   ],
-        // }];
+        this.pieChartData = [{
+          label: 'Asesorias',
+          data: [data.conteoAsesorias.asesoriasAsignadas, data.conteoAsesorias.asesoriasSinAsignar],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)'
+          ],
+        }];
         console.log(data);
       },
       error => {
@@ -152,13 +126,13 @@ export class DashboardComponent {
       }
     )
   }
-
-  getDatosGenerosGrafica(): void {
+  
+  getDatosGenerosGrafica():void{
     this.aliadoService.graficaDatosGeneros(this.token).subscribe(
       data => {
-        console.log('data generos', data);
+        console.log('data generos',data);
         const dataGenero = data.map(item => item.total);
-        this.doughnutChartData = [{
+        this.doughnutChartData =[{
           label: 'Generos',
           data: dataGenero,
           backgroundColor: [
@@ -179,21 +153,4 @@ export class DashboardComponent {
     )
   }
 
-
-  loadChartData() {
-    this.aliadoService.getDashboard(this.token, this.id).subscribe(
-      data => {
-        console.log(data);
-        this.pendientesFinalizadasData[0].data = [
-          data['Asesorias Pendientes'],
-          data['Asesorias Finalizadas'],
-          data['Asesorias Sin Asignar'],
-          data['Asesorias Asignadas']
-        ];
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
 }

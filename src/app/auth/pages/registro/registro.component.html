@@ -3,7 +3,7 @@
     class="absolute top-0 left-0 w-full  min-h-screen bg-cover bg-custom-150px md:bg-center bg-no-repeat bg-[url('./assets/images/fondoRegister.jpg')] md:text-[16px]">
 
     <div class="grid justify-center content-center min-h-screen my-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 justify-center content-center ">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 justify-center content-center pl-10">
             <!-- columna 1 -->
             <div class="col-span-1 md:content-center  ">
                 <div class="flex items-center justify-center">
@@ -93,7 +93,6 @@
                                 styles="pointer-events: auto;"></fa-icon>
                         </div>
 
-                        <!-- pregunta 4 -->
                         <div>
                             <label for="documento" class="block truncate">Número de Documento:</label>
                             <div class="mt-2">
@@ -102,9 +101,9 @@
                             </div>
                             <div *ngIf="submitted && f.documento.errors" class="max-w-[19rem] overflow-hidden mt-1">
                               <div *ngIf="f.documento.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
-                              <div *ngIf="f.documento.errors.numberRange">El número de documento debe tener entre 5 y 12 dígitos</div>
+                              <div *ngIf="f.documento.errors.lengthError" class="text-red-700 pl-2 rounded-lg inline-block">{{ f.documento.errors.lengthError }}</div>
                               <div *ngIf="f.documento.errors.exists" class="text-red-700 pl-2 rounded-lg inline-block">El número de documento ya existe. Por favor, corrígelo.</div>
-                            </div>
+                            </div>                       
                           </div>
                         <div class="flex justify-center">
                             <button (click)="next()"
@@ -127,9 +126,9 @@
                             </div>
                             <div *ngIf="submitted && f.fecha_nacimiento.errors" class="max-w-[19rem] overflow-hidden mt-1">
                                 <div *ngIf="f.fecha_nacimiento.errors.required" class="text-red-700 pl-2 rounded-lg inline-block">Este campo es requerido *</div>
-                                <div *ngIf="f.fecha_nacimiento.errors.futureDate" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no puede ser una fecha futura*</div>
-                                <div *ngIf="f.fecha_nacimiento.errors.tooOld" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no puede ser mayor a 100 años*</div>
-                                <div *ngIf="f.fecha_nacimiento.errors.tooRecent" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no puede ser menor a 10 años*</div>
+                                <div *ngIf="f.fecha_nacimiento.errors.futureDate" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no es válida*</div>
+                                <div *ngIf="f.fecha_nacimiento.errors.tooOld" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no es válida*</div>
+                                <div *ngIf="f.fecha_nacimiento.errors.tooRecent" class="text-red-700 pl-2 rounded-lg inline-block">La fecha no es válida*</div>
                             </div>
                         </div>
 

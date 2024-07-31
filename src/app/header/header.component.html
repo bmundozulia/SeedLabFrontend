@@ -1,7 +1,24 @@
-<header class="h-auto w-full">
-    <div class="md:pl-14 max-md:pl-14 pt-3 max-sm:pl-14 max-sm:pr-5">
-        <h1 class="font-bold h-6 text-4xl max-md:text-3xl max-sm:text-xl max-sm:mt-6">{{ title }}</h1>
-        <h2 class="text-gray-400 text-sm max-sm:pt-0.5 md:pt-3  md:text-xl max-sm:mt-8 ">{{ subtitle }}</h2>
+<!-- <header class="flex flex-col md:flex-row justify-between items-center mb-6">
+    <div class="flex flex-col items-center max-md:mx-auto max-md:w-auto md:mr-4 w-full md:w-auto mb-4 md:mb-0">
+      <div class="border-b-2 border-sky-500 flex items-center justify-center w-full md:w-auto">
+        <img [src]="logoUrl" class="pb-2 md:w-28 lg:w-36 xl:w-52" alt="">
+        
+      </div>
+      <div class="text-center text-sky-500 font-bold">
+        {{ subtitle }}
+      </div>
     </div>
-    <hr>
-</header>
+  </header> -->
+  
+  <header class="flex flex-col items-center mb-4 sm:mb-6 p-2 sm:p-4">
+    <div class="w-full flex flex-col items-center">
+      <div class="border-b-2 border-sky-500 flex justify-center w-full pb-2">
+        <img [src]="logoUrl" 
+             class="w-32 sm:w-40 md:w-40 lg:w-48 xl:w-52 h-auto object-contain" 
+             alt="Logo">
+      </div>
+      <div class="text-center text-sky-500 font-bold mt-2 text-sm sm:text-base">
+        {{ subtitle }}
+      </div>
+    </div>
+  </header>

@@ -12,7 +12,8 @@ module.exports = {
 
       },
       colors: {
-        'custom-gray': 'rgba(188, 188, 188, 0.5)'
+        'line-gray': 'rgba(230, 230, 230, 1)',
+        'form-gray': 'rgba(250, 250, 250, 1)'
       }
     },
   },

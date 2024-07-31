@@ -86,7 +86,7 @@ export class SuperadminService {
 
   crearContenicoLeccionSuperAdmin(access_token:string, contenido_leccion:Contenido_Leccion):Observable<any>{
     const options = { headers: this.CreacionHeaders(access_token)};
-    return this.http.post(this.url+"contenido_por_leccion",contenido_leccion,options)
+    return this.http.post(environment.apiUrl+"contenido_por_leccion/crearContenidoPorLeccion",contenido_leccion,options)
   }
 
   

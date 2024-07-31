@@ -172,7 +172,7 @@ export class AddActividadComponent implements OnInit {
       this.rutaService.rutasActivas(this.token).subscribe(
         data => {
           this.listRuta = data;
-          console.log('id ruta',);
+          console.log('id ruta',this.listRuta);
         },
         error => {
           console.log(error);

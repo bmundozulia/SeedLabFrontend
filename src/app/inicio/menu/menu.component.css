@@ -78,7 +78,7 @@
   }
 
 /* Estilos responsivos */
-@media (max-width: 30em) {
+@media (max-width: 70em) {
     .sidebar {
         position: fixed;
         top: 0;

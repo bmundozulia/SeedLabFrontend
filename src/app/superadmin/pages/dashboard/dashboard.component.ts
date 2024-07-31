@@ -3,6 +3,7 @@ import { User } from '../../../Modelos/user.model';
 import { SuperadminService } from '../../../servicios/superadmin.service';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { AliadoService } from '../../../servicios/aliado.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,7 +29,7 @@ topAliados:any = {};
 //Barras top_aliados
 public barChartOptions: ChartOptions<'bar'> ={
   responsive:true,
-  maintainAspectRatio:true 
+  maintainAspectRatio:false 
 };
 
 public barChartType: ChartType = 'bar';
@@ -49,6 +50,7 @@ public topAliadosData:ChartDataset[] = [
 //Pie-Asesorias
 public pieChartOptions: ChartOptions<'pie'> = {
   responsive: true,
+  maintainAspectRatio:false
 }
 public pieChartLabels: string[] =['Asesorias asignadas', 'Asesorias sin asignar'];
 
@@ -58,7 +60,8 @@ public pieChartPlugins = [];
 
 //Grafica generos
 public doughnutChartOptions: ChartOptions<'doughnut'> = {
-  responsive:true
+  responsive:true,
+  maintainAspectRatio:false
 }
 
 public doughnutChartLabels: string[] = ['Femenino', 'Masculino', 'Otros'];
@@ -69,7 +72,9 @@ public doughnutChartData: ChartDataset<'doughnut'>[] = [];
 
 constructor(
   private superAdminService:SuperadminService,
-  private aliadoService:AliadoService
+  private aliadoService:AliadoService,
+  private router: Router,
+
 ) {}
 
 ngOnInit() {
@@ -91,11 +96,14 @@ validateToken():void{
       this.currentRolId = this.user.id_rol;
       console.log(this.currentRolId);
       if(this.currentRolId != 1){
-        
+        this.router.navigate(['home']);
+        }
       }
     }
+    if (!this.token) {
+      this.router.navigate(['home']);
+    }
   }
-}
 
 getDatosDashboard():void{
   this.superAdminService.dashboardAdmin(this.token).subscribe(
