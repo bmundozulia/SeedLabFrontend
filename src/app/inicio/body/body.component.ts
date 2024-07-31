@@ -156,4 +156,15 @@ export class BodyComponent implements OnInit, AfterViewInit {
     }
     return lines;
   }
+
+  onImageLoad(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    const container = img.closest('.banner-image-container') as HTMLElement;
+    if (container) {
+      const aspectRatio = img.naturalHeight / img.naturalWidth;
+      container.style.paddingTop = `${aspectRatio * 100}%`;
+    }
+    this.cdr.detectChanges();
+    this.initBannerSwiper();
+  }
 }
