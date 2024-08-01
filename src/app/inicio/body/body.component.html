@@ -23,7 +23,7 @@
     </div>
  
 
-    <!-- <div class="relative w-full banner-swiper-container overflow-hidde ">
+    <div class="relative w-full banner-swiper-container overflow-hidde ">
       <div class="swiper-wrapper">
         <ng-container *ngFor="let banner of listBanner">
           <div *ngIf="banner.urlImagen"
@@ -32,17 +32,18 @@
             <img [src]="banner.urlImagen" class="banner-image w-full">
           </div>
         </ng-container>
-      </div> -->
+      </div>
 
-      <div class="relative w-full banner-swiper-container overflow-hidden">
+      <!-- <div class="relative w-full banner-swiper-container overflow-hidden">
         <div class="swiper-wrapper">
           <ng-container *ngFor="let banner of listBanner">
             <div *ngIf="banner.urlImagen"
-              class="banner-swiper-slide swiper-slide">
-              <img [src]="banner.urlImagen" alt="Banner">
+              class="relative flex-wrap items-start justify-center overflow-hidden bg-top bg-cover swiper-slide banner-swiper-slide">
+              <img [src]="banner.urlImagen" class="banner-image">
             </div>
           </ng-container>
-        </div>
+        </div> -->
+
  
 
       <div
