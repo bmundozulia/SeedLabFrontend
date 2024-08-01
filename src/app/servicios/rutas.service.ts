@@ -48,7 +48,11 @@ export class RutaService {
     const options= { headers: this.CreacionHeaders(access_token)};
     return this.http.get(this.url+'/rutaXid/'+rutaId, options);
   }
-  
+   
+  contenidoRuta(access_token:any, idRuta: number):Observable<any>{
+    const options= { headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+'/mostrarRutaContenido/'+idRuta,options);
+  }
 
 
 }

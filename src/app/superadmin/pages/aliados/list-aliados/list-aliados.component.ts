@@ -89,12 +89,12 @@ export class ListAliadosComponent implements OnInit {
         this.currentRolId = this.user.id_rol;
         console.log(this.currentRolId);
         if (this.currentRolId != 1 && this.currentRolId != 2) {
-          this.router.navigate(['/inicio/body']);
+          this.router.navigate(['home']);
         }
       }
     }
     if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['home']);
     }
   }
 

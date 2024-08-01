@@ -29,6 +29,7 @@ body, html {
   margin-block-end: 20px;
 }
 
+
 .swiper-slide {
   display: flex;
   align-items: center;
@@ -45,35 +46,6 @@ body, html {
   max-width: 450px; /* Opcional: puedes establecer un ancho máximo */
   object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
   object-position: center;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  color: black;
-  background-color: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 35%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
-
-.swiper-button-prev {
-  left: 6%;
-}
-
-.swiper-button-next {
-  right: 6%;
-}
-
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 24px;
 }
 
 .absolute {
@@ -248,84 +220,4 @@ body, html {
     padding: 0.75rem;
     margin-top: 1rem;
   }
-}
-
-/* Para pantallas muy pequeñas */
-@media (max-width: 480px) {
-  .texto-container h2 {
-    font-size: 1.3rem;
-  }
-
-  .texto-container p {
-    font-size: 0.9rem;
-  }
-
-  .logo {
-    max-width: 90%;
-  }
-
-  .descripcion-container p {
-    font-size: 0.8rem;
-  }
-  .swiper-button-prev,
-.swiper-button-next {
-  color: black;
-  background-color: white;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 30%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
-.swiper-button-prev {
-  left: 6%;
-}
-
-.swiper-button-next {
-  right: 6%;
-}
-
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 20px;
-}
-.logo-img {
-  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-  max-width: 450px; /* Opcional: puedes establecer un ancho máximo */
-  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
-  object-position: center;
-}
-:host ::ng-deep .custom-swiper-pagination {
-  display: flex !important;
-  justify-content: center !important;
-  width: auto !important;
-}
-
-:host ::ng-deep .custom-swiper-pagination {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 100% !important;
-  position: absolute;
-  bottom: 100%; /* Coloca los bullets encima del botón */
-  left: 0;
-  margin-bottom: 10px; /* Espacio entre bullets y botón */
-}
-
-:host ::ng-deep .custom-swiper-pagination .swiper-pagination-bullet {
-  width: 10px !important;
-  height: 10px !important;
-  background-color: #ccc !important;
-  opacity: 1 !important;
-  margin: 0 5px !important;
-}
-
-:host ::ng-deep .custom-swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #FA7D00 !important;
-}
 }

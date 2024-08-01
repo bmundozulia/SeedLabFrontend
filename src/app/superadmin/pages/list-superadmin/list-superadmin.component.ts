@@ -53,12 +53,12 @@ export class ListSuperadminComponent implements OnInit {
         this.user = identity;
         this.currentRolId = this.user.id_rol;
         if (this.currentRolId != 1) {
-          this.router.navigate(['/inicio/body']);
+          this.router.navigate(['home']);
         }
       }
     }
     if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['home']);
     }
   }
 
