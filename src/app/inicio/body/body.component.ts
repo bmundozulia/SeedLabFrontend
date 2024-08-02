@@ -23,6 +23,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
   isLoggedIn: boolean = false;
   logoUrl: string = '';
   sidebarColor: string = '';
+  botonesColor: string = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -91,7 +92,8 @@ export class BodyComponent implements OnInit, AfterViewInit {
     this.personalizacionesService.getPersonalizacion().subscribe(
       data => {
         this.logoUrl = data.imagen_Logo;
-        this.sidebarColor = data.color_primary;
+        this.sidebarColor = data.color_principal;
+        this.botonesColor = data.color_color_secundario;
         //console.log('logoUrl', this.logoUrl);
         console.log("personalizaciones obtenidas", data);
       },
