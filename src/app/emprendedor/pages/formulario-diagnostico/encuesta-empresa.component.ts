@@ -79,7 +79,7 @@ export class EncuestaEmpresaComponent {
   respuesta32: Respuesta = new Respuesta({});//Subpregunta 17-18 -bien
   respuesta33: Respuesta = new Respuesta({});//pregunta 18
   respuesta34: Respuesta = new Respuesta({});//Subpregunta 19-19
-  respuesta35: Respuesta = new Respuesta({});//Subpregunta 19-20156
+  respuesta35: Respuesta = new Respuesta({});//Subpregunta 19-20
   respuesta36: Respuesta = new Respuesta({});//Subpregunta 19-21
   respuesta37: Respuesta = new Respuesta({});//Subpregunta 19-22
   respuesta38: Respuesta = new Respuesta({});//Subpregunta 19-23
@@ -274,10 +274,10 @@ export class EncuestaEmpresaComponent {
           this.listaRespuestas1[respCounter + j].id_empresa = id_empresa;
 
         }
-        respCounter += currentPregunta.subPreguntas.length - 1;
+        respCounter += currentPregunta.subPreguntas.length;
 
-      } else if (currentPregunta.id === 12) {
-        //debugger
+      } else if (currentPregunta.id === 9 || currentPregunta.id === 12) {
+        debugger
         if (this.listaRespuestas1[respCounter].opcion === 'Si') {
           for (let k = 0; k < currentPregunta.subPreguntas.length; k++) {
             this.listaRespuestas1[respCounter + 1 + k].id_pregunta = currentPregunta.id;
@@ -285,7 +285,7 @@ export class EncuestaEmpresaComponent {
             //this.listaRespuestas1[respCounter + 1 + k].id_empresa = id_empresa;
 
           }
-          respCounter += currentPregunta.subPreguntas.length - 1;
+          respCounter += currentPregunta.subPreguntas.length;
         }
         respCounter++;
       } else {
