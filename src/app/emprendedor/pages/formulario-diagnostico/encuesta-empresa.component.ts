@@ -38,6 +38,9 @@ export class EncuestaEmpresaComponent {
   id_subpregunta: number | null = null;
   listaRespuestas1: Respuesta[] = [];
   listaRespuestas2: Respuesta[] = [];
+  listaRespuestas3: Respuesta[] = [];
+  listaRespuestas4: Respuesta[] = [];
+
   id_empresa = 1;
   private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
@@ -73,10 +76,10 @@ export class EncuestaEmpresaComponent {
   respuesta29: Respuesta = new Respuesta({});//Subpregunta 17-15
   respuesta30: Respuesta = new Respuesta({});//Subpregunta 17-16
   respuesta31: Respuesta = new Respuesta({});//Subpregunta 17-17
-  respuesta32: Respuesta = new Respuesta({});//Subpregunta 17-18
+  respuesta32: Respuesta = new Respuesta({});//Subpregunta 17-18 -bien
   respuesta33: Respuesta = new Respuesta({});//pregunta 18
   respuesta34: Respuesta = new Respuesta({});//Subpregunta 19-19
-  respuesta35: Respuesta = new Respuesta({});//Subpregunta 19-20
+  respuesta35: Respuesta = new Respuesta({});//Subpregunta 19-20156
   respuesta36: Respuesta = new Respuesta({});//Subpregunta 19-21
   respuesta37: Respuesta = new Respuesta({});//Subpregunta 19-22
   respuesta38: Respuesta = new Respuesta({});//Subpregunta 19-23
@@ -96,33 +99,81 @@ export class EncuestaEmpresaComponent {
   respuesta52: Respuesta = new Respuesta({});//Subpregunta 24-35
   respuesta53: Respuesta = new Respuesta({});//Subpregunta 24-36
   respuesta54: Respuesta = new Respuesta({});//pregunta 25
-  respuesta55: Respuesta = new Respuesta({});//Subpregunta 26-37
-  respuesta56: Respuesta = new Respuesta({});//Subpregunta 26-38
-  respuesta57: Respuesta = new Respuesta({});//Subpregunta 26-39
-  respuesta58: Respuesta = new Respuesta({});//Subpregunta 26-40
-  respuesta59: Respuesta = new Respuesta({});//Subpregunta 27-41
-  respuesta60: Respuesta = new Respuesta({});//Subpregunta 27-42
-  respuesta61: Respuesta = new Respuesta({});//Subpregunta 27-43
-  respuesta62: Respuesta = new Respuesta({});//Subpregunta 27-44
-  respuesta63: Respuesta = new Respuesta({});//Subpregunta 27-45
-  respuesta64: Respuesta = new Respuesta({});//pregunta 28
-  respuesta65: Respuesta = new Respuesta({});//Subpregunta 29-46
-  respuesta66: Respuesta = new Respuesta({});//Subpregunta 29-47
-  respuesta67: Respuesta = new Respuesta({});//Subpregunta 29-48
-  respuesta68: Respuesta = new Respuesta({});//Subpregunta 29-49
-
-  respuesta69: Respuesta = new Respuesta({});
-  respuesta70: Respuesta = new Respuesta({});
-  respuesta71: Respuesta = new Respuesta({});
-  respuesta72: Respuesta = new Respuesta({});
-  respuesta73: Respuesta = new Respuesta({});
-  respuesta74: Respuesta = new Respuesta({});
-  respuesta75: Respuesta = new Respuesta({});
-  respuesta76: Respuesta = new Respuesta({});
+  respuesta55: Respuesta = new Respuesta({});//pregunta 26 -bien
+  respuesta56: Respuesta = new Respuesta({});//Subpregunta 27-41
+  respuesta57: Respuesta = new Respuesta({});//Subpregunta 27-42
+  respuesta58: Respuesta = new Respuesta({});//Subpregunta 27-43
+  respuesta59: Respuesta = new Respuesta({});//Subpregunta 27-44
+  respuesta60: Respuesta = new Respuesta({});//Subpregunta 27-45
+  respuesta61: Respuesta = new Respuesta({});//pregunta 28
+  respuesta62: Respuesta = new Respuesta({});//Subpregunta 29-46
+  respuesta63: Respuesta = new Respuesta({});//Subpregunta 29-47
+  respuesta64: Respuesta = new Respuesta({});//Subpregunta 29-48
+  respuesta65: Respuesta = new Respuesta({});//Subpregunta 29-49
   //Seccion 3
-  respuesta77: Respuesta = new Respuesta({});//pregunta 30
-  respuesta78: Respuesta = new Respuesta({});//Subpregunta
-
+  respuesta66: Respuesta = new Respuesta({});//pregunta 30
+  respuesta67: Respuesta = new Respuesta({});//pregunta 31
+  respuesta68: Respuesta = new Respuesta({});//pregunta 32
+  respuesta69: Respuesta = new Respuesta({});//pregunta 33
+  respuesta70: Respuesta = new Respuesta({});//pregunta 34
+  respuesta71: Respuesta = new Respuesta({});//pregunta 35
+  respuesta72: Respuesta = new Respuesta({});//pregunta 36
+  respuesta73: Respuesta = new Respuesta({});//pregunta 37
+  respuesta74: Respuesta = new Respuesta({});//pregunta 38
+  respuesta75: Respuesta = new Respuesta({});//pregunta 39
+  respuesta76: Respuesta = new Respuesta({});//pregunta 40
+  respuesta77: Respuesta = new Respuesta({});//pregunta 41
+  //Seccion TRL
+  respuesta78: Respuesta = new Respuesta({});//subpregunta 42-50
+  respuesta79: Respuesta = new Respuesta({});//subpregunta 42-51
+  respuesta80: Respuesta = new Respuesta({});//subpregunta 42-52
+  respuesta81: Respuesta = new Respuesta({});//subpregunta 42-53
+  respuesta82: Respuesta = new Respuesta({});//subpregunta 42-54
+  respuesta83: Respuesta = new Respuesta({});//subpregunta 42-55
+  respuesta84: Respuesta = new Respuesta({});//subpregunta 42-56
+  respuesta85: Respuesta = new Respuesta({});//subpregunta 42-57
+  respuesta86: Respuesta = new Respuesta({});//subpregunta 42-58
+  respuesta87: Respuesta = new Respuesta({});//subpregunta 42-59
+  respuesta88: Respuesta = new Respuesta({});//subpregunta 42-60
+  respuesta89: Respuesta = new Respuesta({});//subpregunta 42-61
+  respuesta90: Respuesta = new Respuesta({});//subpregunta 42-62
+  respuesta91: Respuesta = new Respuesta({});//subpregunta 42-63
+  respuesta92: Respuesta = new Respuesta({});//subpregunta 42-64
+  respuesta93: Respuesta = new Respuesta({});//subpregunta 42-65
+  respuesta94: Respuesta = new Respuesta({});//subpregunta 42-66
+  respuesta95: Respuesta = new Respuesta({});//subpregunta 42-67
+  respuesta96: Respuesta = new Respuesta({});//subpregunta 42-68
+  respuesta97: Respuesta = new Respuesta({});//subpregunta 42-69
+  respuesta98: Respuesta = new Respuesta({});//subpregunta 42-70
+  respuesta99: Respuesta = new Respuesta({});//subpregunta 42-71
+  respuesta100: Respuesta = new Respuesta({});//subpregunta 42-72
+  respuesta101: Respuesta = new Respuesta({});//subpregunta 42-73
+  respuesta102: Respuesta = new Respuesta({});//subpregunta 42-74
+  respuesta103: Respuesta = new Respuesta({});//subpregunta 42-75
+  respuesta104: Respuesta = new Respuesta({});//subpregunta 42-76
+  respuesta105: Respuesta = new Respuesta({});//subpregunta 42-77
+  respuesta106: Respuesta = new Respuesta({});//subpregunta 42-78
+  respuesta107: Respuesta = new Respuesta({});//subpregunta 42-79
+  respuesta108: Respuesta = new Respuesta({});//subpregunta 42-80
+  respuesta109: Respuesta = new Respuesta({});//pregunta 43
+  respuesta110: Respuesta = new Respuesta({});//pregunta 44
+  respuesta111: Respuesta = new Respuesta({});//subpregunta 45-81
+  respuesta112: Respuesta = new Respuesta({});//subpregunta 45-82
+  respuesta113: Respuesta = new Respuesta({});//subpregunta 45-83
+  respuesta114: Respuesta = new Respuesta({});//subpregunta 45-84
+  respuesta115: Respuesta = new Respuesta({});//subpregunta 45-85
+  respuesta116: Respuesta = new Respuesta({});//subpregunta 45-86
+  respuesta117: Respuesta = new Respuesta({});//subpregunta 45-87
+  respuesta118: Respuesta = new Respuesta({});//pregunta 46
+  respuesta119: Respuesta = new Respuesta({});//subpregunta 47-88
+  respuesta120: Respuesta = new Respuesta({});//subpregunta 47-89
+  respuesta121: Respuesta = new Respuesta({});//subpregunta 47-90
+  respuesta122: Respuesta = new Respuesta({});//subpregunta 47-91
+  respuesta123: Respuesta = new Respuesta({});//subpregunta 47-92
+  respuesta124: Respuesta = new Respuesta({});//subpregunta 47-93
+  respuesta125: Respuesta = new Respuesta({});//subpregunta 47-94
+  respuesta126: Respuesta = new Respuesta({});//subpregunta 47-95
+  respuesta127: Respuesta = new Respuesta({});//subpregunta 47-96
 
 
 
@@ -162,14 +213,6 @@ export class EncuestaEmpresaComponent {
     if (!this.token) {
       this.router.navigate(['home']);
     }
-  }
-
-
-  obtenerIds(): any[] {
-    return PREGUNTAS.slice(0, 15).map(pregunta => {
-      //console.log(pregunta.id); // Verificar los IDs en la consola
-      return pregunta.id;
-    });
   }
 
 
@@ -358,9 +401,6 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta65);
     }
 
-
-
-
     const payload = { respuestas: this.listaRespuestas2, id_empresa: id_empresa };
 
 
@@ -385,9 +425,6 @@ export class EncuestaEmpresaComponent {
         } else {
           continue;
         }
-
-
-
       }
 
       if (currentPregunta.id === 24 || currentPregunta.id === 27) {
@@ -440,11 +477,104 @@ export class EncuestaEmpresaComponent {
       });*/
   }
 
+  onSubmitSeccion3() {
+    let respCounter = 0;
+    let isValidForm = true;
+    let id_empresa = 1;
+
+    this.listaRespuestas3.push(this.respuesta66);
+    this.listaRespuestas3.push(this.respuesta67);
+    this.listaRespuestas3.push(this.respuesta68);
+    this.listaRespuestas3.push(this.respuesta69);
+    this.listaRespuestas3.push(this.respuesta70);
+    this.listaRespuestas3.push(this.respuesta71);
+    this.listaRespuestas3.push(this.respuesta72);
+    this.listaRespuestas3.push(this.respuesta73);
+    this.listaRespuestas3.push(this.respuesta74);
+    this.listaRespuestas3.push(this.respuesta75);
+    this.listaRespuestas3.push(this.respuesta76);
+    this.listaRespuestas3.push(this.respuesta77);
+
+    for (let i = 30; i < 41; i++) {
+      const currentPregunta = PREGUNTAS[i];
+      this.listaRespuestas3[respCounter].id_pregunta = currentPregunta.id;
+      this.listaRespuestas3[respCounter].id_empresa = id_empresa;
+      this.listaRespuestas3[respCounter].id_subpregunta = null;
+      if (currentPregunta.isText) {
+        if (!this.listaRespuestas2[respCounter].texto_res || this.listaRespuestas2[respCounter].texto_res === '') {
+          this.alertService.errorAlert('Error', 'Deben llenar los campos');
+          isValidForm = false;
+          return;
+        }
+      } else {
+        if (!this.listaRespuestas2[respCounter].opcion || this.listaRespuestas2[respCounter].opcion === '') {
+          this.alertService.errorAlert('Error', 'Deben llenar los campos');
+          isValidForm = false;
+          return;
+        }
+      }
+      if (currentPregunta.isAffirmativeQuestion) {
+        if (this.listaRespuestas2[respCounter].opcion === 'No') {
+          i += currentPregunta.subPreguntas.length;
+          respCounter++;
+          continue;
+        }
+      }
+    }
+    respCounter++;
+  }
+
+  onSubmitSeccion4() {
+    let respCounter = 0;
+    let isValidForm = true;
+    let id_empresa = 1;
+
+    for (let i = 42; i < 47; i++) {
+      const currentPregunta = PREGUNTAS[i];
+      this.listaRespuestas4[respCounter].id_pregunta = currentPregunta.id;
+      this.listaRespuestas4[respCounter].id_empresa = id_empresa;
+      this.listaRespuestas4[respCounter].id_subpregunta = null;
+
+      if (currentPregunta.id === 42 || currentPregunta.id === 45 || currentPregunta.id === 47) {
+        for (let j = 0; j < currentPregunta.subPreguntas.length; j++) {
+          this.listaRespuestas4[respCounter + j].id_pregunta = currentPregunta.id;
+          this.listaRespuestas4[respCounter + j].id_subpregunta = currentPregunta.subPreguntas[j].id;
+          this.listaRespuestas4[respCounter + j].id_empresa = id_empresa;
+        }
+        respCounter += currentPregunta.subPreguntas.length;
+      }
+      if (currentPregunta.isText) {
+        if (!this.listaRespuestas2[respCounter].texto_res || this.listaRespuestas2[respCounter].texto_res === '') {
+          this.alertService.errorAlert('Error', 'Deben llenar los campos');
+          isValidForm = false;
+          return;
+        }
+      } else {
+        if (!this.listaRespuestas2[respCounter].opcion || this.listaRespuestas2[respCounter].opcion === '') {
+          this.alertService.errorAlert('Error', 'Deben llenar los campos');
+          isValidForm = false;
+          return;
+        }
+      }
+      if (currentPregunta.isAffirmativeQuestion) {
+        if (this.listaRespuestas2[respCounter].opcion === 'No') {
+          i += currentPregunta.subPreguntas.length;
+          respCounter++;
+          continue;
+        }
+      }
+    }
+
+    respCounter++;
+  }
+
   enviarRespuestasJson() {
     this.onSubmitSeccion1();
     this.onSubmitSeccion2();
+    this.onSubmitSeccion3();
+    this.onSubmitSeccion4();
 
-    const totalRespuestas = this.listaRespuestas1.concat(this.listaRespuestas2);
+    const totalRespuestas = this.listaRespuestas1.concat(this.listaRespuestas2, this.listaRespuestas3, this.listaRespuestas4);
     const payload = {
       respuestas: totalRespuestas,
       id_empresa: this.id_empresa
