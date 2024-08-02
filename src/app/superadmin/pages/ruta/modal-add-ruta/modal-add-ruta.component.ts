@@ -100,7 +100,7 @@ export class ModalAddRutaComponent implements OnInit {
       this.token = localStorage.getItem("token");
     }
     if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['home']);
     }
   }
 

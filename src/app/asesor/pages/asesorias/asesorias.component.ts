@@ -51,13 +51,13 @@ export class AsesoriasComponent implements OnInit {
         this.user = identity;
         this.currentRolId = this.user.id_rol;
         if (this.currentRolId != 4) {
-          this.router.navigate(['/inicio/body']);
+          this.router.navigate(['home']);
         }
       }
     }
 
     if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['home']);
     } else {
       this.loadAsesoriasFalse();
     }

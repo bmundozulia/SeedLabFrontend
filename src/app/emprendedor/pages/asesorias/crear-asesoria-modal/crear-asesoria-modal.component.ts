@@ -61,7 +61,7 @@ export class CrearAsesoriaModalComponent {
       }
     }
     if (!this.token || !this.documento) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['home']);
     }
   }
 

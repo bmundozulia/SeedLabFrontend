@@ -13,6 +13,7 @@ import { RespuestasService } from '../../../servicios/respuestas.service';
 import { Preguntas } from '../../../Modelos/preguntas.model';
 import { Respuesta } from '../../../Modelos/respuesta.model';
 import { User } from '../../../Modelos/user.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -30,8 +31,8 @@ export class EncuestaEmpresaComponent {
   section: number = 1;
   user: User;
   token = '';
-  documento: string;
-  currentRolId: string | null = null;
+  id: number | null = null;
+  currentRolId: number;
 
   id_pregunta: number;
   id_subpregunta: number | null = null;
@@ -132,6 +133,7 @@ export class EncuestaEmpresaComponent {
     private fb: FormBuilder,
     private respuestasService: RespuestasService,
     private alertService: AlertService,
+    private router: Router
   ) { }
 
 
@@ -148,11 +150,17 @@ export class EncuestaEmpresaComponent {
 
       if (identityJSON) {
         let identity = JSON.parse(identityJSON);
-        console.log(identity);
+
         this.user = identity;
-        this.documento = this.user.emprendedor.documento;
-        this.currentRolId = this.user.id_rol?.toString();
+        this.id = this.user.id_rol;
+        this.currentRolId = this.user.id_rol;
+        if (this.currentRolId != 5) {
+          this.router.navigate(['home']);
+        }
       }
+    }
+    if (!this.token) {
+      this.router.navigate(['home']);
     }
   }
 
