@@ -61,20 +61,6 @@ export class RutaEmprendedorComponent implements OnInit {
     }
   }
 
-  // contenidoDeRuta():void{
-  //   if (this.token) {
-  //     this.rutaService.contenidoRuta(this.token, this.idRuta).subscribe(
-  //       (data) =>{
-  //         this.rutaContenidoList = data;
-  //         console.log('Contenido de la ruta:', this.rutaContenidoList);
-  //       },
-  //       (err) => {
-  //         console.log(err);
-  //       }
-  //     )
-  //   }
-  // }
-
   listarRuta():void{
     // if (this.token) {
       this.rutaService.rutasActivas(this.token).subscribe(
