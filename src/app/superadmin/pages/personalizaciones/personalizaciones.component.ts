@@ -17,6 +17,12 @@ export class PersonalizacionesComponent implements OnInit {
   selectedColorPrincipal = '#C2FFFB';
   selectedColorSecundario = '#C2FFFB';
   selectedColorTerciario = '#C2FFFB';
+  descripcion_footer: Text;
+  paginaWeb: string;
+  email: string ;
+  telefono: string ;
+  direccion: string ;
+  ubicacion: string;  
   previewUrl: any = null;
   faImage = faImage;
   idPersonalizacion:number = 1;
@@ -48,6 +54,12 @@ export class PersonalizacionesComponent implements OnInit {
       color_principal: ['#C2FFFB', Validators.required],
       color_secundario: ['#C2FFFB', Validators.required],
       color_terciario: ['#C2FFFB', Validators.required],
+      descripcion_footer: ['', Validators.required],
+      paginaWeb: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      telefono: ['', Validators.required],
+      direccion: ['', Validators.required],
+      ubicacion: ['', Validators.required]
     })
   }
 
@@ -124,6 +136,12 @@ export class PersonalizacionesComponent implements OnInit {
           color_principal: this.selectedColorPrincipal,
           color_secundario: this.selectedColorSecundario,
           color_terciario: this.selectedColorTerciario,
+          descripcion_footer: this.personalizacionForm.value.descripcion_footer,
+          paginaWeb: this.personalizacionForm.value.paginaWeb,
+          email: this.personalizacionForm.value.email,
+          telefono: this.personalizacionForm.value.telefono,
+          direccion: this.personalizacionForm.value.direccion,
+          ubicacion: this.personalizacionForm.value.ubicacion,
           id_superadmin: id_temp
         };
 

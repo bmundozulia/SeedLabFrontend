@@ -65,8 +65,8 @@
               *ngFor="let aliado of listAliados">
               <img [src]="aliado.logo" [alt]="aliado.nombre" class="logo-img max-lg:mb-4 md:mt-16">
               <div class="relative w-full -mb-24 lg:-ml-1 lg:pl-1 lg:p-1 max-lg:p-4 max-lg:text-center max-sm:-mt-20">
-                <p *ngFor="let line of aliado.descripcion"
-                  class="description-line mb-1 max-sm:text-[14px] max-lg:text-center">{{ line }}</p>
+                <p
+                  class="description-line mb-1 max-sm:text-[14px] max-lg:text-center">{{ aliado.descripcion }}</p>
               </div>
             </div>
           </div>
@@ -89,19 +89,17 @@
         <div class="flex items-center max-lg:flex-col">
           <img src="/assets/images/logoSeed blanco.png" alt="Seed Lab" class="mt-2 lg:h-20 h-14 max-lg:mb-4">
           <p class="lg:text-sm max-w-md ml-3 max-lg:ml-0 max-sm:text-[12px]">
-            Este programa estará enfocado en emprendimientos de base tecnológica, para ideas validadas, que cuenten con
-            un codesarrollo, prototipado y pruebas de concepto. Se va a abordar en temas como Big Data, ciberseguridad e
-            IA, herramientas de hardware y software, inteligencia competitiva, vigilancia tecnológica y propiedad
-            intelectual.
+            {{ descripcion_footer }}
           </p>
         </div>
         <div class="mt-4 text-center lg:text-right lg:mt-0">
           <p class="mb-1 text-lg lg:mb-2 lg:text-2xl">Más información sobre Seed Lab</p>
-          <p class="text-orange-400 mb-2 lg:mb-4 text-[12px] lg:text-xl">xxxxxxxxxxx.com</p>
+          <p class="text-orange-400 mb-2 lg:mb-4 text-[12px] lg:text-xl">{{ paginaWeb }}</p>
           <h3 class="text-[12px] lg:text-2xl font-bold mb-1 lg:mb-2">Atención al cliente</h3>
           <div class="flex flex-wrap justify-center lg:block">
-            <p class="text-[12px] lg:text-xl w-1/2 lg:w-full">Calle 48 # 28 - 40</p>
-            <p class="text-[12px] lg:text-xl w-1/2 lg:w-full">Bucaramanga, Santander, Colombia</p>
+            <p class="text-[12px] lg:text-xl w-1/2 lg:w-full">{{ email }}</p>
+            <p class="text-[12px] lg:text-xl w-1/2 lg:w-full">{{ direccion }}</p>
+            <p class="text-[12px] lg:text-xl w-1/2 lg:w-full">{{ ubicacion }}</p>
           </div>
         </div>
       </div>
