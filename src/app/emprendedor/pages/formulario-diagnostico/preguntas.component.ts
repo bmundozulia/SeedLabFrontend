@@ -326,7 +326,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene claramente definido sus clientes actuales?',
         puntaje: 0,
         id_seccion: 3,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
@@ -336,7 +336,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
-        isText: false,
+        isText: true,
         subPreguntas: []
     },
     {
@@ -344,7 +344,7 @@ export const PREGUNTAS: Preguntas[] = [
         nombre: '¿Tiene definido sus clientes potenciales?',
         puntaje: 0,
         id_seccion: 3,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
@@ -354,7 +354,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
-        isText: false,
+        isText: true,
         subPreguntas: []
     },
     {
@@ -372,7 +372,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
-        isText: false,
+        isText: true,
         subPreguntas: []
     },
     {
@@ -381,7 +381,7 @@ export const PREGUNTAS: Preguntas[] = [
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
-        isText: false,
+        isText: true,
         subPreguntas: []
     },
     {

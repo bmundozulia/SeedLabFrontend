@@ -483,9 +483,19 @@ export class EncuestaEmpresaComponent {
     this.listaRespuestas3 = [];
 
     this.listaRespuestas3.push(this.respuesta66);
-    this.listaRespuestas3.push(this.respuesta67);
+    if (this.respuesta66.opcion === 'Si') {
+      this.listaRespuestas3.push(this.respuesta67);
+    }else{
+      this.respuesta67.texto_res = 'N/A';
+      this.listaRespuestas3.push(this.respuesta67);
+    }
     this.listaRespuestas3.push(this.respuesta68);
-    this.listaRespuestas3.push(this.respuesta69);
+    if (this.respuesta68.opcion === 'Si') {
+      this.listaRespuestas3.push(this.respuesta69);
+    }else{
+      this.respuesta69.texto_res = 'N/A';
+      this.listaRespuestas3.push(this.respuesta69);
+    }
     this.listaRespuestas3.push(this.respuesta70);
     this.listaRespuestas3.push(this.respuesta71);
     this.listaRespuestas3.push(this.respuesta72);
@@ -495,14 +505,14 @@ export class EncuestaEmpresaComponent {
     this.listaRespuestas3.push(this.respuesta76);
     this.listaRespuestas3.push(this.respuesta77);
 
-    for (let i = 30; i < 41; i++) {
+    for (let i = 29; i < 41; i++) {
       debugger;
       const currentPregunta = PREGUNTAS[i];
       this.listaRespuestas3[respCounter].id_pregunta = currentPregunta.id;
       this.listaRespuestas3[respCounter].id_empresa = id_empresa;
       this.listaRespuestas3[respCounter].id_subpregunta = null;
       if (currentPregunta.isText) {
-        if (!this.listaRespuestas3[respCounter].texto_res || this.listaRespuestas3[respCounter].texto_res === '') {
+        if (!this.listaRespuestas3[respCounter].texto_res || this.listaRespuestas3[respCounter].texto_res === '' && this.listaRespuestas3[respCounter].texto_res !== 'N/A') {
           this.alertService.errorAlert('Error', 'Deben llenar los campos');
           isValidForm = false;
           return;
