@@ -23,9 +23,10 @@ export class BodyComponent implements OnInit, AfterViewInit {
   listBanner: Banner [] = [];
   listFooter: Personalizaciones [] = [];
   isLoggedIn: boolean = false;
-  logoUrl: string = '';
+  logoUrl: File;
   sidebarColor: string = '';
   botonesColor: string = '';
+  logoFooter:File;
   descripcion_footer: Text;
   paginaWeb: string;
   email: string;
@@ -77,7 +78,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
     this.aliadoService.getbanner().subscribe(
       data => {
         this.listBanner = data;
-       // console.log('Banner:', data);
+       console.log('Banner:', data);
       },
       error => {
         console.log(error);
@@ -99,9 +100,10 @@ export class BodyComponent implements OnInit, AfterViewInit {
   getPersonalizacion() {
     this.personalizacionesService.getPersonalizacion().subscribe(
       data => {
-        this.logoUrl = data.imagen_Logo;
+        this.logoUrl = data.imagen_logo;
         this.sidebarColor = data.color_principal;
         this.botonesColor = data.color_color_secundario;
+        this.logoFooter = data.logo_footer;
         this.descripcion_footer = data.descripcion_footer;
         this.paginaWeb = data.paginaWeb;
         this.email = data.email;
@@ -109,7 +111,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
         this.direccion = data.direccion;
         this.ubicacion = data.ubicacion;
 
-        console.log(data);
+        //console.log(data);
         console.log("personalizaciones obtenidas", data);
       },
       error => {
