@@ -1,157 +1,246 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-full bg-gray-100">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Actividades</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100">
-  <div class="container mx-auto p-4">
-    <header class="mb-6">
-      <h1 class="text-3xl font-bold text-purple-700 mb-2">
-        <span class="bg-purple-200 rounded-full p-2 mr-2"></span>
-        Actividades
-      </h1>
-      <h2 class="text-2xl text-purple-600">Editar Actividades</h2>
+<body class="h-full">
+  <div class="min-h-full">
+    <header class="bg-white shadow-sm">
+      <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+        <h1 class="text-2xl font-semibold leading-6 text-purple-700">Actividades</h1>
+        <h2 class="mt-1 text-sm text-purple-600">Editar Actividades</h2>
+      </div>
     </header>
 
-
-
-    <div class="flex">
-      <nav class="w-1/3 pr-4">
-        <ul class="bg-white rounded-lg shadow">
-          <li class="border-b">
-            <div *ngFor="let ruta of listRutaActNivLec">
-              <div *ngFor="let actividad of ruta.actividades">
-                <div (click)="actividadSelect(actividad)"
-                  [ngClass]="{'border-2 border-blue-500': actividad === actividadSeleccionada}">
-          <li class="p-3 border-b">{{ actividad.nombre }}</li>
-    </div>
-    <!-- Mostrar niveles si la actividad está seleccionada -->
-    <ul class="pl-4" *ngIf="actividad === actividadSeleccionada">
-      <li *ngFor="let nivel of actividad.nivel">
-        <div (click)="nivelSelect(nivel)" [ngClass]="nivel === nivelSeleccionada">
-          <span>{{ nivel.nombre }}</span>
-        </div>
-        <ul class="pl-0" *ngIf="nivel === nivelSeleccionada">
-          <li *ngFor="let leccion of nivel.lecciones">
-            <div (click)="leccionSelect(leccion)" [ngClass]="leccion === leccionSeleccionada">
-              <span>{{ leccion.nombre }}</span>
-            </div>
-            <ul *ngIf="leccion === leccionSeleccionada">
-              <li *ngFor="let contenido of leccion.contenido_lecciones"
-                class="p-3 pl-18 border-b border-l border-blue-400">
-                <div (click)="contenidoLeccionSelect(contenido)"
-                  [ngClass]="{'bg-blue-300': contenido === contenidoLeccionSeleccionada}">
-                  <span>{{ contenido.titulo }}</span>
+    <main class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-6">
+        <nav class="w-full lg:w-1/3">
+          <div class="bg-white overflow-hidden shadow rounded-lg">
+            <ul class="divide-y divide-gray-200">
+              <li class="border-b" *ngFor="let ruta of listRutaActNivLec">
+                <div *ngFor="let actividad of ruta.actividades">
+                  <div (click)="actividadSelect(actividad)"
+                    class="px-4 py-4 hover:bg-gray-50 cursor-pointer transition duration-150 ease-in-out"
+                    [ngClass]="{'bg-blue-50 border-l-4 border-blue-500': actividad === actividadSeleccionada}">
+                    <span class="text-sm font-medium text-gray-900">{{ actividad.nombre }}</span>
+                  </div>
+                  <ul class="pl-4 bg-gray-50" *ngIf="actividad === actividadSeleccionada">
+                    <li *ngFor="let nivel of actividad.nivel" class="py-2">
+                      <div (click)="nivelSelect(nivel)"
+                        class="text-sm text-gray-700 hover:text-gray-900 cursor-pointer"
+                        [ngClass]="{'font-semibold': nivel === nivelSeleccionada}">
+                        {{ nivel.nombre }}
+                      </div>
+                      <ul class="pl-4 mt-1" *ngIf="nivel === nivelSeleccionada">
+                        <li *ngFor="let leccion of nivel.lecciones" class="py-1">
+                          <div (click)="leccionSelect(leccion)"
+                            class="text-xs text-gray-600 hover:text-gray-900 cursor-pointer"
+                            [ngClass]="{'font-semibold': leccion === leccionSeleccionada}">
+                            {{ leccion.nombre }}
+                          </div>
+                          <ul class="pl-4 mt-1" *ngIf="leccion === leccionSeleccionada">
+                            <li *ngFor="let contenido of leccion.contenido_lecciones"
+                              class="py-1 text-xs text-gray-500 hover:text-gray-700 cursor-pointer"
+                              (click)="contenidoLeccionSelect(contenido)"
+                              [ngClass]="{'font-semibold': contenido === contenidoLeccionSeleccionada}">
+                              {{ contenido.titulo }}
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
                 </div>
               </li>
             </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  </div>
-  </li>
-  </ul>
-  </nav>
+          </div>
+        </nav>
 
-  <main class="w-2/3">
-    <div class="bg-white rounded-lg shadow p-4">
-      <div *ngIf="contenidoLeccionSeleccionada; else leccionDetalles">
-        <h3 class="text-lg font-semibold mb-3">Detalles del Contenido</h3>
-        <ul>
-          <li class="p-3 border-b">Nombre: {{ contenidoLeccionSeleccionada.titulo }}</li>
-          <li class="p-3 border-b">Descripción: {{ contenidoLeccionSeleccionada.descripcion }}</li>
-          <li class="p-3 border-b">Fuente: {{ contenidoLeccionSeleccionada.fuente }}</li>
-          <li class="p-3 border-b">Tipo dato: {{ contenidoLeccionSeleccionada.id_tipo_dato }}</li>
-        </ul>
+        <div class="w-full lg:w-2/3 space-y-6">
+          <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <div *ngIf="contenidoLeccionSeleccionada; else leccionDetalles">
+                <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Detalles del Contenido</h3>
+                <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                  <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Nombre</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ contenidoLeccionSeleccionada.titulo }}</dd>
+                  </div>
+                  <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Descripción</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ contenidoLeccionSeleccionada.descripcion }}</dd>
+                  </div>
+                  <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Fuente</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ contenidoLeccionSeleccionada.fuente }}</dd>
+                  </div>
+                  <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Tipo dato</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ getTipoDatoNombre(contenidoLeccionSeleccionada.id_tipo_dato) }}</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <ng-template #leccionDetalles>
+                <div *ngIf="leccionSeleccionada; else nivelDetalles">
+                  <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Detalles de la Lección</h3>
+                  <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Nombre</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{ leccionSeleccionada.nombre }}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </ng-template>
+
+              <ng-template #nivelDetalles>
+                <div *ngIf="nivelSeleccionada; else actividadDetalles">
+                  <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Detalles del Nivel</h3>
+                  <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Nombre</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{ nivelSeleccionada.nombre }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Descripción</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{ nivelSeleccionada.descripcion }}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </ng-template>
+
+              <ng-template #actividadDetalles>
+                <div *ngIf="actividadSeleccionada">
+                  <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Detalles de la Actividad</h3>
+                  <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Nombre</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{ actividadSeleccionada.nombre }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Descripción</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{ actividadSeleccionada.descripcion }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Ruta Multi</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{ actividadSeleccionada.ruta_multi }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Tipo de Dato</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{ getTipoDatoNombre(actividadSeleccionada.id_tipo_dato) }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Aliado</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{ getAliadoNombre(actividadSeleccionada.id_aliado) }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Asesor</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{ getAsesoresNombre(actividadSeleccionada.id_asesor) }}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+
+          <!-- Formularios de Edición -->
+          <div class="bg-white overflow-hidden shadow rounded-lg" *ngIf="actividadSeleccionada">
+            <div class="px-4 py-5 sm:p-6">
+              <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Editar Actividad</h3>
+              <form [formGroup]="actividadForm" (ngSubmit)="updateActividad()" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Nombre:</label>
+                  <input formControlName="nombre" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Descripción:</label>
+                  <input formControlName="descripcion" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Tipo Dato:</label>
+                  <input formControlName="id_tipo_dato" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Ruta Multi:</label>
+                  <input formControlName="ruta_multi" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Aliado:</label>
+                  <input formControlName="id_aliado" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Asesor:</label>
+                  <input formControlName="id_asesor" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Actualizar Actividad</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="bg-white overflow-hidden shadow rounded-lg" *ngIf="nivelSeleccionada">
+            <div class="px-4 py-5 sm:p-6">
+              <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Editar Nivel</h3>
+              <form [formGroup]="nivelForm" (ngSubmit)="updateNivel()" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Nombre:</label>
+                  <input formControlName="nombre" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Descripción:</label>
+                  <input formControlName="descripcion" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Actualizar Nivel</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="bg-white overflow-hidden shadow rounded-lg" *ngIf="leccionSeleccionada">
+            <div class="px-4 py-5 sm:p-6">
+              <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Editar Lección</h3>
+              <form [formGroup]="leccionForm" (ngSubmit)="updateLeccion()" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Nombre:</label>
+                  <input formControlName="nombre" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Actualizar Lección</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="bg-white overflow-hidden shadow rounded-lg" *ngIf="contenidoLeccionSeleccionada">
+            <div class="px-4 py-5 sm:p-6">
+              <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Editar Contenido por Lección</h3>
+              <form [formGroup]="contenidoLeccionForm" (ngSubmit)="updateContenidoLeccion()" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Titulo:</label>
+                  <input formControlName="titulo" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Descripción:</label>
+                  <input formControlName="descripcion" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Tipo Dato:</label>
+                  <input formControlName="id_tipo_dato" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">Fuente:</label>
+                  <input formControlName="fuente" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                </div>
+                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Actualizar Contenido</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-      <ng-template #leccionDetalles>
-        <div *ngIf="leccionSeleccionada; else nivelDetalles">
-          <h3 class="text-lg font-semibold mb-3">Detalles de la Lección</h3>
-          <ul>
-            <li class="p-3 border-b">Nombre: {{ leccionSeleccionada.nombre }}</li>
-          </ul>
-        </div>
-      </ng-template>
-
-      <ng-template #nivelDetalles>
-        <div *ngIf="nivelSeleccionada; else actividadDetalles">
-          <h3 class="text-lg font-semibold mb-3">Detalles del Nivel</h3>
-          <ul>
-            <li class="p-3 border-b">Nombre: {{ nivelSeleccionada.nombre }}</li>
-            <li class="p-3 border-b">Descripción: {{ nivelSeleccionada.descripcion }}</li>
-          </ul>
-        </div>
-      </ng-template>
-
-      <ng-template #actividadDetalles>
-        <div *ngIf="actividadSeleccionada">
-          <h3 class="text-lg font-semibold mb-3">Detalles de la Actividad</h3>
-          <ul>
-            <li class="p-3 border-b">Nombre: {{ actividadSeleccionada.nombre }}</li>
-            <li class="p-3 border-b">Descripción: {{ actividadSeleccionada.descripcion }}</li>
-            <li class="p-3 border-b">Ruta Multi: {{ actividadSeleccionada.ruta_multi }}</li>
-            <li class="p-3 border-b">Tipo de Dato: {{ actividadSeleccionada.id_tipo_dato }}</li>
-            <li class="p-3 border-b">Aliado: {{ actividadSeleccionada.id_aliado }}</li>
-            <li class="p-3 border-b">Asesor: {{ actividadSeleccionada.id_asesor }}</li>
-          </ul>
-        </div>
-      </ng-template>
-    </div>
-  </main>
-  <!-- Formularios de Edición -->
-   
-  <div class="bg-white rounded-lg shadow p-4" *ngIf="actividadSeleccionada">
-    <h3 class="text-lg font-semibold mb-3">Editar Actividad</h3>
-    <form [formGroup]="actividadForm" (ngSubmit)="updateActividad()">
-      <label>Nombre:</label>
-      <input formControlName="nombre" />
-      <label>Descripción:</label>
-      <input formControlName="descripcion" />
-      <!-- Otros campos -->
-      <button type="submit">Actualizar Actividad</button>
-    </form>
-  </div>
-
-  <div class="bg-white rounded-lg shadow p-4" *ngIf="nivelSeleccionada">
-    <h3 class="text-lg font-semibold mb-3">Editar Nivel</h3>
-    <form [formGroup]="nivelForm" (ngSubmit)="updateNivel()">
-      <label>Nombre:</label>
-      <input formControlName="nombre" />
-      <label>Descripción:</label>
-      <input formControlName="descripcion" />
-      <button type="submit">Actualizar Nivel</button>
-    </form>
-  </div>
-
-  <div class="bg-white rounded-lg shadow p-4" *ngIf="leccionSeleccionada">
-    <h3 class="text-lg font-semibold mb-3">Editar Lección</h3>
-    <form [formGroup]="leccionForm" (ngSubmit)="updateLeccion()">
-      <label>Nombre:</label>
-      <input formControlName="nombre" />
-      <button type="submit">Actualizar Lección</button>
-    </form>
-  </div>
-
-  <div class="bg-white rounded-lg shadow p-4" *ngIf="contenidoLeccionSeleccionada">
-    <h3 class="text-lg font-semibold mb-3">Editar Contenido por Lección</h3>
-    <form [formGroup]="contenidoLeccionForm" (ngSubmit)="updateContenidoLeccion()">
-      <label>Titulo:</label>
-      <input formControlName="titulo" />
-      <label>Descripción:</label>
-      <input formControlName="descripcion" />
-      <button type="submit">Actualizar Contenido</button>
-    </form>
-  </div>
-  </div>
+    </main>
   </div>
 </body>
-
 </html>
 
 

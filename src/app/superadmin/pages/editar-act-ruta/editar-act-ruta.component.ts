@@ -9,6 +9,10 @@ import { Actividad } from '../../../Modelos/actividad.model';
 import { NivelService } from '../../../servicios/nivel.service';
 import { LeccionService } from '../../../servicios/leccion.service';
 import { ContenidoLeccionService } from '../../../servicios/contenido-leccion.service';
+import { SuperadminService } from '../../../servicios/superadmin.service';
+import { Aliado } from '../../../Modelos/aliado.model';
+import { AsesorService } from '../../../servicios/asesor.service';
+import { Asesor } from '../../../Modelos/asesor.model';
 
 @Component({
   selector: 'app-editar-act-ruta',
@@ -22,14 +26,19 @@ export class EditarActRutaComponent {
   currentRolId: number;
   rutaId: number | null = null;
   actividadId: any;
-  nivelId:any;
+  nivelId: any;
   leccionId: any;
-  contenidoId:any;
+  contenidoId: any;
 
 
   ////
   listRutaActNivLec: Ruta[] = [];
+  listaTipoDato: Actividad[] = [];
+  listaAliados: Aliado[] = [];
+  listaAsesores: Asesor[] = [];
 
+
+  ////////
   actividadSeleccionada: any | null;
   rutaSeleccionada: any | null;
   nivelSeleccionada: any | null;
@@ -37,7 +46,7 @@ export class EditarActRutaComponent {
   contenidoLeccionSeleccionada: any | null;
   ////
   actividadForm = this.fb.group({
-    id:[null],
+    id: [null],
     nombre: [''],
     descripcion: [''],
     ruta_multi: [''],
@@ -46,21 +55,21 @@ export class EditarActRutaComponent {
     id_aliado: ['']
   })
 
-  
+
 
   nivelForm = this.fb.group({
-    id:[null],
+    id: [null],
     nombre: [''],
     descripcion: ['']
   });
 
   leccionForm = this.fb.group({
-    id:[null],
+    id: [null],
     nombre: ['']
   });
 
   contenidoLeccionForm = this.fb.group({
-    id:[null],
+    id: [null],
     titulo: [''],
     descripcion: [''],
     fuente: [''],
@@ -78,7 +87,11 @@ export class EditarActRutaComponent {
     private actividadService: ActividadService,
     private nivelService: NivelService,
     private leccionService: LeccionService,
-    private contenidoLeccionService: ContenidoLeccionService
+    private contenidoLeccionService: ContenidoLeccionService,
+    private superAdminService: SuperadminService,
+    private asesorService: AsesorService
+
+
 
   ) {
 
@@ -89,10 +102,13 @@ export class EditarActRutaComponent {
     this.route.queryParams.subscribe(params => {
       this.rutaId = +params['id_ruta'];
 
-    })
+    });
     this.validateToken();
     this.verEditar();
-    
+    this.tipoDato();
+    this.aliados();
+    this.asesores();
+
   }
 
   validateToken(): void {
@@ -171,13 +187,13 @@ export class EditarActRutaComponent {
 
   updateActividad(): void {
     const actividadData = this.actividadForm.value;
-    this.actividadService.updateActividad(this.token,this.actividadId,actividadData).subscribe(
+    this.actividadService.updateActividad(this.token, this.actividadId, actividadData).subscribe(
       (data) => {
         console.log('actualización exitosa', data);
-        
+
       },
       (error) => {
-        console.log('dasdasdasd',this.actividadId);
+        //console.log('dasdasdasd',this.actividadId);
         console.log('Error al actualizar', error);
       }
     )
@@ -185,13 +201,13 @@ export class EditarActRutaComponent {
 
   updateNivel(): void {
     const nivelData = this.nivelForm.value;
-    this.nivelService.updateNivel(this.token,this.nivelId,nivelData).subscribe(
+    this.nivelService.updateNivel(this.token, this.nivelId, nivelData).subscribe(
       (data) => {
         console.log('actualización exitosa', data);
         location.reload();
       },
       (error) => {
-        console.log('pooooooo',this.nivelId);
+        //console.log('pooooooo',this.nivelId);
         console.log('Error al actualizar', error);
       }
     )
@@ -199,12 +215,12 @@ export class EditarActRutaComponent {
 
   updateLeccion(): void {
     const leccionData = this.leccionForm.value;
-    this.leccionService.updateLeccion(this.token,this.leccionId,leccionData).subscribe(
+    this.leccionService.updateLeccion(this.token, this.leccionId, leccionData).subscribe(
       (data) => {
         console.log('actualización exitosa', data);
       },
       (error) => {
-        console.log('pooooooo',this.leccionId);
+        //console.log('pooooooo',this.leccionId);
         console.log('Error al actualizar', error);
       }
     )
@@ -212,16 +228,71 @@ export class EditarActRutaComponent {
 
   updateContenidoLeccion(): void {
     const contenidoData = this.contenidoLeccionForm.value;
-    this.contenidoLeccionService.updateContenidoLeccion(this.token,this.contenidoId,contenidoData).subscribe(
+    this.contenidoLeccionService.updateContenidoLeccion(this.token, this.contenidoId, contenidoData).subscribe(
       (data) => {
         console.log('actualización exitosa', data);
       },
       (error) => {
-        console.log('weeeeeeeee',this.contenidoId)
+        //console.log('weeeeeeeee',this.contenidoId)
         console.log('Error al actualizar', error);
       }
     )
   }
+
+  tipoDato(): void {
+    this.actividadService.getTipoDato(this.token).subscribe(
+      (data) => {
+        this.listaTipoDato = data;
+        console.log('datos tipo dato', this.listaTipoDato);
+      },
+      error => {
+        console.log('Error al obtener datos tipo dato', error);
+      }
+    )
+  }
+
+  aliados(): void {
+    this.superAdminService.listarAliado(this.token).subscribe(
+      (data) => {
+        this.listaAliados = data;
+        console.log('datos aliados', this.listaAliados);
+      },
+      error => {
+        console.log('Error al obtener datos aliados', error);
+      }
+    )
+  }
+
+  asesores(): void {
+    this.asesorService.listarAsesores(this.token).subscribe(
+      (data) => {
+        this.listaAsesores = data;
+        console.log('datos asesores', this.listaAsesores);
+      },
+      error => {
+        console.log('Error al obtener datos asesores', error);
+      }
+    )
+  }
+
+
+
+  getTipoDatoNombre(id: number): string {
+    const tipoDato = this.listaTipoDato.find(td => td.id === id);
+    return tipoDato ? tipoDato.nombre : 'Desconocido';
+  }
+
+  getAliadoNombre(id: number): string {
+    const aliado = this.listaAliados.find(a => a.id === id);
+    return aliado ? aliado.nombre : 'Desconocido';
+  }
+
+  getAsesoresNombre(id: number): string {
+    const asesores = this.listaAsesores.find(a => a.id === id);
+    return asesores ? asesores.nombre : 'Desconocido';
+  }
+
+
 
 
 
