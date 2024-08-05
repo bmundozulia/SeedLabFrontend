@@ -36,7 +36,7 @@ export class ReportesComponent {
         this.user = identity;
         this.id = this.user.id;
         this.currentRolId = this.user.id_rol;
-        if (this.currentRolId != 4) {
+        if (this.currentRolId != 2) {
           this.router.navigate(['home']);
         }
       }

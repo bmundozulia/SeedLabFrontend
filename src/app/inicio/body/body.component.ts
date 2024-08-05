@@ -8,6 +8,7 @@ import { Banner } from '../../Modelos/banner.model';
 import { MatToolbar } from '@angular/material/toolbar';
 import { AuthService } from '../../servicios/auth.service';
 import { SuperadminService } from '../../servicios/superadmin.service';
+import { Personalizaciones } from '../../Modelos/personalizaciones.model';
 
 @Component({
   selector: 'app-body',
@@ -20,10 +21,17 @@ export class BodyComponent implements OnInit, AfterViewInit {
   alliesSwiper: Swiper | undefined;
   listAliados: Aliado[] = [];
   listBanner: Banner [] = [];
+  listFooter: Personalizaciones [] = [];
   isLoggedIn: boolean = false;
   logoUrl: string = '';
   sidebarColor: string = '';
   botonesColor: string = '';
+  descripcion_footer: Text;
+  paginaWeb: string;
+  email: string;
+  telefono: string;
+  direccion: string;
+  ubicacion: string;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -94,7 +102,14 @@ export class BodyComponent implements OnInit, AfterViewInit {
         this.logoUrl = data.imagen_Logo;
         this.sidebarColor = data.color_principal;
         this.botonesColor = data.color_color_secundario;
-        //console.log('logoUrl', this.logoUrl);
+        this.descripcion_footer = data.descripcion_footer;
+        this.paginaWeb = data.paginaWeb;
+        this.email = data.email;
+        this.telefono = data.telefono;
+        this.direccion = data.direccion;
+        this.ubicacion = data.ubicacion;
+
+        console.log(data);
         console.log("personalizaciones obtenidas", data);
       },
       error => {
