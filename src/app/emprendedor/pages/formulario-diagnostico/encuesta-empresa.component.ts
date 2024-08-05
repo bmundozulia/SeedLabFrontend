@@ -463,7 +463,7 @@ export class EncuestaEmpresaComponent {
 
   currentSubSectionIndex: number = 0;
   currentIndex: number = 0;
-  subSectionPerSection: number[] = [3, 3, 2, 9];
+  subSectionPerSection: number[] = [3, 3, 2, 7];
   progressPercentage: number = 0;
 
   updateProgress() {

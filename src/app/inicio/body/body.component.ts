@@ -25,6 +25,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
   isLoggedIn: boolean = false;
   logoUrl: string = '';
   sidebarColor: string = '';
+  botonesColor: string = '';
   descripcion_footer: Text;
   paginaWeb: string;
   email: string;
@@ -99,7 +100,8 @@ export class BodyComponent implements OnInit, AfterViewInit {
     this.personalizacionesService.getPersonalizacion().subscribe(
       data => {
         this.logoUrl = data.imagen_Logo;
-        this.sidebarColor = data.color_primary;
+        this.sidebarColor = data.color_principal;
+        this.botonesColor = data.color_color_secundario;
         this.descripcion_footer = data.descripcion_footer;
         this.paginaWeb = data.paginaWeb;
         this.email = data.email;

@@ -323,7 +323,7 @@ export const PREGUNTAS: Preguntas[] = [
     },
     {
         id: 30,//respuesta70
-        nombre: '¿Tiene claramente definico sus clientes actuales?',
+        nombre: '¿Tiene claramente definido sus clientes actuales?',
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
@@ -395,7 +395,7 @@ export const PREGUNTAS: Preguntas[] = [
     },
     {
         id: 38,
-        nombre: '¿Ha participado en otras estrategias de fortalecimeinto, semilla, aceleración y/o similares?',
+        nombre: '¿Ha participado en otras estrategias de fortalecimiento, semilla, aceleración y/o similares?',
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
