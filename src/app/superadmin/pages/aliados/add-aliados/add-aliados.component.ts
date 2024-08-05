@@ -1,5 +1,5 @@
 
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AliadoService } from '../../../../servicios/aliado.service';;
@@ -37,36 +37,45 @@ export class AddAliadosComponent {
   compressedImage: string;
   bannerFile: File | null = null;
   selectedBanner: File | null = null;
+  selectedLogo: File | null = null;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   faFileUpload = faFileUpload;
   faFileLines = faFileLines;
   imagePreview: string | ArrayBuffer | null = null;
+  aliadoid: string;
 
-
-
+  bannerForm: FormGroup;
   aliadoForm: FormGroup;
+
   constructor(private aliadoService: AliadoService,
     private router: Router,
     private formBuilder: FormBuilder,
     private imageCompress: NgxImageCompressService,
     private cdRef: ChangeDetectorRef) {
+
     this.aliadoForm = this.formBuilder.group({
-      nombre: ['',Validators.required],
+      nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
-      logo: ['', Validators.required], // Puedes incluir el campo de logo si lo necesitas
-      banner: [''],
-      ruta: ['', Validators.required],
-      tipodato: ['', Validators.required],
+      logo: [''], // Puedes incluir el campo de logo si lo necesitas
+      ruta: [''],
+      tipodato: [''],
       email: ['', Validators.required],
       password: ['', Validators.required],
       estado: [1]
     });
+
+    this.bannerForm = this.formBuilder.group({
+      urlImagen: [''],
+      descripcion: ['', Validators.required],
+      estadobanner: ['Activo'],
+      color: ['', Validators.required]
+    });
+
   }
 
   ngOnInit(): void {
     this.validateToken();
-    this.mostrarOcultarContenido();
   }
 
   validateToken(): void {
@@ -89,150 +98,148 @@ export class AddAliadosComponent {
     }
   }
 
-  onBannerSelected(event: Event): void {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      this.selectedBanner = file;
-      this.aliadoForm.patchValue({ banner: file.name });
-    }
-  }
-
-  onFileSelected(event: any): void {
-    const file: File = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const img = new Image();
-        img.src = e.target.result;
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          canvas.width = 600; // Nueva anchura
-          canvas.height = 600; // Nueva altura
-          const pica = Pica();
-          pica.resize(img, canvas)
-            .then((result) => pica.toBlob(result, 'image/jpeg', 0.90))
-            .then((blob) => {
-              const reader2 = new FileReader();
-              reader2.onload = (e2: any) => {
-                this.logo = e2.target.result;
-                this.aliadoForm.patchValue({ logo: this.logo });
-              };
-              reader2.readAsDataURL(blob);
-            });
-        };
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
-  onFileChange(event: any): void {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.aliadoForm.patchValue({ banner: file });
-    }
-  }
-
-    addAliado(): void {
-      const aliado: Aliado = {
-          nombre: this.aliadoForm.get('nombre')?.value,
-          descripcion: this.aliadoForm.get('descripcion')?.value,
-          logo: this.aliadoForm.get('logo')?.value,
-         // banner: this.aliadoForm.get('banner')?.value,
-          ruta: this.aliadoForm.get('ruta')?.value,
-          tipodato: this.aliadoForm.get('tipodato')?.value,
-          email: this.aliadoForm.get('email')?.value,
-          password: this.aliadoForm.get('password')?.value,
-          estado: this.aliadoForm.get('estado')?.value,
-      };
-
-      console.log('Datos de aliado:', aliado);
-
-      this.aliadoService.crearAliado(this.token, aliado).subscribe(
-          data => {
-              console.log('Aliado creado', data);
-          },
-          err => {
-              console.log('Error al crear aliado', err);
-          }
-      );
-  }
-
-
-  onFileSelecteds(event: any, field: string) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.aliadoForm.patchValue({
-        [field]: file
-      });
-    }
-  }
-
-  resizeAndCompressImage(file: File, width: number, height: number, maxSize: number): Promise<string> {
+  validateImageDimensions(file: File, minWidth: number, minHeight: number, maxWidth: number, maxHeight: number): Promise<boolean> {
     return new Promise((resolve, reject) => {
       const img = new Image();
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const reader = new FileReader();
-
-      reader.onload = (event) => {
-        img.src = event.target?.result as string;
-      };
-
       img.onload = () => {
-        canvas.width = width;
-        canvas.height = height;
-        ctx?.drawImage(img, 0, 0, width, height);
-
-        const compressImage = (quality: number) => {
-          canvas.toBlob((blob) => {
-            if (blob) {
-              if (blob.size <= maxSize || quality < 0.1) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                  resolve(reader.result as string);
-                };
-                reader.readAsDataURL(blob);
-              } else {
-                compressImage(quality - 0.1);
-              }
-            } else {
-              reject(new Error('Error al crear el Blob de la imagen'));
-            }
-          }, 'image/jpeg', quality);
-        };
-
-        compressImage(0.9);
+        const width = img.width;
+        const height = img.height;
+        if (width >= minWidth && width <= maxWidth && height >= minHeight && height <= maxHeight) {
+          resolve(true);
+        } else {
+          reject(`La imagen debe tener dimensiones entre ${minWidth}x${minHeight} y ${maxWidth}x${maxHeight} píxeles.`);
+        }
       };
-
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(file);
+      img.onerror = () => {
+        reject('Error al cargar la imagen.');
+      };
+      img.src = URL.createObjectURL(file);
     });
   }
 
-  async onImageSelected(event: any): Promise<void> {
-    const file = event.target.files[0];
-    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-    if (file && allowedExtensions.exec(file.name)) {
-      const resizedImage = await this.resizeAndCompressImage(file, 280, 280, 20 * 1024);
-      this.ruta = resizedImage;
-    } else {
-      alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
+  addAliado(): void {
+    if (this.aliadoForm.invalid || this.bannerForm.invalid) {
+      console.error('Formulario inválido');
+      console.log('Errores aliadoForm:', this.getFormValidationErrors(this.aliadoForm));
+      console.log('Errores bannerForm:', this.getFormValidationErrors(this.bannerForm));
+      return;
     }
+
+    const formData = new FormData();
+
+    const aliado: Aliado = {
+      nombre: this.aliadoForm.get('nombre')?.value,
+      descripcion: this.aliadoForm.get('descripcion')?.value,
+      //logo: this.aliadoForm.get('logo')?.value,
+      logo: this.selectedLogo,
+      ruta: this.aliadoForm.get('ruta')?.value,
+      tipodato: this.aliadoForm.get('tipodato')?.value,
+      email: this.aliadoForm.get('email')?.value,
+      password: this.aliadoForm.get('password')?.value,
+      estado: this.aliadoForm.get('estado')?.value ?? 1,
+    };
+
+    Object.keys(this.aliadoForm.value).forEach(key => {
+      formData.append(key, this.aliadoForm.get(key)?.value);
+    });
+
+    const banner = this.bannerForm.valid ? {
+      urlImagen: this.selectedBanner,
+      descripcion: this.bannerForm.get('descripcion')?.value,
+      estadobanner: this.bannerForm.get('estadobanner')?.value,
+      color: this.bannerForm.get('color')?.value,
+      id_aliado: aliado.id,
+    } : null;
+
+    Object.keys(this.bannerForm.value).forEach(key => {
+      if (key === 'urlImagen' && this.selectedBanner) {
+        formData.append(`banner[${key}]`, this.selectedBanner, this.selectedBanner.name);
+      } else {
+        formData.append(`banner[${key}]`, this.bannerForm.get(key)?.value);
+      }
+    });
+
+    console.log('Payload para la API:', formData);
+
+    this.aliadoService.crearAliado(this.token, formData).subscribe(
+      data => {
+        console.log('Aliado creado', data);
+        this.aliadoid = data.banner.id_aliado;
+        console.log('Banner creado', this.aliadoid);
+      },
+      err => {
+        console.error('Error al crear aliado', err);
+        if (err.error && err.error.message) {
+          alert(err.error.message);
+        } else {
+          alert('Ocurrió un error al crear el aliado');
+        }
+      }
+    );
+  }
+
+  async onFileSelecteds(event: any, field: string) {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      
+      try {
+        if (field === 'urlImagen') {
+          await this.validateImageDimensions(file, 800, 300, 8100, 3100); // Validar dimensiones para el banner
+          this.selectedBanner = file;
+          this.bannerForm.patchValue({ urlImagen: file });
+        } else {
+          await this.validateImageDimensions(file, 100, 100, 600, 600); // Validar dimensiones para el logo
+          this.selectedLogo = file;
+          this.aliadoForm.patchValue({ logo: file });
+        }
+        this.generateImagePreview(file);
+      } catch (error) {
+        console.error(error);
+        alert(error);
+  
+        // Limpiar el input file directamente en el DOM
+        if (field === 'urlImagen') {
+          this.selectedBanner = null;
+        } else {
+          this.selectedLogo = null;
+        }
+        event.target.value = ''; // Esta línea limpia el input de tipo file
+      }
+    }
+  }
+
+  generateImagePreview(file: File) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imagePreview = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  getFormValidationErrors(form: FormGroup) {
+    const result: any = {};
+    Object.keys(form.controls).forEach(key => {
+      const controlErrors: ValidationErrors | null = form.get(key)?.errors;
+      if (controlErrors) {
+        result[key] = controlErrors;
+      }
+    });
+    return result;
   }
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  mostrarOcultarContenido() {
-    const checkbox = document.getElementById("mostrarContenido") as HTMLInputElement;
-    const contenidoDiv = document.getElementById("contenido");
-    const guardar = document.getElementById("guardar");
-    if (contenidoDiv && guardar) {
-      contenidoDiv.style.display = checkbox.checked ? "block" : "none";
-      guardar.style.display = checkbox.checked ? "none" : "block";
-    }
+  private getDimensiones(file: File): Promise<{ width: number, height: number }> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        resolve({ width: img.width, height: img.height });
+      };
+      img.onerror = reject;
+      img.src = URL.createObjectURL(file);
+    });
   }
 
 }
