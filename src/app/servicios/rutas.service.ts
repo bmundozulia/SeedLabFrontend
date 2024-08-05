@@ -62,20 +62,20 @@ export class RutaService {
   //   return this.http.put(this.url+'/editarActividad',actividad,options)
   // }
 
-  updateNivel(access_token:any,):Observable<any>{
-    const options = { headers: this.CreacionHeaders(access_token)};
-    return this.http.put(this.url+'nivel',options)
-  }
+  // updateNivel(access_token:any,):Observable<any>{
+  //   const options = { headers: this.CreacionHeaders(access_token)};
+  //   return this.http.put(this.url+'nivel',options)
+  // }
 
-  updateLeccion(access_token:any):Observable<any>{
-    const options = { headers: this.CreacionHeaders(access_token)};
-    return this.http.put(this.url+'leccion',options)
-  }
+  // updateLeccion(access_token:any):Observable<any>{
+  //   const options = { headers: this.CreacionHeaders(access_token)};
+  //   return this.http.put(this.url+'leccion',options)
+  // }
 
-  updateContenidoLecciones(access_token:any):Observable<any>{
-    const options = { headers: this.CreacionHeaders(access_token)};
-    return this.http.put(this.url+'contenido_por_leccion',options)
-  }
+  // updateContenidoLecciones(access_token:any):Observable<any>{
+  //   const options = { headers: this.CreacionHeaders(access_token)};
+  //   return this.http.put(this.url+'contenido_por_leccion',options)
+  // }
 
   
 

@@ -6,6 +6,9 @@ import { Ruta } from '../../../Modelos/ruta.modelo';
 import { FormBuilder } from '@angular/forms';
 import { ActividadService } from '../../../servicios/actividad.service';
 import { Actividad } from '../../../Modelos/actividad.model';
+import { NivelService } from '../../../servicios/nivel.service';
+import { LeccionService } from '../../../servicios/leccion.service';
+import { ContenidoLeccionService } from '../../../servicios/contenido-leccion.service';
 
 @Component({
   selector: 'app-editar-act-ruta',
@@ -20,6 +23,8 @@ export class EditarActRutaComponent {
   rutaId: number | null = null;
   actividadId: any;
   nivelId:any;
+  leccionId: any;
+  contenidoId:any;
 
 
   ////
@@ -50,20 +55,17 @@ export class EditarActRutaComponent {
   });
 
   leccionForm = this.fb.group({
+    id:[null],
     nombre: ['']
   });
 
   contenidoLeccionForm = this.fb.group({
+    id:[null],
     titulo: [''],
     descripcion: [''],
     fuente: [''],
     id_tipo_dato: ['']
   });
-
-
-
-
-
 
 
 
@@ -73,7 +75,11 @@ export class EditarActRutaComponent {
     private rutaService: RutaService,
     private fb: FormBuilder,
 
-    private actividadService: ActividadService
+    private actividadService: ActividadService,
+    private nivelService: NivelService,
+    private leccionService: LeccionService,
+    private contenidoLeccionService: ContenidoLeccionService
+
   ) {
 
 
@@ -151,12 +157,14 @@ export class EditarActRutaComponent {
     this.leccionSeleccionada = leccion;
     this.contenidoLeccionSeleccionada = null;
     this.leccionForm.patchValue(leccion);
+    this.leccionId = this.leccionForm.value.id;
     console.log('la lección seleccionada es: ', this.leccionSeleccionada);
   }
 
   contenidoLeccionSelect(contenido: any): void {
     this.contenidoLeccionSeleccionada = contenido;
     this.contenidoLeccionForm.patchValue(contenido);
+    this.contenidoId = this.contenidoLeccionForm.value.id;
     console.log('el contenido seleccionado es: ', this.contenidoLeccionSeleccionada);
   }
 
@@ -176,36 +184,40 @@ export class EditarActRutaComponent {
   }
 
   updateNivel(): void {
-    const nivelData = this.nivelForm;
-    this.rutaService.updateNivel(this.token).subscribe(
+    const nivelData = this.nivelForm.value;
+    this.nivelService.updateNivel(this.token,this.nivelId,nivelData).subscribe(
       (data) => {
         console.log('actualización exitosa', data);
+        location.reload();
       },
       (error) => {
+        console.log('pooooooo',this.nivelId);
         console.log('Error al actualizar', error);
       }
     )
   }
 
   updateLeccion(): void {
-    const leccionData = this.leccionForm;
-    this.rutaService.updateLeccion(this.token).subscribe(
+    const leccionData = this.leccionForm.value;
+    this.leccionService.updateLeccion(this.token,this.leccionId,leccionData).subscribe(
       (data) => {
         console.log('actualización exitosa', data);
       },
       (error) => {
+        console.log('pooooooo',this.leccionId);
         console.log('Error al actualizar', error);
       }
     )
   }
 
   updateContenidoLeccion(): void {
-    const contenidoData = this.contenidoLeccionForm;
-    this.rutaService.updateContenidoLecciones(this.token).subscribe(
+    const contenidoData = this.contenidoLeccionForm.value;
+    this.contenidoLeccionService.updateContenidoLeccion(this.token,this.contenidoId,contenidoData).subscribe(
       (data) => {
         console.log('actualización exitosa', data);
       },
       (error) => {
+        console.log('weeeeeeeee',this.contenidoId)
         console.log('Error al actualizar', error);
       }
     )
