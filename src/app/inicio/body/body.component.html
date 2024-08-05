@@ -21,7 +21,7 @@
 
       </mat-toolbar>
     </div>
- 
+
 
     <div class="relative w-full banner-swiper-container overflow-hidde ">
       <div class="swiper-wrapper">
@@ -29,23 +29,11 @@
           <div *ngIf="banner.urlImagen"
             class="relative flex-wrap items-start justify-center overflow-hidden bg-top bg-cover swiper-slide banner-swiper-slide"
             style="width: 100% !important;">
-            <img [src]="banner.urlImagen" class="banner-image w-full">
+            <img [src]="banner.urlImagen" class="w-full">
+            <!-- <p>fffffff</p> -->
           </div>
         </ng-container>
       </div>
-
-      <!-- <div class="relative w-full banner-swiper-container overflow-hidden">
-        <div class="swiper-wrapper">
-          <ng-container *ngFor="let banner of listBanner">
-            <div *ngIf="banner.urlImagen"
-              class="relative flex-wrap items-start justify-center overflow-hidden bg-top bg-cover swiper-slide banner-swiper-slide">
-              <img [src]="banner.urlImagen" class="banner-image">
-            </div>
-          </ng-container>
-        </div> -->
-
- 
-
       <div
         class="z-50 text-lg -translate-y-1/2 cursor-pointer lg:text-2xl z-absolute text-cyan-500 hover:text-cyan-500/50 top-1/2 left-5 swiper-button-prev">
       </div>
