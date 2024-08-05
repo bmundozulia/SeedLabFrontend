@@ -79,7 +79,7 @@ export class EncuestaEmpresaComponent {
   respuesta32: Respuesta = new Respuesta({});//Subpregunta 17-18 -bien
   respuesta33: Respuesta = new Respuesta({});//pregunta 18
   respuesta34: Respuesta = new Respuesta({});//Subpregunta 19-19
-  respuesta35: Respuesta = new Respuesta({});//Subpregunta 19-20
+  respuesta35: Respuesta = new Respuesta({});//Subpregunta 19-20156
   respuesta36: Respuesta = new Respuesta({});//Subpregunta 19-21
   respuesta37: Respuesta = new Respuesta({});//Subpregunta 19-22
   respuesta38: Respuesta = new Respuesta({});//Subpregunta 19-23
@@ -274,10 +274,10 @@ export class EncuestaEmpresaComponent {
           this.listaRespuestas1[respCounter + j].id_empresa = id_empresa;
 
         }
-        respCounter += currentPregunta.subPreguntas.length;
+        respCounter += currentPregunta.subPreguntas.length - 1;
 
-      } else if (currentPregunta.id === 9 || currentPregunta.id === 12) {
-        debugger
+      } else if (currentPregunta.id === 12) {
+        //debugger
         if (this.listaRespuestas1[respCounter].opcion === 'Si') {
           for (let k = 0; k < currentPregunta.subPreguntas.length; k++) {
             this.listaRespuestas1[respCounter + 1 + k].id_pregunta = currentPregunta.id;
@@ -285,7 +285,7 @@ export class EncuestaEmpresaComponent {
             //this.listaRespuestas1[respCounter + 1 + k].id_empresa = id_empresa;
 
           }
-          respCounter += currentPregunta.subPreguntas.length;
+          respCounter += currentPregunta.subPreguntas.length - 1;
         }
         respCounter++;
       } else {
@@ -336,7 +336,7 @@ export class EncuestaEmpresaComponent {
     let isValidForm = true;
     let id_empresa = 1;
 
-
+    //Pregunta 16 y 17
     this.listaRespuestas2.push(this.respuesta24);
     if (this.respuesta24.opcion === 'Si') {
       this.listaRespuestas2.push(this.respuesta25);
@@ -348,7 +348,7 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta31);
       this.listaRespuestas2.push(this.respuesta32);
     }
-    //pregunta 18
+    //pregunta 18 y 19
     this.listaRespuestas2.push(this.respuesta33);
     if (this.respuesta33.opcion === 'Si') {
       this.listaRespuestas2.push(this.respuesta34);
@@ -357,7 +357,7 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta37);
       this.listaRespuestas2.push(this.respuesta38);
     }
-    //pregunta20
+    //pregunta 20 y 21
     this.listaRespuestas2.push(this.respuesta39);
     if (this.respuesta39.opcion === 'Si') {
       this.listaRespuestas2.push(this.respuesta40);
@@ -365,7 +365,7 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta42);
       this.listaRespuestas2.push(this.respuesta43);
     }
-    //pregunta22
+    //pregunta 22 y 23
     this.listaRespuestas2.push(this.respuesta44);
     if (this.respuesta44.opcion === 'Si') {
       this.listaRespuestas2.push(this.respuesta45);
@@ -373,15 +373,14 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta47);
       this.listaRespuestas2.push(this.respuesta48);
     }
-    //pregunta23
+    //pregunta 24 
     this.listaRespuestas2.push(this.respuesta49);
-    if (this.respuesta49.opcion === 'Si') {
-      this.listaRespuestas2.push(this.respuesta50);
-      this.listaRespuestas2.push(this.respuesta51);
-      this.listaRespuestas2.push(this.respuesta52);
-      this.listaRespuestas2.push(this.respuesta53);
-    }
-    //pregunta25
+    this.listaRespuestas2.push(this.respuesta50);
+    this.listaRespuestas2.push(this.respuesta51);
+    this.listaRespuestas2.push(this.respuesta52);
+    this.listaRespuestas2.push(this.respuesta53);
+
+    //pregunta25 y 26
     this.listaRespuestas2.push(this.respuesta54);
     if (this.respuesta54.opcion === 'Si') {
       this.listaRespuestas2.push(this.respuesta55);
@@ -392,9 +391,9 @@ export class EncuestaEmpresaComponent {
     this.listaRespuestas2.push(this.respuesta58);
     this.listaRespuestas2.push(this.respuesta59);
     this.listaRespuestas2.push(this.respuesta60);
-    //pregunta28
+    //pregunta28 y 29
     this.listaRespuestas2.push(this.respuesta61);
-    if (this.respuesta59.opcion === 'Si') {
+    if (this.respuesta61.opcion === 'Si') {
       this.listaRespuestas2.push(this.respuesta62);
       this.listaRespuestas2.push(this.respuesta63);
       this.listaRespuestas2.push(this.respuesta64);
@@ -463,8 +462,8 @@ export class EncuestaEmpresaComponent {
       }
       //this.listaRespuestas2[i].valor = 3;
       console.log(i);
+      console.log('fuera del ciclo', this.listaRespuestas2);
     }
-    console.log('fuera del ciclo', this.listaRespuestas2);
     if (!isValidForm) {
       return
     }
@@ -481,6 +480,7 @@ export class EncuestaEmpresaComponent {
     let respCounter = 0;
     let isValidForm = true;
     let id_empresa = 1;
+    this.listaRespuestas3 = [];
 
     this.listaRespuestas3.push(this.respuesta66);
     this.listaRespuestas3.push(this.respuesta67);
@@ -496,32 +496,34 @@ export class EncuestaEmpresaComponent {
     this.listaRespuestas3.push(this.respuesta77);
 
     for (let i = 30; i < 41; i++) {
+      debugger;
       const currentPregunta = PREGUNTAS[i];
       this.listaRespuestas3[respCounter].id_pregunta = currentPregunta.id;
       this.listaRespuestas3[respCounter].id_empresa = id_empresa;
       this.listaRespuestas3[respCounter].id_subpregunta = null;
       if (currentPregunta.isText) {
-        if (!this.listaRespuestas2[respCounter].texto_res || this.listaRespuestas2[respCounter].texto_res === '') {
+        if (!this.listaRespuestas3[respCounter].texto_res || this.listaRespuestas3[respCounter].texto_res === '') {
           this.alertService.errorAlert('Error', 'Deben llenar los campos');
           isValidForm = false;
           return;
         }
       } else {
-        if (!this.listaRespuestas2[respCounter].opcion || this.listaRespuestas2[respCounter].opcion === '') {
+        if (!this.listaRespuestas3[respCounter].opcion || this.listaRespuestas3[respCounter].opcion === '') {
           this.alertService.errorAlert('Error', 'Deben llenar los campos');
           isValidForm = false;
           return;
         }
       }
       if (currentPregunta.isAffirmativeQuestion) {
-        if (this.listaRespuestas2[respCounter].opcion === 'No') {
+        if (this.listaRespuestas3[respCounter].opcion === 'No') {
           i += currentPregunta.subPreguntas.length;
           respCounter++;
           continue;
         }
       }
+      respCounter++;
     }
-    respCounter++;
+    console.log('fuera del ciclo', this.listaRespuestas3);
   }
 
   onSubmitSeccion4() {
