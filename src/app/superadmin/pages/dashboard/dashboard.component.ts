@@ -4,7 +4,6 @@ import { SuperadminService } from '../../../servicios/superadmin.service';
 import { AliadoService } from '../../../servicios/aliado.service';
 import { Router } from '@angular/router';
 import * as echarts from 'echarts';
-import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,44 +25,6 @@ export class DashboardComponent implements AfterViewInit {
   pieChartOption: echarts.EChartsOption;
   doughnutChartOption: echarts.EChartsOption;
 
-  // Barras top_aliados
-  public barChartOptions: ChartOptions<'bar'> = {
-    responsive: true,
-    maintainAspectRatio: false 
-  };
-
-  public barChartType: ChartType = 'bar';
-  topAliadosLabels: string[] = [];
-  public topAliadosData: ChartDataset[] = [
-    {
-      label: 'Top Aliados',
-      data: [0, 0],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-      ],
-    }
-  ];
-
-  // Pie-Asesorias
-  public pieChartOptions: ChartOptions<'pie'> = {
-    responsive: true,
-    maintainAspectRatio: false
-  };
-  public pieChartLabels: string[] = ['Asesorias asignadas', 'Asesorias sin asignar'];
-  public pieChartData: ChartDataset<'pie'>[] = [];
-  public pieChartLegend = true;
-  public pieChartPlugins = [];
-
-  // Gráfica géneros
-  public doughnutChartOptions: ChartOptions<'doughnut'> = {
-    responsive: true,
-    maintainAspectRatio: false
-  };
-  public doughnutChartLabels: string[] = ['Femenino', 'Masculino', 'Otros'];
-  public doughnutChartData: ChartDataset<'doughnut'>[] = [];
-
   constructor(
     private superAdminService: SuperadminService,
     private aliadoService: AliadoService,
@@ -77,7 +38,6 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // El gráfico se inicializará cuando se carguen los datos
   }
 
   validateToken(): void {
@@ -111,8 +71,11 @@ export class DashboardComponent implements AfterViewInit {
         this.totalAsesores = data.asesor;
         this.totalEmprendedores = data.emprendedor;
         this.topAliados = data.topAliados;
-        this.topAliadosLabels = this.topAliados.map(aliado => aliado.nombre);
-        this.topAliadosData[0].data = this.topAliados.map(aliado => aliado.asesorias);
+
+        // Configuración para la gráfica de Top Aliados
+        this.initEChartsBar();
+
+        // Configuración para la gráfica de Asesorías
         this.pieChartOption = {
           tooltip: {
             trigger: 'item'
@@ -152,8 +115,9 @@ export class DashboardComponent implements AfterViewInit {
           ]
         };
 
-        // Inicializa el gráfico aquí después de obtener los datos
+        // Inicializar el gráfico de Asesorías
         this.initEChartsPie();
+
         console.log(data);
       },
       error => {
@@ -161,6 +125,85 @@ export class DashboardComponent implements AfterViewInit {
       }
     );
   }
+
+  initEChartsBar(): void {
+    const chartDom = document.getElementById('echarts-bar');
+    if (chartDom) {
+      const myChart = echarts.init(chartDom);
+      const option = {
+        title: {},
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          data: ['Top Aliados']
+        },
+        toolbox: {
+          show: true,
+          feature: {
+            dataView: { show: true, readOnly: false },
+            magicType: { show: true, type: ['line', 'bar'] },
+            restore: { show: true },
+            saveAsImage: { show: true }
+          }
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: this.topAliados.map(aliado => aliado.nombre),
+            axisLabel: {
+              interval: 0, // Muestra todas las etiquetas
+              rotate: 30,  // Rota las etiquetas para mejor legibilidad
+              formatter: function (value: string) {
+                return value.length > 10 ? value.substring(0, 10) + '...' : value;
+              }
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value'
+          }
+        ],
+        series: [
+          {
+            name: 'Top Aliados',
+            type: 'bar',
+            data: this.topAliados.map((aliado, index) => ({
+              value: aliado.asesorias,
+              itemStyle: {
+                color: this.getColorForIndex(index)
+              }
+            })),
+            label: {
+              show: true,
+              position: 'top',
+              color: '#000',
+              formatter: '{c}', // Muestra el valor de la barra
+              fontSize: 12
+            },
+            markLine: {
+              data: [{ type: 'average', name: 'Avg' }]
+            },
+            barGap: '10%' // Ajusta el espacio entre las barras
+          }
+        ]
+      };
+
+      myChart.setOption(option);
+    } else {
+      console.error('No se pudo encontrar el elemento con id "echarts-bar"');
+    }
+  }
+
+  getColorForIndex(index: number): string {
+    // Lista de colores que se asignarán a las barras
+    const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#8A2BE2', '#00FA9A', '#FFD700', '#DC143C'];
+    return colors[index % colors.length]; // Asigna un color a cada barra, y repite si hay más barras que colores
+  }
+
+
+
 
   initEChartsPie(): void {
     const chartDom = document.getElementById('echarts-pie');
