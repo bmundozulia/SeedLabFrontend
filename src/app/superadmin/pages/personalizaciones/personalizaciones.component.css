@@ -5,12 +5,10 @@
 }
 
 .container-imagen .imagen {
-  width: 500px;
-  height: 450px;
   object-fit: contain;
 
 
-}
+} 
 
 .cancel-button {
   background-color: #ff0000;

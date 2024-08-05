@@ -24,6 +24,7 @@ export class PersonalizacionesComponent implements OnInit {
   direccion: string ;
   ubicacion: string;  
   previewUrl: any = null;
+  PreviewLogoFooter: any = null;
   faImage = faImage;
   idPersonalizacion:number = 1;
 
@@ -50,7 +51,8 @@ export class PersonalizacionesComponent implements OnInit {
     this.validateToken();
     this.personalizacionForm = this.fb.group({
       nombre_sistema: ['', Validators.required],
-      imagen_Logo: ['', Validators.required],
+      imagen_logo: ['', Validators.required],
+      logo_footer: ['', Validators.required],
       color_principal: ['#C2FFFB', Validators.required],
       color_secundario: ['#C2FFFB', Validators.required],
       color_terciario: ['#C2FFFB', Validators.required],
@@ -110,7 +112,22 @@ export class PersonalizacionesComponent implements OnInit {
       reader.onload = () => {
         this.previewUrl = reader.result;
         this.personalizacionForm.patchValue({
-          imagen_Logo: reader.result // Guarda la imagen en base64 en el formulario
+          imagen_logo: reader.result // Guarda la imagen en base64 en el formulario
+        });
+      };
+    }
+  }
+
+  onFooterChangeLogo(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.PreviewLogoFooter = reader.result;
+        this.personalizacionForm.patchValue({
+          logo_footer: reader.result // Guarda la imagen en base64 en el formulario
         });
       };
     }
@@ -132,7 +149,8 @@ export class PersonalizacionesComponent implements OnInit {
 
         const personalizaciones: Personalizaciones = {
           nombre_sistema: this.personalizacionForm.value.nombre_sistema,
-          imagen_logo: this.personalizacionForm.value.imagen_Logo,
+          imagen_logo: this.personalizacionForm.value.imagen_logo,
+          logo_footer: this.personalizacionForm.value.logo_footer,
           color_principal: this.selectedColorPrincipal,
           color_secundario: this.selectedColorSecundario,
           color_terciario: this.selectedColorTerciario,
