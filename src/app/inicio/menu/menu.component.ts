@@ -24,7 +24,7 @@ export class MenuComponent {
   isAuthenticated: boolean = true;
   menuItems: any[] = [];
   colorPrincipal: string = '';
-  colorSecundaria: string = '';
+  colorSecundario: string = '';
   isMobile: boolean = false;
   iconColor: string = '#00B3ED';
 
@@ -71,8 +71,8 @@ export class MenuComponent {
     this.personalizacionService.getPersonalizacion().subscribe(
       data => {
         this.colorPrincipal = data.color_principal;
-        this.colorSecundaria = data.color_secundario;
-        console.log(this.colorPrincipal, this.colorSecundaria);
+        this.colorSecundario = data.color_secundario;
+        console.log(this.colorPrincipal, this.colorSecundario);
       },
       err => console.log(err)
     );
