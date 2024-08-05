@@ -37,6 +37,7 @@ export class AddAliadosComponent {
   compressedImage: string;
   bannerFile: File | null = null;
   selectedBanner: File | null = null;
+  selectedLogo: File | null = null;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   faFileUpload = faFileUpload;
@@ -56,7 +57,7 @@ export class AddAliadosComponent {
     this.aliadoForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
-      logo: ['', Validators.required], // Puedes incluir el campo de logo si lo necesitas
+      logo: [''], // Puedes incluir el campo de logo si lo necesitas
       ruta: [''],
       tipodato: [''],
       email: ['', Validators.required],
@@ -75,7 +76,6 @@ export class AddAliadosComponent {
 
   ngOnInit(): void {
     this.validateToken();
-    this.mostrarOcultarContenido();
   }
 
   validateToken(): void {
@@ -98,12 +98,23 @@ export class AddAliadosComponent {
     }
   }
 
-  onBannerSelected(event: Event): void {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      this.selectedBanner = file;
-      this.bannerForm.patchValue({ urlImagen: file });
-    }
+  validateImageDimensions(file: File, minWidth: number, minHeight: number, maxWidth: number, maxHeight: number): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const width = img.width;
+        const height = img.height;
+        if (width >= minWidth && width <= maxWidth && height >= minHeight && height <= maxHeight) {
+          resolve(true);
+        } else {
+          reject(`La imagen debe tener dimensiones entre ${minWidth}x${minHeight} y ${maxWidth}x${maxHeight} píxeles.`);
+        }
+      };
+      img.onerror = () => {
+        reject('Error al cargar la imagen.');
+      };
+      img.src = URL.createObjectURL(file);
+    });
   }
 
   addAliado(): void {
@@ -119,7 +130,8 @@ export class AddAliadosComponent {
     const aliado: Aliado = {
       nombre: this.aliadoForm.get('nombre')?.value,
       descripcion: this.aliadoForm.get('descripcion')?.value,
-      logo: this.aliadoForm.get('logo')?.value,
+      //logo: this.aliadoForm.get('logo')?.value,
+      logo: this.selectedLogo,
       ruta: this.aliadoForm.get('ruta')?.value,
       tipodato: this.aliadoForm.get('tipodato')?.value,
       email: this.aliadoForm.get('email')?.value,
@@ -166,6 +178,44 @@ export class AddAliadosComponent {
     );
   }
 
+  async onFileSelecteds(event: any, field: string) {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      
+      try {
+        if (field === 'urlImagen') {
+          await this.validateImageDimensions(file, 800, 300, 8100, 3100); // Validar dimensiones para el banner
+          this.selectedBanner = file;
+          this.bannerForm.patchValue({ urlImagen: file });
+        } else {
+          await this.validateImageDimensions(file, 100, 100, 600, 600); // Validar dimensiones para el logo
+          this.selectedLogo = file;
+          this.aliadoForm.patchValue({ logo: file });
+        }
+        this.generateImagePreview(file);
+      } catch (error) {
+        console.error(error);
+        alert(error);
+  
+        // Limpiar el input file directamente en el DOM
+        if (field === 'urlImagen') {
+          this.selectedBanner = null;
+        } else {
+          this.selectedLogo = null;
+        }
+        event.target.value = ''; // Esta línea limpia el input de tipo file
+      }
+    }
+  }
+
+  generateImagePreview(file: File) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imagePreview = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
   getFormValidationErrors(form: FormGroup) {
     const result: any = {};
     Object.keys(form.controls).forEach(key => {
@@ -177,144 +227,19 @@ export class AddAliadosComponent {
     return result;
   }
 
-  onFileSelecteds(event: any, field: string) {
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
-      if (field === 'urlImagen') {
-        this.selectedBanner = file;
-        this.bannerForm.patchValue({ urlImagen: file });
-      } else {
-        this.aliadoForm.patchValue({ [field]: file });
-      }
-      this.generateImagePreview(file);
-    }
-  }
-
-  onFileChange(event: any): void {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.bannerForm.patchValue({ urlImagen: file });
-    }
-  }
-
-  onFileSelected(event: any): void {
-    const file: File = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const img = new Image();
-        img.src = e.target.result;
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          canvas.width = 600; // Nueva anchura
-          canvas.height = 600; // Nueva altura
-          const pica = Pica();
-          pica.resize(img, canvas)
-            .then((result) => pica.toBlob(result, 'image/jpeg', 0.90))
-            .then((blob) => {
-              const reader2 = new FileReader();
-              reader2.onload = (e2: any) => {
-                this.logo = e2.target.result; // Base64 string
-                this.aliadoForm.patchValue({ logo: this.logo });
-              };
-              reader2.readAsDataURL(blob);
-            });
-        };
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-  generateImagePreview(file: File) {
-    const reader = new FileReader();
-    reader.onload = (e: any) => {
-      this.imagePreview = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  }
-
-  resizeAndCompressImage(file: File, width: number, height: number, maxSize: number): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const reader = new FileReader();
-
-      reader.onload = (event) => {
-        img.src = event.target?.result as string;
-      };
-
-      img.onload = () => {
-        canvas.width = width;
-        canvas.height = height;
-        ctx?.drawImage(img, 0, 0, width, height);
-
-        const compressImage = (quality: number) => {
-          canvas.toBlob((blob) => {
-            if (blob) {
-              if (blob.size <= maxSize || quality < 0.1) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                  resolve(reader.result as string);
-                };
-                reader.readAsDataURL(blob);
-              } else {
-                compressImage(quality - 0.1);
-              }
-            } else {
-              reject(new Error('Error al crear el Blob de la imagen'));
-            }
-          }, 'image/jpeg', quality);
-        };
-
-        compressImage(0.9);
-      };
-
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(file);
-    });
-  }
-
-  async onImageSelected(event: any): Promise<void> {
-    const file = event.target.files[0];
-    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-    if (file && allowedExtensions.exec(file.name)) {
-      const resizedImage = await this.resizeAndCompressImage(file, 280, 280, 20 * 1024);
-      this.ruta = resizedImage;
-    } else {
-      alert('Por favor, seleccione un archivo de imagen (jpg, jpeg, png, gif)');
-    }
-  }
-
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  mostrarOcultarContenido() {
-    const checkbox = document.getElementById("mostrarContenido") as HTMLInputElement;
-    const contenidoDiv = document.getElementById("contenido");
-    const guardar = document.getElementById("guardar");
-    if (contenidoDiv && guardar) {
-      contenidoDiv.style.display = checkbox.checked ? "block" : "none";
-      guardar.style.display = checkbox.checked ? "none" : "block";
-    }
+  private getDimensiones(file: File): Promise<{ width: number, height: number }> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        resolve({ width: img.width, height: img.height });
+      };
+      img.onerror = reject;
+      img.src = URL.createObjectURL(file);
+    });
   }
 
 }

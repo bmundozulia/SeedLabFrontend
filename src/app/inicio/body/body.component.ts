@@ -8,6 +8,7 @@ import { Banner } from '../../Modelos/banner.model';
 import { MatToolbar } from '@angular/material/toolbar';
 import { AuthService } from '../../servicios/auth.service';
 import { SuperadminService } from '../../servicios/superadmin.service';
+import { Personalizaciones } from '../../Modelos/personalizaciones.model';
 
 @Component({
   selector: 'app-body',
@@ -20,10 +21,18 @@ export class BodyComponent implements OnInit, AfterViewInit {
   alliesSwiper: Swiper | undefined;
   listAliados: Aliado[] = [];
   listBanner: Banner [] = [];
+  listFooter: Personalizaciones [] = [];
   isLoggedIn: boolean = false;
-  logoUrl: string = '';
+  logoUrl: File;
   sidebarColor: string = '';
   botonesColor: string = '';
+  logoFooter:File;
+  descripcion_footer: Text;
+  paginaWeb: string;
+  email: string;
+  telefono: string;
+  direccion: string;
+  ubicacion: string;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -69,7 +78,7 @@ export class BodyComponent implements OnInit, AfterViewInit {
     this.aliadoService.getbanner().subscribe(
       data => {
         this.listBanner = data;
-       // console.log('Banner:', data);
+       console.log('Banner:', data);
       },
       error => {
         console.log(error);
@@ -91,10 +100,18 @@ export class BodyComponent implements OnInit, AfterViewInit {
   getPersonalizacion() {
     this.personalizacionesService.getPersonalizacion().subscribe(
       data => {
-        this.logoUrl = data.imagen_Logo;
+        this.logoUrl = data.imagen_logo;
         this.sidebarColor = data.color_principal;
         this.botonesColor = data.color_color_secundario;
-        //console.log('logoUrl', this.logoUrl);
+        this.logoFooter = data.logo_footer;
+        this.descripcion_footer = data.descripcion_footer;
+        this.paginaWeb = data.paginaWeb;
+        this.email = data.email;
+        this.telefono = data.telefono;
+        this.direccion = data.direccion;
+        this.ubicacion = data.ubicacion;
+
+        //console.log(data);
         console.log("personalizaciones obtenidas", data);
       },
       error => {
@@ -157,5 +174,16 @@ export class BodyComponent implements OnInit, AfterViewInit {
       lines.push(words.slice(i, i + wordsPerLine).join(' '));
     }
     return lines;
+  }
+
+  onImageLoad(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    const container = img.closest('.banner-image-container') as HTMLElement;
+    if (container) {
+      const aspectRatio = img.naturalHeight / img.naturalWidth;
+      container.style.paddingTop = `${aspectRatio * 100}%`;
+    }
+    this.cdr.detectChanges();
+    this.initBannerSwiper();
   }
 }

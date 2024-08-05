@@ -4,7 +4,7 @@ export class Aliado {
     id?: number;
     nombre: string;
     descripcion: string;
-    logo: string; // Asegúrate de que logo sea un campo necesario en tu caso
+    logo: File; 
     //banner: File | null;
     ruta: string | null;
     tipodato: string | null;
@@ -12,7 +12,7 @@ export class Aliado {
     password: string;
     estado: boolean;
 
-    constructor(id: number, nombre: string, descripcion: string, logo: string, ruta: string | null, tipodato: string | null, email: string, password: string, estado: boolean) {
+    constructor(id: number, nombre: string, descripcion: string, logo: File, ruta: string | null, tipodato: string | null, email: string, password: string, estado: boolean) {
         this.id = id,
         this.nombre = nombre;
         this.descripcion = descripcion;

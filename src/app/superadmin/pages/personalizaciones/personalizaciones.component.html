@@ -6,13 +6,28 @@
   </div>
 
   <form action="" [formGroup]="personalizacionForm" (ngSubmit)="addPersonalizacion()" enctype="multipart/form-data">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-4">
+    <div class="max-w-screen-2xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-4">
       <!-- Logo -->
       <div class="xl:col-span-7">
         <div class="bg-white p-4 rounded-lg shadow-lg h-full">
+          <label class="relative cursor-pointer flex flex-row items-center">
+            <input id="imagen_logo" formControlName="imagen_logo" type="file" name="logo" class="hidden" (change)="onFileChange($event)" />   
+            <span class="text-black px-4 py-2 border-2 border-blue-300 rounded-full inline-flex items-center bg-white justify-center hover:bg-blue-100">
+              Subir Imagen
+              <fa-icon [icon]="faImage" class="text-md ml-2"></fa-icon>
+            </span>
+            
+            <p class="text-black font-bold">INSERTA LOGO PRINCIPAL</p>
+          </label>
+                 
+          <div class="mt-4">
+            <div class="container-imagen flex justify-center">
+              <img [src]="previewUrl" alt="Logo preview" *ngIf="previewUrl" class="imagen w-full rounded-lg bg-zinc-200" />
+            </div>
+          </div>
           <label class="relative cursor-pointer inline-block">
-            <input id="imagen_Logo" formControlName="imagen_Logo" type="file" name="logo" class="hidden"
-              (change)="onFileChange($event)" />
+            <input id="logo_footer" formControlName="logo_footer" type="file" name="logo_footer" class="hidden"
+              (change)="onFooterChangeLogo($event)" />
             <span
               class="text-black px-4 py-2 border-2 border-blue-300 rounded-full inline-block bg-white justify-center hover:bg-blue-100">
               Subir Imagen
@@ -21,11 +36,14 @@
           </label>
           <div class="mt-4">
             <div class="container-imagen flex justify-center">
-              <img [src]="previewUrl" alt="Logo preview" *ngIf="previewUrl" class="imagen w-full rounded-lg" />
+              <img [src]="PreviewLogoFooter" alt="Logo_footer_preview" *ngIf="PreviewLogoFooter" class="imagen rounded-lg lg:h-28 h-18 bg-zinc-200" />
             </div>
           </div>
         </div>
+        
+        <p class="text-neutral-400 font-bold">En caso que la imagen sea transparente aparecera un fondo oscuro</p>
       </div>
+      
       <!-- fin del logo -->
 
       <!-- Formulario de Colores -->
@@ -33,7 +51,7 @@
         <div class="bg-white rounded-lg shadow-lg p-6 h-full ">
           <div class="w-full">
             <!-- Color Principal y Color Secundario -->
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
 
               <div class="">
                 <label for="nombre" class="block text-black font-bold mb-2">Nombre de la empresa</label>
@@ -97,6 +115,50 @@
                 </div>
               </div> -->
 
+              <!-- input descripcion -->
+              <div class="">
+                <label for="descripcion_footer" class="block text-black font-bold mb-2">Descripción del Sistema</label>
+                <input type="text" id="descripcion_footer" name="descripcion_footer" formControlName="descripcion_footer"
+                  class=" h-16 mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+                </div>
+              </div>
+
+              <div class="">
+                <label for="paginaWeb" class="block text-black font-bold mb-2">Pagina Web</label>
+                <input type="text" id="paginaWeb" name="paginaWeb" formControlName="paginaWeb"
+                  class=" h-16 mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+                </div>
+              </div>
+              <div class="">
+                <label for="email" class="block text-black font-bold mb-2">Correo de contacto</label>
+                <input type="text" id="email" name="email" formControlName="email"
+                  class=" h-16 mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+                </div>
+              </div>
+              <div class="">
+                <label for="telefono" class="block text-black font-bold mb-2">Telefono</label>
+                <input type="text" id="telefono" name="telefono" formControlName="telefono"
+                  class=" h-16 mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+                </div>
+              </div>
+              <div class="">
+                <label for="direccion" class="block text-black font-bold mb-2">Dirección</label>
+                <input type="text" id="direccion" name="direccion" formControlName="direccion"
+                  class=" h-16 mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+                </div>
+              </div>
+              <div class="">
+                <label for="ubicacion" class="block text-black font-bold mb-2">Ubicación</label>
+                <input type="text" id="ubicacion" name="ubicacion" formControlName="ubicacion"
+                  class=" h-16 mt-1 block w-full p-2 rounded-md bg-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200 ease-in hover:bg-blue-100 focus:bg-blue-100">
+                <div class="inline-block p-1 mt-2 mb-1 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+                </div>
+              </div>
             </div>
           </div>
           <div class="flex justify-between mt-5">
