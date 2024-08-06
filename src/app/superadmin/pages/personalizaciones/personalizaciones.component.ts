@@ -17,7 +17,14 @@ export class PersonalizacionesComponent implements OnInit {
   selectedColorPrincipal = '#C2FFFB';
   selectedColorSecundario = '#C2FFFB';
   selectedColorTerciario = '#C2FFFB';
+  descripcion_footer: Text;
+  paginaWeb: string;
+  email: string ;
+  telefono: string ;
+  direccion: string ;
+  ubicacion: string;  
   previewUrl: any = null;
+  PreviewLogoFooter: any = null;
   faImage = faImage;
   idPersonalizacion:number = 1;
 
@@ -44,10 +51,17 @@ export class PersonalizacionesComponent implements OnInit {
     this.validateToken();
     this.personalizacionForm = this.fb.group({
       nombre_sistema: ['', Validators.required],
-      imagen_Logo: ['', Validators.required],
+      imagen_logo: ['', Validators.required],
+      logo_footer: ['', Validators.required],
       color_principal: ['#C2FFFB', Validators.required],
       color_secundario: ['#C2FFFB', Validators.required],
       color_terciario: ['#C2FFFB', Validators.required],
+      descripcion_footer: ['', Validators.required],
+      paginaWeb: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      telefono: ['', Validators.required],
+      direccion: ['', Validators.required],
+      ubicacion: ['', Validators.required]
     })
   }
 
@@ -63,12 +77,12 @@ export class PersonalizacionesComponent implements OnInit {
         this.id = this.user.id;
         this.currentRolId = this.user.id_rol;
         if (this.currentRolId != 1) {
-          this.router.navigate(['/inicio/body']);
+          this.router.navigate(['home']);
         }
       }
     }
     if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['home']);
     }
   }
 
@@ -98,7 +112,22 @@ export class PersonalizacionesComponent implements OnInit {
       reader.onload = () => {
         this.previewUrl = reader.result;
         this.personalizacionForm.patchValue({
-          imagen_Logo: reader.result // Guarda la imagen en base64 en el formulario
+          imagen_logo: reader.result // Guarda la imagen en base64 en el formulario
+        });
+      };
+    }
+  }
+
+  onFooterChangeLogo(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.PreviewLogoFooter = reader.result;
+        this.personalizacionForm.patchValue({
+          logo_footer: reader.result // Guarda la imagen en base64 en el formulario
         });
       };
     }
@@ -120,10 +149,17 @@ export class PersonalizacionesComponent implements OnInit {
 
         const personalizaciones: Personalizaciones = {
           nombre_sistema: this.personalizacionForm.value.nombre_sistema,
-          imagen_logo: this.personalizacionForm.value.imagen_Logo,
+          imagen_logo: this.personalizacionForm.value.imagen_logo,
+          logo_footer: this.personalizacionForm.value.logo_footer,
           color_principal: this.selectedColorPrincipal,
           color_secundario: this.selectedColorSecundario,
           color_terciario: this.selectedColorTerciario,
+          descripcion_footer: this.personalizacionForm.value.descripcion_footer,
+          paginaWeb: this.personalizacionForm.value.paginaWeb,
+          email: this.personalizacionForm.value.email,
+          telefono: this.personalizacionForm.value.telefono,
+          direccion: this.personalizacionForm.value.direccion,
+          ubicacion: this.personalizacionForm.value.ubicacion,
           id_superadmin: id_temp
         };
 

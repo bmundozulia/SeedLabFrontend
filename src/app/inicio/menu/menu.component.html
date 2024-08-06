@@ -60,7 +60,7 @@
 
         <!-- Botón de Cerrar sesión -->
         <div class="containerLogout">
-            <div [ngClass]="{ 'expand-line': isExpanded, 'collapse-line': !isExpanded }"
+            <div [style.backgroundColor]= "colorSecundario" [ngClass]="{ 'expand-line': isExpanded, 'collapse-line': !isExpanded }"
                 class="transition-all duration-300"></div>
             <li class="h-14 mt-2 flex items-center" *ngIf="logueado">
                 <a *ngIf="token != null" (click)="logout()"

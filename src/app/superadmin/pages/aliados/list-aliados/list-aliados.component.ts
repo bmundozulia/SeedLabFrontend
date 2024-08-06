@@ -48,7 +48,6 @@ export class ListAliadosComponent implements OnInit {
               item.nombre,
               item.descripcion,
               item.logo,
-              item.banner,
               item.ruta_multi,
               item.id_tipo_dato,
               item.email,
@@ -90,12 +89,12 @@ export class ListAliadosComponent implements OnInit {
         this.currentRolId = this.user.id_rol;
         console.log(this.currentRolId);
         if (this.currentRolId != 1 && this.currentRolId != 2) {
-          this.router.navigate(['/inicio/body']);
+          this.router.navigate(['home']);
         }
       }
     }
     if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['home']);
     }
   }
 

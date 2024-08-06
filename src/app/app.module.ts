@@ -40,6 +40,8 @@ import { SuperadminModule } from './superadmin/superadmin.module';
 
 import { AddLevelComponent } from './superadmin/pages/ruta/add-level/add-level.component';
 import { OrientadorModule } from './orientador/orientador.module';
+import { NgxEchartsModule } from 'ngx-echarts';
+
 
 
 @NgModule({
@@ -81,7 +83,11 @@ import { OrientadorModule } from './orientador/orientador.module';
     AsesorModule,
     EmprendedorModule,
     SuperadminModule,
-    OrientadorModule
+    OrientadorModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
+    
   
   ],
   providers: [

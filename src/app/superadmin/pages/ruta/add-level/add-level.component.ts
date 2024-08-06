@@ -50,12 +50,12 @@ export class AddLevelComponent {
         this.id = this.user.id;
         this.currentRolId = this.user.id_rol;
         if (this.currentRolId != 3) {
-          this.router.navigate(['/inicio/body']);
+          this.router.navigate(['home']);
         }
       }
     }
     if (!this.token) {
-      this.router.navigate(['/inicio/body']);
+      this.router.navigate(['home']);
     }
   }
 
