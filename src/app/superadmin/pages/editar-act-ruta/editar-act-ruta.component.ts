@@ -13,6 +13,7 @@ import { SuperadminService } from '../../../servicios/superadmin.service';
 import { Aliado } from '../../../Modelos/aliado.model';
 import { AsesorService } from '../../../servicios/asesor.service';
 import { Asesor } from '../../../Modelos/asesor.model';
+import { AliadoService } from '../../../servicios/aliado.service';
 
 @Component({
   selector: 'app-editar-act-ruta',
@@ -36,6 +37,7 @@ export class EditarActRutaComponent {
   listaTipoDato: Actividad[] = [];
   listaAliados: Aliado[] = [];
   listaAsesores: Asesor[] = [];
+  listarAsesores: any[] = [];
 
 
   ////////
@@ -44,6 +46,9 @@ export class EditarActRutaComponent {
   nivelSeleccionada: any | null;
   leccionSeleccionada: any | null;
   contenidoLeccionSeleccionada: any | null;
+  aliadoSeleccionado: any | null;
+  ////
+  userFilter: any = { nombre: '', estado: 'Activo' };
   ////
   actividadForm = this.fb.group({
     id: [null],
@@ -89,7 +94,8 @@ export class EditarActRutaComponent {
     private leccionService: LeccionService,
     private contenidoLeccionService: ContenidoLeccionService,
     private superAdminService: SuperadminService,
-    private asesorService: AsesorService
+    private asesorService: AsesorService,
+    private aliadoService: AliadoService,
 
 
 
@@ -261,6 +267,37 @@ export class EditarActRutaComponent {
         console.log('Error al obtener datos aliados', error);
       }
     )
+  }
+  selectAliado(aliado: any): void {
+    this.aliadoSeleccionado = aliado;
+    console.log("el aliado seleccionado fue: ", this.aliadoSeleccionado)
+  }
+
+  onAliadoChange(event?: any): void {
+    const aliadoId = event.target.value;
+    const aliadoSeleccionado = this.listaAliados.find(aliado => aliado.id == aliadoId);
+
+    if (aliadoSeleccionado) {
+      console.log("El aliado seleccionado fue: ", {
+        id: aliadoSeleccionado.id,
+        nombre: aliadoSeleccionado.nombre
+      });
+
+      // Aquí puedes hacer lo que necesites con el aliado seleccionado
+      this.aliadoSeleccionado = aliadoSeleccionado;
+
+      if (this.token) {
+        this.aliadoService.getinfoAsesor(this.token, this.aliadoSeleccionado.id, this.userFilter.estado).subscribe(
+          data => {
+            this.listarAsesores = data;
+            console.log('Asesores: ', data);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    }
   }
 
   asesores(): void {
