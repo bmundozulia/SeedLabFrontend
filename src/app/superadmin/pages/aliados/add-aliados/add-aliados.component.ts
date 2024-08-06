@@ -214,6 +214,34 @@ export class AddAliadosComponent {
   //   }
   // }
 
+  onTipoDatoChange(): void {
+      const tipoDatoId = this.contenidoLeccionForm.get('id_tipo_dato').value;
+  
+      switch (tipoDatoId) {
+        case '1': // Video
+          this.contenidoLeccionForm.get('Video').setValidators([Validators.required]);
+          break;
+        case '2': // Multimedia
+          this.contenidoLeccionForm.get('Multimedia').setValidators([Validators.required,]);
+          break;
+        case '3': // Imagen
+        this.contenidoLeccionForm.get('Imagen').setValidators([Validators.required,]);
+        break;
+        case '4': // PDF
+        this.contenidoLeccionForm.get('PDF').setValidators([Validators.required,]);
+        break;
+        case '5': // Texto
+          this.contenidoLeccionForm.get('Texto').setValidators([Validators.required]);
+          break;
+        default:
+          this.contenidoLeccionForm.get('fuente').clearValidators();
+          break;
+      }
+  
+      this.contenidoLeccionForm.get('fuente').updateValueAndValidity();
+    }
+  
+
   onFileSelecteds(event: any, field: string) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
