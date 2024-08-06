@@ -28,6 +28,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 import { NgChartsModule } from 'ng2-charts';
+import { EditarActRutaComponent } from './pages/editar-act-ruta/editar-act-ruta.component';
+
 
 
 
@@ -49,7 +51,9 @@ import { NgChartsModule } from 'ng2-charts';
     AddActividadComponent,
     ModalCrearOrientadorComponent,
     ActnivlecComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditarActRutaComponent,
+    
   ],
   imports: [
     CommonModule,
