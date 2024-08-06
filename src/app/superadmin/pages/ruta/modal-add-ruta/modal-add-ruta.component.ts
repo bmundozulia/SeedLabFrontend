@@ -283,8 +283,11 @@ export class ModalAddRutaComponent implements OnInit {
     //location.reload();
   }
 
-  // agregarActividad(): void {
-  //   this.showActividadForm = true;
-  // }
+  EditarActividad():void{
+    this.router.navigate(['editar-act-ruta'],{queryParams: { id_ruta: this.rutaId}});
+    this.dialogRef.close();
+
+  }
+
 
 }
