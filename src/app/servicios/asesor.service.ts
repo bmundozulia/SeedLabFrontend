@@ -44,5 +44,15 @@ export class AsesorService {
     const options = { headers: this.CreacionHeaders(access_token) };
     return this.http.get<any>(`${this.url}mostrarAsesoriasAsesor/${idAsesor}/${conHorario}`, options);
   }
+
+  listarAsesores(access_token:any):Observable<any>{
+    const options = {headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+"listadoAsesores/",options)
+  } 
+
+  getTipoDato(access_token:any): Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.get(this.url+"/tipo_dato",options)
+  }
 }
 

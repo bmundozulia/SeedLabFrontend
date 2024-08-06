@@ -39,11 +39,7 @@ export class RutaService {
     return this.http.post(this.url+'/ruta', ruta,options);
   }
 
-  updateRutas(access_token:any, ruta:Ruta,id:number):Observable<any>{
-    const options= { headers: this.CreacionHeaders(access_token)};
-    return this.http.put(this.url+'/ruta/'+id,ruta,options);
-  }
-
+  
   rutaXid(access_token:any, rutaId: number):Observable<any>{
     const options= { headers: this.CreacionHeaders(access_token)};
     return this.http.get(this.url+'/rutaXid/'+rutaId, options);
@@ -54,5 +50,33 @@ export class RutaService {
     return this.http.get(this.url+'/mostrarRutaContenido/'+idRuta,options);
   }
 
+  
+  //////  editar
+  updateRutas(access_token:any, ruta:Ruta,id:number):Observable<any>{
+    const options= { headers: this.CreacionHeaders(access_token)};
+    return this.http.put(this.url+'/ruta/'+id,ruta,options);
+  }
+
+  // updateActividad(access_token:any,actividad:any):Observable<any>{
+  //   const options = { headers: this.CreacionHeaders(access_token)};
+  //   return this.http.put(this.url+'/editarActividad',actividad,options)
+  // }
+
+  // updateNivel(access_token:any,):Observable<any>{
+  //   const options = { headers: this.CreacionHeaders(access_token)};
+  //   return this.http.put(this.url+'nivel',options)
+  // }
+
+  // updateLeccion(access_token:any):Observable<any>{
+  //   const options = { headers: this.CreacionHeaders(access_token)};
+  //   return this.http.put(this.url+'leccion',options)
+  // }
+
+  // updateContenidoLecciones(access_token:any):Observable<any>{
+  //   const options = { headers: this.CreacionHeaders(access_token)};
+  //   return this.http.put(this.url+'contenido_por_leccion',options)
+  // }
+
+  
 
 }

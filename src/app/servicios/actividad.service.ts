@@ -28,4 +28,11 @@ export class ActividadService {
     const options = { headers: this.CreacionHeaders(access_token)};
     return this.http.get(this.url+'/verActividadAliado/'+id,options)
   }
+
+  updateActividad(access_token:any,id:number,actividad:any):Observable<any>{
+    const options = { headers: this.CreacionHeaders(access_token)};
+    return this.http.put(this.url+'/editar_actividad/'+id,actividad,options)
+  }
+
+ 
 }
