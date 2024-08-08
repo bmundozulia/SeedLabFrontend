@@ -1,5 +1,4 @@
-import { Component, HostListener, ElementRef, Renderer2, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 
 import { fa1 } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -22,6 +21,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./encuesta-empresa.component.css'],
   providers: [RespuestasService]
 })
+
 export class EncuestaEmpresaComponent {
   fa1 = fa1;
   faArrowLeft = faArrowLeft;
@@ -42,7 +42,7 @@ export class EncuestaEmpresaComponent {
   listaRespuestas4: Respuesta[] = [];
 
   id_empresa = 1;
-  private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
+  //private originalAttributes: Map<Element, { colspan: string | null, rowspan: string | null }> = new Map();
 
   respuesta1: Respuesta = new Respuesta({});
   respuesta2: Respuesta = new Respuesta({});
@@ -178,10 +178,6 @@ export class EncuestaEmpresaComponent {
 
 
   constructor(
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
-    private cdr: ChangeDetectorRef,
-    private fb: FormBuilder,
     private respuestasService: RespuestasService,
     private alertService: AlertService,
     private router: Router
@@ -222,7 +218,7 @@ export class EncuestaEmpresaComponent {
     let respCounter = 0;
     let isValidForm = true;
 
-    //const listaRespuestas: Respuesta[] = [];
+    this.listaRespuestas1 = [];
 
     this.listaRespuestas1.push(this.respuesta1);
     //pregunta 2
@@ -242,12 +238,32 @@ export class EncuestaEmpresaComponent {
     if (this.respuesta13.opcion === 'Si') {
       this.listaRespuestas1.push(this.respuesta14);
       this.listaRespuestas1.push(this.respuesta15);
+    }else{
+      this.respuesta14.texto_res = 'N/A';
+      this.respuesta14.id_pregunta = 10
+      this.listaRespuestas1.push(this.respuesta14);
+      this.respuesta15.texto_res = 'N/A';
+      this.respuesta15.id_pregunta = 11
+      this.listaRespuestas1.push(this.respuesta15);
     }
     this.listaRespuestas1.push(this.respuesta16);
     if (this.respuesta16.opcion === 'Si') {
       this.listaRespuestas1.push(this.respuesta17);
       this.listaRespuestas1.push(this.respuesta18);
       this.listaRespuestas1.push(this.respuesta19);
+      this.listaRespuestas1.push(this.respuesta20);
+    }else{
+      this.respuesta17.texto_res = 'N/A';
+      this.respuesta17.id_pregunta = 13
+      this.listaRespuestas1.push(this.respuesta17);
+      this.respuesta18.texto_res = 'N/A';
+      this.respuesta18.id_pregunta = 14
+      this.listaRespuestas1.push(this.respuesta18);
+      this.respuesta19.texto_res = 'N/A';
+      this.respuesta19.id_pregunta = 15
+      this.listaRespuestas1.push(this.respuesta19);
+      this.respuesta20.texto_res = 'N/A';
+      this.respuesta20.id_pregunta = 16
       this.listaRespuestas1.push(this.respuesta20);
     }
     this.listaRespuestas1.push(this.respuesta21);
@@ -258,6 +274,7 @@ export class EncuestaEmpresaComponent {
 
 
     for (let i = 0; i < 15; i++) {
+      debugger; 
       const currentPregunta = PREGUNTAS[i];
       this.listaRespuestas1[respCounter].id_pregunta = i + 1;
       this.listaRespuestas1[respCounter].id_empresa = id_empresa;
@@ -275,7 +292,6 @@ export class EncuestaEmpresaComponent {
 
         }
         respCounter += currentPregunta.subPreguntas.length - 1;
-
       } else if (currentPregunta.id === 12) {
         //debugger
         if (this.listaRespuestas1[respCounter].opcion === 'Si') {
@@ -312,20 +328,12 @@ export class EncuestaEmpresaComponent {
         respCounter++;
       }
       //this.listaRespuestas1[i].valor = 3;
-      console.log(i);
+      //console.log(i);
+      console.log('fuera del ciclo', this.listaRespuestas1);
     }
-    console.log('fuera del ciclo', this.listaRespuestas1);
     if (!isValidForm) {
       return
-    } /*this.respuestasService.saveAnswers(this.token, payload).subscribe(
-      (data: any) => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });*/
-
-
+    }
   }
 
 
@@ -335,6 +343,7 @@ export class EncuestaEmpresaComponent {
     let respCounter = 0;
     let isValidForm = true;
     let id_empresa = 1;
+    this.listaRespuestas2 = [];
 
     //Pregunta 16 y 17
     this.listaRespuestas2.push(this.respuesta24);
@@ -347,6 +356,39 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta30);
       this.listaRespuestas2.push(this.respuesta31);
       this.listaRespuestas2.push(this.respuesta32);
+    } else {
+      this.respuesta25.texto_res = 'N/A';
+      this.respuesta25.id_pregunta = 17;
+      this.respuesta25.id_subpregunta = 11;
+      this.listaRespuestas2.push(this.respuesta25);
+      this.respuesta26.texto_res = 'N/A';
+      this.respuesta26.id_pregunta = 17;
+      this.respuesta26.id_subpregunta = 12;
+      this.listaRespuestas2.push(this.respuesta26);
+      this.respuesta27.texto_res = 'N/A';
+      this.respuesta27.id_pregunta = 17;
+      this.respuesta27.id_subpregunta = 13;
+      this.listaRespuestas2.push(this.respuesta27);
+      this.respuesta28.texto_res = 'N/A';
+      this.respuesta28.id_pregunta = 17;
+      this.respuesta28.id_subpregunta = 14;
+      this.listaRespuestas2.push(this.respuesta28);
+      this.respuesta29.texto_res = 'N/A';
+      this.respuesta29.id_pregunta = 17;
+      this.respuesta29.id_subpregunta = 15;
+      this.listaRespuestas2.push(this.respuesta29);
+      this.respuesta30.texto_res = 'N/A';
+      this.respuesta30.id_pregunta = 17;
+      this.respuesta30.id_subpregunta = 16;
+      this.listaRespuestas2.push(this.respuesta30);
+      this.respuesta31.texto_res = 'N/A';
+      this.respuesta31.id_pregunta = 17;
+      this.respuesta31.id_subpregunta = 17;
+      this.listaRespuestas2.push(this.respuesta31);
+      this.respuesta32.texto_res = 'N/A';
+      this.respuesta32.id_pregunta = 17;
+      this.respuesta32.id_subpregunta = 18;
+      this.listaRespuestas2.push(this.respuesta32);
     }
     //pregunta 18 y 19
     this.listaRespuestas2.push(this.respuesta33);
@@ -356,6 +398,27 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta36);
       this.listaRespuestas2.push(this.respuesta37);
       this.listaRespuestas2.push(this.respuesta38);
+    } else {
+      this.respuesta34.texto_res = 'N/A';
+      this.respuesta34.id_pregunta = 19;
+      this.respuesta34.id_subpregunta = 19;
+      this.listaRespuestas2.push(this.respuesta34);
+      this.respuesta35.texto_res = 'N/A';
+      this.respuesta35.id_pregunta = 19;
+      this.respuesta35.id_subpregunta = 20;
+      this.listaRespuestas2.push(this.respuesta35);
+      this.respuesta36.texto_res = 'N/A';
+      this.respuesta36.id_pregunta = 19;
+      this.respuesta36.id_subpregunta = 21;
+      this.listaRespuestas2.push(this.respuesta36);
+      this.respuesta37.texto_res = 'N/A';
+      this.respuesta37.id_pregunta = 19;
+      this.respuesta37.id_subpregunta = 22;
+      this.listaRespuestas2.push(this.respuesta37);
+      this.respuesta38.texto_res = 'N/A';
+      this.respuesta38.id_pregunta = 19;
+      this.respuesta38.id_subpregunta = 23;
+      this.listaRespuestas2.push(this.respuesta38);
     }
     //pregunta 20 y 21
     this.listaRespuestas2.push(this.respuesta39);
@@ -364,6 +427,23 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta41);
       this.listaRespuestas2.push(this.respuesta42);
       this.listaRespuestas2.push(this.respuesta43);
+    } else {
+      this.respuesta40.texto_res = 'N/A';
+      this.respuesta40.id_pregunta = 21;
+      this.respuesta40.id_subpregunta = 24;        
+      this.listaRespuestas2.push(this.respuesta40);
+      this.respuesta41.texto_res = 'N/A';
+      this.respuesta41.id_pregunta = 21;  
+      this.respuesta41.id_subpregunta = 25;
+      this.listaRespuestas2.push(this.respuesta41);
+      this.respuesta42.texto_res = 'N/A';
+      this.respuesta42.id_pregunta = 21;
+      this.respuesta42.id_subpregunta = 26;
+      this.listaRespuestas2.push(this.respuesta42);
+      this.respuesta43.texto_res = 'N/A';
+      this.respuesta43.id_pregunta = 21;
+      this.respuesta43.id_subpregunta = 27;
+      this.listaRespuestas2.push(this.respuesta43);
     }
     //pregunta 22 y 23
     this.listaRespuestas2.push(this.respuesta44);
@@ -371,6 +451,23 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta45);
       this.listaRespuestas2.push(this.respuesta46);
       this.listaRespuestas2.push(this.respuesta47);
+      this.listaRespuestas2.push(this.respuesta48);
+    } else {
+      this.respuesta45.texto_res = 'N/A';
+      this.respuesta45.id_pregunta = 23;
+      this.respuesta45.id_subpregunta = 28;
+      this.listaRespuestas2.push(this.respuesta45);
+      this.respuesta46.texto_res = 'N/A';
+      this.respuesta46.id_pregunta = 23;
+      this.respuesta46.id_subpregunta = 29;
+      this.listaRespuestas2.push(this.respuesta46);
+      this.respuesta47.texto_res = 'N/A';
+      this.respuesta47.id_pregunta = 23;
+      this.respuesta47.id_subpregunta = 30;
+      this.listaRespuestas2.push(this.respuesta47);
+      this.respuesta48.texto_res = 'N/A';
+      this.respuesta48.id_pregunta = 23;
+      this.respuesta48.id_subpregunta = 31;
       this.listaRespuestas2.push(this.respuesta48);
     }
     //pregunta 24 
@@ -384,6 +481,9 @@ export class EncuestaEmpresaComponent {
     this.listaRespuestas2.push(this.respuesta54);
     if (this.respuesta54.opcion === 'Si') {
       this.listaRespuestas2.push(this.respuesta55);
+    } else {
+      this.respuesta55.texto_res = 'N/A';
+      this.listaRespuestas2.push(this.respuesta55);
     }
     //pregunta27
     this.listaRespuestas2.push(this.respuesta56);
@@ -391,12 +491,21 @@ export class EncuestaEmpresaComponent {
     this.listaRespuestas2.push(this.respuesta58);
     this.listaRespuestas2.push(this.respuesta59);
     this.listaRespuestas2.push(this.respuesta60);
-    //pregunta28 y 29
+    //pregunta 28 y 29
     this.listaRespuestas2.push(this.respuesta61);
     if (this.respuesta61.opcion === 'Si') {
       this.listaRespuestas2.push(this.respuesta62);
       this.listaRespuestas2.push(this.respuesta63);
       this.listaRespuestas2.push(this.respuesta64);
+      this.listaRespuestas2.push(this.respuesta65);
+    } else {
+      this.respuesta62 = null;
+      this.listaRespuestas2.push(this.respuesta62);
+      this.respuesta63 = null;
+      this.listaRespuestas2.push(this.respuesta63);
+      this.respuesta64 = null;
+      this.listaRespuestas2.push(this.respuesta64);
+      this.respuesta65 = null;
       this.listaRespuestas2.push(this.respuesta65);
     }
 
@@ -467,13 +576,6 @@ export class EncuestaEmpresaComponent {
     if (!isValidForm) {
       return
     }
-    /*this.respuestasService.saveAnswers(this.token, payload).subscribe(
-      (data: any) => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });*/
   }
 
   onSubmitSeccion3() {
@@ -486,14 +588,14 @@ export class EncuestaEmpresaComponent {
     if (this.respuesta66.opcion === 'Si') {
       this.listaRespuestas3.push(this.respuesta67);
     } else {
-      this.respuesta67.texto_res = 'N/A';
+      this.respuesta67.texto_res = 'null';
       this.listaRespuestas3.push(this.respuesta67);
     }
     this.listaRespuestas3.push(this.respuesta68);
     if (this.respuesta68.opcion === 'Si') {
       this.listaRespuestas3.push(this.respuesta69);
     } else {
-      this.respuesta69.texto_res = 'N/A';
+      this.respuesta69.texto_res = 'null';
       this.listaRespuestas3.push(this.respuesta69);
     }
     this.listaRespuestas3.push(this.respuesta70);
@@ -585,6 +687,21 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas4.push(this.respuesta115);
       this.listaRespuestas4.push(this.respuesta116);
       this.listaRespuestas4.push(this.respuesta117);
+    } else {
+      this.respuesta111 = null;
+      this.listaRespuestas4.push(this.respuesta111);
+      this.respuesta112 = null;
+      this.listaRespuestas4.push(this.respuesta112);
+      this.respuesta113 = null;
+      this.listaRespuestas4.push(this.respuesta113);
+      this.respuesta114 = null;
+      this.listaRespuestas4.push(this.respuesta114);
+      this.respuesta115 = null;
+      this.listaRespuestas4.push(this.respuesta115);
+      this.respuesta116 = null;
+      this.listaRespuestas4.push(this.respuesta116);
+      this.respuesta117 = null;
+      this.listaRespuestas4.push(this.respuesta117);
     }
     //pregunta 46
     this.listaRespuestas4.push(this.respuesta118);
@@ -597,6 +714,25 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas4.push(this.respuesta124);
       this.listaRespuestas4.push(this.respuesta125);
       this.listaRespuestas4.push(this.respuesta126);
+      this.listaRespuestas4.push(this.respuesta127);
+    } else {
+      this.respuesta119 = null;
+      this.listaRespuestas4.push(this.respuesta119);
+      this.respuesta120 = null;
+      this.listaRespuestas4.push(this.respuesta120);
+      this.respuesta121 = null;
+      this.listaRespuestas4.push(this.respuesta121);
+      this.respuesta122 = null;
+      this.listaRespuestas4.push(this.respuesta122);
+      this.respuesta123 = null;
+      this.listaRespuestas4.push(this.respuesta123);
+      this.respuesta124 = null;
+      this.listaRespuestas4.push(this.respuesta124);
+      this.respuesta125 = null;
+      this.listaRespuestas4.push
+      this.respuesta126 = null;
+      this.listaRespuestas4.push(this.respuesta126);
+      this.respuesta127 = null;
       this.listaRespuestas4.push(this.respuesta127);
     }
 
@@ -690,10 +826,10 @@ export class EncuestaEmpresaComponent {
 
   updateProgress() {
     let answeredQuestions = 0;
-    const totalQuestions = 78; // Ajuste este número al total real de preguntas
+    const totalQuestions = 126; // Ajuste este número al total real de preguntas
 
     // Verifique cada respuesta
-    for (let i = 1; i <= 78; i++) {
+    for (let i = 1; i <= 126; i++) {
       const respuesta = this['respuesta' + i] as Respuesta;
       if (respuesta && (respuesta.opcion || respuesta.texto_res)) {
         answeredQuestions++;
