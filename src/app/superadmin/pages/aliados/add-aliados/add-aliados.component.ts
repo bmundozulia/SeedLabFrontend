@@ -41,6 +41,7 @@ export class AddAliadosComponent {
   selectedBanner: File | null = null;
   selectedLogo: File | null = null;
   selectedruta: File | null = null;
+  selectdVideo: string | null = null;
   faEye = faEye;
   tipoDeDato: Actividad[] = [];
   faEyeSlash = faEyeSlash;
@@ -78,7 +79,7 @@ export class AddAliadosComponent {
   }
 
   ngOnInit(): void {
-    this.validateToken();    
+    this.validateToken();
     this.tipoDato();
   }
 
@@ -137,13 +138,15 @@ export class AddAliadosComponent {
     formData.append('email', this.aliadoForm.get('email')?.value);
     formData.append('password', this.aliadoForm.get('password')?.value);
     formData.append('estado', this.aliadoForm.get('estado')?.value ?? '1');
-  
+
 
     if (this.selectedLogo) {
       formData.append('logo', this.selectedLogo, this.selectedLogo.name);
     }
     if (this.selectedruta) {
       formData.append('ruta_multi', this.selectedruta, this.selectedruta.name);
+    } else if (this.aliadoForm.get('ruta_multi')?.value) {
+      formData.append('ruta_multi', this.aliadoForm.get('ruta_multi')?.value);
     }
 
     formData.append('nombre', this.aliadoForm.get('nombre')?.value);
@@ -188,59 +191,59 @@ export class AddAliadosComponent {
   //  onFileSelecteds(event: any, field: string){
   //   if (event.target.files && event.target.files.length > 0) {
   //     const file = event.target.files[0];
-      // try {
-      //   if (field === 'urlImagen') {
-      //     await this.validateImageDimensions(file, 800, 300, 8100, 3100); // Validar dimensiones para el banner
-      //     this.selectedBanner = file;
-      //     this.bannerForm.patchValue({ urlImagen: file });
-      //   } else {
-      //     await this.validateImageDimensions(file, 100, 100, 600, 600); // Validar dimensiones para el logo
-      //     this.selectedLogo = file;
-      //     this.aliadoForm.patchValue({ logo: file });
-      //   }
-      //   this.generateImagePreview(file);
-      // } catch (error) {
-      //   console.error(error);
-      //   alert(error);
-  
-      //   // Limpiar el input file directamente en el DOM
-      //   if (field === 'urlImagen') {
-      //     this.selectedBanner = null;
-      //   } else {
-      //     this.selectedLogo = null;
-      //   }
-      //   event.target.value = ''; // Esta línea limpia el input de tipo file
-      // }
+  // try {
+  //   if (field === 'urlImagen') {
+  //     await this.validateImageDimensions(file, 800, 300, 8100, 3100); // Validar dimensiones para el banner
+  //     this.selectedBanner = file;
+  //     this.bannerForm.patchValue({ urlImagen: file });
+  //   } else {
+  //     await this.validateImageDimensions(file, 100, 100, 600, 600); // Validar dimensiones para el logo
+  //     this.selectedLogo = file;
+  //     this.aliadoForm.patchValue({ logo: file });
+  //   }
+  //   this.generateImagePreview(file);
+  // } catch (error) {
+  //   console.error(error);
+  //   alert(error);
+
+  //   // Limpiar el input file directamente en el DOM
+  //   if (field === 'urlImagen') {
+  //     this.selectedBanner = null;
+  //   } else {
+  //     this.selectedLogo = null;
+  //   }
+  //   event.target.value = ''; // Esta línea limpia el input de tipo file
+  // }
   //   }
   // }
 
   onTipoDatoChange(): void {
-      const tipoDatoId = this.contenidoLeccionForm.get('id_tipo_dato').value;
-  
-      switch (tipoDatoId) {
-        case '1': // Video
-          this.contenidoLeccionForm.get('Video').setValidators([Validators.required]);
-          break;
-        case '2': // Multimedia
-          this.contenidoLeccionForm.get('Multimedia').setValidators([Validators.required,]);
-          break;
-        case '3': // Imagen
-        this.contenidoLeccionForm.get('Imagen').setValidators([Validators.required,]);
+    const tipoDatoId = this.aliadoForm.get('id_tipo_dato').value;
+
+    switch (tipoDatoId) {
+      case '1': // Video
+        this.aliadoForm.get('Video').setValidators([Validators.required]);
         break;
-        case '4': // PDF
-        this.contenidoLeccionForm.get('PDF').setValidators([Validators.required,]);
+      // case '2': // Multimedia
+      //   this.aliadoForm.get('Multimedia').setValidators([Validators.required,]);
+      //   break;
+      case '3': // Imagen
+        this.aliadoForm.get('Imagen').setValidators([Validators.required,]);
         break;
-        case '5': // Texto
-          this.contenidoLeccionForm.get('Texto').setValidators([Validators.required]);
-          break;
-        default:
-          this.contenidoLeccionForm.get('fuente').clearValidators();
-          break;
-      }
-  
-      this.contenidoLeccionForm.get('fuente').updateValueAndValidity();
+      case '4': // PDF
+        this.aliadoForm.get('PDF').setValidators([Validators.required,]);
+        break;
+      case '5': // Texto
+        this.aliadoForm.get('Texto').setValidators([Validators.required]);
+        break;
+      default:
+        this.aliadoForm.get('fuente').clearValidators();
+        break;
     }
-  
+
+    this.aliadoForm.get('fuente').updateValueAndValidity();
+  }
+
 
   onFileSelecteds(event: any, field: string) {
     if (event.target.files && event.target.files.length > 0) {
@@ -249,18 +252,21 @@ export class AddAliadosComponent {
         this.selectedBanner = file;
         this.bannerForm.patchValue({ urlImagen: file });
       }
-      if (field === 'logo'){
+      if (field === 'logo') {
         this.selectedLogo = file;
         this.aliadoForm.patchValue({ logo: file });
       }
-      if (field === 'ruta_multi'){
+      if (field === 'ruta_multi') {
         this.selectedruta = file;
-        this.aliadoForm.patchValue({ruta_multi: file});
+        this.aliadoForm.patchValue({ ruta_multi: file });
       }
+    } else {
+      // Si no se seleccionó un archivo, se puede asignar un valor de texto al campo ruta_multi
+      if (field === 'ruta_multi') {
+        this.aliadoForm.patchValue({ ruta_multi: event.target.value });
       }
+    }
   }
-
-
 
 
   generateImagePreview(file: File) {
