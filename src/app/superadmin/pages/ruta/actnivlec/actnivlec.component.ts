@@ -33,6 +33,13 @@ export class ActnivlecComponent implements OnInit {
 
   ////
   fuente: string = '';
+  submittedActividad = false;
+  submittedNivel = false;
+  submittedLeccion=false;
+  submittedContent=false;
+  submitted=false;
+  
+
 
 
 
@@ -201,6 +208,10 @@ export class ActnivlecComponent implements OnInit {
 
   //agregar una actividad
   addActividadSuperAdmin(): void {
+    this.submittedActividad = true;
+    if (this.actividadForm.invalid) {
+      return;
+    }
     const actividad: Actividad = {
       nombre: this.actividadForm.value.nombre,
       descripcion: this.actividadForm.value.descripcion,
@@ -209,24 +220,26 @@ export class ActnivlecComponent implements OnInit {
       id_asesor: parseInt(this.actividadForm.value.id_asesor),
       id_ruta: this.rutaId,
       id_aliado: parseInt(this.actividadForm.value.id_aliado)
-    }
-    console.log('usuario', actividad);
+    };
     this.superAdminService.crearActividadSuperAdmin(this.token, actividad).subscribe(
       (data: any) => {
         const actividadCreada = data[0];
         this.nivelForm.patchValue({ id_actividad: actividadCreada.id });
         this.mostrarNivelForm = true;
-
-        console.log('id actividad: ', actividadCreada.id);
       },
       error => {
         console.log(error);
       }
-    )
+    );
   }
+  
 
 
-  addNivelSuperAdmin(): void {
+  addNivelSuperAdmin():void{
+    this.submittedNivel = true;
+    if (this.actividadForm.invalid) {
+      return;
+    }
     const nivel: any = {
       nombre: this.nivelForm.value.nombre,
       descripcion: this.nivelForm.value.descripcion,
@@ -247,7 +260,12 @@ export class ActnivlecComponent implements OnInit {
     )
   }
 
-  addLeccionSuperAdmin(): void {
+  addLeccionSuperAdmin():void{
+    this.submittedLeccion = true;
+    if (this.actividadForm.invalid) {
+      return;
+    }
+    //submittedLeccion
     const leccion: any = {
       nombre: this.leccionForm.value.nombre,
       id_nivel: this.leccionForm.value.id_nivel
@@ -265,8 +283,12 @@ export class ActnivlecComponent implements OnInit {
       }
     )
   }
-  addContenidoLeccionSuperAdmin(): void {
-    const contLeccion: any = {
+   addContenidoLeccionSuperAdmin():void{
+    this.submittedContent = true;
+    if (this.actividadForm.invalid) {
+      return;
+    }
+    const contLeccion: any= {
       titulo: this.contenidoLeccionForm.value.titulo,
       descripcion: this.contenidoLeccionForm.value.descripcion,
       fuente: this.contenidoLeccionForm.value.fuente,
@@ -313,17 +335,37 @@ export class ActnivlecComponent implements OnInit {
 
 
   onTipoDatoChange(): void {
+    this.submitted = true;
+    if (this.contenidoLeccionForm.invalid) {
+      return; // Detener la ejecución si el formulario es inválido
+    }
     const tipoDatoId = this.contenidoLeccionForm.get('id_tipo_dato').value;
-
-    if (tipoDatoId === '3') { // Imagen
+    
+    // Limpiar validadores para todos los campos
+    this.contenidoLeccionForm.get('fuente').clearValidators();
+    this.contenidoLeccionForm.get('Multimedia').clearValidators();
+    this.contenidoLeccionForm.get('Imagen').clearValidators();
+    this.contenidoLeccionForm.get('Pdf').clearValidators();
+    
+    // Aplicar validadores según el tipo de dato
+    if (tipoDatoId === '1') { // URL
       this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
-    } else {
+    } else if (tipoDatoId === '2') { // Multimedia
+      this.contenidoLeccionForm.get('Multimedia').setValidators([Validators.required]);
+    } else if (tipoDatoId === '3') { // Imagen
+      this.contenidoLeccionForm.get('Imagen').setValidators([Validators.required]);
+    } else if (tipoDatoId === '4') { // PDF
+      this.contenidoLeccionForm.get('Pdf').setValidators([Validators.required]);
+    } else if (tipoDatoId === '5') { // Texto
       this.contenidoLeccionForm.get('fuente').setValidators([Validators.required]);
     }
-
+    
+    // Actualizar la validez de todos los campos afectados
     this.contenidoLeccionForm.get('fuente').updateValueAndValidity();
+    this.contenidoLeccionForm.get('Multimedia').updateValueAndValidity();
+    this.contenidoLeccionForm.get('Imagen').updateValueAndValidity();
+    this.contenidoLeccionForm.get('Pdf').updateValueAndValidity();
   }
-
 
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];

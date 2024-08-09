@@ -322,43 +322,43 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 30,//respuesta70
+        id: 30,//respuesta66
         nombre: '¿Tiene claramente definido sus clientes actuales?',
         puntaje: 0,
         id_seccion: 3,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
     {
-        id: 31,
+        id: 31,//respuesta67
         nombre: 'Si tiene clientes actuales:¿Quiénes son?',
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
-        isText: false,
+        isText: true,
         subPreguntas: []
     },
     {
-        id: 32,
+        id: 32,//respuesta68
         nombre: '¿Tiene definido sus clientes potenciales?',
         puntaje: 0,
         id_seccion: 3,
-        isAffirmativeQuestion: false,
+        isAffirmativeQuestion: true,
         isText: false,
         subPreguntas: []
     },
     {
-        id: 33,
+        id: 33,//respuesta69
         nombre: 'Si tiene definido sus clientes potenciales: ¿Quiénes son?',
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
-        isText: false,
+        isText: true,
         subPreguntas: []
     },
     {
-        id: 34,
+        id: 34,//respuesta70
         nombre: '¿Tiene definido los competidores de su producto y/o servicio?',
         puntaje: 0,
         id_seccion: 3,
@@ -367,25 +367,25 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 35,
+        id: 35,//respuesta71
         nombre: '¿Le gustaría ser cómo?',
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
-        isText: false,
+        isText: true,
         subPreguntas: []
     },
     {
-        id: 36,
+        id: 36,//respuesta72
         nombre: '¿No te gustaría ser cómo?',
         puntaje: 0,
         id_seccion: 3,
         isAffirmativeQuestion: false,
-        isText: false,
+        isText: true,
         subPreguntas: []
     },
     {
-        id: 37,
+        id: 37,//respuesta73
         nombre: '¿Tiene identificado con claridad el factor diferencial de su empresa, producto y/o servicio?',
         puntaje: 0,
         id_seccion: 3,
@@ -394,7 +394,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 38,
+        id: 38,//respuesta74
         nombre: '¿Ha participado en otras estrategias de fortalecimiento, semilla, aceleración y/o similares?',
         puntaje: 0,
         id_seccion: 3,
@@ -403,7 +403,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 39,
+        id: 39,//respuesta75
         nombre: '¿Está dispuesto a realizar alianzas para la venta y/o distribución de sus productos, así como para la adquisición de equipos, insumos y/o materiales?',
         puntaje: 0,
         id_seccion: 3,
@@ -412,7 +412,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 40,
+        id: 40,//respuesta76
         nombre: '¿Está dispuesto a realizar alianzas y/o convenios para el uso de equipos con otras instituciones y/u organizaciones para el desarrollo de productos?',
         puntaje: 0,
         id_seccion: 3,
@@ -421,7 +421,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 41,
+        id: 41,//respuesta77
         nombre: '¿Está dispuesto a realizar alianza y/o convenios para recibir apoyo técnico especializado para el desarrollo de productos y/o servicios?',
         puntaje: 0,
         id_seccion: 3,
@@ -430,7 +430,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 42,
+        id: 42,//respuesta 78 - 108
         nombre: 'Definición de TRL',
         puntaje: 0,
         id_seccion: 4,
@@ -471,7 +471,7 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 43,
+        id: 43,//respuesta 109
         nombre: '¿Cuenta con área o departamento de innovación y/o desarrollo tecnológico?',
         puntaje: 0,
         id_seccion: 4,
@@ -480,7 +480,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 44,
+        id: 44,//respuesta 110
         nombre: '¿Tiene definidas las necesidades de su producto y/o servicio?',
         puntaje: 0,
         id_seccion: 4,
@@ -489,7 +489,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 45,
+        id: 45,//respuesta 111- 117
         nombre: 'Si la anterior respuesta fue afirmativa: ¿cuáles?',
         puntaje: 0,
         id_seccion: 4,
@@ -506,7 +506,7 @@ export const PREGUNTAS: Preguntas[] = [
         ]
     },
     {
-        id: 46,
+        id: 46,//respuesta 118
         nombre: '¿Tiene definidas las necesidades de su emprendimiento (organizacional)?',
         puntaje: 0,
         id_seccion: 4,
@@ -515,7 +515,7 @@ export const PREGUNTAS: Preguntas[] = [
         subPreguntas: []
     },
     {
-        id: 47,
+        id: 47,//respuesta 119 - 127
         nombre: 'Si la anterior respuesta fue afirmativa: ¿cuáles?',
         puntaje: 0,
         id_seccion: 4,

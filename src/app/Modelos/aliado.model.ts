@@ -5,21 +5,20 @@ export class Aliado {
     nombre: string;
     descripcion: string;
     logo: File; 
-    //banner: File | null;
-    ruta: string | null;
-    tipodato: string | null;
+    ruta_multi: File | null;
+    id_tipo_dato: number | null;
     email: string;
     password: string;
     estado: boolean;
 
-    constructor(id: number, nombre: string, descripcion: string, logo: File, ruta: string | null, tipodato: string | null, email: string, password: string, estado: boolean) {
+    constructor(id: number, nombre: string, descripcion: string, logo: File, ruta_multi: File | null, id_tipo_dato: number | null, email: string, password: string, estado: boolean) {
         this.id = id,
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.logo = logo;
        // this.banner = banner;
-        this.ruta = ruta;
-        this.tipodato = tipodato;
+        this.ruta_multi = ruta_multi;
+        this.id_tipo_dato = id_tipo_dato;
         this.email = email;
         this.password = password;
         this.estado = estado;
