@@ -5,7 +5,7 @@
             <h2 class="text-center my-8">Crear Actividad</h2>
             <div>
                 <div class="grid grid-cols-1">
-                    <form [formGroup]="actividadForm" (ngSubmit)="addActividadSuperAdmin()">
+                    <form [formGroup]="actividadForm" (ngSubmit)="addActividadSuperAdmin()">  <!--agregar actividad-->
                         <div>
                             <label for="nombre">Nombre de la Actividad:</label>
                             <input type="text" id="nombre" formControlName="nombre"
@@ -82,7 +82,7 @@
                         </div>
                     </form>
 
-                    <div *ngIf="mostrarNivelForm">
+                    <div *ngIf="mostrarNivelForm"> <!--agregar nivel-->
                         <h2 class="text-center my-8">Agregar Nivel</h2>
                         <form [formGroup]="nivelForm" (ngSubmit)="addNivelSuperAdmin()">
                             <div>
@@ -116,7 +116,7 @@
                         </form>
                     </div>
 
-                    <div *ngIf="mostrarLeccionForm">
+                    <div *ngIf="mostrarLeccionForm"> <!--agregar Lección-->
                         <h2 class="text-center my-8">Agregar Lección</h2>
                         <form [formGroup]="leccionForm" (ngSubmit)="addLeccionSuperAdmin()">
                             <div>
@@ -142,7 +142,7 @@
                         </form>
                     </div>
 
-                    <div *ngIf="mostrarContenidoLeccionForm">
+                    <div *ngIf="mostrarContenidoLeccionForm"> <!--agregar contenido por leccion-->
                         <h2 class="text-center my-8">Agregar Contenido a la Lección</h2>
                         <form [formGroup]="contenidoLeccionForm" (ngSubmit)="addContenidoLeccionSuperAdmin()">
                             <div>
