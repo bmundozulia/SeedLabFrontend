@@ -477,12 +477,14 @@ export class EncuestaEmpresaComponent {
     this.listaRespuestas2.push(this.respuesta52);
     this.listaRespuestas2.push(this.respuesta53);
 
-    //pregunta25 y 26
+    //pregunta 25 y 26
     this.listaRespuestas2.push(this.respuesta54);
     if (this.respuesta54.opcion === 'Si') {
       this.listaRespuestas2.push(this.respuesta55);
     } else {
       this.respuesta55.texto_res = 'N/A';
+      this.respuesta55.id_pregunta = 26;
+      this.respuesta55.id_subpregunta = 37;
       this.listaRespuestas2.push(this.respuesta55);
     }
     //pregunta27
@@ -499,13 +501,21 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas2.push(this.respuesta64);
       this.listaRespuestas2.push(this.respuesta65);
     } else {
-      this.respuesta62 = null;
+      this.respuesta62.texto_res = 'N/A';
+      this.respuesta62.id_pregunta = 28;
+      this.respuesta62.id_subpregunta = 46;
       this.listaRespuestas2.push(this.respuesta62);
-      this.respuesta63 = null;
+      this.respuesta63.texto_res = 'N/A';
+      this.respuesta63.id_pregunta = 28;
+      this.respuesta63.id_subpregunta = 47;
       this.listaRespuestas2.push(this.respuesta63);
-      this.respuesta64 = null;
+      this.respuesta64.texto_res = 'N/A';
+      this.respuesta64.id_pregunta = 28;
+      this.respuesta64.id_subpregunta = 48;
       this.listaRespuestas2.push(this.respuesta64);
-      this.respuesta65 = null;
+      this.respuesta65.texto_res = 'N/A';
+      this.respuesta65.id_pregunta = 28;
+      this.respuesta65.id_subpregunta = 49;
       this.listaRespuestas2.push(this.respuesta65);
     }
 
@@ -589,6 +599,7 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas3.push(this.respuesta67);
     } else {
       this.respuesta67.texto_res = 'null';
+      this.respuesta67.id_pregunta = 31;
       this.listaRespuestas3.push(this.respuesta67);
     }
     this.listaRespuestas3.push(this.respuesta68);
@@ -596,6 +607,7 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas3.push(this.respuesta69);
     } else {
       this.respuesta69.texto_res = 'null';
+      this.respuesta69.id_pregunta = 33;
       this.listaRespuestas3.push(this.respuesta69);
     }
     this.listaRespuestas3.push(this.respuesta70);
@@ -688,19 +700,33 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas4.push(this.respuesta116);
       this.listaRespuestas4.push(this.respuesta117);
     } else {
-      this.respuesta111 = null;
+      this.respuesta111.texto_res = 'N/A';
+      this.respuesta111.id_pregunta = 45;
+      this.respuesta111.id_subpregunta = 81;
       this.listaRespuestas4.push(this.respuesta111);
-      this.respuesta112 = null;
+      this.respuesta112.texto_res = 'N/A';
+      this.respuesta112.id_pregunta = 45;
+      this.respuesta112.id_subpregunta = 82;
       this.listaRespuestas4.push(this.respuesta112);
-      this.respuesta113 = null;
+      this.respuesta113.texto_res = 'N/A';
+      this.respuesta113.id_pregunta = 45;
+      this.respuesta113.id_subpregunta = 83;
       this.listaRespuestas4.push(this.respuesta113);
-      this.respuesta114 = null;
+      this.respuesta114.texto_res = 'N/A';
+      this.respuesta114.id_pregunta = 45;
+      this.respuesta114.id_subpregunta = 84;
       this.listaRespuestas4.push(this.respuesta114);
-      this.respuesta115 = null;
+      this.respuesta115.texto_res = 'N/A';
+      this.respuesta115.id_pregunta = 45;
+      this.respuesta115.id_subpregunta = 85;
       this.listaRespuestas4.push(this.respuesta115);
-      this.respuesta116 = null;
+      this.respuesta116.texto_res = 'N/A';
+      this.respuesta116.id_pregunta = 45;
+      this.respuesta116.id_subpregunta = 86;
       this.listaRespuestas4.push(this.respuesta116);
-      this.respuesta117 = null;
+      this.respuesta117.texto_res = 'N/A';
+      this.respuesta117.id_pregunta = 45;
+      this.respuesta117.id_subpregunta = 87;
       this.listaRespuestas4.push(this.respuesta117);
     }
     //pregunta 46
@@ -716,23 +742,41 @@ export class EncuestaEmpresaComponent {
       this.listaRespuestas4.push(this.respuesta126);
       this.listaRespuestas4.push(this.respuesta127);
     } else {
-      this.respuesta119 = null;
+      this.respuesta119.texto_res = 'N/A';
+      this.respuesta119.id_pregunta = 46;
+      this.respuesta119.id_subpregunta = 88;
       this.listaRespuestas4.push(this.respuesta119);
-      this.respuesta120 = null;
+      this.respuesta120.texto_res = 'N/A';
+      this.respuesta120.id_pregunta = 46;
+      this.respuesta120.id_subpregunta = 89;
       this.listaRespuestas4.push(this.respuesta120);
-      this.respuesta121 = null;
+      this.respuesta121.texto_res = 'N/A';
+      this.respuesta121.id_pregunta = 46;
+      this.respuesta121.id_subpregunta = 90;
       this.listaRespuestas4.push(this.respuesta121);
-      this.respuesta122 = null;
+      this.respuesta122.texto_res = 'N/A';
+      this.respuesta122.id_pregunta = 46;
+      this.respuesta122.id_subpregunta = 91;
       this.listaRespuestas4.push(this.respuesta122);
-      this.respuesta123 = null;
+      this.respuesta123.texto_res = 'N/A';
+      this.respuesta123.id_pregunta = 46;
+      this.respuesta123.id_subpregunta = 92;
       this.listaRespuestas4.push(this.respuesta123);
-      this.respuesta124 = null;
+      this.respuesta124.texto_res = 'N/A';
+      this.respuesta124.id_pregunta = 46;
+      this.respuesta124.id_subpregunta = 93;
       this.listaRespuestas4.push(this.respuesta124);
-      this.respuesta125 = null;
+      this.respuesta125.texto_res = 'N/A';
+      this.respuesta125.id_pregunta = 46;
+      this.respuesta125.id_subpregunta = 94;
       this.listaRespuestas4.push
-      this.respuesta126 = null;
+      this.respuesta126.texto_res = 'N/A';
+      this.respuesta126.id_pregunta = 46;
+      this.respuesta126.id_subpregunta = 95;
       this.listaRespuestas4.push(this.respuesta126);
-      this.respuesta127 = null;
+      this.respuesta127.texto_res = 'N/A';
+      this.respuesta127.id_pregunta = 46;
+      this.respuesta127.id_subpregunta = 96;
       this.listaRespuestas4.push(this.respuesta127);
     }
 
