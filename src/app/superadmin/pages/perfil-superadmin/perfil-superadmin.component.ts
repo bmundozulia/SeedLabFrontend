@@ -93,7 +93,7 @@ export class PerfilSuperadminComponent {
     const perfil: Superadmin = {
       nombre: this.perfiladminForm.get('nombre')?.value,
       apellido: this.perfiladminForm.get('apellido')?.value,
-      email: this.perfiladminForm.get('email')?.value,
+      email: this.perfiladminForm.get('email')?.value, 
       password: this.perfiladminForm.get('password')?.value,
       estado: this.perfiladminForm.get('estado')?.value,
     }

@@ -21,7 +21,7 @@ export class HeaderComponent implements AfterViewInit {
     //this.setHeaderText();
     this.personalizacionService.getPersonalizacion().subscribe(
       data => {
-        this.logoUrl = data.imagen_Logo;
+        this.logoUrl = data.imagen_logo;
         //console.log('logoUrl', this.logoUrl);
         console.log("personalizaciones obtenidas", data);
       },

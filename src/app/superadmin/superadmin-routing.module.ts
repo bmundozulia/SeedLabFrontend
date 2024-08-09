@@ -10,6 +10,7 @@ import { ListAliadosComponent } from './pages/aliados/list-aliados/list-aliados.
 import { AddAliadosComponent } from './pages/aliados/add-aliados/add-aliados.component';
 import { ActnivlecComponent } from './pages/ruta/actnivlec/actnivlec.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { EditarActRutaComponent } from './pages/editar-act-ruta/editar-act-ruta.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'add-aliados', component: AddAliadosComponent, data: { showInMenu: false } },
       { path: 'actnivlec', component: ActnivlecComponent, data: { title: 'Act-Niv-Lec', showInMenu: false } },
       { path: 'add-actividad', component: AddActividadComponent, data: { title: 'Actividad', icon: 'fa-solid fa-table-list', showInMenu: false } },
+      { path: 'editar-act-ruta',component: EditarActRutaComponent,data:{title : 'Editar-Act-Ruta',showInMenu: false}}
     ]
   }
 ];

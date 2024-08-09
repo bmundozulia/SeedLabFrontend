@@ -17,8 +17,13 @@ export class RutaEmprendedorComponent implements OnInit {
   rutaContenidoList: Ruta []=[];
   rutaList: Ruta []=[];
 /////////
-rutaSeleccionada: any | null;
-
+  rutaSeleccionada: any | null;
+  actividadSeleccionada: any | null; 
+  nivelSeleccionado: any | null;
+  leccionSeleccionada: any | null;
+  actividadExpandida: number | null = null;
+  nivelExpandido: number | null = null;
+  
 
   constructor(
     private rutaService: RutaService,
@@ -56,20 +61,6 @@ rutaSeleccionada: any | null;
     }
   }
 
-  // contenidoDeRuta():void{
-  //   if (this.token) {
-  //     this.rutaService.contenidoRuta(this.token, this.idRuta).subscribe(
-  //       (data) =>{
-  //         this.rutaContenidoList = data;
-  //         console.log('Contenido de la ruta:', this.rutaContenidoList);
-  //       },
-  //       (err) => {
-  //         console.log(err);
-  //       }
-  //     )
-  //   }
-  // }
-
   listarRuta():void{
     // if (this.token) {
       this.rutaService.rutasActivas(this.token).subscribe(
@@ -86,7 +77,44 @@ rutaSeleccionada: any | null;
 
   selectRuta(ruta: any): void {
     this.rutaSeleccionada = ruta;
+    this.actividadSeleccionada = null;
+    this.nivelSeleccionado = null;
+    this.leccionSeleccionada = null;
     console.log("la ruta seleccionada fue: ",this.rutaSeleccionada)
   }
 
+  selectActividad(actividad: any): void {
+    this.actividadSeleccionada = actividad;
+    this.nivelSeleccionado = null;
+    this.leccionSeleccionada = null;
+    console.log("la actividad seleccionada fue: ", this.actividadSeleccionada);
+  }
+
+  selectNivel(nivel: any): void {
+    this.nivelSeleccionado = nivel;
+    this.leccionSeleccionada = null;
+    console.log("el nivel seleccionado fue: ", this.nivelSeleccionado);
+  }
+
+  // selectLeccion(leccion: any): void {
+  //   this.leccionSeleccionada = leccion;
+  //   console.log("la lección seleccionada fue: ", this.leccionSeleccionada);
+  // }
+
+  
+  toggleActividad(index: number) {
+    this.actividadExpandida = this.actividadExpandida === index ? null : index;
+    this.nivelExpandido = null;
+  }
+
+  toggleNivel(index: number) {
+    this.nivelExpandido = this.nivelExpandido === index ? null : index;
+  }
+
+  selectLeccion(leccion: any): void {
+    this.leccionSeleccionada = leccion;
+  }
+  
+
+  
 }
